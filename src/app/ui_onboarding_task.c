@@ -139,7 +139,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
           }
           onboarding_sync_data(local_14,3,uVar3);
         }
-        thunk_FUN_00045444();
+        FUN_00045444();
         FUN_00042830();
         uVar5 = FUN_00080976();
         pGVar2 = __get_dashboard_state();

@@ -17,7 +17,7 @@ undefined4 FUN_0103b692(int param_1,int param_2)
   *(int *)(param_2 + -0x10) = param_1 + 0xb4;
   *(int *)(param_1 + 0xb8) = param_2 + -0x10;
   **(int **)(param_2 + -0xc) = param_2 + -0x10;
-  thunk_FUN_01036fe4((int *)(param_1 + 0x58));
+  FUN_01036fe4((int *)(param_1 + 0x58));
   return 0;
 }
 

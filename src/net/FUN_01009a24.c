@@ -75,7 +75,7 @@ LAB_01009a94:
         puVar5 = extraout_r2_03;
         if (iVar3 != 0) break;
         local_14._0_3_ = CONCAT12(0x11,(short)((uint)DAT_21000a70 >> 8));
-        iVar3 = thunk_FUN_01029ca2((ushort *)&local_14,(ushort *)&local_18);
+        iVar3 = FUN_01029ca2((ushort *)&local_14,(ushort *)&local_18);
         param_2 = extraout_r1_01;
         param_3 = extraout_r2_04;
         if (iVar3 == 0) goto LAB_01009a2e;

@@ -64,7 +64,7 @@ LAB_01014778:
       if ((*(char *)((int)puVar9 + 0x332) != '\0') && (*(char *)(puVar9 + 199) == '\x03')) {
         bVar1 = *(byte *)((int)puVar9 + 0x6f);
         uVar4 = (uint)bVar1;
-        uVar3 = thunk_FUN_01024ecc();
+        uVar3 = FUN_01024ecc();
         uVar17 = CONCAT44(extraout_r1,(uint)uVar3);
         uVar15 = (uint)*(byte *)(param_1 + 0xb6);
         uVar8 = extraout_r2_01;

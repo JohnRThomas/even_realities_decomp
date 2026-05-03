@@ -55,7 +55,7 @@ LAB_01035dd2:
                  extraout_r3_00);
   }
   FUN_0103b48a(*(int **)(param_1 + 0xa8));
-  thunk_FUN_01036fe4((int *)(param_1 + 0x58));
+  FUN_01036fe4((int *)(param_1 + 0x58));
   return param_5;
 }
 

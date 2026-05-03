@@ -55,7 +55,7 @@ undefined2 FUN_0100f804(int param_1,undefined1 *param_2)
     local_16 = local_26;
     local_14 = local_24;
     local_1c = uVar2;
-    iVar6 = thunk_FUN_01028e56(&local_1c);
+    iVar6 = FUN_01028e56(&local_1c);
     uVar5 = extraout_r2_00;
     uVar8 = extraout_r3_00;
     if (iVar6 == 0) {

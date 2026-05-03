@@ -40,7 +40,7 @@ void FUN_01017e58(int param_1,undefined4 param_2,char *param_3,byte *param_4)
           cVar3 = FUN_0100b2ac(puVar5,*(char **)(param_1 + 8));
         }
         else {
-          cVar3 = thunk_FUN_01020520();
+          cVar3 = FUN_01020520();
           DAT_21001011 = '\0';
         }
         goto LAB_01017ebe;

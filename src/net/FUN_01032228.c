@@ -81,7 +81,7 @@ int FUN_01032228(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefi
     uVar6 = extraout_r3_00;
     if (iVar7 == 0) {
       local_40 = &DAT_003d0900;
-      iVar2 = thunk_FUN_0101fe50((uint *)&local_40,extraout_r1_00,extraout_r2_00);
+      iVar2 = FUN_0101fe50((uint *)&local_40,extraout_r1_00,extraout_r2_00);
       iVar3 = 0;
       uVar4 = extraout_r1_01;
       puVar5 = extraout_r2_01;

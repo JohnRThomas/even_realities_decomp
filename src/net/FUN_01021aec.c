@@ -163,7 +163,7 @@ LAB_01021c84:
       FUN_01020d00();
       return 0;
     }
-    local_2c = thunk_FUN_010259e8();
+    local_2c = FUN_010259e8();
     local_33 = param_1 == 0;
     local_30 = &Peripherals::TIMER0_NS;
     local_28 = (&Peripherals::TIMER0_NS.CC_0_)[local_2c];

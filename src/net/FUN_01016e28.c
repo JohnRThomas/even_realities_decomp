@@ -18,13 +18,13 @@ void FUN_01016e28(void)
   if (((DAT_21000fe8 != '\0') || (lVar5 = CONCAT44(DAT_21001034,DAT_21001030), DAT_2100100d != '\0')
       ) && (lVar5 = CONCAT44(DAT_21001034,DAT_21001030),
            DAT_21001034 != 0x7fffffff || DAT_21001030 != 0xffffffff)) {
-    lVar4 = thunk_FUN_01025834();
+    lVar4 = FUN_01025834();
     lVar5 = CONCAT44(DAT_21001034,DAT_21001030);
     uVar2 = (uint)((ulonglong)lVar4 >> 0x20);
     if (DAT_21001034 < uVar2 || uVar2 - DAT_21001034 < (uint)(DAT_21001030 <= (uint)lVar4)) {
       uVar1 = FUN_0100cf38();
       uVar2 = (uint)uVar1;
-      lVar5 = thunk_FUN_01025834();
+      lVar5 = FUN_01025834();
       iVar3 = (uint)(uVar2 * 0x20 < uVar2) * -0x200 + (uint)CARRY4(uVar2 * 0x3e00,uVar2);
       lVar5 = lVar5 + CONCAT44((((iVar3 * 0x40 | uVar2 * 0x3e01 >> 0x1a) - iVar3) -
                                (uint)(uVar2 * 0xf8040 < uVar2 * 0x3e01)) +

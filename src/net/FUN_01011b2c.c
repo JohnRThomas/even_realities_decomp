@@ -68,7 +68,7 @@ undefined4 FUN_01011b2c(int param_1)
   }
   if ((*(char *)(param_1 + 0x1a) != '\0') || ((int)((uint)*(ushort *)(param_1 + 2) << 0x1d) < 0)) {
     if (((*(int *)(param_1 + 0x5c) == 0x7fffffff && *(int *)(param_1 + 0x58) == -1) ||
-        (lVar11 = thunk_FUN_01025834(), uVar8 = (uint)((ulonglong)lVar11 >> 0x20),
+        (lVar11 = FUN_01025834(), uVar8 = (uint)((ulonglong)lVar11 >> 0x20),
         uVar8 <= *(uint *)(param_1 + 0x5c) &&
         (uint)(*(uint *)(param_1 + 0x58) <= (uint)lVar11) <= uVar8 - *(uint *)(param_1 + 0x5c))) &&
        (cVar9 == '\0')) {
@@ -77,7 +77,7 @@ undefined4 FUN_01011b2c(int param_1)
     }
     uVar3 = FUN_0100cf38();
     uVar8 = (uint)uVar3;
-    lVar11 = thunk_FUN_01025834();
+    lVar11 = FUN_01025834();
     iVar10 = (uint)(uVar8 * 0x20 < uVar8) * -0x200 + (uint)CARRY4(uVar8 * 0x3e00,uVar8);
     *(longlong *)(param_1 + 0x58) =
          lVar11 + CONCAT44((((iVar10 * 0x40 | uVar8 * 0x3e01 >> 0x1a) - iVar10) -

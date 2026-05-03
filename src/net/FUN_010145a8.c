@@ -76,7 +76,7 @@ undefined4 * FUN_010145a8(undefined4 *param_1)
     _MasterStackPointer = 0x96f3b83d;
     return param_1;
   }
-  lVar19 = thunk_FUN_01025834();
+  lVar19 = FUN_01025834();
   lVar19 = lVar19 - *(longlong *)(param_1 + 0xd4);
   puVar5 = (undefined4 *)lVar19;
   iVar14 = (int)((ulonglong)lVar19 >> 0x20);
@@ -142,7 +142,7 @@ LAB_01014778:
       if ((*(char *)((int)puVar5 + 0x332) != '\0') && (*(char *)(puVar5 + 199) == '\x03')) {
         bVar1 = *(byte *)((int)puVar5 + 0x6f);
         uVar8 = (uint)bVar1;
-        uVar4 = thunk_FUN_01024ecc();
+        uVar4 = FUN_01024ecc();
         uVar20 = CONCAT44(extraout_r1,(uint)uVar4);
         uVar6 = (uint)*(byte *)(puVar7 + 0xb6);
         uVar11 = extraout_r2_04;

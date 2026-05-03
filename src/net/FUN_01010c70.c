@@ -55,7 +55,7 @@ void FUN_01010c70(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
     cVar12 = '\x7f';
   }
   if ((*(uint *)(param_1 + -0x1ac) != 0x7fffffff || *puVar10 != 0xffffffff) &&
-     (lVar14 = thunk_FUN_01025834(), uVar11 = (uint)((ulonglong)lVar14 >> 0x20),
+     (lVar14 = FUN_01025834(), uVar11 = (uint)((ulonglong)lVar14 >> 0x20),
      uVar9 = *(uint *)(param_1 + -0x1ac),
      uVar9 < uVar11 || uVar11 - uVar9 < (uint)(*puVar10 <= (uint)lVar14))) {
     iVar4 = FUN_0100d7c0(*(ushort *)(param_1 + -600),auStack_28);
@@ -63,7 +63,7 @@ void FUN_01010c70(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
       iVar2 = FUN_0101eafc((int)auStack_28,iVar2 + 1U & 0xff,cVar12,2);
       if (iVar2 == 0) {
         uVar11 = (uint)DAT_21000f08;
-        lVar14 = thunk_FUN_01025834();
+        lVar14 = FUN_01025834();
         *(longlong *)puVar10 =
              lVar14 + CONCAT44((((uint)(uVar11 * 0x20 < uVar11) * -0x200 +
                                 (uint)CARRY4(uVar11 * 0x3e00,uVar11)) * 0x3f -
@@ -100,7 +100,7 @@ void FUN_01010c70(int param_1,undefined4 param_2,undefined4 param_3,undefined4 p
           ((iVar8 = (int)(char)-(char)(iVar8 + 0x800 >> 0xc) + (int)cVar12, 0xff < iVar8 + 0x80U ||
            ((char)iVar8 != '\0')))) &&
          ((*(int *)(iVar4 + 0xac) != 0x7fffffff || *(uint *)(iVar4 + 0xa8) != 0xffffffff &&
-          (lVar14 = thunk_FUN_01025834(), uVar11 = (uint)((ulonglong)lVar14 >> 0x20),
+          (lVar14 = FUN_01025834(), uVar11 = (uint)((ulonglong)lVar14 >> 0x20),
           *(uint *)(iVar4 + 0xac) < uVar11 ||
           uVar11 - *(uint *)(iVar4 + 0xac) < (uint)(*(uint *)(iVar4 + 0xa8) <= (uint)lVar14))))) {
         iVar8 = *(int *)(pcVar3 + 4);

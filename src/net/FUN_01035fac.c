@@ -21,7 +21,7 @@ int FUN_01035fac(int param_1,undefined4 param_2)
   }
   iVar1 = -0x7d2;
 LAB_01035fc8:
-  thunk_FUN_01036fe4((int *)(param_1 + 0x58));
+  FUN_01036fe4((int *)(param_1 + 0x58));
   return iVar1;
 }
 

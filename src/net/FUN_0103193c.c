@@ -88,7 +88,7 @@ LAB_010319b8:
         InstructionSynchronizationBarrier(0xf);
         break;
       }
-      thunk_FUN_0103b8a8(1);
+      FUN_0103b8a8(1);
       iVar5 = iVar5 + -1;
     } while (iVar5 != 0);
     FUN_01038424(0x21,0);

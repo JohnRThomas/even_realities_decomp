@@ -35,7 +35,7 @@ void FUN_0103a7a6(int param_1,byte *param_2,undefined4 param_3)
     uVar5 = extraout_r3;
     if (local_1c != (byte *)0x0) {
       if (bVar2) {
-        thunk_FUN_01036d3c(piVar6,extraout_r1,extraout_r2,extraout_r3);
+        FUN_01036d3c(piVar6,extraout_r1,extraout_r2,extraout_r3);
         FUN_0102de5c(iVar7,(char *)pbVar1,(char *)param_2,param_3);
         return;
       }
@@ -45,7 +45,7 @@ void FUN_0103a7a6(int param_1,byte *param_2,undefined4 param_3)
       uVar4 = extraout_r2_00;
       uVar5 = extraout_r3_00;
     }
-    thunk_FUN_01036d3c(piVar6,uVar3,uVar4,uVar5);
+    FUN_01036d3c(piVar6,uVar3,uVar4,uVar5);
     return;
   }
   return;

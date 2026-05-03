@@ -281,7 +281,7 @@ LAB_01021bc0:
       return (undefined4 *)0x0;
     }
                     /* WARNING: Read-only address (ram,0x00000000) is written */
-    iStack_5c = thunk_FUN_010259e8();
+    iStack_5c = FUN_010259e8();
     pTStack_60 = &Peripherals::TIMER0_NS;
     uStack_63 = 0;
     uStack_58 = (&Peripherals::TIMER0_NS.CC_0_)[iStack_5c];
