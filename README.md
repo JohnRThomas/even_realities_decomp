@@ -1,0 +1,3 @@
+# Raw Ghidra Export
+
+This branch is only meant to be editted by exporting decompiled code from Ghidra. The *main* branch will be periodically rebased ontop of this branch so that exported code can be modified without needing to redo all  of the manual changes again. Rebase + resolving merge conflicts should allow the two methods of updating stay in sync since re-exporting will destroy any modifications.
