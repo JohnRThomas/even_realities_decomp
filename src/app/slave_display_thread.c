@@ -383,7 +383,7 @@ LAB_0002a4f2:
       FUN_00044b24();
       DAT_2001db40 = *(char *)(param_1 + 0xe7);
       cVar2 = *(char *)(param_1 + 0xe8);
-      thunk_FUN_00045444();
+      src/*FUN_00045444();
       FUN_00042830();
       uVar14 = FUN_0007fea6();
       *(undefined8 *)(*(int *)(param_1 + 0x101c) + 4) = uVar14;

@@ -430,7 +430,7 @@ LAB_0100bdb6:
     pcStack_5c = pcVar6;
     pcStack_58 = (char *)puVar5;
     puStack_50 = (undefined *)uVar7;
-    DAT_21001628 = thunk_FUN_01025828();
+    DAT_21001628 = src/*FUN_01025828();
     DAT_2100162c = 0;
     DAT_21001630 = pRVar25;
     puVar26 = extraout_r3_02;
@@ -817,7 +817,7 @@ LAB_01021bc0:
                     /* WARNING: Read-only address (ram,0x000002dc) is written */
                     /* WARNING: Read-only address (ram,0x000002fc) is written */
                     /* WARNING: Read-only address (ram,0x00000300) is written */
-          iStack_cc = thunk_FUN_010259e8();
+          iStack_cc = src/*FUN_010259e8();
           pTStack_d0 = &Peripherals::TIMER0_NS;
           uStack_d3 = 0;
           uStack_c8 = (&Peripherals::TIMER0_NS.CC_0_)[iStack_cc];

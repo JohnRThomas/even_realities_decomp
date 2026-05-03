@@ -358,7 +358,7 @@ LAB_0101aafc:
   pbVar4 = (byte *)(unaff_r6 >> 3);
   pbStack_2c = pbVar22;
   pbVar5 = FUN_01019a04();
-  lVar32 = thunk_FUN_01025834();
+  lVar32 = src/*FUN_01025834();
   pbVar22 = DAT_210010a8;
   pbVar10 = (byte *)lVar32;
   iVar6 = FUN_0101a930();
@@ -834,7 +834,7 @@ LAB_0101b498:
     pbStackY_94 = puStackY_9c;
     Peripherals::TIMER0_NS.TASKS_CAPTURE_3_ = 1;
     pRVar24 = (RADIO_NS *)Peripherals::TIMER0_NS.CC_3_;
-    DAT_21001628 = thunk_FUN_01025828();
+    DAT_21001628 = src/*FUN_01025828();
     DAT_2100162c = 0;
     DAT_21001630 = pRVar24;
     if (DAT_2100160c < 0x96) goto LAB_0102154e;
@@ -1321,7 +1321,7 @@ LAB_01021bc0:
         return (byte *)0x0;
       }
                     /* WARNING: Read-only address (ram,0x00000000) is written */
-      iStackY_fc = thunk_FUN_010259e8();
+      iStackY_fc = src/*FUN_010259e8();
       pTStackY_100 = &Peripherals::TIMER0_NS;
       uStackY_103 = 0;
       uStackY_f8 = (&Peripherals::TIMER0_NS.CC_0_)[iStackY_fc];

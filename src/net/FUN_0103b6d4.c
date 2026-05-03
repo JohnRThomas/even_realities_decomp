@@ -31,14 +31,14 @@ undefined4 FUN_0103b6d4(int param_1,int param_2,int param_3)
     pbVar2 = FUN_0103b5d0(puVar5,(int)auStack_38,-1,iVar6);
     if (*(int *)(param_2 + 0x24) << 0x1f < 0) {
       if (pbVar2 == (byte *)0x0) {
-        thunk_FUN_01036fe4(piVar1);
+        src/*FUN_01036fe4(piVar1);
       }
       else {
         pbVar2[0x28] = 0xff;
         pbVar2[0x29] = 0xff;
         pbVar2[0x2a] = 0xff;
         pbVar2[0x2b] = 0xff;
-        thunk_FUN_01036fe4(piVar1);
+        src/*FUN_01036fe4(piVar1);
         if (*(code **)(pbVar2 + 0x30) != (code *)0x0) {
           (**(code **)(pbVar2 + 0x30))(pbVar2);
         }
@@ -48,10 +48,10 @@ undefined4 FUN_0103b6d4(int param_1,int param_2,int param_3)
     else {
       if (pbVar2 != (byte *)0x0) {
         *(int *)(pbVar2 + 0x28) = iVar6;
-        thunk_FUN_01036fe4(piVar1);
+        src/*FUN_01036fe4(piVar1);
         return 0;
       }
-      thunk_FUN_01036fe4(piVar1);
+      src/*FUN_01036fe4(piVar1);
       pcVar4 = (code *)puVar5[0x1c];
     }
     if (pcVar4 != (code *)0x0) {

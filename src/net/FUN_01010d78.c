@@ -46,7 +46,7 @@ void FUN_01010d78(char *param_1)
         ((iVar8 = (int)(char)-(char)(iVar8 + 0x800 >> 0xc) + (int)cVar1, 0xff < iVar8 + 0x80U ||
          ((char)iVar8 != '\0')))) &&
        ((*(int *)(iVar9 + 0xac) != 0x7fffffff || *(uint *)(iVar9 + 0xa8) != 0xffffffff &&
-        (lVar11 = thunk_FUN_01025834(), uVar4 = (uint)((ulonglong)lVar11 >> 0x20),
+        (lVar11 = src/*FUN_01025834(), uVar4 = (uint)((ulonglong)lVar11 >> 0x20),
         *(uint *)(iVar9 + 0xac) < uVar4 ||
         uVar4 - *(uint *)(iVar9 + 0xac) < (uint)(*(uint *)(iVar9 + 0xa8) <= (uint)lVar11))))) {
       iVar8 = *(int *)(param_1 + 4);

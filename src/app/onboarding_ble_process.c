@@ -124,7 +124,7 @@ LAB_00044c48:
     pGVar4 = __get_dashboard_state();
     *(undefined1 *)(*(int *)&pGVar4->field_0x101c + 3) = *(undefined1 *)&pGVar3->imu_fusion_context;
   }
-  thunk_FUN_00045444();
+  src/*FUN_00045444();
   uVar9 = CONCAT44(DAT_20004db4,DAT_20004db0);
 LAB_00044c52:
   DAT_20004db4 = (undefined4)((ulonglong)uVar9 >> 0x20);

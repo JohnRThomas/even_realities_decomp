@@ -21,7 +21,7 @@ undefined4 FUN_0101aa18(void)
   int iVar6;
   longlong lVar7;
   
-  lVar7 = thunk_FUN_01025834();
+  lVar7 = src/*FUN_01025834();
   uVar2 = (uint)lVar7;
   if (DAT_210010a0 == '\x04') {
     if ((uint)(DAT_210010b8 - DAT_210010f0) < (uint)(DAT_210010a4 * 10)) {
@@ -65,7 +65,7 @@ undefined4 FUN_0101aa18(void)
         }
       }
     }
-    lVar7 = thunk_FUN_01025834();
+    lVar7 = src/*FUN_01025834();
     if (((undefined *)((0xbf - uVar2) + (int)lVar7) <= puVar4) &&
        (uVar2 = FUN_010246a8((int)puVar4,uVar5,extraout_r2), uVar2 == 0)) {
       DAT_210010e0 = DAT_210010e0 + (int)puVar4;

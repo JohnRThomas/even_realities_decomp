@@ -77,7 +77,7 @@ FUN_01013718(undefined4 *param_1,uint param_2,int param_3,int param_4,undefined2
   
   local_3c = (uint)*(byte *)((int)param_1 + 0x6f);
   local_38 = 0;
-  uVar9 = thunk_FUN_01024ecc();
+  uVar9 = src/*FUN_01024ecc();
   uVar29 = CONCAT44(extraout_r1,(uint)uVar9);
   uVar17 = (uint)*(byte *)(param_1 + 0xb6);
   uVar25 = extraout_r3;

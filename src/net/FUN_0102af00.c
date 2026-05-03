@@ -220,7 +220,7 @@ LAB_0102b11a:
     iVar5 = FUN_0102bf78();
     uVar12 = CONCAT44(DAT_21001d04,DAT_21001d00);
     if ((iVar5 != 3) && (uVar12 = CONCAT44(DAT_21001d04,DAT_21001d00), DAT_210045f4[1] != 1)) {
-      uVar12 = thunk_FUN_01038a44();
+      uVar12 = src/*FUN_01038a44();
       DAT_21001d04 = (int)(uVar12 >> 0x20);
       DAT_21001d00 = (undefined4)uVar12;
       lVar1 = (uVar12 & 0xffffffff) * 1000;

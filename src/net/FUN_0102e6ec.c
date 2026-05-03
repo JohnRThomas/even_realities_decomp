@@ -46,7 +46,7 @@ bool FUN_0102e6ec(void)
   }
 LAB_0102e748:
   if ((0 < DAT_21004664) &&
-     (uVar9 = thunk_FUN_01038a44(), lVar2 = (uVar9 & 0xffffffff) * 1000,
+     (uVar9 = src/*FUN_01038a44(), lVar2 = (uVar9 & 0xffffffff) * 1000,
      uVar4 = (int)(uVar9 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20),
      uVar6 = (uint)lVar2 >> 0xf | uVar4 * 0x20000, uVar4 = (uVar4 >> 0xf) - DAT_2100278c,
      uVar1 = (uint)(uVar6 < DAT_21002788),

@@ -58,7 +58,7 @@ undefined * FUN_0101b95c(undefined4 param_1)
   undefined1 *puStack_34;
   uint uStack_30;
   
-  lVar21 = thunk_FUN_01025834();
+  lVar21 = src/*FUN_01025834();
   uVar20 = DAT_210010b8;
   puVar5 = FUN_01019a04();
   uVar13 = (uint)(byte)puVar5[1];
@@ -155,7 +155,7 @@ LAB_0101ba18:
     else {
       iVar6 = 0x32;
     }
-    uVar4 = thunk_FUN_01024ecc();
+    uVar4 = src/*FUN_01024ecc();
     bVar3 = FUN_01020a9c();
     iVar9 = FUN_010211f0((uint)bVar3);
     uVar16 = ((iVar7 + iVar17) * ((uint)uVar4 + iVar6) + 999999) / 1000000;

@@ -17,7 +17,7 @@ uint FUN_01039250(uint *param_1,uint *param_2,uint *param_3)
   uVar1 = FUN_01039288(auStack_70,param_2);
   uVar2 = FUN_010394f8(auStack_50,param_3);
   uVar3 = FUN_0103957c((undefined8 *)auStack_50,auStack_50,auStack_70);
-  thunk_FUN_01039764(param_1,auStack_50);
+  src/*FUN_01039764(param_1,auStack_50);
   return uVar1 | uVar2 | uVar3;
 }
 

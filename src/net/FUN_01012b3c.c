@@ -49,7 +49,7 @@ LAB_01012b7c:
     *(bool *)(param_1 + 0x60) = (bVar1 & 0xfd) != 0;
     uVar3 = FUN_0100cf38();
     uVar4 = (uint)uVar3;
-    lVar8 = thunk_FUN_01025834();
+    lVar8 = src/*FUN_01025834();
     *(undefined1 *)(param_1 + 0x6e) = 0;
     iVar7 = (uint)(uVar4 * 0x20 < uVar4) * -0x200 + (uint)CARRY4(uVar4 * 0x3e00,uVar4);
     *(longlong *)(param_1 + 0x58) =

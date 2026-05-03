@@ -26,12 +26,12 @@ void set_brightness_to_panel_reg_in_running(uint param_1,uint param_2)
   pGVar1 = __get_dashboard_state();
   if (*(int *)&pGVar1->field_0xec8 != 0) {
     FUN_00080ace(param_1,(ushort *)((int)&uStack_c + 2),(char *)((int)&uStack_c + 1));
-    thunk_FUN_00080ece(6);
-    thunk_FUN_00080ece(0xa9);
+    src/*FUN_00080ece(6);
+    src/*FUN_00080ece(0xa9);
     FUN_0004aa00(uStack_c >> 0x10,uStack_c >> 8 & 0xff,extraout_r2);
     FUN_00080d0a(0x31,4,extraout_r2_00);
-    thunk_FUN_00080ece(0xa3);
-    thunk_FUN_00080ece(0x97);
+    src/*FUN_00080ece(0xa3);
+    src/*FUN_00080ece(0x97);
     busy_wait_seconds(1);
     return;
   }

@@ -26,13 +26,13 @@ void set_brightness_to_panel_reg(uint param_1,uint param_2)
     }
   }
   FUN_00080ace(param_1,(ushort *)((int)&uStack_c + 2),(char *)((int)&uStack_c + 1));
-  thunk_FUN_00080ece(6);
-  thunk_FUN_00080ece(0xa9);
+  src/*FUN_00080ece(6);
+  src/*FUN_00080ece(0xa9);
   FUN_00080d5e(uStack_c >> 0x10,extraout_r1,extraout_r2);
   FUN_00080d46(uStack_c >> 8 & 0xff,extraout_r1_00,extraout_r2_00);
   FUN_00080d0a(0x31,4,extraout_r2_01);
-  thunk_FUN_00080ece(0xa3);
-  thunk_FUN_00080ece(0x97);
+  src/*FUN_00080ece(0xa3);
+  src/*FUN_00080ece(0x97);
   busy_wait_seconds(1);
   return;
 }

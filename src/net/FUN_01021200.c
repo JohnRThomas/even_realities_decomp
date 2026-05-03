@@ -367,7 +367,7 @@ LAB_010214e6:
       Peripherals::TIMER0_NS.TASKS_CAPTURE_3_ = 1;
       unaff_r6 = (RADIO_NS *)Peripherals::TIMER0_NS.CC_3_;
       _DAT_ae79f683 = unaff_r4;
-      DAT_21001628 = thunk_FUN_01025828();
+      DAT_21001628 = src/*FUN_01025828();
       DAT_2100162c = 0;
       DAT_21001630 = unaff_r6;
       if (0x95 < DAT_2100160c) {
@@ -864,7 +864,7 @@ LAB_01021bc0:
       return (undefined4 *)0x0;
     }
                     /* WARNING: Read-only address (ram,0x00000000) is written */
-    iVar8 = thunk_FUN_010259e8();
+    iVar8 = src/*FUN_010259e8();
     puVar20[-0x31] = iVar8;
     *(undefined1 *)(puVar20 + -0x33) = 0;
     puVar20[-0x32] = &Peripherals::TIMER0_NS;

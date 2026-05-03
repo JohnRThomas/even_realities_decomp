@@ -11,7 +11,7 @@ undefined4 FUN_01009984(void)
   undefined4 uVar1;
   
   if ((DAT_21000a5d == '\0') && (DAT_21000a5c == '\0')) {
-    thunk_FUN_0101e41c();
+    src/*FUN_0101e41c();
     uVar1 = 0;
   }
   else {

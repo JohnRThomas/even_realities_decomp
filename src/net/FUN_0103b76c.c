@@ -18,7 +18,7 @@ void FUN_0103b76c(int param_1,int param_2)
     FUN_01035bac(*(int *)(param_1 + 0xa4),uVar2,uVar1);
   }
   FUN_0103b48a(*(int **)(param_1 + 0xa4));
-  thunk_FUN_01036fe4((int *)(param_1 + 0x58));
+  src/*FUN_01036fe4((int *)(param_1 + 0x58));
   return;
 }
 

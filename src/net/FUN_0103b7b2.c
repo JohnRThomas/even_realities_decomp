@@ -39,11 +39,11 @@ int * FUN_0103b7b2(int param_1,int *param_2,int param_3)
     if (iVar3 == 1) {
       piVar4 = (int *)FUN_0103b410(*(int *)(param_1 + 0xa8),(ushort *)((int)&uStack_24 + 2),param_2)
       ;
-      thunk_FUN_01036fe4(piVar6);
+      src/*FUN_01036fe4(piVar6);
       if (piVar4 != (int *)0x0) goto LAB_0103b812;
     }
     else {
-      thunk_FUN_01036fe4(piVar6);
+      src/*FUN_01036fe4(piVar6);
     }
     if (puVar5 == (undefined *)0x0) {
       return (int *)0x0;
@@ -62,7 +62,7 @@ int * FUN_0103b7b2(int param_1,int *param_2,int param_3)
     iVar3 = FUN_0103b406(*(int *)(param_1 + 0xa8),(uint)*(ushort *)(piVar4 + 2));
     *param_2 = iVar3;
   }
-  thunk_FUN_01036fe4(piVar6);
+  src/*FUN_01036fe4(piVar6);
 LAB_0103b812:
   piVar4[2] = (uint)uStack_24 >> 0x10;
   *param_2 = *param_2 + -0x10;

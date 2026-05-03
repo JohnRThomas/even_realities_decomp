@@ -360,7 +360,7 @@ LAB_010214e6:
   puStack_50 = param_3;
   pcStack_4c = pcVar19;
   puStack_48 = unaff_r9;
-  DAT_21001628 = thunk_FUN_01025828();
+  DAT_21001628 = src/*FUN_01025828();
   DAT_2100162c = 0;
   DAT_21001630 = pRVar18;
   if (DAT_2100160c < 0x96) {
@@ -736,7 +736,7 @@ LAB_01021bc0:
           return (undefined4 *)0x0;
         }
                     /* WARNING: Read-only address (ram,0x00000000) is written */
-        iStack_c4 = thunk_FUN_010259e8();
+        iStack_c4 = src/*FUN_010259e8();
         pTStack_c8 = &Peripherals::TIMER0_NS;
         uStack_cb = 0;
         uStack_c0 = (&Peripherals::TIMER0_NS.CC_0_)[iStack_c4];
