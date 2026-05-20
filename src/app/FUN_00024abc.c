@@ -87,7 +87,7 @@ undefined4 FUN_00024abc(GlassesState *param_1)
   local_18 = param_1->field3703_0x10b0;
   local_14 = param_1->field_0x10c8;
   local_13 = param_1->field_0x10d0;
-  flash_settings_write_and_verify(0x130000,&local_a8,0x98);
+  flash_settings_write_and_verify(&DAT_00130000,&local_a8,0x98);
   return 0;
 }
 

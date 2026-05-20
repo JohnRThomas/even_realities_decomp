@@ -202,7 +202,7 @@ LAB_0002ab02:
         FUN_0002dd98();
       }
       DAT_2001093b = '\0';
-      FUN_0002df6c();
+      __get_msg_show_state();
       FUN_000359d8();
     }
     k_msleep(200);

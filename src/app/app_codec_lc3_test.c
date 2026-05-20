@@ -49,7 +49,8 @@ LAB_00030290:
     if (ptr != (void *)0x0) {
       if (src != (void *)0x0) {
         cVar1 = FUN_00033d5c();
-        if ((cVar1 != '\x01') || (bVar2 = z_device_is_ready((device *)&DAT_0008b3a0), bVar2)) {
+        if ((cVar1 != '\x01') ||
+           (bVar2 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0), bVar2)) {
           encoder = lc3_setup_encoder(10000,16000,0,mem);
           out = src;
           do {
@@ -78,7 +79,8 @@ LAB_00030290:
                 goto LAB_0003034e;
               }
               if (0x40ffff < DAT_20002404) goto LAB_0003034e;
-              pcVar4 = (char *)____qspi_nor_write((device *)&DAT_0008b3a0,DAT_20002404,src,size_00);
+              pcVar4 = (char *)qspi_nor_write((device *)&PTR_s_mx25r6435f_0_0008b3a0,DAT_20002404,
+                                              src,size_00);
               if (pcVar4 != (char *)0x0) {
                 if (LOG_LEVEL < 1) goto LAB_0003034e;
                 fmt = "%s(): Flash write failed! %d\n\n";

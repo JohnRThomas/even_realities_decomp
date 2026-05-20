@@ -45,7 +45,7 @@ is_on_whitelist_by_identifier
     pcVar1 = "[%s-%d] pkg_name is NULL !\n";
   }
   else {
-    sVar2 = ____strlen(param_1);
+    sVar2 = strlen(param_1);
     if (sVar2 < 0x28) {
       if (iVar6 == 0) {
         printk("pkg_name is %s \n");
@@ -120,7 +120,7 @@ is_on_whitelist_by_identifier
                     ble_printk("g_appWhiteListInfo.listAppInfo[%d].id is %s \n",pcVar1,pcVar4,
                                BLE_DEBUG);
                   }
-                  sVar2 = ____strlen(pcVar4);
+                  sVar2 = strlen(pcVar4);
                   iVar6 = strncmp(pcVar4,param_1,sVar2);
                   bVar9 = bVar9 + 1;
                   if (iVar6 == 0) {

@@ -27,7 +27,7 @@ void simulator_ancs_calendar_schedule_trigger(void)
   strcpy((char *)((int)pvVar1 + 0x84),&DAT_000a1ba6);
   strcpy((char *)((int)pvVar1 + 0xc4),&DAT_000a1bae);
   strcpy((char *)((int)pvVar1 + 100),&DAT_000a1bbb);
-  FUN_0004d3f8("calendar-sched",(int)pvVar1 + 0x34,extraout_r2_00,extraout_r3);
+  dump_ancs("calendar-sched",(int)pvVar1 + 0x34,extraout_r2_00,extraout_r3);
   k_sem_give((k_sem *)((int)pvVar1 + 0x1e8));
   return;
 }

@@ -1,11 +1,11 @@
 /*
  * Function: FUN_0008a70a
  * Entry:    0008a70a
- * Prototype: undefined __stdcall FUN_0008a70a(int * param_1, int param_2, int * param_3, uint param_4)
+ * Prototype: undefined __stdcall FUN_0008a70a(int * param_1, int param_2, char * param_3, int param_4)
  */
 
 
-void FUN_0008a70a(int *param_1,int param_2,int *param_3,uint param_4)
+void FUN_0008a70a(int *param_1,int param_2,char *param_3,int param_4)
 
 {
   int iVar1;
@@ -15,7 +15,7 @@ void FUN_0008a70a(int *param_1,int param_2,int *param_3,uint param_4)
   }
   *(ushort *)(param_2 + 0xc) = *(ushort *)(param_2 + 0xc) & 0xefff;
   DAT_2000d60c = 0;
-  iVar1 = FUN_0004e37c((int)*(short *)(param_2 + 0xe),param_3,param_4);
+  iVar1 = _write((int)*(short *)(param_2 + 0xe),param_3,param_4);
   if ((iVar1 == -1) && (DAT_2000d60c != 0)) {
     *param_1 = DAT_2000d60c;
   }

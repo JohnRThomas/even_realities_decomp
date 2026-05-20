@@ -58,7 +58,7 @@ uint convert_app_whitelist_to_json(char *param_1)
                 ble_printk("cJsonStr is %s \n",pcVar1,extraout_r2,BLE_DEBUG);
               }
               strcpy(param_1,pcVar1);
-              sVar2 = ____strlen(pcVar1);
+              sVar2 = strlen(pcVar1);
               free(pcVar1);
               cJSON_Delete(object);
               return sVar2 & 0xffff;

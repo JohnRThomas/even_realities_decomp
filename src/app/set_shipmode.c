@@ -14,7 +14,7 @@ undefined4 set_shipmode(void)
   power_down_panel();
   power_down_imu_and_mic();
   sleep(2000);
-  nVar1 = nrfx_gpiote_channel_get(0x8b430,(uint8_t *)0xb);
+  nVar1 = nrfx_gpiote_channel_get(0x8b430,&DAT_0000000b);
   if ((int)nVar1 < 0) {
     fmt = "Could not set shipmode.\n";
   }

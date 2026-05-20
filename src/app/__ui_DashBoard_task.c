@@ -462,11 +462,10 @@ LAB_0003d6c6:
       }
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): received key press event,_dashboard_prv_data.display_mode = %d\n");
+          printk(pcRam0003d6ec);
         }
         else {
-          ble_printk("%s(): received key press event,_dashboard_prv_data.display_mode = %d\n",
-                     "ui_DashBoard_task",(uint)DAT_20004b11,BLE_DEBUG);
+          ble_printk(pcRam0003d6ec,_dmic_record_start,(uint)DAT_20004b11,BLE_DEBUG);
         }
       }
       uVar8 = (uint)PANE_MODE;
@@ -475,7 +474,7 @@ LAB_0003d6c6:
           printk("%s(): _CurrentCustomAreaType = %d\n");
         }
         else {
-          ble_printk("%s(): _CurrentCustomAreaType = %d\n","ui_DashBoard_task",uVar8,BLE_DEBUG);
+          ble_printk("%s(): _CurrentCustomAreaType = %d\n",_dmic_record_start,uVar8,BLE_DEBUG);
         }
       }
       if (uVar8 == 0) {
@@ -601,6 +600,8 @@ LAB_0003ce42:
   memset(&DAT_20004af8,0,0x28);
                     /* WARNING: Read-only address (ram,0x0003ce6c) is written */
                     /* WARNING: Read-only address (ram,0x0003ce70) is written */
+                    /* WARNING: Read-only address (ram,0x0003d6e8) is written */
+                    /* WARNING: Read-only address (ram,0x0003d6ec) is written */
   return 0;
 }
 

@@ -6,6 +6,7 @@
 
 
 /* WARNING: Removing unreachable block (ram,0x0003d104) */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 undefined4
 __ui_DashBoard_task_init(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
@@ -236,7 +237,7 @@ LAB_0003d00c:
           else {
             uVar11 = FUN_00080732();
             ble_printk("%s(): sync to slave return value = %d,exec key function. ts = %d\n",
-                       "ui_DashBoard_task",uVar13,uVar11);
+                       _ui_DashBoard_task,uVar13,uVar11);
           }
         }
       }

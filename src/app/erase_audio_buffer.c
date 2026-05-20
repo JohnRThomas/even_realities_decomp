@@ -10,7 +10,7 @@ int erase_audio_buffer(void)
 {
   int iVar1;
   
-  iVar1 = qspi_nor_erase((device *)&DAT_0008b3a0,0x400000,0x10000);
+  iVar1 = qspi_nor_erase((device *)&PTR_s_mx25r6435f_0_0008b3a0,0x400000,0x10000);
   if (iVar1 == 0) {
     DAT_20002404 = 0x400000;
     if (2 < LOG_LEVEL) {

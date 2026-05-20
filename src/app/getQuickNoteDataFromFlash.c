@@ -29,7 +29,7 @@ getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_
                    param_3,BLE_DEBUG);
       }
     }
-    bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (bVar1) {
       memset(&DAT_20019133,0,0x800);
       pGVar3 = __get_dashboard_state();

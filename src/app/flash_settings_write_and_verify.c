@@ -27,7 +27,7 @@ int flash_settings_write_and_verify(undefined4 param_1,void *param_2,size_t para
     }
     return -1;
   }
-  bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+  bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     memset(buf,0,0x1000);
     pGVar2 = __get_dashboard_state();

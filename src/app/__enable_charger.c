@@ -11,7 +11,7 @@ undefined4 __enable_charger(void)
   nrfx_err_t nVar1;
   undefined4 uVar2;
   
-  nVar1 = nrfx_gpiote_channel_get(0x8b430,(uint8_t *)0x3);
+  nVar1 = nrfx_gpiote_channel_get(0x8b430,&DAT_00000003);
   if ((int)nVar1 < 0) {
     printk("Could not enable charger\n");
     uVar2 = 0xffffffff;

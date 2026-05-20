@@ -43,8 +43,9 @@ set_imu_base(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined
       uVar5 = 0;
       *(int *)&(pGVar2->imu_fusion_context).field_0x80 = DAT_2000848c;
     }
+    iVar7 = DAT_2000848c;
     puVar4[4] = uVar5;
-    FUN_0008a6b0(local_c4,0,0x14,(byte *)"base: %d");
+    __sprintf_chk(local_c4,0,0x14,"base: %d",iVar7);
     pGVar2 = __get_dashboard_state();
     cVar6 = '\0';
     *(undefined4 *)(puVar4 + 5) = *(undefined4 *)&(pGVar2->imu_fusion_context).field_0x80;

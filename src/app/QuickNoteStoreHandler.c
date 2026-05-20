@@ -69,7 +69,7 @@ int QuickNoteStoreHandler(uint param_1,uint param_2,undefined4 param_3)
                    BLE_DEBUG);
       }
     }
-    bVar2 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar2 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (!bVar2) goto LAB_0002693a;
     memset(&DAT_20019133,0,0x800);
     pGVar4 = __get_dashboard_state();
@@ -200,7 +200,7 @@ LAB_000268ec:
       }
     }
     FUN_00038b00();
-    bVar2 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar2 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (!bVar2) {
 LAB_0002693a:
       if (LOG_LEVEL < 1) {

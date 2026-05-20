@@ -52,7 +52,7 @@ int ui_even_ai_task(int param_1,undefined4 param_2,int param_3)
   pGVar5 = __get_dashboard_state();
   bVar2 = get_current_language();
   puVar17 = (undefined4 *)(uint)(byte)pGVar5->field_0xef;
-  bVar22 = puVar17 != (undefined4 *)0x7;
+  bVar22 = puVar17 != (undefined4 *)&DAT_00000007;
   uVar14 = extraout_r2;
   if (bVar22) {
     uVar14 = 0xffffffff;

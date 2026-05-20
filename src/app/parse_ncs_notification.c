@@ -81,7 +81,7 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
     uVar10 = FUN_00080732();
     *param_2 = uVar10;
     cJSON_Delete(object);
-    FUN_0004d3f8("#device-receiver",(int)param_2,extraout_r2_01,extraout_r3);
+    dump_ancs("#device-receiver",(int)param_2,extraout_r2_01,extraout_r3);
     return;
   }
   if (0 < LOG_LEVEL) {

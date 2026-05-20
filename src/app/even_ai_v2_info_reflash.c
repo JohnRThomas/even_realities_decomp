@@ -52,13 +52,13 @@ LAB_00049ace:
     if (*(char *)pGVar7 == '\x01') {
       bVar2 = FUN_00028d2c();
       pGVar7 = (GlassesState *)(uint)bVar2;
-      if (pGVar7 == (GlassesState *)0x1) {
+      if (pGVar7 == (GlassesState *)&DAT_00000001) {
         pGVar8 = __get_dashboard_state();
         pGVar7 = (GlassesState *)&pGVar8->field_0x1000;
         if (**(char **)&pGVar8->field_0x1014 == '\x01') {
           bVar3 = FUN_00030440();
           pGVar7 = (GlassesState *)(uint)bVar3;
-          if (pGVar7 == (GlassesState *)0x1) {
+          if (pGVar7 == (GlassesState *)&DAT_00000001) {
             pGVar7 = (GlassesState *)FUN_0008040c();
           }
         }

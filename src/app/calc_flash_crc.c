@@ -62,7 +62,7 @@ undefined4 calc_flash_crc(ushort *param_1,int param_2,uint param_3)
   local_428[2] = 0;
   local_428[3] = 0;
   memset(local_428 + 4,0,0x3fc);
-  bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+  bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     iVar9 = param_2;
     while( true ) {

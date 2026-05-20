@@ -11,7 +11,7 @@ int clean_dmic_msgq(void)
   int iVar1;
   undefined4 extraout_r2;
   
-  iVar1 = FUN_00089c30((int *)&DAT_2000855c);
+  iVar1 = k_msgq_cleanup(&dmic_msgq);
   if ((iVar1 != 0) && (0 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
       printk("%s(): dmic cleanup failed\n");

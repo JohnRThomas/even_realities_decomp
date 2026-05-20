@@ -51,7 +51,7 @@ resource_manger_get(uint param_1,uint param_2,uint *param_3,uint *param_4,undefi
     pcVar9 = *(code **)&pGVar3->field_0x1044;
     pGVar3 = __get_dashboard_state();
     iVar8 = (param_2 - 0xa4) * 4;
-    uVar4 = (*pcVar9)(pGVar3,iVar8 + 0x140000,&local_24);
+    uVar4 = (*pcVar9)(pGVar3,&DAT_00140000 + iVar8,&local_24);
     puVar7 = extraout_r2;
     if (uVar4 == 0) {
       uVar2 = local_24 >> 0x10;
@@ -72,7 +72,7 @@ resource_manger_get(uint param_1,uint param_2,uint *param_3,uint *param_4,undefi
             pGVar3 = __get_dashboard_state();
             pcVar9 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            param_2 = (*pcVar9)(pGVar3,(uint)uVar1 * 0x138 + 0xa40000,&DAT_2001dbc9,0x138);
+            param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 + (uint)uVar1 * 0x138,&DAT_2001dbc9,0x138);
 LAB_000480bc:
             if (param_2 == 0) {
               uVar4 = 0x18;
@@ -88,7 +88,7 @@ LAB_00048378:
               pGVar3 = __get_dashboard_state();
               pcVar9 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = (*pcVar9)(pGVar3,(param_2 - 0x2010) * 4 + 0x500000,&local_24);
+              iVar8 = (*pcVar9)(pGVar3,&DAT_00500000 + (param_2 - 0x2010) * 4,&local_24);
               puVar7 = extraout_r2_08;
               goto LAB_000484ba;
             }
@@ -109,8 +109,9 @@ LAB_00048378:
               pGVar3 = __get_dashboard_state();
               pcVar9 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              param_2 = (*pcVar9)(pGVar3,((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0x138 +
-                                         0xa40000,&DAT_2001dbc9,0x138);
+              param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 +
+                                         ((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0x138,
+                                  &DAT_2001dbc9,0x138);
               goto LAB_000480bc;
             }
             if (0x19c < param_2 - 0x3231) goto LAB_00048328;
@@ -132,7 +133,7 @@ LAB_0004850e:
               pcVar9 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
 LAB_00048474:
-              param_2 = (*pcVar9)(pGVar3,uVar4 * 0xd0 + 0x520000,&DAT_2001dbc9);
+              param_2 = (*pcVar9)(pGVar3,&DAT_00520000 + uVar4 * 0xd0,&DAT_2001dbc9);
               goto LAB_000484fc;
             }
           }
@@ -168,7 +169,8 @@ LAB_000484ba:
             pGVar3 = __get_dashboard_state();
             pcVar9 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            param_2 = (*pcVar9)(pGVar3,((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0xd0 + 0x520000,
+            param_2 = (*pcVar9)(pGVar3,&DAT_00520000 +
+                                       ((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0xd0,
                                 &DAT_2001dbc9);
 LAB_000484fc:
             if (param_2 == 0) {
@@ -197,8 +199,9 @@ LAB_0004803a:
                 pGVar3 = __get_dashboard_state();
                 pcVar9 = *(code **)&pGVar3->field_0x1044;
                 pGVar3 = __get_dashboard_state();
-                param_2 = (*pcVar9)(pGVar3,((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0x138 +
-                                           0xa40000,&DAT_2001dbc9,0x138);
+                param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 +
+                                           ((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0x138,
+                                    &DAT_2001dbc9,0x138);
                 if (param_2 == 0) {
                   *param_3 = 0x18;
                   *param_4 = 0x1a;
@@ -261,7 +264,8 @@ LAB_0004814a:
                   pGVar3 = __get_dashboard_state();
                   pcVar9 = *(code **)&pGVar3->field_0x1044;
                   pGVar3 = __get_dashboard_state();
-                  param_2 = (*pcVar9)(pGVar3,((uVar4 & 0xff) << 8 | uVar4 >> 8) * 0x138 + 0xa40000,
+                  param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 +
+                                             ((uVar4 & 0xff) << 8 | uVar4 >> 8) * 0x138,
                                       &DAT_2001dbc9,0x138);
                   goto LAB_000480bc;
                 }

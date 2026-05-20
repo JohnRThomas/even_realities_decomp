@@ -95,7 +95,7 @@ LAB_0004b4f4:
   case 2:
     if (local_3c == 0) {
       DAT_2001e0be = local_3b - 1;
-      bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+      bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
       if (!bVar1) goto LAB_0004b5e6;
       memset(&DAT_2001e0bf,0,0xe6);
       pGVar5 = __get_dashboard_state();
@@ -179,7 +179,7 @@ LAB_0004b4f4:
       }
 LAB_0004b622:
       if (0 < LOG_LEVEL) {
-        pcVar7 = (char *)0x400000;
+        pcVar7 = &DAT_00400000;
         fmt = "%s():  form address [%d] read data failed.\n\n";
         goto LAB_0004b638;
       }
@@ -297,7 +297,7 @@ LAB_0004b854:
     fmt = "%s(): app request over size data ,break,last packet timestamp = %d\n";
     break;
   case 3:
-    bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (bVar1) {
       memset(&DAT_2001e0bf,0,0xe6);
       pGVar5 = __get_dashboard_state();

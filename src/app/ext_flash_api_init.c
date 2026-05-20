@@ -22,13 +22,13 @@ undefined4 ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4
   undefined4 *extraout_r2_01;
   
   z_impl_k_mutex_init((k_mutex *)&DAT_20008534);
-  bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+  bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     *param_1 = 0x2f821;
     *param_2 = 0x2f8c9;
     *param_3 = 0x2f789;
     data = &DAT_20008548;
-    DAT_20008548 = &DAT_0008b3a0;
+    DAT_20008548 = &PTR_s_mx25r6435f_0_0008b3a0;
     cb = extraout_r1;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
@@ -42,7 +42,7 @@ undefined4 ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4
         data = extraout_r2_00;
       }
     }
-    flash_page_foreach((device *)&DAT_0008b3a0,cb,data);
+    flash_page_foreach((device *)&PTR_s_mx25r6435f_0_0008b3a0,cb,data);
     pGVar2 = __get_dashboard_state();
     uVar3 = 0;
     *(undefined2 *)&pGVar2->field_0x10a2 = extraout_r0;

@@ -72,7 +72,7 @@ uint SettingStoreHandler(void)
           bVar1 = LOG_LEVEL == 2;
           goto LAB_000261b4;
         }
-        bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+        bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
         if (bVar1) {
           local_24 = 0;
           local_22 = 0;
@@ -124,7 +124,7 @@ LAB_000261d2:
       }
       break;
     case 2:
-      bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+      bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
       if (bVar1) {
         local_24 = 0;
         local_22 = 0;
@@ -216,7 +216,7 @@ LAB_000261b4:
       }
       else {
         if (uVar6 < 3) {
-          bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+          bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
           if (!bVar1) goto LAB_000261ca;
           local_24 = 0;
           local_22 = 0;
@@ -274,7 +274,7 @@ LAB_000261b4:
       }
       break;
     case 4:
-      bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+      bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
       if (!bVar1) goto LAB_000262cc;
       local_24 = 0;
       local_22 = 0;

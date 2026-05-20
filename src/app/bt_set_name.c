@@ -17,7 +17,7 @@ undefined4 bt_set_name(char *param_1)
   undefined4 local_18;
   char *local_14;
   
-  n = ____strlen(param_1);
+  n = strlen(param_1);
   if (n < 0x1d) {
     iVar1 = strcmp((char *)&BLE_NAME_LEN,param_1);
     if (iVar1 != 0) {
@@ -27,7 +27,7 @@ undefined4 bt_set_name(char *param_1)
       if (iVar1 != 0) {
         local_14 = "Unable to store name";
         local_18 = 2;
-        LOG_WRN(&DAT_0008b8e8,0x1080,&local_18,2,in_stack_ffffffd8,in_stack_ffffffdc,
+        LOG_WRN(&PTR_s_bt_hci_core_0008b8e8,0x1080,&local_18,2,in_stack_ffffffd8,in_stack_ffffffdc,
                 in_stack_ffffffe0);
       }
     }

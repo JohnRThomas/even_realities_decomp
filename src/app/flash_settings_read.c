@@ -16,7 +16,7 @@ int flash_settings_read(undefined4 param_1,undefined4 param_2,undefined4 param_3
   
   iVar5 = 0;
   while( true ) {
-    bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (bVar1) {
       pGVar2 = __get_dashboard_state();
       pcVar4 = *(code **)&pGVar2->field_0x1044;

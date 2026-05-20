@@ -392,14 +392,14 @@ LAB_0002a4f2:
           (*(char *)(*(int *)(param_1 + 0x101c) + 1) == '\0')))) {
         bVar1 = *(byte *)(*(int *)(param_1 + 0x101c) + 2);
         puVar11 = (undefined1 *)(uint)bVar1;
-        if (puVar11 == (undefined1 *)0x3) {
+        if (puVar11 == &DAT_00000003) {
           if (DAT_2001db40 == '\x12') {
             *(char *)(*(int *)(param_1 + 0x101c) + 0xc) = cVar2;
             *(byte *)(*(int *)(param_1 + 0x101c) + 0xd) = bVar1;
             *(byte *)(*(int *)(param_1 + 0x101c) + 0xe) = bVar1;
           }
         }
-        else if (puVar11 == (undefined1 *)0xb) {
+        else if (puVar11 == &DAT_0000000b) {
           pGVar4 = __get_dashboard_state();
           **(undefined1 **)&pGVar4->field_0x101c = 0;
           pGVar4 = __get_dashboard_state();
@@ -425,7 +425,7 @@ LAB_0002a4f2:
           **(undefined1 **)(param_1 + 0x101c) = 1;
           update_persist_task_status(param_1,0xe,2);
           *(undefined1 *)(*(int *)(param_1 + 0x101c) + 0x20) = *(undefined1 *)(param_1 + 0xed5);
-          puVar11 = (undefined1 *)0x2a;
+          puVar11 = &DAT_0000002a;
           *(undefined1 *)(param_1 + 0xed5) = 0x2a;
         }
       }
@@ -589,7 +589,7 @@ LAB_0002a13c:
         trigger_screen_state_change("IMU:wakeup:new-notification",(int)pGVar4,1,extraout_r3_05);
         FUN_0002dd98();
       }
-      FUN_0002df6c();
+      __get_msg_show_state();
       pGVar4 = __get_dashboard_state();
       k_sem_give(&pGVar4->sem_2);
       FUN_000359d8();

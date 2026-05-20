@@ -1,14 +1,15 @@
 /*
  * Function: FUN_00031bb0
  * Entry:    00031bb0
- * Prototype: int __stdcall FUN_00031bb0(void)
+ * Prototype: void * __stdcall FUN_00031bb0(void)
  */
 
 
-int FUN_00031bb0(void)
+void * FUN_00031bb0(void)
 
 {
   int iVar1;
+  void *pvVar2;
   undefined4 local_2c;
   undefined4 uStack_28;
   undefined4 uStack_24;
@@ -30,12 +31,12 @@ int FUN_00031bb0(void)
     local_18 = &DAT_000a73a2;
     local_14 = 0x1b9c;
     uStack_10 = 0x2000;
-    iVar1 = print_array(local_1c,0x800,0x1b9c);
+    pvVar2 = print_array(local_1c,(void *)0x800);
   }
   else {
-    iVar1 = -1;
+    pvVar2 = (void *)0xffffffff;
   }
-  return iVar1;
+  return pvVar2;
 }
 
 

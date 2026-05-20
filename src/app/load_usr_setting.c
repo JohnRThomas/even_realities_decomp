@@ -112,7 +112,7 @@ undefined4 load_usr_setting(int param_1)
       uVar4 = extraout_r1_02;
       uVar3 = extraout_r2_01;
     }
-    if ((char *)0x1 < pcVar5) {
+    if (&DAT_00000002 <= pcVar5) {
       pcVar5 = (char *)0x0;
     }
     __set_test_mode(pcVar5,uVar4,uVar3);

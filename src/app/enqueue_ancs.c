@@ -19,7 +19,7 @@ int enqueue_ancs(void *param_1)
     iVar1 = 1;
   }
   else {
-    if (GLOBAL_STATE.sem_6.poll_events.prev == (void *)0xa) {
+    if (GLOBAL_STATE.sem_6.poll_events.prev == &DAT_0000000a) {
       z_impl_k_msgq_get((k_msgq *)&GLOBAL_STATE.sem_4.count,auStack_1bc,(k_timeout_t)0x0);
       if (BLE_DEBUG == 0) {
         printk("enqueue ancs drop package! \n");

@@ -11,9 +11,9 @@ undefined4 erase_dfu_flash(void)
   bool bVar1;
   undefined4 uVar2;
   
-  bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+  bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
-    qspi_nor_erase((device *)&DAT_0008b3a0,0,0x130000);
+    qspi_nor_erase((device *)&PTR_s_mx25r6435f_0_0008b3a0,0,0x130000);
     printk("erase_dfu_flash done.\n");
     uVar2 = 0;
   }

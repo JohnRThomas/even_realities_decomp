@@ -850,7 +850,7 @@ LAB_00011af0:
       goto LAB_00011a0e;
     case 0x73:
       if ((int)pbVar10 < 0) {
-        sVar12 = ____strlen((char *)local_60);
+        sVar12 = strlen((char *)local_60);
       }
       else {
         sVar12 = extract_decimal((char *)local_60,(int)pbVar10);

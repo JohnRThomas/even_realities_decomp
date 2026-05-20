@@ -117,7 +117,7 @@ int FUN_00027314(undefined1 *param_1,char *param_2,char *param_3)
     local_df = param_3[1];
     local_de = param_3[2];
     local_148.name = (undefined *)&local_e8;
-    local_148.config = (undefined *)0xb;
+    local_148.config = &DAT_0000000b;
     uVar1 = FUN_0007f85c((int *)&local_148,(byte *)&local_120);
     local_88[iVar5 * 7] = local_120;
     local_88[iVar5 * 7 + 1] = puStack_11c;

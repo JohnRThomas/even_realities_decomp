@@ -21,7 +21,7 @@ undefined4 init_watchdog(void)
   undefined4 local_20;
   undefined1 local_1c;
   
-  bVar1 = z_device_is_ready((device *)&DAT_0008b478);
+  bVar1 = z_device_is_ready((device *)&PTR_s_watchdog_0008b478);
   if (!bVar1) {
     if (LOG_LEVEL < 1) {
       return 0;
@@ -36,7 +36,7 @@ undefined4 init_watchdog(void)
   memset(auStack_28,0,0x10);
   local_24 = 30000;
   local_1c = 2;
-  DAT_20008530 = wdt_nrf_setup((device *)&DAT_0008b478,(uint8_t)auStack_28);
+  DAT_20008530 = wdt_nrf_setup((device *)&PTR_s_watchdog_0008b478,(uint8_t)auStack_28);
   uVar3 = extraout_r2;
   if (DAT_20008530 == -0x86) {
     if (0 < LOG_LEVEL) {
@@ -49,7 +49,7 @@ undefined4 init_watchdog(void)
       }
     }
     local_20 = 0;
-    DAT_20008530 = wdt_nrf_setup((device *)&DAT_0008b478,(uint8_t)auStack_28);
+    DAT_20008530 = wdt_nrf_setup((device *)&PTR_s_watchdog_0008b478,(uint8_t)auStack_28);
     uVar3 = extraout_r2_00;
   }
   if (DAT_20008530 < 0) {

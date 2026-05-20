@@ -20,7 +20,7 @@ void discover_gattp_completed_cb(bt_gatt_dm *param_1,bt_ancs_client *param_2)
   }
   else {
     printk("The discovery procedure for GATT Service succeeded\n");
-    iVar3 = ____bt_ancs_handles_assign(param_1,param_2);
+    iVar3 = bt_ancs_handles_assign(param_1,param_2);
     if (iVar3 == 0) {
       iVar3 = bt_gattp_subscribe_service_changed((bt_gattp *)param_2,(bt_gattp_indicate_cb)0x18b31);
       if (iVar3 == 0) goto LAB_00018ac6;

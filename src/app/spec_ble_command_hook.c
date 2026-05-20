@@ -258,7 +258,7 @@ LAB_0000f2fc:
               memset(&local_41c,0,0xfc);
               strcpy((char *)&local_420,
                      "{\"whitelist_app\":\"com.apple.MobileSMS:com.tencent.xin:com.tencent.mqq\"}");
-              sVar8 = ____strlen((char *)&local_420);
+              sVar8 = strlen((char *)&local_420);
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
                   printk("%s(): cmd_type:%s, value=%s, tx_len=%d, jstr_len=%d, jsonstr=%s\n\n",
@@ -289,7 +289,7 @@ LAB_0000f39a:
               object = cJSON_CreateObject();
               cJSON_AddItemToObject(object,"teleprompter_info",pcVar9);
               pcVar3 = cJSON_Print(object);
-              sVar8 = ____strlen(pcVar3);
+              sVar8 = strlen(pcVar3);
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
                   printk("%s(): cmd_type:%s, value=%s, tx_len=%d, jstr_len=%d, jsonstr=%s\n\n",
@@ -321,7 +321,7 @@ LAB_0000f39a:
             object = cJSON_CreateObject();
             cJSON_AddItemToObject(object,"navigation_info",pcVar9);
             pcVar3 = cJSON_Print(object);
-            sVar8 = ____strlen(pcVar3);
+            sVar8 = strlen(pcVar3);
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
                 printk("%s(): cmd_type:%s, value=%s, tx_len=%d, jstr_len=%d, jsonstr=%s\n\n",
@@ -507,8 +507,12 @@ LAB_0000f6c2:
                 if (local_420 == 0) {
                   memset(&local_41c,0,0xc4);
                   pcVar3 = "TX:%d,fail:%d,RX:%d,Signal:%d";
+                  uVar7 = DAT_20006bd4;
+                  iVar2 = DAT_20006bd0;
+                  iVar10 = DAT_20006bcc;
+                  uVar5 = DAT_20006bc8;
 LAB_0000f7f8:
-                  FUN_0008a6b0((char *)&local_420,0,200,(byte *)pcVar3);
+                  __sprintf_chk((char *)&local_420,0,200,pcVar3,uVar7,iVar2,iVar10,uVar5);
 LAB_0000f9f4:
                   uVar12 = 200;
                   pcVar15 = *(code **)((int)pvVar1 + 0xc);
@@ -538,28 +542,32 @@ LAB_0000f834:
                 local_420 = strncmp((char *)&local_520,"#o",2);
                 if (local_420 == 0) {
                   memset(&local_41c,0,0x10);
-                  *(undefined4 *)((int)pvVar1 + 0x7ec) = DAT_2000848c;
-                  FUN_0008a6b0((char *)&local_420,0,0x14,(byte *)"base: %d");
+                  uVar7 = DAT_2000848c;
+                  *(uint *)((int)pvVar1 + 0x7ec) = DAT_2000848c;
+                  __sprintf_chk((char *)&local_420,0,0x14,"base: %d",uVar7);
                   (**(code **)((int)pvVar1 + 0xc))(&local_420,0x14);
                   goto LAB_0000f6c2;
                 }
                 local_420 = strncmp((char *)&local_520,"#i",2);
                 if (local_420 == 0) {
                   pvVar11 = memset(&local_41c,0,0x10);
-                  opt3007_get_max_lux(pvVar11,extraout_r1,extraout_r2_22);
+                  uVar7 = opt3007_get_max_lux(pvVar11,extraout_r1,extraout_r2_22);
                   if (bStack_51e != 0) {
-                    uVar7 = FUN_0008a1b6(&bStack_51e);
-                    if (uVar7 < 2) {
-                      uVar7 = FUN_0008a1b6(&bStack_51e);
-                      *(char *)((int)pvVar1 + 0x820) = (char)uVar7;
+                    uVar5 = FUN_0008a1b6(&bStack_51e);
+                    if (uVar5 < 2) {
+                      uVar5 = FUN_0008a1b6(&bStack_51e);
+                      *(char *)((int)pvVar1 + 0x820) = (char)uVar5;
                     }
                     else {
                       *(undefined1 *)((int)pvVar1 + 0x820) = 0;
-                      uVar7 = FUN_0008a1b6(&bStack_51e);
-                      *(char *)((int)pvVar1 + 0x759) = (char)uVar7;
+                      uVar5 = FUN_0008a1b6(&bStack_51e);
+                      *(char *)((int)pvVar1 + 0x759) = (char)uVar5;
                     }
                   }
-                  FUN_0008a6b0((char *)&local_420,0,0x14,(byte *)"base: %d");
+                  if (uVar7 == 0xffffffff) {
+                    uVar7 = 80000;
+                  }
+                  __sprintf_chk((char *)&local_420,0,0x14,"base: %d",uVar7);
                   (**(code **)((int)pvVar1 + 0xc))(&local_420,0x14);
                   goto LAB_0000f716;
                 }
@@ -567,8 +575,9 @@ LAB_0000f834:
                 if (local_420 == 0) {
                   memset(&local_41c,0,0x10);
                   pcVar3 = "level: %d";
+                  uVar7 = (uint)*(byte *)((int)pvVar1 + 0x759);
 LAB_0000f93c:
-                  FUN_0008a6b0((char *)&local_420,0,0x14,(byte *)pcVar3);
+                  __sprintf_chk((char *)&local_420,0,0x14,pcVar3,uVar7);
                 }
                 else {
                   local_420 = strncmp((char *)&local_520,"#u",2);
@@ -576,7 +585,7 @@ LAB_0000f93c:
                     memset(&local_41c,0,0x10);
                     uVar7 = FUN_0008a1b6(&bStack_51e);
                     *(char *)((int)pvVar1 + 0x77c) = (char)uVar7;
-                    FUN_0008a6b0((char *)&local_420,0,0x14,(byte *)"level: %d");
+                    __sprintf_chk((char *)&local_420,0,0x14,"level: %d",uVar7 & 0xff);
                     (**(code **)((int)pvVar1 + 0xc))(&local_420,0x14);
                     *(undefined4 *)((int)pvVar1 + 0x8e4) = 0;
                     goto LAB_0000f6cc;
@@ -586,28 +595,32 @@ LAB_0000f93c:
                     local_420 = 0;
                     memset(&local_41c,0,0x10);
                     pcVar3 = "pitch: %d";
+                    uVar7 = DAT_2000848c;
                     goto LAB_0000f93c;
                   }
                   local_420 = strncmp((char *)&local_520,"#t",2);
                   if (local_420 == 0) {
                     memset(&local_41c,0,0xc4);
-                    FUN_0008a6b0((char *)&local_420,0,200,
-                                 (byte *)
-                                 "net build time: %s, app build time %s, ver %d.%d.%d, JBD DeviceID %x\n\r"
-                                );
+                    __sprintf_chk((char *)&local_420,0,200,
+                                  "net build time: %s, app build time %s, ver %d.%d.%d, JBD DeviceID %x\n\r"
+                                  ,&DAT_2001093c,"2025-06-28 17:28:42",1,6,3,DAT_2000aa54);
                     goto LAB_0000f9f4;
                   }
                   local_420 = strncmp((char *)&local_520,"#v",2);
                   if (local_420 == 0) {
                     memset(&local_41c,0,0xc4);
+                    uVar5 = (uint)*(byte *)((int)pvVar1 + 0x84e);
+                    iVar10 = *(byte *)((int)pvVar1 + 0x84d) - 0x80;
+                    iVar2 = *(byte *)((int)pvVar1 + 0x84c) + 200;
+                    uVar7 = (uint)*(byte *)((int)pvVar1 + 0x848);
                     pcVar3 = "B:%d, V:%d, A:%d, T:%d";
                     goto LAB_0000f7f8;
                   }
                   local_420 = strncmp((char *)&local_520,"#k",2);
                   if (local_420 == 0) {
                     memset(&local_41c,0,0x3c);
-                    FUN_00027664();
-                    FUN_0008a6b0((char *)&local_420,0,0x40,(byte *)"VADC:%d TMR:%d");
+                    uVar12 = FUN_00027664();
+                    __sprintf_chk((char *)&local_420,0,0x40,"VADC:%d TMR:%d",uVar12,0);
 LAB_0000fade:
                     uVar12 = 0x40;
                     pcVar15 = *(code **)((int)pvVar1 + 0xc);
@@ -643,10 +656,20 @@ LAB_0000fade:
                       }
                       else {
                         if (uVar7 != 2) {
-                          FUN_0008a6b0((char *)&local_420,0,0x40,
-                                       (byte *)
-                                       "master mac: %02X:%02X:%02X:%02X:%02X:%02X, slave mac: %02X:%02X:%02X:%02X:%02X:%02X"
-                                      );
+                          __sprintf_chk((char *)&local_420,0,0x40,
+                                        "master mac: %02X:%02X:%02X:%02X:%02X:%02X, slave mac: %02X:%02X:%02X:%02X:%02X:%02X"
+                                        ,(uint)*(byte *)((int)pvVar1 + 0x862),
+                                        (uint)*(byte *)((int)pvVar1 + 0x863),
+                                        (uint)*(byte *)((int)pvVar1 + 0x864),
+                                        (uint)*(byte *)((int)pvVar1 + 0x865),
+                                        (uint)*(byte *)((int)pvVar1 + 0x866),
+                                        (uint)*(byte *)((int)pvVar1 + 0x867),
+                                        (uint)*(byte *)((int)pvVar1 + 0x868),
+                                        (uint)*(byte *)((int)pvVar1 + 0x869),
+                                        (uint)*(byte *)((int)pvVar1 + 0x86a),
+                                        (uint)*(byte *)((int)pvVar1 + 0x86b),
+                                        (uint)*(byte *)((int)pvVar1 + 0x86c),
+                                        (uint)*(byte *)((int)pvVar1 + 0x86d));
                           goto LAB_0000fade;
                         }
                         *(undefined4 *)((int)pvVar1 + 0x862) = 0xffffffff;

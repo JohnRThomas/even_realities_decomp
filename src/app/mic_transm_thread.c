@@ -34,7 +34,7 @@ void mic_transm_thread(void)
     timeout.ticks._0_4_ = uVar5;
     z_impl_k_sem_take((k_sem *)&DAT_200085b4,timeout);
     local_f8 = &DAT_01f1a55a;
-    bVar2 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar2 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (bVar2) {
       pGVar4 = __get_dashboard_state();
       if (*(int *)&pGVar4->field_0x1044 != 0) {
@@ -42,7 +42,7 @@ void mic_transm_thread(void)
         while( true ) {
           uVar9 = uVar8 * 200 + DAT_20002420;
           printk("start send mic data,flash address:0x%x,seq:%d\n",uVar9,uVar8);
-          iVar3 = FUN_0008062a((int)&DAT_0008b3a0);
+          iVar3 = FUN_0008062a((int)&PTR_s_mx25r6435f_0_0008b3a0);
           if (iVar3 != 0) break;
           iVar6 = 6;
           local_f4 = (ushort)(byte)uVar8;

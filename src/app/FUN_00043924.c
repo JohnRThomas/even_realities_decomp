@@ -147,7 +147,7 @@ void FUN_00043924(void)
         iVar8 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         pcVar9 = get_string(0x14);
-        sVar10 = ____strlen(pcVar9);
+        sVar10 = strlen(pcVar9);
         gui_utf_draw(0,pcVar7,3,iVar11,(uint)uVar3,iVar8 + 0x76,uVar4 + 0x1b,1,sVar10,0,
                      (undefined *)0x0,0);
         iVar11 = FUN_000809e2();
@@ -204,7 +204,7 @@ void FUN_00043924(void)
         iVar8 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         pcVar9 = get_string(0x16);
-        sVar10 = ____strlen(pcVar9);
+        sVar10 = strlen(pcVar9);
         gui_utf_draw(0,pcVar7,0,iVar11 + 0x1c,uVar3 + 0x51,iVar8 + 0xf2,uVar4 + 0x6c,1,sVar10,0,
                      (undefined *)0x0,0);
         pcVar7 = get_string(0x15);
@@ -213,7 +213,7 @@ void FUN_00043924(void)
         iVar8 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         pcVar9 = get_string(0x15);
-        sVar10 = ____strlen(pcVar9);
+        sVar10 = strlen(pcVar9);
         gui_utf_draw(0,pcVar7,0,iVar11,uVar3 + 0x6d,iVar8 + 0xf2,uVar4 + 0x88,1,sVar10,0,
                      (undefined *)0x0,0);
         pGVar5 = __get_dashboard_state();
@@ -245,7 +245,7 @@ void FUN_00043924(void)
           iVar8 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           pcVar9 = get_string(0x17);
-          sVar10 = ____strlen(pcVar9);
+          sVar10 = strlen(pcVar9);
           gui_utf_draw(0,pcVar7,0,iVar11 + 0x126,(uint)uVar3,iVar8 + 0x202,uVar4 + 0x1b,1,sVar10,0,
                        (undefined *)0x0,0);
           pGVar5 = __get_dashboard_state();
@@ -283,7 +283,7 @@ void FUN_00043924(void)
           uVar14 = 0x18;
         }
         pcVar9 = get_string(uVar14);
-        sVar10 = ____strlen(pcVar9);
+        sVar10 = strlen(pcVar9);
         gui_utf_draw(0,pcVar7,0,iVar11 + 0x108,uVar3 + 0x1b,iVar8 + 0x232,uVar4 + 0x87,4,sVar10,0,
                      (undefined *)0x0,0);
         iVar11 = FUN_000809e2();
@@ -493,7 +493,7 @@ LAB_0004468c:
         iVar8 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         pcVar9 = get_string(0x1a);
-        sVar10 = ____strlen(pcVar9);
+        sVar10 = strlen(pcVar9);
         gui_utf_draw(0,pcVar7,0,iVar11 + 0x24,uVar3 + 3,iVar8 + 0x150,uVar4 + 0x1e,1,sVar10,0,
                      (undefined *)0x0,0);
         pGVar5 = __get_dashboard_state();
@@ -506,7 +506,7 @@ LAB_0004468c:
           uVar14 = 0x1c;
 LAB_00044732:
           pcVar9 = get_string(uVar14);
-          sVar10 = ____strlen(pcVar9);
+          sVar10 = strlen(pcVar9);
           gui_utf_draw(0,pcVar7,0,iVar11,uVar3 + 0x37,iVar8 + 0x240,uVar4 + 0x6d,2,sVar10,0,
                        (undefined *)0x0,0);
         }

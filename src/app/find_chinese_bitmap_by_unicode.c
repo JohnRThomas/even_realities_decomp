@@ -36,7 +36,7 @@ undefined4 find_chinese_bitmap_by_unicode(int param_1,short param_2,short param_
       pGVar2 = __get_dashboard_state();
       pcVar5 = *(code **)&pGVar2->field_0x1044;
       pGVar2 = __get_dashboard_state();
-      iVar3 = (*pcVar5)(pGVar2,(param_1 + -0xa4) * 4 + 0x140000,&local_24);
+      iVar3 = (*pcVar5)(pGVar2,&DAT_00140000 + (param_1 + -0xa4) * 4,&local_24);
       if (iVar3 != 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {

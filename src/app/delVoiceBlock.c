@@ -42,7 +42,7 @@ LAB_0003097a:
     }
   }
   else {
-    bVar2 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar2 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (bVar2) {
       memset(&DAT_20019a78,0,0x1000);
       pGVar4 = __get_dashboard_state();
@@ -85,7 +85,7 @@ LAB_0003097a:
             }
           }
           else {
-            memcpy(&DAT_20019a78,&DAT_0008d800,0x58);
+            memcpy(&DAT_20019a78,&INT_0008d800,0x58);
             if (2 < iVar5) {
               if (BLE_DEBUG == 0) {
                 printk("%s(): success delete all voice block \n");
@@ -118,7 +118,7 @@ LAB_0003097a:
         }
       }
       else if (0 < LOG_LEVEL) {
-        pcVar3 = (char *)0x400000;
+        pcVar3 = &DAT_00400000;
         fmt = "%s():  form address [%d] read data failed.\n\n";
         goto LAB_000309ae;
       }

@@ -8,7 +8,7 @@
 void FUN_0008799e(int param_1)
 
 {
-  nrfx_gpiote_channel_get(**(nrfx_gpiote_pin_t **)(param_1 + 4),(uint8_t *)0xb);
+  nrfx_gpiote_channel_get(**(nrfx_gpiote_pin_t **)(param_1 + 4),&DAT_0000000b);
   return;
 }
 

@@ -23,7 +23,7 @@ uint adc_nfc_run(void)
   local_18 = 2;
   aaStack_24[1] = 8;
   local_14 = 0xc;
-  iVar1 = adc_nrfx_read(&adc_nfc_device,aaStack_24);
+  iVar1 = adc_nrfx_read((device *)&adc_nfc_device,aaStack_24);
   if (iVar1 < 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {

@@ -11,7 +11,7 @@ void __push_g_arrMsgContent(void)
   char *pcVar1;
   undefined4 *puVar2;
   
-  pcVar1 = (char *)0xa;
+  pcVar1 = &DAT_0000000a;
   puVar2 = &DAT_20009894;
   do {
     if (BLE_DEBUG == 0) {

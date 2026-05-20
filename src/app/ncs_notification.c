@@ -31,7 +31,7 @@ undefined4 ncs_notification(char *param_1,char *param_2,undefined *param_3)
       ble_printk("%s(): %s\n","mobile_send_notification_to_ble_device_test",s,BLE_DEBUG);
     }
   }
-  sVar1 = ____strlen(s);
+  sVar1 = strlen(s);
   subcontracing_send_data_pkcs7((int)s,sVar1,0x4b,param_3);
   cJSON_Delete(object_00);
   return 0;

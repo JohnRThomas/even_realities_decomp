@@ -24,7 +24,7 @@ undefined4 get_flash_info(int param_1,undefined4 param_2,undefined4 *param_3,und
   puVar5[2] = 3;
   puVar5[1] = uVar4;
   puVar5[3] = 4;
-  bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+  bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     pGVar2 = __get_dashboard_state();
     if (*(int *)&pGVar2->field_0x1044 != 0) {

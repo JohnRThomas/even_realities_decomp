@@ -23,7 +23,7 @@ void __normal_g_arrMsgContent(void)
     }
     pcVar1 = pcVar1 + 1;
     puVar2 = puVar2 + 0x6d;
-  } while (pcVar1 != (char *)0xa);
+  } while (pcVar1 != &DAT_0000000a);
   return;
 }
 

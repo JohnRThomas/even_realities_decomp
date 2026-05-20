@@ -4413,7 +4413,7 @@ LAB_0001e766:
                        *(undefined4 *)(*(int *)(param_1 + 0x884) + 6));
           }
         }
-        if (puVar24 == (undefined1 *)0x7) {
+        if (puVar24 == &DAT_00000007) {
           DAT_20010f05 = 1;
         }
         uVar3 = *(ushort *)(param_2 + 2);
@@ -4604,7 +4604,7 @@ LAB_0001e766:
             }
           }
           local_138 = *(uint *)(param_3 + 4);
-          bVar11 = puVar24 == (undefined1 *)0x7;
+          bVar11 = puVar24 == &DAT_00000007;
           if (bVar11) {
             uVar9 = 1;
             puVar24 = &DAT_20010f05;

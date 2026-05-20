@@ -200,7 +200,7 @@ LAB_00036860:
           local_51 = 0;
           strcpy(acStack_50,pcVar5->valuestring);
           strcpy(acStack_60,pcVar3->valuestring);
-          iVar6 = FUN_0003668c(acStack_50,acStack_60,extraout_r2_13);
+          iVar6 = __is_app_name_same(acStack_50,acStack_60,extraout_r2_13);
           pcVar10 = extraout_r1_13;
           uVar9 = extraout_r2_14;
           if (iVar6 == 0) break;
@@ -214,7 +214,7 @@ LAB_00036860:
         else {
           ble_printk("the same whitelist ! \n",pcVar10,uVar9,BLE_DEBUG);
         }
-        pcVar10 = (char *)0x1;
+        pcVar10 = &DAT_00000001;
         goto LAB_000368da;
       }
     }

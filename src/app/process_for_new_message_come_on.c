@@ -177,7 +177,7 @@ LAB_0002e05a:
   clear_timeout_message(0);
   iVar11 = extraout_r1;
   if (*param_1 == 1) {
-    FUN_0002de4c();
+    __check_showing_message();
     iVar11 = extraout_r1_00;
   }
   if (param_1[0xd5] != 4) {
@@ -287,7 +287,7 @@ LAB_0002f26c:
       }
       bVar4 = FUN_00033d5c();
       puVar14 = (undefined1 *)(uint)bVar4;
-      if (puVar14 == (undefined1 *)0x1) goto LAB_0002f2e0;
+      if (puVar14 == &DAT_00000001) goto LAB_0002f2e0;
       uVar13 = extraout_r1_73;
       if (*(char *)(*(int *)(param_1 + 0x101c) + 1) != '\0') {
 LAB_0002f2da:
@@ -1230,16 +1230,16 @@ LAB_0002e162:
       if (*param_1 == 1) {
         z_impl_k_sleep(0x4000,0);
       }
-      uVar13 = 0x2667;
+      iVar17 = 0x2667;
     }
     else {
       sync_to_slave((char *)param_1,8,(undefined4 *)0x0,0);
       update_persist_task_status_to_idle((int)param_1,extraout_r1_41);
       uVar10 = (uint)*param_1;
       if (uVar10 != 1) goto LAB_0002e170;
-      uVar13 = 0x4000;
+      iVar17 = 0x4000;
     }
-    z_impl_k_sleep(uVar13,0);
+    z_impl_k_sleep(iVar17,0);
     uVar10 = extraout_r3_25;
     goto LAB_0002e170;
   }
@@ -1260,9 +1260,9 @@ LAB_0002eab2:
       if (*param_1 == 1) {
         z_impl_k_sleep(0x4000,0);
       }
-      uVar13 = 0x2667;
+      iVar17 = 0x2667;
 LAB_0002eb3a:
-      z_impl_k_sleep(uVar13,0);
+      z_impl_k_sleep(iVar17,0);
       uVar10 = extraout_r3_24;
     }
     else {
@@ -1270,7 +1270,7 @@ LAB_0002eb3a:
       update_persist_task_status_to_idle((int)param_1,extraout_r1_37);
       uVar10 = (uint)*param_1;
       if (uVar10 == 1) {
-        uVar13 = 0x4000;
+        iVar17 = 0x4000;
         goto LAB_0002eb3a;
       }
     }
@@ -1301,9 +1301,9 @@ LAB_0002e994:
       if (*param_1 == 1) {
         z_impl_k_sleep(0x4000,0);
       }
-      uVar13 = 0x2667;
+      iVar17 = 0x2667;
 LAB_0002e9f0:
-      z_impl_k_sleep(uVar13,0);
+      z_impl_k_sleep(iVar17,0);
       uVar10 = extraout_r3_18;
     }
     else {
@@ -1312,7 +1312,7 @@ LAB_0002e9f0:
       FUN_0003f23c();
       uVar10 = (uint)*param_1;
       if (uVar10 == 1) {
-        uVar13 = 0x4000;
+        iVar17 = 0x4000;
         goto LAB_0002e9f0;
       }
     }

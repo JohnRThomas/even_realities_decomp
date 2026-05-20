@@ -32,7 +32,7 @@ void recv_ble_data(int param_1)
       local_1c4[0] = 1;
     }
     local_1bc = GLOBAL_STATE.sem_8.wait_q.next;
-    FUN_0004d3f8("FROM:ancs",(int)local_1c4,extraout_r2,GLOBAL_STATE.sem_8.wait_q.next);
+    dump_ancs("FROM:ancs",(int)local_1c4,extraout_r2,GLOBAL_STATE.sem_8.wait_q.next);
     if ((local_14 < 2) &&
        (iVar1 = is_on_whitelist_by_identifier(local_1b4,extraout_r1,extraout_r2_00,local_14),
        iVar1 != 2)) {

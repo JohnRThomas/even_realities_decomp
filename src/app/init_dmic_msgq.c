@@ -11,7 +11,7 @@ int init_dmic_msgq(void)
   int iVar1;
   undefined4 extraout_r2;
   
-  iVar1 = z_impl_k_msgq_alloc_init((k_msgq *)&DAT_2000855c,200,10);
+  iVar1 = z_impl_k_msgq_alloc_init(&dmic_msgq,200,10);
   if ((iVar1 != 0) && (0 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
       printk("%s(): dmic init failed\n");

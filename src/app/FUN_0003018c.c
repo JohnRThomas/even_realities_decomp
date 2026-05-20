@@ -5,10 +5,10 @@
  */
 
 
-undefined4 FUN_0003018c(void)
+dword FUN_0003018c(void)
 
 {
-  return DAT_20008580;
+  return dmic_msgq.used_msgs;
 }
 
 

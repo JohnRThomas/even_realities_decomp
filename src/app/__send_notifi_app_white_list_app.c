@@ -1,11 +1,11 @@
 /*
  * Function: ?_send_notifi_app_white_list_app
  * Entry:    00034d44
- * Prototype: undefined4 __stdcall ?_send_notifi_app_white_list_app(int param_1)
+ * Prototype: undefined4 __stdcall ?_send_notifi_app_white_list_app(int param_1, undefined4 param_2, undefined4 param_3)
  */
 
 
-undefined4 __send_notifi_app_white_list_app(int param_1)
+undefined4 __send_notifi_app_white_list_app(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
@@ -24,8 +24,9 @@ undefined4 __send_notifi_app_white_list_app(int param_1)
   local_178 = 0;
   memset(auStack_174,0,0x11);
   memset(acStack_160,0,0x140);
-  uVar2 = FUN_0008a6b0(acStack_160,0,0x140,
-                       (byte *)"{\"whitelist_app_add\": {\"%s\":  \"%s\",\"%s\": \"%s\"}}");
+  uVar2 = __sprintf_chk(acStack_160,0,0x140,
+                        "{\"whitelist_app_add\": {\"%s\":  \"%s\",\"%s\": \"%s\"}}","app_identifier"
+                        ,param_2,"display_name",param_3);
   if (BLE_DEBUG == 0) {
     printk("[csh_debug]:send_notifi_app_white_list app buf is: %s \n");
   }

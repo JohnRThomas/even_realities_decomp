@@ -44,13 +44,13 @@ undefined4 com_android_phone_missed(int param_1)
   while( true ) {
     puVar5 = puVar5 + 1;
     s = (char *)*puVar5;
-    n = ____strlen(s);
+    n = strlen(s);
     iVar1 = strncmp(s,s2,n);
     if (iVar1 == 0) break;
     cVar4 = cVar4 + -1;
     if (cVar4 == '\0') {
       pGVar2 = __get_dashboard_state();
-      uVar3 = __send_notifi_app_white_list_app((int)&pGVar2->field_0x77c);
+      uVar3 = __send_notifi_app_white_list_app((int)&pGVar2->field_0x77c,s2,param_1 + 0x30);
       return uVar3;
     }
   }

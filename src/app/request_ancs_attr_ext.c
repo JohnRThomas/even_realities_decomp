@@ -26,7 +26,7 @@ int request_ancs_attr_ext(size_t param_1,uint param_2)
     uVar3 = uVar3 + 1 & 0xffff;
   } while (uVar3 != 0x3e9);
   if (0 < LOG_LEVEL) {
-    param_1 = ____strlen(GLOBAL_STATE.sem_7.poll_events.prev);
+    param_1 = strlen(GLOBAL_STATE.sem_7.poll_events.prev);
     param_2 = (uint)*(byte *)((int)pvVar1 + 0x44);
     if (BLE_DEBUG == 0) {
       printk("%s(): notif_attr_app_id_latest.attr_id %d notif_attr_app_id_latest.attr_len %d strlen(notif_attr_app_id_latest.attr_data) %d c->notifi_data.app_identifier %d\n"

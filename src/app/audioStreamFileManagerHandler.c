@@ -77,7 +77,7 @@ undefined4 audioStreamFileManagerHandler(void)
                    extraout_r2,BLE_DEBUG);
       }
     }
-    bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+    bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
     if (bVar1) {
       memset(&DAT_20019a78,0,0x1000);
       pGVar4 = __get_dashboard_state();
@@ -163,7 +163,7 @@ LAB_00030ff4:
           }
         }
         memset(&DAT_20019a78,0,0x1000);
-        memcpy(&DAT_20019a78,&DAT_0008d800,0x58);
+        memcpy(&DAT_20019a78,&INT_0008d800,0x58);
         pGVar4 = __get_dashboard_state();
         pcVar11 = *(code **)&pGVar4->field_0x104c;
         pGVar4 = __get_dashboard_state();
@@ -193,7 +193,7 @@ LAB_00030ea4:
       if (LOG_LEVEL < 1) {
         return 0;
       }
-      pcVar3 = (char *)0x400000;
+      pcVar3 = &DAT_00400000;
       fmt = "%s():  form address [%d] read data failed.\n\n";
     }
     else {
@@ -227,7 +227,7 @@ LAB_0003113e:
         if (local_f4[0] == '\x02') {
           pcVar3 = DAT_20008598 + local_f2;
           if (0xfff < (int)pcVar3) {
-            memcpy(&DAT_20019a78 + (int)DAT_20008598,local_f0,0x1000 - (int)DAT_20008598);
+            memcpy(DAT_20008598 + 0x20019a78,local_f0,0x1000 - (int)DAT_20008598);
             if (2 < iVar10) {
               if (BLE_DEBUG == 0) {
                 printk("%s(): To complete a sector of data, perform flash write operations\n");
@@ -237,7 +237,7 @@ LAB_0003113e:
                            "audioStreamFileManagerHandler",extraout_r2_03,BLE_DEBUG);
               }
             }
-            bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+            bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
             if (!bVar1) goto LAB_00030e5e;
             iVar10 = (uint)DAT_2001aa78 * 0x20000 + 0x421000 + DAT_20008594 * 0x1000;
             if (iVar10 <= (int)((uint)DAT_2001aa78 * 0x20000 + 0x431000)) {
@@ -323,7 +323,7 @@ LAB_0003113e:
             uVar5 = extraout_r2_05;
             goto LAB_000311ea;
           }
-          memcpy(&DAT_20019a78 + (int)DAT_20008598,local_f0,(int)local_f2);
+          memcpy(DAT_20008598 + 0x20019a78,local_f0,(int)local_f2);
           if (iVar10 < 3) {
             DAT_20008598 = pcVar3;
             return 0;
@@ -380,7 +380,7 @@ LAB_000311ea:
               }
             }
           }
-          bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+          bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
           if (!bVar1) goto LAB_00030e5e;
           iVar10 = (uint)DAT_2001aa78 * 0x20000 + 0x421000 + DAT_20008594 * 0x1000;
           if (2 < LOG_LEVEL) {

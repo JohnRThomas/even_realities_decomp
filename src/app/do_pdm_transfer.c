@@ -48,7 +48,7 @@ uint do_pdm_transfer(void)
         ble_printk("%s(): DMIC sample\n","dmic_stream_start",extraout_r2,BLE_DEBUG);
       }
     }
-    bVar1 = z_device_is_ready((device *)&DAT_0008b4f0);
+    bVar1 = z_device_is_ready((device *)&PTR_s_pdm_26000_0008b4f0);
     if (bVar1) {
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
@@ -85,7 +85,8 @@ LAB_00030654:
           }
         }
         else {
-          uVar9 = dmic_nrfx_pdm_configure((device *)&DAT_0008b4f0,(dmic_cfg *)&local_50);
+          uVar9 = dmic_nrfx_pdm_configure((device *)&PTR_s_pdm_26000_0008b4f0,(dmic_cfg *)&local_50)
+          ;
           if ((int)uVar9 < 0) {
             if (0 < LOG_LEVEL) {
               pcVar6 = "%s(): Failed to configure the driver: %d\n";
@@ -93,7 +94,7 @@ LAB_00030654:
             }
           }
           else {
-            uVar9 = dmic_nrfx_pdm_trigger((device *)&DAT_0008b4f0,1);
+            uVar9 = dmic_nrfx_pdm_trigger((device *)&PTR_s_pdm_26000_0008b4f0,1);
             if (-1 < (int)uVar9) {
               DAT_20019a77 = 0;
               DAT_20003052 = '\0';
@@ -102,7 +103,7 @@ LAB_00030654:
                 cVar2 = FUN_00033d5c();
                 if (((cVar2 == '\x01') &&
                     (pGVar4 = __get_dashboard_state(), pGVar4->field_0x10a4 == '\x01')) &&
-                   (bVar1 = z_device_is_ready((device *)&DAT_0008b3a0), !bVar1)) {
+                   (bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0), !bVar1)) {
                   if (LOG_LEVEL < 1) goto LAB_000306f2;
                   pcVar7 = "mx25r6435f@0";
                   pcVar6 = "%s():  [%s] device not ready.\n";
@@ -147,8 +148,8 @@ LAB_000306f8:
                 if ((cVar2 == '\x01') &&
                    (pGVar4 = __get_dashboard_state(), pGVar4->field_0x10a4 == '\x01')) {
                   if (DAT_20002404 < 0x410000 - local_60) {
-                    pcVar7 = (char *)____qspi_nor_write((device *)&DAT_0008b3a0,DAT_20002404,
-                                                        local_64,local_60);
+                    pcVar7 = (char *)qspi_nor_write((device *)&PTR_s_mx25r6435f_0_0008b3a0,
+                                                    DAT_20002404,local_64,local_60);
                     if (pcVar7 != (char *)0x0) {
                       if (0 < LOG_LEVEL) {
                         pcVar6 = "%s(): Flash write failed! %d\n\n";
@@ -178,7 +179,7 @@ joined_r0x0003089a:
                 }
                 uVar9 = 0;
                 if (((DAT_20003052 == '\0') && (cVar2 = FUN_00033d5c(), cVar2 == '\0')) &&
-                   (DAT_20008580 != 0)) {
+                   (dmic_msgq.used_msgs != 0)) {
                   if ((*(char *)((int)pvVar3 + 0x248) == '\0') &&
                      (*(int *)((int)pvVar3 + 0x220) == 0)) {
                     DAT_20019a77 = 1;
@@ -214,7 +215,7 @@ LAB_00030666:
     uVar9 = 1;
   }
 LAB_0003057c:
-  iVar5 = dmic_nrfx_pdm_trigger((device *)&DAT_0008b4f0,0);
+  iVar5 = dmic_nrfx_pdm_trigger((device *)&PTR_s_pdm_26000_0008b4f0,0);
   if (iVar5 < 0) {
     if (LOG_LEVEL < 1) goto LAB_000305a4;
     pcVar6 = "%s(): STOP trigger failed\n";

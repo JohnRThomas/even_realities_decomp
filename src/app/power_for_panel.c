@@ -74,7 +74,7 @@ LAB_00015f22:
       goto LAB_00015f22;
     }
   }
-  nVar1 = FUN_000875be((nrfx_twim_t *)&DAT_0008b430,(nrfx_twim_xfer_desc_t *)&Reset,0xf);
+  nVar1 = FUN_000875be((nrfx_twim_t *)&PTR_s_pmic_6b_0008b430,(nrfx_twim_xfer_desc_t *)&Reset,0xf);
   if ((int)nVar1 < 0) {
     if (LOG_LEVEL < 1) {
       return 0;

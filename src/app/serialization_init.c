@@ -16,7 +16,7 @@ undefined4 serialization_init(void)
   undefined4 extraout_r2_00;
   k_timeout_t timeout;
   
-  iVar1 = ipc_service_open_instance((device *)&DAT_0008b3b8);
+  iVar1 = ipc_service_open_instance((device *)&PTR_s_ipc0_0008b3b8);
   if ((iVar1 < 0) && (iVar1 != -0x78)) {
     if (LOG_LEVEL < 1) {
       return 0xffffffff;
@@ -26,7 +26,7 @@ undefined4 serialization_init(void)
   }
   else {
     iVar1 = ipc_service_register_endpoint
-                      ((device *)&DAT_0008b3b8,(ipc_ept *)&DAT_20008458,
+                      ((device *)&PTR_s_ipc0_0008b3b8,(ipc_ept *)&DAT_20008458,
                        (ipc_ept_cfg *)&st25dv_device.data);
     if (-1 < iVar1) {
       timeout.ticks._4_4_ = 0xffffffff;

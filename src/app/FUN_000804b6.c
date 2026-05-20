@@ -22,7 +22,7 @@ int FUN_000804b6(undefined4 param_1,undefined4 param_2,undefined4 param_3)
       return iVar1;
     }
     if (local_c == 0) break;
-    cJSON_free();
+    cJSON_free(&DAT_00000001);
     bVar3 = iVar2 != 0;
     iVar2 = iVar2 + -1;
     param_3 = extraout_r2;

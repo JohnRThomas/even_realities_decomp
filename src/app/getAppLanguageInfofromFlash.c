@@ -26,7 +26,7 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
                  param_3,BLE_DEBUG);
     }
   }
-  bVar1 = z_device_is_ready((device *)&DAT_0008b3a0);
+  bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     local_14 = local_14 & 0xff000000;
     pGVar2 = __get_dashboard_state();

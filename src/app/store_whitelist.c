@@ -15,7 +15,7 @@ int store_whitelist(void)
   
   cVar2 = '\x03';
   do {
-    iVar1 = FUN_0002478c(0x131000,0x2001aefb,(char *)0x15e2);
+    iVar1 = write_whitelist_to_flash(0x131000,0x2001aefb,(char *)0x15e2);
     if (iVar1 == 0) {
       dump_whitelist();
       break;

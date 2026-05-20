@@ -45,7 +45,7 @@ undefined4 read_sys_settting_from_flash(undefined4 *param_1)
   undefined2 uStack_14;
   
   memset(&local_a8,0,0x98);
-  iVar1 = flash_settings_read(0x130000,&local_a8,0x98,extraout_r3);
+  iVar1 = flash_settings_read(&DAT_00130000,&local_a8,0x98,extraout_r3);
   if (iVar1 == 0) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {

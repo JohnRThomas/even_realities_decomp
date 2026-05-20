@@ -49,7 +49,7 @@ undefined4 load_sys_setting(GlassesState *param_1)
   undefined1 local_1b;
   
   memset(&local_b0,0,0x98);
-  iVar1 = flash_settings_read(0x130000,&local_b0,0x98,extraout_r3);
+  iVar1 = flash_settings_read(&DAT_00130000,&local_b0,0x98,extraout_r3);
   if (iVar1 != 0) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {

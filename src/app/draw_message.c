@@ -53,7 +53,7 @@ void draw_message(undefined4 param_1,undefined4 *param_2)
     return;
   }
   bVar1 = FUN_000359cc();
-  pcVar4 = (char *)FUN_00035ed8((uint)bVar1);
+  pcVar4 = (char *)__parse_message_type((uint)bVar1);
   if (BLE_DEBUG == 0) {
     printk("show msgType is %d unReadCount %d\n");
   }
@@ -150,7 +150,7 @@ LAB_000374c2:
   local_1b4[5] = '\0';
   local_1b4[6] = '\0';
   local_1b4[7] = '\0';
-  FUN_0008a6b0(local_1b4,0,8,(byte *)0xf2cb6);
+  __sprintf_chk(local_1b4,0,8,"%u",param_1);
   iVar7 = FUN_000809e2();
   uVar3 = FUN_00080a3a();
   iVar5 = FUN_000809e2();
@@ -158,7 +158,7 @@ LAB_000374c2:
   gui_utf_draw(0,local_1b4,0,iVar7 + 0x22c,(uint)uVar3,iVar5 + 0x244,uVar2 + 0x1b,1,0,0,
                (undefined *)0x0,0);
   memset(local_144,0,0x123);
-  if (pcVar4 == (char *)0x1) {
+  if (pcVar4 == &DAT_00000001) {
     snprintf(local_144,0x123,"%s",(char *)(param_2 + 0x14));
   }
   else {

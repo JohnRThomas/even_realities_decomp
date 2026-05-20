@@ -45,11 +45,11 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   gpio_flags_t flags_10;
   uint uVar11;
   undefined1 local_70 [12];
-  undefined *puStack_64;
+  undefined1 *puStack_64;
   undefined1 local_60 [12];
-  undefined *puStack_54;
+  undefined1 *puStack_54;
   undefined1 local_50 [12];
-  undefined *puStack_44;
+  undefined1 *puStack_44;
   device local_40;
   
   local_70._0_4_ = &gpio0_dev;
@@ -58,32 +58,32 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   local_70._6_2_ = 0;
   z_impl_gpio_pin_configure((device *)local_70,0,param_3);
   local_70._8_4_ = &gpio0_dev;
-  puStack_64 = (undefined *)0x19;
+  puStack_64 = &DAT_00000019;
   z_impl_gpio_pin_configure((device *)(local_70 + 8),0,flags);
   local_60._0_4_ = &gpio0_dev;
   local_60._4_4_ = &Reserved1;
   z_impl_gpio_pin_configure((device *)local_60,0,flags_00);
   local_60._8_4_ = &gpio0_dev;
-  puStack_54 = (undefined *)0x1b;
+  puStack_54 = &DAT_0000001b;
   z_impl_gpio_pin_configure((device *)(local_60 + 8),0,flags_01);
   local_50._0_4_ = &gpio0_dev;
   local_50._4_4_ = &UsageFault;
   z_impl_gpio_pin_configure((device *)local_50,0,flags_02);
   gpio_pin_set(&gpio0_dev,0x18,0);
   local_50._8_4_ = &gpio0_dev;
-  puStack_44 = (undefined *)0x13;
+  puStack_44 = &DAT_00000013;
   z_impl_gpio_pin_configure((device *)(local_50 + 8),0,flags_03);
   gpio_pin_set(&gpio0_dev,0x13,0);
   local_40.name = (undefined *)&gpio0_dev;
-  local_40.config = (undefined *)0x15;
+  local_40.config = &DAT_00000015;
   z_impl_gpio_pin_configure(&local_40,0,flags_04);
   gpio_pin_set(&gpio0_dev,0x15,0);
   local_40.api = (undefined *)&gpio0_dev;
-  local_40.state = (undefined *)0x1e;
+  local_40.state = &DAT_0000001e;
   z_impl_gpio_pin_configure((device *)&local_40.api,0,flags_05);
   gpio_pin_set(&gpio0_dev,0x1e,1);
   local_40.data = (undefined *)&gpio0_dev;
-  local_40.pm = (undefined *)0x17;
+  local_40.pm = &DAT_00000017;
   z_impl_gpio_pin_configure((device *)&local_40.data,0,flags_06);
   gpio_pin_set(&gpio0_dev,0x17,0);
   bVar1 = z_device_is_ready(&gpio1_dev);
@@ -170,10 +170,10 @@ LAB_00017c48:
     pin = extraout_r1_00;
   }
 LAB_00017d40:
-  uVar4 = gpio_pin_get((device *)0x1a,pin);
-  uVar5 = gpio_pin_get((device *)0x19,pin_00);
+  uVar4 = gpio_pin_get((device *)&DAT_0000001a,pin);
+  uVar5 = gpio_pin_get((device *)&DAT_00000019,pin_00);
   uVar6 = gpio_pin_get((device *)&Reserved1,pin_01);
-  uVar7 = gpio_pin_get((device *)0x1b,pin_02);
+  uVar7 = gpio_pin_get((device *)&DAT_0000001b,pin_02);
   uVar8 = gpio_pin_get_raw(&gpio0_dev,0x18);
   uVar9 = gpio_pin_get_raw(&gpio0_dev,0x13);
   gpio_pin_get_raw(&gpio0_dev,0x15);

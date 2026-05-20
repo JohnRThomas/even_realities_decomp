@@ -23,7 +23,7 @@ int enqueue_uid_drop_package_(undefined4 *param_1,undefined4 param_2,undefined4 
   }
   else {
     uStack_10 = param_3;
-    if (GLOBAL_STATE.sem_3.poll_events.next == (void *)0xa) {
+    if (GLOBAL_STATE.sem_3.poll_events.next == &DAT_0000000a) {
       z_impl_k_msgq_get((k_msgq *)&GLOBAL_STATE.sem_2.wait_q.prev,&local_18,(k_timeout_t)0x0);
       if (BLE_DEBUG == 0) {
         printk("enqueue uid drop package! \n");

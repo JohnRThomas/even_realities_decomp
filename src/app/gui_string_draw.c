@@ -29,7 +29,7 @@ gui_string_draw(uint param_1,byte *param_2,int param_3,int param_4,int param_5,i
   local_34 = 0;
   local_30 = 0;
   local_2c[0] = (void *)0x0;
-  sVar1 = ____strlen((char *)param_2);
+  sVar1 = strlen((char *)param_2);
   iVar2 = FUN_000452e4();
   iVar2 = iVar2 << 0x1e;
   if (iVar2 < 0) {

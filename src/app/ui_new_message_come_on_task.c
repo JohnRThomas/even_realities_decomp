@@ -75,7 +75,7 @@ undefined4 ui_new_message_come_on_task(int param_1,undefined4 param_2,int param_
       }
       else {
         pGVar4 = __get_dashboard_state();
-        pcVar7 = (char *)FUN_00035ed8((byte)pGVar4->field_0xdd - 1 & 0xff);
+        pcVar7 = (char *)__parse_message_type((byte)pGVar4->field_0xdd - 1 & 0xff);
         if (BLE_DEBUG == 0) {
           printk("new msgType is %d \n");
         }

@@ -20,7 +20,7 @@ int global_ipc_service_send(void *param_1,size_t param_2,undefined4 param_3)
   if (((DAT_20008460 == 1) &&
       (pGVar1 = __get_dashboard_state(), param_3 = extraout_r2, pGVar1->field_0x1 != '\b')) &&
      (pGVar1 = __get_dashboard_state(), param_3 = extraout_r2_00, pGVar1->field_0x1 != '\t')) {
-    iVar2 = ____ipc_service_send((ipc_ept *)&DAT_20008458,param_1,param_2);
+    iVar2 = ipc_service_send((ipc_ept *)&DAT_20008458,param_1,param_2);
     if (iVar2 < 0) {
       uVar3 = extraout_r2_01;
       if (0 < LOG_LEVEL) {
