@@ -11,7 +11,7 @@ undefined4 bt_set_name(char *param_1)
   size_t n;
   int iVar1;
   undefined4 uVar2;
-  uint in_stack_ffffffd8;
+  dword in_stack_ffffffd8;
   uint8_t *in_stack_ffffffdc;
   void *in_stack_ffffffe0;
   undefined4 local_18;

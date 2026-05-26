@@ -26,7 +26,7 @@ void init_threads(char *param_1)
   uint32_t in_stack_ffffffe8;
   
   z_impl_k_mutex_init(&k_mutex_2000851c);
-  FUN_00025b58(param_1);
+  start_flash_storage_threads(param_1);
   init_watchdog();
   cVar1 = FUN_00033d5c();
   if (cVar1 == '\0') {
@@ -48,7 +48,7 @@ void init_threads(char *param_1)
                     (k_thread_entry_t)0x28939,param_1,(void *)0xfffffff6,(void *)0x0,0,
                     in_stack_ffffffe8,delay_06);
     start_aging_mode_thread();
-    FUN_00034658();
+    start_mic_transm_thread();
   }
   delay_01.ticks._4_4_ = unaff_r5;
   delay_01.ticks._0_4_ = unaff_r4;
@@ -66,7 +66,7 @@ void init_threads(char *param_1)
     k_thread_create((k_thread *)&DAT_200046a8,(k_thread_stack_t *)&DAT_200267e0,0x800,
                     (k_thread_entry_t)0x28a0d,param_1,(void *)0xfffffff4,(void *)0x0,0,
                     in_stack_ffffffe8,delay_03);
-    FUN_0004b358(param_1);
+    start_proxy_thread_handler(param_1);
   }
   else {
     if (*param_1 != '\x02') goto LAB_0002c970;
@@ -86,7 +86,7 @@ void init_threads(char *param_1)
                     (k_thread_entry_t)0x29fbd,param_1,(void *)0xfffffff5,(void *)0x0,0,
                     in_stack_ffffffe8,delay_09);
   }
-  FUN_0004c7ac(param_1);
+  start_display_thread_handler(param_1);
 LAB_0002c970:
   cVar1 = FUN_00033d5c();
   if (cVar1 == '\x01') {

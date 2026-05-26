@@ -10,7 +10,7 @@ undefined4 spi_master_init(spi_master_callbacks *param_1)
 {
   spi_master_callbacks *p_context;
   int iVar1;
-  undefined1 *puVar2;
+  nrfx_err_t nVar2;
   SPIM4_S *pSVar3;
   uint uVar4;
   uint uVar5;
@@ -83,8 +83,8 @@ undefined4 spi_master_init(spi_master_callbacks *param_1)
       handler = (code *)0x0;
       p_context = (spi_master_callbacks *)handler;
     }
-    puVar2 = (undefined1 *)nrfx_spim_init((nrfx_spim_t *)(param_1 + 1),&local_48,handler,p_context);
-    if (puVar2 == &DAT_0bad0000) break;
+    nVar2 = nrfx_spim_init((nrfx_spim_t *)(param_1 + 1),&local_48,handler,p_context);
+    if ((undefined1 *)(uint)nVar2 == &DAT_0bad0000) break;
     _ASSERT("ASSERTION FAIL [%s] @ %s:%d\n","status == NRFX_SUCCESS","../src/spim_spis/spim.c",104);
     k_panic();
 LAB_000285de:

@@ -10,37 +10,24 @@ GlassesState * FUN_0007ff16(void)
 {
   bool bVar1;
   GlassesState *pGVar2;
-  undefined4 extraout_r2;
-  undefined1 local_9;
+  GlassesState *pGVar3;
   
   pGVar2 = __get_dashboard_state();
-  if (((*(char *)pGVar2 != '\x01') ||
-      (pGVar2 = __get_dashboard_state(), *(char *)(*(int *)&pGVar2->field_0x1018 + 1) == '\0')) ||
-     (bVar1 = __is_idle(), !bVar1)) {
-    pGVar2 = __get_dashboard_state();
-    if (*(char *)pGVar2 != '\x02') {
-      return pGVar2;
-    }
-    pGVar2 = __get_dashboard_state();
-    if (*(char *)(*(int *)&pGVar2->field_0x1018 + 1) == '\0') {
-      return (GlassesState *)&pGVar2->field_0x1000;
-    }
+  if (((*(char *)pGVar2 == '\x01') &&
+      (pGVar2 = __get_dashboard_state(), *(char *)(*(int *)&pGVar2->field_0x1018 + 1) != '\0')) &&
+     (bVar1 = __is_idle(), bVar1)) {
+LAB_0007ff36:
+    __get_dashboard_state();
+    pGVar2 = (GlassesState *)FUN_00080806();
+    return pGVar2;
   }
-  __get_dashboard_state();
   pGVar2 = __get_dashboard_state();
-  if (*(char *)(*(int *)&pGVar2->field_0x1018 + 1) != '\0') {
-    pGVar2 = (GlassesState *)not_disturb_sync_data(&local_9,1,extraout_r2);
-    if (pGVar2 != (GlassesState *)0x0) {
-      return pGVar2;
-    }
-    pGVar2 = __get_dashboard_state();
-    *(undefined1 *)(*(int *)&pGVar2->field_0x1018 + 1) = 0;
-    pGVar2 = __get_dashboard_state();
-    if (*(char *)pGVar2 == '\x01') {
-      FUN_0003f1bc();
-    }
+  if (*(char *)pGVar2 == '\x02') {
+    pGVar3 = __get_dashboard_state();
+    pGVar2 = (GlassesState *)&pGVar3->field_0x1000;
+    if (*(char *)(*(int *)&pGVar3->field_0x1018 + 1) != '\0') goto LAB_0007ff36;
   }
-  return (GlassesState *)0x0;
+  return pGVar2;
 }
 
 

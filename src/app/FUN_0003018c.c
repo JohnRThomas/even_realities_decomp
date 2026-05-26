@@ -1,7 +1,7 @@
 /*
  * Function: FUN_0003018c
  * Entry:    0003018c
- * Prototype: undefined4 __stdcall FUN_0003018c(void)
+ * Prototype: dword __stdcall FUN_0003018c(void)
  */
 
 

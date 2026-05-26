@@ -1,11 +1,11 @@
 /*
  * Function: FUN_00027744
  * Entry:    00027744
- * Prototype: undefined4 __stdcall FUN_00027744(undefined4 param_1, uint3 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall FUN_00027744(size_t param_1, uint param_2, undefined4 param_3)
  */
 
 
-undefined4 FUN_00027744(undefined4 param_1,uint3 param_2,undefined4 param_3)
+undefined4 FUN_00027744(size_t param_1,uint param_2,undefined4 param_3)
 
 {
   char cVar1;
@@ -19,9 +19,9 @@ undefined4 FUN_00027744(undefined4 param_1,uint3 param_2,undefined4 param_3)
   undefined4 uStack_14;
   undefined4 uStack_10;
   
-  uStack_14 = (uint)param_2;
+  uStack_14 = param_2 & 0xffffff;
   uStack_10 = param_3;
-  FUN_000336ec();
+  FUN_000336ec(param_1,param_2);
   if (DAT_200083dc == 0) {
     cVar1 = eeprom_write(1);
     if (cVar1 < '\0') {

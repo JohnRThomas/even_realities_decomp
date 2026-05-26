@@ -53,8 +53,8 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   device local_40;
   
   local_70._0_4_ = &gpio0_dev;
-  local_70[4] = '\x1a';
-  local_70[5] = '\0';
+  local_70[4] = 0x1a;
+  local_70[5] = 0;
   local_70._6_2_ = 0;
   z_impl_gpio_pin_configure((device *)local_70,0,param_3);
   local_70._8_4_ = &gpio0_dev;
@@ -90,7 +90,7 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   if (bVar1) {
     iVar3 = z_impl_gpio_pin_configure((device *)&button_irq_gpio_spec,0,flags_07);
     if (-1 < iVar3) {
-      GLOBAL_STATE.sem_0.poll_events.prev = (void *)0x200;
+      GLOBAL_STATE.sem_0.poll_events.prev = &DAT_00000200;
       GLOBAL_STATE.sem_0.poll_events.next = (code *)0x17a3d;
       iVar3 = gpio_manage_callback
                         ((sys_slist_t *)&gpio1_dev,(gpio_callback *)&GLOBAL_STATE.sem_0.limit,true);

@@ -8,64 +8,60 @@
 undefined4 local_ipc_service_recv(undefined2 *param_1,undefined1 *param_2,int param_3)
 
 {
-  bool bVar1;
-  bool bVar2;
-  longlong lVar3;
+  longlong lVar1;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
-  undefined4 uVar4;
-  uint extraout_r2_01;
-  uint uVar5;
-  undefined4 extraout_r2_02;
-  uint uVar6;
-  uint uVar7;
-  ulonglong uVar8;
-  undefined2 *puVar9;
+  undefined4 uVar2;
+  undefined4 extraout_r2_01;
+  uint uVar3;
+  uint uVar4;
+  ulonglong uVar5;
+  undefined2 *puVar6;
   
   switch(*param_2) {
   case 1:
     sys_clock_tick_get();
     goto LAB_000163c0;
   case 2:
-    puVar9 = param_1;
-    uVar8 = sys_clock_tick_get();
-    lVar3 = (uVar8 & 0xffffffff) * 1000;
-    uVar6 = (uint)lVar3;
-    uVar7 = (int)(uVar8 >> 0x20) * 1000 + (int)((ulonglong)lVar3 >> 0x20) +
-            (uint)(0xffff8000 < uVar6);
-    uVar6 = uVar6 + 0x7fff >> 0xf | uVar7 * 0x20000;
-    uVar7 = uVar7 >> 0xf;
-    uVar4 = extraout_r2;
+    puVar6 = param_1;
+    uVar5 = sys_clock_tick_get();
+    lVar1 = (uVar5 & 0xffffffff) * 1000;
+    uVar3 = (uint)lVar1;
+    uVar4 = (int)(uVar5 >> 0x20) * 1000 + (int)((ulonglong)lVar1 >> 0x20) +
+            (uint)(0xffff8000 < uVar3);
+    uVar3 = uVar3 + 0x7fff >> 0xf | uVar4 * 0x20000;
+    uVar4 = uVar4 >> 0xf;
+    uVar2 = extraout_r2;
     if (1 < LOG_LEVEL) {
-      uVar5 = uVar6;
-      if (BLE_DEBUG == 0) goto LAB_0001643e;
-      ble_printk("%s(): cpunet request send info uptime %lld\n","local_ipc_service_recv",uVar6,uVar7
-                );
-      uVar4 = extraout_r2_00;
+      if (BLE_DEBUG == 0) {
+        printk("%s(): cpunet request send info uptime %lld\n","local_ipc_service_recv",uVar3,uVar4,
+               puVar6,param_2,param_3);
+        uVar2 = extraout_r2_01;
+      }
+      else {
+        ble_printk("%s(): cpunet request send info uptime %lld\n","local_ipc_service_recv",uVar3,
+                   uVar4);
+        uVar2 = extraout_r2_00;
+      }
     }
-    while (bVar1 = uVar7 != 0, bVar2 = uVar7 < (10000 < uVar6), uVar7 = uVar7 - (10000 >= uVar6),
-          bVar1 || bVar2) {
+    if (uVar4 != 0 || uVar4 < (10000 < uVar3)) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): sys reboot because recv cpunet sync package\n");
         }
         else {
           ble_printk("%s(): sys reboot because recv cpunet sync package\n","local_ipc_service_recv",
-                     uVar4,BLE_DEBUG);
+                     uVar2,BLE_DEBUG);
         }
       }
       sleep(500);
+                    /* WARNING: Subroutine does not return */
       sys_reboot(1);
-      uVar5 = extraout_r2_01;
-LAB_0001643e:
-      printk("%s(): cpunet request send info uptime %lld\n","local_ipc_service_recv",uVar5,uVar7,
-             puVar9,param_2,param_3);
-      uVar4 = extraout_r2_02;
     }
     runtime_info_sync(param_1);
     break;
   case 3:
-    uVar8 = sys_clock_tick_get();
+    uVar5 = sys_clock_tick_get();
     if (*(char *)GLOBAL_STATE._0_4_ == '\x01') {
       *(undefined4 *)(param_1 + 0x7ef) = *(undefined4 *)(param_2 + 1);
       param_1[0x7f1] = *(undefined2 *)(param_2 + 5);
@@ -75,10 +71,10 @@ LAB_0001643e:
       param_1[0x7f4] = *(undefined2 *)(param_2 + 5);
     }
     if (1 < LOG_LEVEL) {
-      lVar3 = (uVar8 & 0xffffffff) * 1000;
-      uVar6 = (uint)lVar3;
-      uVar7 = (int)(uVar8 >> 0x20) * 1000 + (int)((ulonglong)lVar3 >> 0x20) +
-              (uint)(0xffff8000 < uVar6);
+      lVar1 = (uVar5 & 0xffffffff) * 1000;
+      uVar3 = (uint)lVar1;
+      uVar4 = (int)(uVar5 >> 0x20) * 1000 + (int)((ulonglong)lVar1 >> 0x20) +
+              (uint)(0xffff8000 < uVar3);
       if (BLE_DEBUG == 0) {
         printk(
               "%s(): cpunet request update macaddr info uptime %lld bt macaddr esb_master_addr %02X esb_slave_addr %02X \n"
@@ -86,7 +82,7 @@ LAB_0001643e:
       }
       else {
         ble_printk("%s(): cpunet request update macaddr info uptime %lld bt macaddr esb_master_addr %02X esb_slave_addr %02X \n"
-                   ,"local_ipc_service_recv",uVar6 + 0x7fff >> 0xf | uVar7 * 0x20000,uVar7 >> 0xf);
+                   ,"local_ipc_service_recv",uVar3 + 0x7fff >> 0xf | uVar4 * 0x20000,uVar4 >> 0xf);
       }
     }
 LAB_000163c0:
@@ -113,9 +109,9 @@ LAB_000163c0:
     }
     break;
   case 6:
-    uVar6 = (uint)*(byte *)(param_1 + 0x836);
-    if (uVar6 == 0) {
-      uVar6 = 1;
+    uVar3 = (uint)*(byte *)(param_1 + 0x836);
+    if (uVar3 == 0) {
+      uVar3 = 1;
       *(undefined1 *)(param_1 + 0x836) = 1;
     }
     if (1 < LOG_LEVEL) {
@@ -123,7 +119,7 @@ LAB_000163c0:
         printk("%s(): bt_ready\n");
       }
       else {
-        ble_printk("%s(): bt_ready\n","local_ipc_service_recv",uVar6,BLE_DEBUG);
+        ble_printk("%s(): bt_ready\n","local_ipc_service_recv",uVar3,BLE_DEBUG);
       }
     }
     if (*(int *)(param_1 + 8) == 0) {

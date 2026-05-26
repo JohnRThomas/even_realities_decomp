@@ -53,7 +53,7 @@ undefined4 calc_flash_crc(ushort *param_1,int param_2,uint param_3)
       goto LAB_000249de;
     }
   }
-  uVar7 = (param_3 << 6) >> 0x10;
+  uVar7 = (param_3 & 0x3ffffff) >> 10;
   if ((param_3 & 0x3ff) != 0) {
     uVar7 = uVar7 + 1 & 0xffff;
   }
@@ -68,7 +68,7 @@ undefined4 calc_flash_crc(ushort *param_1,int param_2,uint param_3)
     while( true ) {
       if (iVar9 == param_2 + uVar7 * 0x400) {
         if ((DAT_2000304f != '\0') && (DAT_20019a5e == '\0')) {
-          FUN_0002d020();
+          __wdt_feed();
         }
         return 0;
       }

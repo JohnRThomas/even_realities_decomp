@@ -45,55 +45,57 @@ undefined4 ancs_main(void *param_1,undefined4 param_2,undefined4 param_3)
   bt_foreach_bond('\0',(void *)0x184fd,(void *)0x0);
   settings_load();
   iVar4 = ancs_c_init((int)param_1 + 0x34,extraout_r1,extraout_r2,extraout_r3);
-  if (iVar4 == 0) goto LAB_00019bd6;
-  pcVar3 = "ANCS client init failed (err %d)\n";
-  do {
-    printk(pcVar3,iVar4);
-    while( true ) {
-      printk("ancs or ncs init failure, reboot it\n");
-      sleep(1000);
-      if (0 < LOG_LEVEL) {
-        if (BLE_DEBUG == 0) {
-          printk("%s(): reboot because ancs start failed\r\n\n");
-        }
-        else {
-          ble_printk("%s(): reboot because ancs start failed\r\n\n","ancs_main",extraout_r2_00,
-                     BLE_DEBUG);
-        }
-      }
-      sleep(500);
-      sys_reboot(1);
-LAB_00019bd6:
-      iVar4 = FUN_00019384();
-      if (iVar4 != 0) break;
+  if (iVar4 == 0) {
+    iVar4 = FUN_00019384();
+    if (iVar4 == 0) {
       iVar4 = bt_conn_auth_cb_register((bt_conn_auth_cb *)&DAT_20002338);
       if (iVar4 == 0) {
         iVar4 = bt_conn_auth_info_cb_register((bt_conn_auth_info_cb *)&DAT_20002328);
-        if (iVar4 != 0) {
-          pcVar3 = "Failed to register authorization info callbacks.\n";
-          goto LAB_00019bec;
-        }
-        bt_gatt_cb_register((bt_gatt_cb *)&DAT_20002320);
-        iVar4 = __init_nus();
-        if (iVar4 != 0) {
-          pcVar3 = "Failed to init nus.\n";
-          goto LAB_00019bec;
-        }
-        iVar4 = bt_start();
         if (iVar4 == 0) {
-          start_ancs_work_thread(param_1);
-          return 0;
+          bt_gatt_cb_register((bt_gatt_cb *)&DAT_20002320);
+          iVar4 = __init_nus();
+          if (iVar4 == 0) {
+            iVar4 = bt_start();
+            if (iVar4 == 0) {
+              start_ancs_work_thread(param_1);
+              return 0;
+            }
+            printk("Advertising %s failed to start (err %d)\n",&DAT_20010975,iVar4);
+            goto LAB_00019ba6;
+          }
+          pcVar3 = "Failed to init nus.\n";
         }
-        printk("Advertising %s failed to start (err %d)\n",&DAT_20010975,iVar4);
+        else {
+          pcVar3 = "Failed to register authorization info callbacks.\n";
+        }
       }
       else {
         pcVar3 = "Failed to register authorization callbacks\n";
-LAB_00019bec:
-        printk(pcVar3);
       }
+      printk(pcVar3);
+      goto LAB_00019ba6;
     }
     pcVar3 = "GATT Service client init failed (err %d)\n";
-  } while( true );
+  }
+  else {
+    pcVar3 = "ANCS client init failed (err %d)\n";
+  }
+  printk(pcVar3,iVar4);
+LAB_00019ba6:
+  printk("ancs or ncs init failure, reboot it\n");
+  sleep(1000);
+  if (0 < LOG_LEVEL) {
+    if (BLE_DEBUG == 0) {
+      printk("%s(): reboot because ancs start failed\r\n\n");
+    }
+    else {
+      ble_printk("%s(): reboot because ancs start failed\r\n\n","ancs_main",extraout_r2_00,BLE_DEBUG
+                );
+    }
+  }
+  sleep(500);
+                    /* WARNING: Subroutine does not return */
+  sys_reboot(1);
 }
 
 

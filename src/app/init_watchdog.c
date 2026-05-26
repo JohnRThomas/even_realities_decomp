@@ -5,23 +5,22 @@
  */
 
 
+/* See: /media/files/ncs/v2.5.1/zephyr/samples/drivers/watchdog/src/main.c */
+
 undefined4 init_watchdog(void)
 
 {
   bool bVar1;
   char *fmt;
-  nrfx_err_t nVar2;
+  int iVar2;
+  int iVar3;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
-  undefined4 uVar3;
+  undefined4 uVar4;
   undefined4 extraout_r2_01;
-  int iVar4;
-  undefined1 auStack_28 [4];
-  undefined4 local_24;
-  undefined4 local_20;
-  undefined1 local_1c;
+  wdt_timeout_cfg wStack_28;
   
-  bVar1 = z_device_is_ready((device *)&PTR_s_watchdog_0008b478);
+  bVar1 = z_device_is_ready(&wdt_device);
   if (!bVar1) {
     if (LOG_LEVEL < 1) {
       return 0;
@@ -33,12 +32,12 @@ undefined4 init_watchdog(void)
     printk("%s(): %s: device not ready.\n");
     return 0;
   }
-  memset(auStack_28,0,0x10);
-  local_24 = 30000;
-  local_1c = 2;
-  DAT_20008530 = wdt_nrf_setup((device *)&PTR_s_watchdog_0008b478,(uint8_t)auStack_28);
-  uVar3 = extraout_r2;
-  if (DAT_20008530 == -0x86) {
+  memset(&wStack_28,0,0x10);
+  wStack_28.window.max = 30000;
+  wStack_28.flags = '\x02';
+  wdt_0_channel_id = wdt_npm1300_install_timeout(&wdt_device,&wStack_28);
+  uVar4 = extraout_r2;
+  if (wdt_0_channel_id == -0x86) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         printk("%s(): Callback support rejected, continuing anyway\n");
@@ -48,41 +47,41 @@ undefined4 init_watchdog(void)
                    extraout_r2,BLE_DEBUG);
       }
     }
-    local_20 = 0;
-    DAT_20008530 = wdt_nrf_setup((device *)&PTR_s_watchdog_0008b478,(uint8_t)auStack_28);
-    uVar3 = extraout_r2_00;
+    wStack_28.callback = (wdt_callback_t *)0x0;
+    wdt_0_channel_id = wdt_npm1300_install_timeout(&wdt_device,&wStack_28);
+    uVar4 = extraout_r2_00;
   }
-  if (DAT_20008530 < 0) {
+  if (wdt_0_channel_id < 0) {
     if (LOG_LEVEL < 1) {
       return 0;
     }
     fmt = "%s(): Watchdog install error\n";
   }
   else {
-    nVar2 = FUN_00088460(0x8b478);
-    if (-1 < (int)nVar2) {
-      iVar4 = 5;
+    iVar2 = wdt_npm1300_setup(&wdt_device,'\x02');
+    if (-1 < iVar2) {
+      iVar2 = 5;
       do {
-        nVar2 = FUN_0008842e(0x8b478,DAT_20008530);
-        if (nVar2 == 0) {
+        iVar3 = wdt_npm1300_feed(&wdt_device,wdt_0_channel_id);
+        if (iVar3 == 0) {
           return 0;
         }
         z_impl_k_sleep((k_timeout_t)0x667);
-        iVar4 = iVar4 + -1;
-      } while (iVar4 != 0);
+        iVar2 = iVar2 + -1;
+      } while (iVar2 != 0);
       return 0;
     }
     if (LOG_LEVEL < 1) {
       return 0;
     }
     fmt = "%s(): Watchdog setup error\n";
-    uVar3 = extraout_r2_01;
+    uVar4 = extraout_r2_01;
   }
   if (BLE_DEBUG == 0) {
     printk(fmt);
   }
   else {
-    ble_printk(fmt,"init_watchdog",uVar3,BLE_DEBUG);
+    ble_printk(fmt,"init_watchdog",uVar4,BLE_DEBUG);
   }
   return 0;
 }

@@ -8,14 +8,14 @@
 undefined4 set_shipmode(void)
 
 {
-  nrfx_err_t nVar1;
+  int iVar1;
   char *fmt;
   
   power_down_panel();
   power_down_imu_and_mic();
   sleep(2000);
-  nVar1 = nrfx_gpiote_channel_get(0x8b430,&DAT_0000000b);
-  if ((int)nVar1 < 0) {
+  iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&DAT_0000000b,2);
+  if (iVar1 < 0) {
     fmt = "Could not set shipmode.\n";
   }
   else {

@@ -1,12 +1,11 @@
 /*
  * Function: ble_process_req_dispatch
  * Entry:    000225a8
- * Prototype: undefined4 __stdcall ble_process_req_dispatch(int param_1, byte * param_2, byte * param_3, undefined4 param_4, uint param_5)
+ * Prototype: undefined4 __stdcall ble_process_req_dispatch(int param_1, byte * param_2, byte * param_3)
  */
 
 
-undefined4
-ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3,undefined4 param_4,uint param_5)
+undefined4 ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3)
 
 {
   ushort uVar1;
@@ -365,8 +364,7 @@ LAB_00022826:
           duration.ticks._0_4_ = DAT_20007f4c & 0xfffffffd;
           duration.ticks._4_4_ = 0x8000;
           DAT_20007f4c = (uint)duration.ticks;
-          k_timer_start((k_timer *)&DAT_20003ec8,duration,(k_timeout_t)((ulonglong)param_5 << 0x20))
-          ;
+          k_timer_start((k_timer *)&DAT_20003ec8,duration,(k_timeout_t)0x0);
           return 0;
         }
         if (LOG_LEVEL < 1) {

@@ -8,7 +8,7 @@
 undefined4 power_for_panel(void)
 
 {
-  nrfx_err_t nVar1;
+  int iVar1;
   char *pcVar2;
   undefined4 extraout_r2;
   undefined4 uVar3;
@@ -18,8 +18,8 @@ undefined4 power_for_panel(void)
   undefined4 extraout_r2_03;
   undefined4 extraout_r2_04;
   
-  nVar1 = nrfx_gpiote_channel_get(0x8b430,&NMI);
-  if ((int)nVar1 < 0) {
+  iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&NMI,0);
+  if (iVar1 < 0) {
     if (LOG_LEVEL < 1) {
       return 0;
     }
@@ -37,8 +37,8 @@ undefined4 power_for_panel(void)
   }
   sleep(1);
   if (*(char *)(GLOBAL_STATE._0_4_ + 0xed4) == '\x01') {
-    nVar1 = nrfx_gpiote_channel_get(0x8b430,&Reset);
-    if ((int)nVar1 < 0) {
+    iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&Reset,10);
+    if (iVar1 < 0) {
       if (LOG_LEVEL < 1) {
         return 0;
       }
@@ -59,8 +59,8 @@ LAB_00015f22:
     }
   }
   else {
-    nVar1 = nrfx_gpiote_channel_get(0x8b430,&Reset);
-    if ((int)nVar1 < 0) {
+    iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&Reset,10);
+    if (iVar1 < 0) {
       if (LOG_LEVEL < 1) {
         return 0;
       }
@@ -74,8 +74,8 @@ LAB_00015f22:
       goto LAB_00015f22;
     }
   }
-  nVar1 = FUN_000875be((nrfx_twim_t *)&PTR_s_pmic_6b_0008b430,(nrfx_twim_xfer_desc_t *)&Reset,0xf);
-  if ((int)nVar1 < 0) {
+  iVar1 = mfd_npm1300_reg_update((device *)&PTR_s_pmic_6b_0008b430,4,0xf,2,2);
+  if (iVar1 < 0) {
     if (LOG_LEVEL < 1) {
       return 0;
     }
@@ -83,8 +83,8 @@ LAB_00015f22:
     uVar3 = extraout_r2_01;
   }
   else {
-    nVar1 = nrfx_gpiote_channel_get(0x8b430,&Reset);
-    if ((int)nVar1 < 0) {
+    iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&Reset,2);
+    if (iVar1 < 0) {
       if (LOG_LEVEL < 1) {
         return 0;
       }

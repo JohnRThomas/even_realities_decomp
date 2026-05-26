@@ -9,7 +9,6 @@ void reset_all_usr_data(char *param_1,int param_2)
 
 {
   uint uVar1;
-  char *fmt;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
   undefined4 uVar2;
@@ -54,17 +53,17 @@ void reset_all_usr_data(char *param_1,int param_2)
   bt_unpair('\0',(bt_addr_le_t *)0x0);
   if (param_2 != 0) {
     if (0 < LOG_LEVEL) {
-      fmt = "%s(): sys reboot because enter ship mode failed\n";
-      if (BLE_DEBUG == 0) goto LAB_00025288;
-      ble_printk("%s(): sys reboot because enter ship mode failed\n","reset_all_usr_data",
-                 extraout_r2_02,BLE_DEBUG);
+      if (BLE_DEBUG == 0) {
+        printk("%s(): sys reboot because enter ship mode failed\n");
+      }
+      else {
+        ble_printk("%s(): sys reboot because enter ship mode failed\n","reset_all_usr_data",
+                   extraout_r2_02,BLE_DEBUG);
+      }
     }
-    do {
-      sleep(500);
-      fmt = (char *)sys_reboot(1);
-LAB_00025288:
-      printk(fmt);
-    } while( true );
+    sleep(500);
+                    /* WARNING: Subroutine does not return */
+    sys_reboot(1);
   }
   sleep(1000);
   set_shipmode();

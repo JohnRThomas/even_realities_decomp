@@ -10,12 +10,12 @@ int FUN_00075f40(int *sem,uint initial_count,uint limit)
 {
   uint uVar1;
   uint *puVar2;
-  int iVar3;
+  uint uVar3;
   
-  iVar3 = sem[3];
+  uVar3 = sem[3];
   uVar1 = DAT_2000be60;
   puVar2 = DAT_2000be64;
-  if (iVar3 << 0x1e < 0) {
+  if ((int)(uVar3 << 0x1e) < 0) {
     z_impl_k_sem_init((k_sem *)(initial_count + 8),0,1);
     *(undefined4 *)initial_count = 0;
     *(int **)(initial_count + 4) = sem;
@@ -29,7 +29,7 @@ int FUN_00075f40(int *sem,uint initial_count,uint limit)
   }
   DAT_2000be64 = puVar2;
   DAT_2000be60 = uVar1;
-  return (uint)(iVar3 << 0x1e) >> 0x1f;
+  return (uVar3 & 3) >> 1;
 }
 
 

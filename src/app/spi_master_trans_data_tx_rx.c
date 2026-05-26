@@ -11,7 +11,7 @@ spi_master_trans_data_tx_rx
           undefined4 param_5)
 
 {
-  undefined1 *puVar1;
+  nrfx_err_t nVar1;
   nrfx_spim_xfer_desc_t local_18;
   undefined4 uStack_14;
   undefined4 local_10;
@@ -32,8 +32,8 @@ spi_master_trans_data_tx_rx
     }
   }
   else {
-    puVar1 = (undefined1 *)nrfx_spim_xfer((nrfx_spim_t *)(param_1 + 0xc),&local_18,0);
-    if (puVar1 == &DAT_0bad0000) {
+    nVar1 = nrfx_spim_xfer((nrfx_spim_t *)(param_1 + 0xc),&local_18,0);
+    if ((undefined1 *)(uint)nVar1 == &DAT_0bad0000) {
       return 0;
     }
     if (0 < LOG_LEVEL) {
@@ -42,7 +42,7 @@ spi_master_trans_data_tx_rx
       }
       else {
         ble_printk("%s(): sipm(bus=%d)-sync fail: status: %d -- %d\n","spi_master_trans_data_tx_rx",
-                   (uint)*(byte *)(param_1 + 0x18),puVar1);
+                   (uint)*(byte *)(param_1 + 0x18),(undefined1 *)(uint)nVar1);
       }
     }
   }

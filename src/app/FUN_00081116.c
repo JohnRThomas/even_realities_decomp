@@ -65,7 +65,7 @@ uint FUN_00081116(uint param_1,uint param_2,uint param_3,int param_4,char param_
           }
           bVar8 = uVar3 != 0;
           uVar3 = uVar3 - 1;
-          param_1 = (param_1 << 0xf) >> 0x10;
+          param_1 = (param_1 & 0x1ffff) >> 1;
         } while (bVar8);
       }
       uVar4 = param_3 ^ uVar4;

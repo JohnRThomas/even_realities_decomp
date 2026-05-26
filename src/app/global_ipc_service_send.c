@@ -24,12 +24,19 @@ int global_ipc_service_send(void *param_1,size_t param_2,undefined4 param_3)
     if (iVar2 < 0) {
       uVar3 = extraout_r2_01;
       if (0 < LOG_LEVEL) {
-        if (BLE_DEBUG == 0) goto LAB_00027dda;
-        ble_printk("%s(): ipc_service_send data failed with ret %d %d\n","global_ipc_service_send",
-                   iVar2,DAT_20008454);
-        uVar3 = extraout_r2_02;
+        if (BLE_DEBUG == 0) {
+          printk("%s(): ipc_service_send data failed with ret %d %d\n","global_ipc_service_send",
+                 iVar2);
+          uVar3 = extraout_r2_03;
+        }
+        else {
+          ble_printk("%s(): ipc_service_send data failed with ret %d %d\n","global_ipc_service_send"
+                     ,iVar2,DAT_20008454);
+          uVar3 = extraout_r2_02;
+        }
       }
-      while (DAT_20008454 = DAT_20008454 + 1, 2 < DAT_20008454) {
+      DAT_20008454 = DAT_20008454 + 1;
+      if (2 < DAT_20008454) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): sys reboot because ipc failed\n");
@@ -40,11 +47,8 @@ int global_ipc_service_send(void *param_1,size_t param_2,undefined4 param_3)
           }
         }
         z_impl_k_sleep((k_timeout_t)0x4000);
+                    /* WARNING: Subroutine does not return */
         sys_reboot(1);
-LAB_00027dda:
-        printk("%s(): ipc_service_send data failed with ret %d %d\n","global_ipc_service_send",iVar2
-              );
-        uVar3 = extraout_r2_03;
       }
     }
     else {

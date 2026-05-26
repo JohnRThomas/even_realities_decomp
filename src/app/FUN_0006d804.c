@@ -102,21 +102,24 @@ void FUN_0006d804(longlong *param_1,int param_2,undefined2 *param_3,int param_4)
               (int)(short)*(undefined4 *)(iVar4 + 0x18) * (int)(short)(&DAT_000900e0)[uVar5 * 0x20]
               + (int)(short)((uint)*(undefined4 *)(iVar4 + 0x18) >> 0x10) *
                 (int)(short)((uint)(&DAT_000900e0)[uVar5 * 0x20] >> 0x10) +
-              (int)(short)*(undefined4 *)(iVar4 + 0x14) * (int)(short)(&DAT_000900dc)[uVar5 * 0x20]
-              + (int)(short)((uint)*(undefined4 *)(iVar4 + 0x14) >> 0x10) *
-                (int)(short)((uint)(&DAT_000900dc)[uVar5 * 0x20] >> 0x10) +
-              (int)(short)*(undefined4 *)(iVar4 + 0x10) * (int)(short)(&DAT_000900d8)[uVar5 * 0x20]
-              + (int)(short)((uint)*(undefined4 *)(iVar4 + 0x10) >> 0x10) *
-                (int)(short)((uint)(&DAT_000900d8)[uVar5 * 0x20] >> 0x10) +
-              (int)(short)*(undefined4 *)(iVar4 + 0xc) * (int)(short)(&DAT_000900d4)[uVar5 * 0x20] +
+              (int)(short)*(undefined4 *)(iVar4 + 0x14) *
+              (int)(short)(&PTR_DAT_000900dc)[uVar5 * 0x20] +
+              (int)(short)((uint)*(undefined4 *)(iVar4 + 0x14) >> 0x10) *
+              (int)(short)((uint)(&PTR_DAT_000900dc)[uVar5 * 0x20] >> 0x10) +
+              (int)(short)*(undefined4 *)(iVar4 + 0x10) *
+              (int)(short)(&PTR_DAT_000900d8)[uVar5 * 0x20] +
+              (int)(short)((uint)*(undefined4 *)(iVar4 + 0x10) >> 0x10) *
+              (int)(short)((uint)(&PTR_DAT_000900d8)[uVar5 * 0x20] >> 0x10) +
+              (int)(short)*(undefined4 *)(iVar4 + 0xc) *
+              (int)(short)(&PTR_DAT_000900d4)[uVar5 * 0x20] +
               (int)(short)((uint)*(undefined4 *)(iVar4 + 0xc) >> 0x10) *
-              (int)(short)((uint)(&DAT_000900d4)[uVar5 * 0x20] >> 0x10) +
-              (int)(short)*(undefined4 *)(iVar4 + 8) * (int)(short)(&DAT_000900d0)[uVar5 * 0x20] +
-              (int)(short)((uint)*(undefined4 *)(iVar4 + 8) >> 0x10) *
-              (int)(short)((uint)(&DAT_000900d0)[uVar5 * 0x20] >> 0x10) +
-              (int)(short)*(undefined4 *)(iVar4 + 4) * (int)(short)(&DAT_000900cc)[uVar5 * 0x20] +
-              (int)(short)((uint)*(undefined4 *)(iVar4 + 4) >> 0x10) *
-              (int)(short)((uint)(&DAT_000900cc)[uVar5 * 0x20] >> 0x10) +
+              (int)(short)((uint)(&PTR_DAT_000900d4)[uVar5 * 0x20] >> 0x10) +
+              (int)(short)*(undefined4 *)(iVar4 + 8) * (int)(short)(&PTR_DAT_000900d0)[uVar5 * 0x20]
+              + (int)(short)((uint)*(undefined4 *)(iVar4 + 8) >> 0x10) *
+                (int)(short)((uint)(&PTR_DAT_000900d0)[uVar5 * 0x20] >> 0x10) +
+              (int)(short)*(undefined4 *)(iVar4 + 4) * (int)(short)(&PTR_DAT_000900cc)[uVar5 * 0x20]
+              + (int)(short)((uint)*(undefined4 *)(iVar4 + 4) >> 0x10) *
+                (int)(short)((uint)(&PTR_DAT_000900cc)[uVar5 * 0x20] >> 0x10) +
               (int)(short)uVar7 * (int)(short)uVar8 +
               (int)(short)((uint)uVar7 >> 0x10) * (int)(short)((uint)uVar8 >> 0x10);
       lVar2 = (longlong)iVar4 * 0x3ee61bc6;
@@ -129,7 +132,7 @@ void FUN_0006d804(longlong *param_1,int param_2,undefined2 *param_3,int param_4)
       *param_3 = (short)(uVar5 + 0x8000 >> 0x10);
       if (param_4 * 0xf <= (int)uVar9) break;
       uVar5 = uVar9 & 7;
-      uVar8 = *(undefined4 *)(&UNK_000900c8 + uVar5 * 0x80);
+      uVar8 = *(undefined4 *)((int)&PTR_000900c6 + uVar5 * 0x80 + 2);
       param_3 = param_3 + 1;
     }
   }

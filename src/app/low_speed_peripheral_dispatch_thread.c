@@ -13,7 +13,6 @@ void low_speed_peripheral_dispatch_thread(char *param_1)
   uint uVar2;
   uint uVar3;
   GlassesState *pGVar4;
-  char *fmt;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
   undefined4 extraout_r1_01;
@@ -145,9 +144,9 @@ LAB_0002cdc6:
           goto LAB_0002cc28;
         }
       }
-      FUN_00027744((int)uVar12,(uint3)((ulonglong)uVar12 >> 0x20),uVar6);
+      FUN_00027744((size_t)uVar12,(uint)((ulonglong)uVar12 >> 0x20),uVar6);
       while (param_1[1] == '\x01') {
-        FUN_0002d050();
+        __wdt_disable();
         if (*param_1 == '\x01') {
           FUN_000806e4((int)param_1,*(int **)(param_1 + 0xff0));
         }
@@ -157,18 +156,18 @@ LAB_0002cdc6:
         if ((int)(-(uint)bVar1 - iVar5) < 0 != (SBORROW4(0,iVar5) != SBORROW4(-iVar5,(uint)bVar1)))
         {
           if (0 < LOG_LEVEL) {
-            fmt = "%s(): reboot because dfu exceed time\n";
-            if (BLE_DEBUG == 0) goto LAB_0002ceaa;
-            ble_printk("%s(): reboot because dfu exceed time\n",
-                       "low_speed_peripheral_dispatch_thread",*(undefined4 *)(param_1 + 0x107c),
-                       BLE_DEBUG);
+            if (BLE_DEBUG == 0) {
+              printk("%s(): reboot because dfu exceed time\n");
+            }
+            else {
+              ble_printk("%s(): reboot because dfu exceed time\n",
+                         "low_speed_peripheral_dispatch_thread",*(undefined4 *)(param_1 + 0x107c),
+                         BLE_DEBUG);
+            }
           }
-          do {
-            k_msleep(500);
-            fmt = (char *)sys_reboot(1);
-LAB_0002ceaa:
-            printk(fmt);
-          } while( true );
+          k_msleep(500);
+                    /* WARNING: Subroutine does not return */
+          sys_reboot(1);
         }
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
@@ -184,10 +183,10 @@ LAB_0002ceaa:
         z_impl_k_sleep((k_timeout_t)0x8000);
       }
       if (DAT_2000304f == '\0') {
-        FUN_0002d050();
+        __wdt_disable();
       }
       else if (DAT_20019a5e == '\0') {
-        FUN_0002d020();
+        __wdt_feed();
       }
       if (*param_1 == '\x01') {
         FUN_000806e4((int)param_1,*(int **)(param_1 + 0xff0));
@@ -233,7 +232,7 @@ LAB_0002ceaa:
     }
     FUN_0007ff16();
     if (DAT_20019a5e == '\0') {
-      FUN_0002d020();
+      __wdt_feed();
     }
     z_impl_k_sleep((k_timeout_t)0x199a);
   } while( true );

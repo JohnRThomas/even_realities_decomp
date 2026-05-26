@@ -8,7 +8,7 @@
 void FUN_00052fa4(void)
 
 {
-  FUN_0007c8a0((undefined4 *)&DAT_0008eba0);
+  FUN_0007c8a0(&PTR_0008eba0);
   return;
 }
 

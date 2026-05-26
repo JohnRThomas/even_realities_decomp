@@ -521,17 +521,17 @@ LAB_0000f9f4:
                 iVar2 = strncmp((char *)&local_520,"#r",2);
                 if (iVar2 == 0) {
                   if (0 < LOG_LEVEL) {
-                    pcVar3 = "%s(): sys reboot because reboot cmd\n";
-                    if (BLE_DEBUG == 0) goto LAB_0000f834;
-                    ble_printk("%s(): sys reboot because reboot cmd\n","spec_ble_command_hook",
-                               extraout_r2_21,BLE_DEBUG);
+                    if (BLE_DEBUG == 0) {
+                      printk("%s(): sys reboot because reboot cmd\n");
+                    }
+                    else {
+                      ble_printk("%s(): sys reboot because reboot cmd\n","spec_ble_command_hook",
+                                 extraout_r2_21,BLE_DEBUG);
+                    }
                   }
-                  do {
-                    sleep(500);
-                    pcVar3 = (char *)sys_reboot(1);
-LAB_0000f834:
-                    printk(pcVar3);
-                  } while( true );
+                  sleep(500);
+                    /* WARNING: Subroutine does not return */
+                  sys_reboot(1);
                 }
                 iVar2 = strncmp((char *)&local_520,"#l",2);
                 if (iVar2 == 0) {

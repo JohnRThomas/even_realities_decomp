@@ -35,6 +35,9 @@ gui_utf_Wordwrap_draw
   uint uVar19;
   uint uVar20;
   bool bVar21;
+  uint in_fpscr;
+  float fVar22;
+  float fVar23;
   uint local_318;
   uint local_314;
   ushort local_302;
@@ -167,10 +170,13 @@ LAB_00047b18:
                   }
                 }
                 else {
-                  if ((iVar4 != 0) &&
-                     (-1 < (int)((uint)((float)(longlong)iVar4 /
-                                        (float)(longlong)(int)(uVar17 - uVar19) < 0.5) << 0x1f)))
-                  goto LAB_000479d4;
+                  if (iVar4 != 0) {
+                    fVar23 = (float)VectorSignedToFloat(iVar4,(byte)(in_fpscr >> 0x16) & 3);
+                    fVar22 = (float)VectorSignedToFloat(uVar17 - uVar19,(byte)(in_fpscr >> 0x16) & 3
+                                                       );
+                    in_fpscr = in_fpscr & 0xfffffff;
+                    if (0.5 <= fVar23 / fVar22) goto LAB_000479d4;
+                  }
                   local_2f4[0] = 0;
                   local_2f4[1] = 0;
                   puVar6 = puVar18;

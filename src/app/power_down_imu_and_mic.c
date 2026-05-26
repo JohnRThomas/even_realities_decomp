@@ -8,12 +8,12 @@
 undefined4 power_down_imu_and_mic(void)
 
 {
-  nrfx_err_t nVar1;
+  int iVar1;
   char *fmt;
   undefined4 extraout_r2;
   
-  nVar1 = nrfx_gpiote_channel_get(0x8b430,&NMI);
-  if ((int)nVar1 < 0) {
+  iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&NMI,3);
+  if (iVar1 < 0) {
     if (LOG_LEVEL < 1) {
       return 0;
     }

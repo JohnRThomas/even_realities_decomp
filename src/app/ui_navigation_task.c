@@ -450,8 +450,8 @@ joined_r0x00041a90:
               iVar14 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
               gui_bitmps_merge_draw
-                        (iVar9 + 0x1b6,(uint)uVar4,iVar14 + 0x240,uVar5 + 0x88,0x2001c74f,0x2001d057
-                         ,2,0xf);
+                        (iVar9 + 0x1b6,(uint)uVar4,iVar14 + 0x240,uVar5 + 0x88,0x2001c74f,
+                         (int)&DAT_2001d057,2,0xf);
               bVar3 = get_current_language();
               if (bVar3 == 6) {
                 iVar9 = 0xe8;

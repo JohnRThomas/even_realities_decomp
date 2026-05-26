@@ -41,7 +41,7 @@ undefined4 set_lux_base(int param_1,undefined4 param_2,undefined4 *param_3,undef
     cVar1 = *(char *)(param_1 + 4);
     switch(cVar1) {
     case '\x01':
-      if (puVar3 + -0x32 < (undefined *)0x96) {
+      if (puVar3 + -0x32 < &DAT_00000096) {
         cVar7 = '\0';
       }
       else {

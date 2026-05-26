@@ -27,8 +27,9 @@ void main(void)
   undefined4 uVar10;
   int iVar11;
   char *pcVar12;
-  undefined4 extraout_r0;
+  size_t extraout_r0;
   undefined4 extraout_r0_00;
+  undefined4 extraout_r0_01;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
   undefined4 extraout_r1_01;
@@ -45,6 +46,7 @@ void main(void)
   undefined4 extraout_r1_12;
   undefined4 extraout_r1_13;
   undefined4 extraout_r1_14;
+  undefined4 extraout_r1_15;
   undefined4 extraout_r2;
   gpio_flags_t extraout_r2_00;
   undefined4 extraout_r2_01;
@@ -58,8 +60,9 @@ void main(void)
   undefined4 extraout_r2_10;
   undefined4 extraout_r2_11;
   undefined4 extraout_r2_12;
-  undefined4 uVar13;
   undefined4 extraout_r2_13;
+  undefined4 uVar13;
+  undefined4 extraout_r2_14;
   uint uVar14;
   k_sem *sem;
   k_timeout_t duration;
@@ -67,7 +70,7 @@ void main(void)
   k_timeout_t duration_00;
   k_timeout_t timeout_00;
   undefined8 uVar15;
-  uint in_stack_00000000;
+  undefined4 in_stack_ffffffcc;
   undefined4 uVar8;
   undefined4 extraout_r2_02;
   
@@ -92,8 +95,7 @@ void main(void)
   }
   duration.ticks._4_4_ = 0x667;
   duration.ticks._0_4_ = uVar10;
-  k_timer_start((k_timer *)&DAT_200038a0,duration,
-                (k_timeout_t)((ulonglong)in_stack_00000000 << 0x20));
+  k_timer_start((k_timer *)&DAT_200038a0,duration,(k_timeout_t)0x66700000000);
   serialization_init();
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
@@ -325,8 +327,7 @@ LAB_00017458:
       burial_point_record_info_init((int)uVar15,(int)((ulonglong)uVar15 >> 0x20),extraout_r2_03);
       duration_00.ticks._4_4_ = 0x1e0000;
       duration_00.ticks._0_4_ = extraout_r1_03;
-      k_timer_start((k_timer *)&DAT_20003868,duration_00,
-                    (k_timeout_t)((ulonglong)in_stack_00000000 << 0x20));
+      k_timer_start((k_timer *)&DAT_20003868,duration_00,(k_timeout_t)0x1e000000000000);
       power_for_imu_and_mic();
       *(undefined ***)&(s->imu_fusion_context).field_0x1c = &PTR_s_lsm6dso_6b_0008b508;
       lsm6dso_init_chip((device *)&PTR_s_lsm6dso_6b_0008b508);
@@ -344,7 +345,7 @@ LAB_00017458:
     bVar2 = getDashboardStartUpModeInfofromFlash
                       ((int)uVar15,(uint)((ulonglong)uVar15 >> 0x20),extraout_r2_05);
     bVar2 = getAppLanguageInfofromFlash((uint)bVar2,extraout_r1_05,extraout_r2_06);
-    iVar11 = FUN_00025bd0((uint)bVar2,extraout_r1_06,extraout_r2_07);
+    iVar11 = FUN_00025bd0((uint)bVar2,extraout_r1_06,extraout_r2_07,in_stack_ffffffcc);
     FUN_00026618(iVar11,extraout_r1_07,extraout_r2_08);
     s->field_0x10d5 = 0;
     *(undefined2 *)&s->field_0xed8 = s->field3448_0xede;
@@ -401,11 +402,11 @@ LAB_00017458:
         pcVar12 = "Could not initialise fuel gauge.\n";
       }
       else {
-        iVar11 = lsm6dso_init((device *)&PTR_s_charger_0008b520);
+        iVar11 = npm1300_charger_init((device *)&PTR_s_charger_0008b520);
         if (-1 < iVar11) {
           printk("Initialise charger.\n");
           printk("PMIC device ok\n");
-          __dump_pmic_state();
+          __dump_pmic_state(extraout_r0,(uint3)extraout_r1_10,extraout_r2_11);
           iVar11 = __is_old_board();
           if (iVar11 != 0) {
             printk("Old board, need to restrain Vterm to 4.2V\n");
@@ -426,28 +427,28 @@ LAB_00017458:
           if (((int)uVar15 != 0) && (1 < LOG_LEVEL)) {
             if (BLE_DEBUG == 0) {
               printk("%s(): [panel_controler init] fail: 0x%x\n\n");
-              uVar15 = CONCAT44(extraout_r1_13,extraout_r0_00);
+              uVar15 = CONCAT44(extraout_r1_14,extraout_r0_01);
             }
             else {
               ble_printk("%s(): [panel_controler init] fail: 0x%x\n\n","component_init",(int)uVar15,
                          BLE_DEBUG);
-              uVar15 = CONCAT44(extraout_r1_10,extraout_r0);
+              uVar15 = CONCAT44(extraout_r1_11,extraout_r0_00);
             }
           }
           FUN_00032130((int)uVar15,(printbuffer *)((ulonglong)uVar15 >> 0x20));
           FUN_00035fe0();
-          uVar10 = extraout_r1_11;
-          uVar13 = extraout_r2_11;
+          uVar10 = extraout_r1_12;
+          uVar13 = extraout_r2_12;
           if (1 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               printk("%s(): exit\n");
-              uVar10 = extraout_r1_14;
-              uVar13 = extraout_r2_13;
+              uVar10 = extraout_r1_15;
+              uVar13 = extraout_r2_14;
             }
             else {
-              ble_printk("%s(): exit\n","component_init",extraout_r2_11,BLE_DEBUG);
-              uVar10 = extraout_r1_12;
-              uVar13 = extraout_r2_12;
+              ble_printk("%s(): exit\n","component_init",extraout_r2_12,BLE_DEBUG);
+              uVar10 = extraout_r1_13;
+              uVar13 = extraout_r2_13;
             }
           }
           *(undefined4 *)&s->field_0x1090 = 0;

@@ -28,16 +28,16 @@ uint convert_app_whitelist_to_json(char *param_1)
     object = cJSON_CreateObject();
     if (object != (cJSON *)0x0) {
       cJSON_AddBoolToObject(object,"call_enable",DAT_2001aefb & 1);
-      cJSON_AddBoolToObject(object,"msg_enable",((uint)DAT_2001aefb << 0x1e) >> 0x1f);
-      cJSON_AddBoolToObject(object,"ios_mail_enable",((uint)DAT_2001aefb << 0x1d) >> 0x1f);
-      cJSON_AddBoolToObject(object,"calendar_enable",((uint)DAT_2001aefb << 0x1c) >> 0x1f);
+      cJSON_AddBoolToObject(object,"msg_enable",(DAT_2001aefb & 3) >> 1);
+      cJSON_AddBoolToObject(object,"ios_mail_enable",(DAT_2001aefb & 7) >> 2);
+      cJSON_AddBoolToObject(object,"calendar_enable",(DAT_2001aefb & 0xf) >> 3);
       object_00 = cJSON_CreateObject();
       if (object_00 == (cJSON *)0x0) {
         uVar3 = 0x206;
         pcVar1 = "[%s-%d]appJson is null \n";
       }
       else {
-        cJSON_AddBoolToObject(object_00,"enable",((uint)DAT_2001aefb << 0x1b) >> 0x1f);
+        cJSON_AddBoolToObject(object_00,"enable",(DAT_2001aefb & 0x1f) >> 4);
         array = cJSON_CreateArray();
         if (array == (cJSON *)0x0) {
           uVar3 = 0x20e;

@@ -11,11 +11,12 @@ int send_dmic_msg(int param_1)
 
 {
   longlong lVar1;
-  int iVar2;
-  GlassesState *pGVar3;
-  int iVar4;
-  uint uVar5;
-  ulonglong uVar6;
+  dword dVar2;
+  int iVar3;
+  GlassesState *pGVar4;
+  int iVar5;
+  uint uVar6;
+  ulonglong uVar7;
   undefined4 local_e4;
   undefined1 auStack_e0 [200];
   
@@ -24,18 +25,18 @@ int send_dmic_msg(int param_1)
   local_e4 = CONCAT31(local_e4._1_3_,0xf1);
   do {
     local_e4._0_2_ = CONCAT11(DAT_20010dbb,(undefined1)local_e4);
-    iVar2 = FUN_0003018c();
-    if (iVar2 == 0) {
+    dVar2 = FUN_0003018c();
+    if (dVar2 == 0) {
       return 0;
     }
-    iVar2 = dequeue_dmic((void *)((int)&local_e4 + 2));
-    if (iVar2 != 0) {
-      return iVar2;
+    iVar3 = dequeue_dmic((void *)((int)&local_e4 + 2));
+    if (iVar3 != 0) {
+      return iVar3;
     }
-    iVar2 = (**(code **)(param_1 + 0xc))(&local_e4,0xca);
-    if (iVar2 < 0) {
-      pGVar3 = __get_dashboard_state();
-      if (pGVar3->field_0xd5 == '\x06') {
+    iVar3 = (**(code **)(param_1 + 0xc))(&local_e4,0xca);
+    if (iVar3 < 0) {
+      pGVar4 = __get_dashboard_state();
+      if (pGVar4->field_0xd5 == '\x06') {
         if (DAT_20007f34 < 100) {
           DAT_20007f34 = DAT_20007f34 + 1;
         }
@@ -56,9 +57,9 @@ int send_dmic_msg(int param_1)
           }
         }
         DAT_20007f38 = 0;
-        pGVar3 = __get_dashboard_state();
-        FUN_0007ff66((int)pGVar3,1);
-        return iVar2;
+        pGVar4 = __get_dashboard_state();
+        FUN_0007ff66((int)pGVar4,1);
+        return iVar3;
       }
     }
     else if (0 < DAT_20007f38) {
@@ -67,28 +68,28 @@ int send_dmic_msg(int param_1)
     DAT_20007f3c = DAT_20007f3c + 1;
     if (9 < DAT_20007f3c) {
       DAT_20007f3c = 0;
-      uVar6 = sys_clock_tick_get();
+      uVar7 = sys_clock_tick_get();
       DAT_20007f40 = DAT_20007f40 + 1;
       if (0 < LOG_LEVEL) {
-        lVar1 = (uVar6 & 0xffffffff) * 1000;
-        uVar5 = (uint)lVar1;
-        iVar2 = DAT_20007f40 * 10;
-        uVar5 = uVar5 + 0x7fff >> 0xf |
-                ((int)(uVar6 >> 0x20) * 1000 + (int)((ulonglong)lVar1 >> 0x20) +
-                (uint)(0xffff8000 < uVar5)) * 0x20000;
+        lVar1 = (uVar7 & 0xffffffff) * 1000;
+        uVar6 = (uint)lVar1;
+        iVar3 = DAT_20007f40 * 10;
+        uVar6 = uVar6 + 0x7fff >> 0xf |
+                ((int)(uVar7 >> 0x20) * 1000 + (int)((ulonglong)lVar1 >> 0x20) +
+                (uint)(0xffff8000 < uVar6)) * 0x20000;
         if (BLE_DEBUG == 0) {
-          pGVar3 = __get_dashboard_state();
-          iVar4 = DAT_20007f34;
-          if (pGVar3->field_0xd5 != '\x06') {
-            iVar4 = DAT_20007f38;
+          pGVar4 = __get_dashboard_state();
+          iVar5 = DAT_20007f34;
+          if (pGVar4->field_0xd5 != '\x06') {
+            iVar5 = DAT_20007f38;
           }
-          printk("%s(): time %d dmic_send_count %d send_fail_count %d\n","send_dmic_msg",uVar5,iVar2
-                 ,iVar4);
+          printk("%s(): time %d dmic_send_count %d send_fail_count %d\n","send_dmic_msg",uVar6,iVar3
+                 ,iVar5);
         }
         else {
           __get_dashboard_state();
-          ble_printk("%s(): time %d dmic_send_count %d send_fail_count %d\n","send_dmic_msg",uVar5,
-                     iVar2);
+          ble_printk("%s(): time %d dmic_send_count %d send_fail_count %d\n","send_dmic_msg",uVar6,
+                     iVar3);
         }
       }
     }

@@ -54,13 +54,19 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
   else {
     uVar6 = extraout_r2;
     if (2 < LOG_LEVEL) {
-      if (BLE_DEBUG == 0) goto LAB_000186de;
-      ble_printk("%s(): Security failed: %s level %u err %d\n\n","ancs_security_changed",acStack_38,
-                 param_2);
-      uVar6 = extraout_r2_01;
+      if (BLE_DEBUG == 0) {
+        printk("%s(): Security failed: %s level %u err %d\n\n","ancs_security_changed",acStack_38,
+               param_2,param_3);
+        uVar6 = extraout_r2_02;
+      }
+      else {
+        ble_printk("%s(): Security failed: %s level %u err %d\n\n","ancs_security_changed",
+                   acStack_38,param_2);
+        uVar6 = extraout_r2_01;
+      }
     }
-    while (GLOBAL_STATE.sem_2.wait_q.next = (void *)((int)GLOBAL_STATE.sem_2.wait_q.next + 1),
-          9 < (int)GLOBAL_STATE.sem_2.wait_q.next) {
+    GLOBAL_STATE.sem_2.wait_q.next = (void *)((int)GLOBAL_STATE.sem_2.wait_q.next + 1);
+    if (9 < (int)GLOBAL_STATE.sem_2.wait_q.next) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): reboot because Security failed exceed 10 times, so reboot\r\n\n");
@@ -71,11 +77,8 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
         }
       }
       sleep(500);
+                    /* WARNING: Subroutine does not return */
       sys_reboot(1);
-LAB_000186de:
-      printk("%s(): Security failed: %s level %u err %d\n\n","ancs_security_changed",acStack_38,
-             param_2);
-      uVar6 = extraout_r2_02;
     }
     bt_conn_set_security(param_1,2);
   }

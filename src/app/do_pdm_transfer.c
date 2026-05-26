@@ -28,7 +28,7 @@ uint do_pdm_transfer(void)
   undefined4 uStack_58;
   undefined *local_54;
   char *local_50;
-  undefined4 uStack_4c;
+  undefined1 *puStack_4c;
   undefined1 local_48;
   undefined1 local_47;
   undefined1 auStack_46 [6];
@@ -63,7 +63,7 @@ uint do_pdm_transfer(void)
         local_54 = &DAT_20003918;
         memset(auStack_46,0,0x1e);
         local_50 = " gyroscope full-scale\r\n";
-        uStack_4c = 3500000;
+        puStack_4c = &DAT_003567e0;
         local_48 = 0x28;
         local_47 = 0x3c;
         local_40 = &local_5c;

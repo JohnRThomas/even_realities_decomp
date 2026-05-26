@@ -8,7 +8,7 @@
 undefined4 power_down_panel(void)
 
 {
-  nrfx_err_t nVar1;
+  int iVar1;
   char *fmt;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
@@ -26,8 +26,8 @@ undefined4 power_down_panel(void)
     }
   }
   sleep(16);
-  nVar1 = nrfx_gpiote_channel_get(0x8b430,&Reset);
-  if ((int)nVar1 < 0) {
+  iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&Reset,3);
+  if (iVar1 < 0) {
     if (LOG_LEVEL < 1) {
       return 0;
     }
@@ -44,9 +44,9 @@ undefined4 power_down_panel(void)
       }
     }
     sleep(5);
-    nVar1 = nrfx_gpiote_channel_get(0x8b430,&NMI);
+    iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&NMI,1);
     uVar2 = extraout_r2_01;
-    if ((int)nVar1 < 0) {
+    if (iVar1 < 0) {
       if (LOG_LEVEL < 1) {
         return 0;
       }
