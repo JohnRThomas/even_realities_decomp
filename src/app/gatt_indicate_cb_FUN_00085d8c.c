@@ -1,12 +1,13 @@
 /*
- * Function: FUN_00085d8c
+ * Function: $_?_gatt_indicate_cb_FUN_00085d8c
  * Entry:    00085d8c
- * Prototype: undefined __stdcall FUN_00085d8c(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, int param_5)
+ * Prototype: undefined __stdcall $_?_gatt_indicate_cb_FUN_00085d8c(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4, int param_5)
  */
 
 
-void FUN_00085d8c(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,
-                 int param_5)
+void ____gatt_indicate_cb_FUN_00085d8c
+               (undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4,
+               int param_5)
 
 {
   char cVar1;

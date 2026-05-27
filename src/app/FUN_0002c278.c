@@ -9,7 +9,7 @@ void FUN_0002c278(void)
 
 {
   if (IS_SILENT_MODE != '\0') {
-    k_sem_give((k_sem *)&DAT_200084fc);
+    k_sem_give(&__key_event_sem);
     return;
   }
   return;

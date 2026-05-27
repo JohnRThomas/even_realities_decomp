@@ -16,7 +16,7 @@ void bt_send_enabled(int param_1)
       ble_printk("%s(): status:%d\n\n","bt_send_enabled",param_1,BLE_DEBUG);
     }
   }
-  *(bool *)((int)GLOBAL_STATE.sem_1.poll_events.prev + 0x366) = param_1 == 0;
+  *(bool *)(GLOBAL_STATE._52_4_ + 0x366) = param_1 == 0;
   return;
 }
 

@@ -18,6 +18,7 @@ An attempt to recreate the FW for ER G1 glasses.
 | *2026-05-20* |               84% |          52% |            2885 |              2426 |                      1915 |           970 |                   511 |
 | *2026-05-24* |            84.41% |       52.49% |            2938 |              2480 |                      1995 |           943 |                   495 |
 | *2026-05-25* |            85.34% |       54.11% |            2939 |              2508 |                      2015 |           924 |                   500 |
+| *2026-05-26* |            86.40% |       56.03% |            2942 |              2542 |                      2046 |                 896 |                   502 |
 
 ### Net Core
 Based on the size of the binary shipped and the size of the binary generated from the DFU OTA sample code, likely this binary has no custom code in it.

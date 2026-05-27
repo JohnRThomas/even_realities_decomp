@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00079df0
+ * Function: $_?_FUN_00079df0
  * Entry:    00079df0
- * Prototype: undefined __stdcall FUN_00079df0(undefined4 * param_1, undefined2 param_2, undefined2 param_3)
+ * Prototype: undefined __stdcall $_?_FUN_00079df0(undefined4 * param_1, undefined2 param_2, undefined2 param_3)
  */
 
 
-void FUN_00079df0(undefined4 *param_1,undefined2 param_2,undefined2 param_3)
+void ____FUN_00079df0(undefined4 *param_1,undefined2 param_2,undefined2 param_3)
 
 {
   param_1[2] = 0;
@@ -22,7 +22,7 @@ void FUN_00079df0(undefined4 *param_1,undefined2 param_2,undefined2 param_3)
   param_1[9] = 0x8a6e5;
   param_1[10] = 0x8a70b;
   param_1[0xb] = 0x8a743;
-  param_1[0xc] = &LAB_0008a766_1;
+  param_1[0xc] = 0x8a767;
   return;
 }
 

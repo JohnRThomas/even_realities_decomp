@@ -11,19 +11,19 @@ undefined2 FUN_00080a3a(void)
   GlassesState *pGVar1;
   
   pGVar1 = __get_dashboard_state();
-  if (((pGVar1->field3667_0x108a == 0) &&
-      (pGVar1 = __get_dashboard_state(), pGVar1->field3668_0x108c == 0)) ||
-     (pGVar1 = __get_dashboard_state(), 0x40 < (ushort)pGVar1->field3668_0x108c)) {
+  if (((pGVar1->field3671_0x108a == 0) &&
+      (pGVar1 = __get_dashboard_state(), pGVar1->field3672_0x108c == 0)) ||
+     (pGVar1 = __get_dashboard_state(), 0x40 < (ushort)pGVar1->field3672_0x108c)) {
     pGVar1 = __get_dashboard_state();
-    pGVar1->field3668_0x108c = 0x20;
+    pGVar1->field3672_0x108c = 0x20;
   }
   pGVar1 = __get_dashboard_state();
-  if ((ushort)pGVar1->field3668_0x108c < 4) {
+  if ((ushort)pGVar1->field3672_0x108c < 4) {
     pGVar1 = __get_dashboard_state();
-    pGVar1->field3668_0x108c = 4;
+    pGVar1->field3672_0x108c = 4;
   }
   pGVar1 = __get_dashboard_state();
-  return pGVar1->field3668_0x108c;
+  return pGVar1->field3672_0x108c;
 }
 
 

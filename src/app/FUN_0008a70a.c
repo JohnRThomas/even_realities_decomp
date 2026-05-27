@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0008a70a
+ * Function: $_?_FUN_0008a70a
  * Entry:    0008a70a
- * Prototype: undefined __stdcall FUN_0008a70a(int * param_1, int param_2, char * param_3, int param_4)
+ * Prototype: undefined __stdcall $_?_FUN_0008a70a(int * param_1, int param_2, char * param_3, int param_4)
  */
 
 
-void FUN_0008a70a(int *param_1,int param_2,char *param_3,int param_4)
+void ____FUN_0008a70a(int *param_1,int param_2,char *param_3,int param_4)
 
 {
   int iVar1;

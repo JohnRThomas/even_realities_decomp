@@ -42,15 +42,15 @@ set_brightness_lum_base(int param_1,undefined4 param_2,undefined4 *param_3,undef
     puVar8[4] = bVar1;
     if (cVar2 == '\x01') {
       pGVar4 = __get_dashboard_state();
-      pGVar4->field3447_0xedc = uVar7;
+      pGVar4->field3451_0xedc = uVar7;
     }
     else if (cVar2 == '\x02') {
       pGVar4 = __get_dashboard_state();
-      pGVar4->field3448_0xede = uVar7;
+      pGVar4->field3452_0xede = uVar7;
     }
     else if (cVar2 == '\0') {
       pGVar4 = __get_dashboard_state();
-      pGVar4->field3446_0xeda = uVar7;
+      pGVar4->field3450_0xeda = uVar7;
     }
     pGVar4 = __get_dashboard_state();
     *(ushort *)&pGVar4->field_0xed8 = uVar7;

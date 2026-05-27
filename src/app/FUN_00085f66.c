@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00085f66
+ * Function: $_?_FUN_00085f66
  * Entry:    00085f66
- * Prototype: undefined4 __stdcall FUN_00085f66(int param_1, undefined4 param_2, int param_3)
+ * Prototype: undefined4 __stdcall $_?_FUN_00085f66(int param_1, undefined4 param_2, int param_3)
  */
 
 
-undefined4 FUN_00085f66(int param_1,undefined4 param_2,int param_3)
+undefined4 ____FUN_00085f66(int param_1,undefined4 param_2,int param_3)
 
 {
   undefined2 *puVar1;
@@ -20,7 +20,7 @@ undefined4 FUN_00085f66(int param_1,undefined4 param_2,int param_3)
   else {
     uVar2 = 0x2801;
   }
-  FUN_00086f1e((net_buf *)(param_1 + 0xc),uVar2);
+  ____FUN_00086f1e((net_buf *)(param_1 + 0xc),uVar2);
   return 0;
 }
 

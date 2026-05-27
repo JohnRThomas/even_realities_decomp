@@ -25,9 +25,9 @@ undefined4 ble_write_thread(uint8_t *param_1,undefined4 param_2)
       (pGVar3->__work_mode_sem).count != 0)))) {
     timeout.ticks._4_4_ = 0xffffffff;
     timeout.ticks._0_4_ = uVar4;
-    z_impl_k_mutex_lock((k_mutex *)&GLOBAL_STATE.sem_1,timeout);
+    z_impl_k_mutex_lock(&GLOBAL_STATE.sem_1,timeout);
     iVar2 = bt_nus_send((bt_conn *)0x0,param_1,(uint16_t)param_2);
-    z_impl_k_mutex_unlock((k_mutex *)&GLOBAL_STATE.sem_1);
+    z_impl_k_mutex_unlock(&GLOBAL_STATE.sem_1);
     if (iVar2 == 0) {
       return 0;
     }

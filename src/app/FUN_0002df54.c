@@ -14,7 +14,8 @@ undefined4 FUN_0002df54(int param_1,undefined4 param_2)
     }
     return param_2;
   }
-  return 0x1e13380;
+                    /* 31536000 = 1 year in seconds */
+  return 31536000;
 }
 
 

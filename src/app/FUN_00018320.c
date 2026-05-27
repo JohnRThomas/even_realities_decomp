@@ -8,7 +8,7 @@
 void * FUN_00018320(void)
 
 {
-  return GLOBAL_STATE.sem_1.poll_events.prev;
+  return (void *)GLOBAL_STATE._52_4_;
 }
 
 

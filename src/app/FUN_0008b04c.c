@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0008b04c
+ * Function: $_?_FUN_0008b04c
  * Entry:    0008b04c
- * Prototype: byte * __stdcall FUN_0008b04c(int param_1, byte * param_2)
+ * Prototype: byte * __stdcall $_?_FUN_0008b04c(int param_1, byte * param_2)
  */
 
 
-byte * FUN_0008b04c(int param_1,byte *param_2)
+byte * ____FUN_0008b04c(int param_1,byte *param_2)
 
 {
   byte *pbVar1;

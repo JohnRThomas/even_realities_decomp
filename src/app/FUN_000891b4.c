@@ -1,11 +1,11 @@
 /*
- * Function: FUN_000891b4
+ * Function: $_?_FUN_000891b4
  * Entry:    000891b4
- * Prototype: undefined4 __stdcall FUN_000891b4(int param_1, int param_2, int param_3)
+ * Prototype: undefined4 __stdcall $_?_FUN_000891b4(int param_1, int param_2, int param_3)
  */
 
 
-undefined4 FUN_000891b4(int param_1,int param_2,int param_3)
+undefined4 ____FUN_000891b4(int param_1,int param_2,int param_3)
 
 {
   metal_io_region *io;

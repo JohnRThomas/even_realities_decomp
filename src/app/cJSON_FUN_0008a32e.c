@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0008a32e
+ * Function: $_?_cJSON_FUN_0008a32e
  * Entry:    0008a32e
- * Prototype: undefined4 __stdcall FUN_0008a32e(int * param_1, int param_2, undefined4 * param_3, uint * param_4)
+ * Prototype: undefined4 __stdcall $_?_cJSON_FUN_0008a32e(int * param_1, int param_2, undefined4 * param_3, uint * param_4)
  */
 
 
-undefined4 FUN_0008a32e(int *param_1,int param_2,undefined4 *param_3,uint *param_4)
+undefined4 ____cJSON_FUN_0008a32e(int *param_1,int param_2,undefined4 *param_3,uint *param_4)
 
 {
   int iVar1;
@@ -15,7 +15,8 @@ undefined4 FUN_0008a32e(int *param_1,int param_2,undefined4 *param_3,uint *param
   uint local_64;
   
   if ((*(short *)(param_2 + 0xe) < 0) ||
-     (iVar1 = FUN_0007b0f4(param_1,(int)*(short *)(param_2 + 0xe),(int)auStack_68), iVar1 < 0)) {
+     (iVar1 = ____cJSON_FUN_0007b0f4(param_1,(int)*(short *)(param_2 + 0xe),(int)auStack_68),
+     iVar1 < 0)) {
     uVar2 = 0;
     if ((*(ushort *)(param_2 + 0xc) & 0x80) == 0) {
       uVar3 = 0x400;

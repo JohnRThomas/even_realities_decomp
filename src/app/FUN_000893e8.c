@@ -1,11 +1,11 @@
 /*
- * Function: FUN_000893e8
+ * Function: $_?_FUN_000893e8
  * Entry:    000893e8
- * Prototype: undefined1 __stdcall FUN_000893e8(int param_1)
+ * Prototype: undefined1 __stdcall $_?_FUN_000893e8(int param_1)
  */
 
 
-undefined1 FUN_000893e8(int param_1)
+undefined1 ____FUN_000893e8(int param_1)
 
 {
   bool bVar1;

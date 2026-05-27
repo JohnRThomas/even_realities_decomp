@@ -1,11 +1,11 @@
 /*
- * Function: FUN_000854dc
+ * Function: $_?_attr_cb_FUN_000854dc
  * Entry:    000854dc
- * Prototype: undefined4 __stdcall FUN_000854dc(int * param_1, undefined2 param_2, int * param_3)
+ * Prototype: undefined4 __stdcall $_?_attr_cb_FUN_000854dc(int * param_1, undefined2 param_2, int * param_3)
  */
 
 
-undefined4 FUN_000854dc(int *param_1,undefined2 param_2,int *param_3)
+undefined4 ____attr_cb_FUN_000854dc(int *param_1,undefined2 param_2,int *param_3)
 
 {
   undefined1 *puVar1;
