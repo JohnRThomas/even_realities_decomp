@@ -20,7 +20,7 @@ set_battery_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undef
     uVar1 = 0xffffffff;
   }
   else {
-    FUN_00028d88();
+    __get_charger_device();
     puVar5 = (undefined1 *)*param_3;
     *puVar5 = 0x11;
     puVar5[1] = 1;

@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0008706c
+ * Function: $_?_crypto_init_FUN_0008706c
  * Entry:    0008706c
- * Prototype: undefined4 __stdcall FUN_0008706c(void)
+ * Prototype: undefined4 __stdcall $_?_crypto_init_FUN_0008706c(void)
  */
 
 
-undefined4 FUN_0008706c(void)
+undefined4 ____crypto_init_FUN_0008706c(void)
 
 {
   int iVar1;

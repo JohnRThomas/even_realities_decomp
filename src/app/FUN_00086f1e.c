@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00086f1e
+ * Function: $_?_FUN_00086f1e
  * Entry:    00086f1e
- * Prototype: undefined __stdcall FUN_00086f1e(net_buf * param_1, undefined4 param_2)
+ * Prototype: undefined __stdcall $_?_FUN_00086f1e(net_buf * param_1, undefined4 param_2)
  */
 
 
-void FUN_00086f1e(net_buf *param_1,undefined4 param_2)
+void ____FUN_00086f1e(net_buf *param_1,undefined4 param_2)
 
 {
   undefined1 *puVar1;

@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00085f2a
+ * Function: $_?_FUN_00085f2a
  * Entry:    00085f2a
- * Prototype: undefined4 __stdcall FUN_00085f2a(int param_1, undefined4 param_2, int param_3)
+ * Prototype: undefined4 __stdcall $_?_FUN_00085f2a(int param_1, undefined4 param_2, int param_3)
  */
 
 
-undefined4 FUN_00085f2a(int param_1,undefined4 param_2,int param_3)
+undefined4 ____FUN_00085f2a(int param_1,undefined4 param_2,int param_3)
 
 {
   undefined2 *puVar1;

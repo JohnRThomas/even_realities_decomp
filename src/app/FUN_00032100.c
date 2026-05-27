@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00032100
+ * Function: $_?_FUN_00032100
  * Entry:    00032100
- * Prototype: int __stdcall FUN_00032100(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+ * Prototype: int __stdcall $_?_FUN_00032100(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-int FUN_00032100(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+int ____FUN_00032100(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   int iVar1;

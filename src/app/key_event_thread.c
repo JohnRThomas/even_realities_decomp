@@ -54,15 +54,15 @@ void key_event_thread(char *param_1)
   undefined4 local_24;
   undefined4 extraout_r2;
   
-  FUN_0002b978();
+  __init_key_event_sem();
 LAB_0002b9a8:
-  while ((pGVar4 = __get_dashboard_state(), pGVar4->field_0x1 == '\x01' ||
-         (pGVar4 = __get_dashboard_state(), pGVar4->field_0x1 == '\b'))) {
+  while ((pGVar4 = __get_dashboard_state(), pGVar4->field_0x1 == 1 ||
+         (pGVar4 = __get_dashboard_state(), pGVar4->field_0x1 == 8))) {
     z_impl_k_sleep((k_timeout_t)0x28000);
   }
   timeout.ticks._4_4_ = 0xffffffff;
   timeout.ticks._0_4_ = extraout_r1;
-  iVar5 = z_impl_k_sem_take((k_sem *)&DAT_200084fc,timeout);
+  iVar5 = z_impl_k_sem_take(&__key_event_sem,timeout);
   if (iVar5 != 0) goto switchD_0002bbac_default;
   uVar10 = 0;
   uVar8 = extraout_r1_00;
@@ -560,7 +560,7 @@ LAB_0002ba9e:
     goto switchD_0002bbac_default;
   }
   if (param_1[0xd5] != '\x06') goto switchD_0002bbac_default;
-  cVar1 = FUN_00038b18();
+  cVar1 = __get_pane_mode();
   local_24._0_2_ = 0x102;
   if (cVar1 == '\0') {
     bVar2 = FUN_00038ac8();

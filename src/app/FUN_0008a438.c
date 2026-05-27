@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0008a438
+ * Function: $_?_FUN_0008a438
  * Entry:    0008a438
- * Prototype: uint __stdcall FUN_0008a438(int * param_1, uint param_2, int * param_3)
+ * Prototype: uint __stdcall $_?_FUN_0008a438(int * param_1, uint param_2, int * param_3)
  */
 
 
-uint FUN_0008a438(int *param_1,uint param_2,int *param_3)
+uint ____FUN_0008a438(int *param_1,uint param_2,int *param_3)
 
 {
   int iVar1;

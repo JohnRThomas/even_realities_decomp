@@ -28,7 +28,7 @@ device * __enter_dpd(device *param_1,int param_2,undefined4 param_3,undefined4 p
       if (param_2 != 1) {
         return (device *)0xffffff7a;
       }
-      pdVar3 = (device *)____pinctrl_apply_state((pinctrl_dev_config *)p_config[0xd],bVar1);
+      pdVar3 = (device *)pinctrl_apply_state((pinctrl_dev_config *)p_config[0xd],bVar1);
       if ((int)pdVar3 < 0) {
         return pdVar3;
       }
@@ -59,7 +59,7 @@ device * __enter_dpd(device *param_1,int param_2,undefined4 param_3,undefined4 p
         return pdVar3;
       }
       nrfx_qspi_uninit();
-      uVar4 = ____pinctrl_apply_state((pinctrl_dev_config *)p_config[0xd],'\x01');
+      uVar4 = pinctrl_apply_state((pinctrl_dev_config *)p_config[0xd],'\x01');
       return (device *)(uVar4 & (int)uVar4 >> 0x1f);
     }
   }

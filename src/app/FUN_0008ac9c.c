@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0008ac9c
+ * Function: $_?_FUN_0008ac9c
  * Entry:    0008ac9c
- * Prototype: undefined4 __stdcall FUN_0008ac9c(undefined4 param_1, uint * param_2, byte * param_3, int param_4)
+ * Prototype: undefined4 __stdcall $_?_FUN_0008ac9c(undefined4 param_1, uint * param_2, byte * param_3, int param_4)
  */
 
 
-undefined4 FUN_0008ac9c(undefined4 param_1,uint *param_2,byte *param_3,int param_4)
+undefined4 ____FUN_0008ac9c(undefined4 param_1,uint *param_2,byte *param_3,int param_4)
 
 {
   undefined4 uVar1;

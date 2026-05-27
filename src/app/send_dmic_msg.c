@@ -25,7 +25,7 @@ int send_dmic_msg(int param_1)
   local_e4 = CONCAT31(local_e4._1_3_,0xf1);
   do {
     local_e4._0_2_ = CONCAT11(DAT_20010dbb,(undefined1)local_e4);
-    dVar2 = FUN_0003018c();
+    dVar2 = __get_dmic_num_messages();
     if (dVar2 == 0) {
       return 0;
     }

@@ -125,7 +125,7 @@ void main(void)
   *(undefined1 *)s = 1;
   GLOBAL_STATE._0_4_ = s;
   k_sem_init(&s->sem_0,1);
-  k_sem_init(&s->sem_1,10);
+  k_sem_init((k_sem *)&s->sem_1,10);
   k_sem_init(&s->sem_2,1);
   k_sem_init(&s->sem_3,1);
   sem = &s->sem_4;
@@ -231,25 +231,25 @@ void main(void)
   if (buf_00 != (uint8_t *)0x0) {
     memset(buf_00,0,0x208);
   }
-  s->field3664_0x1080[1] = 0xff;
-  s->field3664_0x1080[2] = 0xff;
-  s->field3664_0x1080[3] = 0xff;
-  s->field3664_0x1080[4] = 0xff;
-  *(undefined4 *)(s->field3664_0x1080 + 4) = 0xffffffff;
-  *(undefined2 *)((int)&s->field3665_0x1087 + 1) = 0;
-  register_ipc_service_context(&s->ipc_service_context,s->field3664_0x1080 + 1,0x1081);
+  s->field3668_0x1080[1] = 0xff;
+  s->field3668_0x1080[2] = 0xff;
+  s->field3668_0x1080[3] = 0xff;
+  s->field3668_0x1080[4] = 0xff;
+  *(undefined4 *)(s->field3668_0x1080 + 4) = 0xffffffff;
+  *(undefined2 *)((int)&s->field3669_0x1087 + 1) = 0;
+  register_ipc_service_context(&s->ipc_service_context,s->field3668_0x1080 + 1,0x1081);
   s->field_0x6e4 = 1;
-  s->field1584_0x6e8 = "cpuapp-hw-id";
+  s->field1588_0x6e8 = "cpuapp-hw-id";
   *(undefined4 *)&s->field_0x6ec = 0x1638d;
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x6e4);
   s->field_0x6f0 = 6;
-  s->field1593_0x6f4 = "cpunet-esbm-cpu-sync";
+  s->field1597_0x6f4 = "cpunet-esbm-cpu-sync";
   *(undefined4 *)&s->field_0x6f8 = 0x16c6d;
   s->field_0x6fc = 4;
-  s->field1602_0x700 = "cpunet-esbs";
+  s->field1606_0x700 = "cpunet-esbs";
   *(undefined4 *)&s->field_0x704 = 0x158c5;
   s->field_0x708 = 5;
-  s->field1611_0x70c = "cpunet-esbs-ctrl";
+  s->field1615_0x70c = "cpunet-esbs-ctrl";
   *(undefined1 **)&s->field_0x710 = &LAB_0007f2b4_1;
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x6f0);
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x6fc);
@@ -348,7 +348,7 @@ LAB_00017458:
     iVar11 = FUN_00025bd0((uint)bVar2,extraout_r1_06,extraout_r2_07,in_stack_ffffffcc);
     FUN_00026618(iVar11,extraout_r1_07,extraout_r2_08);
     s->field_0x10d5 = 0;
-    *(undefined2 *)&s->field_0xed8 = s->field3448_0xede;
+    *(undefined2 *)&s->field_0xed8 = s->field3452_0xede;
     s->field_0x10a4 = 0;
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
@@ -356,7 +356,7 @@ LAB_00017458:
         uVar10 = extraout_r2_10;
       }
       else {
-        ble_printk("%s(): exit!\n","init_context",(uint)(ushort)s->field3448_0xede,BLE_DEBUG);
+        ble_printk("%s(): exit!\n","init_context",(uint)(ushort)s->field3452_0xede,BLE_DEBUG);
         uVar10 = extraout_r2_09;
       }
       goto LAB_00017458;

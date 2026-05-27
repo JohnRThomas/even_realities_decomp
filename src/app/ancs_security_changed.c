@@ -39,10 +39,10 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
       pkVar3 = k_work_delayable_from_work((k_work *)param_1);
       cVar2 = FUN_00033d5c();
       if ((cVar2 == '\0') &&
-         (pGVar4 = __get_dashboard_state(), *(char *)((int)&pGVar4->field3665_0x1087 + 1) == '\x01')
+         (pGVar4 = __get_dashboard_state(), *(char *)((int)&pGVar4->field3669_0x1087 + 1) == '\x01')
          ) {
         pGVar4 = __get_dashboard_state();
-        iVar5 = memcmp(pGVar4->field3664_0x1080 + 1,pkVar3,7);
+        iVar5 = memcmp(pGVar4->field3668_0x1080 + 1,pkVar3,7);
         if (iVar5 == 0) {
           discover_gattp(param_1,extraout_r1,extraout_r2_00);
         }
