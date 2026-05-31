@@ -172,14 +172,14 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
               ble_printk("%s(): en:%s\n\n","spec_ble_command_hook",&local_5a0,BLE_DEBUG);
             }
           }
-          uVar7 = FUN_0008a1b6(&local_5c0);
+          uVar7 = __newlib_FUN_0008a1b6(&local_5c0);
           iVar2 = uVar7 * 0x3c + 0xe1a;
           local_520 = 7;
           uStack_51f = (undefined1)iVar2;
           cStack_51e = (char)((uint)iVar2 >> 8);
           uStack_51d = (undefined1)((uint)iVar2 >> 0x10);
           uStack_51c = (undefined1)((uint)iVar2 >> 0x18);
-          uVar7 = FUN_0008a1b6(&local_5a0);
+          uVar7 = __newlib_FUN_0008a1b6(&local_5a0);
           local_51b = (undefined1)uVar7;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
@@ -224,7 +224,7 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
             }
           }
           memcpy(&local_5c4,pcVar3,(int)pcVar16 - (int)pcVar3);
-          uVar7 = FUN_0008a1b6(&local_5c4);
+          uVar7 = __newlib_FUN_0008a1b6(&local_5c4);
           if (LOG_LEVEL < 3) {
             if (uVar7 == 4) goto LAB_0000f2fc;
             uVar12 = extraout_r2_13;
@@ -386,7 +386,7 @@ LAB_0000effe:
             return uVar12;
           }
           local_520 = (byte)uVar7;
-          uVar7 = FUN_0008a1b6(&local_5a0);
+          uVar7 = __newlib_FUN_0008a1b6(&local_5a0);
           uStack_51f = (undefined1)uVar7;
           uVar7 = extraout_r2_16;
           if (2 < LOG_LEVEL) {
@@ -477,7 +477,7 @@ LAB_0000f660:
         }
         iVar2 = strncmp((char *)&local_520,"#b",2);
         if (iVar2 == 0) {
-          uVar7 = FUN_0008a1b6(&cStack_51e);
+          uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
           *(char *)((int)pvVar1 + -0x77a) = (char)uVar7;
           printk("\n*****test set esb channel***** %d\n",uVar7 & 0xff);
 LAB_0000f6c2:
@@ -530,7 +530,7 @@ LAB_0000f9f4:
                 }
                 iVar2 = strncmp((char *)&local_520,"#l",2);
                 if (iVar2 == 0) {
-                  uVar7 = FUN_0008a1b6(&cStack_51e);
+                  uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
                   BLE_DEBUG = (int)(uVar7 != 1);
                   return 0;
                 }
@@ -548,14 +548,14 @@ LAB_0000f9f4:
                   pvVar11 = memset(&local_41c,0,0x10);
                   uVar7 = opt3007_get_max_lux(pvVar11,extraout_r1,extraout_r2_22);
                   if (cStack_51e != '\0') {
-                    uVar5 = FUN_0008a1b6(&cStack_51e);
+                    uVar5 = __newlib_FUN_0008a1b6(&cStack_51e);
                     if (uVar5 < 2) {
-                      uVar5 = FUN_0008a1b6(&cStack_51e);
+                      uVar5 = __newlib_FUN_0008a1b6(&cStack_51e);
                       *(char *)((int)pvVar1 + 0x820) = (char)uVar5;
                     }
                     else {
                       *(undefined1 *)((int)pvVar1 + 0x820) = 0;
-                      uVar5 = FUN_0008a1b6(&cStack_51e);
+                      uVar5 = __newlib_FUN_0008a1b6(&cStack_51e);
                       *(char *)((int)pvVar1 + 0x759) = (char)uVar5;
                     }
                   }
@@ -578,7 +578,7 @@ LAB_0000f93c:
                   local_420 = strncmp((char *)&local_520,"#u",2);
                   if (local_420 == 0) {
                     memset(&local_41c,0,0x10);
-                    uVar7 = FUN_0008a1b6(&cStack_51e);
+                    uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
                     *(char *)((int)pvVar1 + 0x77c) = (char)uVar7;
                     __sprintf_chk((char *)&local_420,0,0x14,"level: %d",uVar7 & 0xff);
                     (**(code **)((int)pvVar1 + 0xc))(&local_420,0x14);
@@ -624,7 +624,7 @@ LAB_0000fade:
                   local_420 = strncmp((char *)&local_520,"#j",2);
                   if (local_420 == 0) {
                     memset(&local_41c,0,0x10);
-                    uVar7 = FUN_0008a1b6(&cStack_51e);
+                    uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
                     if (uVar7 == 1) {
                       (**(code **)((int)pvVar1 + 0x394))();
                       (**(code **)((int)pvVar1 + 0x3b8))((int)pvVar1 + 0x3b4);
@@ -645,7 +645,7 @@ LAB_0000fade:
                         return 0xffffffff;
                       }
                       memset(&local_41c,0,0x3c);
-                      uVar7 = FUN_0008a1b6(&cStack_51e);
+                      uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
                       if (uVar7 == 1) {
                         *(undefined4 *)((int)pvVar1 + 0x8e4) = 0x19;
                       }
@@ -682,7 +682,7 @@ LAB_0000fade:
                       uVar7 = 7;
                     }
                     else {
-                      uVar7 = FUN_0008a1b6(&cStack_51e);
+                      uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
                     }
                     change_work_mode(uVar7);
                   }
@@ -700,7 +700,7 @@ LAB_0000f756:
             iVar2 = -0x714;
             goto LAB_0000f748;
           }
-          uVar7 = FUN_0008a1b6(&cStack_51e);
+          uVar7 = __newlib_FUN_0008a1b6(&cStack_51e);
           *(char *)((int)pvVar1 + 0x872) = (char)uVar7;
           printk("\n*****display mode***** %d\n",uVar7 & 0xff);
           if (*(char *)((int)pvVar1 + 0x872) == '\v') {
@@ -724,7 +724,7 @@ LAB_0000f748:
         return 0;
       }
       pcVar3 = pcVar3 + 3;
-      uVar5 = FUN_0008a1b6(pcVar3);
+      uVar5 = __newlib_FUN_0008a1b6(pcVar3);
       uVar7 = extraout_r2_08;
       if (2 < (int)uVar5) {
         if (BLE_DEBUG == 0) {
@@ -741,7 +741,7 @@ LAB_0000f748:
     }
     else {
       pcVar3 = pcVar3 + 3;
-      uVar5 = FUN_0008a1b6(pcVar3);
+      uVar5 = __newlib_FUN_0008a1b6(pcVar3);
       uVar7 = extraout_r2_05;
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
@@ -759,7 +759,7 @@ LAB_0000f748:
   }
   else {
     pcVar3 = pcVar3 + 3;
-    uVar5 = FUN_0008a1b6(pcVar3);
+    uVar5 = __newlib_FUN_0008a1b6(pcVar3);
     uVar7 = extraout_r2_02;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {

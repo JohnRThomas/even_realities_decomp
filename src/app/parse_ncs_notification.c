@@ -26,7 +26,7 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
   
   object = cJSON_Parse(param_1);
   if (object != (cJSON *)0x0) {
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(object,"ncs_notification");
+    pcVar1 = cJSON_GetObjectItem(object,"ncs_notification");
     if (pcVar1 == (cJSON *)0x0) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
@@ -40,14 +40,14 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
       cJSON_Delete(object);
       return;
     }
-    pcVar2 = cJSON_GetObjectItemCaseSensitive(pcVar1,"app_identifier");
-    pcVar3 = cJSON_GetObjectItemCaseSensitive(pcVar1,"title");
-    pcVar4 = cJSON_GetObjectItemCaseSensitive(pcVar1,"subtitle");
-    pcVar5 = cJSON_GetObjectItemCaseSensitive(pcVar1,"message");
-    pcVar6 = cJSON_GetObjectItemCaseSensitive(pcVar1,"date");
-    pcVar7 = cJSON_GetObjectItemCaseSensitive(pcVar1,"display_name");
-    pcVar8 = cJSON_GetObjectItemCaseSensitive(pcVar1,"msg_id");
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(pcVar1,"action");
+    pcVar2 = cJSON_GetObjectItem(pcVar1,"app_identifier");
+    pcVar3 = cJSON_GetObjectItem(pcVar1,"title");
+    pcVar4 = cJSON_GetObjectItem(pcVar1,"subtitle");
+    pcVar5 = cJSON_GetObjectItem(pcVar1,"message");
+    pcVar6 = cJSON_GetObjectItem(pcVar1,"date");
+    pcVar7 = cJSON_GetObjectItem(pcVar1,"display_name");
+    pcVar8 = cJSON_GetObjectItem(pcVar1,"msg_id");
+    pcVar1 = cJSON_GetObjectItem(pcVar1,"action");
     memset(param_2,0,0x1b4);
     if (pcVar2 != (cJSON *)0x0) {
       strcpy((char *)(param_2 + 4),pcVar2->valuestring);

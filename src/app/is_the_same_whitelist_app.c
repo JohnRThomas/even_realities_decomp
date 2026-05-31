@@ -68,7 +68,7 @@ char * __is_the_same_whitelist_app(char *param_1)
     }
     return (char *)0x0;
   }
-  pcVar1 = cJSON_GetObjectItemCaseSensitive(object,"call_enable");
+  pcVar1 = cJSON_GetObjectItem(object,"call_enable");
   pcVar10 = extraout_r1_00;
   if (pcVar1 == (cJSON *)0x0) {
     pcVar2 = "callEnable is NULL !\n";
@@ -87,7 +87,7 @@ LAB_00036724:
       pcVar2 = "callEnable is not the same !\n";
       goto LAB_00036724;
     }
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(object,"msg_enable");
+    pcVar1 = cJSON_GetObjectItem(object,"msg_enable");
     pcVar10 = extraout_r1_01;
     if (pcVar1 == (cJSON *)0x0) {
       pcVar2 = "msgEnable is NULL !\n";
@@ -99,7 +99,7 @@ LAB_00036724:
       pcVar2 = "msgEnable is not the same !\n";
       goto LAB_00036724;
     }
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(object,"calendar_enable");
+    pcVar1 = cJSON_GetObjectItem(object,"calendar_enable");
     pcVar10 = extraout_r1_02;
     if (pcVar1 == (cJSON *)0x0) {
       pcVar2 = "jsonCalendarEnable is NULL !\n";
@@ -111,7 +111,7 @@ LAB_00036724:
       pcVar2 = "calendarEnable is not the same !\n";
       goto LAB_00036724;
     }
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(object,"ios_mail_enable");
+    pcVar1 = cJSON_GetObjectItem(object,"ios_mail_enable");
     pcVar10 = extraout_r1_03;
     if (pcVar1 == (cJSON *)0x0) {
       pcVar2 = "iosMailEnableJson is NULL !\n";
@@ -123,14 +123,14 @@ LAB_00036724:
       pcVar2 = "iosMailEnable is not the same !\n";
       goto LAB_00036724;
     }
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(object,s_M_s_fuentes_en_la_app_000be53f + 0x13);
+    pcVar1 = cJSON_GetObjectItem(object,s_M_s_fuentes_en_la_app_000be53f + 0x13);
     if (pcVar1 == (cJSON *)0x0) {
       pcVar2 = "appJson is NULL !\n";
       pcVar10 = extraout_r1_04;
       uVar7 = extraout_r2_04;
       goto LAB_00036724;
     }
-    pcVar3 = cJSON_GetObjectItemCaseSensitive(pcVar1,"enable");
+    pcVar3 = cJSON_GetObjectItem(pcVar1,"enable");
     if (pcVar3 == (cJSON *)0x0) {
       pcVar2 = "appEnableJson is NULL !\n";
       pcVar10 = extraout_r1_05;
@@ -143,7 +143,7 @@ LAB_00036724:
       pcVar2 = "appEnable is not the same !\n";
       goto LAB_00036724;
     }
-    pcVar1 = cJSON_GetObjectItemCaseSensitive(pcVar1,"list");
+    pcVar1 = cJSON_GetObjectItem(pcVar1,"list");
     if (pcVar1 == (cJSON *)0x0) {
       pcVar2 = "appListJson is NULL !\n";
       pcVar10 = extraout_r1_06;
@@ -182,14 +182,14 @@ LAB_00036860:
           }
         }
         else {
-          pcVar5 = cJSON_GetObjectItemCaseSensitive(pcVar3,"id");
+          pcVar5 = cJSON_GetObjectItem(pcVar3,"id");
           if (pcVar5 == (cJSON *)0x0) {
             pcVar2 = "appIdJson is NULL !\n";
             pcVar10 = extraout_r1_10;
             uVar8 = extraout_r2_10;
             goto LAB_00036860;
           }
-          pcVar3 = cJSON_GetObjectItemCaseSensitive(pcVar3,"name");
+          pcVar3 = cJSON_GetObjectItem(pcVar3,"name");
           if (pcVar3 == (cJSON *)0x0) {
             pcVar2 = "appNameJson is NULL !\n";
             pcVar10 = extraout_r1_11;

@@ -1,13 +1,11 @@
 /*
- * Function: FUN_0007acd0
+ * Function: $_newlib_FUN_0007acd0
  * Entry:    0007acd0
- * Prototype: uint __stdcall FUN_0007acd0(undefined4 * param_1, byte * param_2, undefined4 * param_3, uint param_4)
+ * Prototype: uint __stdcall $_newlib_FUN_0007acd0(undefined4 * param_1, byte * param_2, undefined4 * param_3, uint param_4)
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-uint FUN_0007acd0(undefined4 *param_1,byte *param_2,undefined4 *param_3,uint param_4)
+uint __newlib_FUN_0007acd0(undefined4 *param_1,byte *param_2,undefined4 *param_3,uint param_4)
 
 {
   int *piVar1;
@@ -30,8 +28,8 @@ uint FUN_0007acd0(undefined4 *param_1,byte *param_2,undefined4 *param_3,uint par
     pbVar5 = pbVar6;
     pbVar6 = pbVar5 + 1;
     uVar4 = (uint)*pbVar5;
-    uVar7 = *(byte *)(_FUN_0007adc8 + uVar4) & 8;
-  } while ((*(byte *)(_FUN_0007adc8 + uVar4) & 8) != 0);
+    uVar7 = (byte)(&DAT_000f6aa2)[uVar4] & 8;
+  } while (((&DAT_000f6aa2)[uVar4] & 8) != 0);
   if (uVar4 == 0x2d) {
     uVar4 = (uint)*pbVar6;
     uVar7 = 1;

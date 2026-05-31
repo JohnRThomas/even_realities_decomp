@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00075f40
+ * Function: $_?_FUN_00075f40
  * Entry:    00075f40
- * Prototype: int __stdcall FUN_00075f40(int * sem, uint initial_count, uint limit)
+ * Prototype: int __stdcall $_?_FUN_00075f40(int * sem, uint initial_count, uint limit)
  */
 
 
-int FUN_00075f40(int *sem,uint initial_count,uint limit)
+int ____FUN_00075f40(int *sem,uint initial_count,uint limit)
 
 {
   uint uVar1;

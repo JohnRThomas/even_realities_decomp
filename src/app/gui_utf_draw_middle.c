@@ -39,7 +39,7 @@ gui_utf_draw_middle(undefined4 param_1,char *param_2,uint param_3,int param_4,in
   
   local_2da = 0;
   local_2d8 = (void *)0x0;
-  puVar4 = (ushort *)print_string(param_2,&local_2da);
+  puVar4 = (ushort *)FUN_0004b160(param_2,&local_2da);
   local_2d4 = 0;
   local_2d0 = 0;
   if (param_10 == 0) {

@@ -1,24 +1,25 @@
 # Decompilation of FW for Even Realities G1 Glasses
 
-An attempt to recreate the FW for ER G1 glasses.
+An attempt to recreate the FW for ER G1 glasses. This project uses the NRF DFu as a base to start getting the code to compile because the glasses are known to update with that method.
 
 ## Progress
 
 ### App Core
 |         Date | Function Progress | App Progress | Total Functions | Labeled Functions | Excluded Zephyr Functions | App Functions | Labeled App Functions |
 | ------------ | ----------------- | ------------ | --------------- | ----------------- | ------------------------- | ------------- | --------------------- |
+| *2026-05-31* |            86.86% |       56.71% |            2945 |              2558 |                      2058 |           887 |                   503 |
+| *2026-05-26* |            86.40% |       56.03% |            2942 |              2542 |                      2046 |           896 |                   502 |
+| *2026-05-25* |            85.34% |       54.11% |            2939 |              2508 |                      2015 |           924 |                   500 |
+| *2026-05-24* |            84.41% |       52.49% |            2938 |              2480 |                      1995 |           943 |                   495 |
+| *2026-05-20* |               84% |          52% |            2885 |              2426 |                      1915 |           970 |                   511 |
+| *2026-05-19* |               84% |          52% |            2885 |              2426 |                      1912 |           973 |                   514 |
+| *2026-05-13* |               84% |          52% |            2848 |              2395 |                      1889 |           959 |                   506 |
+| *2026-05-12* |               83% |          53% |            2847 |              2391 |                      1869 |           978 |                   522 |
 | *2026-05-04* |               83% |          52% |            2836 |              2366 |                      1845 |           991 |                   521 |
 | *2026-05-03* |               83% |          52% |            2817 |              2352 |                      1843 |           974 |                   509 |
 | *2026-05-02* |               83% |              |            2816 |              2351 |                      1889 |               |                       |
 | *2026-04-19* |               82% |              |            2805 |              2305 |                      1063 |               |                       |
 | *2026-04-05* |               81% |              |            2805 |              2290 |                      1033 |               |                       |
-| *2026-05-12* |               83% |          53% |            2847 |              2391 |                      1869 |           978 |                   522 |
-| *2026-05-13* |               84% |          52% |            2848 |              2395 |                      1889 |           959 |                   506 |
-| *2026-05-19* |               84% |          52% |            2885 |              2426 |                      1912 |           973 |                   514 |
-| *2026-05-20* |               84% |          52% |            2885 |              2426 |                      1915 |           970 |                   511 |
-| *2026-05-24* |            84.41% |       52.49% |            2938 |              2480 |                      1995 |           943 |                   495 |
-| *2026-05-25* |            85.34% |       54.11% |            2939 |              2508 |                      2015 |           924 |                   500 |
-| *2026-05-26* |            86.40% |       56.03% |            2942 |              2542 |                      2046 |                 896 |                   502 |
 
 ### Net Core
 Based on the size of the binary shipped and the size of the binary generated from the DFU OTA sample code, likely this binary has no custom code in it.
@@ -26,6 +27,7 @@ Based on the size of the binary shipped and the size of the binary generated fro
 | ------------ | ----------------- | ------------ | --------------- | ----------------- | ------------------------- | ------------- | --------------------- |
 | *2026-05-03* |                0% |           0% |            1625 |                 0 |                         0 |             0 |                     0 |
 
+#
 
 # Simultaneous DFU for App and Net Core of nRF5340
 

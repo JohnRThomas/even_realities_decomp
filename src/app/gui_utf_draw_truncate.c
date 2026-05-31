@@ -37,7 +37,7 @@ gui_utf_draw_truncate
   
   local_2da = 0;
   local_2d8 = (void *)0x0;
-  puVar2 = (ushort *)print_string(param_2,&local_2da);
+  puVar2 = (ushort *)FUN_0004b160(param_2,&local_2da);
   local_2d4 = 0;
   local_2d0 = 0;
   if (param_10 == 0) {

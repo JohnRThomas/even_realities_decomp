@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0007ade0
+ * Function: $_newlib_FUN_0007ade0
  * Entry:    0007ade0
- * Prototype: uint __stdcall FUN_0007ade0(undefined4 * param_1, byte * param_2, undefined4 * param_3, uint param_4)
+ * Prototype: uint __stdcall $_newlib_FUN_0007ade0(undefined4 * param_1, byte * param_2, undefined4 * param_3, uint param_4)
  */
 
 
-uint FUN_0007ade0(undefined4 *param_1,byte *param_2,undefined4 *param_3,uint param_4)
+uint __newlib_FUN_0007ade0(undefined4 *param_1,byte *param_2,undefined4 *param_3,uint param_4)
 
 {
   uint uVar1;

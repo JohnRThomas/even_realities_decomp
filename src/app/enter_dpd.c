@@ -32,7 +32,7 @@ device * __enter_dpd(device *param_1,int param_2,undefined4 param_3,undefined4 p
       if ((int)pdVar3 < 0) {
         return pdVar3;
       }
-      nVar2 = nrfx_qspi_init(p_config,(nrfx_qspi_handler_t)0x87083,p_context);
+      nVar2 = nrfx_qspi_init(p_config,(nrfx_qspi_handler_t *)0x87083,p_context);
       if ((undefined1 *)(uint)nVar2 != &DAT_0bad0000) {
         return (device *)0xfffffffb;
       }
