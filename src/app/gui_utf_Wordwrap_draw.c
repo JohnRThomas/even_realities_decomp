@@ -53,7 +53,7 @@ gui_utf_Wordwrap_draw
   
   local_302 = 0;
   local_300 = (void *)0x0;
-  puVar3 = (ushort *)print_string(param_2,&local_302);
+  puVar3 = (ushort *)FUN_0004b160(param_2,&local_302);
   local_2fc = 0;
   local_2f8 = 0;
   if (param_10 == 0) {
