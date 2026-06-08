@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 find_chinese_bitmap_by_unicode(int param_1,short param_2,short param_3)
 
 {

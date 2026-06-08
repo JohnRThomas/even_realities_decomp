@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 get_keyboard_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -38,7 +40,7 @@ get_keyboard_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,unde
     pGVar2 = __get_dashboard_state();
     printk("before aw9320x_diff_get: %d\n",*(undefined4 *)&pGVar2->field_0x1090);
     pGVar2 = __get_dashboard_state();
-    FUN_000805b4((uint *)&pGVar2->field_0x1090,extraout_r1,extraout_r2);
+    aw9320x_diff_get((uint *)&pGVar2->field_0x1090,extraout_r1,extraout_r2);
     pGVar2 = __get_dashboard_state();
     printk("after aw9320x_diff_get: %d\n",*(undefined4 *)&pGVar2->field_0x1090);
     uVar1 = 0;

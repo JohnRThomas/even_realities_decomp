@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
 
 {
@@ -37,7 +39,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
     pGVar2 = __get_dashboard_state();
     iVar4 = *(int *)&pGVar2->field_0x101c;
     pGVar2 = __get_dashboard_state();
-    pGVar2->field_0xed5 = *(undefined1 *)(iVar4 + 0x20);
+    (pGVar2->jdb_panel_context).field834_0x369 = *(byte *)(iVar4 + 0x20);
     gui_screen_clear(pGVar2,extraout_r1,extraout_r2);
   }
   else {

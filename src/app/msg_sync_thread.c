@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void msg_sync_thread(int param_1,uint param_2,undefined4 param_3)
 
 {

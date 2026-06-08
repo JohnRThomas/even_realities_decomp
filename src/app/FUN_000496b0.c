@@ -1,11 +1,13 @@
 /*
  * Function: FUN_000496b0
  * Entry:    000496b0
- * Prototype: undefined4 __stdcall FUN_000496b0(int param_1, int param_2)
+ * Prototype: undefined4 __stdcall FUN_000496b0(int * param_1, int param_2)
  */
 
 
-undefined4 FUN_000496b0(int param_1,int param_2)
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
+undefined4 FUN_000496b0(int *param_1,int param_2)
 
 {
   byte bVar1;
@@ -38,9 +40,9 @@ undefined4 FUN_000496b0(int param_1,int param_2)
       uVar3 = FUN_00080a3a();
       _clean_fb_data(param_1,bVar1 & 1,iVar6,uVar2 + 0x3a,iVar7 + 0x14,uVar3 + 0x54);
       pGVar8 = __get_dashboard_state();
-      iVar9 = *(int *)&pGVar8->field_0xeb4;
+      iVar9 = *(int *)&(pGVar8->jdb_panel_context).field_0x348;
       pGVar8 = __get_dashboard_state();
-      iVar10 = *(int *)&pGVar8->field_0xeb8;
+      iVar10 = *(int *)&(pGVar8->jdb_panel_context).field_0x34c;
       iVar6 = FUN_000809e2();
       uVar2 = FUN_00080a3a();
       iVar7 = FUN_000809e2();

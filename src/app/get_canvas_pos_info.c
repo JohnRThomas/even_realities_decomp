@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 get_canvas_pos_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -24,10 +26,10 @@ get_canvas_pos_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,un
     puVar3[2] = 3;
     puVar3[3] = 4;
     pGVar2 = __get_dashboard_state();
-    *(undefined2 *)(puVar3 + 4) = pGVar2->field3671_0x108a;
+    *(undefined2 *)(puVar3 + 4) = pGVar2->field2794_0x108a;
     pGVar2 = __get_dashboard_state();
     uVar1 = 0;
-    *(undefined2 *)(puVar3 + 6) = pGVar2->field3672_0x108c;
+    *(undefined2 *)(puVar3 + 6) = pGVar2->field2795_0x108c;
     *param_4 = 8;
   }
   return uVar1;

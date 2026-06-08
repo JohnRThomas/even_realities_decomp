@@ -5,14 +5,16 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2)
 
 {
-  void *pvVar1;
+  int iVar1;
   uint uVar2;
   GlassesState *pGVar3;
   
-  pvVar1 = FUN_00018320();
+  iVar1 = FUN_00018320();
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
       printk("%s(): bt_ancs_data_source_handler response->command_id %d\n");
@@ -52,8 +54,8 @@ void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2)
          ((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x12' &&
           (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x13')))) {
         DAT_2000231c = GLOBAL_STATE.sem_8.wait_q.next;
-        *(uint *)((int)pvVar1 + 0x1e4) = (uint)(byte)GLOBAL_STATE.sem_8.wait_q.prev;
-        enqueue_ancs((void *)((int)pvVar1 + 0x34));
+        *(uint *)(iVar1 + 0x1e4) = (uint)(byte)GLOBAL_STATE.sem_8.wait_q.prev;
+        enqueue_ancs((void *)(iVar1 + 0x34));
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk(
@@ -66,8 +68,8 @@ void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2)
                        (uint)(byte)GLOBAL_STATE.sem_8.wait_q.prev);
           }
         }
-        memset((void *)((int)pvVar1 + 0x34),0,0x1b4);
-        k_sem_give((k_sem *)((int)pvVar1 + 0x1e8));
+        memset((void *)(iVar1 + 0x34),0,0x1b4);
+        k_sem_give((k_sem *)(iVar1 + 0x1e8));
         DAT_2001095f = '\0';
       }
     }

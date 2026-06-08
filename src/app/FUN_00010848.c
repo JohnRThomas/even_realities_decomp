@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 byte FUN_00010848(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {

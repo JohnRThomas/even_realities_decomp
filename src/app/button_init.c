@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
 
 {

@@ -5,10 +5,12 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 set_brightness(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
 {
-  char cVar1;
+  byte bVar1;
   undefined4 uVar2;
   GlassesState *pGVar3;
   code *pcVar4;
@@ -25,14 +27,14 @@ undefined4 set_brightness(int param_1,undefined4 param_2,undefined4 *param_3,und
     puVar5[1] = 1;
     puVar5[2] = 3;
     puVar5[3] = 1;
-    cVar1 = *(char *)(param_1 + 4);
+    bVar1 = *(byte *)(param_1 + 4);
     pGVar3 = __get_dashboard_state();
-    bVar6 = pGVar3->field_0xed5 == cVar1;
+    bVar6 = (pGVar3->jdb_panel_context).field834_0x369 == bVar1;
     if (!bVar6) {
       pGVar3 = __get_dashboard_state();
-      pcVar4 = *(code **)&pGVar3->field_0xb8c;
+      pcVar4 = (code *)(pGVar3->jdb_panel_context).set_brightness_cb;
       pGVar3 = __get_dashboard_state();
-      (*pcVar4)(&pGVar3->field_0xb6c,cVar1);
+      (*pcVar4)(&pGVar3->jdb_panel_context,bVar1);
     }
     puVar5[4] = bVar6;
     uVar2 = 0;

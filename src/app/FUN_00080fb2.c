@@ -1,20 +1,20 @@
 /*
  * Function: FUN_00080fb2
  * Entry:    00080fb2
- * Prototype: undefined4 __stdcall FUN_00080fb2(uint param_1)
+ * Prototype: int __stdcall FUN_00080fb2(uint param_1)
  */
 
 
-undefined4 FUN_00080fb2(uint param_1)
+int FUN_00080fb2(uint param_1)
 
 {
-  undefined4 uVar1;
+  int iVar1;
   
-  uVar1 = 0xffffffff;
-  if (0x1f < param_1) {
-    uVar1 = 0;
+  iVar1 = -1;
+  if (31 < param_1) {
+    iVar1 = 0;
   }
-  return uVar1;
+  return iVar1;
 }
 
 

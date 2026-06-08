@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 even_ai_v2_info_reflash(undefined4 param_1,int param_2)
 
 {
@@ -359,7 +361,7 @@ LAB_00049e54:
     pGVar7 = __get_dashboard_state();
     bVar18 = 5;
     bVar19 = 4;
-    bVar3 = (pGVar7->field_0xec1 + '\x01') * '\n';
+    bVar3 = ((pGVar7->jdb_panel_context).field_0x355 + '\x01') * '\n';
     iVar12 = iVar12 + 0x18c;
     goto LAB_00049f56;
   case 7:
@@ -371,7 +373,7 @@ LAB_00049e54:
     iVar12 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     pGVar7 = __get_dashboard_state();
-    bVar3 = (byte)(((uint)(byte)pGVar7->field_0xec0 * 100 + 100) / 9);
+    bVar3 = (byte)(((uint)(byte)(pGVar7->jdb_panel_context).field_0x354 * 100 + 100) / 9);
     bVar18 = 9;
     bVar19 = 2;
     iVar12 = iVar12 + 0x18a;

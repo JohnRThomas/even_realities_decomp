@@ -8,6 +8,7 @@
 /* WARNING: Removing unreachable block (ram,0x0003d3f2) */
 /* WARNING: Removing unreachable block (ram,0x0003d104) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4 FUN_0003cdac(int param_1,int param_2)
 
@@ -211,9 +212,10 @@ undefined4 FUN_0003cdac(int param_1,int param_2)
         } while (uVar8 != 199);
         DAT_2000a9b0 = DAT_2000a9b0 + 1;
         pGVar12 = __get_dashboard_state();
-        iVar9 = *(int *)&pGVar12->field_0xeb4;
+        iVar9 = *(int *)&(pGVar12->jdb_panel_context).field_0x348;
         pGVar12 = __get_dashboard_state();
-        _reflash_fb_data_to_lcd(iVar9,*(int *)&pGVar12->field_0xeb8,0,0,0x280,199);
+        _reflash_fb_data_to_lcd
+                  (iVar9,*(int *)&(pGVar12->jdb_panel_context).field_0x34c,0,0,0x280,199);
       }
       FUN_0004540c();
       pGVar6 = __get_dashboard_state();

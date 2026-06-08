@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 ui_teleprompter_task(int param_1,undefined4 param_2,int param_3)
 
 {
@@ -71,9 +73,10 @@ undefined4 ui_teleprompter_task(int param_1,undefined4 param_2,int param_3)
   undefined4 extraout_r2_24;
   undefined4 extraout_r2_25;
   undefined4 extraout_r2_26;
-  int iVar17;
+  int *buffer;
   int extraout_r3;
   int extraout_r3_00;
+  int iVar17;
   int iVar18;
   bool bVar19;
   k_timeout_t timeout;
@@ -87,8 +90,8 @@ undefined4 ui_teleprompter_task(int param_1,undefined4 param_2,int param_3)
   undefined4 auStack_64 [16];
   
   pGVar7 = __get_dashboard_state();
-  iVar17 = param_1 + 0x24;
-  FUN_000452f0(iVar17);
+  buffer = (int *)(param_1 + 0x24);
+  FUN_000452f0(buffer);
   uVar8 = FUN_0004540c();
   uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48);
   uVar15 = extraout_r1;
@@ -242,10 +245,9 @@ LAB_0003f2f8:
                 do {
                   local_68 = 0x7050301;
                   auStack_64[0] = 0x7070707;
-                  iVar13 = *(int *)(iVar17 + uVar10 * 4);
-                  bVar2 = *(byte *)(iVar13 + iVar12);
+                  bVar2 = *(byte *)(buffer[uVar10] + iVar12);
                   if (bVar2 != 0) {
-                    *(byte *)(iVar13 + iVar12) =
+                    *(byte *)(buffer[uVar10] + iVar12) =
                          bVar2 & (&DAT_000accab)
                                  [iVar12 + (uint)*(byte *)((int)auStack_64 + iVar11 + -4) * 0x140 +
                                            (uVar10 % 0x1a) * 0xa00];
@@ -255,10 +257,11 @@ LAB_0003f2f8:
                 uVar10 = uVar10 + 1;
               } while (uVar10 != 199);
               pGVar7 = __get_dashboard_state();
-              iVar12 = *(int *)&pGVar7->field_0xeb4;
+              iVar12 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
               pGVar7 = __get_dashboard_state();
               iVar11 = iVar11 + 1;
-              _reflash_fb_data_to_lcd(iVar12,*(int *)&pGVar7->field_0xeb8,0,0,0x280,199);
+              _reflash_fb_data_to_lcd
+                        (iVar12,*(int *)&(pGVar7->jdb_panel_context).field_0x34c,0,0,0x280,199);
             } while (iVar11 != 4);
             FUN_0004540c();
             z_impl_k_sleep((k_timeout_t)0x1334);
@@ -298,19 +301,19 @@ LAB_0003f2a0:
         uVar4 = FUN_00080a3a();
         iVar12 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _clean_fb_data(iVar17,0,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
+        _clean_fb_data(buffer,0,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
         if (DAT_20004b64 == 1) {
-          iVar17 = FUN_000809e2();
+          iVar11 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           uVar23 = 0x1a;
         }
         else {
           if (DAT_20004b64 != 0) goto LAB_0003f6a0;
-          iVar17 = FUN_000809e2();
+          iVar11 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           uVar23 = 0x19;
         }
-        gui_bmp_bitmap_draw(uVar23,iVar17,uVar4 + 0x36,0,0,0);
+        gui_bmp_bitmap_draw(uVar23,iVar11,uVar4 + 0x36,0,0,0);
       }
 LAB_0003f6a0:
       pGVar7 = __get_dashboard_state();
@@ -358,32 +361,32 @@ LAB_0003f6a0:
       uVar4 = FUN_00080a3a();
       iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      _clean_fb_data(iVar17,0,iVar11,uVar4 + 0x36,iVar12 + 0x1e,uVar5 + 0x50);
+      _clean_fb_data(buffer,0,iVar11,uVar4 + 0x36,iVar12 + 0x1e,uVar5 + 0x50);
       pGVar7 = __get_dashboard_state();
-      iVar13 = *(int *)&pGVar7->field_0xeb4;
+      iVar17 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
       pGVar7 = __get_dashboard_state();
-      iVar18 = *(int *)&pGVar7->field_0xeb8;
-      iVar17 = FUN_000809e2();
-      uVar4 = FUN_00080a3a();
+      iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
       iVar11 = FUN_000809e2();
+      uVar4 = FUN_00080a3a();
+      iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      iVar12 = uVar5 + 0x50;
-      iVar11 = iVar11 + 0x1e;
+      iVar13 = uVar5 + 0x50;
+      iVar12 = iVar12 + 0x1e;
 LAB_0003f7c6:
-      _reflash_fb_data_to_lcd(iVar13,iVar18,iVar17,uVar4 + 0x36,iVar11,iVar12);
+      _reflash_fb_data_to_lcd(iVar17,iVar18,iVar11,uVar4 + 0x36,iVar12,iVar13);
       if (DAT_20004b64 == 1) {
-        iVar17 = FUN_000809e2();
+        iVar11 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         uVar23 = 0x1a;
       }
       else {
         uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48);
         if (DAT_20004b64 != 0) goto switchD_0003f274_default;
-        iVar17 = FUN_000809e2();
+        iVar11 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         uVar23 = 0x19;
       }
-      gui_bmp_bitmap_draw(uVar23,iVar17,uVar4 + 0x36,0,0,0);
+      gui_bmp_bitmap_draw(uVar23,iVar11,uVar4 + 0x36,0,0,0);
       uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48);
       goto switchD_0003f274_default;
     }
@@ -417,17 +420,17 @@ LAB_0003f7c6:
       uVar4 = FUN_00080a3a();
       iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      _clean_fb_data(iVar17,0,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
+      _clean_fb_data(buffer,0,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
       pGVar7 = __get_dashboard_state();
-      iVar13 = *(int *)&pGVar7->field_0xeb4;
+      iVar17 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
       pGVar7 = __get_dashboard_state();
-      iVar18 = *(int *)&pGVar7->field_0xeb8;
-      iVar17 = FUN_000809e2();
-      uVar4 = FUN_00080a3a();
+      iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
       iVar11 = FUN_000809e2();
+      uVar4 = FUN_00080a3a();
+      iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      iVar12 = uVar5 + 0x52;
-      iVar11 = iVar11 + 0x24;
+      iVar13 = uVar5 + 0x52;
+      iVar12 = iVar12 + 0x24;
       goto LAB_0003f7c6;
     }
     local_68 = (uint)local_68._3_1_ << 0x18;
@@ -441,13 +444,13 @@ LAB_0003f7c6:
                    BLE_DEBUG);
       }
     }
-    iVar17 = FUN_000809e2();
-    uVar4 = FUN_00080a3a();
     iVar11 = FUN_000809e2();
+    uVar4 = FUN_00080a3a();
+    iVar12 = FUN_000809e2();
     uVar5 = FUN_00080a3a();
-    iVar12 = uVar5 + 0x50;
-    iVar11 = iVar11 + 0x1e;
-    iVar13 = uVar4 + 0x36;
+    iVar13 = uVar5 + 0x50;
+    iVar12 = iVar12 + 0x1e;
+    iVar17 = uVar4 + 0x36;
     pcVar14 = (char *)&local_68;
     break;
   case 2:
@@ -565,22 +568,22 @@ LAB_0003f7c6:
           uVar4 = FUN_00080a3a();
           iVar13 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data(iVar17,0,iVar12,uVar4 + 0x36,iVar13 + 0x24,uVar5 + 0x52);
+          _clean_fb_data(buffer,0,iVar12,uVar4 + 0x36,iVar13 + 0x24,uVar5 + 0x52);
         }
         if (DAT_2000aa10 << 0x1e < 0) {
           pGVar7 = __get_dashboard_state();
-          iVar13 = *(int *)&pGVar7->field_0xeb4;
+          iVar17 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb8;
-          iVar17 = FUN_000809e2();
-          uVar4 = FUN_00080a3a();
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar12 = FUN_000809e2();
+          uVar4 = FUN_00080a3a();
+          iVar13 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _reflash_fb_data_to_lcd(iVar13,iVar18,iVar17,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
+          _reflash_fb_data_to_lcd(iVar17,iVar18,iVar12,uVar4 + 0x36,iVar13 + 0x24,uVar5 + 0x52);
         }
-        iVar17 = FUN_000809e2();
+        iVar12 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        gui_bmp_bitmap_draw(0x1b,iVar17,uVar4 + 0x36,0,0,0);
+        gui_bmp_bitmap_draw(0x1b,iVar12,uVar4 + 0x36,0,0,0);
         DAT_20004b5d = 1;
         DAT_20004b58 = iVar11 * 1000;
         uVar22 = FUN_00080894();
@@ -598,31 +601,31 @@ LAB_0003f7c6:
           uVar4 = FUN_00080a3a();
           iVar12 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data(iVar17,0,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
+          _clean_fb_data(buffer,0,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
           iVar11 = extraout_r2_11;
         }
         if (DAT_2000aa10 << 0x1e < 0) {
           pGVar7 = __get_dashboard_state();
-          iVar12 = *(int *)&pGVar7->field_0xeb4;
+          iVar13 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar13 = *(int *)&pGVar7->field_0xeb8;
-          iVar17 = FUN_000809e2();
-          uVar4 = FUN_00080a3a();
+          iVar17 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar11 = FUN_000809e2();
+          uVar4 = FUN_00080a3a();
+          iVar12 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _reflash_fb_data_to_lcd(iVar12,iVar13,iVar17,uVar4 + 0x36,iVar11 + 0x24,uVar5 + 0x52);
+          _reflash_fb_data_to_lcd(iVar13,iVar17,iVar11,uVar4 + 0x36,iVar12 + 0x24,uVar5 + 0x52);
           iVar11 = extraout_r2_12;
         }
         if (DAT_20004b64 == 1) {
-          iVar17 = FUN_000809e2();
+          iVar11 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           uVar10 = 0x1a;
 LAB_0003fac8:
-          gui_bmp_bitmap_draw(uVar10,iVar17,uVar4 + 0x36,0,0,0);
+          gui_bmp_bitmap_draw(uVar10,iVar11,uVar4 + 0x36,0,0,0);
           iVar11 = extraout_r2_13;
         }
         else if (DAT_20004b64 == 0) {
-          iVar17 = FUN_000809e2();
+          iVar11 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           uVar10 = 0x19;
           goto LAB_0003fac8;
@@ -639,9 +642,9 @@ LAB_0003fac8:
     }
 LAB_0004026c:
     if ((DAT_20004b64 == 2) && (uVar10 = (uint)DAT_20004b5d, uVar10 == 0)) {
-      iVar17 = FUN_000809e2();
+      iVar11 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      gui_bmp_dynamic_bitmap_draw(1,iVar17,uVar4 + 0x36);
+      gui_bmp_dynamic_bitmap_draw(1,iVar11,uVar4 + 0x36);
       uVar23 = uVar10;
     }
     DAT_20004b60 = DAT_20004b60 / 1000;
@@ -673,11 +676,11 @@ LAB_0004026c:
     snprintf((char *)&local_68,0x40,pcVar14,DAT_2000a9d0,DAT_2000a9cc,DAT_2000a9c8,uVar23);
     if (((DAT_2000a9d0 != DAT_2000a9c4) || (DAT_2000a9cc != DAT_2000a9c0)) ||
        (DAT_2000a9c8 != DAT_2000a9bc)) {
-      iVar17 = FUN_000809e2();
-      uVar4 = FUN_00080a3a();
       iVar11 = FUN_000809e2();
+      uVar4 = FUN_00080a3a();
+      iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_utf_draw(0,(char *)&local_68,0,iVar17,uVar4 + 0x6e,iVar11 + 0x50,uVar5 + 0x88,1,0,0,
+      gui_utf_draw(0,(char *)&local_68,0,iVar11,uVar4 + 0x6e,iVar12 + 0x50,uVar5 + 0x88,1,0,0,
                    (undefined *)0x0,0);
       DAT_2000a9c4 = DAT_2000a9d0;
       DAT_2000a9c0 = DAT_2000a9cc;
@@ -770,37 +773,37 @@ LAB_0004026c:
       DAT_20004b4c = (int)((ulonglong)uVar22 >> 0x20);
       DAT_20004b48 = (uint)uVar22;
       gui_screen_clear(DAT_20004b48,DAT_20004b4c,extraout_r2_21);
-      iVar17 = FUN_000809e2();
+      iVar11 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      gui_bmp_bitmap_draw(0x3f,iVar17,uVar4 + 0x3a,0,0,0);
+      gui_bmp_bitmap_draw(0x3f,iVar11,uVar4 + 0x3a,0,0,0);
       bVar3 = get_current_language();
       if (bVar3 == 6) {
-        iVar17 = FUN_000809e2();
-        uVar4 = FUN_00080a3a();
         iVar11 = FUN_000809e2();
-        uVar5 = FUN_00080a3a();
-        gui_utf_draw(0,"Teleprompter aufgrund einer",0,iVar17 + 0xa0,uVar4 + 0x37,iVar11 + 0x23a,
-                     uVar5 + 0x52,1,0,0,(undefined *)0x0,0);
-        iVar17 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar12 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        iVar11 = uVar5 + 0x6d;
-        iVar13 = uVar4 + 0x52;
+        gui_utf_draw(0,"Teleprompter aufgrund einer",0,iVar11 + 0xa0,uVar4 + 0x37,iVar12 + 0x23a,
+                     uVar5 + 0x52,1,0,0,(undefined *)0x0,0);
+        iVar11 = FUN_000809e2();
+        uVar4 = FUN_00080a3a();
+        iVar13 = FUN_000809e2();
+        uVar5 = FUN_00080a3a();
+        iVar12 = uVar5 + 0x6d;
+        iVar17 = uVar4 + 0x52;
         pcVar14 = "App-Trennung gestoppt.";
-        iVar17 = iVar17 + 0xb4;
+        iVar11 = iVar11 + 0xb4;
       }
       else {
-        iVar17 = FUN_000809e2();
+        iVar11 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        iVar12 = FUN_000809e2();
+        iVar13 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        iVar11 = uVar5 + 0x88;
-        iVar13 = uVar4 + 0x37;
+        iVar12 = uVar5 + 0x88;
+        iVar17 = uVar4 + 0x37;
         pcVar14 = "Teleprompt stopped due to app disconnection";
-        iVar17 = iVar17 + 0x4e;
+        iVar11 = iVar11 + 0x4e;
       }
-      gui_utf_draw(0,pcVar14,0,iVar17,iVar13,iVar12 + 0x23a,iVar11,1,0,0,(undefined *)0x0,0);
+      gui_utf_draw(0,pcVar14,0,iVar11,iVar17,iVar13 + 0x23a,iVar12,1,0,0,(undefined *)0x0,0);
       goto LAB_0003f99a;
     }
     uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48);
@@ -819,37 +822,37 @@ LAB_0004026c:
     DAT_20004b4c = (int)((ulonglong)uVar22 >> 0x20);
     DAT_20004b48 = (uint)uVar22;
     gui_screen_clear(DAT_20004b48,DAT_20004b4c,extraout_r2_22);
-    iVar17 = FUN_000809e2();
+    iVar11 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
-    gui_bmp_bitmap_draw(0x3f,iVar17,uVar4 + 0x3a,0,0,0);
+    gui_bmp_bitmap_draw(0x3f,iVar11,uVar4 + 0x3a,0,0,0);
     bVar3 = get_current_language();
     if (bVar3 == 6) {
-      iVar17 = FUN_000809e2();
-      uVar4 = FUN_00080a3a();
       iVar11 = FUN_000809e2();
+      uVar4 = FUN_00080a3a();
+      iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_utf_draw(0,"Teleprompter aufgrund einer",0,iVar17 + 0xa0,uVar4 + 0x37,iVar11 + 0x23a,
+      gui_utf_draw(0,"Teleprompter aufgrund einer",0,iVar11 + 0xa0,uVar4 + 0x37,iVar12 + 0x23a,
                    uVar5 + 0x52,1,0,0,(undefined *)0x0,0);
-      iVar17 = FUN_000809e2();
-      uVar4 = FUN_00080a3a();
       iVar11 = FUN_000809e2();
+      uVar4 = FUN_00080a3a();
+      iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      iVar11 = iVar11 + 0x23a;
-      iVar12 = uVar5 + 0x6d;
-      iVar13 = uVar4 + 0x52;
+      iVar12 = iVar12 + 0x23a;
+      iVar13 = uVar5 + 0x6d;
+      iVar17 = uVar4 + 0x52;
       pcVar14 = "App-Trennung gestoppt.";
-      iVar17 = iVar17 + 0xb4;
+      iVar11 = iVar11 + 0xb4;
     }
     else {
-      iVar17 = FUN_000809e2();
-      uVar4 = FUN_00080a3a();
       iVar11 = FUN_000809e2();
+      uVar4 = FUN_00080a3a();
+      iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      iVar12 = uVar5 + 0x88;
-      iVar11 = iVar11 + 0x23a;
-      iVar13 = uVar4 + 0x37;
+      iVar13 = uVar5 + 0x88;
+      iVar12 = iVar12 + 0x23a;
+      iVar17 = uVar4 + 0x37;
       pcVar14 = "Teleprompt stopped due to app disconnection";
-      iVar17 = iVar17 + 0x4e;
+      iVar11 = iVar11 + 0x4e;
     }
     break;
   case 3:
@@ -909,7 +912,7 @@ LAB_0003f99a:
   default:
     goto switchD_0003f274_default;
   }
-  gui_utf_draw(0,pcVar14,0,iVar17,iVar13,iVar11,iVar12,1,0,0,(undefined *)0x0,0);
+  gui_utf_draw(0,pcVar14,0,iVar11,iVar17,iVar12,iVar13,1,0,0,(undefined *)0x0,0);
   uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48);
 switchD_0003f274_default:
   DAT_20004b4c = (int)((ulonglong)uVar22 >> 0x20);

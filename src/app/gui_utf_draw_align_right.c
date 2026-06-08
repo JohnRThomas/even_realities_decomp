@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 gui_utf_draw_align_right
           (undefined4 param_1,char *param_2,uint param_3,uint param_4,int param_5,int param_6,
@@ -59,7 +61,7 @@ LAB_00047862:
     if (param_12 == 0) {
       iVar4 = FUN_000452e4();
       if (iVar4 << 0x1e < 0) {
-        _clean_fb_data(DAT_2000aa14,0,param_4,param_5,param_6,param_7);
+        _clean_fb_data(__frame_buffer,0,param_4,param_5,param_6,param_7);
       }
       uVar9 = 0;
       bVar2 = true;
@@ -142,14 +144,16 @@ LAB_00047862:
               }
               uVar9 = uVar9 + 1;
               if ((param_8 <= uVar9) || ((uint)(param_7 - param_5) <= uVar8)) break;
-              FUN_00080c02(DAT_2000aa14,local_2cc,sVar1,uVar13,local_2e8,uVar8 + param_5);
+              __copy_to_frame_buffer
+                        ((int)__frame_buffer,local_2cc,sVar1,uVar13,local_2e8,uVar8 + param_5);
               iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar11);
               local_2f8 = iVar4 + local_2d4;
               local_2f4 = local_2f8;
             }
             else {
-              FUN_00080c02(DAT_2000aa14,local_2cc,sVar1,uVar13,local_2e8 + local_2f8,uVar8 + param_5
-                          );
+              __copy_to_frame_buffer
+                        ((int)__frame_buffer,local_2cc,sVar1,uVar13,local_2e8 + local_2f8,
+                         uVar8 + param_5);
               iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar11);
               local_2f8 = local_2f8 + iVar4 + local_2d4;
             }
@@ -184,9 +188,11 @@ LAB_000476ec:
       iVar4 = FUN_000452e4();
       if (iVar4 << 0x1e < 0) {
         pGVar5 = __get_dashboard_state();
-        iVar4 = *(int *)&pGVar5->field_0xeb4;
+        iVar4 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
         pGVar5 = __get_dashboard_state();
-        _reflash_fb_data_to_lcd(iVar4,*(int *)&pGVar5->field_0xeb8,param_4,param_5,param_6,param_7);
+        _reflash_fb_data_to_lcd
+                  (iVar4,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,param_4,param_5,param_6,
+                   param_7);
       }
     }
   }

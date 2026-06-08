@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 ui_new_message_come_on_task(int param_1,undefined4 param_2,int param_3)
 
 {
@@ -142,10 +144,11 @@ undefined4 ui_new_message_come_on_task(int param_1,undefined4 param_2,int param_
               uVar6 = uVar6 + 1;
             } while (uVar6 != 199);
             pGVar4 = __get_dashboard_state();
-            iVar8 = *(int *)&pGVar4->field_0xeb4;
+            iVar8 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
             pGVar4 = __get_dashboard_state();
             iVar12 = iVar12 + 1;
-            _reflash_fb_data_to_lcd(iVar8,*(int *)&pGVar4->field_0xeb8,0,0,0x280,199);
+            _reflash_fb_data_to_lcd
+                      (iVar8,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,0,0,0x280,199);
           } while (iVar12 != 8);
           FUN_0004540c();
           DAT_2001c4e1 = '\x01';

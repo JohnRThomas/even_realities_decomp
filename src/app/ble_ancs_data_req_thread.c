@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
 
 {

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 process_for_new_message_come_on(byte *param_1,byte *param_2)
 
 {
@@ -532,13 +534,13 @@ LAB_0002e7a8:
       sVar16 = sVar16 + -1;
       z_impl_k_sleep(0x21,0);
     } while (sVar16 != 0);
-    iVar17 = 0;
+    iVar11 = 0;
     param_1[0xdc] = 0;
     FUN_00035abc(4);
     bVar4 = param_1[0xfee];
     pGVar8 = __get_dashboard_state();
-    uVar13 = FUN_0002df54((uint)bVar4,(uint)(byte)pGVar8->field_0x10d7);
-    param_1[0xdb] = (byte)uVar13;
+    iVar17 = FUN_0002df54((uint)bVar4,(uint)(byte)pGVar8->field_0x10d7);
+    param_1[0xdb] = (byte)iVar17;
     uVar13 = extraout_r1_09;
     while( true ) {
       while( true ) {
@@ -613,11 +615,11 @@ LAB_0002e7a8:
         goto LAB_0002e544;
       }
       if (param_1[0xd5] != 4) break;
-      iVar17 = iVar17 + 1;
+      iVar11 = iVar11 + 1;
       if (((param_1[0x10d6] != 0) && (*param_1 == 1)) &&
          ((((*param_2 == 1 && (cVar3 = FUN_000260dc(), cVar3 == '\0')) ||
            (cVar3 = FUN_000260dc(), cVar3 != '\0')) &&
-          ((((uint)(iVar17 * -0x33333333) >> 2 | iVar17 * 0x40000000) < 0xccccccd &&
+          ((((uint)(iVar11 * -0x33333333) >> 2 | iVar11 * 0x40000000) < 0xccccccd &&
            (param_1[0xdb] < 0x1e)))))) {
         param_1[0xdb] = param_1[0xdb] - 1;
       }
@@ -631,8 +633,8 @@ LAB_0002e55a:
   case 5:
     bVar4 = param_1[0xfee];
     pGVar8 = __get_dashboard_state();
-    uVar13 = FUN_0002df54((uint)bVar4,(uint)(byte)pGVar8->field_0x10d7);
-    param_1[0xdb] = (byte)uVar13;
+    iVar17 = FUN_0002df54((uint)bVar4,(uint)(byte)pGVar8->field_0x10d7);
+    param_1[0xdb] = (byte)iVar17;
     FUN_00035abc(2);
     pGVar8 = __get_dashboard_state();
     iVar11 = 0;
@@ -656,8 +658,8 @@ LAB_0002e1ae:
       if (iVar19 != iVar17) {
         bVar4 = param_1[0xfee];
         pGVar8 = __get_dashboard_state();
-        uVar13 = FUN_0002df54((uint)bVar4,(uint)(byte)pGVar8->field_0x10d7);
-        param_1[0xdb] = (byte)uVar13;
+        iVar17 = FUN_0002df54((uint)bVar4,(uint)(byte)pGVar8->field_0x10d7);
+        param_1[0xdb] = (byte)iVar17;
       }
     }
     if (param_1[0xd5] != 5) {

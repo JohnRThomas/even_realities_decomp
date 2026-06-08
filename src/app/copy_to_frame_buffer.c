@@ -1,11 +1,12 @@
 /*
- * Function: FUN_00080c02
+ * Function: ?_copy_to_frame_buffer
  * Entry:    00080c02
- * Prototype: int __stdcall FUN_00080c02(int param_1, void * param_2, size_t param_3, int param_4, int param_5, int param_6)
+ * Prototype: int __stdcall ?_copy_to_frame_buffer(int param_1, void * param_2, size_t param_3, int param_4, int param_5, int param_6)
  */
 
 
-int FUN_00080c02(int param_1,void *param_2,size_t param_3,int param_4,int param_5,int param_6)
+int __copy_to_frame_buffer
+              (int param_1,void *param_2,size_t param_3,int param_4,int param_5,int param_6)
 
 {
   int *piVar1;

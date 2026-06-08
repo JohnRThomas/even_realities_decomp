@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 FUN_0007f4a4(undefined1 param_1,undefined1 param_2,int param_3)
 
 {

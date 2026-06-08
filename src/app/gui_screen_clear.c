@@ -8,7 +8,7 @@
 undefined4 gui_screen_clear(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {
-  undefined1 *puVar1;
+  jdb_panel_context *pjVar1;
   undefined4 uVar2;
   undefined4 extraout_r2;
   
@@ -20,8 +20,8 @@ undefined4 gui_screen_clear(undefined4 param_1,undefined4 param_2,undefined4 par
       ble_printk("%s(): exec screen clear command....\n","gui_screen_clear",param_3,BLE_DEBUG);
     }
   }
-  puVar1 = __get_something_from_glasses_state();
-  if (*(int *)(puVar1 + 0x35c) == 0) {
+  pjVar1 = get_jdb_panel_context();
+  if (pjVar1->__initialized == 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         printk("%s(): c->init_done = 0,init failed, can\'t write data!\n");

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 gui_string_draw(uint param_1,byte *param_2,int param_3,int param_4,int param_5,int param_6,
                int *param_7)
@@ -33,7 +35,7 @@ gui_string_draw(uint param_1,byte *param_2,int param_3,int param_4,int param_5,i
   iVar2 = FUN_000452e4();
   iVar2 = iVar2 << 0x1e;
   if (iVar2 < 0) {
-    _clean_fb_data(DAT_2000aa14,0,param_3,param_4,param_5,param_6);
+    _clean_fb_data(__frame_buffer,0,param_3,param_4,param_5,param_6);
     iVar2 = extraout_r2;
   }
   iVar4 = param_3;
@@ -43,9 +45,11 @@ gui_string_draw(uint param_1,byte *param_2,int param_3,int param_4,int param_5,i
       iVar2 = FUN_000452e4();
       if (iVar2 << 0x1e < 0) {
         pGVar3 = __get_dashboard_state();
-        iVar2 = *(int *)&pGVar3->field_0xeb4;
+        iVar2 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
         pGVar3 = __get_dashboard_state();
-        _reflash_fb_data_to_lcd(iVar2,*(int *)&pGVar3->field_0xeb8,param_3,param_4,param_5,param_6);
+        _reflash_fb_data_to_lcd
+                  (iVar2,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,param_3,param_4,param_5,
+                   param_6);
       }
       if (param_7 != (int *)0x0) {
         *param_7 = iVar4 - param_3;
@@ -77,7 +81,8 @@ LAB_00047d48:
         }
       }
       else {
-        FUN_00080c02(DAT_2000aa14,local_2c[0],(int)local_34 / 2,local_30,iVar4,param_4);
+        __copy_to_frame_buffer
+                  ((int)__frame_buffer,local_2c[0],(int)local_34 / 2,local_30,iVar4,param_4);
         if ((*pbVar5 - 0x20 < 0x5f) && (param_1 == 3)) {
           iVar4 = local_34 + iVar4 + 3;
           iVar2 = extraout_r2_02;

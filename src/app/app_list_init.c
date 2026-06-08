@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00035fe0
+ * Function: app_list_init
  * Entry:    00035fe0
- * Prototype: undefined __stdcall FUN_00035fe0(void)
+ * Prototype: undefined __stdcall app_list_init(void)
  */
 
 
-void FUN_00035fe0(void)
+void app_list_init(void)
 
 {
   APP_WHITE_LIST_BUF = 10;
@@ -13,7 +13,7 @@ void FUN_00035fe0(void)
   DAT_2001aef8 = 0;
   FUN_00035a84();
   memset(&DAT_2000878c,0,0x2210);
-  __init_app_white_list();
+  load_app_white_list_from_flash();
   return;
 }
 

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 get_brightness_info(int param_1,uint param_2,undefined4 *param_3,undefined1 *param_4)
 
 {
@@ -25,7 +27,7 @@ undefined4 get_brightness_info(int param_1,uint param_2,undefined4 *param_3,unde
     puVar3[3] = 1;
     pGVar2 = __get_dashboard_state();
     uVar1 = 0;
-    puVar3[4] = pGVar2->field_0xed5;
+    puVar3[4] = (pGVar2->jdb_panel_context).field834_0x369;
     *param_4 = 5;
   }
   return uVar1;

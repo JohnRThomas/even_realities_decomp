@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 set_panel_voltage(int param_1,uint param_2,undefined4 *param_3,undefined1 *param_4)
 
 {
@@ -31,9 +33,9 @@ undefined4 set_panel_voltage(int param_1,uint param_2,undefined4 *param_3,undefi
   bVar1 = *(byte *)(param_1 + 4);
   if (bVar1 < 2) {
     pGVar2 = __get_dashboard_state();
-    if (pGVar2->field_0xed4 != bVar1) {
+    if ((pGVar2->jdb_panel_context).field_0x368 != bVar1) {
       pGVar2 = __get_dashboard_state();
-      pGVar2->field_0xed4 = bVar1;
+      (pGVar2->jdb_panel_context).field_0x368 = bVar1;
       pGVar2 = __get_dashboard_state();
       FUN_00024abc(pGVar2);
       cVar5 = '\0';

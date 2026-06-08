@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
 
 {
@@ -272,12 +274,12 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x8c,uVar4 + 1,iVar10 + 0xa4,
-                         uVar5 + 0x1c);
+          _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x8c,uVar4 + 1,
+                         iVar10 + 0xa4,uVar5 + 0x1c);
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&pGVar7->field_0xeb4;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb8;
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -331,12 +333,12 @@ LAB_0003aba8:
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0xd6,uVar4 + 1,iVar10 + 0x22e,
-                           uVar5 + 0x1c);
+            _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xd6,uVar4 + 1,
+                           iVar10 + 0x22e,uVar5 + 0x1c);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&pGVar7->field_0xeb4;
+            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&pGVar7->field_0xeb8;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -348,12 +350,12 @@ LAB_0003aba8:
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0xba,uVar4 + 0x1c,iVar10 + 0x238,
-                           uVar5 + 0x88);
+            _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xba,uVar4 + 0x1c,
+                           iVar10 + 0x238,uVar5 + 0x88);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&pGVar7->field_0xeb4;
+            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&pGVar7->field_0xeb8;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -744,12 +746,12 @@ LAB_0003b5b4:
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0xd4,uVar4 + 1,iVar10 + 0x23c,
-                           uVar5 + 0x1c);
+            _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xd4,uVar4 + 1,
+                           iVar10 + 0x23c,uVar5 + 0x1c);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&pGVar7->field_0xeb4;
+            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&pGVar7->field_0xeb8;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -761,12 +763,12 @@ LAB_0003b5b4:
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0xba,uVar4 + 0x1c,iVar10 + 0x234,
-                           uVar5 + 0x88);
+            _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xba,uVar4 + 0x1c,
+                           iVar10 + 0x234,uVar5 + 0x88);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&pGVar7->field_0xeb4;
+            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&pGVar7->field_0xeb8;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -1130,12 +1132,12 @@ LAB_0003a3c2:
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x60,uVar4 + 0x6d,iVar10 + 0x78,
-                       uVar5 + 0x88);
+        _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x60,uVar4 + 0x6d,
+                       iVar10 + 0x78,uVar5 + 0x88);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&pGVar7->field_0xeb4;
+        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&pGVar7->field_0xeb8;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -1249,12 +1251,12 @@ LAB_0003a9be:
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9,uVar4 + 0x1c,iVar10 + 0x240,
-                             uVar5 + 0x37);
+              _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
+                             iVar10 + 0x240,uVar5 + 0x37);
               pGVar7 = __get_dashboard_state();
-              iVar18 = *(int *)&pGVar7->field_0xeb4;
+              iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
               pGVar7 = __get_dashboard_state();
-              iVar19 = *(int *)&pGVar7->field_0xeb8;
+              iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
@@ -1272,12 +1274,12 @@ LAB_0003a9be:
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9,uVar4 + 0x1c,iVar10 + 0x240,
-                           uVar5 + 0x37);
+            _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
+                           iVar10 + 0x240,uVar5 + 0x37);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&pGVar7->field_0xeb4;
+            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&pGVar7->field_0xeb8;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -1429,12 +1431,12 @@ LAB_0003a9be:
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9,uVar4 + 0x1c,iVar10 + 0x240,
-                             uVar5 + 0x37);
+              _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
+                             iVar10 + 0x240,uVar5 + 0x37);
               pGVar7 = __get_dashboard_state();
-              iVar18 = *(int *)&pGVar7->field_0xeb4;
+              iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
               pGVar7 = __get_dashboard_state();
-              iVar19 = *(int *)&pGVar7->field_0xeb8;
+              iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
@@ -1452,12 +1454,12 @@ LAB_0003a9be:
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9,uVar4 + 0x1c,iVar10 + 0x240,
-                           uVar5 + 0x37);
+            _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
+                           iVar10 + 0x240,uVar5 + 0x37);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&pGVar7->field_0xeb4;
+            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&pGVar7->field_0xeb8;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -1591,12 +1593,12 @@ LAB_0003a9be:
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x8e,uVar4 + 0x6d,iVar10 + 0xa6,
-                         uVar5 + 0x88);
+          _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x8e,uVar4 + 0x6d,
+                         iVar10 + 0xa6,uVar5 + 0x88);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb4;
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&pGVar7->field_0xeb8;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -1656,12 +1658,12 @@ LAB_0003a9be:
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x208,
-                         uVar5 + 0x1c);
+          _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x128,uVar4 + 1,
+                         iVar10 + 0x208,uVar5 + 0x1c);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb4;
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&pGVar7->field_0xeb8;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -1673,12 +1675,12 @@ LAB_0003a9be:
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x10a,uVar4 + 0x1c,iVar10 + 0x208,
-                         uVar5 + 0x88);
+          _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x10a,uVar4 + 0x1c,
+                         iVar10 + 0x208,uVar5 + 0x88);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb4;
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&pGVar7->field_0xeb8;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -1904,12 +1906,12 @@ LAB_0003a97c:
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0xdc,uVar4 + 0x25,iVar10 + 0xf4,
-                       uVar5 + 0x40);
+        _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xdc,uVar4 + 0x25,
+                       iVar10 + 0xf4,uVar5 + 0x40);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&pGVar7->field_0xeb4;
+        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&pGVar7->field_0xeb8;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -2049,12 +2051,12 @@ LAB_00038fc6:
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,
-                       uVar5 + 0x1c);
+        _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x128,uVar4 + 1,
+                       iVar10 + 0x23a,uVar5 + 0x1c);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&pGVar7->field_0xeb4;
+        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&pGVar7->field_0xeb8;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -2065,12 +2067,12 @@ LAB_00038fc6:
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x10a,uVar4 + 0x1c,iVar10 + 0x232,
-                       uVar5 + 0x88);
+        _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x10a,uVar4 + 0x1c,
+                       iVar10 + 0x232,uVar5 + 0x88);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&pGVar7->field_0xeb4;
+        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&pGVar7->field_0xeb8;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -2448,12 +2450,12 @@ LAB_000399ce:
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,
-                         uVar5 + 0x1c);
+          _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x128,uVar4 + 1,
+                         iVar10 + 0x23a,uVar5 + 0x1c);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb4;
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&pGVar7->field_0xeb8;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -2465,12 +2467,12 @@ LAB_000399ce:
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _clean_fb_data((int)&pGVar7->field_0xb90,0,iVar9 + 0x10a,uVar4 + 0x1c,iVar10 + 0x232,
-                         uVar5 + 0x88);
+          _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x10a,uVar4 + 0x1c,
+                         iVar10 + 0x232,uVar5 + 0x88);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&pGVar7->field_0xeb4;
+          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&pGVar7->field_0xeb8;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar10 = FUN_000809e2();

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void cal_panel_canvas_coord(int *param_1,int *param_2)
 
 {
@@ -15,7 +17,7 @@ void cal_panel_canvas_coord(int *param_1,int *param_2)
   if (param_1 != (int *)0x0) {
     iVar3 = *param_1;
     pGVar1 = __get_dashboard_state();
-    switch(pGVar1->field_0xec1) {
+    switch((pGVar1->jdb_panel_context).field_0x355) {
     case 1:
       iVar2 = 0x16;
       break;
@@ -52,30 +54,30 @@ void cal_panel_canvas_coord(int *param_1,int *param_2)
       if (BLE_DEBUG == 0) {
         pGVar1 = __get_dashboard_state();
         printk("%s(): canvas_distance_gear:%d, pos_x:%d\n","cal_panel_canvas_coord",
-               (uint)(byte)pGVar1->field_0xec1,*param_1);
+               (uint)(byte)(pGVar1->jdb_panel_context).field_0x355,*param_1);
       }
       else {
         pGVar1 = __get_dashboard_state();
         ble_printk("%s(): canvas_distance_gear:%d, pos_x:%d\n","cal_panel_canvas_coord",
-                   (uint)(byte)pGVar1->field_0xec1,*param_1);
+                   (uint)(byte)(pGVar1->jdb_panel_context).field_0x355,*param_1);
       }
     }
   }
   if (param_2 != (int *)0x0) {
     iVar2 = *param_2;
     pGVar1 = __get_dashboard_state();
-    iVar3 = (8 - (uint)(byte)pGVar1->field_0xec0) * 0x23;
+    iVar3 = (8 - (uint)(byte)(pGVar1->jdb_panel_context).field_0x354) * 0x23;
     *param_2 = iVar3;
     if ((iVar3 - iVar2 != 0) && (1 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
         pGVar1 = __get_dashboard_state();
         printk("%s(): raster_height_gear:%d, pos_y:%d\n","cal_panel_canvas_coord",
-               (uint)(byte)pGVar1->field_0xec0,*param_2);
+               (uint)(byte)(pGVar1->jdb_panel_context).field_0x354,*param_2);
         return;
       }
       pGVar1 = __get_dashboard_state();
       ble_printk("%s(): raster_height_gear:%d, pos_y:%d\n","cal_panel_canvas_coord",
-                 (uint)(byte)pGVar1->field_0xec0,*param_2);
+                 (uint)(byte)(pGVar1->jdb_panel_context).field_0x354,*param_2);
       return;
     }
   }

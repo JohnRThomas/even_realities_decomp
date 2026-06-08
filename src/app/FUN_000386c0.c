@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void FUN_000386c0(void)
 
 {
@@ -29,12 +31,12 @@ void FUN_000386c0(void)
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _clean_fb_data((int)&pGVar5->field_0xb90,0,iVar6 + 0x10a,uVar3 + 0x1c,iVar7 + 0x234,
-                     uVar4 + 0x88);
+      _clean_fb_data(&(pGVar5->jdb_panel_context).field9_0x24,0,iVar6 + 0x10a,uVar3 + 0x1c,
+                     iVar7 + 0x234,uVar4 + 0x88);
       pGVar5 = __get_dashboard_state();
-      iVar9 = *(int *)&pGVar5->field_0xeb4;
+      iVar9 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
-      iVar10 = *(int *)&pGVar5->field_0xeb8;
+      iVar10 = *(int *)&(pGVar5->jdb_panel_context).field_0x34c;
       iVar6 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
@@ -57,12 +59,12 @@ void FUN_000386c0(void)
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _clean_fb_data((int)&pGVar5->field_0xb90,0,iVar6 + 0x10a,uVar3 + 0x1c,iVar7 + 0x234,
-                     uVar4 + 0x88);
+      _clean_fb_data(&(pGVar5->jdb_panel_context).field9_0x24,0,iVar6 + 0x10a,uVar3 + 0x1c,
+                     iVar7 + 0x234,uVar4 + 0x88);
       pGVar5 = __get_dashboard_state();
-      iVar9 = *(int *)&pGVar5->field_0xeb4;
+      iVar9 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
-      iVar10 = *(int *)&pGVar5->field_0xeb8;
+      iVar10 = *(int *)&(pGVar5->jdb_panel_context).field_0x34c;
       iVar6 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();

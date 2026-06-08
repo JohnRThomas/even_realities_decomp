@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 gui_utf_Wordwrap_draw
           (undefined4 param_1,char *param_2,uint param_3,int param_4,int param_5,int param_6,
@@ -74,7 +76,7 @@ LAB_00047c4c:
     if (param_12 == 0) {
       iVar4 = FUN_000452e4();
       if (iVar4 << 0x1e < 0) {
-        _clean_fb_data(DAT_2000aa14,0,param_4,param_5,param_6,param_7);
+        _clean_fb_data(__frame_buffer,0,param_4,param_5,param_6,param_7);
       }
       uVar15 = 0;
       uVar16 = 0;
@@ -208,15 +210,17 @@ LAB_000479d4:
               }
               uVar15 = uVar15 + 1;
               if ((param_8 <= uVar15) || ((uint)(param_7 - param_5) <= uVar14)) break;
-              FUN_00080c02(DAT_2000aa14,local_2cc,(int)local_2fc / 2,local_2f8,param_4,
-                           uVar14 + param_5);
+              __copy_to_frame_buffer
+                        ((int)__frame_buffer,local_2cc,(int)local_2fc / 2,local_2f8,param_4,
+                         uVar14 + param_5);
               iVar4 = FUN_000462b0((uint)*puVar18,(uint)puVar18[1]);
               uVar16 = iVar4 + local_2fc;
               uVar20 = uVar16;
             }
             else {
-              FUN_00080c02(DAT_2000aa14,local_2cc,(int)local_2fc / 2,local_2f8,param_4 + uVar20,
-                           uVar14 + param_5);
+              __copy_to_frame_buffer
+                        ((int)__frame_buffer,local_2cc,(int)local_2fc / 2,local_2f8,param_4 + uVar20
+                         ,uVar14 + param_5);
               iVar4 = FUN_000462b0((uint)*puVar18,(uint)puVar18[1]);
               uVar20 = uVar20 + iVar4 + local_2fc;
             }
@@ -254,9 +258,11 @@ LAB_00047a3c:
       iVar4 = FUN_000452e4();
       if (iVar4 << 0x1e < 0) {
         pGVar5 = __get_dashboard_state();
-        iVar4 = *(int *)&pGVar5->field_0xeb4;
+        iVar4 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
         pGVar5 = __get_dashboard_state();
-        _reflash_fb_data_to_lcd(iVar4,*(int *)&pGVar5->field_0xeb8,param_4,param_5,param_6,param_7);
+        _reflash_fb_data_to_lcd
+                  (iVar4,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,param_4,param_5,param_6,
+                   param_7);
       }
     }
   }

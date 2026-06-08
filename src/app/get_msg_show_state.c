@@ -5,13 +5,15 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void __get_msg_show_state(void)
 
 {
   byte bVar1;
   char cVar2;
   GlassesState *pGVar3;
-  undefined4 uVar4;
+  int iVar4;
   uint uVar5;
   undefined4 extraout_r2;
   undefined4 extraout_r3;
@@ -33,9 +35,9 @@ void __get_msg_show_state(void)
     pGVar3 = __get_dashboard_state();
     bVar1 = pGVar3->field_0xfee;
     pGVar3 = __get_dashboard_state();
-    uVar4 = FUN_0002df54((uint)bVar1,(uint)(byte)pGVar3->field_0x10d7);
+    iVar4 = FUN_0002df54((uint)bVar1,(uint)(byte)pGVar3->field_0x10d7);
     pGVar3 = __get_dashboard_state();
-    pGVar3->field_0xdb = (char)uVar4;
+    pGVar3->field_0xdb = (char)iVar4;
   }
   pGVar3 = __get_dashboard_state();
   uVar5 = FUN_00035310();
@@ -45,7 +47,8 @@ void __get_msg_show_state(void)
     FUN_00035abc(0);
     pGVar3 = __get_dashboard_state();
     if ((pGVar3->field_0xd5 != '\x01') &&
-       (pGVar3 = __get_dashboard_state(), *(char *)&pGVar3->imu_fusion_context == '\x02')) {
+       (pGVar3 = __get_dashboard_state(),
+       *(char *)&(pGVar3->jdb_panel_context).field850_0x37c == '\x02')) {
       pGVar3 = __get_dashboard_state();
       trigger_screen_state_change("IMU:wakeup:dashboard",(int)pGVar3,1,extraout_r3_00);
     }

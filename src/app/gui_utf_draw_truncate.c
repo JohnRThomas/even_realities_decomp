@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 gui_utf_draw_truncate
           (undefined4 param_1,char *param_2,uint param_3,int param_4,int param_5,int param_6,
@@ -58,7 +60,7 @@ LAB_00046fda:
     if (param_12 == 0) {
       iVar3 = FUN_000452e4();
       if (iVar3 << 0x1e < 0) {
-        _clean_fb_data(DAT_2000aa14,0,param_4,param_5,param_6,param_7);
+        _clean_fb_data(__frame_buffer,0,param_4,param_5,param_6,param_7);
       }
       uVar14 = 0;
       uVar8 = 0;
@@ -125,7 +127,7 @@ LAB_00046d06:
                   else {
                     iVar3 = FUN_000462b0((uint)puVar13[-1],(uint)*puVar13);
                     uVar9 = (uVar9 - local_2d4) - iVar3;
-                    _clean_fb_data(DAT_2000aa14,0,param_4 + uVar9,uVar8 + param_5,
+                    _clean_fb_data(__frame_buffer,0,param_4 + uVar9,uVar8 + param_5,
                                    local_2d4 + param_4 + uVar9,local_2d0 + uVar8 + param_5);
                   }
                   puVar13 = puVar13 + -1;
@@ -155,30 +157,36 @@ LAB_00046e2a:
                     pbVar7 = pbVar7 + 1;
                   }
                 }
-                FUN_00080c02(DAT_2000aa14,local_2cc,sVar11,uVar12,uVar9 + param_4,uVar8 + param_5);
+                __copy_to_frame_buffer
+                          ((int)__frame_buffer,local_2cc,sVar11,uVar12,uVar9 + param_4,
+                           uVar8 + param_5);
 LAB_00046eac:
                 iVar3 = FUN_000452e4();
                 if (-1 < iVar3 << 0x1e) {
                   return 0;
                 }
                 pGVar4 = __get_dashboard_state();
-                iVar3 = *(int *)&pGVar4->field_0xeb4;
+                iVar3 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
                 pGVar4 = __get_dashboard_state();
                 _reflash_fb_data_to_lcd
-                          (iVar3,*(int *)&pGVar4->field_0xeb8,param_4,param_5,param_6,param_7);
+                          (iVar3,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,param_4,param_5,
+                           param_6,param_7);
                 return 0;
               }
               uVar8 = uVar8 + uVar1;
               if (param_3 == 0) {
                 uVar8 = uVar8 + 1;
               }
-              FUN_00080c02(DAT_2000aa14,local_2cc,sVar11,uVar1,param_4,uVar8 + param_5);
+              __copy_to_frame_buffer
+                        ((int)__frame_buffer,local_2cc,sVar11,uVar1,param_4,uVar8 + param_5);
               iVar3 = FUN_000462b0((uint)*puVar2,(uint)puVar2[1]);
               uVar9 = local_2d4 + iVar3;
               local_2f0 = uVar9;
             }
             else {
-              FUN_00080c02(DAT_2000aa14,local_2cc,sVar11,uVar1,uVar9 + param_4,uVar8 + param_5);
+              __copy_to_frame_buffer
+                        ((int)__frame_buffer,local_2cc,sVar11,uVar1,uVar9 + param_4,uVar8 + param_5)
+              ;
               iVar3 = FUN_000462b0((uint)*puVar2,(uint)puVar2[1]);
               uVar9 = uVar9 + iVar3 + local_2d4;
             }

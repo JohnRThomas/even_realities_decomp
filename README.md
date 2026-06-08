@@ -7,6 +7,7 @@ An attempt to recreate the FW for ER G1 glasses. This project uses the NRF DFu a
 ### App Core
 |         Date | Function Progress | App Progress | Total Functions | Labeled Functions | Excluded Zephyr Functions | App Functions | Labeled App Functions |
 | ------------ | ----------------- | ------------ | --------------- | ----------------- | ------------------------- | ------------- | --------------------- |
+| *2026-06-07* |            87.10% |       57.24% |            2946 |              2566 |                      2062 |           884 |                   506 |
 | *2026-05-31* |            86.86% |       56.71% |            2945 |              2558 |                      2058 |           887 |                   503 |
 | *2026-05-26* |            86.40% |       56.03% |            2942 |              2542 |                      2046 |           896 |                   502 |
 | *2026-05-25* |            85.34% |       54.11% |            2939 |              2508 |                      2015 |           924 |                   500 |

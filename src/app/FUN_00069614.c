@@ -11,15 +11,13 @@ void __FUN_00069614(undefined4 param_1,int param_2,undefined4 param_3,uint param
   int iVar1;
   uint uVar2;
   uint uVar3;
-  undefined4 *puVar4;
+  int16_t **ppiVar4;
   bool bVar5;
-  int local_14;
-  int local_10;
-  uint local_c;
+  nrfx_pdm_evt_t local_14;
   
   uVar3 = Peripherals::PDM0_S.EVENTS_STARTED;
-  local_c._1_3_ = (uint3)(param_4 >> 8);
-  local_14._1_3_ = (uint3)((uint)param_2 >> 8);
+  local_14._9_3_ = SUB43(param_4 >> 8,0);
+  local_14._1_3_ = SUB43((uint)param_2 >> 8,0);
   if (uVar3 == 0) {
     uVar3 = Peripherals::PDM0_S.EVENTS_STOPPED;
     iVar1 = param_2;
@@ -28,22 +26,22 @@ void __FUN_00069614(undefined4 param_1,int param_2,undefined4 param_3,uint param
       Peripherals::PDM0_S.EVENTS_STOPPED = 0;
       uVar3 = Peripherals::PDM0_S.EVENTS_STOPPED;
       Peripherals::PDM0_S.ENABLE = 0;
-      DAT_2000bd29 = '\0';
-      local_10 = (&DAT_2000bd1c)[(byte)DAT_2000bd2a];
-      local_c = (uint)local_c._1_3_ << 8;
-      local_14 = (uint)local_14._1_3_ << 8;
-      if (local_10 != 0) {
-        (&DAT_2000bd1c)[(byte)DAT_2000bd2a] = 0;
-        (*DAT_2000bd18)(&local_14);
+      nrfx_pdm_m_cb.op_state = NRFX_PDM_STATE_IDLE;
+      local_14.buffer_released = nrfx_pdm_m_cb.buff_address[nrfx_pdm_m_cb.active_buffer];
+      local_14._8_4_ = (uint)(uint3)local_14._9_3_ << 8;
+      local_14._0_4_ = (uint)(uint3)local_14._1_3_ << 8;
+      if (local_14.buffer_released != (int16_t *)0x0) {
+        nrfx_pdm_m_cb.buff_address[nrfx_pdm_m_cb.active_buffer] = (int16_t *)0x0;
+        (*nrfx_pdm_m_cb.event_handler)(&local_14);
       }
-      local_10 = (&DAT_2000bd1c)[~(uint)(byte)DAT_2000bd2a & 1];
-      if (local_10 != 0) {
-        (&DAT_2000bd1c)[~(uint)(byte)DAT_2000bd2a & 1] = 0;
-        (*DAT_2000bd18)(&local_14);
+      local_14.buffer_released = nrfx_pdm_m_cb.buff_address[~(uint)nrfx_pdm_m_cb.active_buffer & 1];
+      if (local_14.buffer_released != (int16_t *)0x0) {
+        nrfx_pdm_m_cb.buff_address[~(uint)nrfx_pdm_m_cb.active_buffer & 1] = (int16_t *)0x0;
+        (*nrfx_pdm_m_cb.event_handler)(&local_14);
       }
-      DAT_2000bd2a._0_1_ = 0;
-      iVar1 = local_14;
-      uVar2 = local_c;
+      nrfx_pdm_m_cb.active_buffer = '\0';
+      iVar1 = local_14._0_4_;
+      uVar2 = local_14._8_4_;
     }
     goto LAB_0006968c;
   }
@@ -54,64 +52,65 @@ void __FUN_00069614(undefined4 param_1,int param_2,undefined4 param_3,uint param
     Peripherals::PDM0_S.EVENTS_STOPPED = 0;
     uVar3 = Peripherals::PDM0_S.EVENTS_STOPPED;
   }
-  uVar3 = ~(uint)(byte)DAT_2000bd2a & 1;
-  if (((&DAT_2000bd1c)[uVar3] == 0) && (DAT_2000bd29 != '\x02')) {
+  uVar3 = ~(uint)nrfx_pdm_m_cb.active_buffer & 1;
+  if ((nrfx_pdm_m_cb.buff_address[uVar3] == (int16_t *)0x0) &&
+     (nrfx_pdm_m_cb.op_state != NRFX_PDM_STATE_STARTING)) {
     iVar1 = param_2;
     uVar3 = param_4;
-    if (DAT_2000bd2a._1_1_ == '\0') {
-      local_14 = (uint)local_14._1_3_ << 8;
-      local_c = CONCAT31(local_c._1_3_,1);
-      DAT_2000bd2a._1_1_ = '\x01';
-      local_10 = 0;
+    if (nrfx_pdm_m_cb.error == '\0') {
+      local_14._0_4_ = (uint)(uint3)local_14._1_3_ << 8;
+      local_14.error = 1;
+      nrfx_pdm_m_cb.error = '\x01';
+      local_14.buffer_released = (int16_t *)0x0;
       goto LAB_0006967c;
     }
   }
   else {
-    bVar5 = DAT_2000bd29 == '\x02';
+    bVar5 = nrfx_pdm_m_cb.op_state == NRFX_PDM_STATE_STARTING;
     if (bVar5) {
-      puVar4 = (undefined4 *)0x1;
+      ppiVar4 = (int16_t **)0x1;
     }
     else {
-      puVar4 = &DAT_2000bd18 + (byte)DAT_2000bd2a;
+      ppiVar4 = nrfx_pdm_m_cb.buff_address + (nrfx_pdm_m_cb.active_buffer - 1);
     }
     if (bVar5) {
-      DAT_2000bd29 = (char)puVar4;
-      local_10 = 2;
+      nrfx_pdm_m_cb.op_state = (nrfx_pdm_state_t)ppiVar4;
+      local_14.buffer_released = (int16_t *)0x2;
     }
     else {
-      local_10 = puVar4[1];
-      puVar4[1] = 0;
+      local_14.buffer_released = ppiVar4[1];
+      ppiVar4[1] = (int16_t *)0x0;
     }
-    local_c = param_4 & 0xffffff00;
-    DAT_2000bd2a._1_1_ = '\0';
+    local_14._8_4_ = param_4 & 0xffffff00;
+    nrfx_pdm_m_cb.error = '\0';
     if (bVar5) {
-      local_10 = 0;
+      local_14.buffer_released = (int16_t *)0x0;
     }
     else {
-      DAT_2000bd2a._0_1_ = (byte)uVar3;
+      nrfx_pdm_m_cb.active_buffer = (uint8_t)uVar3;
     }
-    local_14 = CONCAT31(local_14._1_3_,1);
+    local_14.buffer_requested = true;
 LAB_0006967c:
-    (*DAT_2000bd18)(&local_14);
-    iVar1 = local_14;
-    uVar3 = local_c;
+    (*nrfx_pdm_m_cb.event_handler)(&local_14);
+    iVar1 = local_14._0_4_;
+    uVar3 = local_14._8_4_;
   }
-  local_c = uVar3;
-  local_14 = iVar1;
-  iVar1 = local_14;
-  uVar2 = local_c;
-  if (DAT_2000bd29 == '\x02') {
-    DAT_2000bd29 = '\x01';
+  local_14._8_4_ = uVar3;
+  local_14._0_4_ = iVar1;
+  iVar1 = local_14._0_4_;
+  uVar2 = local_14._8_4_;
+  if (nrfx_pdm_m_cb.op_state == NRFX_PDM_STATE_STARTING) {
+    nrfx_pdm_m_cb.op_state = NRFX_PDM_STATE_RUNNING;
   }
 LAB_0006968c:
-  local_c = uVar2;
-  local_14 = iVar1;
-  if (DAT_2000bd2c != '\0') {
-    local_14 = CONCAT31(local_14._1_3_,1);
-    local_10 = 0;
-    local_c = local_c & 0xffffff00;
-    DAT_2000bd2c = '\0';
-    (*DAT_2000bd18)(&local_14);
+  local_14._8_4_ = uVar2;
+  local_14._0_4_ = iVar1;
+  if (nrfx_pdm_m_cb.irq_buff_request != '\0') {
+    local_14.buffer_requested = true;
+    local_14.buffer_released = (int16_t *)0x0;
+    local_14._8_4_ = local_14._8_4_ & 0xffffff00;
+    nrfx_pdm_m_cb.irq_buff_request = '\0';
+    (*nrfx_pdm_m_cb.event_handler)(&local_14);
   }
   return;
 }

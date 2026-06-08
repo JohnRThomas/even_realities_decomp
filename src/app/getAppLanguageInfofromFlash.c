@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 param_3)
 
 {

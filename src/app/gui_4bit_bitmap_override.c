@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 gui_4bit_bitmap_override(uint param_1,uint param_2,uint param_3)
 
 {
@@ -21,15 +23,15 @@ undefined4 gui_4bit_bitmap_override(uint param_1,uint param_2,uint param_3)
   if ((param_2 < 0x281) && (param_3 < 0x1e1)) {
     iVar1 = resource_manger_get(4,param_1,&local_1c,&local_18,&local_14,(undefined1 *)0x0);
     if (-1 < iVar1) {
-      FUN_00080c4e(DAT_2000aa14,local_14,local_1c,local_18,param_2,param_3);
+      FUN_00080c4e(__frame_buffer,local_14,local_1c,local_18,param_2,param_3);
       iVar1 = FUN_000452e4();
       if (iVar1 << 0x1e < 0) {
         pGVar2 = __get_dashboard_state();
-        iVar1 = *(int *)&pGVar2->field_0xeb4;
+        iVar1 = *(int *)&(pGVar2->jdb_panel_context).field_0x348;
         pGVar2 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar1,*(int *)&pGVar2->field_0xeb8,param_2,param_3,local_1c + param_2,
-                   local_18 + param_3);
+                  (iVar1,*(int *)&(pGVar2->jdb_panel_context).field_0x34c,param_2,param_3,
+                   local_1c + param_2,local_18 + param_3);
       }
       return 0;
     }

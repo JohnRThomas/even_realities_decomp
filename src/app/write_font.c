@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 int __write_font(undefined4 param_1,void *param_2,size_t param_3)
 
 {

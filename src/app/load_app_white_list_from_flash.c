@@ -1,11 +1,11 @@
 /*
- * Function: ?_init_app_white_list
+ * Function: load_app_white_list_from_flash
  * Entry:    00036de0
- * Prototype: undefined __stdcall ?_init_app_white_list(void)
+ * Prototype: undefined __stdcall load_app_white_list_from_flash(void)
  */
 
 
-void __init_app_white_list(void)
+void load_app_white_list_from_flash(void)
 
 {
   int iVar1;

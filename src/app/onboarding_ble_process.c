@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 onboarding_ble_process(int param_1,int param_2,undefined2 *param_3,undefined2 *param_4)
 
 {
@@ -94,7 +96,8 @@ undefined4 onboarding_ble_process(int param_1,int param_2,undefined2 *param_3,un
     DAT_2001db44 = 0;
     DAT_2001db40 = 0;
     pGVar3 = __get_dashboard_state();
-    *(undefined1 *)(*(int *)(param_1 + 0x101c) + 3) = *(undefined1 *)&pGVar3->imu_fusion_context;
+    *(undefined1 *)(*(int *)(param_1 + 0x101c) + 3) =
+         *(undefined1 *)&(pGVar3->jdb_panel_context).field850_0x37c;
     if (*(char *)(*(int *)(param_1 + 0x101c) + 2) == '\x06') {
       *(undefined1 *)(*(int *)(param_1 + 0x101c) + 0x1f) = 0;
     }
@@ -122,7 +125,8 @@ LAB_00044c48:
   case 0x11:
     pGVar3 = __get_dashboard_state();
     pGVar4 = __get_dashboard_state();
-    *(undefined1 *)(*(int *)&pGVar4->field_0x101c + 3) = *(undefined1 *)&pGVar3->imu_fusion_context;
+    *(undefined1 *)(*(int *)&pGVar4->field_0x101c + 3) =
+         *(undefined1 *)&(pGVar3->jdb_panel_context).field850_0x37c;
   }
   FUN_00045444();
   uVar9 = CONCAT44(DAT_20004db4,DAT_20004db0);
@@ -162,9 +166,10 @@ LAB_00044c52:
         update_persist_task_status((int)pGVar3,0xe,2);
         pGVar3 = __get_dashboard_state();
         pGVar4 = __get_dashboard_state();
-        *(undefined1 *)(*(int *)&pGVar4->field_0x101c + 0x20) = pGVar3->field_0xed5;
+        *(byte *)(*(int *)&pGVar4->field_0x101c + 0x20) = (pGVar3->jdb_panel_context).field834_0x369
+        ;
         pGVar3 = __get_dashboard_state();
-        pGVar3->field_0xed5 = 0x2a;
+        (pGVar3->jdb_panel_context).field834_0x369 = 0x2a;
         uVar9 = CONCAT44(DAT_20004db4,DAT_20004db0);
       }
     }

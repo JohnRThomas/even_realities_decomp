@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 FUN_0003e10c(byte *param_1)
 
 {
@@ -23,9 +25,9 @@ undefined4 FUN_0003e10c(byte *param_1)
       uVar1 = FUN_00080a3a();
       FUN_00045460(iVar2,uVar1 + 0x36);
       pGVar3 = __get_dashboard_state();
-      iVar2 = *(int *)&pGVar3->field_0xeb4;
+      iVar2 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
       pGVar3 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar2,*(int *)&pGVar3->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar2,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,0,0,0x280,199);
     }
     iVar2 = FUN_000809e2();
     uVar1 = FUN_00080a3a();
@@ -40,9 +42,9 @@ undefined4 FUN_0003e10c(byte *param_1)
       uVar1 = FUN_00080a3a();
       FUN_00045460(iVar2,uVar1 + 0x36);
       pGVar3 = __get_dashboard_state();
-      iVar2 = *(int *)&pGVar3->field_0xeb4;
+      iVar2 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
       pGVar3 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar2,*(int *)&pGVar3->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar2,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,0,0,0x280,199);
     }
     iVar2 = FUN_000809e2();
     uVar1 = FUN_00080a3a();
@@ -61,9 +63,10 @@ undefined4 FUN_0003e10c(byte *param_1)
         uVar1 = FUN_00080a3a();
         FUN_00045460(iVar2,uVar1 + 0x36);
         pGVar3 = __get_dashboard_state();
-        iVar2 = *(int *)&pGVar3->field_0xeb4;
+        iVar2 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
         pGVar3 = __get_dashboard_state();
-        _reflash_fb_data_to_lcd(iVar2,*(int *)&pGVar3->field_0xeb8,0,0,0x280,199);
+        _reflash_fb_data_to_lcd
+                  (iVar2,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,0,0,0x280,199);
         return 0;
       }
       if (uVar5 - 0xc < 2) {
@@ -89,9 +92,9 @@ undefined4 FUN_0003e10c(byte *param_1)
       uVar1 = FUN_00080a3a();
       FUN_00045460(iVar2,uVar1 + 0x36);
       pGVar3 = __get_dashboard_state();
-      iVar2 = *(int *)&pGVar3->field_0xeb4;
+      iVar2 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
       pGVar3 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar2,*(int *)&pGVar3->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar2,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,0,0,0x280,199);
     }
     iVar2 = FUN_000809e2();
     uVar1 = FUN_00080a3a();

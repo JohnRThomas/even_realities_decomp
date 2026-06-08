@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3)
 
 {

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void FUN_00033e44(void)
 
 {
@@ -17,9 +19,10 @@ void FUN_00033e44(void)
   DAT_2001abc0 = 1;
   DAT_2001abc1 = 1;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field_0xed5 = 1;
+  (pGVar1->jdb_panel_context).field834_0x369 = 1;
   pGVar1 = __get_dashboard_state();
-  set_brightness_to_panel_reg_in_running((uint)(byte)pGVar1->field_0xed5,extraout_r1);
+  set_brightness_to_panel_reg_in_running
+            ((uint)(pGVar1->jdb_panel_context).field834_0x369,extraout_r1);
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0x10a8 = pGVar1->field_0x10a8 + '\x01';
   pGVar1 = __get_dashboard_state();
@@ -30,13 +33,13 @@ void FUN_00033e44(void)
   uVar3 = __aeabi_ldivmod((uint)uVar3,(uint)((ulonglong)uVar3 >> 0x20),1000,0);
   *(int *)&pGVar1->field_0x10ac = (int)uVar3;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field3708_0x10b4 = 0;
+  pGVar1->field2831_0x10b4 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field3709_0x10b8 = 0;
+  pGVar1->field2832_0x10b8 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field3710_0x10bc = 0;
-  pGVar1->field3711_0x10c0 = 0;
-  pGVar1->field3712_0x10c4 = 0;
+  pGVar1->field2833_0x10bc = 0;
+  pGVar1->field2834_0x10c0 = 0;
+  pGVar1->field2835_0x10c4 = 0;
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0x10c8 = 0;
   pGVar1 = __get_dashboard_state();

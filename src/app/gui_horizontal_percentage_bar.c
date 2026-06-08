@@ -5,19 +5,21 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 gui_horizontal_percentage_bar
           (int param_1,int param_2,int param_3,int param_4,byte param_5,byte param_6,byte param_7)
 
 {
-  undefined4 uVar1;
-  int iVar2;
+  int *piVar1;
+  undefined4 uVar2;
   int iVar3;
-  GlassesState *pGVar4;
-  int extraout_r1;
-  int iVar5;
-  uint uVar6;
-  int iVar7;
+  int iVar4;
+  GlassesState *pGVar5;
+  int y_start;
+  int iVar6;
+  uint uVar7;
   int iVar8;
   byte bVar9;
   uint uVar10;
@@ -35,37 +37,37 @@ gui_horizontal_percentage_bar
                    "gui_horizontal_percentage_bar",param_3,BLE_DEBUG);
       }
     }
-    uVar1 = 0xffffffff;
+    uVar2 = 0xffffffff;
   }
   else {
-    uVar6 = (uint)param_5;
+    uVar7 = (uint)param_5;
     uVar10 = (uint)param_7;
-    if (uVar6 == 0) {
-      uVar6 = 1;
+    if (uVar7 == 0) {
+      uVar7 = 1;
     }
     if (99 < uVar10) {
       uVar10 = 100;
     }
     iVar12 = param_3 - param_1;
-    iVar7 = iVar12 - (uint)param_6 * (uVar6 - 1);
-    iVar11 = (int)(iVar7 * uVar10) / 100;
-    iVar2 = FUN_000452e4();
-    if (iVar2 << 0x1e < 0) {
-      _clean_fb_data(DAT_2000aa14,0,param_1,extraout_r1,param_3,param_4);
+    iVar8 = iVar12 - (uint)param_6 * (uVar7 - 1);
+    iVar11 = (int)(iVar8 * uVar10) / 100;
+    iVar3 = FUN_000452e4();
+    if (iVar3 << 0x1e < 0) {
+      _clean_fb_data(__frame_buffer,0,param_1,y_start,param_3,param_4);
     }
+    piVar1 = __frame_buffer;
     bVar9 = 0;
     iVar13 = 0;
-    iVar2 = 0;
-    iVar8 = DAT_2000aa14 + param_2 * 4;
+    iVar3 = 0;
     for (uVar10 = 0; (int)uVar10 < iVar12; uVar10 = uVar10 + 1) {
-      if (iVar7 / (int)uVar6 <= iVar2) {
+      if (iVar8 / (int)uVar7 <= iVar3) {
         iVar13 = iVar13 + 1;
-        if (((int)uVar6 <= iVar13) || (uVar10 = uVar10 + param_6, iVar12 < (int)uVar10)) break;
-        iVar2 = 0;
+        if (((int)uVar7 <= iVar13) || (uVar10 = uVar10 + param_6, iVar12 < (int)uVar10)) break;
+        iVar3 = 0;
       }
-      iVar5 = param_1 / 2 + ((int)uVar10 >> 1);
+      iVar6 = param_1 / 2 + ((int)uVar10 >> 1);
       if (iVar11 == 0) {
-        for (iVar3 = 0; iVar3 < param_4 - param_2; iVar3 = iVar3 + 1) {
+        for (iVar4 = 0; iVar4 < param_4 - param_2; iVar4 = iVar4 + 1) {
           if ((uVar10 & 1) == 0) {
             bVar9 = DAT_20003698 & 0xf0;
           }
@@ -73,12 +75,12 @@ gui_horizontal_percentage_bar
             bVar9 = bVar9 | DAT_20003698 & 0xf;
           }
           if ((uVar10 + 1 & 1) == 0) {
-            *(byte *)(*(int *)(iVar8 + iVar3 * 4) + iVar5) = bVar9;
+            *(byte *)(piVar1[param_2 + iVar4] + iVar6) = bVar9;
           }
         }
       }
       else {
-        for (iVar3 = 0; iVar3 < param_4 - param_2; iVar3 = iVar3 + 1) {
+        for (iVar4 = 0; iVar4 < param_4 - param_2; iVar4 = iVar4 + 1) {
           if ((uVar10 & 1) == 0) {
             bVar9 = 0xf0;
           }
@@ -86,25 +88,27 @@ gui_horizontal_percentage_bar
             bVar9 = bVar9 | 0xf;
           }
           if ((uVar10 + 1 & 1) == 0) {
-            *(byte *)(*(int *)(iVar8 + iVar3 * 4) + iVar5) = bVar9;
+            *(byte *)(piVar1[param_2 + iVar4] + iVar6) = bVar9;
           }
         }
         if (0 < iVar11) {
           iVar11 = iVar11 + -1;
         }
       }
-      iVar2 = iVar2 + 1;
+      iVar3 = iVar3 + 1;
     }
-    iVar2 = FUN_000452e4();
-    if (iVar2 << 0x1e < 0) {
-      pGVar4 = __get_dashboard_state();
-      iVar2 = *(int *)&pGVar4->field_0xeb4;
-      pGVar4 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar2,*(int *)&pGVar4->field_0xeb8,param_1,param_2,param_3,param_4);
+    iVar3 = FUN_000452e4();
+    if (iVar3 << 0x1e < 0) {
+      pGVar5 = __get_dashboard_state();
+      iVar3 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
+      pGVar5 = __get_dashboard_state();
+      _reflash_fb_data_to_lcd
+                (iVar3,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,param_1,param_2,param_3,
+                 param_4);
     }
-    uVar1 = 0;
+    uVar2 = 0;
   }
-  return uVar1;
+  return uVar2;
 }
 
 

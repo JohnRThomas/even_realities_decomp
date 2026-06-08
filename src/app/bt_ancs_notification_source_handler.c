@@ -5,10 +5,12 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void bt_ancs_notification_source_handler(bt_ancs_client *client,int err,undefined4 *param_3)
 
 {
-  void *pvVar1;
+  int iVar1;
   uint uVar2;
   GlassesState *pGVar3;
   int iVar4;
@@ -16,7 +18,7 @@ void bt_ancs_notification_source_handler(bt_ancs_client *client,int err,undefine
   undefined4 extraout_r2;
   
   iVar4 = err;
-  pvVar1 = FUN_00018320();
+  iVar1 = FUN_00018320();
   if (err == 0) {
     printk("\nNotification UID:         %u\nEvent:       %s\n",*param_3,
            (&PTR_s_Added_0008c1c8)[*(byte *)(param_3 + 1)],&PTR_s_Added_0008c1c8,client,iVar4);
@@ -44,20 +46,20 @@ void bt_ancs_notification_source_handler(bt_ancs_client *client,int err,undefine
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): ============================>bt_ancs_get_attr_req_sem %d count %d notif->evt_id %d\n"
-                   ,"bt_ancs_notification_source_handler",*param_3,
-                   *(undefined4 *)((int)pvVar1 + 0x208),(uint)*(byte *)(param_3 + 1));
+                   ,"bt_ancs_notification_source_handler",*param_3,*(undefined4 *)(iVar1 + 0x208),
+                   (uint)*(byte *)(param_3 + 1));
           }
           else {
             ble_printk("%s(): ============================>bt_ancs_get_attr_req_sem %d count %d notif->evt_id %d\n"
                        ,"bt_ancs_notification_source_handler",*param_3,
-                       *(undefined4 *)((int)pvVar1 + 0x208));
+                       *(undefined4 *)(iVar1 + 0x208));
           }
         }
-        memset((void *)((int)pvVar1 + 0x34),0,0x1b4);
+        memset((void *)(iVar1 + 0x34),0,0x1b4);
         if (*(char *)(param_3 + 1) == '\x02') {
-          *(undefined4 *)((int)pvVar1 + 0x3c) = *param_3;
+          *(undefined4 *)(iVar1 + 0x3c) = *param_3;
         }
-        k_sem_give((k_sem *)((int)pvVar1 + 0x200));
+        k_sem_give((k_sem *)(iVar1 + 0x200));
         return;
       }
     }
