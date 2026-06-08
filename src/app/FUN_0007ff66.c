@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void FUN_0007ff66(int param_1,int param_2)
 
 {

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void FUN_00033f24(void)
 
 {
@@ -15,9 +17,10 @@ void FUN_00033f24(void)
   DAT_2001abc0 = 0;
   DAT_2001abc1 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field_0xed5 = 0x15;
+  (pGVar1->jdb_panel_context).field834_0x369 = 0x15;
   pGVar1 = __get_dashboard_state();
-  set_brightness_to_panel_reg_in_running((uint)(byte)pGVar1->field_0xed5,extraout_r1);
+  set_brightness_to_panel_reg_in_running
+            ((uint)(pGVar1->jdb_panel_context).field834_0x369,extraout_r1);
   return;
 }
 

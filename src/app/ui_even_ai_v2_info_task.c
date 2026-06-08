@@ -6,6 +6,7 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
 
@@ -80,10 +81,11 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
           uVar6 = uVar6 + 1;
         } while (uVar6 != 199);
         pGVar3 = __get_dashboard_state();
-        iVar8 = *(int *)&pGVar3->field_0xeb4;
+        iVar8 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
         pGVar3 = __get_dashboard_state();
         iVar10 = iVar10 + 1;
-        _reflash_fb_data_to_lcd(iVar8,*(int *)&pGVar3->field_0xeb8,0,0,0x280,199);
+        _reflash_fb_data_to_lcd
+                  (iVar8,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,0,0,0x280,199);
       } while (iVar10 != 8);
       FUN_0004540c();
       _DAT_20004dd0 = 0x101;

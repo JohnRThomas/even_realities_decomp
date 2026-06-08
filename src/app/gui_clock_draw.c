@@ -6,6 +6,7 @@
 
 
 /* WARNING: Type propagation algorithm not settling */
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4
 gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,undefined4 param_6,
@@ -76,7 +77,7 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
   case 1:
     iVar3 = FUN_000452e4();
     if (iVar3 << 0x1e < 0) {
-      _clean_fb_data(DAT_2000aa14,0,param_2,param_3,param_4,param_5);
+      _clean_fb_data(__frame_buffer,0,param_2,param_3,param_4,param_5);
     }
     pbVar7 = local_38;
     iVar3 = param_2;
@@ -84,7 +85,8 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
       local_50 = (void *)0x0;
       iVar4 = resource_manger_get(1,(uint)*pbVar7,&local_4c,local_48,&local_50,(undefined1 *)0x0);
       if ((iVar4 == 0) && (local_50 != (void *)0x0)) {
-        FUN_00080c02(DAT_2000aa14,local_50,(int)local_4c / 2,local_48[0],iVar3,param_3);
+        __copy_to_frame_buffer
+                  ((int)__frame_buffer,local_50,(int)local_4c / 2,local_48[0],iVar3,param_3);
         iVar3 = iVar3 + local_4c + 6;
       }
       else if (1 < LOG_LEVEL) {
@@ -103,7 +105,7 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
   case 2:
     iVar3 = FUN_000452e4();
     if (iVar3 << 0x1e < 0) {
-      _clean_fb_data(DAT_2000aa14,0,param_2,param_3,param_4,param_5);
+      _clean_fb_data(__frame_buffer,0,param_2,param_3,param_4,param_5);
     }
     sVar8 = 0;
     pbVar7 = local_38;
@@ -113,7 +115,8 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
       iVar4 = resource_manger_get(2,(uint)*pbVar7,&local_4c,local_48,&local_50,(undefined1 *)0x0);
       sVar8 = sVar8 + 1;
       if ((iVar4 == 0) && (local_50 != (void *)0x0)) {
-        FUN_00080c02(DAT_2000aa14,local_50,(int)local_4c / 2,local_48[0],iVar3,param_3);
+        __copy_to_frame_buffer
+                  ((int)__frame_buffer,local_50,(int)local_4c / 2,local_48[0],iVar3,param_3);
         if (pbVar7[1] == 0x3a) {
           iVar4 = local_4c + 7;
         }
@@ -143,9 +146,11 @@ LAB_00046850:
       return 0;
     }
     pGVar2 = __get_dashboard_state();
-    iVar3 = *(int *)&pGVar2->field_0xeb4;
+    iVar3 = *(int *)&(pGVar2->jdb_panel_context).field_0x348;
     pGVar2 = __get_dashboard_state();
-    _reflash_fb_data_to_lcd(iVar3,*(int *)&pGVar2->field_0xeb8,param_2,param_3,param_4,param_5);
+    _reflash_fb_data_to_lcd
+              (iVar3,*(int *)&(pGVar2->jdb_panel_context).field_0x34c,param_2,param_3,param_4,
+               param_5);
     return 0;
   case 3:
     uVar5 = 3;

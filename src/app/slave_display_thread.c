@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void slave_display_thread(int param_1,uint param_2,undefined4 param_3)
 
 {
@@ -185,12 +187,14 @@ LAB_0002a090:
       }
       if ((*(byte *)(param_1 + 0xe6) < 10) && (*(byte *)(param_1 + 0xe7) < 9)) {
         pGVar4 = __get_dashboard_state();
-        pGVar4->field_0xec1 = *(undefined1 *)(param_1 + 0xe6);
+        (pGVar4->jdb_panel_context).field_0x355 = *(undefined1 *)(param_1 + 0xe6);
         pGVar4 = __get_dashboard_state();
-        pGVar4->field_0xec0 = *(undefined1 *)(param_1 + 0xe7);
+        (pGVar4->jdb_panel_context).field_0x354 = *(undefined1 *)(param_1 + 0xe7);
         pGVar4 = __get_dashboard_state();
         pGVar6 = __get_dashboard_state();
-        cal_panel_canvas_coord((int *)&pGVar4->field_0xec4,(int *)&pGVar6->field_0xeb8);
+        cal_panel_canvas_coord
+                  ((int *)&(pGVar4->jdb_panel_context).field_0x358,
+                   (int *)&(pGVar6->jdb_panel_context).field_0x34c);
       }
     }
     DAT_20019a64 = 1;

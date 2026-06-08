@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 uint sync_to_slave(char *param_1,uint param_2,undefined4 *param_3,uint param_4)
 
 {

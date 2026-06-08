@@ -8,18 +8,18 @@
 void FUN_00029774(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
-  void *pvVar1;
+  int iVar1;
   undefined4 local_14;
   undefined4 uStack_10;
   
   local_14 = param_2;
   uStack_10 = param_3;
-  pvVar1 = FUN_00018320();
+  iVar1 = FUN_00018320();
   if ((2 < param_1 - 0xf0U) || (DAT_20003051 == -1)) {
     DAT_20003051 = (char)param_1;
-    if ((*(char *)((int)pvVar1 + 0x248) == '\0') && (*(int *)((int)pvVar1 + 0x220) == 0)) {
-      if (*(char *)((int)pvVar1 + 0x248) == '\0') {
-        k_sem_give((k_sem *)((int)pvVar1 + 0x218));
+    if ((*(char *)(iVar1 + 0x248) == '\0') && (*(int *)(iVar1 + 0x220) == 0)) {
+      if (*(char *)(iVar1 + 0x248) == '\0') {
+        k_sem_give((k_sem *)(iVar1 + 0x218));
         k_msleep(1);
         return;
       }

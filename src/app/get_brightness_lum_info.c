@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 get_brightness_lum_info
           (undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
@@ -25,14 +27,14 @@ get_brightness_lum_info
     puVar3[2] = 3;
     puVar3[3] = 8;
     pGVar2 = __get_dashboard_state();
-    *(undefined2 *)(puVar3 + 4) = *(undefined2 *)&pGVar2->field_0xed8;
+    *(undefined2 *)(puVar3 + 4) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x36c;
     pGVar2 = __get_dashboard_state();
-    *(undefined2 *)(puVar3 + 6) = pGVar2->field3450_0xeda;
+    *(undefined2 *)(puVar3 + 6) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x36e;
     pGVar2 = __get_dashboard_state();
-    *(undefined2 *)(puVar3 + 8) = pGVar2->field3451_0xedc;
+    *(undefined2 *)(puVar3 + 8) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x370;
     pGVar2 = __get_dashboard_state();
     uVar1 = 0;
-    *(undefined2 *)(puVar3 + 10) = pGVar2->field3452_0xede;
+    *(undefined2 *)(puVar3 + 10) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x372;
     *param_4 = 0xc;
   }
   return uVar1;

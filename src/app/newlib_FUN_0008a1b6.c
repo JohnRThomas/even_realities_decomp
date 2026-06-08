@@ -1,7 +1,7 @@
 /*
  * Function: $_newlib_FUN_0008a1b6
  * Entry:    0008a1b6
- * Prototype: uint __stdcall $_newlib_FUN_0008a1b6(undefined4 param_1)
+ * Prototype: uint __stdcall $_newlib_FUN_0008a1b6(byte * param_1)
  */
 
 

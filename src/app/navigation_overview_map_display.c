@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 param_3)
 
 {
@@ -26,8 +28,8 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
   undefined4 extraout_r2_01;
   undefined4 extraout_r2_02;
   int iVar8;
-  undefined1 *puVar9;
-  uint uVar10;
+  int *buffer;
+  uint uVar9;
   k_timeout_t timeout;
   k_timeout_t timeout_00;
   k_timeout_t timeout_01;
@@ -46,25 +48,25 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
     }
     pGVar5 = __get_dashboard_state();
     iVar8 = 0x640;
-    puVar9 = &pGVar5->field_0xb90;
+    buffer = &(pGVar5->jdb_panel_context).field9_0x24;
     while( true ) {
-      uVar10 = 0;
+      uVar9 = 0;
       do {
         iVar7 = 0;
         do {
-          bVar2 = *(byte *)(*(int *)(puVar9 + uVar10 * 4) + iVar7);
+          bVar2 = *(byte *)(buffer[uVar9] + iVar7);
           if (bVar2 != 0) {
-            *(byte *)(*(int *)(puVar9 + uVar10 * 4) + iVar7) =
-                 bVar2 & (&DAT_000accab)[iVar7 + (uVar10 % 0x1a) * 0xa00 + iVar8];
+            *(byte *)(buffer[uVar9] + iVar7) =
+                 bVar2 & (&DAT_000accab)[iVar7 + (uVar9 % 0x1a) * 0xa00 + iVar8];
           }
           iVar7 = iVar7 + 1;
         } while (iVar7 != 0x140);
-        uVar10 = uVar10 + 1;
-      } while (uVar10 != 199);
+        uVar9 = uVar9 + 1;
+      } while (uVar9 != 199);
       pGVar5 = __get_dashboard_state();
-      iVar7 = *(int *)&pGVar5->field_0xeb4;
+      iVar7 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar7,*(int *)&pGVar5->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar7,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,0,0,0x280,199);
       if (iVar8 == 0x500) break;
       iVar8 = 0x500;
     }
@@ -107,7 +109,7 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
     FUN_00045428();
     iVar8 = 1;
     do {
-      _clean_fb_data((int)puVar9,0,0,0,0x280,199);
+      _clean_fb_data(buffer,0,0,0,0x280,199);
       iVar7 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar6 = FUN_000809e2();
@@ -137,14 +139,14 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
                    (undefined *)0x0,0);
       pGVar5 = __get_dashboard_state();
       cVar1 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
-      uVar10 = FUN_00080732();
+      uVar9 = FUN_00080732();
       iVar7 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar6 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      gui_clock_draw(uVar10,iVar7,uVar3 + 2,iVar6 + 0x4c,uVar4 + 0x1d,3,cVar1 != '\x01');
+      gui_clock_draw(uVar9,iVar7,uVar3 + 2,iVar6 + 0x4c,uVar4 + 0x1d,3,cVar1 != '\x01');
       navigation_direction_img_display((uint)*(byte *)(param_2 + 1),extraout_r1_00,extraout_r2);
-      uVar10 = 0;
+      uVar9 = 0;
       do {
         iVar7 = 0;
         do {
@@ -156,21 +158,21 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
           local_30[5] = 7;
           local_30[6] = 7;
           local_30[7] = 7;
-          bVar2 = *(byte *)(*(int *)(puVar9 + uVar10 * 4) + iVar7);
+          bVar2 = *(byte *)(buffer[uVar9] + iVar7);
           if (bVar2 != 0) {
-            *(byte *)(*(int *)(puVar9 + uVar10 * 4) + iVar7) =
+            *(byte *)(buffer[uVar9] + iVar7) =
                  bVar2 & (&DAT_000accab)
-                         [iVar7 + (uint)local_30[iVar8] * 0x140 + (uVar10 % 0x1a) * 0xa00];
+                         [iVar7 + (uint)local_30[iVar8] * 0x140 + (uVar9 % 0x1a) * 0xa00];
           }
           iVar7 = iVar7 + 1;
         } while (iVar7 != 0x140);
-        uVar10 = uVar10 + 1;
-      } while (uVar10 != 199);
+        uVar9 = uVar9 + 1;
+      } while (uVar9 != 199);
       pGVar5 = __get_dashboard_state();
-      iVar7 = *(int *)&pGVar5->field_0xeb4;
+      iVar7 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
       iVar8 = iVar8 + 1;
-      _reflash_fb_data_to_lcd(iVar7,*(int *)&pGVar5->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar7,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,0,0,0x280,199);
     } while (iVar8 != 4);
     FUN_0004540c();
     iVar8 = FUN_000809e2();
@@ -193,12 +195,12 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
                  (undefined *)0x0,0);
     pGVar5 = __get_dashboard_state();
     cVar1 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
-    uVar10 = FUN_00080732();
+    uVar9 = FUN_00080732();
     iVar8 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
     iVar7 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
-    gui_clock_draw(uVar10,iVar8,uVar3 + 2,iVar7 + 0x4c,uVar4 + 0x1d,3,cVar1 != '\x01');
+    gui_clock_draw(uVar9,iVar8,uVar3 + 2,iVar7 + 0x4c,uVar4 + 0x1d,3,cVar1 != '\x01');
     param_3 = extraout_r2_00;
   }
   if (DAT_20010dbe != '\x01') goto LAB_00040954;
@@ -291,12 +293,12 @@ LAB_00040954:
                  (undefined *)0x0,0);
     pGVar5 = __get_dashboard_state();
     cVar1 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
-    uVar10 = FUN_00080732();
+    uVar9 = FUN_00080732();
     iVar8 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
     iVar7 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
-    gui_clock_draw(uVar10,iVar8,uVar3 + 2,iVar7 + 0x4c,uVar4 + 0x1d,3,cVar1 != '\x01');
+    gui_clock_draw(uVar9,iVar8,uVar3 + 2,iVar7 + 0x4c,uVar4 + 0x1d,3,cVar1 != '\x01');
     navigation_direction_img_display((uint)*(byte *)(param_2 + 1),extraout_r1_04,extraout_r2_02);
     DAT_20010dbf = '\0';
   }

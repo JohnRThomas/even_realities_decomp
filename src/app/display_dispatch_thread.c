@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3)
 
 {
@@ -141,7 +143,9 @@ void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   param_1[0xeb7] = 0;
   pGVar5 = __get_dashboard_state();
   pGVar6 = __get_dashboard_state();
-  cal_panel_canvas_coord((int *)&pGVar5->field_0xec4,(int *)&pGVar6->field_0xeb8);
+  cal_panel_canvas_coord
+            ((int *)&(pGVar5->jdb_panel_context).field_0x358,
+             (int *)&(pGVar6->jdb_panel_context).field_0x34c);
   *(short *)(param_1 + 0xd6) =
        (short)*(undefined4 *)(param_1 + 0xeb4) + *(short *)(param_1 + 0x108a);
   param_1[0xeec] = 0;
@@ -477,7 +481,7 @@ LAB_0002b5cc:
         break;
       case 0xe:
         pGVar5 = __get_dashboard_state();
-        pGVar5->field_0xed5 = 0x2a;
+        (pGVar5->jdb_panel_context).field834_0x369 = 0x2a;
         n = 0x21;
         pbVar14 = *(byte **)(param_1 + 0x101c);
         break;

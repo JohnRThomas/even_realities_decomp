@@ -25,7 +25,8 @@ void set_brightness_to_panel_reg(uint param_1,uint param_2)
                 );
     }
   }
-  FUN_00080ace(param_1,(ushort *)((int)&uStack_c + 2),(char *)((int)&uStack_c + 1));
+  __update_brightness_level_for_jdb_panel
+            (param_1,(ushort *)((int)&uStack_c + 2),(char *)((int)&uStack_c + 1));
   thunk_FUN_00080ece(6);
   thunk_FUN_00080ece(0xa9);
   FUN_00080d5e(uStack_c >> 0x10,extraout_r1,extraout_r2);

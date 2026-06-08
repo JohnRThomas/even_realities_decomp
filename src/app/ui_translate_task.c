@@ -6,6 +6,7 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
 
@@ -39,6 +40,8 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
   undefined4 extraout_r2_03;
   undefined4 extraout_r2_04;
   int iVar16;
+  int *buffer;
+  int iVar17;
   k_timeout_t timeout;
   byte local_34 [6];
   short local_2e;
@@ -137,10 +140,11 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
           uVar15 = uVar15 + 1;
         } while (uVar15 != 199);
         pGVar8 = __get_dashboard_state();
-        iVar9 = *(int *)&pGVar8->field_0xeb4;
+        iVar9 = *(int *)&(pGVar8->jdb_panel_context).field_0x348;
         pGVar8 = __get_dashboard_state();
         iVar7 = iVar7 + 1;
-        _reflash_fb_data_to_lcd(iVar9,*(int *)&pGVar8->field_0xeb8,0,0,0x280,199);
+        _reflash_fb_data_to_lcd
+                  (iVar9,*(int *)&(pGVar8->jdb_panel_context).field_0x34c,0,0,0x280,199);
       } while (iVar7 != 4);
       FUN_0004540c();
       return 0;
@@ -270,6 +274,7 @@ LAB_000423a4:
     if (DAT_2001d95f - 3 < 2) {
       pGVar5 = __get_dashboard_state();
       iVar7 = 0x640;
+      buffer = &(pGVar5->jdb_panel_context).field9_0x24;
       while( true ) {
         uVar3 = FUN_00080a3a();
         for (uVar15 = (uint)uVar3; uVar3 = FUN_00080a3a(), (int)uVar15 <= (int)(uVar3 + 0x87);
@@ -277,7 +282,7 @@ LAB_000423a4:
           iVar9 = FUN_000809e2();
           for (iVar9 = iVar9 + 0x58; iVar10 = FUN_000809e2(), iVar9 < (iVar10 + 0x240) / 2;
               iVar9 = iVar9 + 1) {
-            iVar10 = *(int *)(&pGVar5->field_0xb90 + uVar15 * 4);
+            iVar10 = buffer[uVar15];
             bVar1 = *(byte *)(iVar10 + iVar9);
             if (bVar1 != 0) {
               *(byte *)(iVar10 + iVar9) =
@@ -286,9 +291,9 @@ LAB_000423a4:
           }
         }
         pGVar8 = __get_dashboard_state();
-        iVar16 = *(int *)&pGVar8->field_0xeb4;
+        iVar16 = *(int *)&(pGVar8->jdb_panel_context).field_0x348;
         pGVar8 = __get_dashboard_state();
-        iVar13 = *(int *)&pGVar8->field_0xeb8;
+        iVar13 = *(int *)&(pGVar8->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar3 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -301,8 +306,7 @@ LAB_000423a4:
       uVar3 = FUN_00080a3a();
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _clean_fb_data((int)&pGVar5->field_0xb90,0,iVar7 + 0x58,(uint)uVar3,iVar9 + 0x240,uVar4 + 0x88
-                    );
+      _clean_fb_data(buffer,0,iVar7 + 0x58,(uint)uVar3,iVar9 + 0x240,uVar4 + 0x88);
       if (DAT_200100dc == '\0') {
         iVar7 = FUN_000809e2();
         uVar3 = FUN_00080a3a();
@@ -331,19 +335,21 @@ LAB_000423a4:
             local_34[3] = 7;
             stack0xffffffd0 = 0x7070707;
             iVar16 = iVar13 + iVar9 / 2;
-            bVar1 = *(byte *)(*(int *)(&pGVar5->field_0xb90 + uVar12 * 4 + uVar15 * 4) + iVar16);
+            iVar17 = (&(pGVar5->jdb_panel_context).field9_0x24)[uVar15 + uVar12];
+            bVar1 = *(byte *)(iVar17 + iVar16);
             if (bVar1 != 0) {
-              *(byte *)(*(int *)(&pGVar5->field_0xb90 + uVar12 * 4 + uVar15 * 4) + iVar16) =
+              *(byte *)(iVar17 + iVar16) =
                    bVar1 & (&DAT_000accab)
                            [iVar13 + (uint)local_34[iVar7] * 0x140 + (uVar12 % 0x1a) * 0xa00];
             }
           }
         }
         pGVar8 = __get_dashboard_state();
-        iVar13 = *(int *)&pGVar8->field_0xeb4;
+        iVar13 = *(int *)&(pGVar8->jdb_panel_context).field_0x348;
         pGVar8 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar13,*(int *)&pGVar8->field_0xeb8,iVar9,uVar15,iVar10 + 0x240,uVar3 + 0x88);
+                  (iVar13,*(int *)&(pGVar8->jdb_panel_context).field_0x34c,iVar9,uVar15,
+                   iVar10 + 0x240,uVar3 + 0x88);
         if (iVar7 != 2) break;
         iVar7 = 3;
       }

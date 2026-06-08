@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void __bond_deleted(undefined4 param_1,bt_addr_le_t *param_2,size_t param_3)
 
 {

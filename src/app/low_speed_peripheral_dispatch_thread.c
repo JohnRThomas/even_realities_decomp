@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void low_speed_peripheral_dispatch_thread(char *param_1)
 
 {

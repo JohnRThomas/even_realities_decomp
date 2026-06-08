@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void discover_ancs_completed_cb(bt_gatt_dm *param_1,bt_ancs_client *param_2)
 
 {

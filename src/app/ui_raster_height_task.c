@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 ui_raster_height_task(int param_1,undefined4 param_2,int param_3)
 
 {
@@ -61,9 +63,9 @@ undefined4 ui_raster_height_task(int param_1,undefined4 param_2,int param_3)
       DAT_20002560 = iVar1;
       DAT_2000255c = local_1c;
       pGVar2 = __get_dashboard_state();
-      *(int *)&pGVar2->field_0xec4 = iVar1;
+      *(int *)&(pGVar2->jdb_panel_context).field_0x358 = iVar1;
       pGVar2 = __get_dashboard_state();
-      *(int *)&pGVar2->field_0xeb8 = iVar3;
+      *(int *)&(pGVar2->jdb_panel_context).field_0x34c = iVar3;
       pGVar2 = __get_dashboard_state();
       pGVar2->glasses_state_struct_0FF0->field_0x73 = 1;
       __ui_DashBoard_task(param_1,param_2,1);

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 int enqueue_uid_drop_package_(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
 
 {

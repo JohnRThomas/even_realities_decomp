@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void confirm_message(int param_1)
 
 {
@@ -45,7 +47,8 @@ void confirm_message(int param_1)
     }
     pGVar3 = __get_dashboard_state();
     if ((pGVar3->field_0x10d6 != '\0') &&
-       (pGVar3 = __get_dashboard_state(), *(char *)&pGVar3->imu_fusion_context != '\x01')) {
+       (pGVar3 = __get_dashboard_state(),
+       *(char *)&(pGVar3->jdb_panel_context).field850_0x37c != '\x01')) {
       __get_dashboard_state();
     }
     uVar5 = FUN_000352f4();
@@ -152,7 +155,8 @@ LAB_00035c9a:
     DAT_20019a5c = 0;
     pGVar3 = __get_dashboard_state();
     if ((pGVar3->field_0x10d6 != '\0') &&
-       (pGVar3 = __get_dashboard_state(), *(char *)&pGVar3->imu_fusion_context != '\x01')) {
+       (pGVar3 = __get_dashboard_state(),
+       *(char *)&(pGVar3->jdb_panel_context).field850_0x37c != '\x01')) {
       __get_dashboard_state();
     }
   }

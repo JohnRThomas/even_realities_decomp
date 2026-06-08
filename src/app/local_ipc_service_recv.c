@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 local_ipc_service_recv(undefined2 *param_1,undefined1 *param_2,int param_3)
 
 {

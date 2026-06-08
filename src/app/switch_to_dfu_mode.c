@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void switch_to_dfu_mode(k_sem *param_1)
 
 {

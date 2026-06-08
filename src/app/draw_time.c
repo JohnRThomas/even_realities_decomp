@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void __draw_time(char *param_1,char *param_2)
 
 {
@@ -236,7 +238,8 @@ LAB_00036efa:
   uVar2 = FUN_00080a3a();
   iVar7 = FUN_000809e2();
   uVar3 = FUN_00080a3a();
-  _clean_fb_data((int)&pGVar4->field_0xb90,0,iVar6 + 0x196,(uint)uVar2,iVar7 + 0x200,uVar3 + 0x1b);
+  _clean_fb_data(&(pGVar4->jdb_panel_context).field9_0x24,0,iVar6 + 0x196,(uint)uVar2,iVar7 + 0x200,
+                 uVar3 + 0x1b);
   iVar6 = FUN_000809e2();
   uVar2 = FUN_00080a3a();
   iVar7 = FUN_000809e2();

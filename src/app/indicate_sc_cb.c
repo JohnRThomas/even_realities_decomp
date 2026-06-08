@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void indicate_sc_cb(undefined4 *param_1,undefined4 param_2,int param_3)
 
 {

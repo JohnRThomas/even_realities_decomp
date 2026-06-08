@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 get_lux_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 

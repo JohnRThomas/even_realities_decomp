@@ -6,6 +6,7 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4 ui_DashBoard_task(undefined4 param_1,uint param_2)
 

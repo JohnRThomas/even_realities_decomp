@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void FUN_000428bc(void)
 
 {
@@ -87,6 +89,7 @@ void FUN_000428bc(void)
       do {
         iVar6 = 0;
         do {
+          iVar7 = (&(pGVar4->jdb_panel_context).field9_0x24)[uVar12];
           local_30[0] = 1;
           local_30[1] = 3;
           local_30[2] = 5;
@@ -95,9 +98,9 @@ void FUN_000428bc(void)
           local_30[5] = 7;
           local_30[6] = 7;
           local_30[7] = 7;
-          bVar1 = *(byte *)(*(int *)(&pGVar4->field_0xb90 + uVar12 * 4) + iVar6);
+          bVar1 = *(byte *)(iVar7 + iVar6);
           if (bVar1 != 0) {
-            *(byte *)(*(int *)(&pGVar4->field_0xb90 + uVar12 * 4) + iVar6) =
+            *(byte *)(iVar7 + iVar6) =
                  bVar1 & (&DAT_000accab)
                          [iVar6 + (uint)local_30[DAT_2000a9d4] * 0x140 + (uVar12 % 0x1a) * 0xa00];
           }
@@ -107,9 +110,9 @@ void FUN_000428bc(void)
       } while (uVar12 != 199);
       DAT_2000a9d4 = DAT_2000a9d4 + 1;
       pGVar5 = __get_dashboard_state();
-      iVar6 = *(int *)&pGVar5->field_0xeb4;
+      iVar6 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar6,*(int *)&pGVar5->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar6,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,0,0,0x280,199);
     }
     goto LAB_00042a50;
   case 1:
@@ -308,6 +311,7 @@ LAB_00042d8c:
       do {
         iVar6 = 0;
         do {
+          iVar7 = (&(pGVar4->jdb_panel_context).field9_0x24)[uVar12];
           local_30[0] = 1;
           local_30[1] = 3;
           local_30[2] = 5;
@@ -316,9 +320,9 @@ LAB_00042d8c:
           local_30[5] = 7;
           local_30[6] = 7;
           local_30[7] = 7;
-          bVar1 = *(byte *)(*(int *)(&pGVar4->field_0xb90 + uVar12 * 4) + iVar6);
+          bVar1 = *(byte *)(iVar7 + iVar6);
           if (bVar1 != 0) {
-            *(byte *)(*(int *)(&pGVar4->field_0xb90 + uVar12 * 4) + iVar6) =
+            *(byte *)(iVar7 + iVar6) =
                  bVar1 & (&DAT_000accab)
                          [iVar6 + (uint)local_30[DAT_2000a9d4] * 0x140 + (uVar12 % 0x1a) * 0xa00];
           }
@@ -328,9 +332,9 @@ LAB_00042d8c:
       } while (uVar12 != 199);
       DAT_2000a9d4 = DAT_2000a9d4 + 1;
       pGVar5 = __get_dashboard_state();
-      iVar6 = *(int *)&pGVar5->field_0xeb4;
+      iVar6 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar6,*(int *)&pGVar5->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar6,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,0,0,0x280,199);
     }
     goto LAB_00042a50;
   case 4:
@@ -447,6 +451,7 @@ LAB_00042d8c:
       do {
         iVar6 = 0;
         do {
+          iVar7 = (&(pGVar4->jdb_panel_context).field9_0x24)[uVar12];
           local_30[0] = 1;
           local_30[1] = 3;
           local_30[2] = 5;
@@ -455,9 +460,9 @@ LAB_00042d8c:
           local_30[5] = 7;
           local_30[6] = 7;
           local_30[7] = 7;
-          bVar1 = *(byte *)(*(int *)(&pGVar4->field_0xb90 + uVar12 * 4) + iVar6);
+          bVar1 = *(byte *)(iVar7 + iVar6);
           if (bVar1 != 0) {
-            *(byte *)(*(int *)(&pGVar4->field_0xb90 + uVar12 * 4) + iVar6) =
+            *(byte *)(iVar7 + iVar6) =
                  bVar1 & (&DAT_000accab)
                          [iVar6 + (uint)local_30[DAT_2000a9d4] * 0x140 + (uVar12 % 0x1a) * 0xa00];
           }
@@ -467,9 +472,9 @@ LAB_00042d8c:
       } while (uVar12 != 199);
       DAT_2000a9d4 = DAT_2000a9d4 + 1;
       pGVar5 = __get_dashboard_state();
-      iVar6 = *(int *)&pGVar5->field_0xeb4;
+      iVar6 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
       pGVar5 = __get_dashboard_state();
-      _reflash_fb_data_to_lcd(iVar6,*(int *)&pGVar5->field_0xeb8,0,0,0x280,199);
+      _reflash_fb_data_to_lcd(iVar6,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,0,0,0x280,199);
     }
 LAB_00042a50:
     FUN_0004540c();
@@ -628,7 +633,7 @@ LAB_00042ba6:
   gui_utf_draw(0,pcVar8,0,iVar11,iVar10,iVar6,iVar7,uVar12,0,0,(undefined *)0x0,0);
 switchD_00042a0c_caseD_a:
   pGVar4 = __get_dashboard_state();
-  DAT_20004db8 = *(undefined1 *)&pGVar4->imu_fusion_context;
+  DAT_20004db8 = *(undefined1 *)&(pGVar4->jdb_panel_context).field850_0x37c;
   return;
 }
 

@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4
 set_brightness_lum_base(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -42,18 +44,18 @@ set_brightness_lum_base(int param_1,undefined4 param_2,undefined4 *param_3,undef
     puVar8[4] = bVar1;
     if (cVar2 == '\x01') {
       pGVar4 = __get_dashboard_state();
-      pGVar4->field3451_0xedc = uVar7;
+      *(ushort *)&(pGVar4->jdb_panel_context).field_0x370 = uVar7;
     }
     else if (cVar2 == '\x02') {
       pGVar4 = __get_dashboard_state();
-      pGVar4->field3452_0xede = uVar7;
+      *(ushort *)&(pGVar4->jdb_panel_context).field_0x372 = uVar7;
     }
     else if (cVar2 == '\0') {
       pGVar4 = __get_dashboard_state();
-      pGVar4->field3450_0xeda = uVar7;
+      *(ushort *)&(pGVar4->jdb_panel_context).field_0x36e = uVar7;
     }
     pGVar4 = __get_dashboard_state();
-    *(ushort *)&pGVar4->field_0xed8 = uVar7;
+    *(ushort *)&(pGVar4->jdb_panel_context).field_0x36c = uVar7;
     pGVar4 = __get_dashboard_state();
     FUN_00024abc(pGVar4);
     cVar9 = '\0';

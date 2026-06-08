@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 void key_event_thread(char *param_1)
 
 {
@@ -551,7 +553,8 @@ LAB_0002ba9e:
   if (*param_1 != '\x01') {
     if (((*param_1 == '\x02') && (uVar10 = FUN_000352f4(), uVar10 != 0)) &&
        (((param_1[0xd5] == '\x06' &&
-         (pGVar4 = __get_dashboard_state(), *(char *)&pGVar4->imu_fusion_context == '\x02')) ||
+         (pGVar4 = __get_dashboard_state(),
+         *(char *)&(pGVar4->jdb_panel_context).field850_0x37c == '\x02')) ||
         (param_1[0xd5] == '\x04')))) {
       do {
         iVar5 = FUN_0002dea8();

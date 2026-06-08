@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
 undefined4 ble_write_thread(uint8_t *param_1,undefined4 param_2)
 
 {

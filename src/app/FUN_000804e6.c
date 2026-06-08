@@ -8,17 +8,18 @@
 int FUN_000804e6(void)
 
 {
-  void *pvVar1;
+  aw9320x_err_code aVar1;
+  uint32_t in_r0;
   int iVar2;
-  undefined4 extraout_r1;
-  undefined4 extraout_r2;
+  int32_t iVar3;
+  uint32_t in_r1;
   
-  pvVar1 = cJSON_malloc(0x4704);
-  if ((((pvVar1 == (void *)0x0) && (pvVar1 = cJSON_malloc(0x4708), pvVar1 == (void *)0x0)) &&
-      (pvVar1 = cJSON_malloc(0x4710), pvVar1 == (void *)0x0)) &&
-     (pvVar1 = cJSON_malloc(0x4714), pvVar1 == (void *)0x0)) {
-    iVar2 = FUN_000804b6(0,extraout_r1,extraout_r2);
-    iVar2 = -(uint)(iVar2 != 0);
+  aVar1 = aw9320x_i2c_write(0x4704,in_r0);
+  if ((((aVar1 == AW_OK) && (aVar1 = aw9320x_i2c_write(0x4708,in_r1), aVar1 == AW_OK)) &&
+      (aVar1 = aw9320x_i2c_write(0x4710,0xc), aVar1 == AW_OK)) &&
+     (aVar1 = aw9320x_i2c_write(0x4714,1), aVar1 == AW_OK)) {
+    iVar3 = aw9320x_check_isp_go_reg();
+    iVar2 = -(uint)(iVar3 != 0);
   }
   else {
     iVar2 = -1;

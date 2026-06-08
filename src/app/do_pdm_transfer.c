@@ -1,19 +1,21 @@
 /*
  * Function: do_pdm_transfer
  * Entry:    00030520
- * Prototype: uint __stdcall do_pdm_transfer(void)
+ * Prototype: int __stdcall do_pdm_transfer(device * dmic_dev, dmic_cfg * cfg, size_t block_count)
  */
 
 
-uint do_pdm_transfer(void)
+/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
+
+int do_pdm_transfer(device *dmic_dev,dmic_cfg *cfg,size_t block_count)
 
 {
   bool bVar1;
   char cVar2;
-  void *pvVar3;
+  int iVar3;
   GlassesState *pGVar4;
-  int iVar5;
-  char *pcVar6;
+  char *pcVar5;
+  int iVar6;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
   undefined4 extraout_r2_01;
@@ -24,19 +26,10 @@ uint do_pdm_transfer(void)
   uint uVar9;
   void *local_64;
   size_t local_60;
-  undefined4 local_5c;
-  undefined4 uStack_58;
-  undefined *local_54;
-  char *local_50;
-  undefined1 *puStack_4c;
-  undefined1 local_48;
-  undefined1 local_47;
-  undefined1 auStack_46 [6];
-  undefined4 *local_40;
-  undefined1 local_2c;
-  undefined1 local_2a;
+  pcm_stream_cfg local_5c;
+  dmic_cfg local_50;
   
-  pvVar3 = FUN_00018320();
+  iVar3 = FUN_00018320();
   pGVar4 = __get_dashboard_state();
   uVar9 = *(ushort *)&pGVar4->field_0x1070 & 2;
   if ((*(ushort *)&pGVar4->field_0x1070 & 2) != 0) {
@@ -58,38 +51,39 @@ uint do_pdm_transfer(void)
           ble_printk("%s(): %s is ready\n","dmic_stream_start","pdm@26000",BLE_DEBUG);
         }
       }
-      iVar5 = init_dmic_msgq();
-      if (iVar5 == 0) {
-        local_54 = &DAT_20003918;
-        memset(auStack_46,0,0x1e);
-        local_50 = " gyroscope full-scale\r\n";
-        puStack_4c = &DAT_003567e0;
-        local_48 = 0x28;
-        local_47 = 0x3c;
-        local_40 = &local_5c;
-        local_2a = 1;
-        local_2c = 1;
-        local_5c = 16000;
-        uStack_58 = 0xc800010;
+      iVar6 = init_dmic_msgq();
+      if (iVar6 == 0) {
+        local_5c.mem_slab = (k_mem_slab *)&DAT_20003918;
+        memset(&local_50.io.pdm_clk_pol,0,0x1e);
+        local_50.io.min_pdm_clk_freq = 1000000;
+        local_50.io.max_pdm_clk_freq = (uint32_t)&DAT_003567e0;
+        local_50.io.min_pdm_clk_dc = '(';
+        local_50.io.max_pdm_clk_dc = '<';
+        local_50.streams = &local_5c;
+        local_50.channel.req_num_streams = '\x01';
+        local_50.channel.req_num_chan = '\x01';
+        local_5c.pcm_rate = 16000;
+        local_5c.pcm_width = '\x10';
+        local_5c._5_1_ = 0;
+        local_5c.block_size = 0xc80;
         cVar2 = FUN_00033d5c();
         if ((cVar2 == '\x01') && (uVar9 = erase_audio_buffer(), (int)uVar9 < 0)) {
           if (0 < LOG_LEVEL) {
-            pcVar6 = "%s(): Failed to erase_audio_buffer %d\n";
+            pcVar5 = "%s(): Failed to erase_audio_buffer %d\n";
 LAB_00030654:
             if (BLE_DEBUG == 0) {
-              printk(pcVar6);
+              printk(pcVar5);
             }
             else {
-              ble_printk(pcVar6,"dmic_stream_start",uVar9,BLE_DEBUG);
+              ble_printk(pcVar5,"dmic_stream_start",uVar9,BLE_DEBUG);
             }
           }
         }
         else {
-          uVar9 = dmic_nrfx_pdm_configure((device *)&PTR_s_pdm_26000_0008b4f0,(dmic_cfg *)&local_50)
-          ;
+          uVar9 = dmic_nrfx_pdm_configure((device *)&PTR_s_pdm_26000_0008b4f0,&local_50);
           if ((int)uVar9 < 0) {
             if (0 < LOG_LEVEL) {
-              pcVar6 = "%s(): Failed to configure the driver: %d\n";
+              pcVar5 = "%s(): Failed to configure the driver: %d\n";
               goto LAB_00030654;
             }
           }
@@ -106,14 +100,14 @@ LAB_00030654:
                    (bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0), !bVar1)) {
                   if (LOG_LEVEL < 1) goto LAB_000306f2;
                   pcVar7 = "mx25r6435f@0";
-                  pcVar6 = "%s():  [%s] device not ready.\n";
+                  pcVar5 = "%s():  [%s] device not ready.\n";
 LAB_0003070a:
                   if (BLE_DEBUG == 0) {
-                    printk(pcVar6);
+                    printk(pcVar5);
                     uVar8 = extraout_r2_03;
                   }
                   else {
-                    ble_printk(pcVar6,"do_pdm_transfer",pcVar7,BLE_DEBUG);
+                    ble_printk(pcVar5,"do_pdm_transfer",pcVar7,BLE_DEBUG);
                     uVar8 = extraout_r2_02;
                   }
                   if (local_64 != (void *)0x0) goto LAB_000306f8;
@@ -132,7 +126,7 @@ LAB_00030746:
                 pcVar7 = (char *)dmic_nrfx_pdm_read(0x8b4f0,0,&local_64,&local_60,1000);
                 if (pcVar7 != (char *)0x0) {
                   if (0 < LOG_LEVEL) {
-                    pcVar6 = "%s(): dmic_read failed %d\n";
+                    pcVar5 = "%s(): dmic_read failed %d\n";
                     goto LAB_0003070a;
                   }
 LAB_000306f2:
@@ -152,7 +146,7 @@ LAB_000306f8:
                                                     DAT_20002404,local_64,local_60);
                     if (pcVar7 != (char *)0x0) {
                       if (0 < LOG_LEVEL) {
-                        pcVar6 = "%s(): Flash write failed! %d\n\n";
+                        pcVar5 = "%s(): Flash write failed! %d\n\n";
                         goto LAB_0003070a;
                       }
                       goto LAB_000306f2;
@@ -180,10 +174,9 @@ joined_r0x0003089a:
                 uVar9 = 0;
                 if (((DAT_20003052 == '\0') && (cVar2 = FUN_00033d5c(), cVar2 == '\0')) &&
                    (dmic_msgq.used_msgs != 0)) {
-                  if ((*(char *)((int)pvVar3 + 0x248) == '\0') &&
-                     (*(int *)((int)pvVar3 + 0x220) == 0)) {
+                  if ((*(char *)(iVar3 + 0x248) == '\0') && (*(int *)(iVar3 + 0x220) == 0)) {
                     DAT_20019a77 = 1;
-                    k_sem_give((k_sem *)((int)pvVar3 + 0x218));
+                    k_sem_give((k_sem *)(iVar3 + 0x218));
                   }
                   else {
                     local_60 = CONCAT13(local_60._3_1_,0xcc00f1);
@@ -194,7 +187,7 @@ joined_r0x0003089a:
               goto LAB_0003057c;
             }
             if (0 < LOG_LEVEL) {
-              pcVar6 = "%s(): START trigger failed: %d\n";
+              pcVar5 = "%s(): START trigger failed: %d\n";
               goto LAB_00030654;
             }
           }
@@ -215,20 +208,20 @@ LAB_00030666:
     uVar9 = 1;
   }
 LAB_0003057c:
-  iVar5 = dmic_nrfx_pdm_trigger((device *)&PTR_s_pdm_26000_0008b4f0,0);
-  if (iVar5 < 0) {
+  iVar3 = dmic_nrfx_pdm_trigger((device *)&PTR_s_pdm_26000_0008b4f0,0);
+  if (iVar3 < 0) {
     if (LOG_LEVEL < 1) goto LAB_000305a4;
-    pcVar6 = "%s(): STOP trigger failed\n";
+    pcVar5 = "%s(): STOP trigger failed\n";
   }
   else {
     if (LOG_LEVEL < 1) goto LAB_000305a4;
-    pcVar6 = "%s(): STOP trigger Success\n";
+    pcVar5 = "%s(): STOP trigger Success\n";
   }
   if (BLE_DEBUG == 0) {
-    printk(pcVar6);
+    printk(pcVar5);
   }
   else {
-    ble_printk(pcVar6,"dmic_stream_start",extraout_r2_00,BLE_DEBUG);
+    ble_printk(pcVar5,"dmic_stream_start",extraout_r2_00,BLE_DEBUG);
   }
 LAB_000305a4:
   clean_dmic_msgq();
