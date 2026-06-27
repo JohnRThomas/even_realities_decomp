@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void discover_gattp(bt_conn *param_1,ushort param_2,undefined4 param_3)
 
 {

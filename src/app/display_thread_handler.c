@@ -6,7 +6,6 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 void display_thread_handler(int param_1)
 

@@ -8,7 +8,7 @@
 undefined4 get_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,char *param_4)
 
 {
-  undefined4 *puVar1;
+  char *pcVar1;
   size_t n;
   undefined4 uVar2;
   undefined1 *puVar3;
@@ -29,12 +29,12 @@ undefined4 get_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,char *
     *puVar3 = 0x22;
     puVar3[1] = *(undefined1 *)(param_1 + 1);
     puVar3[2] = 3;
-    puVar1 = FUN_00025338();
-    __sprintf_chk(local_38,0,0x20,"%s",puVar1);
+    pcVar1 = get_serial_number();
+    __sprintf_chk(local_38,0,32,"%s",pcVar1);
     n = strlen(local_38);
     puVar3[3] = (char)n;
     memcpy(puVar3 + 4,local_38,n);
-    *param_4 = (char)n + '\x04';
+    *param_4 = (char)n + 4;
   }
   return uVar2;
 }

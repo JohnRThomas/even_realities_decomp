@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 param_3)
 
 {

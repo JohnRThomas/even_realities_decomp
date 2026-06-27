@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 cJSON_bool FUN_00037b40(cJSON *item,parse_buffer *input_buffer)
 
 {

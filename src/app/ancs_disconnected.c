@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void ancs_disconnected(k_work *param_1,undefined4 param_2)
 
 {

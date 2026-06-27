@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 gui_verticalLine_process_bar
           (uint param_1,int param_2,uint param_3,int param_4,undefined4 param_5,byte param_6)

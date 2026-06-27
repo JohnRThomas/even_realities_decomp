@@ -8,7 +8,6 @@
 /* WARNING: Removing unreachable block (ram,0x0003d3f2) */
 /* WARNING: Removing unreachable block (ram,0x0003d104) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4 FUN_0003cdac(int param_1,int param_2)
 

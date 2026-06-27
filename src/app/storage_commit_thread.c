@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void storage_commit_thread(GlassesState *param_1)
 
 {
@@ -74,7 +72,7 @@ LAB_00025914:
     uVar11 = 1;
     pcVar14 = *(code **)&param_1->field_0x1054;
     pcVar3 = "3dof_enable";
-    pgVar6 = (global_state_struct_0FF0 *)&param_1->field_0xf64;
+    pgVar6 = (global_state_struct_0FF0 *)&(param_1->imu_fusion_context).field_0x7c;
     break;
   case 3:
     uVar11 = 1;
@@ -106,7 +104,7 @@ LAB_00025914:
     uVar11 = 1;
     pcVar14 = *(code **)&param_1->field_0x1054;
     pcVar3 = "wakeup_angle";
-    pgVar6 = (global_state_struct_0FF0 *)&param_1->field_0xef8;
+    pgVar6 = (global_state_struct_0FF0 *)&(param_1->imu_fusion_context).field_0x10;
     break;
   case 0x11:
     z_impl_k_sleep((k_timeout_t)0x50000);
@@ -162,7 +160,7 @@ LAB_000259a8:
   uVar11 = extraout_r1_02;
   if (DAT_20017d2f != '\0') {
     DAT_20017d2f = '\0';
-    FUN_00024abc(param_1);
+    __save_sys_settings(param_1);
     uVar11 = extraout_r1_03;
   }
   goto LAB_00025914;

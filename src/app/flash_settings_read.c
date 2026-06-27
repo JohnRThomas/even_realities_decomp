@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int flash_settings_read(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {

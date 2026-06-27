@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void __on_pairing_complete(k_work *param_1,undefined4 param_2)
 
 {
@@ -27,12 +25,12 @@ void __on_pairing_complete(k_work *param_1,undefined4 param_2)
   cVar1 = FUN_00033d5c();
   if (cVar1 == '\0') {
     pGVar2 = __get_dashboard_state();
-    iVar3 = memcmp(pGVar2->field2791_0x1080 + 1,addr,7);
+    iVar3 = memcmp(pGVar2->field2780_0x1080 + 1,addr,7);
     if (iVar3 != 0) {
       pGVar2 = __get_dashboard_state();
-      bt_unpair('\0',(bt_addr_le_t *)(pGVar2->field2791_0x1080 + 1));
+      bt_unpair('\0',(bt_addr_le_t *)(pGVar2->field2780_0x1080 + 1));
       pGVar2 = __get_dashboard_state();
-      *(undefined1 *)((int)&pGVar2->field2792_0x1087 + 1) = 0;
+      *(undefined1 *)((int)&pGVar2->field2781_0x1087 + 1) = 0;
       pGVar2 = __get_dashboard_state();
       *(undefined4 *)&pGVar2->field_0x1060 = 0;
       pGVar2 = __get_dashboard_state();
@@ -40,9 +38,9 @@ void __on_pairing_complete(k_work *param_1,undefined4 param_2)
     }
   }
   pGVar2 = __get_dashboard_state();
-  *(sys_snode_t **)(pGVar2->field2791_0x1080 + 1) = (addr->work).node.next;
-  *(undefined2 *)(pGVar2->field2791_0x1080 + 5) = *(undefined2 *)&(addr->work).handler;
-  *(undefined1 *)&pGVar2->field2792_0x1087 = *(undefined1 *)((int)&(addr->work).handler + 2);
+  *(sys_snode_t **)(pGVar2->field2780_0x1080 + 1) = (addr->work).node.next;
+  *(undefined2 *)(pGVar2->field2780_0x1080 + 5) = *(undefined2 *)&(addr->work).handler;
+  *(undefined1 *)&pGVar2->field2781_0x1087 = *(undefined1 *)((int)&(addr->work).handler + 2);
   printk("Pairing completed: %s, bonded: %d\n",acStack_38,param_2);
   *(undefined1 *)(GLOBAL_STATE.sem_8.limit + 0x367) = 0;
   return;

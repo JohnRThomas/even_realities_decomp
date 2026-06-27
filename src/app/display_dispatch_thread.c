@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3)
 
 {

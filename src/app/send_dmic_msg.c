@@ -6,7 +6,6 @@
 
 
 /* WARNING: Restarted to delay deadcode elimination for space: ram */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 int send_dmic_msg(int param_1)
 

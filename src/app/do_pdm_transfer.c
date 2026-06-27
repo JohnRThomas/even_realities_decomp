@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int do_pdm_transfer(device *dmic_dev,dmic_cfg *cfg,size_t block_count)
 
 {

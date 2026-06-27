@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 set_lux_base(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
 {
@@ -127,7 +125,7 @@ undefined4 set_lux_base(int param_1,undefined4 param_2,undefined4 *param_3,undef
       *(int *)&pGVar4->field_0xfb4 = (int)((fVar12 + fVar11) * 0.5 * 1e+06);
     }
     pGVar4 = __get_dashboard_state();
-    FUN_00024abc(pGVar4);
+    __save_sys_settings(pGVar4);
     cVar7 = '\0';
     do {
       iVar6 = read_sys_settting_from_flash(auStack_c0);

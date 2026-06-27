@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 FUN_00019c80(int param_1)
 
 {
@@ -17,11 +15,11 @@ undefined4 FUN_00019c80(int param_1)
   FUN_00018ba8();
   if (param_1 == 0) {
     pGVar1 = __get_dashboard_state();
-    if (*(char *)((int)&pGVar1->field2792_0x1087 + 1) != '\x01') {
+    if (*(char *)((int)&pGVar1->field2781_0x1087 + 1) != '\x01') {
       return 0;
     }
     pGVar1 = __get_dashboard_state();
-    *(undefined1 *)((int)&pGVar1->field2792_0x1087 + 1) = 0;
+    *(undefined1 *)((int)&pGVar1->field2781_0x1087 + 1) = 0;
   }
   else {
     if (DAT_20007ef4 == (bt_conn *)0x0) {
@@ -29,11 +27,11 @@ undefined4 FUN_00019c80(int param_1)
     }
     discover_gattp(DAT_20007ef4,extraout_r1,extraout_r2);
     pGVar1 = __get_dashboard_state();
-    if (*(char *)((int)&pGVar1->field2792_0x1087 + 1) != '\0') {
+    if (*(char *)((int)&pGVar1->field2781_0x1087 + 1) != '\0') {
       return 0;
     }
     pGVar1 = __get_dashboard_state();
-    *(undefined1 *)((int)&pGVar1->field2792_0x1087 + 1) = 1;
+    *(undefined1 *)((int)&pGVar1->field2781_0x1087 + 1) = 1;
   }
   pGVar1 = __get_dashboard_state();
   *(undefined4 *)&pGVar1->field_0x1060 = 0;

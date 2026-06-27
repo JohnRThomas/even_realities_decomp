@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 get_assign_channel_info(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -42,7 +40,7 @@ get_assign_channel_info(int param_1,undefined4 param_2,undefined4 *param_3,undef
     pGVar2 = __get_dashboard_state();
     pGVar2->field_0x4 = *(undefined1 *)(param_1 + 6);
     pGVar2 = __get_dashboard_state();
-    FUN_00024abc(pGVar2);
+    __save_sys_settings(pGVar2);
     puVar5[1] = 1;
     *puVar5 = 0x1d;
     puVar5[3] = 1;

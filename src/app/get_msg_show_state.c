@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void __get_msg_show_state(void)
 
 {
@@ -47,8 +45,7 @@ void __get_msg_show_state(void)
     FUN_00035abc(0);
     pGVar3 = __get_dashboard_state();
     if ((pGVar3->field_0xd5 != '\x01') &&
-       (pGVar3 = __get_dashboard_state(),
-       *(char *)&(pGVar3->jdb_panel_context).field850_0x37c == '\x02')) {
+       (pGVar3 = __get_dashboard_state(), *(char *)&pGVar3->imu_fusion_context == '\x02')) {
       pGVar3 = __get_dashboard_state();
       trigger_screen_state_change("IMU:wakeup:dashboard",(int)pGVar3,1,extraout_r3_00);
     }

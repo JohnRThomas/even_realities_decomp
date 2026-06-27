@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 __ui_bitmap_task(int param_1,undefined4 param_2,int param_3)
 
 {

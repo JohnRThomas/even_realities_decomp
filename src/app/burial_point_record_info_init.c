@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void burial_point_record_info_init(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {

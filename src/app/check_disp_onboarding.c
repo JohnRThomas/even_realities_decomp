@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
 
 {

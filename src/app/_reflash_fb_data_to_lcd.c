@@ -53,11 +53,11 @@ _reflash_fb_data_to_lcd(int param_1,int param_2,int param_3,int param_4,int para
       param_5 = 0x280;
     }
     iVar7 = (5 - param_3 / 2) + param_5 / 2;
-    uVar5 = param_3 + param_1 & 0x3ff;
+    uVar5 = param_3 + param_1 & 1023;
     uVar3 = extraout_r1;
     for (; param_4 <= param_6; param_4 = param_4 + 1) {
-      iVar10 = pjVar2->field806_0x344;
-      iVar9 = param_4 * 0x140 + param_3 / 2 + -5;
+      iVar10 = pjVar2->__frame_buffers;
+      iVar9 = param_4 * 320 + param_3 / 2 + -5;
       iVar8 = iVar10 + iVar9;
       local_2c = *(undefined1 *)(iVar8 + 4);
       local_30 = *(undefined4 *)(iVar10 + iVar9);

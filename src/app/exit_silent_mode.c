@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void __exit_silent_mode(void)
 
 {
@@ -23,7 +21,7 @@ void __exit_silent_mode(void)
   pGVar1 = __get_dashboard_state();
   global_system_resume((int)pGVar1,extraout_r1,extraout_r2);
   pGVar1 = __get_dashboard_state();
-  *(undefined1 *)&(pGVar1->jdb_panel_context).field850_0x37c = 2;
+  *(undefined1 *)&pGVar1->imu_fusion_context = 2;
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0xd5 = 3;
   pGVar1 = __get_dashboard_state();

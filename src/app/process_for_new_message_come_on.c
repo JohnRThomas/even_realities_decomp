@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 process_for_new_message_come_on(byte *param_1,byte *param_2)
 
 {

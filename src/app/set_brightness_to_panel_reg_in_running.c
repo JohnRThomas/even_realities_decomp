@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void set_brightness_to_panel_reg_in_running(uint param_1,uint param_2)
 
 {

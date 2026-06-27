@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 jdb_panel_context * get_jdb_panel_context(void)
 
 {

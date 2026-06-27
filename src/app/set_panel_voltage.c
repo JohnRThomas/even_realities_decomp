@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 set_panel_voltage(int param_1,uint param_2,undefined4 *param_3,undefined1 *param_4)
 
 {
@@ -37,7 +35,7 @@ undefined4 set_panel_voltage(int param_1,uint param_2,undefined4 *param_3,undefi
       pGVar2 = __get_dashboard_state();
       (pGVar2->jdb_panel_context).field_0x368 = bVar1;
       pGVar2 = __get_dashboard_state();
-      FUN_00024abc(pGVar2);
+      __save_sys_settings(pGVar2);
       cVar5 = '\0';
       do {
         iVar3 = read_sys_settting_from_flash(auStack_b0);

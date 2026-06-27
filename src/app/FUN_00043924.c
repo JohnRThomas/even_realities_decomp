@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void FUN_00043924(void)
 
 {
@@ -64,9 +62,8 @@ void FUN_00043924(void)
   case 3:
     pGVar5 = __get_dashboard_state();
     pGVar6 = __get_dashboard_state();
-    bVar2 = *(byte *)&(pGVar5->jdb_panel_context).field850_0x37c;
-    uVar14 = (uint)bVar2;
-    *(byte *)(*(int *)&pGVar6->field_0x101c + 3) = bVar2;
+    uVar14 = (uint)*(byte *)&pGVar5->imu_fusion_context;
+    *(byte *)(*(int *)&pGVar6->field_0x101c + 3) = *(byte *)&pGVar5->imu_fusion_context;
     if (5 < DAT_2001db42) {
       return;
     }
@@ -95,8 +92,7 @@ void FUN_00043924(void)
   case 0x15:
     pGVar5 = __get_dashboard_state();
     pGVar6 = __get_dashboard_state();
-    *(undefined1 *)(*(int *)&pGVar6->field_0x101c + 3) =
-         *(undefined1 *)&(pGVar5->jdb_panel_context).field850_0x37c;
+    *(undefined1 *)(*(int *)&pGVar6->field_0x101c + 3) = *(undefined1 *)&pGVar5->imu_fusion_context;
     if (DAT_2001db40 == '\x01') {
       pGVar5 = __get_dashboard_state();
       if ((*(char *)(*(int *)&pGVar5->field_0x101c + 2) == '\x05') && (DAT_2001db43 == '\0')) {
@@ -437,8 +433,7 @@ LAB_000440a2:
   case 0x13:
     pGVar5 = __get_dashboard_state();
     pGVar6 = __get_dashboard_state();
-    *(undefined1 *)(*(int *)&pGVar6->field_0x101c + 3) =
-         *(undefined1 *)&(pGVar5->jdb_panel_context).field850_0x37c;
+    *(undefined1 *)(*(int *)&pGVar6->field_0x101c + 3) = *(undefined1 *)&pGVar5->imu_fusion_context;
     cVar1 = DAT_2001db40;
     if (DAT_2001db40 != '\x01') {
       if (DAT_2001db40 != '\x02') {
@@ -713,7 +708,7 @@ LAB_000444fc:
     pGVar5 = __get_dashboard_state();
     pGVar6 = __get_dashboard_state();
     iVar11 = *(int *)&pGVar6->field_0x101c;
-    uVar13 = *(undefined1 *)&(pGVar5->jdb_panel_context).field850_0x37c;
+    uVar13 = *(undefined1 *)&pGVar5->imu_fusion_context;
 LAB_000439d2:
     *(undefined1 *)(iVar11 + 3) = uVar13;
     break;

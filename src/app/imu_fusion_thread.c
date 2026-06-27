@@ -6,7 +6,6 @@
 
 
 /* WARNING: Removing unreachable block (ram,0x000105d6) */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 void imu_fusion_thread(char *param_1)
 

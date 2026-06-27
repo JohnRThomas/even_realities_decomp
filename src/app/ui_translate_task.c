@@ -6,7 +6,6 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
 

@@ -56,7 +56,7 @@ _reflash_fb_data_to_lcd_ex
     iVar9 = (5 - param_3 / 2) + param_5 / 2;
     uVar5 = param_3 + param_1 & 0x3ff;
     for (; param_4 <= param_6; param_4 = param_4 + 1) {
-      iVar10 = pjVar2->field806_0x344;
+      iVar10 = pjVar2->__frame_buffers;
       iVar8 = param_4 * 0x140 + param_7 * 0x140 + param_3 / 2 + -5;
       iVar7 = iVar10 + iVar8;
       local_2c = *(undefined1 *)(iVar7 + 4);

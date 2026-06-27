@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void FUN_000428bc(void)
 
 {
@@ -633,7 +631,7 @@ LAB_00042ba6:
   gui_utf_draw(0,pcVar8,0,iVar11,iVar10,iVar6,iVar7,uVar12,0,0,(undefined *)0x0,0);
 switchD_00042a0c_caseD_a:
   pGVar4 = __get_dashboard_state();
-  DAT_20004db8 = *(undefined1 *)&(pGVar4->jdb_panel_context).field850_0x37c;
+  DAT_20004db8 = *(undefined1 *)&pGVar4->imu_fusion_context;
   return;
 }
 

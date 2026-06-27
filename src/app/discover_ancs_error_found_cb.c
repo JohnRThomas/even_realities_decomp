@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void discover_ancs_error_found_cb(bt_conn *param_1)
 
 {

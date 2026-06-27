@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 uint opt3007_get_max_lux(undefined4 param_1,undefined4 param_2,undefined4 param_3)
 
 {

@@ -6,7 +6,6 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
 
@@ -5731,7 +5730,7 @@ LAB_00021e38:
     if ((*(short *)(param_2 + 2) == *(short *)(param_3 + 1)) && (bVar2 < 3)) {
       if (bVar2 == 1) {
         pGVar14 = __get_dashboard_state();
-        if (*(int *)&pGVar14->field_0xf6c != 0) {
+        if (*(int *)&(pGVar14->imu_fusion_context).field_0x84 != 0) {
           if (1 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               printk("%s(): ble clear user horiz pitch\n");
@@ -5742,7 +5741,7 @@ LAB_00021e38:
             }
           }
           pGVar14 = __get_dashboard_state();
-          *(undefined4 *)&pGVar14->field_0xf6c = 0;
+          *(undefined4 *)&(pGVar14->imu_fusion_context).field_0x84 = 0;
           pGVar14 = __get_dashboard_state();
           *(undefined4 *)&pGVar14->field_0x1060 = 0;
           pGVar14 = __get_dashboard_state();
@@ -5767,7 +5766,7 @@ LAB_00021e38:
               }
             }
             pGVar14 = __get_dashboard_state();
-            *(undefined4 *)&pGVar14->field_0xf6c = DAT_2000848c;
+            *(undefined4 *)&(pGVar14->imu_fusion_context).field_0x84 = DAT_2000848c;
             pGVar14 = __get_dashboard_state();
             *(undefined4 *)&pGVar14->field_0x1060 = 0;
             pGVar14 = __get_dashboard_state();

@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
 
 {

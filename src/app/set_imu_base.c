@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 set_imu_base(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -43,18 +41,18 @@ set_imu_base(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined
        (pGVar2 = __get_dashboard_state(), uVar5 = 1, *(int *)&pGVar2->field_0x109c != 0)) {
       pGVar2 = __get_dashboard_state();
       uVar5 = 0;
-      *(int *)&pGVar2->field_0xf68 = DAT_2000848c;
+      *(int *)&(pGVar2->imu_fusion_context).field_0x80 = DAT_2000848c;
     }
     iVar7 = DAT_2000848c;
     puVar4[4] = uVar5;
     __sprintf_chk(local_c4,0,0x14,"base: %d",iVar7);
     pGVar2 = __get_dashboard_state();
     cVar6 = '\0';
-    *(undefined4 *)(puVar4 + 5) = *(undefined4 *)&pGVar2->field_0xf68;
+    *(undefined4 *)(puVar4 + 5) = *(undefined4 *)&(pGVar2->imu_fusion_context).field_0x80;
     pGVar2 = __get_dashboard_state();
-    FUN_00024abc(pGVar2);
+    __save_sys_settings(pGVar2);
     pGVar2 = __get_dashboard_state();
-    iVar7 = *(int *)&pGVar2->field_0xf68;
+    iVar7 = *(int *)&(pGVar2->imu_fusion_context).field_0x80;
     do {
       iVar3 = read_sys_settting_from_flash(auStack_b0);
       if ((iVar3 == 0) && (local_a4 == iVar7)) goto LAB_0003313c;

@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int bt_start(void)
 
 {
@@ -46,7 +44,7 @@ int bt_start(void)
     DAT_20010961 = 2;
   }
   DAT_20002364 = &DAT_20010961;
-  pcVar9 = (char *)FUN_00025338();
+  pcVar9 = get_serial_number();
   __strcpy_chk(&DAT_20010962,pcVar9,0x13);
   pGVar8 = __get_dashboard_state();
   printk("c->esb_channel %d\r\n",(uint)(byte)pGVar8->field_0x2);

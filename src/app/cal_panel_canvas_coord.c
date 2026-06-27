@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void cal_panel_canvas_coord(int *param_1,int *param_2)
 
 {

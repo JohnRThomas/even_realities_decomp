@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 gui_utf_Wordwrap_draw
           (undefined4 param_1,char *param_2,uint param_3,int param_4,int param_5,int param_6,

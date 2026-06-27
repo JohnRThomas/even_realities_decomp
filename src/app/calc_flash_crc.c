@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 calc_flash_crc(ushort *param_1,int param_2,uint param_3)
 
 {

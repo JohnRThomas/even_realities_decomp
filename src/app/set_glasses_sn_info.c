@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 set_glasses_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -30,7 +28,7 @@ set_glasses_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,undefined
     FUN_00025364(param1);
     printf("The string is: %s\n",param1);
     pGVar2 = __get_dashboard_state();
-    FUN_00024abc(pGVar2);
+    __save_sys_settings(pGVar2);
     *puVar5 = 0x29;
     puVar5[1] = 1;
     puVar5[2] = 3;

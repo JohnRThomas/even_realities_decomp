@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_4,size_t param_5)
 

@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int request_ancs_attr_ext(size_t param_1,uint param_2)
 
 {

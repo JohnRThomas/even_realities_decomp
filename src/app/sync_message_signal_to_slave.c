@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 uint sync_message_signal_to_slave(undefined1 param_1,uint param_2,undefined4 param_3)
 
 {

@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 send_response_data_to_msgqueue(void *param_1,uint param_2)
 
 {
