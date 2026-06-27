@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 uint SettingStoreHandler(void)
 
 {

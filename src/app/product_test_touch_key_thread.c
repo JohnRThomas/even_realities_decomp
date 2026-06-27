@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void product_test_touch_key_thread(char *param_1,char *param_2)
 
 {

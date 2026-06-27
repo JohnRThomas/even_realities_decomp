@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 gui_bitmps_merge_draw
           (uint param_1,int param_2,int param_3,int param_4,int param_5,int param_6,byte param_7,

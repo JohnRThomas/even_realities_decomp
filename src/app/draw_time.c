@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void __draw_time(char *param_1,char *param_2)
 
 {

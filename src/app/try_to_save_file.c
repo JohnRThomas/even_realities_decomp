@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void try_to_save_file(int param_1)
 
 {

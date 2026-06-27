@@ -6,7 +6,6 @@
 
 
 /* WARNING: Unable to use type for symbol uVar8 */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 void main(void)
 
@@ -229,13 +228,13 @@ void main(void)
   if (buf_00 != (uint8_t *)0x0) {
     memset(buf_00,0,0x208);
   }
-  s->field2791_0x1080[1] = 0xff;
-  s->field2791_0x1080[2] = 0xff;
-  s->field2791_0x1080[3] = 0xff;
-  s->field2791_0x1080[4] = 0xff;
-  *(undefined4 *)(s->field2791_0x1080 + 4) = 0xffffffff;
-  *(undefined2 *)((int)&s->field2792_0x1087 + 1) = 0;
-  register_ipc_service_context(&s->ipc_service_context,s->field2791_0x1080 + 1,0x1081);
+  s->field2780_0x1080[1] = 0xff;
+  s->field2780_0x1080[2] = 0xff;
+  s->field2780_0x1080[3] = 0xff;
+  s->field2780_0x1080[4] = 0xff;
+  *(undefined4 *)(s->field2780_0x1080 + 4) = 0xffffffff;
+  *(undefined2 *)((int)&s->field2781_0x1087 + 1) = 0;
+  register_ipc_service_context(&s->ipc_service_context,s->field2780_0x1080 + 1,0x1081);
   s->field_0x6e4 = 1;
   s->field1588_0x6e8 = "cpuapp-hw-id";
   *(undefined4 *)&s->field_0x6ec = 0x1638d;
@@ -327,16 +326,14 @@ LAB_00017458:
       duration_00.ticks._0_4_ = extraout_r1_03;
       k_timer_start((k_timer *)&DAT_20003868,duration_00,(k_timeout_t)0x1e000000000000);
       power_for_imu_and_mic();
-      *(undefined ***)&s->field_0xf04 = &PTR_s_lsm6dso_6b_0008b508;
+      *(undefined ***)&(s->imu_fusion_context).field_0x1c = &PTR_s_lsm6dso_6b_0008b508;
       lsm6dso_init_chip((device *)&PTR_s_lsm6dso_6b_0008b508);
-      register_imu_funsion_context
-                ((imu_fusion_context *)&(s->jdb_panel_context).field850_0x37c,extraout_r1_04,
-                 extraout_r2_04);
+      register_imu_funsion_context(&s->imu_fusion_context,extraout_r1_04,extraout_r2_04);
       register_opt3007_context(&s->opt3007_context);
     }
     else if (*(char *)s == '\x02') {
       power_for_imu_and_mic();
-      *(undefined ***)&s->field_0xf04 = &PTR_s_lsm6dso_6b_0008b508;
+      *(undefined ***)&(s->imu_fusion_context).field_0x1c = &PTR_s_lsm6dso_6b_0008b508;
       lsm6dso_init_chip((device *)&PTR_s_lsm6dso_6b_0008b508);
     }
     register_jdb_panel_context(&s->jdb_panel_context);
@@ -374,7 +371,7 @@ LAB_00017458:
     }
   }
   if (*(char *)s == '\x01') {
-    iVar12 = (**(code **)&s->field_0xf74)(&(s->jdb_panel_context).field850_0x37c);
+    iVar12 = (*(code *)(s->imu_fusion_context).init_cb)(&s->imu_fusion_context);
     if ((iVar12 != 0) && (1 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
         printk("%s(): [imu_context init] fail: 0x%x\n\n");
@@ -383,7 +380,7 @@ LAB_00017458:
         ble_printk("%s(): [imu_context init] fail: 0x%x\n\n","component_init",iVar12,BLE_DEBUG);
       }
     }
-    iVar12 = (*(code *)(s->opt3007_context).field0_0x0)(&s->opt3007_context);
+    iVar12 = (*(code *)(s->opt3007_context).init_cb)(&s->opt3007_context);
     if ((iVar12 != 0) && (1 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
         printk("%s(): [opt3007 init] fail: 0x%x\n\n");

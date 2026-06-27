@@ -6,7 +6,6 @@
 
 
 /* WARNING: Type propagation algorithm not settling */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 int ui_even_ai_task(int param_1,undefined4 param_2,int param_3)
 

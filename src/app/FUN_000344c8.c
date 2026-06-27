@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void FUN_000344c8(void)
 
 {
@@ -21,7 +19,7 @@ void FUN_000344c8(void)
     return;
   }
   pGVar1 = __get_dashboard_state();
-  if (299 < (uint)pGVar1->field2830_0x10b0) {
+  if (299 < (uint)pGVar1->field2819_0x10b0) {
     return;
   }
   is_in_box = get_box_status_by_type(IN_BOX);
@@ -72,7 +70,7 @@ LAB_0003453e:
   pGVar1->field_0x10d0 = 2;
 LAB_000345dc:
   pGVar1 = __get_dashboard_state();
-  FUN_00024abc(pGVar1);
+  __save_sys_settings(pGVar1);
   return;
 }
 

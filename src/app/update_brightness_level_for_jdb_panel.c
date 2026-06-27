@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void __update_brightness_level_for_jdb_panel(uint param_1,ushort *param_2,char *param_3)
 
 {

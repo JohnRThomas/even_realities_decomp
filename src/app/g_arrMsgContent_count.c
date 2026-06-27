@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined1 __g_arrMsgContent_count(void)
 
 {

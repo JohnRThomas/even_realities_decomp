@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int ancs_c_init(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {

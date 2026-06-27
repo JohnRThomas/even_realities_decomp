@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void check_bonded_addr(bt_addr_le_t *param_1,undefined4 param_2,size_t param_3)
 
 {

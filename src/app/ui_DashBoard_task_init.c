@@ -7,7 +7,6 @@
 
 /* WARNING: Removing unreachable block (ram,0x0003d104) */
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 undefined4
 __ui_DashBoard_task_init(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)

@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int global_ipc_service_send(void *param_1,size_t param_2,undefined4 param_3)
 
 {

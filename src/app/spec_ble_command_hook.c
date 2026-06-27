@@ -601,7 +601,7 @@ LAB_0000f93c:
                     memset(&local_41c,0,0xc4);
                     __sprintf_chk((char *)&local_420,0,200,
                                   "net build time: %s, app build time %s, ver %d.%d.%d, JBD DeviceID %x\n\r"
-                                  ,&DAT_2001093c,"2025-06-28 17:28:42",1,6,3,DAT_2000aa54);
+                                  ,&DAT_2001093c,"2025-06-28 17:28:42",1,6,3,JDB_PANEL_ID);
                     goto LAB_0000f9f4;
                   }
                   local_420 = strncmp((char *)&local_520,"#v",2);

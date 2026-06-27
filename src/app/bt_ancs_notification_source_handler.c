@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void bt_ancs_notification_source_handler(bt_ancs_client *client,int err,undefined4 *param_3)
 
 {

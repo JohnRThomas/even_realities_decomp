@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int flash_settings_write_and_verify(undefined4 param_1,void *param_2,size_t param_3)
 
 {

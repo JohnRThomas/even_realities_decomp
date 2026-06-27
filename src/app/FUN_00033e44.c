@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void FUN_00033e44(void)
 
 {
@@ -33,13 +31,13 @@ void FUN_00033e44(void)
   uVar3 = __aeabi_ldivmod((uint)uVar3,(uint)((ulonglong)uVar3 >> 0x20),1000,0);
   *(int *)&pGVar1->field_0x10ac = (int)uVar3;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field2831_0x10b4 = 0;
+  pGVar1->field2820_0x10b4 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field2832_0x10b8 = 0;
+  pGVar1->field2821_0x10b8 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field2833_0x10bc = 0;
-  pGVar1->field2834_0x10c0 = 0;
-  pGVar1->field2835_0x10c4 = 0;
+  pGVar1->field2822_0x10bc = 0;
+  pGVar1->field2823_0x10c0 = 0;
+  pGVar1->field2824_0x10c4 = 0;
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0x10c8 = 0;
   pGVar1 = __get_dashboard_state();
@@ -49,7 +47,7 @@ void FUN_00033e44(void)
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0x10d1 = 0;
   pGVar1 = __get_dashboard_state();
-  FUN_00024abc(pGVar1);
+  __save_sys_settings(pGVar1);
   return;
 }
 

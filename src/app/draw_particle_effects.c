@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void draw_particle_effects(int param_1,undefined4 param_2,undefined4 *param_3)
 
 {

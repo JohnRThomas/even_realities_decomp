@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 void bt_receive_cb(k_work *param_1,byte *packet_data,uint packet_size)
 
 {

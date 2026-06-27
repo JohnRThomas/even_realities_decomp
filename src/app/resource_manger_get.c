@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 resource_manger_get(uint param_1,uint param_2,uint *param_3,uint *param_4,undefined4 *param_5,
                    undefined1 *param_6)

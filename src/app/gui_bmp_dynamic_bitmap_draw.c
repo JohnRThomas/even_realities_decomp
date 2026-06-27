@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 gui_bmp_dynamic_bitmap_draw(uint param_1,int param_2,int param_3)
 
 {

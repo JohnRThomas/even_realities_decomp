@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 set_brightness_lum_base(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -57,7 +55,7 @@ set_brightness_lum_base(int param_1,undefined4 param_2,undefined4 *param_3,undef
     pGVar4 = __get_dashboard_state();
     *(ushort *)&(pGVar4->jdb_panel_context).field_0x36c = uVar7;
     pGVar4 = __get_dashboard_state();
-    FUN_00024abc(pGVar4);
+    __save_sys_settings(pGVar4);
     cVar9 = '\0';
     do {
       iVar5 = read_sys_settting_from_flash(auStack_b0);

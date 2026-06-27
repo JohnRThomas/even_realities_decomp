@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 gui_4bit_bitmap_override(uint param_1,uint param_2,uint param_3)
 
 {

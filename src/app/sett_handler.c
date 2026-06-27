@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 int sett_handler(char *param_1,undefined4 param_2,undefined *param_3,undefined4 param_4)
 
 {
@@ -101,18 +99,18 @@ LAB_00024272:
       iVar1 = strcmp(param_1,"3dof_enable");
       if (iVar1 == 0) {
         pGVar3 = __get_dashboard_state();
-        iVar1 = (*(code *)param_3)(param_4,&pGVar3->field_0xf64,1);
+        iVar1 = (*(code *)param_3)(param_4,&(pGVar3->imu_fusion_context).field_0x7c,1);
         if (iVar1 < 0) goto LAB_0002422c;
         if (LOG_LEVEL < 3) {
           return 0;
         }
         if (BLE_DEBUG == 0) {
           pGVar3 = __get_dashboard_state();
-          uVar6 = (uint)(byte)pGVar3->field_0xf64;
+          uVar6 = (uint)(byte)(pGVar3->imu_fusion_context).field_0x7c;
           goto LAB_00024272;
         }
         pGVar3 = __get_dashboard_state();
-        uVar6 = (uint)(byte)pGVar3->field_0xf64;
+        uVar6 = (uint)(byte)(pGVar3->imu_fusion_context).field_0x7c;
         goto LAB_0002425c;
       }
       iVar1 = strcmp(param_1,"display_mode");
@@ -156,18 +154,18 @@ LAB_00024272:
           return 0;
         }
         pGVar3 = __get_dashboard_state();
-        iVar1 = (*(code *)param_3)(param_4,&pGVar3->field_0xef8,1);
+        iVar1 = (*(code *)param_3)(param_4,&(pGVar3->imu_fusion_context).field_0x10,1);
         if (iVar1 < 0) goto LAB_0002422c;
         if (LOG_LEVEL < 3) {
           return 0;
         }
         if (BLE_DEBUG == 0) {
           pGVar3 = __get_dashboard_state();
-          uVar6 = (uint)(byte)pGVar3->field_0xef8;
+          uVar6 = (uint)(byte)(pGVar3->imu_fusion_context).field_0x10;
           goto LAB_00024272;
         }
         pGVar3 = __get_dashboard_state();
-        uVar6 = (uint)(byte)pGVar3->field_0xef8;
+        uVar6 = (uint)(byte)(pGVar3->imu_fusion_context).field_0x10;
         goto LAB_0002425c;
       }
       pGVar3 = __get_dashboard_state();

@@ -6,7 +6,6 @@
 
 
 /* WARNING: Restarted to delay deadcode elimination for space: ram */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 void proxy_thread_handler(int param_1)
 

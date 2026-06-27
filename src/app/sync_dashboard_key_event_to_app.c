@@ -6,7 +6,6 @@
 
 
 /* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
 
 void sync_dashboard_key_event_to_app
                (undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)

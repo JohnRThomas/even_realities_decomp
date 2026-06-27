@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 get_imu_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
@@ -36,7 +34,7 @@ get_imu_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,undefined
     *(undefined4 *)(puVar3 + 0x18) = *(undefined4 *)&pGVar2->field_0x109c;
     pGVar2 = __get_dashboard_state();
     uVar1 = 0;
-    *(undefined4 *)(puVar3 + 0x1c) = *(undefined4 *)&pGVar2->field_0xf68;
+    *(undefined4 *)(puVar3 + 0x1c) = *(undefined4 *)&(pGVar2->imu_fusion_context).field_0x80;
     *param_4 = 0x20;
   }
   return uVar1;

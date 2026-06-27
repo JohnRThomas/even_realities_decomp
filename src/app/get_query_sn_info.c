@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4 get_query_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,undefined1 *param_4)
 
 {
@@ -14,7 +12,7 @@ undefined4 get_query_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,
   GlassesState *pGVar2;
   int iVar3;
   char cVar4;
-  char *param1;
+  char *serial_num;
   undefined1 *puVar5;
   undefined4 auStack_b0 [5];
   undefined1 auStack_9b [135];
@@ -24,12 +22,12 @@ undefined4 get_query_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,
     uVar1 = 0xffffffff;
   }
   else if (DAT_2001abc2 == '\x01') {
-    param1 = (char *)(param_1 + 4);
+    serial_num = (char *)(param_1 + 4);
     puVar5 = (undefined1 *)*param_3;
-    FUN_00025348(param1);
-    printf("The string is: %s\n",param1);
+    __save_serial_number(serial_num);
+    printf("The string is: %s\n",serial_num);
     pGVar2 = __get_dashboard_state();
-    FUN_00024abc(pGVar2);
+    __save_sys_settings(pGVar2);
     *puVar5 = 0x1c;
     puVar5[1] = 1;
     puVar5[2] = 3;
@@ -39,7 +37,8 @@ undefined4 get_query_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,
     *param_4 = 5;
     do {
       iVar3 = read_sys_settting_from_flash(auStack_b0);
-      if ((iVar3 == 0) && (iVar3 = memcmp(param1,auStack_9b,0xe), iVar3 == 0)) goto LAB_0003334c;
+      if ((iVar3 == 0) && (iVar3 = memcmp(serial_num,auStack_9b,0xe), iVar3 == 0))
+      goto LAB_0003334c;
       cVar4 = cVar4 + '\x01';
       sleep(100);
     } while (cVar4 != '\x05');

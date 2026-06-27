@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Struct "GlassesState": ignoring multiple overlapping fields */
-
 undefined4
 gui_horizontal_percentage_bar
           (int param_1,int param_2,int param_3,int param_4,byte param_5,byte param_6,byte param_7)
