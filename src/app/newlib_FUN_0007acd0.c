@@ -20,7 +20,7 @@ uint __newlib_FUN_0007acd0(undefined4 *param_1,byte *param_2,undefined4 *param_3
   uint uVar10;
   
   if ((0x24 < param_4) || (pbVar6 = param_2, param_4 == 1)) {
-    piVar1 = __errno();
+    piVar1 = __FUN_00074920();
     *piVar1 = 0x16;
     return 0;
   }

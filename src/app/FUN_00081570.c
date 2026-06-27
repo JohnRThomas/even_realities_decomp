@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00081570
+ * Function: $_FUN_00081570
  * Entry:    00081570
- * Prototype: uint __stdcall FUN_00081570(undefined * param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
+ * Prototype: uint __stdcall $_FUN_00081570(undefined * param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-uint FUN_00081570(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
+uint __FUN_00081570(undefined *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   k_thread *thread;
