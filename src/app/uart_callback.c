@@ -38,17 +38,17 @@ void uart_callback(undefined4 param_1,undefined1 *param_2,uint param_3)
     for (uVar3 = 0; uVar3 < *(uint *)(param_2 + 8); uVar3 = uVar3 + 1) {
       printk("%02x ",(uint)*(byte *)(*(int *)(param_2 + 4) + uVar3));
     }
-    goto LAB_000349d4;
+    break;
   case 1:
-    if (0 < LOG_LEVEL) {
-      if (BLE_DEBUG == 0) {
-        printk("%s(): Tx aborted\n");
-        return;
-      }
+    if (LOG_LEVEL < 1) {
+      return;
+    }
+    if (BLE_DEBUG != 0) {
       ble_printk("%s(): Tx aborted\n","uart_callback",param_3,BLE_DEBUG);
       return;
     }
-    break;
+    printk("%s(): Tx aborted\n");
+    return;
   case 2:
     uVar3 = *(uint *)(param_2 + 8);
     for (uVar5 = uVar3 & 0xffff; (uVar5 & 0xffff) < 0xf8; uVar5 = uVar5 + 1) {
@@ -78,32 +78,36 @@ void uart_callback(undefined4 param_1,undefined1 *param_2,uint param_3)
     for (uVar5 = 0; uVar5 < *(uint *)(param_2 + 0xc); uVar5 = uVar5 + 1) {
       printk("%02x ",(uint)*(byte *)(*(int *)(param_2 + 4) + uVar3 + uVar5));
     }
-LAB_000349d4:
-    printk("\n");
-    return;
+    break;
   case 3:
     printk("*************alloc new rx buf*************\n");
     iVar2 = k_mem_slab_alloc((k_mem_slab *)&DAT_20003958,&local_1c,(k_timeout_t)0x0);
-    if (iVar2 == 0) goto LAB_00034ae0;
-    _ASSERT("ASSERTION FAIL [%s] @ %s:%d\n","err == 0","../src/production_test/serial_port.c",0x51);
-    _ASSERT("\tFailed to allocate slab\n",test,file,line);
-    while( true ) {
-      k_panic();
-LAB_00034ae0:
+    if (iVar2 == 0) {
       iVar2 = (**(code **)(*(int *)(param_3 + 8) + 0x10))(param_3,local_1c,0x100);
-      if (iVar2 == 0) break;
+      if (iVar2 == 0) {
+        return;
+      }
       _ASSERT("ASSERTION FAIL [%s] @ %s:%d\n","err == 0","../src/production_test/serial_port.c",0x54
              );
       _ASSERT("\tFailed to provide new buffer\n",test_00,file_00,line_00);
     }
-    break;
+    else {
+      _ASSERT("ASSERTION FAIL [%s] @ %s:%d\n","err == 0","../src/production_test/serial_port.c",0x51
+             );
+      _ASSERT("\tFailed to allocate slab\n",test,file,line);
+    }
+                    /* WARNING: Subroutine does not return */
+    k_panic();
   case 4:
     printk(
           "****************************UART_RX_BUF_RELEASED***************************************\n"
           );
     k_mem_slab_free((k_mem_slab *)&DAT_20003958,*(void **)(param_2 + 4));
     return;
+  default:
+    return;
   }
+  printk("\n");
   return;
 }
 

@@ -16,6 +16,7 @@ undefined4 spi_master_init(spi_master_callbacks *param_1)
   uint uVar5;
   code *handler;
   SPIM4_S **ppSVar6;
+  byte abVar7 [4];
   SPIM3_S *local_58;
   undefined1 local_54;
   SPIM4_S *local_50;
@@ -43,12 +44,16 @@ undefined4 spi_master_init(spi_master_callbacks *param_1)
     return 0;
   }
   uVar5 = (uint)*(byte *)((int)&param_1[2].deinit + 1);
+  local_48.opaque[0] = *(byte *)((int)&param_1[2].init_cb + 1);
+  abVar7[1] = 0;
+  abVar7[2] = 0;
+  abVar7[3] = 0;
+  abVar7[0] = local_48.opaque[0];
   local_34 = uVar5 * 1000000;
   uVar4 = (uint)*(byte *)&param_1[2].init_cb;
   local_44 = (uint)*(byte *)((int)&param_1[2].init_cb + 2);
   local_40 = (uint)*(byte *)((int)&param_1[2].init_cb + 3);
   local_3c = (uint)*(byte *)&param_1[2].deinit;
-  local_48.opaque[0] = *(byte *)((int)&param_1[2].init_cb + 1);
   local_48.opaque[1] = 0;
   local_48.opaque[2] = 0;
   local_48.opaque[3] = 0;
@@ -70,25 +75,28 @@ undefined4 spi_master_init(spi_master_callbacks *param_1)
   param_1[1].init_cb = *ppSVar6;
   param_1[1].deinit = pSVar3;
   if (2 < iVar1) {
-    if (BLE_DEBUG == 0) goto LAB_000285de;
-    ble_printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_init",uVar4
-               ,uVar5);
-  }
-  while( true ) {
-    if (*(char *)&param_1[2].init_cb == '\x03') {
-      handler = (code *)0x7fdf1;
-      p_context = param_1;
+    if (BLE_DEBUG == 0) {
+      printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_init",uVar4,
+             uVar5,abVar7,local_44,local_40,local_3c);
     }
     else {
-      handler = (code *)0x0;
-      p_context = (spi_master_callbacks *)handler;
+      ble_printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_init",
+                 uVar4,uVar5);
     }
-    nVar2 = nrfx_spim_init((nrfx_spim_t *)(param_1 + 1),&local_48,handler,p_context);
-    if ((undefined1 *)(uint)nVar2 == &DAT_0bad0000) break;
+  }
+  if (*(char *)&param_1[2].init_cb == '\x03') {
+    handler = (code *)0x7fdf1;
+    p_context = param_1;
+  }
+  else {
+    handler = (code *)0x0;
+    p_context = (spi_master_callbacks *)handler;
+  }
+  nVar2 = nrfx_spim_init((nrfx_spim_t *)(param_1 + 1),&local_48,handler,p_context);
+  if ((undefined1 *)(uint)nVar2 != &DAT_0bad0000) {
     _ASSERT("ASSERTION FAIL [%s] @ %s:%d\n","status == NRFX_SUCCESS","../src/spim_spis/spim.c",104);
+                    /* WARNING: Subroutine does not return */
     k_panic();
-LAB_000285de:
-    printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_init");
   }
   if (*(char *)&param_1[2].init_cb == '\x03') {
     if (DAT_2001993a != '\0') goto LAB_00028600;
