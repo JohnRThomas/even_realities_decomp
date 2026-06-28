@@ -25,7 +25,7 @@ undefined4 get_brightness_info(int param_1,uint param_2,undefined4 *param_3,unde
     puVar3[3] = 1;
     pGVar2 = __get_dashboard_state();
     uVar1 = 0;
-    puVar3[4] = (pGVar2->jdb_panel_context).field834_0x369;
+    puVar3[4] = (pGVar2->jdb_panel_context).panel_brightness_level;
     *param_4 = 5;
   }
   return uVar1;

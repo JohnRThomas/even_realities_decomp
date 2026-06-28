@@ -32,7 +32,7 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
   uStack_40 = 0;
   local_3e = 0;
   local_3c = 0;
-  FUN_0004d1e0(param_1,(undefined2 *)(local_48 + 1));
+  __init_burial_point_date((dashboard_ts_context *)param_1,(undefined2 *)(local_48 + 1));
   local_38[0] = 0;
   local_38[1] = 0;
   local_38[2] = 0;

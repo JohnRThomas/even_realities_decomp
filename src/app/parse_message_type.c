@@ -34,7 +34,7 @@ undefined4 __parse_message_type(int param_1)
         if (iVar1 != 0) {
           pGVar2 = __get_dashboard_state();
           pcVar5 = &DAT_20003175;
-          if (pGVar2->field2780_0x1080[0] != 0) {
+          if (pGVar2->field2762_0x1080[0] != 0) {
             pcVar5 = &DAT_200032b5;
           }
           for (; *pcVar5 != '\0'; pcVar5 = pcVar5 + 0x20) {
@@ -50,7 +50,7 @@ undefined4 __parse_message_type(int param_1)
           }
           pGVar2 = __get_dashboard_state();
           pcVar5 = &DAT_20003055;
-          if (pGVar2->field2780_0x1080[0] != 0) {
+          if (pGVar2->field2762_0x1080[0] != 0) {
             pcVar5 = &DAT_200030f5;
           }
           for (; *pcVar5 != '\0'; pcVar5 = pcVar5 + 0x20) {

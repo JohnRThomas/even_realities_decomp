@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00025134
+ * Function: ?_clear_hardware_settings
  * Entry:    00025134
- * Prototype: undefined4 __stdcall FUN_00025134(int param_1)
+ * Prototype: undefined4 __stdcall ?_clear_hardware_settings(int param_1)
  */
 
 
-undefined4 FUN_00025134(int param_1)
+undefined4 __clear_hardware_settings(int param_1)
 
 {
   void *pvVar1;

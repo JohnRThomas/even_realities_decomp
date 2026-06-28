@@ -499,11 +499,11 @@ LAB_00029c2c:
     return;
   }
   pGVar2 = __get_dashboard_state();
-  if ((pGVar2->jdb_panel_context).field834_0x369 == DAT_20003048) {
+  if ((pGVar2->jdb_panel_context).panel_brightness_level == DAT_20003048) {
     return;
   }
   pGVar2 = __get_dashboard_state();
-  DAT_20003048 = (pGVar2->jdb_panel_context).field834_0x369;
+  DAT_20003048 = (pGVar2->jdb_panel_context).panel_brightness_level;
   iVar5 = 0x12;
   puVar6 = extraout_r1_21;
   puVar10 = extraout_r2_19;

@@ -1,11 +1,11 @@
 /*
  * Function: try_to_save_file
  * Entry:    000256ec
- * Prototype: undefined __stdcall try_to_save_file(int param_1)
+ * Prototype: void __stdcall try_to_save_file(GlassesState * gs_state)
  */
 
 
-void try_to_save_file(int param_1)
+void try_to_save_file(GlassesState *gs_state)
 
 {
   uint uVar1;
@@ -56,8 +56,8 @@ void try_to_save_file(int param_1)
         **(undefined1 **)&pGVar3->field_0x1010 = 0xc;
         pGVar3 = __get_dashboard_state();
         if (*(int *)pGVar3->___glasses_state != 0x10) {
-          if (*(char *)(*(int *)(param_1 + 0x1010) + 7) == '\0') {
-            *(undefined1 *)(*(int *)(param_1 + 0x1010) + 7) = 10;
+          if (*(char *)(*(int *)&gs_state->field_0x1010 + 7) == '\0') {
+            *(undefined1 *)(*(int *)&gs_state->field_0x1010 + 7) = 10;
           }
           pGVar3 = __get_dashboard_state();
           update_persist_task_status((int)pGVar3,0x10,2);

@@ -18,7 +18,7 @@ undefined4 FUN_0007f986(byte *param_1,byte *param_2)
   }
   else {
     *(byte **)(param_1 + 0x14) = param_2;
-    uVar1 = i2c_read_byte((int)param_1);
+    uVar1 = __i2c_read_byte((int)param_1);
     uVar2 = 0;
     *param_1 = *param_1 & 0xef | (uVar1 < 0x100) << 4;
   }

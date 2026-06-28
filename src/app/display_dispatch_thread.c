@@ -479,7 +479,7 @@ LAB_0002b5cc:
         break;
       case 0xe:
         pGVar5 = __get_dashboard_state();
-        (pGVar5->jdb_panel_context).field834_0x369 = 0x2a;
+        (pGVar5->jdb_panel_context).panel_brightness_level = 0x2a;
         n = 0x21;
         pbVar14 = *(byte **)(param_1 + 0x101c);
         break;

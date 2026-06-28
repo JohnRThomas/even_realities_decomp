@@ -47,13 +47,13 @@ int bt_start(void)
   pcVar9 = get_serial_number();
   __strcpy_chk(&DAT_20010962,pcVar9,0x13);
   pGVar8 = __get_dashboard_state();
-  printk("c->esb_channel %d\r\n",(uint)(byte)pGVar8->field_0x2);
+  printk("c->esb_channel %d\r\n",(uint)(byte)pGVar8->esb_channel);
   bVar6 = __is_master();
   if (bVar6) {
     cVar7 = FUN_00033d5c();
     if (cVar7 != '\x01') {
       pGVar8 = __get_dashboard_state();
-      if (pGVar8->field_0x2 == -1) {
+      if (pGVar8->esb_channel == -1) {
         pGVar8 = __get_dashboard_state();
         bVar3 = pGVar8->field_0xfe0;
         pGVar8 = __get_dashboard_state();
@@ -66,7 +66,7 @@ LAB_00019676:
         goto LAB_00019594;
       }
       pGVar8 = __get_dashboard_state();
-      bVar1 = pGVar8->field_0x2;
+      bVar1 = pGVar8->esb_channel;
       pGVar8 = __get_dashboard_state();
       bVar2 = pGVar8->field_0xfe0;
       pGVar8 = __get_dashboard_state();
@@ -80,7 +80,7 @@ LAB_00019648:
       goto LAB_00019594;
     }
     pGVar8 = __get_dashboard_state();
-    if (pGVar8->field_0x2 == -1) {
+    if (pGVar8->esb_channel == -1) {
       uVar10 = FUN_0008069e();
       pGVar8 = __get_dashboard_state();
       bVar3 = pGVar8->field_0xfe0;
@@ -96,7 +96,7 @@ LAB_00019608:
     }
     uVar10 = FUN_0008069e();
     pGVar8 = __get_dashboard_state();
-    bVar1 = pGVar8->field_0x2;
+    bVar1 = pGVar8->esb_channel;
     pGVar8 = __get_dashboard_state();
     bVar2 = pGVar8->field_0xfe0;
     pGVar8 = __get_dashboard_state();
@@ -109,7 +109,7 @@ LAB_00019608:
     cVar7 = FUN_00033d5c();
     if (cVar7 != '\x01') {
       pGVar8 = __get_dashboard_state();
-      if (pGVar8->field_0x2 == -1) {
+      if (pGVar8->esb_channel == -1) {
         pGVar8 = __get_dashboard_state();
         bVar3 = pGVar8->field_0xfe6;
         pGVar8 = __get_dashboard_state();
@@ -120,7 +120,7 @@ LAB_00019608:
         goto LAB_00019676;
       }
       pGVar8 = __get_dashboard_state();
-      bVar1 = pGVar8->field_0x2;
+      bVar1 = pGVar8->esb_channel;
       pGVar8 = __get_dashboard_state();
       bVar2 = pGVar8->field_0xfe6;
       pGVar8 = __get_dashboard_state();
@@ -131,7 +131,7 @@ LAB_00019608:
       goto LAB_00019648;
     }
     pGVar8 = __get_dashboard_state();
-    if (pGVar8->field_0x2 == -1) {
+    if (pGVar8->esb_channel == -1) {
       uVar10 = FUN_0008069e();
       pGVar8 = __get_dashboard_state();
       bVar3 = pGVar8->field_0xfe6;
@@ -144,7 +144,7 @@ LAB_00019608:
     }
     uVar10 = FUN_0008069e();
     pGVar8 = __get_dashboard_state();
-    bVar1 = pGVar8->field_0x2;
+    bVar1 = pGVar8->esb_channel;
     pGVar8 = __get_dashboard_state();
     bVar2 = pGVar8->field_0xfe6;
     pGVar8 = __get_dashboard_state();

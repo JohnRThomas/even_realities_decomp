@@ -15,7 +15,7 @@ undefined1 FUN_00081216(void)
   iVar2 = update_burial_point_day_index();
   if (iVar2 == 0) {
     pGVar3 = __get_dashboard_state();
-    uVar1 = pGVar3->field_0x113d;
+    uVar1 = (pGVar3->__burial_point_ctx).field_0x15;
   }
   else {
     uVar1 = 7;

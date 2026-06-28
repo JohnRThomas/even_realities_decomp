@@ -1,11 +1,11 @@
 /*
  * Function: sett_init
  * Entry:    000244d4
- * Prototype: undefined __stdcall sett_init(int * param_1)
+ * Prototype: undefined __stdcall sett_init(settings_context * param_1)
  */
 
 
-void sett_init(int *param_1)
+void sett_init(settings_context *param_1)
 
 {
   int iVar1;
@@ -41,10 +41,10 @@ void sett_init(int *param_1)
     ble_printk(fmt,"sett_init",iVar1,BLE_DEBUG);
   }
 LAB_000244f8:
-  *param_1 = iVar1;
-  param_1[1] = 0x24125;
-  param_1[2] = (int)&LAB_0007f532_1;
-  param_1[3] = 0x240dd;
+  param_1->state = iVar1;
+  param_1->write_cb = (local_store_write_cb *)0x24125;
+  param_1->something_cb = 0x7f533;
+  param_1->delete_cb = 0x240dd;
   return;
 }
 

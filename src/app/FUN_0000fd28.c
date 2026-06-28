@@ -60,14 +60,14 @@ LAB_0000fda0:
       }
       DAT_200083e4 = 150.0;
 switchD_0000fd40_caseD_e:
-      FUN_00026f5c();
+      __FUN_00026f5c();
       return;
     }
 LAB_0000fd76:
     uVar4 = 0xc;
     break;
   case 4:
-    iVar3 = sync_rtc_timestamp_get();
+    iVar3 = __FUN_00026f48();
     fVar6 = (float)VectorUnsignedToFloat(iVar3,(byte)(in_fpscr >> 0x16) & 3);
     if (fVar6 <= DAT_200083e4) {
       return;
@@ -89,14 +89,14 @@ LAB_0000fd76:
       uVar7 = __subdf(SUB84(dVar5,0),(uint)((ulonglong)dVar5 >> 0x20),0,0x40490000);
       DAT_200083e4 = (float)__truncdfsf2((uint)uVar7,(uint)(uVar7 >> 0x20));
     }
-    FUN_00026f5c();
+    __FUN_00026f5c();
     uVar4 = 10;
     break;
   default:
     goto switchD_0000fd40_caseD_8;
   case 10:
     if (*(char *)(param_1 + 1) == '\0') {
-      iVar3 = sync_rtc_timestamp_get();
+      iVar3 = __FUN_00026f48();
       fVar6 = (float)VectorUnsignedToFloat(iVar3,(byte)(in_fpscr >> 0x16) & 3);
       if (fVar6 < DAT_200083e4) {
         return;
@@ -132,7 +132,7 @@ LAB_0000fd76:
     FUN_00027314((undefined1 *)(param_1 + 7),(char *)(param_1 + 0x11),(char *)(param_1 + 0x1c));
     DAT_20003046 = '\x01';
     *(undefined1 *)(param_1 + 1) = 0;
-    FUN_00026f5c();
+    __FUN_00026f5c();
     uVar4 = 0xe;
     break;
   case 0xe:

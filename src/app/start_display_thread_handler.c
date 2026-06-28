@@ -15,7 +15,8 @@ undefined4 start_display_thread_handler(void *param_1)
   delay.ticks._0_4_ = in_stack_ffffffec;
   DAT_2000aa7c = z_impl_k_thread_create
                            ((k_thread *)&DAT_20004ef8,(k_thread_stack_t *)&DAT_200293e0,0x1400,
-                            (k_thread_entry_t)0x4c461,param_1,(void *)0x0,(void *)0x0,-0xe,0,delay);
+                            (k_thread_entry_t *)0x4c461,param_1,(void *)0x0,(void *)0x0,-0xe,0,delay
+                           );
   return 0;
 }
 

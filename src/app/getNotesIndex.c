@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00038ac8
+ * Function: ?_getNotesIndex
  * Entry:    00038ac8
- * Prototype: undefined1 __stdcall FUN_00038ac8(void)
+ * Prototype: undefined1 __stdcall ?_getNotesIndex(void)
  */
 
 
-undefined1 FUN_00038ac8(void)
+undefined1 __getNotesIndex(void)
 
 {
   DAT_20004af9 = DAT_2001c4e6;

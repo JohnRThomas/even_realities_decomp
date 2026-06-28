@@ -13,15 +13,15 @@ undefined4 ncs_notification(char *param_1,char *param_2,undefined *param_3)
   char *s;
   size_t sVar1;
   
-  object = __cJSON_CreateObject();
-  __cJSON_AddStringToObject(object,"app_identifier","com.tencent.xin");
-  __cJSON_AddStringToObject(object,"title",param_1);
-  __cJSON_AddStringToObject(object,"subtitle","aaa");
-  __cJSON_AddStringToObject(object,"message",param_2);
-  __cJSON_AddStringToObject(object,"date","08-04 09:50");
-  __cJSON_AddStringToObject(object,"display_name",&DAT_000a1b63);
-  object_00 = __cJSON_CreateObject();
-  __cJSON_AddItemToObject(object_00,"ncs_notification",object);
+  object = cJSON_CreateObject();
+  cJSON_AddStringToObject(object,"app_identifier","com.tencent.xin");
+  cJSON_AddStringToObject(object,"title",param_1);
+  cJSON_AddStringToObject(object,"subtitle","aaa");
+  cJSON_AddStringToObject(object,"message",param_2);
+  cJSON_AddStringToObject(object,"date","08-04 09:50");
+  cJSON_AddStringToObject(object,"display_name",&DAT_000a1b63);
+  object_00 = cJSON_CreateObject();
+  cJSON_AddItemToObject(object_00,"ncs_notification",object);
   s = cJSON_Print(object_00);
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
@@ -33,7 +33,7 @@ undefined4 ncs_notification(char *param_1,char *param_2,undefined *param_3)
   }
   sVar1 = strlen(s);
   subcontracing_send_data_pkcs7((int)s,sVar1,0x4b,param_3);
-  __cJSON_Delete(object_00);
+  cJSON_Delete(object_00);
   return 0;
 }
 

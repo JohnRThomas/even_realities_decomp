@@ -76,7 +76,7 @@ int FUN_00027314(undefined1 *param_1,char *param_2,char *param_3)
   local_152 = param_1[1];
   local_154 = 0x20;
   local_14f = param_1[9];
-  uVar1 = FUN_000272ac(&aStack_c8,(undefined4 *)&local_154);
+  uVar1 = FUN_000272ac_init_something_0(&aStack_c8,(undefined4 *)&local_154);
   uVar2 = FUN_0007f742((int)&aStack_c8);
   local_88[0] = local_148.state;
   local_88[1] = local_148.data;
@@ -99,7 +99,7 @@ int FUN_00027314(undefined1 *param_1,char *param_2,char *param_3)
     local_15b = param_2[6];
     local_15a = param_2[7];
     local_158 = param_2[8];
-    uVar2 = FUN_000272e0(&aStack_a8,(undefined4 *)&local_160);
+    uVar2 = FUN_000272e0_init_something_1(&aStack_a8,(undefined4 *)&local_160);
     uVar3 = FUN_0007f742((int)&aStack_a8);
     uVar1 = (uVar2 | uVar3) & 0xffff | uVar1;
     local_6c[0] = (undefined *)local_104;
@@ -140,7 +140,7 @@ int FUN_00027314(undefined1 *param_1,char *param_2,char *param_3)
   } while (iVar4 != iVar5);
   local_168 = (i2c_msg)&local_e8;
   local_164 = 0x20;
-  uVar2 = i2c_transfer(&local_148,&local_168,num_msgs,0x20);
+  uVar2 = __i2c_transfer(&local_148,&local_168,num_msgs,0x20);
   uVar3 = FUN_00027204((void *)local_168,(ushort)local_164);
   return -(uint)((uVar3 & 0xffff) != 0 || (uVar1 != 0 || (uVar2 & 0xffff) != 0));
 }

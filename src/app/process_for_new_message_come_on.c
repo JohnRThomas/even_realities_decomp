@@ -506,7 +506,7 @@ LAB_0002e7a8:
     }
     if (param_1[0xdd] == 0) {
       pGVar8 = __get_dashboard_state();
-      pGVar8->glasses_state_struct_0FF0->field_0x73 = 1;
+      pGVar8->dashboard_ts->field_0x73 = 1;
       update_temp_task_status((int)param_1,6,2);
     }
     else {
@@ -585,7 +585,7 @@ LAB_0002e7a8:
           }
           z_impl_k_sleep(0x4000,0);
           pGVar8 = __get_dashboard_state();
-          pGVar8->glasses_state_struct_0FF0->field_0x73 = 1;
+          pGVar8->dashboard_ts->field_0x73 = 1;
           pGVar8 = __get_dashboard_state();
           update_temp_task_status((int)pGVar8,6,2);
           goto LAB_0002e246;
@@ -606,7 +606,8 @@ LAB_0002e7a8:
       }
       if (((param_1[1] == 1) ||
           (pGVar8 = __get_dashboard_state(), uVar13 = extraout_r1_14, pGVar8->field_0x1 == '\b')) ||
-         (pGVar8 = __get_dashboard_state(), uVar13 = extraout_r1_15, pGVar8->field_0xfee == '\f')) {
+         (pGVar8 = __get_dashboard_state(), uVar13 = extraout_r1_15, pGVar8->display_mode == '\f'))
+      {
         update_persist_task_status_to_idle((int)param_1,uVar13);
         FUN_00035abc(5);
         uVar10 = extraout_r3_10;
@@ -642,7 +643,7 @@ LAB_0002e55a:
 LAB_0002e1ae:
     if (((param_1[1] == 1) ||
         (pGVar8 = __get_dashboard_state(), uVar13 = extraout_r1_04, pGVar8->field_0x1 == '\b')) ||
-       (pGVar8 = __get_dashboard_state(), uVar13 = extraout_r1_05, pGVar8->field_0xfee == '\f')) {
+       (pGVar8 = __get_dashboard_state(), uVar13 = extraout_r1_05, pGVar8->display_mode == '\f')) {
       update_persist_task_status_to_idle((int)param_1,uVar13);
       pcVar9 = "message:imu-trigger-off-imm";
       uVar10 = extraout_r3_07;
@@ -1442,7 +1443,7 @@ LAB_0002f5b0:
     FUN_0008040c();
   }
   pGVar8 = __get_dashboard_state();
-  pGVar8->glasses_state_struct_0FF0->field_0x73 = 1;
+  pGVar8->dashboard_ts->field_0x73 = 1;
   update_temp_task_status((int)param_1,6,2);
   pcVar9 = "IMU:wakeup:dashboard";
   uVar13 = extraout_r3_40;

@@ -101,7 +101,7 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
         delay.ticks._0_4_ = in_stack_ffffffdc;
         z_impl_k_thread_create
                   ((k_thread *)&DAT_20004188,(k_thread_stack_t *)&DAT_200242e0,0x700,
-                   (k_thread_entry_t)0xfec1,param_1,(void *)0x0,(void *)0x0,-0xb,0,delay);
+                   (k_thread_entry_t *)0xfec1,param_1,(void *)0x0,(void *)0x0,-0xb,0,delay);
       }
     }
   }

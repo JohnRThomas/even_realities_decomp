@@ -146,7 +146,7 @@ LAB_000365b8:
                       }
                     }
                   }
-                  __cJSON_Delete(object);
+                  cJSON_Delete(object);
                   return 1;
                 }
                 pcVar2 = "appListJson is NULL !\n";
@@ -164,7 +164,7 @@ LAB_000365b8:
     else {
       ble_printk(pcVar2,pcVar7,uVar8,BLE_DEBUG);
     }
-    __cJSON_Delete(object);
+    cJSON_Delete(object);
   }
   return 0;
 }

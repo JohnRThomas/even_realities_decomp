@@ -96,7 +96,7 @@ undefined4 load_usr_setting(int param_1)
     *(undefined1 *)(param_1 + 0xee0) = local_22;
     *(undefined2 *)(param_1 + 0x1246) = local_20;
     if ((*(char *)(param_1 + 0xfee) == -1) && (*(char *)(param_1 + 0xf64) == -1)) {
-      FUN_0007f63c(param_1);
+      __clear_user_settings(param_1);
       uVar4 = extraout_r1_01;
       uVar3 = extraout_r2_00;
     }

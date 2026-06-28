@@ -33,7 +33,7 @@ void proxy_thread_handler(int param_1)
   undefined4 extraout_r2_05;
   undefined4 extraout_r2_06;
   undefined4 extraout_r2_07;
-  global_state_struct_0FF0 *pgVar10;
+  dashboard_ts_context *pdVar10;
   int iVar11;
   code *pcVar12;
   size_t sVar13;
@@ -287,13 +287,13 @@ LAB_0004b854:
     if (LOG_LEVEL < 1) goto LAB_0004b4e6;
     if (BLE_DEBUG == 0) {
       pGVar5 = __get_dashboard_state();
-      pcVar7 = *(char **)pGVar5->glasses_state_struct_0FF0;
+      pcVar7 = *(char **)pGVar5->dashboard_ts;
       fmt = "%s(): app request over size data ,break,last packet timestamp = %d\n";
       goto LAB_0004b8d8;
     }
     pGVar5 = __get_dashboard_state();
-    pgVar10 = pGVar5->glasses_state_struct_0FF0;
-    pcVar7 = *(char **)pgVar10;
+    pdVar10 = pGVar5->dashboard_ts;
+    pcVar7 = *(char **)pdVar10;
     fmt = "%s(): app request over size data ,break,last packet timestamp = %d\n";
     break;
   case 3:
@@ -364,7 +364,7 @@ LAB_0004b5e6:
       fmt = "%s():  [%s] device not ready.\n\n";
     }
 LAB_0004b638:
-    pgVar10 = (global_state_struct_0FF0 *)BLE_DEBUG;
+    pdVar10 = (dashboard_ts_context *)BLE_DEBUG;
     if (BLE_DEBUG == 0) {
 LAB_0004b8d8:
       printk(fmt,"proxy_thread_handler",pcVar7);
@@ -474,8 +474,8 @@ LAB_0004b8d8:
     pGVar5 = __get_dashboard_state();
     if (((pGVar5->field_0xd5 == '\x06') &&
         ((pGVar5 = __get_dashboard_state(), pGVar5->field_0x1245 != '\0' ||
-         (pGVar5 = __get_dashboard_state(), pGVar5->glasses_state_struct_0FF0->field_0x72 != '\0')))
-        ) && (pGVar5 = __get_dashboard_state(), *(char *)pGVar5 == '\x01')) {
+         (pGVar5 = __get_dashboard_state(), pGVar5->dashboard_ts->field_0x72 != '\0')))) &&
+       (pGVar5 = __get_dashboard_state(), *(char *)pGVar5 == '\x01')) {
       local_48._0_4_ = CONCAT22(local_48._2_2_,0x20a);
       iVar3 = 1;
       do {
@@ -486,7 +486,7 @@ LAB_0004b8d8:
           pGVar5 = __get_dashboard_state();
           pGVar5->field_0x1245 = 0;
           pGVar5 = __get_dashboard_state();
-          pGVar5->glasses_state_struct_0FF0->field_0x72 = 0;
+          pGVar5->dashboard_ts->field_0x72 = 0;
           break;
         }
         if (1 < LOG_LEVEL) {
@@ -564,7 +564,7 @@ LAB_0004b832:
     }
     goto LAB_0004b4e6;
   }
-  ble_printk(fmt,"proxy_thread_handler",pcVar7,pgVar10);
+  ble_printk(fmt,"proxy_thread_handler",pcVar7,pdVar10);
   goto LAB_0004b4e6;
 }
 

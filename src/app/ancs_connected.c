@@ -29,7 +29,7 @@ void ancs_connected(bt_conn *param_1,int param_2)
     cVar3 = FUN_00033d5c();
     if ((cVar3 == '\0') && (pGVar4 = __get_dashboard_state(), pGVar4->field_0x1089 == '\0')) {
       pGVar4 = __get_dashboard_state();
-      iVar5 = memcmp(pGVar4->field2780_0x1080 + 1,addr,7);
+      iVar5 = memcmp(pGVar4->field2762_0x1080 + 1,addr,7);
       if (iVar5 != 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {

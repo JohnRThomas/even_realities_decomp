@@ -1,11 +1,11 @@
 /*
  * Function: storage_commit_thread
  * Entry:    000258fc
- * Prototype: undefined __stdcall storage_commit_thread(GlassesState * param_1)
+ * Prototype: undefined __stdcall storage_commit_thread(GlassesState * gs_state)
  */
 
 
-void storage_commit_thread(GlassesState *param_1)
+void storage_commit_thread(GlassesState *gs_state)
 
 {
   longlong lVar1;
@@ -18,19 +18,20 @@ void storage_commit_thread(GlassesState *param_1)
   uint uVar5;
   undefined4 extraout_r1_02;
   undefined4 extraout_r1_03;
-  global_state_struct_0FF0 *pgVar6;
+  void *puVar6;
   undefined4 extraout_r1_04;
+  undefined4 uVar6;
   undefined4 extraout_r1_05;
   undefined4 extraout_r1_06;
   bool bVar7;
   undefined1 uVar8;
   undefined4 uVar9;
   uint uVar10;
-  undefined4 uVar11;
+  size_t sVar11;
   undefined4 extraout_r2;
   int iVar12;
   uint uVar13;
-  code *pcVar14;
+  local_store_write_cb *plVar14;
   undefined1 *puVar15;
   k_timeout_t timeout;
   k_timeout_t timeout_00;
@@ -39,72 +40,72 @@ void storage_commit_thread(GlassesState *param_1)
   
   __file_init();
   FUN_00025694();
-  uVar11 = extraout_r1;
+  uVar6 = extraout_r1;
 LAB_00025914:
   do {
     timeout.ticks._4_4_ = 0xffffffff;
-    timeout.ticks._0_4_ = uVar11;
-    z_impl_k_sem_take(&param_1->sem_6,timeout);
+    timeout.ticks._0_4_ = uVar6;
+    z_impl_k_sem_take(&gs_state->sem_6,timeout);
     bVar7 = false;
-    uVar11 = extraout_r1_00;
+    uVar6 = extraout_r1_00;
     while (DAT_200083a4 != 0) {
-      try_to_save_file((int)param_1);
+      try_to_save_file(gs_state);
       bVar7 = true;
-      uVar11 = extraout_r1_01;
+      uVar6 = extraout_r1_01;
     }
-    iVar12 = *(int *)&param_1->field_0x1060;
+    iVar12 = *(int *)&gs_state->field_0x1060;
   } while ((iVar12 == 0x15) || (bVar7));
   uVar9 = 0;
   if (0x1a < iVar12) {
     if (iVar12 != 0x3e) goto switchD_0002594a_caseD_4;
     pGVar4 = __get_dashboard_state();
-    update_burial_point_to_flash((int)pGVar4);
+    update_burial_point_to_flash(pGVar4);
     goto LAB_000259a8;
   }
   switch(iVar12) {
   case 1:
-    uVar11 = 1;
-    pcVar14 = *(code **)&param_1->field_0x1054;
+    sVar11 = 1;
+    plVar14 = (gs_state->settings_ctx).write_cb;
     pcVar3 = "brightness_level";
-    pgVar6 = (global_state_struct_0FF0 *)&(param_1->jdb_panel_context).field834_0x369;
+    puVar6 = &(gs_state->jdb_panel_context).panel_brightness_level;
     break;
   case 2:
-    uVar11 = 1;
-    pcVar14 = *(code **)&param_1->field_0x1054;
+    sVar11 = 1;
+    plVar14 = (gs_state->settings_ctx).write_cb;
     pcVar3 = "3dof_enable";
-    pgVar6 = (global_state_struct_0FF0 *)&(param_1->imu_fusion_context).field_0x7c;
+    puVar6 = &(gs_state->imu_fusion_context)._dof_enable;
     break;
   case 3:
-    uVar11 = 1;
-    pcVar14 = *(code **)&param_1->field_0x1054;
+    sVar11 = 1;
+    plVar14 = (gs_state->settings_ctx).write_cb;
     pcVar3 = "display_mode";
-    pgVar6 = (global_state_struct_0FF0 *)&param_1->field_0xfee;
+    puVar6 = &gs_state->display_mode;
     break;
   default:
     goto switchD_0002594a_caseD_4;
   case 6:
-    uVar11 = 0x75;
-    pcVar14 = *(code **)&param_1->field_0x1054;
-    pgVar6 = param_1->glasses_state_struct_0FF0;
+    sVar11 = 0x75;
+    plVar14 = (gs_state->settings_ctx).write_cb;
+    puVar6 = gs_state->dashboard_ts;
     pcVar3 = "dashboard_ts";
     break;
   case 7:
-    uVar11 = 7;
-    pcVar14 = *(code **)&param_1->field_0x1054;
-    pgVar6 = (global_state_struct_0FF0 *)param_1->glasses_state_struct_0FF4;
+    sVar11 = 7;
+    plVar14 = (gs_state->settings_ctx).write_cb;
+    puVar6 = gs_state->countdown_ts;
     pcVar3 = "countdown_ts";
     break;
   case 8:
-    uVar11 = 0x16a;
-    pcVar14 = *(code **)&param_1->field_0x1054;
-    pgVar6 = *(global_state_struct_0FF0 **)&param_1->field_0xff8;
+    sVar11 = 0x16a;
+    plVar14 = (gs_state->settings_ctx).write_cb;
+    puVar6 = gs_state->user_sched_info;
     pcVar3 = "user_sched_info";
     break;
   case 0xb:
-    uVar11 = 1;
-    pcVar14 = *(code **)&param_1->field_0x1054;
+    sVar11 = 1;
+    plVar14 = (gs_state->settings_ctx).write_cb;
     pcVar3 = "wakeup_angle";
-    pgVar6 = (global_state_struct_0FF0 *)&(param_1->imu_fusion_context).field_0x10;
+    puVar6 = &(gs_state->imu_fusion_context).wakeup_angle;
     break;
   case 0x11:
     z_impl_k_sleep((k_timeout_t)0x50000);
@@ -119,13 +120,13 @@ LAB_00025914:
         pGVar4 = __get_dashboard_state();
         uVar8 = 0xd;
         puVar15 = *(undefined1 **)&pGVar4->field_0x1010;
-        uVar11 = extraout_r1_04;
+        uVar6 = extraout_r1_04;
       }
       else {
         pGVar4 = __get_dashboard_state();
         uVar8 = 0xc;
         puVar15 = *(undefined1 **)&pGVar4->field_0x1010;
-        uVar11 = extraout_r1_05;
+        uVar6 = extraout_r1_05;
       }
       *puVar15 = uVar8;
     }
@@ -140,13 +141,13 @@ LAB_00025914:
   case 0x1a:
     goto LAB_000259a8;
   }
-  (*pcVar14)(pcVar3,pgVar6,uVar11);
+  (*plVar14)(pcVar3,puVar6,sVar11);
 LAB_000259a8:
   do {
     uVar16 = sys_clock_tick_get();
     timeout_00.ticks._0_4_ = (int)(uVar16 >> 0x20);
     timeout_00.ticks._4_4_ = 0x28000;
-    z_impl_k_sem_take(&param_1->sem_6,timeout_00);
+    z_impl_k_sem_take(&gs_state->sem_6,timeout_00);
     uVar17 = sys_clock_tick_get();
     lVar1 = (uVar17 & 0xffffffff) * 1000;
     uVar5 = (int)(uVar17 >> 0x20) * 1000 + (int)((ulonglong)lVar1 >> 0x20);
@@ -155,19 +156,19 @@ LAB_000259a8:
     uVar10 = (uint)lVar2 >> 0xf |
              ((int)timeout_00.ticks * 1000 + (int)((ulonglong)lVar2 >> 0x20)) * 0x20000;
   } while ((int)((uVar5 >> 0xf) - (uint)(uVar13 < uVar10)) < (int)(uint)(uVar13 - uVar10 < 5000));
-  *(undefined4 *)&param_1->field_0x1060 = 0;
-  FUN_0007f556((int)param_1);
-  uVar11 = extraout_r1_02;
+  *(undefined4 *)&gs_state->field_0x1060 = 0;
+  FUN_0007f556((int)gs_state);
+  uVar6 = extraout_r1_02;
   if (DAT_20017d2f != '\0') {
     DAT_20017d2f = '\0';
-    __save_sys_settings(param_1);
-    uVar11 = extraout_r1_03;
+    __save_sys_settings(gs_state);
+    uVar6 = extraout_r1_03;
   }
   goto LAB_00025914;
 switchD_0002594a_caseD_17:
-  FUN_0007ff66((int)param_1,0);
+  FUN_0007ff66((int)gs_state,0);
   change_work_mode(1);
-  uVar11 = extraout_r1_06;
+  uVar6 = extraout_r1_06;
   goto LAB_00025914;
 switchD_0002594a_caseD_4:
   if (2 < LOG_LEVEL) {

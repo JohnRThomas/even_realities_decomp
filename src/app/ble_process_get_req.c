@@ -186,7 +186,7 @@ LAB_0001a520:
   case 0x2d:
     FUN_00019d14(param_1,(byte *)&local_144,0xc);
     bStack_15b = 0x67;
-    FUN_0004d44c("get_mn_mac",(int)&local_144,0xc);
+    __dump_hex("get_mn_mac",(int)&local_144,0xc);
     local_156._0_2_ = local_140;
     uVar3 = local_156._0_2_;
     local_150 = local_13a;
@@ -466,7 +466,7 @@ LAB_0001a5e8:
       }
     }
     pGVar7 = __get_dashboard_state();
-    memcpy(&local_144,&pGVar7->field_0x1128,0x11c);
+    memcpy(&local_144,&pGVar7->__burial_point_ctx,0x11c);
     local_288[0] = *param_2;
     local_288[1] = 0xc9;
     memcpy(local_288 + 2,&local_144,0x11c);

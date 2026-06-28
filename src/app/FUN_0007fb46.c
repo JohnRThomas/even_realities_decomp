@@ -37,7 +37,7 @@ undefined4 FUN_0007fb46(undefined4 *param_1,byte *param_2)
       *(byte **)(pbVar5 + 0x18) = param_2;
       *pbVar5 = *pbVar5 & 0xbf;
     }
-    iVar3 = read_block(param_2);
+    iVar3 = __read_block(param_2);
     uVar4 = 0;
     param_1[1] = param_1[1] + iVar3;
     param_1[2] = param_1[2] + 1;

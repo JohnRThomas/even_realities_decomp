@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00054520
+ * Function: $_FUN_00054520
  * Entry:    00054520
- * Prototype: undefined __stdcall FUN_00054520(void)
+ * Prototype: undefined __stdcall $_FUN_00054520(void)
  */
 
 
-void FUN_00054520(void)
+void __FUN_00054520(void)
 
 {
   int iVar1;

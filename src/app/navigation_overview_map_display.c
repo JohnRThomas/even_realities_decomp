@@ -82,7 +82,7 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
         memset(&DAT_2001c74f,0,0x1210);
         timeout.ticks._4_4_ = 0xffffffff;
         timeout.ticks._0_4_ = extraout_r1;
-        z_impl_k_mutex_lock((k_mutex *)&DAT_20007f54,timeout);
+        z_impl_k_mutex_lock(&k_mutex_20007f54,timeout);
         memcpy(&DAT_2001c74f,&DAT_20016b1f,0x1210);
       }
       else {
@@ -98,11 +98,11 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
         memset(&DAT_2001c74f,0,0x1210);
         timeout_01.ticks._4_4_ = 0xffffffff;
         timeout_01.ticks._0_4_ = extraout_r1_02;
-        z_impl_k_mutex_lock((k_mutex *)&DAT_20007f54,timeout_01);
+        z_impl_k_mutex_lock(&k_mutex_20007f54,timeout_01);
         FUN_000811c6(&DAT_20016b1f,*(uint *)(param_2 + 0xb1),(int)&DAT_2001c74f);
       }
       DAT_2001c74e = '\x01';
-      z_impl_k_mutex_unlock((k_mutex *)&DAT_20007f54);
+      z_impl_k_mutex_unlock(&k_mutex_20007f54);
     }
     FUN_00045428();
     iVar8 = 1;
@@ -136,7 +136,7 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
       gui_utf_draw(0,(char *)(param_2 + 0x3d),0,iVar7,uVar3 + 0x1d,iVar6 + 0x1ae,uVar4 + 0x38,1,0,0,
                    (undefined *)0x0,0);
       pGVar5 = __get_dashboard_state();
-      cVar1 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
+      cVar1 = pGVar5->dashboard_ts->field_0x5e;
       uVar9 = FUN_00080732();
       iVar7 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
@@ -192,7 +192,7 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
     gui_utf_draw(0,(char *)(param_2 + 0x3d),0,iVar8,uVar3 + 0x1d,iVar7 + 0x1ae,uVar4 + 0x38,1,0,0,
                  (undefined *)0x0,0);
     pGVar5 = __get_dashboard_state();
-    cVar1 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
+    cVar1 = pGVar5->dashboard_ts->field_0x5e;
     uVar9 = FUN_00080732();
     iVar8 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
@@ -225,7 +225,7 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
       memset(&DAT_2001c74f,0,0x1210);
       timeout_00.ticks._4_4_ = 0xffffffff;
       timeout_00.ticks._0_4_ = extraout_r1_01;
-      z_impl_k_mutex_lock((k_mutex *)&DAT_20007f54,timeout_00);
+      z_impl_k_mutex_lock(&k_mutex_20007f54,timeout_00);
       memcpy(&DAT_2001c74f,&DAT_20016b1f,0x1210);
     }
     else {
@@ -241,11 +241,11 @@ void navigation_overview_map_display(undefined4 param_1,int param_2,undefined4 p
       memset(&DAT_2001c74f,0,0x1210);
       timeout_02.ticks._4_4_ = 0xffffffff;
       timeout_02.ticks._0_4_ = extraout_r1_03;
-      z_impl_k_mutex_lock((k_mutex *)&DAT_20007f54,timeout_02);
+      z_impl_k_mutex_lock(&k_mutex_20007f54,timeout_02);
       FUN_000811c6(&DAT_20016b1f,*(uint *)(param_2 + 0xb1),(int)&DAT_2001c74f);
     }
     DAT_2001c74e = '\x01';
-    z_impl_k_mutex_unlock((k_mutex *)&DAT_20007f54);
+    z_impl_k_mutex_unlock(&k_mutex_20007f54);
 LAB_0004087c:
     iVar8 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
@@ -290,7 +290,7 @@ LAB_00040954:
     gui_utf_draw(0,(char *)(param_2 + 0x7d),0,iVar8,uVar3 + 0x6c,iVar7 + 200,uVar4 + 0x87,1,0,0,
                  (undefined *)0x0,0);
     pGVar5 = __get_dashboard_state();
-    cVar1 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
+    cVar1 = pGVar5->dashboard_ts->field_0x5e;
     uVar9 = FUN_00080732();
     iVar8 = FUN_000809e2();
     uVar3 = FUN_00080a3a();

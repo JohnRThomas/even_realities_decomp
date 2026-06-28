@@ -221,7 +221,7 @@ LAB_00036860:
   }
   pcVar10 = (char *)0x0;
 LAB_000368da:
-  __cJSON_Delete(object);
+  cJSON_Delete(object);
   if (BLE_DEBUG == 0) {
     printk("is_the_same_whitelist_app ret is %d\n");
   }

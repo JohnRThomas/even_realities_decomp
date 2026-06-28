@@ -20,7 +20,7 @@ void start_aging_mode_thread(void)
   delay.ticks._0_4_ = in_stack_ffffffec;
   puVar1 = z_impl_k_thread_create
                      ((k_thread *)&DAT_20004a18,(k_thread_stack_t *)&DAT_200287e0,0x400,
-                      (k_thread_entry_t)0x34449,(void *)0x0,(void *)0x0,(void *)0x0,-0xc,0,delay);
+                      (k_thread_entry_t *)0x34449,(void *)0x0,(void *)0x0,(void *)0x0,-0xc,0,delay);
   if (puVar1 == (k_tid_t)0x0) {
     DAT_2001abbf = '\x01';
   }

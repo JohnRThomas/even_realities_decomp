@@ -563,7 +563,7 @@ LAB_0002ba9e:
   cVar1 = __get_pane_mode();
   local_24._0_2_ = 0x102;
   if (cVar1 == '\0') {
-    bVar2 = FUN_00038ac8();
+    bVar2 = __getNotesIndex();
 LAB_0002bad0:
     local_24._0_2_ = CONCAT11(local_24._1_1_ | bVar2 << 4,(undefined1)local_24);
   }

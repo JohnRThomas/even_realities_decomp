@@ -84,10 +84,10 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
         update_persist_task_status((int)pGVar1,0xe,2);
         pGVar1 = __get_dashboard_state();
         pGVar4 = __get_dashboard_state();
-        *(byte *)(*(int *)&pGVar4->field_0x101c + 0x20) = (pGVar1->jdb_panel_context).field834_0x369
-        ;
+        *(byte *)(*(int *)&pGVar4->field_0x101c + 0x20) =
+             (pGVar1->jdb_panel_context).panel_brightness_level;
         pGVar1 = __get_dashboard_state();
-        (pGVar1->jdb_panel_context).field834_0x369 = 0x2a;
+        (pGVar1->jdb_panel_context).panel_brightness_level = 0x2a;
         uVar6 = FUN_0007fea6();
         pGVar1 = __get_dashboard_state();
         *(undefined8 *)(*(int *)&pGVar1->field_0x101c + 4) = uVar6;

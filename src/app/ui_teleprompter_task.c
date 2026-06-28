@@ -222,7 +222,7 @@ LAB_0003f2f8:
               gui_utf_draw(0,&DAT_20004b70,0,iVar12 + 0x58,uVar5 + 1,iVar13 + 0x230,uVar6 + 0x88,5,
                            (uint)uVar4,0,(undefined *)0x0,0);
               pGVar7 = __get_dashboard_state();
-              cVar1 = pGVar7->glasses_state_struct_0FF0->field_0x5e;
+              cVar1 = pGVar7->dashboard_ts->field_0x5e;
               uVar23 = FUN_00080732();
               iVar12 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
@@ -491,7 +491,7 @@ LAB_0003f7c6:
     }
     DAT_20004b60 = uVar23;
     pGVar9 = __get_dashboard_state();
-    bVar19 = pGVar9->glasses_state_struct_0FF0->field_0x5e != '\x01';
+    bVar19 = pGVar9->dashboard_ts->field_0x5e != '\x01';
     uVar23 = (uint)bVar19;
     uVar10 = FUN_00080732();
     iVar11 = FUN_000809e2();

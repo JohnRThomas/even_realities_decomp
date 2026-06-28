@@ -34,7 +34,7 @@ get_assign_channel_info(int param_1,undefined4 param_2,undefined4 *param_3,undef
   else if (DAT_2001abc2 == '\x01') {
     puVar5 = (undefined1 *)*param_3;
     pGVar2 = __get_dashboard_state();
-    pGVar2->field_0x2 = *(undefined1 *)(param_1 + 4);
+    pGVar2->esb_channel = *(undefined1 *)(param_1 + 4);
     pGVar2 = __get_dashboard_state();
     pGVar2->field_0x3 = *(undefined1 *)(param_1 + 5);
     pGVar2 = __get_dashboard_state();
