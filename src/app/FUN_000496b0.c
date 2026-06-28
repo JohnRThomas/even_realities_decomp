@@ -28,7 +28,7 @@ undefined4 FUN_000496b0(int *param_1,int param_2)
     uVar3 = FUN_00080a3a();
     pGVar8 = __get_dashboard_state();
     gui_clock_draw(uVar5,iVar6,uVar2 + 2,iVar7 + 0x50,uVar3 + 0x1d,3,
-                   pGVar8->glasses_state_struct_0FF0->field_0x5e != '\x01');
+                   pGVar8->dashboard_ts->field_0x5e != '\x01');
     bVar1 = pGVar4->field_0xf3;
     if ((bVar1 & 1) == 0) {
       FUN_00045444();

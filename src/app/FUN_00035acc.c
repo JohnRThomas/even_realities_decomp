@@ -18,7 +18,7 @@ byte FUN_00035acc(void)
   if ((pGVar2->field_0x10d6 != '\0') &&
      (pGVar2 = __get_dashboard_state(), *(char *)pGVar2 == '\x01')) {
     pGVar2 = __get_dashboard_state();
-    __set_date(*(undefined4 *)pGVar2->glasses_state_struct_0FF0);
+    __set_date(*(undefined4 *)pGVar2->dashboard_ts);
   }
   bVar1 = (&DAT_2000879b)[(uint)DAT_2001aef9 * 0x1b4] & 1;
   if ((((&DAT_2000879b)[(uint)DAT_2001aef9 * 0x1b4] & 1) != 0) &&

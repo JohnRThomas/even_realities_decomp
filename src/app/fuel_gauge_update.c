@@ -181,7 +181,7 @@ LAB_00010eda:
   if (((60.0 <= temp) && ((int)((uint)(temp < 120.0) << 0x1f) < 0)) ||
      ((-50.0 <= temp && (temp <= -20.0)))) {
     pGVar3 = __get_dashboard_state();
-    if (pGVar3->field_0xfee != '\f') {
+    if (pGVar3->display_mode != '\f') {
       FUN_00029774(4,extraout_r1_02,extraout_r2_06);
       pGVar3 = __get_dashboard_state();
       if (*(char *)pGVar3 == '\x01') {
@@ -195,7 +195,7 @@ LAB_00010eda:
         FUN_000294d0((int)pGVar3,8,(void *)0x0,0);
       }
       pGVar3 = __get_dashboard_state();
-      pGVar3->field_0xfee = 0xc;
+      pGVar3->display_mode = 0xc;
       pGVar3 = __get_dashboard_state();
       FUN_0007ff66((int)pGVar3,1);
       if (0 < (int)LOG_LEVEL) {

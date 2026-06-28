@@ -162,10 +162,10 @@ LAB_00044c52:
         update_persist_task_status((int)pGVar3,0xe,2);
         pGVar3 = __get_dashboard_state();
         pGVar4 = __get_dashboard_state();
-        *(byte *)(*(int *)&pGVar4->field_0x101c + 0x20) = (pGVar3->jdb_panel_context).field834_0x369
-        ;
+        *(byte *)(*(int *)&pGVar4->field_0x101c + 0x20) =
+             (pGVar3->jdb_panel_context).panel_brightness_level;
         pGVar3 = __get_dashboard_state();
-        (pGVar3->jdb_panel_context).field834_0x369 = 0x2a;
+        (pGVar3->jdb_panel_context).panel_brightness_level = 0x2a;
         uVar9 = CONCAT44(DAT_20004db4,DAT_20004db0);
       }
     }

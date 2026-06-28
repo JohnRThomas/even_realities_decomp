@@ -33,6 +33,7 @@ undefined4 ui_navigation_task(int param_1,undefined4 param_2,uint param_3)
   int extraout_r0_10;
   int extraout_r0_11;
   int extraout_r0_12;
+  dashboard_ts_context *dashboard_ts_ctx;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
   undefined4 extraout_r1_01;
@@ -398,7 +399,7 @@ joined_r0x00041a90:
           gui_utf_draw(0,&pGVar6->field_0x1a4,0,iVar14 + iVar9,uVar4 + 0x3c,iVar10 + 0x23f,
                        uVar5 + 0x57,2,0,0,(undefined *)0x0,0);
           pGVar6 = __get_dashboard_state();
-          cVar1 = pGVar6->glasses_state_struct_0FF0->field_0x5e;
+          cVar1 = pGVar6->dashboard_ts->field_0x5e;
           uVar13 = FUN_00080732();
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
@@ -525,8 +526,8 @@ LAB_000417bc:
           local_34 = param_3;
           uStack_30 = param_3;
           local_2c = param_3;
-          uVar13 = FUN_00080732();
-          FUN_0004d1e0(uVar13,(undefined2 *)&local_34);
+          dashboard_ts_ctx = (dashboard_ts_context *)FUN_00080732();
+          __init_burial_point_date(dashboard_ts_ctx,(undefined2 *)&local_34);
           uVar18 = CONCAT44(DAT_20004d94,DAT_20004d90);
           sVar2 = uStack_30._2_2_;
           uVar4 = (ushort)local_2c;
@@ -535,7 +536,7 @@ LAB_000419bc:
             DAT_20004d80 = uVar4;
             DAT_20004d7e = sVar2;
             pGVar6 = __get_dashboard_state();
-            cVar1 = pGVar6->glasses_state_struct_0FF0->field_0x5e;
+            cVar1 = pGVar6->dashboard_ts->field_0x5e;
             uVar13 = FUN_00080732();
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();

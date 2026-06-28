@@ -22,6 +22,7 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
   GlassesState *pGVar8;
   int iVar9;
   int iVar10;
+  dashboard_ts_context *dashboard_ts_ctx;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
   undefined4 extraout_r1_01;
@@ -111,7 +112,7 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
           }
         }
         pGVar8 = __get_dashboard_state();
-        cVar2 = pGVar8->glasses_state_struct_0FF0->field_0x5e;
+        cVar2 = pGVar8->dashboard_ts->field_0x5e;
         uVar15 = FUN_00080732();
         iVar9 = FUN_000809e2();
         uVar3 = FUN_00080a3a();
@@ -374,15 +375,15 @@ LAB_000426ee:
     local_34[3] = 0;
     stack0xffffffd0 = 0;
     local_2c = 0;
-    uVar15 = FUN_00080732();
-    FUN_0004d1e0(uVar15,(undefined2 *)local_34);
+    dashboard_ts_ctx = (dashboard_ts_context *)FUN_00080732();
+    __init_burial_point_date(dashboard_ts_ctx,(undefined2 *)local_34);
     if (((uint)DAT_200100e6 == (local_2c & 0xffff)) && (DAT_200100e4 == local_2e)) {
       return 0;
     }
     DAT_200100e6 = (undefined2)local_2c;
     DAT_200100e4 = local_2e;
     pGVar5 = __get_dashboard_state();
-    cVar2 = pGVar5->glasses_state_struct_0FF0->field_0x5e;
+    cVar2 = pGVar5->dashboard_ts->field_0x5e;
     uVar15 = FUN_00080732();
     iVar7 = FUN_000809e2();
     uVar3 = FUN_00080a3a();

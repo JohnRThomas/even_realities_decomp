@@ -1,11 +1,11 @@
 /*
- * Function: FUN_000272e0
+ * Function: FUN_000272e0_init_something_1
  * Entry:    000272e0
- * Prototype: undefined4 __stdcall FUN_000272e0(astruct_2 * param_1, undefined4 * param_2)
+ * Prototype: undefined4 __stdcall FUN_000272e0_init_something_1(astruct_2 * param_1, undefined4 * param_2)
  */
 
 
-undefined4 FUN_000272e0(astruct_2 *param_1,undefined4 *param_2)
+undefined4 FUN_000272e0_init_something_1(astruct_2 *param_1,undefined4 *param_2)
 
 {
   if ((param_1 != (astruct_2 *)0x0) && (param_2 != (undefined4 *)0x0)) {

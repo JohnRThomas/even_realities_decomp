@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0004d1e0
+ * Function: ?_init_burial_point_date
  * Entry:    0004d1e0
- * Prototype: undefined4 __stdcall FUN_0004d1e0(uint param_1, undefined2 * param_2)
+ * Prototype: undefined4 __stdcall ?_init_burial_point_date(dashboard_ts_context * dashboard_ts_ctx, undefined2 * out_year)
  */
 
 
-undefined4 FUN_0004d1e0(uint param_1,undefined2 *param_2)
+undefined4 __init_burial_point_date(dashboard_ts_context *dashboard_ts_ctx,undefined2 *out_year)
 
 {
   short sVar1;
@@ -16,7 +16,7 @@ undefined4 FUN_0004d1e0(uint param_1,undefined2 *param_2)
   short sVar6;
   ushort *puVar7;
   
-  uVar3 = param_1 / 0x15180;
+  uVar3 = (uint)dashboard_ts_ctx / 0x15180;
   uVar2 = 0x7b2;
   while( true ) {
     if (((uVar2 & 3) == 0) && (uVar2 % 100 != 0)) {
@@ -33,7 +33,7 @@ undefined4 FUN_0004d1e0(uint param_1,undefined2 *param_2)
     uVar2 = uVar2 + 1 & 0xffff;
   }
   iVar5 = 0;
-  *param_2 = (short)uVar2;
+  *out_year = (short)uVar2;
   puVar7 = &DAT_0009cdbc;
   do {
     while( true ) {
@@ -62,13 +62,13 @@ undefined4 FUN_0004d1e0(uint param_1,undefined2 *param_2)
   } while (iVar5 != 0xc);
   sVar6 = 0xc;
 LAB_0004d294:
-  param_2[2] = (short)uVar3 + 1;
-  uVar2 = (param_1 % 0x15180) % 0xe10;
-  param_2[3] = (short)((param_1 % 0x15180) / 0xe10);
+  out_year[2] = (short)uVar3 + 1;
+  uVar2 = ((uint)dashboard_ts_ctx % 0x15180) % 0xe10;
+  out_year[3] = (short)(((uint)dashboard_ts_ctx % 0x15180) / 0xe10);
   sVar1 = (short)(uVar2 / 0x3c);
-  param_2[5] = (short)uVar2 + sVar1 * -0x3c;
-  param_2[1] = sVar6 + 1;
-  param_2[4] = sVar1;
+  out_year[5] = (short)uVar2 + sVar1 * -0x3c;
+  out_year[1] = sVar6 + 1;
+  out_year[4] = sVar1;
   return 0;
 }
 

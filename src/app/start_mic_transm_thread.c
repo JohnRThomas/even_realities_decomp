@@ -15,7 +15,7 @@ void start_mic_transm_thread(void)
   delay.ticks._0_4_ = in_stack_ffffffec;
   z_impl_k_thread_create
             ((k_thread *)&DAT_20004940,(k_thread_stack_t *)&DAT_200283e0,0x400,
-             (k_thread_entry_t)0x33499,(void *)0x0,(void *)0x0,(void *)0x0,-0xc,0,delay);
+             (k_thread_entry_t *)0x33499,(void *)0x0,(void *)0x0,(void *)0x0,-0xc,0,delay);
   return;
 }
 

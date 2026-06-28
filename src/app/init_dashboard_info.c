@@ -15,9 +15,9 @@ void init_dashboard_info(void)
   undefined4 uVar5;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
-  global_state_struct_0FF0 *iVar1;
+  dashboard_ts_context *iVar1;
   int iVar6;
-  global_state_struct_0FF0 *pgVar7;
+  dashboard_ts_context *pdVar7;
   uint uVar8;
   
   iVar2 = is_ncs_mem_initialized();
@@ -44,13 +44,13 @@ void init_dashboard_info(void)
       }
     }
     pGVar3 = __get_dashboard_state();
-    pgVar7 = pGVar3->glasses_state_struct_0FF0;
-    *(undefined1 *)pgVar7 = 0x80;
-    pgVar7->field_0x2 = 0x92;
-    pgVar7->field_0x1 = 0;
-    pgVar7->field_0x3 = 0x65;
+    pdVar7 = pGVar3->dashboard_ts;
+    *(undefined1 *)pdVar7 = 0x80;
+    pdVar7->field_0x2 = 0x92;
+    pdVar7->field_0x1 = 0;
+    pdVar7->field_0x3 = 0x65;
     pGVar3 = __get_dashboard_state();
-    iVar1 = pGVar3->glasses_state_struct_0FF0;
+    iVar1 = pGVar3->dashboard_ts;
     iVar1->field6_0x6 = 0;
     iVar1->field7_0x7 = 0xf4;
     iVar1->field8_0x8 = 0x51;
@@ -60,15 +60,15 @@ void init_dashboard_info(void)
     iVar1->field11_0xb = 1;
     iVar1->field13_0xd = 0;
     pGVar3 = __get_dashboard_state();
-    pgVar7 = pGVar3->glasses_state_struct_0FF0;
-    uVar4._0_1_ = pgVar7->field6_0x6;
-    uVar4._1_1_ = pgVar7->field7_0x7;
-    uVar4._2_1_ = pgVar7->field8_0x8;
-    uVar4._3_1_ = pgVar7->field9_0x9;
-    uVar5._0_1_ = pgVar7->field10_0xa;
-    uVar5._1_1_ = pgVar7->field11_0xb;
-    uVar5._2_1_ = pgVar7->field12_0xc;
-    uVar5._3_1_ = pgVar7->field13_0xd;
+    pdVar7 = pGVar3->dashboard_ts;
+    uVar4._0_1_ = pdVar7->field6_0x6;
+    uVar4._1_1_ = pdVar7->field7_0x7;
+    uVar4._2_1_ = pdVar7->field8_0x8;
+    uVar4._3_1_ = pdVar7->field9_0x9;
+    uVar5._0_1_ = pdVar7->field10_0xa;
+    uVar5._1_1_ = pdVar7->field11_0xb;
+    uVar5._2_1_ = pdVar7->field12_0xc;
+    uVar5._3_1_ = pdVar7->field13_0xd;
     FUN_0004d4dc(uVar4,uVar5);
   }
   iVar2 = 4;

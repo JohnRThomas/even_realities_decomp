@@ -65,7 +65,7 @@ undefined4 ui_raster_height_task(int param_1,undefined4 param_2,int param_3)
       pGVar2 = __get_dashboard_state();
       *(int *)&(pGVar2->jdb_panel_context).field_0x34c = iVar3;
       pGVar2 = __get_dashboard_state();
-      pGVar2->glasses_state_struct_0FF0->field_0x73 = 1;
+      pGVar2->dashboard_ts->field_0x73 = 1;
       __ui_DashBoard_task(param_1,param_2,1);
       pGVar2 = __get_dashboard_state();
       *(undefined4 *)&pGVar2->field_0x1060 = 0x26;

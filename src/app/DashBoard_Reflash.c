@@ -15,30 +15,31 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
   ushort uVar5;
   ushort uVar6;
   GlassesState *pGVar7;
-  uint uVar8;
+  dashboard_ts_context *pdVar8;
   int iVar9;
   int iVar10;
-  undefined4 uVar11;
-  size_t sVar12;
+  uint uVar11;
+  undefined4 uVar12;
+  size_t sVar13;
   size_t n;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
-  undefined4 uVar13;
+  undefined4 uVar14;
   undefined4 extraout_r1_01;
   undefined4 extraout_r1_02;
-  char *pcVar14;
+  char *pcVar15;
   uint extraout_r2;
   uint extraout_r2_00;
   uint extraout_r2_01;
-  uint uVar15;
+  uint uVar16;
   uint extraout_r2_02;
   uint extraout_r2_03;
-  undefined *puVar16;
-  char *pcVar17;
-  int iVar18;
+  undefined *puVar17;
+  char *pcVar18;
   int iVar19;
-  undefined8 uVar20;
-  uint uVar21;
+  int iVar20;
+  undefined8 uVar21;
+  uint uVar22;
   uint local_a8;
   uint local_a4;
   uint local_a0;
@@ -58,58 +59,57 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
     }
   }
   bVar1 = FUN_00028d2c();
-  uVar8 = (uint)bVar1;
+  uVar11 = (uint)bVar1;
   if (2 < LOG_LEVEL) {
-    pcVar14 = "connect";
+    pcVar15 = "connect";
     if (BLE_DEBUG == 0) {
-      if (uVar8 != 1) {
-        pcVar14 = "disconnect";
+      if (uVar11 != 1) {
+        pcVar15 = "disconnect";
       }
-      printk("%s(): BLE Connect status : %s\n","DashBoard_Reflash",pcVar14);
+      printk("%s(): BLE Connect status : %s\n","DashBoard_Reflash",pcVar15);
     }
     else {
-      if (uVar8 != 1) {
-        pcVar14 = "disconnect";
+      if (uVar11 != 1) {
+        pcVar15 = "disconnect";
       }
-      ble_printk("%s(): BLE Connect status : %s\n","DashBoard_Reflash",pcVar14,"disconnect");
+      ble_printk("%s(): BLE Connect status : %s\n","DashBoard_Reflash",pcVar15,"disconnect");
     }
   }
   pGVar7 = __get_dashboard_state();
-  uVar20 = CONCAT44(extraout_r1,pGVar7);
-  uVar15 = extraout_r2;
+  uVar21 = CONCAT44(extraout_r1,pGVar7);
+  uVar16 = extraout_r2;
   if (*(char *)pGVar7 == '\x01') {
-    if ((((uVar8 == 1) && (pGVar7 = __get_dashboard_state(), *(char *)(pGVar7 + 1) == '\0')) &&
-        (pGVar7 = __get_dashboard_state(), pGVar7->glasses_state_struct_0FF0->field_0x73 == '\x01'))
-       && (pGVar7 = __get_dashboard_state(), pGVar7->glasses_state_struct_0FF0->field_0x74 == '\0'))
-    {
+    if ((((uVar11 == 1) && (pGVar7 = __get_dashboard_state(), *(char *)(pGVar7 + 1) == '\0')) &&
+        (pGVar7 = __get_dashboard_state(), pGVar7->dashboard_ts->field_0x73 == '\x01')) &&
+       (pGVar7 = __get_dashboard_state(), pGVar7->dashboard_ts->field_0x74 == '\0')) {
       bVar2 = FUN_00030440();
-      uVar20 = CONCAT44(extraout_r1_00,(undefined1 *)(uint)bVar2);
-      uVar15 = extraout_r2_00;
+      uVar21 = CONCAT44(extraout_r1_00,(undefined1 *)(uint)bVar2);
+      uVar16 = extraout_r2_00;
       if ((undefined1 *)(uint)bVar2 == &DAT_00000001) {
-        uVar20 = FUN_0008040c();
-        uVar15 = extraout_r2_01;
+        uVar21 = FUN_0008040c();
+        uVar16 = extraout_r2_01;
       }
     }
     else {
       cVar3 = FUN_00030440();
-      uVar20 = CONCAT44(extraout_r1_01,&DAT_00000001);
-      uVar15 = extraout_r2_02;
+      uVar21 = CONCAT44(extraout_r1_01,&DAT_00000001);
+      uVar16 = extraout_r2_02;
       if (cVar3 != '\x01') {
-        uVar11 = FUN_00030458();
-        uVar20 = CONCAT44(extraout_r1_02,uVar11);
-        uVar15 = extraout_r2_03;
+        uVar12 = FUN_00030458();
+        uVar21 = CONCAT44(extraout_r1_02,uVar12);
+        uVar16 = extraout_r2_03;
       }
     }
   }
-  uVar13 = (undefined4)((ulonglong)uVar20 >> 0x20);
-  uVar11 = (undefined4)uVar20;
+  uVar14 = (undefined4)((ulonglong)uVar21 >> 0x20);
+  uVar12 = (undefined4)uVar21;
   if (param_4 == 1) {
-    if (((DAT_20004b14 != uVar8) || (DAT_20004b11 != 1)) ||
-       (uVar15 = (uint)PANE_MODE, uVar15 != *(byte *)(param_1 + 0x66))) {
-      gui_screen_clear(uVar11,uVar13,uVar15);
+    if (((DAT_20004b14 != uVar11) || (DAT_20004b11 != 1)) ||
+       (uVar16 = (uint)PANE_MODE, uVar16 != *(byte *)(param_1 + 0x66))) {
+      gui_screen_clear(uVar12,uVar14,uVar16);
       PANE_MODE = *(byte *)(param_1 + 0x66);
       DAT_20004b11 = *(byte *)(param_1 + 0x65);
-      DAT_20004b14 = uVar8;
+      DAT_20004b14 = uVar11;
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): display_mode = %d ,exec screen clear\n");
@@ -123,30 +123,30 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
     local_a0 = 0;
     local_9c = 0;
     local_98 = 0;
-    if (uVar8 == 1) {
-      uVar8 = FUN_00080732();
-      FUN_0004d1e0(uVar8,(undefined2 *)&local_a0);
+    if (uVar11 == 1) {
+      pdVar8 = (dashboard_ts_context *)FUN_00080732();
+      __init_burial_point_date(pdVar8,(undefined2 *)&local_a0);
       iVar9 = FUN_000807aa(local_a0 & 0xffff,local_a0 >> 0x10,local_9c & 0xffff);
-      pcVar14 = get_string(iVar9 + 0x28U & 0xff);
+      pcVar15 = get_string(iVar9 + 0x28U & 0xff);
       local_94 = 0;
       memset(local_90,0,0x10);
-      uVar15 = local_9c & 0xffff;
-      uVar8 = local_a0 >> 0x10;
+      uVar16 = local_9c & 0xffff;
+      uVar11 = local_a0 >> 0x10;
       if (*(char *)(param_1 + 0x5f) == '\0') {
-        pcVar17 = "%s, %02d/%02d";
-        uVar21 = uVar8;
-        uVar8 = uVar15;
+        pcVar18 = "%s, %02d/%02d";
+        uVar22 = uVar11;
+        uVar11 = uVar16;
       }
       else {
-        uVar21 = uVar15;
+        uVar22 = uVar16;
         if (*(char *)(param_1 + 0x5f) == '\x01') {
-          pcVar17 = "%s, %02d-%02d";
+          pcVar18 = "%s, %02d-%02d";
         }
         else {
-          pcVar17 = "%s, %02d/%02d";
+          pcVar18 = "%s, %02d/%02d";
         }
       }
-      __sprintf_chk((char *)&local_94,0,0x14,pcVar17,pcVar14,uVar21,uVar8);
+      __sprintf_chk((char *)&local_94,0,0x14,pcVar18,pcVar15,uVar22,uVar11);
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
@@ -154,13 +154,13 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
       gui_utf_draw(0,(char *)&local_94,3,iVar9,uVar4 + 2,iVar10 + 0x8c,uVar5 + 0x1d,1,0,0,
                    (undefined *)0x0,0);
       pGVar7 = __get_dashboard_state();
-      cVar3 = pGVar7->glasses_state_struct_0FF0->field_0x5e;
-      uVar8 = FUN_00080732();
+      cVar3 = pGVar7->dashboard_ts->field_0x5e;
+      uVar11 = FUN_00080732();
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_clock_draw(uVar8,iVar9,uVar4 + 0x34,iVar10 + 0x96,uVar5 + 0x55,1,cVar3 != '\x01');
+      gui_clock_draw(uVar11,iVar9,uVar4 + 0x34,iVar10 + 0x96,uVar5 + 0x55,1,cVar3 != '\x01');
       if (param_3 == 1) {
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
@@ -180,13 +180,13 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
         local_80 = 0;
         local_7c[0] = 0;
         if ((*(byte *)(param_1 + 4) - 1 & 0xff) < 0xfe) {
-          uVar8 = FUN_0004916c((uint)*(byte *)(param_1 + 4));
+          uVar11 = FUN_0004916c((uint)*(byte *)(param_1 + 4));
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          gui_bmp_bitmap_draw(uVar8,iVar9,uVar4 + 0x6d,0,0,0);
+          gui_bmp_bitmap_draw(uVar11,iVar9,uVar4 + 0x6d,0,0,0);
           pGVar7 = __get_dashboard_state();
           iVar9 = (int)*(char *)(param_1 + 5);
-          local_80 = (uint)(byte)pGVar7->glasses_state_struct_0FF0->field_0x5d;
+          local_80 = (uint)(byte)pGVar7->dashboard_ts->field_0x5d;
           if (local_80 == 0) {
             local_7c[0] = local_80;
             if (2 < LOG_LEVEL) {
@@ -244,17 +244,17 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         gui_bmp_bitmap_draw(0x3c,iVar9 + 0x60,uVar4 + 0x6d,0,0,0);
-        uVar8 = FUN_00035310();
-        if ((int)uVar8 < 0xb) {
-          pcVar14 = "%d";
+        uVar11 = FUN_00035310();
+        if ((int)uVar11 < 0xb) {
+          pcVar15 = "%d";
         }
         else {
-          pcVar14 = "%d+";
-          uVar8 = 10;
+          pcVar15 = "%d+";
+          uVar11 = 10;
         }
         local_80 = 0;
         local_7c[0] = 0;
-        snprintf((char *)&local_80,8,pcVar14,uVar8);
+        snprintf((char *)&local_80,8,pcVar15,uVar11);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -275,22 +275,22 @@ void DashBoard_Reflash(int param_1,int param_2,int param_3,int param_4)
           _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x8c,uVar4 + 1,
                          iVar10 + 0xa4,uVar5 + 0x1c);
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+          iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _reflash_fb_data_to_lcd(iVar19,iVar18,iVar9 + 0x8c,uVar4 + 1,iVar10 + 0xa4,uVar5 + 0x1c);
+          _reflash_fb_data_to_lcd(iVar20,iVar19,iVar9 + 0x8c,uVar4 + 1,iVar10 + 0xa4,uVar5 + 0x1c);
         }
       }
       else if (param_3 != 4) {
         return;
       }
-      uVar8 = (uint)PANE_MODE;
-      if (uVar8 == 0) {
-        local_80 = uVar8;
+      uVar11 = (uint)PANE_MODE;
+      if (uVar11 == 0) {
+        local_80 = uVar11;
         memset(local_7c,0,0x1c);
         iVar10 = 0;
         iVar9 = 0;
@@ -334,15 +334,15 @@ LAB_0003aba8:
             _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xd6,uVar4 + 1,
                            iVar10 + 0x22e,uVar5 + 0x1c);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+            iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             _reflash_fb_data_to_lcd
-                      (iVar18,iVar19,iVar9 + 0xd6,uVar4 + 1,iVar10 + 0x22e,uVar5 + 0x1c);
+                      (iVar19,iVar20,iVar9 + 0xd6,uVar4 + 1,iVar10 + 0x22e,uVar5 + 0x1c);
             pGVar7 = __get_dashboard_state();
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
@@ -351,15 +351,15 @@ LAB_0003aba8:
             _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xba,uVar4 + 0x1c,
                            iVar10 + 0x238,uVar5 + 0x88);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+            iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             _reflash_fb_data_to_lcd
-                      (iVar18,iVar19,iVar9 + 0xba,uVar4 + 0x1c,iVar10 + 0x238,uVar5 + 0x88);
+                      (iVar19,iVar20,iVar9 + 0xba,uVar4 + 0x1c,iVar10 + 0x238,uVar5 + 0x88);
           }
           FUN_00038b00();
           FUN_00038864();
@@ -368,52 +368,52 @@ LAB_0003aba8:
         DAT_20004b02 = '\x01';
         memset(&local_80,0,0x20);
         snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004af9 + 1,iVar9);
-        uVar8 = (uint)DAT_20004af9;
-        iVar19 = *(int *)(param_2 + 0x1030);
+        uVar11 = (uint)DAT_20004af9;
+        iVar20 = *(int *)(param_2 + 0x1030);
         iVar10 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        iVar18 = FUN_000809e2();
+        iVar19 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        gui_utf_draw(0,(char *)(iVar19 + uVar8 * 0x143 + 4),0,iVar10 + 0xd6,uVar4 + 1,iVar18 + 0x22e
-                     ,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
+        gui_utf_draw(0,(char *)(iVar20 + uVar11 * 0x143 + 4),0,iVar10 + 0xd6,uVar4 + 1,
+                     iVar19 + 0x22e,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
         if (iVar9 == 1) {
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          pcVar14 = " ";
+          pcVar15 = " ";
         }
         else {
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          pcVar14 = (char *)&local_80;
+          pcVar15 = (char *)&local_80;
         }
-        gui_utf_draw(0,pcVar14,0,iVar9 + 0x20e,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c,1,0,0,
+        gui_utf_draw(0,pcVar15,0,iVar9 + 0x20e,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c,1,0,0,
                      (undefined *)0x0,0);
-        pcVar14 = (char *)(uVar8 * 0x143 + 0x2d + *(int *)(param_2 + 0x1030));
+        pcVar15 = (char *)(uVar11 * 0x143 + 0x2d + *(int *)(param_2 + 0x1030));
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        iVar18 = uVar5 + 0x88;
+        iVar19 = uVar5 + 0x88;
         iVar10 = iVar10 + 0x238;
-        iVar19 = uVar4 + 0x1c;
+        iVar20 = uVar4 + 0x1c;
         iVar9 = iVar9 + 0xba;
 LAB_0003a208:
         gui_utf_draw_dark_light_split
-                  (0,pcVar14,0,iVar9,iVar19,iVar10,iVar18,4,0x200b,0,(undefined *)0x0,0);
+                  (0,pcVar15,0,iVar9,iVar20,iVar10,iVar19,4,0x200b,0,(undefined *)0x0,0);
         return;
       }
-      switch(uVar8) {
+      switch(uVar11) {
       case 1:
         iVar9 = 0;
         iVar10 = 0;
         do {
-          iVar18 = iVar9 * 0x7f2;
+          iVar19 = iVar9 * 0x7f2;
           iVar9 = iVar9 + 1;
-          if ((&DAT_2000e104)[iVar18] == '\x01') {
+          if ((&DAT_2000e104)[iVar19] == '\x01') {
             iVar10 = iVar10 + 1;
           }
         } while (iVar9 != 4);
@@ -423,9 +423,9 @@ LAB_0003a208:
             DAT_20004b19 = cVar3;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar9 + 0xae,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar9 + 0xae,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (iVar10 == 0) {
             cleanStocksIndex();
@@ -442,14 +442,14 @@ LAB_0003a208:
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           gui_bmp_bitmap_draw(0x43,iVar9 + 0xba,uVar4 + 2,0,0,0);
-          pcVar14 = get_string(0x4d);
+          pcVar15 = get_string(0x4d);
           iVar10 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          iVar18 = uVar5 + 0x51;
-          iVar19 = uVar4 + 0x36;
-          uVar8 = 1;
+          iVar19 = uVar5 + 0x51;
+          iVar20 = uVar4 + 0x36;
+          uVar11 = 1;
           iVar10 = iVar10 + 0xb8;
           goto LAB_000399e0;
         }
@@ -468,38 +468,38 @@ LAB_0003a208:
           iVar9 = 0;
           iVar10 = 0;
           do {
-            iVar18 = iVar9 * 0x7f2;
+            iVar19 = iVar9 * 0x7f2;
             iVar9 = iVar9 + 1;
-            if ((&DAT_2000e104)[iVar18] == '\x01') {
+            if ((&DAT_2000e104)[iVar19] == '\x01') {
               iVar10 = iVar10 + 1;
             }
           } while (iVar9 != 4);
-          uVar8 = (uint)DAT_20004afb;
+          uVar11 = (uint)DAT_20004afb;
           DAT_20004afc = (undefined1)iVar10;
-          cVar3 = (&DAT_2000e105)[uVar8 * 0x7f2];
+          cVar3 = (&DAT_2000e105)[uVar11 * 0x7f2];
           if (cVar3 == '\0') {
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = uVar4 + 2;
-            uVar15 = 0x46;
+            iVar19 = uVar4 + 2;
+            uVar16 = 0x46;
             iVar9 = iVar9 + 0xba;
 LAB_0003b2b4:
-            gui_bmp_bitmap_draw(uVar15,iVar9,iVar18,0,0,0);
+            gui_bmp_bitmap_draw(uVar16,iVar9,iVar19,0,0,0);
           }
           else {
             if (cVar3 == '\x01') {
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              iVar18 = uVar4 + 2;
-              uVar15 = 0x44;
+              iVar19 = uVar4 + 2;
+              uVar16 = 0x44;
               iVar9 = iVar9 + 0xba;
               goto LAB_0003b2b4;
             }
             if (cVar3 == '\x02') {
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              iVar18 = uVar4 + 2;
-              uVar15 = 0x45;
+              iVar19 = uVar4 + 2;
+              uVar16 = 0x45;
               iVar9 = iVar9 + 0xba;
               goto LAB_0003b2b4;
             }
@@ -514,7 +514,7 @@ LAB_0003b2b4:
           else {
             local_80 = 0;
             memset(local_7c,0,0x1c);
-            snprintf((char *)&local_80,0x20,"%d/%d",uVar8 + 1,iVar10);
+            snprintf((char *)&local_80,0x20,"%d/%d",uVar11 + 1,iVar10);
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -522,57 +522,57 @@ LAB_0003b2b4:
             gui_utf_draw(0,(char *)&local_80,0,iVar9 + 0x20e,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c,1
                          ,0,0,(undefined *)0x0,0);
           }
-          iVar18 = uVar8 * 0x7f2;
+          iVar19 = uVar11 * 0x7f2;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_utf_draw(0,(char *)(iVar18 + 0x2000e108),0,iVar9 + 0xd6,(uint)uVar4,iVar10 + 0x202,
+          gui_utf_draw(0,(char *)(iVar19 + 0x2000e108),0,iVar9 + 0xd6,(uint)uVar4,iVar10 + 0x202,
                        uVar5 + 0x1b,1,0,0,(undefined *)0x0,0);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_utf_draw(0,(char *)(iVar18 + 0x2000e128),0,iVar9 + 0xba,uVar4 + 0x1b,iVar10 + 0x234,
+          gui_utf_draw(0,(char *)(iVar19 + 0x2000e128),0,iVar9 + 0xba,uVar4 + 0x1b,iVar10 + 0x234,
                        uVar5 + 0x36,1,0,0,(undefined *)0x0,0);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           gui_utf_draw_align_right
-                    (0,(char *)(iVar18 + 0x2000e168),0,iVar9 + 0x182,uVar4 + 0x36,iVar10 + 0x234,
+                    (0,(char *)(iVar19 + 0x2000e168),0,iVar9 + 0x182,uVar4 + 0x36,iVar10 + 0x234,
                      uVar5 + 0x51,1,0,0,(undefined *)0x0,0);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           gui_utf_draw_align_right
-                    (0,(char *)(iVar18 + 0x2000e178),0,iVar9 + 0x182,uVar4 + 0x51,iVar10 + 0x234,
+                    (0,(char *)(iVar19 + 0x2000e178),0,iVar9 + 0x182,uVar4 + 0x51,iVar10 + 0x234,
                      uVar5 + 0x6c,1,0,0,(undefined *)0x0,0);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           gui_utf_draw_align_right
-                    (0,(char *)(iVar18 + 0x2000e188),0,iVar9 + 0x182,uVar4 + 0x6c,iVar10 + 0x234,
+                    (0,(char *)(iVar19 + 0x2000e188),0,iVar9 + 0x182,uVar4 + 0x6c,iVar10 + 0x234,
                      uVar5 + 0x87,1,0,0,(undefined *)0x0,0);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar10 = iVar10 + 0x172;
-          uVar8 = iVar9 + 0xba;
+          uVar11 = iVar9 + 0xba;
 LAB_00039d7e:
-          gui_bitmap_draw(uVar8,uVar4 + 0x36,iVar10,uVar5 + 0x88,iVar18 + 0x2000e198,0xf);
+          gui_bitmap_draw(uVar11,uVar4 + 0x36,iVar10,uVar5 + 0x88,iVar19 + 0x2000e198,0xf);
           return;
         }
         if (DAT_20004b19 != '\x01') {
           DAT_20004b19 = cVar3;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          iVar18 = FUN_000809e2();
+          iVar19 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_area_clear(iVar9 + 0xae,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+          gui_area_clear(iVar9 + 0xae,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
         }
         if (iVar10 == 0) {
           cleanStocksIndex();
@@ -588,27 +588,27 @@ LAB_00039d7e:
         }
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        uVar8 = 0x43;
+        uVar11 = 0x43;
 LAB_0003b190:
-        gui_bmp_bitmap_draw(uVar8,iVar9 + 0xba,uVar4 + 2,0,0,0);
-        pcVar14 = get_string(0x4b);
+        gui_bmp_bitmap_draw(uVar11,iVar9 + 0xba,uVar4 + 2,0,0,0);
+        pcVar15 = get_string(0x4b);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        gui_utf_draw_middle(0,pcVar14,0,iVar9 + 0xb8,uVar4 + 0x2a,iVar10 + 0x234,uVar5 + 0x45,1,0,0,
+        gui_utf_draw_middle(0,pcVar15,0,iVar9 + 0xb8,uVar4 + 0x2a,iVar10 + 0x234,uVar5 + 0x45,1,0,0,
                             (undefined *)0x0,0);
-        pcVar14 = get_string(0x4c);
+        pcVar15 = get_string(0x4c);
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = iVar10 + 0xb8;
 LAB_00039af2:
-        iVar18 = uVar4 + 0x60;
+        iVar19 = uVar4 + 0x60;
         iVar9 = iVar9 + 0x234;
-        iVar19 = uVar5 + 0x45;
-        uVar8 = 1;
+        iVar20 = uVar5 + 0x45;
+        uVar11 = 1;
         goto LAB_000399e2;
       case 2:
         iVar9 = 0;
@@ -635,26 +635,26 @@ LAB_00039af2:
             DAT_20004b1a = cVar3;
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (iVar9 == 0) {
             cleanNewsIndex();
           }
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          uVar8 = 0x47;
+          uVar11 = 0x47;
           iVar9 = iVar9 + 0xba;
 LAB_0003b5b4:
-          gui_bmp_bitmap_draw(uVar8,iVar9,uVar4 + 2,0,0,0);
-          pcVar14 = get_string(0x4d);
+          gui_bmp_bitmap_draw(uVar11,iVar9,uVar4 + 2,0,0,0);
+          pcVar15 = get_string(0x4d);
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          uVar8 = 1;
-          iVar18 = uVar4 + 0x51;
+          uVar11 = 1;
+          iVar19 = uVar4 + 0x51;
         }
         else {
           if (cVar3 == '\x01') {
@@ -662,16 +662,16 @@ LAB_0003b5b4:
               DAT_20004b1a = cVar3;
               iVar10 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              iVar18 = FUN_000809e2();
+              iVar19 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+              gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
             }
             if (iVar9 == 0) {
               cleanNewsIndex();
             }
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            uVar8 = 0x47;
+            uVar11 = 0x47;
             goto LAB_0003b190;
           }
           if (cVar3 != '\x04') {
@@ -682,9 +682,9 @@ LAB_0003b5b4:
               DAT_20004b1a = cVar3;
               iVar10 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              iVar18 = FUN_000809e2();
+              iVar19 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+              gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
             }
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
@@ -702,38 +702,38 @@ LAB_0003b5b4:
               DAT_20004b03 = '\x01';
               memset(&local_80,0,0x20);
               snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004afd + 1,iVar9);
-              uVar8 = (uint)DAT_20004afd;
+              uVar11 = (uint)DAT_20004afd;
               iVar10 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              iVar18 = FUN_000809e2();
+              iVar19 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              gui_utf_draw(0,(char *)(uVar8 * 0x159 + 0x20011282),0,iVar10 + 0xd6,uVar4 + 1,
-                           iVar18 + 0x200,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
+              gui_utf_draw(0,(char *)(uVar11 * 0x159 + 0x20011282),0,iVar10 + 0xd6,uVar4 + 1,
+                           iVar19 + 0x200,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
               if (iVar9 == 1) {
                 iVar9 = FUN_000809e2();
                 uVar5 = FUN_00080a3a();
                 iVar10 = FUN_000809e2();
                 uVar4 = FUN_00080a3a();
-                pcVar14 = " ";
+                pcVar15 = " ";
               }
               else {
                 iVar9 = FUN_000809e2();
                 uVar5 = FUN_00080a3a();
                 iVar10 = FUN_000809e2();
                 uVar4 = FUN_00080a3a();
-                pcVar14 = (char *)&local_80;
+                pcVar15 = (char *)&local_80;
               }
-              gui_utf_draw(0,pcVar14,0,iVar9 + 0x216,uVar5 + 1,iVar10 + 0x23a,uVar4 + 0x1c,1,0,0,
+              gui_utf_draw(0,pcVar15,0,iVar9 + 0x216,uVar5 + 1,iVar10 + 0x23a,uVar4 + 0x1c,1,0,0,
                            (undefined *)0x0,0);
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
               iVar10 = iVar10 + 0x236;
-              iVar18 = uVar5 + 0x88;
-              iVar19 = uVar4 + 0x1c;
+              iVar19 = uVar5 + 0x88;
+              iVar20 = uVar4 + 0x1c;
               iVar9 = iVar9 + 0xba;
-              pcVar14 = (char *)(uVar8 * 0x159 + 0x200112c2);
+              pcVar15 = (char *)(uVar11 * 0x159 + 0x200112c2);
               goto LAB_0003a208;
             }
             iVar10 = FUN_000806de(&DAT_2000aa10);
@@ -747,15 +747,15 @@ LAB_0003b5b4:
             _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xd4,uVar4 + 1,
                            iVar10 + 0x23c,uVar5 + 0x1c);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+            iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             _reflash_fb_data_to_lcd
-                      (iVar18,iVar19,iVar9 + 0xd4,uVar4 + 1,iVar10 + 0x23c,uVar5 + 0x1c);
+                      (iVar19,iVar20,iVar9 + 0xd4,uVar4 + 1,iVar10 + 0x23c,uVar5 + 0x1c);
             pGVar7 = __get_dashboard_state();
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
@@ -764,9 +764,9 @@ LAB_0003b5b4:
             _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xba,uVar4 + 0x1c,
                            iVar10 + 0x234,uVar5 + 0x88);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+            iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -774,7 +774,7 @@ LAB_0003b5b4:
             iVar10 = iVar10 + 0x234;
             iVar9 = iVar9 + 0xba;
 LAB_0003a104:
-            _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9,uVar5 + 0x1c,iVar10,uVar4 + 0x88);
+            _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9,uVar5 + 0x1c,iVar10,uVar4 + 0x88);
 LAB_0003a10c:
             cleanNewsIndex();
             return;
@@ -783,9 +783,9 @@ LAB_0003a10c:
             DAT_20004b1a = '\x04';
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar10 + 0xae,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (iVar9 == 0) {
             cleanNewsIndex();
@@ -793,15 +793,15 @@ LAB_0003a10c:
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           gui_bmp_bitmap_draw(0x47,iVar9 + 0xba,uVar4 + 2,0,0,0);
-          pcVar14 = get_string(0x51);
+          pcVar15 = get_string(0x51);
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          uVar8 = 2;
-          iVar18 = uVar4 + 0x6c;
+          uVar11 = 2;
+          iVar19 = uVar4 + 0x6c;
         }
-        iVar19 = uVar5 + 0x36;
+        iVar20 = uVar5 + 0x36;
         break;
       case 3:
         if ((DAT_20004b18 != *(char *)(param_1 + 0x67)) || (DAT_20004aff != DAT_20004b00)) {
@@ -844,29 +844,29 @@ LAB_0003a10c:
         }
         DAT_20004b01 = ((byte)iVar10 & 1) + (char)(iVar10 >> 1);
         if (DAT_20004b18 == '\0') {
-          pcVar14 = get_string(0x4d);
-          iVar18 = FUN_000809e2();
+          pcVar15 = get_string(0x4d);
+          iVar19 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar9 = uVar5 + 0x51;
-          iVar19 = uVar4 + 0x36;
+          iVar20 = uVar4 + 0x36;
         }
         else if (DAT_20004b18 == '\x01') {
-          pcVar14 = get_string(0x4b);
+          pcVar15 = get_string(0x4b);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_utf_draw_middle(0,pcVar14,0,iVar9 + 0xb8,uVar4 + 0x2a,iVar10 + 0x234,uVar5 + 0x45,1,0,
+          gui_utf_draw_middle(0,pcVar15,0,iVar9 + 0xb8,uVar4 + 0x2a,iVar10 + 0x234,uVar5 + 0x45,1,0,
                               0,(undefined *)0x0,0);
-          pcVar14 = get_string(0x4c);
-          iVar18 = FUN_000809e2();
+          pcVar15 = get_string(0x4c);
+          iVar19 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar9 = uVar5 + 0x60;
-          iVar19 = uVar4 + 0x45;
+          iVar20 = uVar4 + 0x45;
         }
         else {
           if (DAT_20004b18 != '\x02') {
@@ -876,47 +876,47 @@ LAB_0003a10c:
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             gui_bmp_bitmap_draw(0x39,iVar9 + 0xba,uVar4 + 1,0,0,0);
-            pcVar14 = get_string(0x4e);
+            pcVar15 = get_string(0x4e);
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_utf_draw(0,pcVar14,0,iVar9 + 0xd6,(uint)uVar4,iVar10 + 0x13a,uVar5 + 0x1b,1,0,0,
+            gui_utf_draw(0,pcVar15,0,iVar9 + 0xd6,(uint)uVar4,iVar10 + 0x13a,uVar5 + 0x1b,1,0,0,
                          (undefined *)0x0,0);
-            uVar8 = (uint)DAT_20004b01;
-            if (uVar8 == 0) {
+            uVar11 = (uint)DAT_20004b01;
+            if (uVar11 == 0) {
               return;
             }
             local_80 = 0;
             memset(local_7c,0,0x1c);
-            snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004b00 + 1,uVar8);
+            snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004b00 + 1,uVar11);
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             gui_utf_draw(0,(char *)&local_80,0,iVar9 + 0x216,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c,1
                          ,0,0,(undefined *)0x0,0);
-            uVar8 = (uint)DAT_20004b00;
+            uVar11 = (uint)DAT_20004b00;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_utf_draw(0,&DAT_20012530 + uVar8 * 0x148,0,iVar9 + 0xba,uVar4 + 0x1b,iVar10 + 0x236,
-                         uVar5 + 0x36,1,0,0,(undefined *)0x0,0);
-            uVar8 = (uint)DAT_20004b00;
+            gui_utf_draw(0,&DAT_20012530 + uVar11 * 0x148,0,iVar9 + 0xba,uVar4 + 0x1b,iVar10 + 0x236
+                         ,uVar5 + 0x36,1,0,0,(undefined *)0x0,0);
+            uVar11 = (uint)DAT_20004b00;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_utf_draw(0,&DAT_20012571 + uVar8 * 0x148,0,iVar9 + 0xba,uVar4 + 0x36,iVar10 + 0x15e,
-                         uVar5 + 0x51,1,0,0,(undefined *)0x0,0);
-            uVar8 = (uint)DAT_20004b00;
+            gui_utf_draw(0,&DAT_20012571 + uVar11 * 0x148,0,iVar9 + 0xba,uVar4 + 0x36,iVar10 + 0x15e
+                         ,uVar5 + 0x51,1,0,0,(undefined *)0x0,0);
+            uVar11 = (uint)DAT_20004b00;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             gui_utf_draw_align_right
-                      (0,&DAT_20012592 + uVar8 * 0x148,0,iVar9 + 0x162,uVar4 + 0x36,iVar10 + 0x234,
+                      (0,&DAT_20012592 + uVar11 * 0x148,0,iVar9 + 0x162,uVar4 + 0x36,iVar10 + 0x234,
                        uVar5 + 0x51,1,0,0,(undefined *)0x0,0);
             iVar9 = ((short)(ushort)DAT_20004b00 * 2 + 1) * 0xa4;
             if ((&DAT_2001252f)[iVar9] != '\x01') {
@@ -924,9 +924,9 @@ LAB_0003a10c:
             }
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_utf_draw(0,&DAT_20012530 + iVar9,0,iVar10 + 0xba,uVar4 + 0x51,iVar18 + 0x236,
+            gui_utf_draw(0,&DAT_20012530 + iVar9,0,iVar10 + 0xba,uVar4 + 0x51,iVar19 + 0x236,
                          uVar5 + 0x6c,1,0,0,(undefined *)0x0,0);
             uVar4 = (ushort)DAT_20004b00;
             iVar9 = FUN_000809e2();
@@ -948,22 +948,22 @@ LAB_0003a10c:
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           gui_bmp_bitmap_draw(0x39,iVar9 + 0xba,uVar4 + 1,0,0,0);
-          pcVar14 = get_string(0x4e);
+          pcVar15 = get_string(0x4e);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_utf_draw(0,pcVar14,0,iVar9 + 0xd6,(uint)uVar4,iVar10 + 0x13a,uVar5 + 0x1b,1,0,0,
+          gui_utf_draw(0,pcVar15,0,iVar9 + 0xd6,(uint)uVar4,iVar10 + 0x13a,uVar5 + 0x1b,1,0,0,
                        (undefined *)0x0,0);
-          pcVar14 = get_string(0x4a);
-          iVar18 = FUN_000809e2();
+          pcVar15 = get_string(0x4a);
+          iVar19 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar9 = uVar5 + 0x51;
-          iVar19 = uVar4 + 0x36;
+          iVar20 = uVar4 + 0x36;
         }
-        gui_utf_draw_middle(0,pcVar14,0,iVar18 + 0xb8,iVar19,iVar10 + 0x234,iVar9,1,0,0,
+        gui_utf_draw_middle(0,pcVar15,0,iVar19 + 0xb8,iVar20,iVar10 + 0x234,iVar9,1,0,0,
                             (undefined *)0x0,0);
         cleanCalenadrIndex();
         return;
@@ -981,7 +981,7 @@ LAB_0003bf02:
           }
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          uVar8 = 0x48;
+          uVar11 = 0x48;
           iVar9 = iVar9 + 0xb8;
           goto LAB_0003b5b4;
         }
@@ -1022,7 +1022,7 @@ LAB_0003bf02:
           if (DAT_20004b1c == '\x01') {
             *(undefined1 *)(param_1 + 0x71) = 0;
             pGVar7 = __get_dashboard_state();
-            pGVar7->glasses_state_struct_0FF0->field_0x71 = 0;
+            pGVar7->dashboard_ts->field_0x71 = 0;
           }
 LAB_0003bf7e:
           if (DAT_20004b1b != *(char *)(param_1 + 0x6b)) {
@@ -1039,17 +1039,17 @@ LAB_0003bf7e:
           uVar5 = FUN_00080a3a();
           gui_bitmap_draw(iVar9 + 0xb8,(uint)uVar4,iVar10 + 0x230,uVar5 + 0x88,0x200143cf,2);
           iVar9 = FUN_000809e2();
-          uVar8 = iVar9 + 0xb8 + (uint)*(ushort *)(param_1 + 0x6d);
+          uVar11 = iVar9 + 0xb8 + (uint)*(ushort *)(param_1 + 0x6d);
           uVar4 = FUN_00080a3a();
-          iVar18 = (uint)*(ushort *)(param_1 + 0x6f) + (uint)uVar4;
+          iVar19 = (uint)*(ushort *)(param_1 + 0x6f) + (uint)uVar4;
           iVar9 = FUN_000809e2();
           uVar4 = *(ushort *)(param_1 + 0x6d);
           uVar5 = FUN_00080a3a();
           iVar10 = (uint)uVar4 + iVar9 + 0xd8;
           iVar9 = (uint)*(ushort *)(param_1 + 0x6f) + (uint)uVar5;
-          puVar16 = &DAT_20015cc7;
+          puVar17 = &DAT_20015cc7;
 LAB_0003a3c2:
-          gui_1bit_bitmap_override(uVar8,iVar18,iVar10,iVar9 + 0x20,(int)puVar16,0xf);
+          gui_1bit_bitmap_override(uVar11,iVar19,iVar10,iVar9 + 0x20,(int)puVar17,0xf);
           return;
         }
         if (DAT_20004b1b != '\x01') {
@@ -1063,14 +1063,14 @@ LAB_0003a3c2:
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         gui_bmp_bitmap_draw(0x48,iVar9 + 0xb8,uVar4 + 2,0,0,0);
-        pcVar14 = get_string(0x50);
+        pcVar15 = get_string(0x50);
         iVar10 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar9 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        iVar18 = uVar5 + 0x60;
-        uVar8 = 2;
-        iVar19 = uVar4 + 0x2a;
+        iVar19 = uVar5 + 0x60;
+        uVar11 = 2;
+        iVar20 = uVar4 + 0x2a;
         break;
       default:
         goto switchD_0003b01c_default;
@@ -1078,29 +1078,29 @@ LAB_0003a3c2:
       iVar10 = iVar10 + 0xb8;
       goto LAB_000399e0;
     }
-    uVar8 = FUN_00080732();
-    FUN_0004d1e0(uVar8,(undefined2 *)&local_a0);
+    pdVar8 = (dashboard_ts_context *)FUN_00080732();
+    __init_burial_point_date(pdVar8,(undefined2 *)&local_a0);
     iVar9 = FUN_000807aa(local_a0 & 0xffff,local_a0 >> 0x10,local_9c & 0xffff);
-    pcVar14 = get_string(iVar9 + 0x28U & 0xff);
+    pcVar15 = get_string(iVar9 + 0x28U & 0xff);
     local_94 = 0;
     memset(local_90,0,0x10);
-    uVar15 = local_9c & 0xffff;
-    uVar8 = local_a0 >> 0x10;
+    uVar16 = local_9c & 0xffff;
+    uVar11 = local_a0 >> 0x10;
     if (*(char *)(param_1 + 0x5f) == '\0') {
-      pcVar17 = "%s, %02d/%02d";
-      uVar21 = uVar8;
-      uVar8 = uVar15;
+      pcVar18 = "%s, %02d/%02d";
+      uVar22 = uVar11;
+      uVar11 = uVar16;
     }
     else {
-      uVar21 = uVar15;
+      uVar22 = uVar16;
       if (*(char *)(param_1 + 0x5f) == '\x01') {
-        pcVar17 = "%s, %02d-%02d";
+        pcVar18 = "%s, %02d-%02d";
       }
       else {
-        pcVar17 = "%s, %02d/%02d";
+        pcVar18 = "%s, %02d/%02d";
       }
     }
-    __sprintf_chk((char *)&local_94,0,0x14,pcVar17,pcVar14,uVar21,uVar8);
+    __sprintf_chk((char *)&local_94,0,0x14,pcVar18,pcVar15,uVar22,uVar11);
     iVar9 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     iVar10 = FUN_000809e2();
@@ -1108,13 +1108,13 @@ LAB_0003a3c2:
     gui_utf_draw(0,(char *)&local_94,3,iVar9,(uint)uVar4,iVar10 + 0x8c,uVar5 + 0x1b,1,0,0,
                  (undefined *)0x0,0);
     pGVar7 = __get_dashboard_state();
-    cVar3 = pGVar7->glasses_state_struct_0FF0->field_0x5e;
-    uVar8 = FUN_00080732();
+    cVar3 = pGVar7->dashboard_ts->field_0x5e;
+    uVar11 = FUN_00080732();
     iVar9 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     iVar10 = FUN_000809e2();
     uVar5 = FUN_00080a3a();
-    gui_clock_draw(uVar8,iVar9,uVar4 + 0x34,iVar10 + 0x96,uVar5 + 0x55,1,cVar3 != '\x01');
+    gui_clock_draw(uVar11,iVar9,uVar4 + 0x34,iVar10 + 0x96,uVar5 + 0x55,1,cVar3 != '\x01');
     if (param_3 == 1) {
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
@@ -1133,14 +1133,14 @@ LAB_0003a3c2:
         _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x60,uVar4 + 0x6d,
                        iVar10 + 0x78,uVar5 + 0x88);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+        iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9 + 0x60,uVar4 + 0x6d,iVar10 + 0x78,uVar5 + 0x88);
+        _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9 + 0x60,uVar4 + 0x6d,iVar10 + 0x78,uVar5 + 0x88);
       }
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
@@ -1152,9 +1152,9 @@ LAB_0003a3c2:
     else if (param_3 != 4) {
       return;
     }
-    uVar8 = (uint)PANE_MODE;
-    if (uVar8 == 0) {
-      local_80 = uVar8;
+    uVar11 = (uint)PANE_MODE;
+    if (uVar11 == 0) {
+      local_80 = uVar11;
       memset(local_7c,0,0x1c);
       iVar10 = 0;
       iVar9 = 0;
@@ -1174,42 +1174,42 @@ LAB_0003a3c2:
       } while (iVar10 != 4);
       goto LAB_0003aba8;
     }
-    switch(uVar8) {
+    switch(uVar11) {
     case 1:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = uVar4 + 2;
-      uVar8 = 0x43;
+      uVar11 = 0x43;
       iVar9 = iVar9 + 0xba;
       break;
     case 2:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = uVar4 + 2;
-      uVar8 = 0x47;
+      uVar11 = 0x47;
       iVar9 = iVar9 + 0xba;
       break;
     case 3:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = uVar4 + 2;
-      uVar8 = 0x39;
+      uVar11 = 0x39;
       iVar9 = iVar9 + 0xba;
       break;
     case 4:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = uVar4 + 2;
-      uVar8 = 0x48;
+      uVar11 = 0x48;
       iVar9 = iVar9 + 0xba;
       break;
     default:
       goto switchD_0003c4b2_default;
     }
-    gui_bmp_bitmap_draw(uVar8,iVar9,iVar10,0,0,0);
+    gui_bmp_bitmap_draw(uVar11,iVar9,iVar10,0,0,0);
 switchD_0003c4b2_default:
     get_current_language();
-    pcVar14 = get_string(0x4f);
+    pcVar15 = get_string(0x4f);
     iVar10 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     iVar9 = FUN_000809e2();
@@ -1217,18 +1217,18 @@ switchD_0003c4b2_default:
     iVar9 = iVar9 + 0x234;
     iVar10 = iVar10 + 0xb8;
 LAB_0003a9be:
-    iVar18 = uVar5 + 0x6c;
-    iVar19 = uVar4 + 0x36;
-    uVar8 = 2;
+    iVar19 = uVar5 + 0x6c;
+    iVar20 = uVar4 + 0x36;
+    uVar11 = 2;
   }
   else {
     if (param_4 == 2) {
-      if (((DAT_20004b14 != uVar8) || (DAT_20004b11 != 2)) ||
-         (uVar15 = (uint)PANE_MODE, uVar15 != *(byte *)(param_1 + 0x66))) {
-        gui_screen_clear(uVar11,uVar13,uVar15);
+      if (((DAT_20004b14 != uVar11) || (DAT_20004b11 != 2)) ||
+         (uVar16 = (uint)PANE_MODE, uVar16 != *(byte *)(param_1 + 0x66))) {
+        gui_screen_clear(uVar12,uVar14,uVar16);
         PANE_MODE = *(byte *)(param_1 + 0x66);
         DAT_20004b11 = *(byte *)(param_1 + 0x65);
-        DAT_20004b14 = uVar8;
+        DAT_20004b14 = uVar11;
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): display_mode = %d ,exec screen clear\n");
@@ -1239,7 +1239,7 @@ LAB_0003a9be:
           }
         }
       }
-      if (uVar8 == 1) {
+      if (uVar11 == 1) {
         if (param_3 == 1) {
           if (*(char *)(param_1 + 0x60) == '\x01') {
             if (DAT_20002f88 != 0) {
@@ -1252,14 +1252,14 @@ LAB_0003a9be:
               _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
                              iVar10 + 0x240,uVar5 + 0x37);
               pGVar7 = __get_dashboard_state();
-              iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+              iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
               pGVar7 = __get_dashboard_state();
-              iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+              iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
+              _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
             }
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
@@ -1275,14 +1275,14 @@ LAB_0003a9be:
             _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
                            iVar10 + 0x240,uVar5 + 0x37);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+            iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
+            _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
           }
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
@@ -1296,14 +1296,14 @@ LAB_0003a9be:
           local_80 = 0;
           local_7c[0] = 0;
           if ((*(byte *)(param_1 + 4) - 1 & 0xff) < 0xfe) {
-            uVar8 = FUN_0004916c((uint)*(byte *)(param_1 + 4));
+            uVar11 = FUN_0004916c((uint)*(byte *)(param_1 + 4));
             iVar9 = FUN_000809e2();
-            uVar15 = (uint)DAT_20002f88;
+            uVar16 = (uint)DAT_20002f88;
             uVar4 = FUN_00080a3a();
-            gui_bmp_bitmap_draw(uVar8,uVar15 + iVar9 + 0x100,uVar4 + 0x1c,0,0,0);
+            gui_bmp_bitmap_draw(uVar11,uVar16 + iVar9 + 0x100,uVar4 + 0x1c,0,0,0);
             pGVar7 = __get_dashboard_state();
             iVar9 = (int)*(char *)(param_1 + 5);
-            local_80 = (uint)(byte)pGVar7->glasses_state_struct_0FF0->field_0x5d;
+            local_80 = (uint)(byte)pGVar7->dashboard_ts->field_0x5d;
             if (local_80 == 0) {
               local_7c[0] = local_80;
               if (2 < LOG_LEVEL) {
@@ -1317,13 +1317,13 @@ LAB_0003a9be:
               snprintf((char *)&local_80,8,"%d",iVar9);
               local_94 = 0;
               iVar9 = FUN_000809e2();
-              uVar15 = (uint)DAT_20002f88;
+              uVar16 = (uint)DAT_20002f88;
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
-              uVar8 = (uint)DAT_20002f88;
+              uVar11 = (uint)DAT_20002f88;
               uVar5 = FUN_00080a3a();
-              gui_string_draw(3,(byte *)&local_80,uVar15 + iVar9 + 0x11c,uVar4 + 0x1c,
-                              uVar8 + iVar10 + 0x144,uVar5 + 0x37,(int *)&local_94);
+              gui_string_draw(3,(byte *)&local_80,uVar16 + iVar9 + 0x11c,uVar4 + 0x1c,
+                              uVar11 + iVar10 + 0x144,uVar5 + 0x37,(int *)&local_94);
               bVar2 = 0x2a;
             }
             else {
@@ -1342,13 +1342,13 @@ LAB_0003a9be:
               snprintf((char *)&local_80,8,"%d",iVar9);
               local_94 = 0;
               iVar9 = FUN_000809e2();
-              uVar15 = (uint)DAT_20002f88;
+              uVar16 = (uint)DAT_20002f88;
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
-              uVar8 = (uint)DAT_20002f88;
+              uVar11 = (uint)DAT_20002f88;
               uVar5 = FUN_00080a3a();
-              gui_string_draw(3,(byte *)&local_80,uVar15 + iVar9 + 0x11c,uVar4 + 0x1c,
-                              uVar8 + iVar10 + 0x144,uVar5 + 0x37,(int *)&local_94);
+              gui_string_draw(3,(byte *)&local_80,uVar16 + iVar9 + 0x11c,uVar4 + 0x1c,
+                              uVar11 + iVar10 + 0x144,uVar5 + 0x37,(int *)&local_94);
               bVar2 = 0x23;
             }
             local_7c[0] = 0;
@@ -1363,60 +1363,60 @@ LAB_0003a9be:
                             (int *)0x0);
           }
           iVar9 = FUN_000809e2();
-          uVar8 = (uint)DAT_20002f88;
+          uVar11 = (uint)DAT_20002f88;
           uVar4 = FUN_00080a3a();
-          gui_bmp_bitmap_draw(0x3c,iVar9 + 0x16e + uVar8,uVar4 + 0x1c,0,0,0);
-          uVar8 = FUN_00035310();
-          if ((int)uVar8 < 0xb) {
-            pcVar14 = "%d";
+          gui_bmp_bitmap_draw(0x3c,iVar9 + 0x16e + uVar11,uVar4 + 0x1c,0,0,0);
+          uVar11 = FUN_00035310();
+          if ((int)uVar11 < 0xb) {
+            pcVar15 = "%d";
           }
           else {
-            uVar8 = 10;
-            pcVar14 = "%d+";
+            uVar11 = 10;
+            pcVar15 = "%d+";
           }
           local_80 = 0;
           local_7c[0] = 0;
-          snprintf((char *)&local_80,8,pcVar14,uVar8);
+          snprintf((char *)&local_80,8,pcVar15,uVar11);
           iVar9 = FUN_000809e2();
-          uVar15 = (uint)DAT_20002f88;
+          uVar16 = (uint)DAT_20002f88;
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
-          uVar8 = (uint)DAT_20002f88;
+          uVar11 = (uint)DAT_20002f88;
           uVar5 = FUN_00080a3a();
-          gui_string_draw(3,(byte *)&local_80,uVar15 + iVar9 + 0x18a,uVar4 + 0x1c,
-                          uVar8 + iVar10 + 0x1a4,uVar5 + 0x37,(int *)0x0);
+          gui_string_draw(3,(byte *)&local_80,uVar16 + iVar9 + 0x18a,uVar4 + 0x1c,
+                          uVar11 + iVar10 + 0x1a4,uVar5 + 0x37,(int *)0x0);
         }
         local_94 = 0;
         local_90[0] = 0;
         local_90[1] = 0;
-        uVar8 = FUN_00080732();
-        FUN_0004d1e0(uVar8,(undefined2 *)&local_94);
+        pdVar8 = (dashboard_ts_context *)FUN_00080732();
+        __init_burial_point_date(pdVar8,(undefined2 *)&local_94);
         iVar9 = FUN_000807aa(local_94 & 0xffff,local_94 >> 0x10,local_90[0] & 0xffff);
-        pcVar14 = get_string(iVar9 + 0x28U & 0xff);
+        pcVar15 = get_string(iVar9 + 0x28U & 0xff);
         local_80 = 0;
         memset(local_7c,0,0x10);
-        uVar15 = local_90[0] & 0xffff;
-        uVar8 = local_94 >> 0x10;
+        uVar16 = local_90[0] & 0xffff;
+        uVar11 = local_94 >> 0x10;
         if (*(char *)(param_1 + 0x5f) == '\0') {
-          pcVar17 = "%s, %02d/%02d";
-          uVar21 = uVar8;
-          uVar8 = uVar15;
+          pcVar18 = "%s, %02d/%02d";
+          uVar22 = uVar11;
+          uVar11 = uVar16;
         }
         else {
-          uVar21 = uVar15;
+          uVar22 = uVar16;
           if (*(char *)(param_1 + 0x5f) == '\x01') {
-            pcVar17 = "%s, %02d-%02d";
+            pcVar18 = "%s, %02d-%02d";
           }
           else {
-            pcVar17 = "%s, %02d/%02d";
+            pcVar18 = "%s, %02d/%02d";
           }
         }
-        __sprintf_chk((char *)&local_80,0,0x14,pcVar17,pcVar14,uVar21,uVar8);
+        __sprintf_chk((char *)&local_80,0,0x14,pcVar18,pcVar15,uVar22,uVar11);
         iVar9 = FUN_000809e2();
-        uVar8 = (uint)DAT_20002f88;
+        uVar11 = (uint)DAT_20002f88;
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
-        uVar8 = uVar8 + iVar9 + 0x54;
+        uVar11 = uVar11 + iVar9 + 0x54;
         iVar9 = (uint)DAT_20002f88 + iVar10 + 0xe0;
       }
       else {
@@ -1432,14 +1432,14 @@ LAB_0003a9be:
               _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
                              iVar10 + 0x240,uVar5 + 0x37);
               pGVar7 = __get_dashboard_state();
-              iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+              iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
               pGVar7 = __get_dashboard_state();
-              iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+              iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
+              _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
             }
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
@@ -1455,76 +1455,77 @@ LAB_0003a9be:
             _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9,uVar4 + 0x1c,
                            iVar10 + 0x240,uVar5 + 0x37);
             pGVar7 = __get_dashboard_state();
-            iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
             pGVar7 = __get_dashboard_state();
-            iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+            iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
+            _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9,uVar4 + 0x1c,iVar10 + 0x240,uVar5 + 0x37);
           }
           iVar9 = FUN_000809e2();
-          uVar8 = (uint)DAT_20002f88;
+          uVar11 = (uint)DAT_20002f88;
           uVar4 = FUN_00080a3a();
-          gui_bmp_bitmap_draw(0x3e,uVar8 + iVar9 + 0x144,uVar4 + 0x1c,0,0,0);
+          gui_bmp_bitmap_draw(0x3e,uVar11 + iVar9 + 0x144,uVar4 + 0x1c,0,0,0);
         }
         local_94 = 0;
         local_90[0] = 0;
         local_90[1] = 0;
-        uVar8 = FUN_00080732();
-        FUN_0004d1e0(uVar8,(undefined2 *)&local_94);
+        pdVar8 = (dashboard_ts_context *)FUN_00080732();
+        __init_burial_point_date(pdVar8,(undefined2 *)&local_94);
         iVar9 = FUN_000807aa(local_94 & 0xffff,local_94 >> 0x10,local_90[0] & 0xffff);
-        pcVar14 = get_string(iVar9 + 0x28U & 0xff);
+        pcVar15 = get_string(iVar9 + 0x28U & 0xff);
         local_80 = 0;
         memset(local_7c,0,0x10);
-        uVar15 = local_90[0] & 0xffff;
-        uVar8 = local_94 >> 0x10;
+        uVar16 = local_90[0] & 0xffff;
+        uVar11 = local_94 >> 0x10;
         if (*(char *)(param_1 + 0x5f) == '\0') {
-          pcVar17 = "%s, %02d/%02d";
-          uVar21 = uVar8;
-          uVar8 = uVar15;
+          pcVar18 = "%s, %02d/%02d";
+          uVar22 = uVar11;
+          uVar11 = uVar16;
         }
         else {
-          uVar21 = uVar15;
+          uVar22 = uVar16;
           if (*(char *)(param_1 + 0x5f) == '\x01') {
-            pcVar17 = "%s, %02d-%02d";
+            pcVar18 = "%s, %02d-%02d";
           }
           else {
-            pcVar17 = "%s, %02d/%02d";
+            pcVar18 = "%s, %02d/%02d";
           }
         }
-        __sprintf_chk((char *)&local_80,0,0x14,pcVar17,pcVar14,uVar21,uVar8);
+        __sprintf_chk((char *)&local_80,0,0x14,pcVar18,pcVar15,uVar22,uVar11);
         iVar9 = FUN_000809e2();
-        uVar8 = (uint)DAT_20002f88;
+        uVar11 = (uint)DAT_20002f88;
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
-        uVar8 = uVar8 + iVar9 + 0x98;
+        uVar11 = uVar11 + iVar9 + 0x98;
         iVar9 = (uint)DAT_20002f88 + iVar10 + 0x124;
       }
       uVar5 = FUN_00080a3a();
       gui_utf_draw_align_right
-                (0,(char *)&local_80,3,uVar8,uVar4 + 0x1c,iVar9,uVar5 + 0x37,1,0,0,(undefined *)0x0,
-                 0);
+                (0,(char *)&local_80,3,uVar11,uVar4 + 0x1c,iVar9,uVar5 + 0x37,1,0,0,(undefined *)0x0
+                 ,0);
       pGVar7 = __get_dashboard_state();
-      cVar3 = pGVar7->glasses_state_struct_0FF0->field_0x5e;
-      uVar8 = FUN_00080732();
+      cVar3 = pGVar7->dashboard_ts->field_0x5e;
+      uVar11 = FUN_00080732();
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_clock_draw(uVar8,iVar9 + 0xea,uVar4 + 0x4c,iVar10 + 0x180,uVar5 + 0x6d,1,cVar3 != '\x01');
+      gui_clock_draw(uVar11,iVar9 + 0xea,uVar4 + 0x4c,iVar10 + 0x180,uVar5 + 0x6d,1,cVar3 != '\x01')
+      ;
       return;
     }
     if (param_4 != 0) {
       return;
     }
-    if (((DAT_20004b14 != uVar8) || (DAT_20004b11 != 0)) ||
-       (uVar15 = (uint)PANE_MODE, uVar15 != *(byte *)(param_1 + 0x66))) {
-      gui_screen_clear(uVar11,uVar13,uVar15);
+    if (((DAT_20004b14 != uVar11) || (DAT_20004b11 != 0)) ||
+       (uVar16 = (uint)PANE_MODE, uVar16 != *(byte *)(param_1 + 0x66))) {
+      gui_screen_clear(uVar12,uVar14,uVar16);
       PANE_MODE = *(byte *)(param_1 + 0x66);
       DAT_20004b11 = *(byte *)(param_1 + 0x65);
-      DAT_20004b14 = uVar8;
+      DAT_20004b14 = uVar11;
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): display_mode = %d ,exec screen clear\n");
@@ -1538,30 +1539,30 @@ LAB_0003a9be:
     local_a0 = 0;
     local_9c = 0;
     local_98 = 0;
-    if (uVar8 != 1) {
-      uVar8 = FUN_00080732();
-      FUN_0004d1e0(uVar8,(undefined2 *)&local_a0);
+    if (uVar11 != 1) {
+      pdVar8 = (dashboard_ts_context *)FUN_00080732();
+      __init_burial_point_date(pdVar8,(undefined2 *)&local_a0);
       iVar9 = FUN_000807aa(local_a0 & 0xffff,local_a0 >> 0x10,local_9c & 0xffff);
-      pcVar14 = get_string(iVar9 + 0x28U & 0xff);
+      pcVar15 = get_string(iVar9 + 0x28U & 0xff);
       local_94 = 0;
       memset(local_90,0,0x10);
-      uVar15 = local_9c & 0xffff;
-      uVar8 = local_a0 >> 0x10;
+      uVar16 = local_9c & 0xffff;
+      uVar11 = local_a0 >> 0x10;
       if (*(char *)(param_1 + 0x5f) == '\0') {
-        pcVar17 = "%s, %02d/%02d";
-        uVar21 = uVar8;
-        uVar8 = uVar15;
+        pcVar18 = "%s, %02d/%02d";
+        uVar22 = uVar11;
+        uVar11 = uVar16;
       }
       else {
-        uVar21 = uVar15;
+        uVar22 = uVar16;
         if (*(char *)(param_1 + 0x5f) == '\x01') {
-          pcVar17 = "%s, %02d-%02d";
+          pcVar18 = "%s, %02d-%02d";
         }
         else {
-          pcVar17 = "%s, %02d/%02d";
+          pcVar18 = "%s, %02d/%02d";
         }
       }
-      __sprintf_chk((char *)&local_94,0,0x14,pcVar17,pcVar14,uVar21,uVar8);
+      __sprintf_chk((char *)&local_94,0,0x14,pcVar18,pcVar15,uVar22,uVar11);
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
@@ -1569,13 +1570,13 @@ LAB_0003a9be:
       gui_utf_draw(0,(char *)&local_94,3,iVar9 + 0x2e,(uint)uVar4,iVar10 + 0xb9,uVar5 + 0x1b,1,0,0,
                    (undefined *)0x0,0);
       pGVar7 = __get_dashboard_state();
-      cVar3 = pGVar7->glasses_state_struct_0FF0->field_0x5e;
-      uVar8 = FUN_00080732();
+      cVar3 = pGVar7->dashboard_ts->field_0x5e;
+      uVar11 = FUN_00080732();
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_clock_draw(uVar8,iVar9 + 0x2e,uVar4 + 0x34,iVar10 + 0xc3,uVar5 + 0x55,1,cVar3 != '\x01');
+      gui_clock_draw(uVar11,iVar9 + 0x2e,uVar4 + 0x34,iVar10 + 0xc3,uVar5 + 0x55,1,cVar3 != '\x01');
       if (param_3 == 1) {
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
@@ -1594,15 +1595,15 @@ LAB_0003a9be:
           _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x8e,uVar4 + 0x6d,
                          iVar10 + 0xa6,uVar5 + 0x88);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+          iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           _reflash_fb_data_to_lcd
-                    (iVar18,iVar19,iVar9 + 0x8e,uVar4 + 0x6d,iVar10 + 0xa6,uVar5 + 0x88);
+                    (iVar19,iVar20,iVar9 + 0x8e,uVar4 + 0x6d,iVar10 + 0xa6,uVar5 + 0x88);
         }
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
@@ -1614,9 +1615,9 @@ LAB_0003a9be:
       else if (param_3 != 4) {
         return;
       }
-      uVar8 = (uint)PANE_MODE;
-      if (uVar8 == 0) {
-        local_80 = uVar8;
+      uVar11 = (uint)PANE_MODE;
+      if (uVar11 == 0) {
+        local_80 = uVar11;
         memset(local_7c,0,0x1c);
         iVar9 = 0;
         iVar10 = 0;
@@ -1659,14 +1660,14 @@ LAB_0003a9be:
           _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x128,uVar4 + 1,
                          iVar10 + 0x208,uVar5 + 0x1c);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+          iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c)
+          _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c)
           ;
           pGVar7 = __get_dashboard_state();
           iVar9 = FUN_000809e2();
@@ -1676,9 +1677,9 @@ LAB_0003a9be:
           _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x10a,uVar4 + 0x1c,
                          iVar10 + 0x208,uVar5 + 0x88);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+          iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -1689,31 +1690,31 @@ LAB_0003a9be:
         DAT_20004b02 = '\x01';
         memset(&local_80,0,0x20);
         snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004af9 + 1,iVar10);
-        uVar8 = (uint)DAT_20004af9;
-        iVar19 = *(int *)(param_2 + 0x1030);
+        uVar11 = (uint)DAT_20004af9;
+        iVar20 = *(int *)(param_2 + 0x1030);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        iVar18 = FUN_000809e2();
+        iVar19 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        gui_utf_draw(0,(char *)(iVar19 + uVar8 * 0x143 + 4),0,iVar9 + 0xfc,uVar4 + 1,iVar18 + 0x1d6,
-                     uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
+        gui_utf_draw(0,(char *)(iVar20 + uVar11 * 0x143 + 4),0,iVar9 + 0xfc,uVar4 + 1,iVar19 + 0x1d6
+                     ,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
         if (iVar10 == 1) {
           iVar10 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          pcVar14 = " ";
+          pcVar15 = " ";
         }
         else {
           iVar10 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          pcVar14 = (char *)&local_80;
+          pcVar15 = (char *)&local_80;
         }
-        gui_utf_draw(0,pcVar14,0,iVar10 + 0x1e4,uVar4 + 1,iVar9 + 0x212,uVar5 + 0x1c,1,0,0,
+        gui_utf_draw(0,pcVar15,0,iVar10 + 0x1e4,uVar4 + 1,iVar9 + 0x212,uVar5 + 0x1c,1,0,0,
                      (undefined *)0x0,0);
-        pcVar14 = (char *)(uVar8 * 0x143 + 0x2d + *(int *)(param_2 + 0x1030));
+        pcVar15 = (char *)(uVar11 * 0x143 + 0x2d + *(int *)(param_2 + 0x1030));
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
@@ -1722,34 +1723,34 @@ LAB_0003a9be:
         iVar9 = iVar9 + 0xe0;
         goto LAB_000398be;
       }
-      if (uVar8 == 1) {
+      if (uVar11 == 1) {
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = uVar4 + 2;
-        uVar8 = 0x43;
+        uVar11 = 0x43;
         iVar9 = iVar9 + 0xe0;
 LAB_0003a97c:
-        gui_bmp_bitmap_draw(uVar8,iVar9,iVar10,0,0,0);
+        gui_bmp_bitmap_draw(uVar11,iVar9,iVar10,0,0,0);
       }
       else {
-        if (uVar8 == 2) {
+        if (uVar11 == 2) {
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = uVar4 + 2;
-          uVar8 = 0x47;
+          uVar11 = 0x47;
           iVar9 = iVar9 + 0xe0;
           goto LAB_0003a97c;
         }
-        if (uVar8 == 4) {
+        if (uVar11 == 4) {
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = uVar4 + 2;
-          uVar8 = 0x48;
+          uVar11 = 0x48;
           iVar9 = iVar9 + 0xe0;
           goto LAB_0003a97c;
         }
       }
-      pcVar14 = get_string(0x4f);
+      pcVar15 = get_string(0x4f);
       iVar10 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar9 = FUN_000809e2();
@@ -1758,29 +1759,29 @@ LAB_0003a97c:
       iVar10 = iVar10 + 0xe0;
       goto LAB_0003a9be;
     }
-    uVar8 = FUN_00080732();
-    FUN_0004d1e0(uVar8,(undefined2 *)&local_a0);
+    pdVar8 = (dashboard_ts_context *)FUN_00080732();
+    __init_burial_point_date(pdVar8,(undefined2 *)&local_a0);
     iVar9 = FUN_000807aa(local_a0 & 0xffff,local_a0 >> 0x10,local_9c & 0xffff);
-    pcVar14 = get_string(iVar9 + 0x28U & 0xff);
+    pcVar15 = get_string(iVar9 + 0x28U & 0xff);
     local_94 = 0;
     memset(local_90,0,0x10);
-    uVar15 = local_9c & 0xffff;
-    uVar8 = local_a0 >> 0x10;
+    uVar16 = local_9c & 0xffff;
+    uVar11 = local_a0 >> 0x10;
     if (*(char *)(param_1 + 0x5f) == '\0') {
-      pcVar17 = "%s, %02d/%02d";
-      uVar21 = uVar8;
-      uVar8 = uVar15;
+      pcVar18 = "%s, %02d/%02d";
+      uVar22 = uVar11;
+      uVar11 = uVar16;
     }
     else {
-      uVar21 = uVar15;
+      uVar22 = uVar16;
       if (*(char *)(param_1 + 0x5f) == '\x01') {
-        pcVar17 = "%s, %02d-%02d";
+        pcVar18 = "%s, %02d-%02d";
       }
       else {
-        pcVar17 = "%s, %02d/%02d";
+        pcVar18 = "%s, %02d/%02d";
       }
     }
-    __sprintf_chk((char *)&local_94,0,0x14,pcVar17,pcVar14,uVar21,uVar8);
+    __sprintf_chk((char *)&local_94,0,0x14,pcVar18,pcVar15,uVar22,uVar11);
     iVar9 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     iVar10 = FUN_000809e2();
@@ -1788,13 +1789,13 @@ LAB_0003a97c:
     gui_utf_draw(0,(char *)&local_94,3,iVar9,uVar4 + 2,iVar10 + 0x8c,uVar5 + 0x1d,1,0,0,
                  (undefined *)0x0,0);
     pGVar7 = __get_dashboard_state();
-    cVar3 = pGVar7->glasses_state_struct_0FF0->field_0x5e;
-    uVar8 = FUN_00080732();
+    cVar3 = pGVar7->dashboard_ts->field_0x5e;
+    uVar11 = FUN_00080732();
     iVar9 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     iVar10 = FUN_000809e2();
     uVar5 = FUN_00080a3a();
-    gui_clock_draw(uVar8,iVar9,uVar4 + 0x22,iVar10 + 0x96,uVar5 + 0x43,1,cVar3 != '\x01');
+    gui_clock_draw(uVar11,iVar9,uVar4 + 0x22,iVar10 + 0x96,uVar5 + 0x43,1,cVar3 != '\x01');
     if (param_3 == 1) {
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
@@ -1814,13 +1815,13 @@ LAB_0003a97c:
       local_a8 = 0;
       local_a4 = 0;
       if ((*(byte *)(param_1 + 4) - 1 & 0xff) < 0xfe) {
-        uVar8 = FUN_0004916c((uint)*(byte *)(param_1 + 4));
+        uVar11 = FUN_0004916c((uint)*(byte *)(param_1 + 4));
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        gui_bmp_bitmap_draw(uVar8,iVar9 + 0xa0,uVar4 + 1,0,0,0);
+        gui_bmp_bitmap_draw(uVar11,iVar9 + 0xa0,uVar4 + 1,0,0,0);
         pGVar7 = __get_dashboard_state();
         iVar9 = (int)*(char *)(param_1 + 5);
-        local_a8 = (uint)(byte)pGVar7->glasses_state_struct_0FF0->field_0x5d;
+        local_a8 = (uint)(byte)pGVar7->dashboard_ts->field_0x5d;
         if (local_a8 == 0) {
           local_a4 = local_a8;
           if (2 < LOG_LEVEL) {
@@ -1876,17 +1877,17 @@ LAB_0003a97c:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       gui_bmp_bitmap_draw(0x3c,iVar9 + 0xa0,uVar4 + 0x25,0,0,0);
-      uVar8 = FUN_00035310();
-      if ((int)uVar8 < 0xb) {
-        pcVar14 = "%d";
+      uVar11 = FUN_00035310();
+      if ((int)uVar11 < 0xb) {
+        pcVar15 = "%d";
       }
       else {
-        pcVar14 = "%d+";
-        uVar8 = 10;
+        pcVar15 = "%d+";
+        uVar11 = 10;
       }
       local_a8 = 0;
       local_a4 = 0;
-      snprintf((char *)&local_a8,8,pcVar14,uVar8);
+      snprintf((char *)&local_a8,8,pcVar15,uVar11);
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
@@ -1907,14 +1908,14 @@ LAB_0003a97c:
         _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0xdc,uVar4 + 0x25,
                        iVar10 + 0xf4,uVar5 + 0x40);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+        iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9 + 0xdc,uVar4 + 0x25,iVar10 + 0xf4,uVar5 + 0x40);
+        _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9 + 0xdc,uVar4 + 0x25,iVar10 + 0xf4,uVar5 + 0x40);
       }
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
@@ -1938,13 +1939,13 @@ LAB_0003a97c:
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         gui_area_clear(iVar9 + 0x1c,uVar4 + 0x51,iVar10 + 0xf2,uVar5 + 0x6c);
-        pcVar14 = get_string(0x4d);
+        pcVar15 = get_string(0x4d);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        iVar19 = uVar4 + 0x6c;
-        iVar18 = uVar5 + 0x89;
+        iVar20 = uVar4 + 0x6c;
+        iVar19 = uVar5 + 0x89;
         iVar10 = iVar10 + 0xf2;
       }
       else if (DAT_20004b18 == '\x01') {
@@ -1953,14 +1954,14 @@ LAB_0003a97c:
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         gui_area_clear(iVar9 + 0x1c,uVar4 + 0x51,iVar10 + 0xf2,uVar5 + 0x6c);
-        pcVar14 = get_string(0x4b);
+        pcVar15 = get_string(0x4b);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar10 = iVar10 + 0xf2;
-        iVar18 = uVar5 + 0x89;
-        iVar19 = uVar4 + 0x6e;
+        iVar19 = uVar5 + 0x89;
+        iVar20 = uVar4 + 0x6e;
       }
       else if (DAT_20004b18 == '\x02') {
         iVar9 = FUN_000809e2();
@@ -1968,13 +1969,13 @@ LAB_0003a97c:
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         gui_area_clear(iVar9 + 0x1c,uVar4 + 0x51,iVar10 + 0xf2,uVar5 + 0x6c);
-        pcVar14 = get_string(0x4a);
+        pcVar15 = get_string(0x4a);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        iVar18 = uVar5 + 0x89;
-        iVar19 = uVar4 + 0x6e;
+        iVar19 = uVar5 + 0x89;
+        iVar20 = uVar4 + 0x6e;
         iVar10 = iVar10 + 0xf2;
       }
       else {
@@ -1987,30 +1988,30 @@ LAB_0003a97c:
                      (undefined *)0x0,0);
         local_80 = 0;
         memset(local_7c,0,0x54);
-        sVar12 = strlen(&DAT_20012571);
-        memcpy(&local_80,&DAT_20012571,sVar12);
-        sVar12 = strlen(&DAT_20012571);
-        *(undefined1 *)((int)local_7c + (sVar12 - 4)) = 0x20;
+        sVar13 = strlen(&DAT_20012571);
+        memcpy(&local_80,&DAT_20012571,sVar13);
+        sVar13 = strlen(&DAT_20012571);
+        *(undefined1 *)((int)local_7c + (sVar13 - 4)) = 0x20;
         n = strlen(&DAT_20012592);
-        memcpy((void *)((int)local_7c + (sVar12 - 3)),&DAT_20012592,n);
+        memcpy((void *)((int)local_7c + (sVar13 - 3)),&DAT_20012592,n);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar10 = iVar10 + 0xf2;
-        iVar19 = uVar4 + 0x6c;
-        iVar18 = uVar5 + 0x87;
-        pcVar14 = (char *)&local_80;
+        iVar20 = uVar4 + 0x6c;
+        iVar19 = uVar5 + 0x87;
+        pcVar15 = (char *)&local_80;
       }
-      gui_utf_draw(0,pcVar14,0,iVar9,iVar19,iVar10,iVar18,1,0,0,(undefined *)0x0,0);
+      gui_utf_draw(0,pcVar15,0,iVar9,iVar20,iVar10,iVar19,1,0,0,(undefined *)0x0,0);
     }
     else if (param_3 != 4) {
       return;
     }
 LAB_00038fc6:
-    uVar8 = (uint)PANE_MODE;
-    if (uVar8 == 0) {
-      local_80 = uVar8;
+    uVar11 = (uint)PANE_MODE;
+    if (uVar11 == 0) {
+      local_80 = uVar11;
       memset(local_7c,0,0x1c);
       iVar9 = 0;
       iVar10 = 0;
@@ -2052,14 +2053,14 @@ LAB_00038fc6:
         _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x128,uVar4 + 1,
                        iVar10 + 0x23a,uVar5 + 0x1c);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+        iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c);
+        _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c);
         pGVar7 = __get_dashboard_state();
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
@@ -2068,16 +2069,16 @@ LAB_00038fc6:
         _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x10a,uVar4 + 0x1c,
                        iVar10 + 0x232,uVar5 + 0x88);
         pGVar7 = __get_dashboard_state();
-        iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
         pGVar7 = __get_dashboard_state();
-        iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+        iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
         iVar9 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = iVar10 + 0x232;
 LAB_00039182:
-        _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9 + 0x10a,uVar5 + 0x1c,iVar10,uVar4 + 0x88);
+        _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9 + 0x10a,uVar5 + 0x1c,iVar10,uVar4 + 0x88);
 LAB_00039194:
         FUN_00038b00();
         FUN_000386c0();
@@ -2086,31 +2087,31 @@ LAB_00039194:
       DAT_20004b02 = '\x01';
       memset(&local_80,0,0x20);
       snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004af9 + 1,iVar10);
-      uVar8 = (uint)DAT_20004af9;
-      iVar19 = *(int *)(param_2 + 0x1030);
+      uVar11 = (uint)DAT_20004af9;
+      iVar20 = *(int *)(param_2 + 0x1030);
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      iVar18 = FUN_000809e2();
+      iVar19 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_utf_draw(0,(char *)(iVar19 + uVar8 * 0x143 + 4),0,iVar9 + 0x128,uVar4 + 1,iVar18 + 0x212,
+      gui_utf_draw(0,(char *)(iVar20 + uVar11 * 0x143 + 4),0,iVar9 + 0x128,uVar4 + 1,iVar19 + 0x212,
                    uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
       if (iVar10 == 1) {
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        pcVar14 = " ";
+        pcVar15 = " ";
       }
       else {
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        pcVar14 = (char *)&local_80;
+        pcVar15 = (char *)&local_80;
       }
-      gui_utf_draw(0,pcVar14,0,iVar10 + 0x218,uVar5 + 1,iVar9 + 0x23a,uVar4 + 0x1c,1,0,0,
+      gui_utf_draw(0,pcVar15,0,iVar10 + 0x218,uVar5 + 1,iVar9 + 0x23a,uVar4 + 0x1c,1,0,0,
                    (undefined *)0x0,0);
-      pcVar14 = (char *)(uVar8 * 0x143 + 0x2d + *(int *)(param_2 + 0x1030));
+      pcVar15 = (char *)(uVar11 * 0x143 + 0x2d + *(int *)(param_2 + 0x1030));
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
@@ -2118,17 +2119,17 @@ LAB_00039194:
       iVar10 = iVar10 + 0x238;
       iVar9 = iVar9 + 0x10a;
 LAB_000398be:
-      iVar18 = uVar5 + 0x88;
-      iVar19 = uVar4 + 0x1c;
+      iVar19 = uVar5 + 0x88;
+      iVar20 = uVar4 + 0x1c;
       goto LAB_0003a208;
     }
-    if (uVar8 == 1) {
+    if (uVar11 == 1) {
       iVar9 = 0;
       iVar10 = 0;
       do {
-        iVar18 = iVar9 * 0x7f2;
+        iVar19 = iVar9 * 0x7f2;
         iVar9 = iVar9 + 1;
-        if ((&DAT_2000e104)[iVar18] == '\x01') {
+        if ((&DAT_2000e104)[iVar19] == '\x01') {
           iVar10 = iVar10 + 1;
         }
       } while (iVar9 != 4);
@@ -2139,9 +2140,9 @@ LAB_000398be:
             DAT_20004b19 = cVar3;
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar9 + 0x100,(uint)uVar4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar9 + 0x100,(uint)uVar4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
@@ -2157,17 +2158,17 @@ LAB_000398be:
           }
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          uVar8 = 0x43;
+          uVar11 = 0x43;
 LAB_00039a6e:
-          gui_bmp_bitmap_draw(uVar8,iVar9 + 0x10a,uVar4 + 2,0,0,0);
-          pcVar14 = get_string(0x4b);
+          gui_bmp_bitmap_draw(uVar11,iVar9 + 0x10a,uVar4 + 2,0,0,0);
+          pcVar15 = get_string(0x4b);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_utf_draw_middle(0,pcVar14,0,iVar9 + 0x10a,uVar4 + 0x2a,iVar10 + 0x234,uVar5 + 0x45,1,0
+          gui_utf_draw_middle(0,pcVar15,0,iVar9 + 0x10a,uVar4 + 0x2a,iVar10 + 0x234,uVar5 + 0x45,1,0
                               ,0,(undefined *)0x0,0);
-          pcVar14 = get_string(0x4c);
+          pcVar15 = get_string(0x4c);
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar9 = FUN_000809e2();
@@ -2189,38 +2190,38 @@ LAB_00039a6e:
         iVar9 = 0;
         iVar10 = 0;
         do {
-          iVar18 = iVar9 * 0x7f2;
+          iVar19 = iVar9 * 0x7f2;
           iVar9 = iVar9 + 1;
-          if ((&DAT_2000e104)[iVar18] == '\x01') {
+          if ((&DAT_2000e104)[iVar19] == '\x01') {
             iVar10 = iVar10 + 1;
           }
         } while (iVar9 != 4);
         DAT_20004afc = (undefined1)iVar10;
-        uVar8 = (uint)DAT_20004afb;
-        cVar3 = (&DAT_2000e105)[uVar8 * 0x7f2];
+        uVar11 = (uint)DAT_20004afb;
+        cVar3 = (&DAT_2000e105)[uVar11 * 0x7f2];
         if (cVar3 == '\0') {
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          iVar18 = uVar4 + 2;
-          uVar15 = 0x46;
+          iVar19 = uVar4 + 2;
+          uVar16 = 0x46;
           iVar9 = iVar9 + 0x10a;
 LAB_00039b98:
-          gui_bmp_bitmap_draw(uVar15,iVar9,iVar18,0,0,0);
+          gui_bmp_bitmap_draw(uVar16,iVar9,iVar19,0,0,0);
         }
         else {
           if (cVar3 == '\x01') {
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = uVar4 + 2;
-            uVar15 = 0x44;
+            iVar19 = uVar4 + 2;
+            uVar16 = 0x44;
             iVar9 = iVar9 + 0x10a;
             goto LAB_00039b98;
           }
           if (cVar3 == '\x02') {
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = uVar4 + 2;
-            uVar15 = 0x45;
+            iVar19 = uVar4 + 2;
+            uVar16 = 0x45;
             iVar9 = iVar9 + 0x10a;
             goto LAB_00039b98;
           }
@@ -2235,7 +2236,7 @@ LAB_00039b98:
         else {
           local_80 = 0;
           memset(local_7c,0,0x1c);
-          snprintf((char *)&local_80,0x20,"%d/%d",uVar8 + 1,iVar10);
+          snprintf((char *)&local_80,0x20,"%d/%d",uVar11 + 1,iVar10);
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -2243,46 +2244,46 @@ LAB_00039b98:
           gui_utf_draw(0,(char *)&local_80,0,iVar9 + 0x218,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c,1,0
                        ,0,(undefined *)0x0,0);
         }
-        iVar18 = uVar8 * 0x7f2;
+        iVar19 = uVar11 * 0x7f2;
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        gui_utf_draw(0,(char *)(iVar18 + 0x2000e108),0,iVar9 + 0x126,(uint)uVar4,iVar10 + 0x200,
+        gui_utf_draw(0,(char *)(iVar19 + 0x2000e108),0,iVar9 + 0x126,(uint)uVar4,iVar10 + 0x200,
                      uVar5 + 0x1b,1,0,0,(undefined *)0x0,0);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        gui_utf_draw(0,(char *)(iVar18 + 0x2000e128),0,iVar9 + 0x10a,uVar4 + 0x1b,iVar10 + 0x232,
+        gui_utf_draw(0,(char *)(iVar19 + 0x2000e128),0,iVar9 + 0x10a,uVar4 + 0x1b,iVar10 + 0x232,
                      uVar5 + 0x36,1,0,0,(undefined *)0x0,0);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         gui_utf_draw_align_right
-                  (0,(char *)(iVar18 + 0x2000e168),0,iVar9 + 0x1d2,uVar4 + 0x36,iVar10 + 0x232,
+                  (0,(char *)(iVar19 + 0x2000e168),0,iVar9 + 0x1d2,uVar4 + 0x36,iVar10 + 0x232,
                    uVar5 + 0x51,1,0,0,(undefined *)0x0,0);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         gui_utf_draw_align_right
-                  (0,(char *)(iVar18 + 0x2000e178),0,iVar9 + 0x1d2,uVar4 + 0x51,iVar10 + 0x232,
+                  (0,(char *)(iVar19 + 0x2000e178),0,iVar9 + 0x1d2,uVar4 + 0x51,iVar10 + 0x232,
                    uVar5 + 0x6c,1,0,0,(undefined *)0x0,0);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         gui_utf_draw_align_right
-                  (0,(char *)(iVar18 + 0x2000e188),0,iVar9 + 0x1d2,uVar4 + 0x6c,iVar10 + 0x232,
+                  (0,(char *)(iVar19 + 0x2000e188),0,iVar9 + 0x1d2,uVar4 + 0x6c,iVar10 + 0x232,
                    uVar5 + 0x87,1,0,0,(undefined *)0x0,0);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
         iVar10 = iVar10 + 0x1c2;
-        uVar8 = iVar9 + 0x10a;
+        uVar11 = iVar9 + 0x10a;
         goto LAB_00039d7e;
       }
       if (2 < LOG_LEVEL) {
@@ -2297,9 +2298,9 @@ LAB_00039b98:
         DAT_20004b19 = *(char *)(param_1 + 0x69);
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
-        iVar18 = FUN_000809e2();
+        iVar19 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        gui_area_clear(iVar9 + 0x100,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+        gui_area_clear(iVar9 + 0x100,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
       }
       if (iVar10 == 0) {
         cleanStocksIndex();
@@ -2307,22 +2308,22 @@ LAB_00039b98:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar10 = uVar4 + 2;
-      uVar8 = 0x43;
+      uVar11 = 0x43;
       iVar9 = iVar9 + 0x10a;
 LAB_0003999e:
-      gui_bmp_bitmap_draw(uVar8,iVar9,iVar10,0,0,0);
-      pcVar14 = get_string(0x4d);
+      gui_bmp_bitmap_draw(uVar11,iVar9,iVar10,0,0,0);
+      pcVar15 = get_string(0x4d);
       iVar10 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar9 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      uVar8 = 1;
-      iVar18 = uVar5 + 0x51;
+      uVar11 = 1;
+      iVar19 = uVar5 + 0x51;
 LAB_000399ce:
-      iVar19 = uVar4 + 0x36;
+      iVar20 = uVar4 + 0x36;
     }
     else {
-      if (uVar8 == 2) {
+      if (uVar11 == 2) {
         iVar9 = 0;
         local_80 = 0;
         iVar10 = 0;
@@ -2347,9 +2348,9 @@ LAB_000399ce:
             DAT_20004b1a = cVar3;
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar10 + 0x100,uVar4 + 4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar10 + 0x100,uVar4 + 4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (iVar9 == 0) {
             cleanNewsIndex();
@@ -2357,7 +2358,7 @@ LAB_000399ce:
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = uVar4 + 2;
-          uVar8 = 0x47;
+          uVar11 = 0x47;
           iVar9 = iVar9 + 0x10a;
           goto LAB_0003999e;
         }
@@ -2366,16 +2367,16 @@ LAB_000399ce:
             DAT_20004b1a = cVar3;
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar10 + 0x100,(uint)uVar4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar10 + 0x100,(uint)uVar4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (iVar9 == 0) {
             cleanNewsIndex();
           }
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          uVar8 = 0x47;
+          uVar11 = 0x47;
           goto LAB_00039a6e;
         }
         if (cVar3 != '\x04') {
@@ -2386,9 +2387,9 @@ LAB_000399ce:
             DAT_20004b1a = cVar3;
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_area_clear(iVar10 + 0x100,(uint)uVar4,iVar18 + 0x23c,uVar5 + 0x88);
+            gui_area_clear(iVar10 + 0x100,(uint)uVar4,iVar19 + 0x23c,uVar5 + 0x88);
           }
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
@@ -2406,38 +2407,38 @@ LAB_000399ce:
             DAT_20004b03 = '\x01';
             memset(&local_80,0,0x20);
             snprintf((char *)&local_80,0x20,"%d/%d",DAT_20004afd + 1,iVar9);
-            uVar8 = (uint)DAT_20004afd;
+            uVar11 = (uint)DAT_20004afd;
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
-            iVar18 = FUN_000809e2();
+            iVar19 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            gui_utf_draw(0,(char *)(uVar8 * 0x159 + 0x20011282),0,iVar10 + 0x128,uVar4 + 1,
-                         iVar18 + 0x212,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
+            gui_utf_draw(0,(char *)(uVar11 * 0x159 + 0x20011282),0,iVar10 + 0x128,uVar4 + 1,
+                         iVar19 + 0x212,uVar5 + 0x1c,1,0,0,(undefined *)0x0,0);
             if (iVar9 == 1) {
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              pcVar14 = " ";
+              pcVar15 = " ";
             }
             else {
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
               iVar9 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
-              pcVar14 = (char *)&local_80;
+              pcVar15 = (char *)&local_80;
             }
-            gui_utf_draw(0,pcVar14,0,iVar10 + 0x218,uVar5 + 1,iVar9 + 0x23a,uVar4 + 0x1c,1,0,0,
+            gui_utf_draw(0,pcVar15,0,iVar10 + 0x218,uVar5 + 1,iVar9 + 0x23a,uVar4 + 0x1c,1,0,0,
                          (undefined *)0x0,0);
             iVar9 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
-            iVar18 = uVar5 + 0x88;
+            iVar19 = uVar5 + 0x88;
             iVar10 = iVar10 + 0x238;
-            iVar19 = uVar4 + 0x1c;
+            iVar20 = uVar4 + 0x1c;
             iVar9 = iVar9 + 0x10a;
-            pcVar14 = (char *)(uVar8 * 0x159 + 0x200112c2);
+            pcVar15 = (char *)(uVar11 * 0x159 + 0x200112c2);
             goto LAB_0003a208;
           }
           iVar10 = FUN_000806de(&DAT_2000aa10);
@@ -2451,14 +2452,14 @@ LAB_000399ce:
           _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x128,uVar4 + 1,
                          iVar10 + 0x23a,uVar5 + 0x1c);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+          iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          _reflash_fb_data_to_lcd(iVar18,iVar19,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c)
+          _reflash_fb_data_to_lcd(iVar19,iVar20,iVar9 + 0x128,uVar4 + 1,iVar10 + 0x23a,uVar5 + 0x1c)
           ;
           pGVar7 = __get_dashboard_state();
           iVar9 = FUN_000809e2();
@@ -2468,9 +2469,9 @@ LAB_000399ce:
           _clean_fb_data(&(pGVar7->jdb_panel_context).field9_0x24,0,iVar9 + 0x10a,uVar4 + 0x1c,
                          iVar10 + 0x232,uVar5 + 0x88);
           pGVar7 = __get_dashboard_state();
-          iVar18 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
+          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x348;
           pGVar7 = __get_dashboard_state();
-          iVar19 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
+          iVar20 = *(int *)&(pGVar7->jdb_panel_context).field_0x34c;
           iVar9 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
@@ -2483,9 +2484,9 @@ LAB_000399ce:
           DAT_20004b1a = '\x04';
           iVar10 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
-          iVar18 = FUN_000809e2();
+          iVar19 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_area_clear(iVar10 + 0x100,(uint)uVar4,iVar18 + 0x23c,uVar5 + 0x88);
+          gui_area_clear(iVar10 + 0x100,(uint)uVar4,iVar19 + 0x23c,uVar5 + 0x88);
         }
         if (iVar9 == 0) {
           cleanNewsIndex();
@@ -2493,16 +2494,16 @@ LAB_000399ce:
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         gui_bmp_bitmap_draw(0x47,iVar9 + 0x10a,uVar4 + 2,0,0,0);
-        pcVar14 = get_string(0x51);
+        pcVar15 = get_string(0x51);
         iVar10 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar9 = FUN_000809e2();
         uVar5 = FUN_00080a3a();
-        uVar8 = 2;
-        iVar18 = uVar5 + 0x6c;
+        uVar11 = 2;
+        iVar19 = uVar5 + 0x6c;
         goto LAB_000399ce;
       }
-      if (uVar8 != 4) {
+      if (uVar11 != 4) {
         return;
       }
       cVar3 = *(char *)(param_1 + 0x6b);
@@ -2519,7 +2520,7 @@ LAB_0003a260:
         iVar9 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         iVar10 = uVar4 + 2;
-        uVar8 = 0x48;
+        uVar11 = 0x48;
         iVar9 = iVar9 + 0x10a;
         goto LAB_0003999e;
       }
@@ -2559,7 +2560,7 @@ LAB_0003a260:
         }
         *(undefined1 *)(param_1 + 0x71) = 0;
         pGVar7 = __get_dashboard_state();
-        pGVar7->glasses_state_struct_0FF0->field_0x71 = 0;
+        pGVar7->dashboard_ts->field_0x71 = 0;
 LAB_0003a324:
         if (DAT_20004b1b != *(char *)(param_1 + 0x6b)) {
           DAT_20004b1b = *(char *)(param_1 + 0x6b);
@@ -2575,13 +2576,13 @@ LAB_0003a324:
         uVar5 = FUN_00080a3a();
         gui_bitmap_draw(iVar9 + 0x10a,(uint)uVar4,iVar10 + 0x232,uVar5 + 0x88,0x200143cf,2);
         iVar9 = FUN_000809e2();
-        uVar8 = iVar9 + 0x10a + (uint)*(ushort *)(param_1 + 0x6d);
+        uVar11 = iVar9 + 0x10a + (uint)*(ushort *)(param_1 + 0x6d);
         uVar4 = FUN_00080a3a();
-        iVar18 = (uint)*(ushort *)(param_1 + 0x6f) + (uint)uVar4;
+        iVar19 = (uint)*(ushort *)(param_1 + 0x6f) + (uint)uVar4;
         iVar9 = FUN_000809e2();
         uVar4 = *(ushort *)(param_1 + 0x6d);
         uVar5 = FUN_00080a3a();
-        puVar16 = &DAT_20015777;
+        puVar17 = &DAT_20015777;
         iVar10 = (uint)uVar4 + iVar9 + 0x12a;
         iVar9 = (uint)*(ushort *)(param_1 + 0x6f) + (uint)uVar5;
         goto LAB_0003a3c2;
@@ -2597,21 +2598,21 @@ LAB_0003a324:
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       gui_bmp_bitmap_draw(0x48,iVar9 + 0x10a,uVar4 + 2,0,0,0);
-      pcVar14 = get_string(0x50);
+      pcVar15 = get_string(0x50);
       iVar10 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar9 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      iVar18 = uVar5 + 0x60;
-      uVar8 = 2;
-      iVar19 = uVar4 + 0x2a;
+      iVar19 = uVar5 + 0x60;
+      uVar11 = 2;
+      iVar20 = uVar4 + 0x2a;
     }
     iVar10 = iVar10 + 0x10a;
 LAB_000399e0:
     iVar9 = iVar9 + 0x234;
   }
 LAB_000399e2:
-  gui_utf_draw_middle(0,pcVar14,0,iVar10,iVar19,iVar9,iVar18,uVar8,0,0,(undefined *)0x0,0);
+  gui_utf_draw_middle(0,pcVar15,0,iVar10,iVar20,iVar9,iVar19,uVar11,0,0,(undefined *)0x0,0);
 switchD_0003b01c_default:
   return;
 }

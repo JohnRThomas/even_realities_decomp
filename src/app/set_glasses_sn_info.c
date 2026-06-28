@@ -25,7 +25,7 @@ set_glasses_sn_info(int param_1,undefined4 param_2,undefined4 *param_3,undefined
   else if (DAT_2001abc2 == '\x01') {
     param1 = (char *)(param_1 + 4);
     puVar5 = (undefined1 *)*param_3;
-    FUN_00025364(param1);
+    __dump_serial_number(param1);
     printf("The string is: %s\n",param1);
     pGVar2 = __get_dashboard_state();
     __save_sys_settings(pGVar2);

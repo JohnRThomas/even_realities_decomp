@@ -37,7 +37,7 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
                      BLE_DEBUG);
         }
       }
-      __cJSON_Delete(object);
+      cJSON_Delete(object);
       return;
     }
     pcVar2 = cJSON_GetObjectItem(pcVar1,"app_identifier");
@@ -80,7 +80,7 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
     }
     uVar10 = FUN_00080732();
     *param_2 = uVar10;
-    __cJSON_Delete(object);
+    cJSON_Delete(object);
     dump_ancs("#device-receiver",(int)param_2,extraout_r2_01,extraout_r3);
     return;
   }

@@ -26,7 +26,8 @@ void exit_notification_burial_point(void)
       if (BLE_DEBUG == 0) {
         pGVar2 = __get_dashboard_state();
         printk("%s(): [exit_notification_burial_point] sum_time is %d ms,notification_sum_time is %d s\n"
-               ,"exit_notification_burial_point",uVar3,uVar4,*(undefined4 *)&pGVar2->field_0x11e8);
+               ,"exit_notification_burial_point",uVar3,uVar4,
+               *(undefined4 *)&(pGVar2->__burial_point_ctx).field_0xc0);
       }
       else {
         __get_dashboard_state();

@@ -19,7 +19,7 @@ void start_ancs_work_thread(void *param_1)
     delay.ticks._4_4_ = 0;
     delay.ticks._0_4_ = in_stack_ffffffec;
     z_impl_k_thread_create
-              (&ancs_work_thread,&ancs_work_thread_stack,0x1400,(k_thread_entry_t)0x198d9,param_1,
+              (&ancs_work_thread,&ancs_work_thread_stack,0x1400,(k_thread_entry_t *)0x198d9,param_1,
                (void *)0x0,(void *)0x0,-0xb,0,delay);
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG != 0) {

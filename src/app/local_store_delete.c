@@ -30,7 +30,7 @@ void __local_store_delete(char *param_1)
   } while (pcVar5 != "gs/");
   builtin_strncpy(pcVar4 + 8,"gs/",4);
   memset(auStack_7c,0,100);
-  ____strncpy(local_98,param_1,0x80);
+  ____strncpy(local_98,param_1,128);
   settings_delete(local_98);
   return;
 }

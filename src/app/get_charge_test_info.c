@@ -32,17 +32,17 @@ undefined4 get_charge_test_info(int param_1,uint param_2,undefined4 *param_3,und
     pGVar3 = __get_dashboard_state();
     puVar4[5] = pGVar3->field_0x10a9;
     pGVar3 = __get_dashboard_state();
-    *(undefined4 *)(puVar4 + 6) = pGVar3->field2819_0x10b0;
+    *(undefined4 *)(puVar4 + 6) = pGVar3->field2801_0x10b0;
     pGVar3 = __get_dashboard_state();
-    *(undefined4 *)(puVar4 + 10) = pGVar3->field2820_0x10b4;
+    *(undefined4 *)(puVar4 + 10) = pGVar3->field2802_0x10b4;
     pGVar3 = __get_dashboard_state();
-    *(undefined4 *)(puVar4 + 0xe) = pGVar3->field2821_0x10b8;
+    *(undefined4 *)(puVar4 + 0xe) = pGVar3->field2803_0x10b8;
     puVar6 = (undefined2 *)(puVar4 + 0x12);
     do {
       pGVar3 = __get_dashboard_state();
       iVar1 = iVar5 * 2;
       iVar5 = iVar5 + 1;
-      *puVar6 = *(undefined2 *)(pGVar3->field2780_0x1080 + iVar1 + 0x3c);
+      *puVar6 = *(undefined2 *)(pGVar3->field2762_0x1080 + iVar1 + 0x3c);
       puVar6 = puVar6 + 1;
     } while (iVar5 != 6);
     pGVar3 = __get_dashboard_state();

@@ -17,10 +17,10 @@ void FUN_00033e44(void)
   DAT_2001abc0 = 1;
   DAT_2001abc1 = 1;
   pGVar1 = __get_dashboard_state();
-  (pGVar1->jdb_panel_context).field834_0x369 = 1;
+  (pGVar1->jdb_panel_context).panel_brightness_level = 1;
   pGVar1 = __get_dashboard_state();
   set_brightness_to_panel_reg_in_running
-            ((uint)(pGVar1->jdb_panel_context).field834_0x369,extraout_r1);
+            ((uint)(pGVar1->jdb_panel_context).panel_brightness_level,extraout_r1);
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0x10a8 = pGVar1->field_0x10a8 + '\x01';
   pGVar1 = __get_dashboard_state();
@@ -31,13 +31,13 @@ void FUN_00033e44(void)
   uVar3 = __aeabi_ldivmod((uint)uVar3,(uint)((ulonglong)uVar3 >> 0x20),1000,0);
   *(int *)&pGVar1->field_0x10ac = (int)uVar3;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field2820_0x10b4 = 0;
+  pGVar1->field2802_0x10b4 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field2821_0x10b8 = 0;
+  pGVar1->field2803_0x10b8 = 0;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field2822_0x10bc = 0;
-  pGVar1->field2823_0x10c0 = 0;
-  pGVar1->field2824_0x10c4 = 0;
+  pGVar1->field2804_0x10bc = 0;
+  pGVar1->field2805_0x10c0 = 0;
+  pGVar1->field2806_0x10c4 = 0;
   pGVar1 = __get_dashboard_state();
   pGVar1->field_0x10c8 = 0;
   pGVar1 = __get_dashboard_state();

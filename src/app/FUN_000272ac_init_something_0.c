@@ -1,11 +1,11 @@
 /*
- * Function: FUN_000272ac
+ * Function: FUN_000272ac_init_something_0
  * Entry:    000272ac
- * Prototype: undefined4 __stdcall FUN_000272ac(astruct_1 * param_1, undefined4 * param_2)
+ * Prototype: undefined4 __stdcall FUN_000272ac_init_something_0(astruct_1 * param_1, undefined4 * param_2)
  */
 
 
-undefined4 FUN_000272ac(astruct_1 *param_1,undefined4 *param_2)
+undefined4 FUN_000272ac_init_something_0(astruct_1 *param_1,undefined4 *param_2)
 
 {
   undefined4 uVar1;

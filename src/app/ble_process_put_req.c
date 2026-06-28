@@ -94,7 +94,7 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
   undefined4 extraout_r3_02;
   undefined4 extraout_r3_03;
   undefined4 extraout_r3_04;
-  global_state_struct_0FF0 *pgVar23;
+  dashboard_ts_context *pdVar23;
   undefined1 *puVar24;
   int iVar25;
   undefined4 *puVar26;
@@ -209,11 +209,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       uVar22 = *(undefined4 *)(param_3 + 9);
       uVar18 = *(undefined4 *)(param_3 + 0xd);
       FUN_0004d4dc(uVar22,uVar18);
-      currentChunk = *(uint *)(param_3 + 5);
+      pdVar23 = *(dashboard_ts_context **)(param_3 + 5);
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): origin ms timestamp = %lld,origin second timestamp = %d\n",
-                 "ble_process_put_req",uVar22,uVar18,currentChunk);
+                 "ble_process_put_req",uVar22,uVar18,pdVar23);
         }
         else {
           ble_printk("%s(): origin ms timestamp = %lld,origin second timestamp = %d\n",
@@ -222,21 +222,21 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       }
       *(byte *)(*(int *)(param_1 + 0x874) + 4) = param_3[0x11];
       *(byte *)(*(int *)(param_1 + 0x874) + 5) = param_3[0x12];
-      **(uint **)(param_1 + 0x874) = currentChunk;
+      **(undefined4 **)(param_1 + 0x874) = pdVar23;
       iVar29 = *(int *)(param_1 + 0x874);
       *(undefined4 *)(iVar29 + 6) = uVar22;
       *(undefined4 *)(iVar29 + 10) = uVar18;
       local_128[0] = 0;
       local_128[1] = 0;
       local_128[2] = 0;
-      FUN_0004d1e0(currentChunk,(undefined2 *)local_128);
+      __init_burial_point_date(pdVar23,(undefined2 *)local_128);
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): date: %u: %04d/%02d/%02d-%02d:%02d:%02d\n");
         }
         else {
-          ble_printk("%s(): date: %u: %04d/%02d/%02d-%02d:%02d:%02d\n","ble_process_put_req",
-                     currentChunk,local_128[0] & 0xffff);
+          ble_printk("%s(): date: %u: %04d/%02d/%02d-%02d:%02d:%02d\n","ble_process_put_req",pdVar23
+                     ,local_128[0] & 0xffff);
         }
       }
       FUN_0004d494(*(int **)(param_1 + 0x874),0,1);
@@ -294,11 +294,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       currentChunk = (uint)*(ushort *)(param_3 + 7);
       if (chunkCount == 1) {
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x65 = param_3[9];
+        pGVar14->dashboard_ts->field_0x65 = param_3[9];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x66 = param_3[10];
+        pGVar14->dashboard_ts->field_0x66 = param_3[10];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x67 = param_3[0xb];
+        pGVar14->dashboard_ts->field_0x67 = param_3[0xb];
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): Dashboard display mode :%d  custom display Area value : %d\n",
@@ -313,18 +313,17 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
             if (BLE_DEBUG == 0) {
               pGVar14 = __get_dashboard_state();
               printk("%s(): schedule display mode = %d\n","ble_process_put_req",
-                     (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x67);
+                     (uint)(byte)pGVar14->dashboard_ts->field_0x67);
             }
             else {
               pGVar14 = __get_dashboard_state();
               ble_printk("%s(): schedule display mode = %d\n","ble_process_put_req",
-                         (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x67,
-                         pGVar14->glasses_state_struct_0FF0);
+                         (uint)(byte)pGVar14->dashboard_ts->field_0x67,pGVar14->dashboard_ts);
             }
           }
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x67 != '\x03') {
+        if (pGVar14->dashboard_ts->field_0x67 != '\x03') {
           uStack_133 = 0;
           uStack_132 = 0;
           uStack_131 = 0;
@@ -373,11 +372,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
           while( true ) {
             if (currentChunk == local_158) {
               pGVar14 = __get_dashboard_state();
-              if ((byte)pGVar14->glasses_state_struct_0FF0->field_0x68 != local_158) {
+              if ((byte)pGVar14->dashboard_ts->field_0x68 != local_158) {
                 cleanCalenadrIndex();
               }
               pGVar14 = __get_dashboard_state();
-              pGVar14->glasses_state_struct_0FF0->field_0x68 = (char)local_158;
+              pGVar14->dashboard_ts->field_0x68 = (char)local_158;
               uStack_133 = 0;
               uStack_132 = 0;
               uStack_131 = 0;
@@ -733,11 +732,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
         DAT_200100cc = (DAT_200100cc - 9) + uVar3;
         DAT_200100d0 = DAT_200100d0 + 1;
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x65 = DAT_20011ff7;
+        pGVar14->dashboard_ts->field_0x65 = DAT_20011ff7;
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x66 = DAT_20011ff8;
+        pGVar14->dashboard_ts->field_0x66 = DAT_20011ff8;
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x67 = DAT_20011ff9;
+        pGVar14->dashboard_ts->field_0x67 = DAT_20011ff9;
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): Dashboard display mode :%d  custom display Area value : %d\n",
@@ -752,18 +751,17 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
             if (BLE_DEBUG == 0) {
               pGVar14 = __get_dashboard_state();
               printk("%s(): schedule display mode = %d\n","ble_process_put_req",
-                     (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x67);
+                     (uint)(byte)pGVar14->dashboard_ts->field_0x67);
             }
             else {
               pGVar14 = __get_dashboard_state();
               ble_printk("%s(): schedule display mode = %d\n","ble_process_put_req",
-                         (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x67,
-                         pGVar14->glasses_state_struct_0FF0);
+                         (uint)(byte)pGVar14->dashboard_ts->field_0x67,pGVar14->dashboard_ts);
             }
           }
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x67 != '\x03') {
+        if (pGVar14->dashboard_ts->field_0x67 != '\x03') {
           uStack_133 = 0;
           uStack_132 = 0;
           uStack_131 = 0;
@@ -812,12 +810,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
           while( true ) {
             if ((undefined1 *)currentChunk == local_15c) {
               pGVar14 = __get_dashboard_state();
-              if ((undefined1 *)(uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x68 !=
-                  local_15c) {
+              if ((undefined1 *)(uint)(byte)pGVar14->dashboard_ts->field_0x68 != local_15c) {
                 cleanCalenadrIndex();
               }
               pGVar14 = __get_dashboard_state();
-              pGVar14->glasses_state_struct_0FF0->field_0x68 = (char)local_15c;
+              pGVar14->dashboard_ts->field_0x68 = (char)local_15c;
               uStack_133 = 0;
               uStack_132 = 0;
               uStack_131 = 0;
@@ -1037,11 +1034,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       currentChunk = (uint)*(ushort *)(param_3 + 7);
       if (chunkCount == 1) {
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x65 = param_3[9];
+        pGVar14->dashboard_ts->field_0x65 = param_3[9];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x66 = param_3[10];
+        pGVar14->dashboard_ts->field_0x66 = param_3[10];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x69 = param_3[0xb];
+        pGVar14->dashboard_ts->field_0x69 = param_3[0xb];
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): Dashboard display mode :%d  custom display Area value : %d\n",
@@ -1056,18 +1053,17 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
             if (BLE_DEBUG == 0) {
               pGVar14 = __get_dashboard_state();
               printk("%s(): stocks display mode = %d\n","ble_process_put_req",
-                     (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x69);
+                     (uint)(byte)pGVar14->dashboard_ts->field_0x69);
             }
             else {
               pGVar14 = __get_dashboard_state();
               ble_printk("%s(): stocks display mode = %d\n","ble_process_put_req",
-                         (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x69,
-                         pGVar14->glasses_state_struct_0FF0);
+                         (uint)(byte)pGVar14->dashboard_ts->field_0x69,pGVar14->dashboard_ts);
             }
           }
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x69 == '\x02') {
+        if (pGVar14->dashboard_ts->field_0x69 == '\x02') {
           currentChunk = (uint)param_3[0xc];
           if (currentChunk < 5) {
             if (2 < LOG_LEVEL) {
@@ -1916,11 +1912,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
           DAT_2000e0fe = (DAT_2000e0fe - 9) + uVar3;
           DAT_2000e102 = DAT_2000e102 + 1;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x65 = DAT_200117e5;
+          pGVar14->dashboard_ts->field_0x65 = DAT_200117e5;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x66 = DAT_200117e6;
+          pGVar14->dashboard_ts->field_0x66 = DAT_200117e6;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x69 = DAT_200117e7;
+          pGVar14->dashboard_ts->field_0x69 = DAT_200117e7;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               printk("%s(): Dashboard display mode :%d  custom display Area value : %d\n",
@@ -1935,18 +1931,17 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
               if (BLE_DEBUG == 0) {
                 pGVar14 = __get_dashboard_state();
                 printk("%s(): stocks display mode = %d\n","ble_process_put_req",
-                       (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x69);
+                       (uint)(byte)pGVar14->dashboard_ts->field_0x69);
               }
               else {
                 pGVar14 = __get_dashboard_state();
                 ble_printk("%s(): stocks display mode = %d\n","ble_process_put_req",
-                           (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x69,
-                           pGVar14->glasses_state_struct_0FF0);
+                           (uint)(byte)pGVar14->dashboard_ts->field_0x69,pGVar14->dashboard_ts);
               }
             }
           }
           pGVar14 = __get_dashboard_state();
-          if (pGVar14->glasses_state_struct_0FF0->field_0x69 == '\x02') {
+          if (pGVar14->dashboard_ts->field_0x69 == '\x02') {
             currentChunk = (uint)DAT_200117e8;
             if (DAT_200117e8 < 5) {
               if (2 < LOG_LEVEL) {
@@ -2740,11 +2735,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       currentChunk = (uint)*(ushort *)(param_3 + 7);
       if (chunkCount == 1) {
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x65 = param_3[9];
+        pGVar14->dashboard_ts->field_0x65 = param_3[9];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x66 = param_3[10];
+        pGVar14->dashboard_ts->field_0x66 = param_3[10];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x6a = param_3[0xb];
+        pGVar14->dashboard_ts->field_0x6a = param_3[0xb];
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): Dashboard display mode :%d  custom display Area value : %d\n",
@@ -2759,18 +2754,17 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
             if (BLE_DEBUG == 0) {
               pGVar14 = __get_dashboard_state();
               printk("%s(): news display mode = %d\n","ble_process_put_req",
-                     (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x6a);
+                     (uint)(byte)pGVar14->dashboard_ts->field_0x6a);
             }
             else {
               pGVar14 = __get_dashboard_state();
               ble_printk("%s(): news display mode = %d\n","ble_process_put_req",
-                         (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x6a,
-                         pGVar14->glasses_state_struct_0FF0);
+                         (uint)(byte)pGVar14->dashboard_ts->field_0x6a,pGVar14->dashboard_ts);
             }
           }
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x6a == '\x02') {
+        if (pGVar14->dashboard_ts->field_0x6a == '\x02') {
           currentChunk = (uint)param_3[0xc];
           if (currentChunk < 5) {
             if (2 < LOG_LEVEL) {
@@ -3173,11 +3167,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
           DAT_2000e0f8 = (DAT_2000e0f8 - 9) + uVar3;
           DAT_2000e0fc = DAT_2000e0fc + 1;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x65 = DAT_20011120;
+          pGVar14->dashboard_ts->field_0x65 = DAT_20011120;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x66 = DAT_20011121;
+          pGVar14->dashboard_ts->field_0x66 = DAT_20011121;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x6a = DAT_20011122;
+          pGVar14->dashboard_ts->field_0x6a = DAT_20011122;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               printk("%s(): Dashboard display mode :%d  custom display Area value : %d\n",
@@ -3192,18 +3186,17 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
               if (BLE_DEBUG == 0) {
                 pGVar14 = __get_dashboard_state();
                 printk("%s(): news display mode = %d\n","ble_process_put_req",
-                       (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x6a);
+                       (uint)(byte)pGVar14->dashboard_ts->field_0x6a);
               }
               else {
                 pGVar14 = __get_dashboard_state();
                 ble_printk("%s(): news display mode = %d\n","ble_process_put_req",
-                           (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x6a,
-                           pGVar14->glasses_state_struct_0FF0);
+                           (uint)(byte)pGVar14->dashboard_ts->field_0x6a,pGVar14->dashboard_ts);
               }
             }
           }
           pGVar14 = __get_dashboard_state();
-          if (pGVar14->glasses_state_struct_0FF0->field_0x6a == '\x02') {
+          if (pGVar14->dashboard_ts->field_0x6a == '\x02') {
             currentChunk = (uint)DAT_20011123;
             if (DAT_20011123 < 5) {
               if (2 < LOG_LEVEL) {
@@ -3555,7 +3548,7 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
          (cVar10 = *(char *)(*(int *)(param_1 + 0x874) + 0x65), cVar10 != DAT_2001111f)) {
         DAT_2001111f = cVar10;
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x6b = 0;
+        pGVar14->dashboard_ts->field_0x6b = 0;
         DAT_20003005 = '\x01';
         DAT_2001111e = '\0';
       }
@@ -3587,11 +3580,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       uStack_133 = 0;
       if (chunkCount == 1) {
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x65 = param_3[9];
+        pGVar14->dashboard_ts->field_0x65 = param_3[9];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x66 = param_3[10];
+        pGVar14->dashboard_ts->field_0x66 = param_3[10];
         pGVar14 = __get_dashboard_state();
-        pGVar14->glasses_state_struct_0FF0->field_0x6b = param_3[0xb];
+        pGVar14->dashboard_ts->field_0x6b = param_3[0xb];
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): Dashboard display mode :%d custom display Area value : %d\n",
@@ -3606,51 +3599,50 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
             if (BLE_DEBUG == 0) {
               pGVar14 = __get_dashboard_state();
               printk("%s(): CityWalk display mode = %d\n","ble_process_put_req",
-                     (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x6b);
+                     (uint)(byte)pGVar14->dashboard_ts->field_0x6b);
             }
             else {
               pGVar14 = __get_dashboard_state();
               ble_printk("%s(): CityWalk display mode = %d\n","ble_process_put_req",
-                         (uint)(byte)pGVar14->glasses_state_struct_0FF0->field_0x6b,
-                         pGVar14->glasses_state_struct_0FF0);
+                         (uint)(byte)pGVar14->dashboard_ts->field_0x6b,pGVar14->dashboard_ts);
             }
           }
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x66 != '\x04') {
+        if (pGVar14->dashboard_ts->field_0x66 != '\x04') {
           return;
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x6b == '\x02') {
+        if (pGVar14->dashboard_ts->field_0x6b == '\x02') {
           return;
         }
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x6b == '\x03') {
+        if (pGVar14->dashboard_ts->field_0x6b == '\x03') {
           bVar2 = param_3[0xc];
           bVar1 = param_3[0xd];
           pGVar14 = __get_dashboard_state();
-          pgVar23 = pGVar14->glasses_state_struct_0FF0;
-          pgVar23->field_0x6d = bVar2;
-          pgVar23->field_0x6e = bVar1;
+          pdVar23 = pGVar14->dashboard_ts;
+          pdVar23->field_0x6d = bVar2;
+          pdVar23->field_0x6e = bVar1;
           pGVar14 = __get_dashboard_state();
-          if ((int)((uint)*(ushort *)&pGVar14->glasses_state_struct_0FF0->field_0x6d << 0x1f) < 0) {
+          if ((int)((uint)*(ushort *)&pGVar14->dashboard_ts->field_0x6d << 0x1f) < 0) {
             pGVar14 = __get_dashboard_state();
-            *(short *)&pGVar14->glasses_state_struct_0FF0->field_0x6d =
-                 *(short *)&pGVar14->glasses_state_struct_0FF0->field_0x6d + -1;
+            *(short *)&pGVar14->dashboard_ts->field_0x6d =
+                 *(short *)&pGVar14->dashboard_ts->field_0x6d + -1;
           }
           bVar2 = param_3[0xe];
           bVar1 = param_3[0xf];
           pGVar14 = __get_dashboard_state();
-          pgVar23 = pGVar14->glasses_state_struct_0FF0;
-          pgVar23->field_0x6f = bVar2;
-          pgVar23->field_0x70 = bVar1;
+          pdVar23 = pGVar14->dashboard_ts;
+          pdVar23->field_0x6f = bVar2;
+          pdVar23->field_0x70 = bVar1;
           pGVar14 = __get_dashboard_state();
-          if (pGVar14->glasses_state_struct_0FF0->field_0x65 == '\0') {
+          if (pGVar14->dashboard_ts->field_0x65 == '\0') {
             pGVar14 = __get_dashboard_state();
             uVar22 = extraout_r2_13;
-            if ((0x108 < *(ushort *)&pGVar14->glasses_state_struct_0FF0->field_0x6d) ||
+            if ((0x108 < *(ushort *)&pGVar14->dashboard_ts->field_0x6d) ||
                (pGVar14 = __get_dashboard_state(), uVar22 = extraout_r2_14,
-               0x68 < *(ushort *)&pGVar14->glasses_state_struct_0FF0->field_0x6f)) {
+               0x68 < *(ushort *)&pGVar14->dashboard_ts->field_0x6f)) {
 LAB_0001e4f0:
               if (LOG_LEVEL < 1) {
                 return;
@@ -3669,34 +3661,33 @@ LAB_0001e572:
           }
           else {
             pGVar14 = __get_dashboard_state();
-            if (pGVar14->glasses_state_struct_0FF0->field_0x65 == '\x01') {
+            if (pGVar14->dashboard_ts->field_0x65 == '\x01') {
               pGVar14 = __get_dashboard_state();
               uVar22 = extraout_r2_15;
-              if ((0x158 < *(ushort *)&pGVar14->glasses_state_struct_0FF0->field_0x6d) ||
+              if ((0x158 < *(ushort *)&pGVar14->dashboard_ts->field_0x6d) ||
                  (pGVar14 = __get_dashboard_state(), uVar22 = extraout_r2_16,
-                 0x68 < *(ushort *)&pGVar14->glasses_state_struct_0FF0->field_0x6f))
-              goto LAB_0001e4f0;
+                 0x68 < *(ushort *)&pGVar14->dashboard_ts->field_0x6f)) goto LAB_0001e4f0;
               puVar12 = &DAT_2001434b;
               goto LAB_0001e572;
             }
           }
           pGVar14 = __get_dashboard_state();
-          if (pGVar14->glasses_state_struct_0FF0->field_0x65 == DAT_2001111f) {
+          if (pGVar14->dashboard_ts->field_0x65 == DAT_2001111f) {
             if (DAT_2001111e == '\x01') {
               DAT_20003005 = '\0';
               pGVar14 = __get_dashboard_state();
-              if (pGVar14->glasses_state_struct_0FF0->field_0x71 == '\x02') {
+              if (pGVar14->dashboard_ts->field_0x71 == '\x02') {
                 memcpy(&DAT_200143cb,&DAT_20012a4f,0x197c);
               }
               else {
                 pGVar14 = __get_dashboard_state();
-                if (pGVar14->glasses_state_struct_0FF0->field_0x65 == '\0') {
+                if (pGVar14->dashboard_ts->field_0x65 == '\0') {
                   puVar15 = &DAT_20013dfb;
                   puVar12 = &DAT_20015777;
                 }
                 else {
                   pGVar14 = __get_dashboard_state();
-                  if (pGVar14->glasses_state_struct_0FF0->field_0x65 != '\x01') goto LAB_0001e646;
+                  if (pGVar14->dashboard_ts->field_0x65 != '\x01') goto LAB_0001e646;
                   puVar15 = &DAT_2001434b;
                   puVar12 = &DAT_20015cc7;
                 }
@@ -3704,21 +3695,21 @@ LAB_0001e572:
               }
 LAB_0001e646:
               pGVar14 = __get_dashboard_state();
-              pGVar14->glasses_state_struct_0FF0->field_0x71 = 3;
+              pGVar14->dashboard_ts->field_0x71 = 3;
               DAT_2001111d = 1;
             }
           }
           else {
             pGVar14 = __get_dashboard_state();
-            DAT_2001111f = pGVar14->glasses_state_struct_0FF0->field_0x65;
+            DAT_2001111f = pGVar14->dashboard_ts->field_0x65;
             pGVar14 = __get_dashboard_state();
-            pGVar14->glasses_state_struct_0FF0->field_0x6b = 0;
+            pGVar14->dashboard_ts->field_0x6b = 0;
             DAT_20003005 = '\x01';
             DAT_2001111e = '\0';
           }
           if (DAT_20003005 == '\x01') {
             pGVar14 = __get_dashboard_state();
-            pGVar14->glasses_state_struct_0FF0->field_0x6b = 0;
+            pGVar14->dashboard_ts->field_0x6b = 0;
           }
         }
       }
@@ -3741,7 +3732,7 @@ LAB_0001e646:
         if (param_3[0xb] == 2) {
           DAT_2001111e = '\0';
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x71 = 1;
+          pGVar14->dashboard_ts->field_0x71 = 1;
           memset(&DAT_20012a4f,0,0x197c);
           memcpy(&DAT_20012a4f,param_3 + 9,uVar34 - 9);
           DAT_2000e0f6 = (ushort)(uVar34 - 9);
@@ -3749,7 +3740,7 @@ LAB_0001e646:
       }
       else if (currentChunk < chunkCount) {
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x71 == '\x01') {
+        if (pGVar14->dashboard_ts->field_0x71 == '\x01') {
           DAT_2001111e = '\0';
           if ((uint)DAT_2000e0f2 != currentChunk - 1) {
             if (1 < LOG_LEVEL) {
@@ -3801,7 +3792,7 @@ LAB_0001e766:
       }
       else if (chunkCount == currentChunk) {
         pGVar14 = __get_dashboard_state();
-        if (pGVar14->glasses_state_struct_0FF0->field_0x71 == '\x01') {
+        if (pGVar14->dashboard_ts->field_0x71 == '\x01') {
           if (((uint)DAT_2000e0f2 != chunkCount - 1) || (DAT_2000e0f0 != chunkCount)) {
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
@@ -3844,27 +3835,26 @@ LAB_0001e766:
           memcpy(&DAT_20012a4f + DAT_2000e0f6,param_3 + 9,uVar34 - 9);
           DAT_2000e0f6 = (DAT_2000e0f6 - 9) + uVar3;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x65 = DAT_20012a4f;
+          pGVar14->dashboard_ts->field_0x65 = DAT_20012a4f;
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x66 = DAT_20012a50;
+          pGVar14->dashboard_ts->field_0x66 = DAT_20012a50;
           if (DAT_20003005 == '\x01') {
             pGVar14 = __get_dashboard_state();
-            pGVar14->glasses_state_struct_0FF0->field_0x6b = 0;
+            pGVar14->dashboard_ts->field_0x6b = 0;
           }
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x6c = DAT_20012a52;
+          pGVar14->dashboard_ts->field_0x6c = DAT_20012a52;
           DAT_2001111e = '\x01';
           pGVar14 = __get_dashboard_state();
-          pGVar14->glasses_state_struct_0FF0->field_0x71 = 2;
+          pGVar14->dashboard_ts->field_0x71 = 2;
           pGVar14 = __get_dashboard_state();
-          if (((pGVar14->glasses_state_struct_0FF0->field_0x65 == '\0') && (DAT_2000e0f6 != 0x13ac))
-             || ((pGVar14 = __get_dashboard_state(),
-                 pGVar14->glasses_state_struct_0FF0->field_0x65 == '\x01' &&
-                 (DAT_2000e0f6 != 0x18fc)))) {
+          if (((pGVar14->dashboard_ts->field_0x65 == '\0') && (DAT_2000e0f6 != 0x13ac)) ||
+             ((pGVar14 = __get_dashboard_state(), pGVar14->dashboard_ts->field_0x65 == '\x01' &&
+              (DAT_2000e0f6 != 0x18fc)))) {
             DAT_20003005 = '\x01';
             DAT_2001111e = '\0';
             pGVar14 = __get_dashboard_state();
-            pGVar14->glasses_state_struct_0FF0->field_0x71 = 0;
+            pGVar14->dashboard_ts->field_0x71 = 0;
           }
         }
         DAT_2000e0f0 = 0;
@@ -5016,11 +5006,11 @@ LAB_00020e12:
         pGVar14 = __get_dashboard_state();
         iVar29 = *(int *)&pGVar14->field_0x1004;
         DAT_20010dc1 = 0;
-        FUN_00019cf8(0xffffffff,0xffffffff);
+        lock_k_mutex_20007f54(0xffffffff,0xffffffff);
         memset(&DAT_20016b1f,0,0x1210);
         uVar3 = (ushort)(uVar34 - 9);
         memcpy(&DAT_20016b1f,param_3 + 9,uVar34 - 9);
-        FUN_00019d08();
+        unlock_k_mutex_20007f54();
         DAT_2000e0f2 = DAT_2000e0f2 + 1;
         DAT_2000e0f4 = uVar3;
         if (currentChunk == 1) {
@@ -5055,9 +5045,9 @@ LAB_00020e12:
         if ((uint)DAT_2000e0f2 == chunkCount - 1) {
           if ((DAT_2000e0f4 - 9) + uVar34 < 0x1210) {
             __get_dashboard_state();
-            FUN_00019cf8(0xffffffff,0xffffffff);
+            lock_k_mutex_20007f54(0xffffffff,0xffffffff);
             memcpy(&DAT_20016b1f + DAT_2000e0f4,param_3 + 9,uVar34 - 9);
-            FUN_00019d08();
+            unlock_k_mutex_20007f54();
             DAT_20010dc1 = 0;
             DAT_2000e0f4 = (DAT_2000e0f4 - 9) + uVar3;
             if (2 < LOG_LEVEL) {
@@ -5097,9 +5087,9 @@ LAB_00020e12:
           DAT_2000e0f2 = 0;
           DAT_2000e0f4 = 0;
           DAT_2000e0f0 = uVar4;
-          FUN_00019cf8(0xffffffff,0xffffffff);
+          lock_k_mutex_20007f54(0xffffffff,0xffffffff);
           memset(&DAT_20016b1f,0,0x1210);
-          FUN_00019d08();
+          unlock_k_mutex_20007f54();
           __get_dashboard_state();
           _local_13c = *(undefined4 *)param_3;
           DAT_20010dc1 = 0;
@@ -5115,9 +5105,9 @@ LAB_00020e12:
             *(byte *)(param_1 + -0x6af) = param_3[3];
             pGVar14 = __get_dashboard_state();
             iVar29 = *(int *)&pGVar14->field_0x1004;
-            FUN_00019cf8(0xffffffff,0xffffffff);
+            lock_k_mutex_20007f54(0xffffffff,0xffffffff);
             memcpy(&DAT_20016b1f + DAT_2000e0f4,param_3 + 9,uVar34 - 9);
-            FUN_00019d08();
+            unlock_k_mutex_20007f54();
             DAT_2000e0f4 = (DAT_2000e0f4 - 9) + uVar3;
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
@@ -5184,9 +5174,9 @@ LAB_00020e12:
           DAT_2000e0f2 = 0;
           DAT_2000e0f4 = 0;
           DAT_2000e0f0 = uVar4;
-          FUN_00019cf8(0xffffffff,0xffffffff);
+          lock_k_mutex_20007f54(0xffffffff,0xffffffff);
           memset(&DAT_20016b1f,0,0x1210);
-          FUN_00019d08();
+          unlock_k_mutex_20007f54();
           __get_dashboard_state();
           _local_13c = *(undefined4 *)param_3;
           DAT_20010dc1 = 0;
@@ -5210,9 +5200,9 @@ LAB_00020e12:
         DAT_2000e0f2 = 0;
         DAT_2000e0f4 = 0;
         DAT_2000e0f0 = uVar4;
-        FUN_00019cf8(0xffffffff,0xffffffff);
+        lock_k_mutex_20007f54(0xffffffff,0xffffffff);
         memset(&DAT_20016b1f,0,0x1210);
-        FUN_00019d08();
+        unlock_k_mutex_20007f54();
         _local_13c = *(undefined4 *)param_3;
         local_138 = *(uint *)(param_3 + 4);
         local_134 = param_3[8];
@@ -6598,7 +6588,7 @@ LAB_00021e38:
         local_138._2_2_ = (undefined2)((uint)*(undefined4 *)(param_3 + 4) >> 0x10);
         local_138._0_1_ = (undefined1)*(undefined4 *)(param_3 + 4);
         local_138._0_2_ = CONCAT11(*(undefined1 *)(param_1 + -0x69f),(undefined1)local_138);
-        cVar10 = FUN_00038ac8();
+        cVar10 = __getNotesIndex();
         local_138._0_3_ = CONCAT12(cVar10 + '\x01',(ushort)local_138);
         local_138 = CONCAT13(*(undefined1 *)(*(int *)(param_1 + 0x874) + 0x60),(undefined3)local_138
                             );

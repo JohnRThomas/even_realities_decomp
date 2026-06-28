@@ -24,7 +24,7 @@ undefined4 ui_DashBoard_task(undefined4 param_1,uint param_2)
   undefined4 uVar8;
   uint uVar9;
   undefined4 extraout_r3;
-  global_state_struct_0FF0 *pgVar10;
+  dashboard_ts_context *pdVar10;
   uint uVar11;
   uint uVar12;
   int *unaff_r6;
@@ -71,7 +71,7 @@ LAB_0003d55a:
         }
         pGVar6 = __get_dashboard_state();
         uVar8 = 1;
-        pgVar10 = pGVar6->glasses_state_struct_0FF0;
+        pdVar10 = pGVar6->dashboard_ts;
         uVar7 = extraout_r1;
       }
       else {
@@ -87,11 +87,11 @@ LAB_0003d55a:
         }
         pGVar6 = __get_dashboard_state();
         uVar8 = 0;
-        pgVar10 = pGVar6->glasses_state_struct_0FF0;
+        pdVar10 = pGVar6->dashboard_ts;
         uVar7 = extraout_r1_00;
       }
-      pgVar10->field_0x60 = (char)uVar8;
-      __send_message_count_to_app(pGVar6,uVar7,uVar8,pgVar10);
+      pdVar10->field_0x60 = (char)uVar8;
+      __send_message_count_to_app(pGVar6,uVar7,uVar8,pdVar10);
       goto LAB_0003d43e;
     }
     if (0 < *unaff_r6) {
@@ -181,7 +181,7 @@ LAB_0003d43e:
     uVar12 = uVar12 >> 0xf;
     if (iVar5 == 0) {
       pGVar6 = __get_dashboard_state();
-      if (pGVar6->glasses_state_struct_0FF0->field_0x60 != '\0') {
+      if (pGVar6->dashboard_ts->field_0x60 != '\0') {
         if (*(char *)(uVar11 + 0xe) != '\0') {
           return 0;
         }
@@ -194,7 +194,7 @@ LAB_0003d43e:
     }
     else {
       pGVar6 = __get_dashboard_state();
-      if (pGVar6->glasses_state_struct_0FF0->field_0x60 != '\x01') {
+      if (pGVar6->dashboard_ts->field_0x60 != '\x01') {
         if (*(char *)(uVar11 + 0xe) != '\0') {
           return 0;
         }

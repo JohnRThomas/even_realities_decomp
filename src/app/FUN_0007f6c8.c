@@ -18,7 +18,7 @@ undefined4 FUN_0007f6c8(GlassesState *param_1)
   if (((iVar1 == 0) && (iVar1 = load_usr_setting((int)param_1), iVar1 == 0)) &&
      (iVar1 = load_burial_point((int)param_1,extraout_r1,extraout_r2,extraout_r3), iVar1 == 0)) {
     pGVar2 = __get_dashboard_state();
-    FUN_000806c6((undefined1 *)pGVar2->glasses_state_struct_0FF4);
+    FUN_000806c6((undefined1 *)pGVar2->countdown_ts);
   }
   return 0;
 }

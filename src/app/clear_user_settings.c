@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0007f63c
+ * Function: ?_clear_user_settings
  * Entry:    0007f63c
- * Prototype: undefined4 __stdcall FUN_0007f63c(int param_1)
+ * Prototype: undefined4 __stdcall ?_clear_user_settings(int param_1)
  */
 
 
-undefined4 FUN_0007f63c(int param_1)
+undefined4 __clear_user_settings(int param_1)
 
 {
   *(undefined1 *)(param_1 + 0xfee) = 10;

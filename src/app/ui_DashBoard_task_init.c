@@ -61,8 +61,8 @@ __ui_DashBoard_task_init(int param_1,undefined4 param_2,undefined4 param_3,undef
   uStack_14 = param_3;
   uStack_10 = param_4;
   if (((unaff_r9 != 1) ||
-      (pGVar8 = __get_dashboard_state(), pGVar8->glasses_state_struct_0FF0->field_0x73 != '\x01'))
-     || (*(char *)(unaff_r5 + 0x162) != '\x01')) goto LAB_0003d09a;
+      (pGVar8 = __get_dashboard_state(), pGVar8->dashboard_ts->field_0x73 != '\x01')) ||
+     (*(char *)(unaff_r5 + 0x162) != '\x01')) goto LAB_0003d09a;
   if (unaff_r4[0xc] == '\0') {
     uVar11 = extraout_r1;
     uVar12 = extraout_r2;
@@ -184,7 +184,7 @@ __ui_DashBoard_task_init(int param_1,undefined4 param_2,undefined4 param_3,undef
       local_228 = CONCAT22(local_228._2_2_,0x202);
       cVar7 = unaff_r4[0x1a];
       if (cVar7 == '\0') {
-        bVar5 = FUN_00038ac8();
+        bVar5 = __getNotesIndex();
         uVar13 = (bVar5 & 0xf) << 4 | local_228 >> 8 & 0xff;
         local_228._0_2_ = CONCAT11((char)uVar13,(undefined1)local_228);
         if (2 < LOG_LEVEL) {

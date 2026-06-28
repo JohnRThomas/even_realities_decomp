@@ -18,10 +18,11 @@ void FUN_00081258(uint param_1,uint param_2)
   if (uVar2 < 7) {
     pGVar3 = __get_dashboard_state();
     uVar4 = __aeabi_ldivmod(param_1,param_2,1000,0);
-    *(int *)(&pGVar3->field_0x1144 + uVar2 * 0xc) =
-         *(int *)(&pGVar3->field_0x1144 + uVar2 * 0xc) + (int)uVar4;
+    *(int *)(&(pGVar3->__burial_point_ctx).field_0x1c + uVar2 * 0xc) =
+         *(int *)(&(pGVar3->__burial_point_ctx).field_0x1c + uVar2 * 0xc) + (int)uVar4;
     pGVar3 = __get_dashboard_state();
-    *(int *)&pGVar3->field_0x112c = *(int *)&pGVar3->field_0x112c + (int)uVar4;
+    *(int *)&(pGVar3->__burial_point_ctx).field_0x4 =
+         *(int *)&(pGVar3->__burial_point_ctx).field_0x4 + (int)uVar4;
   }
   return;
 }

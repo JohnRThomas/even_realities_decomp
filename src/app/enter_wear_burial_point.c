@@ -27,10 +27,11 @@ void enter_wear_burial_point(void)
       uVar5 = FUN_000811fa();
       *(undefined8 *)&pGVar3->field_0x10f6 = uVar5;
       pGVar3 = __get_dashboard_state();
-      *(int *)(&pGVar3->field_0x1148 + uVar4 * 0xc) =
-           *(int *)(&pGVar3->field_0x1148 + uVar4 * 0xc) + 1;
+      *(int *)(&(pGVar3->__burial_point_ctx).field_0x20 + uVar4 * 0xc) =
+           *(int *)(&(pGVar3->__burial_point_ctx).field_0x20 + uVar4 * 0xc) + 1;
       pGVar3 = __get_dashboard_state();
-      *(int *)&pGVar3->field_0x1130 = *(int *)&pGVar3->field_0x1130 + 1;
+      *(int *)&(pGVar3->__burial_point_ctx).field_0x8 =
+           *(int *)&(pGVar3->__burial_point_ctx).field_0x8 + 1;
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG != 0) {
           pGVar3 = __get_dashboard_state();

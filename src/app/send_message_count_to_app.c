@@ -36,13 +36,13 @@ void __send_message_count_to_app
   uVar3 = FUN_00035310();
   local_14._0_2_ = CONCAT11((char)uVar3,(undefined1)local_14);
   pGVar2 = __get_dashboard_state();
-  local_14._0_3_ = CONCAT12(pGVar2->glasses_state_struct_0FF0->field_0x60,(undefined2)local_14);
+  local_14._0_3_ = CONCAT12(pGVar2->dashboard_ts->field_0x60,(undefined2)local_14);
   pGVar2 = __get_dashboard_state();
-  local_14 = CONCAT13(pGVar2->glasses_state_struct_0FF0->field_0x65,(undefined3)local_14);
+  local_14 = CONCAT13(pGVar2->dashboard_ts->field_0x65,(undefined3)local_14);
   pGVar2 = __get_dashboard_state();
-  local_10 = CONCAT31(local_10._1_3_,pGVar2->glasses_state_struct_0FF0->field_0x66);
+  local_10 = CONCAT31(local_10._1_3_,pGVar2->dashboard_ts->field_0x66);
   if (PANE_MODE == '\0') {
-    bVar1 = FUN_00038ac8();
+    bVar1 = __getNotesIndex();
   }
   else if (PANE_MODE == '\x01') {
     bVar1 = getStocksIndex();

@@ -67,7 +67,7 @@ subcontracing_send_data_pkcs7(int param_1,int param_2,undefined1 param_3,undefin
         ble_printk(s__s_________d__d_000a1ab2,"subcontracing_send_data_pkcs7",iVar11,iVar9);
       }
     }
-    FUN_0004d44c("body",(int)local_3c,0x14);
+    __dump_hex("body",(int)local_3c,0x14);
     (*(code *)param_4)(local_3c);
     iVar12 = iVar11;
   }
@@ -97,7 +97,7 @@ LAB_00023b16:
   }
   ble_printk(pcVar2,"subcontracing_send_data_pkcs7",iVar12,iVar9);
 LAB_00023b1a:
-  FUN_0004d44c("tail",(int)local_3c,0x14);
+  __dump_hex("tail",(int)local_3c,0x14);
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
       printk("%s(): total-size:%d\n");

@@ -64,7 +64,7 @@ int master_process_put_req(char *param_1,byte *param_2,byte *param_3)
           *param_3 = 0x6f;
           param_3[1] = 0x6b;
           mbedtls_md5(param_3 + 0x12,ilen,param_3 + 2);
-          FUN_0004d44c("flash_md5",(int)(param_3 + 2),0x10);
+          __dump_hex("flash_md5",(int)(param_3 + 2),0x10);
           return iVar16;
         }
       }

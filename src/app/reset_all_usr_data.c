@@ -45,8 +45,8 @@ void reset_all_usr_data(char *param_1,int param_2)
   uVar1 = sleep(200);
   cleanDashBoardStartUpModeInfo(uVar1,extraout_r1_02);
   sleep(200);
-  FUN_0007f63c((int)param_1);
-  FUN_00025134((int)param_1);
+  __clear_user_settings((int)param_1);
+  __clear_hardware_settings((int)param_1);
   sleep(500);
   __deinit_ncs_memory();
   sleep(500);

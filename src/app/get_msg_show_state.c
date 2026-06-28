@@ -31,7 +31,7 @@ void __get_msg_show_state(void)
   if ((cVar2 == '\x02') || (cVar2 = FUN_00035a78(), cVar2 == '\x04')) {
     __g_arrMsgContent_count();
     pGVar3 = __get_dashboard_state();
-    bVar1 = pGVar3->field_0xfee;
+    bVar1 = pGVar3->display_mode;
     pGVar3 = __get_dashboard_state();
     iVar4 = FUN_0002df54((uint)bVar1,(uint)(byte)pGVar3->field_0x10d7);
     pGVar3 = __get_dashboard_state();

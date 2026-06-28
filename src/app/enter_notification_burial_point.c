@@ -27,10 +27,11 @@ void enter_notification_burial_point(void)
       uVar5 = FUN_000811fa();
       *(undefined8 *)&pGVar3->field_0x1110 = uVar5;
       pGVar3 = __get_dashboard_state();
-      *(int *)(&pGVar3->field_0x11f8 + uVar4 * 0xc) =
-           *(int *)(&pGVar3->field_0x11f8 + uVar4 * 0xc) + 1;
+      *(int *)(&(pGVar3->__burial_point_ctx).field_0xd0 + uVar4 * 0xc) =
+           *(int *)(&(pGVar3->__burial_point_ctx).field_0xd0 + uVar4 * 0xc) + 1;
       pGVar3 = __get_dashboard_state();
-      *(int *)&pGVar3->field_0x11ec = *(int *)&pGVar3->field_0x11ec + 1;
+      *(int *)&(pGVar3->__burial_point_ctx).field_0xc4 =
+           *(int *)&(pGVar3->__burial_point_ctx).field_0xc4 + 1;
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG != 0) {
           pGVar3 = __get_dashboard_state();

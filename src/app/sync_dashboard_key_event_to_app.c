@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void sync_dashboard_key_event_to_app
                (undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
@@ -38,25 +36,25 @@ void sync_dashboard_key_event_to_app
   uVar3 = local_14;
   local_14._3_1_ = SUB41(uVar3,3);
   local_14._0_3_ =
-       CONCAT12(PANE_MODE,
-                CONCAT11(pGVar2->glasses_state_struct_0FF0->field_0x65,(undefined1)local_14));
-  if (PANE_MODE == '\0') {
-    bVar1 = FUN_00038ac8();
+       CONCAT12(PANE_MODE,CONCAT11(pGVar2->dashboard_ts->field_0x65,(undefined1)local_14));
+  if (PANE_MODE == 0) {
+    bVar1 = __getNotesIndex();
   }
-  else if (PANE_MODE == '\x01') {
+  else if (PANE_MODE == 1) {
     bVar1 = getStocksIndex();
   }
   else {
-    if (PANE_MODE != '\x02') {
-      if (PANE_MODE == '\x03') {
+    if (PANE_MODE != 2) {
+      if (PANE_MODE == 3) {
         bVar1 = getCalenadrIndex();
         local_14 = CONCAT13(bVar1 + 1,(undefined3)local_14);
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(pcRam0003cdb0);
+            printk("%s(): calendar index = %d\n");
           }
           else {
-            ble_printk(pcRam0003cdb0,_FUN_0003cdac,(uint)(byte)(bVar1 + 1),BLE_DEBUG);
+            ble_printk("%s(): calendar index = %d\n","sync_dashboard_key_event_to_app",
+                       (uint)(byte)(bVar1 + 1),BLE_DEBUG);
           }
         }
       }

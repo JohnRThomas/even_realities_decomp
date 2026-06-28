@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0004d44c
+ * Function: ?_dump_hex
  * Entry:    0004d44c
- * Prototype: undefined __stdcall FUN_0004d44c(undefined4 param_1, int param_2, int param_3)
+ * Prototype: undefined __stdcall ?_dump_hex(undefined4 param_1, int param_2, int param_3)
  */
 
 
-void FUN_0004d44c(undefined4 param_1,int param_2,int param_3)
+void __dump_hex(undefined4 param_1,int param_2,int param_3)
 
 {
   uint uVar1;

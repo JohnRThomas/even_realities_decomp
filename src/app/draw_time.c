@@ -53,7 +53,7 @@ void __draw_time(char *param_1,char *param_2)
           local_2c = 0;
           local_28 = 0;
           local_24 = 0;
-          FUN_0004d1e0((uint)param_2,(undefined2 *)&local_2c);
+          __init_burial_point_date((dashboard_ts_context *)param_2,(undefined2 *)&local_2c);
           uVar11 = local_24 & 0xffff;
           uVar10 = local_28 >> 0x10;
 LAB_00036fba:
@@ -70,7 +70,7 @@ LAB_00036fbc:
             local_2c = 0;
             local_28 = 0;
             local_24 = 0;
-            FUN_0004d1e0((uint)param_2,(undefined2 *)&local_2c);
+            __init_burial_point_date((dashboard_ts_context *)param_2,(undefined2 *)&local_2c);
             uVar2 = (ushort)local_28;
             uVar3 = local_2c._2_2_;
 LAB_00037006:
@@ -144,7 +144,7 @@ LAB_0003704e:
             local_2c = 0;
             local_28 = 0;
             local_24 = 0;
-            FUN_0004d1e0((uint)param_2,(undefined2 *)&local_2c);
+            __init_burial_point_date((dashboard_ts_context *)param_2,(undefined2 *)&local_2c);
             if (BLE_DEBUG == 0) {
               printk("date: %u: %04d/%02d/%02d-%02d:%02d:%02d",param_2,local_2c & 0xffff,
                      local_2c >> 0x10,local_28 & 0xffff,local_28 >> 0x10,local_24 & 0xffff,
@@ -156,19 +156,18 @@ LAB_0003704e:
             }
             if (BLE_DEBUG == 0) {
               pGVar8 = __get_dashboard_state();
-              printk("time_disp_mode is %d \n",
-                     (uint)(byte)pGVar8->glasses_state_struct_0FF0->field_0x5e);
+              printk("time_disp_mode is %d \n",(uint)(byte)pGVar8->dashboard_ts->field_0x5e);
             }
             else {
               pGVar8 = __get_dashboard_state();
               ble_printk("time_disp_mode is %d \n",
-                         (char *)(uint)(byte)pGVar8->glasses_state_struct_0FF0->field_0x5e,
-                         extraout_r2,pGVar8->glasses_state_struct_0FF0);
+                         (char *)(uint)(byte)pGVar8->dashboard_ts->field_0x5e,extraout_r2,
+                         pGVar8->dashboard_ts);
             }
             pGVar8 = __get_dashboard_state();
             uVar10 = local_28 >> 0x10;
             uVar11 = local_24 & 0xffff;
-            if (pGVar8->glasses_state_struct_0FF0->field_0x5e != '\0') {
+            if (pGVar8->dashboard_ts->field_0x5e != '\0') {
               if (uVar10 < 0xd) {
                 if (uVar10 == 0) {
                   uVar10 = 0xc;
@@ -192,7 +191,7 @@ LAB_00037288:
               local_2c = 0;
               local_28 = 0;
               local_24 = 0;
-              FUN_0004d1e0((uint)param_2,(undefined2 *)&local_2c);
+              __init_burial_point_date((dashboard_ts_context *)param_2,(undefined2 *)&local_2c);
               uVar2 = local_2c._2_2_;
               uVar3 = (ushort)local_28;
               goto LAB_00037006;
