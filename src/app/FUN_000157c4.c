@@ -8,7 +8,7 @@
 void FUN_000157c4(void)
 
 {
-  undefined4 uVar1;
+  GlassesState *pGVar1;
   char cVar2;
   bool bVar3;
   
@@ -21,11 +21,11 @@ void FUN_000157c4(void)
     if ((cVar2 == '\x01') && (bVar3 = is_in_box(), !bVar3)) {
       FUN_00081258(60000,0);
     }
-    uVar1 = GLOBAL_STATE._0_4_;
+    pGVar1 = GLOBAL_STATE;
     if (9 < DAT_2001093a) {
       DAT_2001093a = 0;
-      *(undefined4 *)(GLOBAL_STATE._0_4_ + 0x1060) = 0x3e;
-      k_sem_give((k_sem *)(uVar1 + 0x80));
+      *(undefined4 *)&GLOBAL_STATE->field_0x1060 = 0x3e;
+      k_sem_give(&pGVar1->sem_6);
       return;
     }
   }

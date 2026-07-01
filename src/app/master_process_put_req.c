@@ -485,7 +485,7 @@ LAB_0002d346:
       }
       else {
         ble_printk("%s(): ble recv raster_config_info:enable is %d, raster_height_gear is %d, canvas_distance_gear is %d\n"
-                   ,"master_process_put_req",(uint)param_2[9],(uint)param_2[10]);
+                   ,"master_process_put_req",(uint)param_2[9],(uint)param_2[10],(uint)param_2[0xb]);
       }
     }
     if (param_2[9] != 1) {

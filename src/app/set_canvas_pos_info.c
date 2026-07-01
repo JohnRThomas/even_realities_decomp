@@ -36,10 +36,10 @@ set_canvas_pos_info(int param_1,undefined4 param_2,undefined4 *param_3,undefined
       else {
         pGVar3 = __get_dashboard_state();
       }
-      pGVar3->field2765_0x108a = uVar5;
+      pGVar3->field1214_0x108a = uVar5;
       pGVar3 = __get_dashboard_state();
       uVar4 = 0;
-      pGVar3->field2766_0x108c = uVar1;
+      pGVar3->field1215_0x108c = uVar1;
       DAT_2001c4e0 = 0;
     }
     puVar6[4] = uVar4;

@@ -21,8 +21,8 @@ cJSON_bool FUN_00037b40(cJSON *item,parse_buffer *input_buffer)
   
   ppuVar6 = &item->string;
   pGVar2 = __get_dashboard_state();
-  uVar9 = *(uint *)&pGVar2->field_0xef % 0xe10;
-  uVar7 = (*(uint *)&pGVar2->field_0xef / 0xe10) % 0x18;
+  uVar9 = *(uint *)(pGVar2->field20_0xc8 + 0x27) % 0xe10;
+  uVar7 = (*(uint *)(pGVar2->field20_0xc8 + 0x27) / 0xe10) % 0x18;
   bVar1 = false;
   uVar8 = uVar9 % 0x3c;
   local_2a[0] = 0;
@@ -70,7 +70,7 @@ cJSON_bool FUN_00037b40(cJSON *item,parse_buffer *input_buffer)
     pvVar5 = (void *)FUN_00080fa2(uVar8 % 10,0xf,0x24);
     FUN_00080bc0((int)ppuVar6,pvVar5,0xf,0x24,iVar3 + 0x50,0xc);
   }
-  if ((byte)pGVar2->field_0xf3 < 2) {
+  if ((byte)pGVar2->field20_0xc8[0x2b] < 2) {
     FUN_00080800();
   }
   else {

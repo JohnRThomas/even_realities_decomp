@@ -81,8 +81,9 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
       FUN_00045444();
       FUN_00045428();
       do {
-        uVar15 = (uint)(byte)pGVar5->field_0xf0;
-        if (((uVar15 < 0x1a) && (uVar12 = (byte)pGVar5->field_0xef - 1, (uVar12 & 0xff) < 0x19)) &&
+        uVar15 = (uint)(byte)pGVar5->field20_0xc8[0x28];
+        if (((uVar15 < 0x1a) &&
+            (uVar12 = (byte)pGVar5->field20_0xc8[0x27] - 1, (uVar12 & 0xff) < 0x19)) &&
            (uVar15 != 0)) {
           local_34[0] = 0;
           local_34[1] = 0;
@@ -98,8 +99,8 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
           uVar4 = FUN_00080a3a();
           gui_utf_draw(0,(char *)local_34,3,iVar9,uVar3 + 0x6e,iVar10 + 0x50,uVar4 + 0x89,1,0,0,
                        (undefined *)0x0,0);
-          DAT_200100eb = pGVar5->field_0xf0;
-          DAT_200100ea = pGVar5->field_0xef;
+          DAT_200100eb = pGVar5->field20_0xc8[0x28];
+          DAT_200100ea = pGVar5->field20_0xc8[0x27];
         }
         else if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
@@ -108,7 +109,7 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
           }
           else {
             ble_printk("%s(): translate language type error! trans_info->original_type %d trans_info->translation_type %d\n"
-                       ,"ui_translate_task",uVar15,(uint)(byte)pGVar5->field_0xef);
+                       ,"ui_translate_task",uVar15,(uint)(byte)pGVar5->field20_0xc8[0x27]);
           }
         }
         pGVar8 = __get_dashboard_state();
@@ -175,7 +176,7 @@ undefined4 ui_translate_task(int param_1,undefined4 param_2,uint param_3)
   if (DAT_200100da != '\x01') {
     return 0;
   }
-  bVar1 = pGVar5->field_0xf2;
+  bVar1 = pGVar5->field20_0xc8[0x2a];
   if (bVar1 == 5) {
     if (param_3 == 1) {
       if (DAT_2001d95f == 5) {
@@ -208,9 +209,9 @@ LAB_00042292:
     timeout.ticks._4_4_ = 0xffffffff;
     timeout.ticks._0_4_ = extraout_r1_03;
     z_impl_k_mutex_lock(&k_mutex_2000851c,timeout);
-    DAT_200100dc = pGVar5->field_0xf1;
-    DAT_2001d95f = pGVar5->field_0xf2;
-    memcpy(&DAT_2001d960,&pGVar5->field_0xf5,0x1e0);
+    DAT_200100dc = pGVar5->field20_0xc8[0x29];
+    DAT_2001d95f = pGVar5->field20_0xc8[0x2a];
+    memcpy(&DAT_2001d960,pGVar5->field20_0xc8 + 0x2d,0x1e0);
     z_impl_k_mutex_unlock(&k_mutex_2000851c);
     if (DAT_200100dc == '\x01') {
       if (2 < LOG_LEVEL) {
@@ -226,11 +227,12 @@ LAB_00042292:
       uVar3 = FUN_00080a3a();
       gui_bmp_bitmap_draw(0x1b,iVar7,uVar3 + 0x36,0,0,0);
     }
-    uVar15 = (uint)(byte)pGVar5->field_0xf0;
+    uVar15 = (uint)(byte)pGVar5->field20_0xc8[0x28];
     if (uVar15 < 0x1a) {
-      uVar12 = (byte)pGVar5->field_0xef - 1;
+      uVar12 = (byte)pGVar5->field20_0xc8[0x27] - 1;
       if ((0x18 < (uVar12 & 0xff)) || (uVar15 == 0)) goto LAB_000423a4;
-      if ((DAT_200100eb != uVar15) || ((uint)DAT_200100ea != (uint)(byte)pGVar5->field_0xef)) {
+      if ((DAT_200100eb != uVar15) || ((uint)DAT_200100ea != (uint)(byte)pGVar5->field20_0xc8[0x27])
+         ) {
         local_34[0] = 0;
         local_34[1] = 0;
         local_34[2] = 0;
@@ -254,8 +256,8 @@ LAB_00042292:
         uVar4 = FUN_00080a3a();
         gui_utf_draw(0,(char *)local_34,3,iVar7,uVar3 + 0x6e,iVar9 + 0x50,uVar4 + 0x89,1,0,0,
                      (undefined *)0x0,0);
-        DAT_200100eb = pGVar5->field_0xf0;
-        DAT_200100ea = pGVar5->field_0xef;
+        DAT_200100eb = pGVar5->field20_0xc8[0x28];
+        DAT_200100ea = pGVar5->field20_0xc8[0x27];
       }
     }
     else {
@@ -267,7 +269,7 @@ LAB_000423a4:
         }
         else {
           ble_printk("%s(): translate language type error! trans_info->original_type %d trans_info->translation_type %d\n"
-                     ,"ui_translate_task",uVar15,(uint)(byte)pGVar5->field_0xef);
+                     ,"ui_translate_task",uVar15,(uint)(byte)pGVar5->field20_0xc8[0x27]);
         }
       }
     }

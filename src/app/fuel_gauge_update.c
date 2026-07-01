@@ -11,8 +11,8 @@ int fuel_gauge_update(device *param_1)
   longlong lVar1;
   char cVar2;
   float delta;
-  GlassesState *pGVar3;
-  undefined4 *puVar4;
+  undefined4 *puVar3;
+  GlassesState *pGVar4;
   undefined4 extraout_r1;
   uint uVar5;
   undefined4 uVar6;
@@ -116,20 +116,20 @@ LAB_00010c08:
     uVar6 = (undefined4)(uVar13 >> 0x20);
     uVar14 = __aeabi_f2d((uint)fVar12,uVar6,extraout_r2_04,extraout_r3_01);
     if (BLE_DEBUG == 0) {
-      puVar4 = FUN_00025340();
+      puVar3 = FUN_00025340();
       printk("%s(): Original soc %.2f, New Soc %.2f, %s\n","fuel_gauge_update",(int)uVar13,uVar6,
-             uVar14,puVar4);
+             uVar14,puVar3);
     }
     else {
-      FUN_00025340();
+      puVar3 = FUN_00025340();
       ble_printk("%s(): Original soc %.2f, New Soc %.2f, %s\n","fuel_gauge_update",(int)uVar13,uVar6
-                );
+                 ,uVar14,puVar3);
     }
   }
   if (((int)((uint)(fVar12 < 0.0) << 0x1f) < 0) || (150.0 <= fVar12)) {
     fVar12 = 0.0;
 LAB_00010eda:
-    pGVar3 = __get_dashboard_state();
+    pGVar4 = __get_dashboard_state();
     uVar8 = 0;
   }
   else {
@@ -139,16 +139,16 @@ LAB_00010eda:
     }
     if (((fVar12 < 93.5) || (-1 < (int)((uint)(fVar12 < 94.0) << 0x1f))) &&
        ((fVar12 < 94.5 || (-1 < (int)((uint)(fVar12 < 95.0) << 0x1f))))) goto LAB_00010eda;
-    pGVar3 = __get_dashboard_state();
+    pGVar4 = __get_dashboard_state();
     uVar8 = 1;
   }
-  pGVar3->field_0xfc6 = uVar8;
-  pGVar3 = __get_dashboard_state();
+  pGVar4->field_0xfc6 = uVar8;
+  pGVar4 = __get_dashboard_state();
   delta = voltage * 100.0 - 200.0;
-  pGVar3->field_0xfc4 = (0.0 < fVar12) * (char)(int)fVar12;
-  pGVar3 = __get_dashboard_state();
+  pGVar4->field_0xfc4 = (0.0 < fVar12) * (char)(int)fVar12;
+  pGVar4 = __get_dashboard_state();
   uVar11 = (uint)(0.0 < delta) * (int)delta;
-  pGVar3->field_0xfc8 = (char)uVar11;
+  pGVar4->field_0xfc8 = (char)uVar11;
   if (current == 0.0) {
     nfc_box_status_debug_cache = nfc_box_status_debug_cache + 1;
     if (5 < nfc_box_status_debug_cache) {
@@ -156,48 +156,48 @@ LAB_00010eda:
       uVar13 = __aeabi_f2d((uint)current,extraout_r1_01,extraout_r2_05,0);
       uVar13 = __aeabi_dadd((uint)uVar13,(uint)(uVar13 >> 0x20),0xd2f1a9fc,(uint)&DAT_3fc0624d);
       uVar13 = __muldf3((uint)uVar13,(uint)(uVar13 >> 0x20),0,0x408f4000);
-      pGVar3 = __get_dashboard_state();
+      pGVar4 = __get_dashboard_state();
       uVar11 = __fixunsdfsi((uint)uVar13,(uint)(uVar13 >> 0x20));
-      pGVar3->field_0xfc9 = (char)uVar11;
-      pGVar3 = __get_dashboard_state();
-      pGVar3->field_0xfcc = (char)(int)(current * 1000.0);
+      pGVar4->field_0xfc9 = (char)uVar11;
+      pGVar4 = __get_dashboard_state();
+      pGVar4->field_0xfcc = (char)(int)(current * 1000.0);
     }
   }
   else {
     uVar13 = __aeabi_f2d((uint)current,extraout_r1_01,extraout_r2_05,uVar11);
     uVar13 = __aeabi_dadd((uint)uVar13,(uint)(uVar13 >> 0x20),0xd2f1a9fc,(uint)&DAT_3fc0624d);
     uVar13 = __muldf3((uint)uVar13,(uint)(uVar13 >> 0x20),0,0x408f4000);
-    pGVar3 = __get_dashboard_state();
+    pGVar4 = __get_dashboard_state();
     uVar11 = __fixunsdfsi((uint)uVar13,(uint)(uVar13 >> 0x20));
-    pGVar3->field_0xfc9 = (char)uVar11;
-    pGVar3 = __get_dashboard_state();
-    pGVar3->field_0xfcc = (char)(int)(current * 1000.0);
+    pGVar4->field_0xfc9 = (char)uVar11;
+    pGVar4 = __get_dashboard_state();
+    pGVar4->field_0xfcc = (char)(int)(current * 1000.0);
     nfc_box_status_debug_cache = 0;
   }
-  pGVar3 = __get_dashboard_state();
-  pGVar3->field_0xfca = (0.0 < temp) * (char)(int)temp;
-  pGVar3 = __get_dashboard_state();
-  *(short *)&pGVar3->field_0xfce = (short)(int)(temp * 100.0);
+  pGVar4 = __get_dashboard_state();
+  pGVar4->field_0xfca = (0.0 < temp) * (char)(int)temp;
+  pGVar4 = __get_dashboard_state();
+  *(short *)&pGVar4->field_0xfce = (short)(int)(temp * 100.0);
   if (((60.0 <= temp) && ((int)((uint)(temp < 120.0) << 0x1f) < 0)) ||
      ((-50.0 <= temp && (temp <= -20.0)))) {
-    pGVar3 = __get_dashboard_state();
-    if (pGVar3->display_mode != '\f') {
+    pGVar4 = __get_dashboard_state();
+    if (pGVar4->display_mode != '\f') {
       FUN_00029774(4,extraout_r1_02,extraout_r2_06);
-      pGVar3 = __get_dashboard_state();
-      if (*(char *)pGVar3 == '\x01') {
-        pGVar3 = __get_dashboard_state();
-        sync_to_slave((char *)pGVar3,4,(undefined4 *)0x0,0);
-        pGVar3 = __get_dashboard_state();
-        FUN_0007ff66((int)pGVar3,0);
+      pGVar4 = __get_dashboard_state();
+      if (*(char *)pGVar4 == '\x01') {
+        pGVar4 = __get_dashboard_state();
+        sync_to_slave((char *)pGVar4,4,(undefined4 *)0x0,0);
+        pGVar4 = __get_dashboard_state();
+        FUN_0007ff66((int)pGVar4,0);
       }
       else {
-        pGVar3 = __get_dashboard_state();
-        FUN_000294d0((int)pGVar3,8,(void *)0x0,0);
+        pGVar4 = __get_dashboard_state();
+        FUN_000294d0((int)pGVar4,8,(void *)0x0,0);
       }
-      pGVar3 = __get_dashboard_state();
-      pGVar3->display_mode = 0xc;
-      pGVar3 = __get_dashboard_state();
-      FUN_0007ff66((int)pGVar3,1);
+      pGVar4 = __get_dashboard_state();
+      pGVar4->display_mode = 0xc;
+      pGVar4 = __get_dashboard_state();
+      FUN_0007ff66((int)pGVar4,1);
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk(

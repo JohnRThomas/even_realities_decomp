@@ -13,7 +13,7 @@ undefined4 set_aging_test_info(int param_1,uint param_2,undefined4 *param_3,unde
   
   if ((((param_3 == (undefined4 *)0x0) || (param_4 == (undefined1 *)0x0)) || (param_1 == 0)) ||
      (param_2 < 5)) {
-    printk("%s para is NULL\n","set_aging_test_info",param_3,param_4,param_4);
+    printk("%s para is NULL\n","set_aging_test_info");
     return 0xffffffff;
   }
   if (DAT_2001abc2 != '\x01') {
@@ -43,7 +43,7 @@ undefined4 set_aging_test_info(int param_1,uint param_2,undefined4 *param_3,unde
       printk("[%s-%d]invalid vaule \n");
     }
     else {
-      ble_printk("[%s-%d]invalid vaule \n","set_aging_test_info",0xb1c,BLE_DEBUG);
+      ble_printk("[%s-%d]invalid vaule \n","set_aging_test_info",0xb1c,BLE_DEBUG,param_4);
     }
     uVar1 = 3;
   }

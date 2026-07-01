@@ -1,11 +1,12 @@
 /*
  * Function: ?_send_notifi_app_white_list_app
  * Entry:    00034d44
- * Prototype: undefined4 __stdcall ?_send_notifi_app_white_list_app(int param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall ?_send_notifi_app_white_list_app(astruct_3 * param_1, undefined4 param_2, undefined4 param_3)
  */
 
 
-undefined4 __send_notifi_app_white_list_app(int param_1,undefined4 param_2,undefined4 param_3)
+undefined4
+__send_notifi_app_white_list_app(astruct_3 *param_1,undefined4 param_2,undefined4 param_3)
 
 {
   undefined4 uVar1;
@@ -53,7 +54,7 @@ undefined4 __send_notifi_app_white_list_app(int param_1,undefined4 param_2,undef
     local_178._3_1_ = SUB41(uVar1,3);
     local_178._0_3_ = CONCAT12((char)uVar4,CONCAT11((char)uVar3,0xf6));
     memcpy((void *)((int)&local_178 + 3),acStack_160 + uVar4 * 0x11,n);
-    uVar6 = (**(code **)(param_1 + 0xc))(&local_178,n + 3);
+    uVar6 = (*(code *)param_1->field12_0xc)(&local_178,n + 3);
     if ((int)uVar6 == 0) {
       uVar4 = uVar4 + 1 & 0xff;
       cVar5 = '\0';

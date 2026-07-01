@@ -23,7 +23,8 @@ int runtime_info_sync(undefined2 *param_1)
     }
     else {
       ble_printk("%s(): --role:%d --mode:%d, esb_channel %d --ret:%d esb_master_addr %02X esb_slave_addr %02X\n"
-                 ,"runtime_info_sync",local_18 >> 0x10 & 0xff,local_18 >> 0x18);
+                 ,"runtime_info_sync",local_18 >> 0x10 & 0xff,local_18 >> 0x18,local_14 & 0xff,iVar1
+                 ,(uint)*(byte *)((int)param_1 + 3),(uint)*(byte *)(param_1 + 2));
     }
   }
   return iVar1;

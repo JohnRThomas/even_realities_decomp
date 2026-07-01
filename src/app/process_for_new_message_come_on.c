@@ -220,7 +220,7 @@ LAB_0002e05a:
       else {
         pGVar8 = __get_dashboard_state();
         iVar17 = 0;
-        if (pGVar8->field_0xdd != '\0') {
+        if (pGVar8->field20_0xc8[0x15] != '\0') {
           iVar17 = 6;
         }
       }
@@ -243,7 +243,7 @@ LAB_0002e05a:
         else {
           ble_printk("%s(): Now, I will goto run IDLE ^v^ g->persist_task->screen_id %d, persist->status %d pkg->screen_id %d\n"
                      ,"process_for_IDLE",**(undefined4 **)(param_1 + 0x1068),
-                     (uint)*(byte *)(piVar6 + 1));
+                     (uint)*(byte *)(piVar6 + 1),(uint)param_1[0xd5]);
         }
       }
     }
@@ -303,9 +303,10 @@ LAB_0002f2da:
           }
           else {
             uVar13 = FUN_0007f3da(puVar14,uVar13);
-            __get_dashboard_state();
+            pGVar8 = __get_dashboard_state();
             ble_printk("%s(): There is an unfinished task,skip the local tasks:%d,%d,%d\n",
-                       "process_for_IDLE",(uint)bVar4,uVar13);
+                       "process_for_IDLE",(uint)bVar4,uVar13,
+                       (uint)*(byte *)(*(int *)&pGVar8->field_0x1018 + 1));
           }
         }
         goto LAB_0002f2e0;
@@ -525,9 +526,9 @@ LAB_0002e7a8:
     sVar16 = 1000;
     do {
       pGVar8 = __get_dashboard_state();
-      if (pGVar8->field_0xdd == '\0') break;
+      if (pGVar8->field20_0xc8[0x15] == '\0') break;
       pGVar8 = __get_dashboard_state();
-      cVar3 = FUN_00035218((byte)pGVar8->field_0xdd - 1);
+      cVar3 = FUN_00035218((byte)pGVar8->field20_0xc8[0x15] - 1);
       if (cVar3 == '\x04') break;
       sVar16 = sVar16 + -1;
       z_impl_k_sleep(0x21,0);
@@ -637,7 +638,7 @@ LAB_0002e55a:
     FUN_00035abc(2);
     pGVar8 = __get_dashboard_state();
     iVar11 = 0;
-    piVar6 = FUN_00035260((byte)pGVar8->field_0xdd - 1);
+    piVar6 = FUN_00035260((byte)pGVar8->field20_0xc8[0x15] - 1);
     uVar13 = extraout_r1_03;
     iVar17 = *piVar6;
 LAB_0002e1ae:
@@ -652,7 +653,7 @@ LAB_0002e1ae:
     iVar19 = iVar17;
     if (*param_1 == 1) {
       pGVar8 = __get_dashboard_state();
-      piVar6 = FUN_00035260((byte)pGVar8->field_0xdd - 1);
+      piVar6 = FUN_00035260((byte)pGVar8->field20_0xc8[0x15] - 1);
       iVar19 = *piVar6;
       if (iVar19 != iVar17) {
         bVar4 = param_1[0xfee];
@@ -854,7 +855,7 @@ LAB_0002e830:
     param_1[0xb0d] = 0;
     pGVar8 = __get_dashboard_state();
     uVar10 = FUN_00035310();
-    pGVar8->field_0xdd = (char)uVar10;
+    pGVar8->field20_0xc8[0x15] = (char)uVar10;
     while ((*param_2 != 1 || (param_1[0xfee] != 10))) {
       z_impl_k_sleep(0x667,0);
     }
@@ -1467,7 +1468,7 @@ LAB_0002e1bc:
     else {
       pGVar8 = __get_dashboard_state();
       iVar17 = 0;
-      if (pGVar8->field_0xdd != '\0') {
+      if (pGVar8->field20_0xc8[0x15] != '\0') {
         iVar17 = 6;
       }
     }

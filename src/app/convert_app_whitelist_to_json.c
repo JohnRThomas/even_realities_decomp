@@ -8,9 +8,10 @@
 uint convert_app_whitelist_to_json(char *param_1)
 
 {
-  char *pcVar1;
+  char *fmt;
   cJSON *object;
   cJSON *object_00;
+  char *pcVar1;
   cJSON *array;
   cJSON *object_01;
   size_t sVar2;
@@ -20,9 +21,10 @@ uint convert_app_whitelist_to_json(char *param_1)
   int iVar5;
   uint uVar6;
   
+  pcVar1 = param_1;
   if (param_1 == (char *)0x0) {
     uVar3 = 0x1f1;
-    pcVar1 = "[%s-%d]buf is null \n";
+    fmt = "[%s-%d]buf is null \n";
   }
   else {
     object = cJSON_CreateObject();
@@ -85,13 +87,13 @@ uint convert_app_whitelist_to_json(char *param_1)
       return 0;
     }
     uVar3 = 0x1fa;
-    pcVar1 = "[%s-%d]jsonRoot is null \n";
+    fmt = "[%s-%d]jsonRoot is null \n";
   }
   if (BLE_DEBUG == 0) {
-    printk(pcVar1);
+    printk(fmt);
   }
   else {
-    ble_printk(pcVar1,"convert_app_whitelist_to_json",uVar3,BLE_DEBUG);
+    ble_printk(fmt,"convert_app_whitelist_to_json",uVar3,BLE_DEBUG,pcVar1);
   }
   return 0;
 }

@@ -46,7 +46,7 @@ undefined4 __save_sys_settings(GlassesState *param_1)
   
   memset(local_a0,0,0x90);
   local_a8 = 1;
-  local_a4 = param_1->field2803_0x10b8;
+  local_a4 = param_1->field1252_0x10b8;
   local_a0[0] = param_1->esb_channel;
   uStack_9c = *(undefined4 *)&(param_1->imu_fusion_context).field_0x80;
   uStack_98 = *(undefined4 *)&(param_1->opt3007_context).field_0x14;
@@ -71,9 +71,9 @@ undefined4 __save_sys_settings(GlassesState *param_1)
   uStack_52 = param_1->field_0x4;
   uStack_51 = param_1->field_0x10a8;
   uStack_50 = param_1->field_0x10a9;
-  uStack_4c = param_1->field2802_0x10b4;
-  uStack_48 = param_1->field2765_0x108a;
-  local_46 = param_1->field2766_0x108c;
+  uStack_4c = param_1->field1251_0x10b4;
+  uStack_48 = param_1->field1214_0x108a;
+  local_46 = param_1->field1215_0x108c;
   local_40 = *(undefined4 *)&param_1->field_0xfa4;
   local_44 = *(undefined4 *)&param_1->field_0xfa8;
   local_3c = *(undefined4 *)&param_1->field_0xfac;
@@ -83,10 +83,10 @@ undefined4 __save_sys_settings(GlassesState *param_1)
   local_34 = *(undefined2 *)&(param_1->jdb_panel_context).field_0x36e;
   local_32 = *(undefined2 *)&(param_1->jdb_panel_context).field_0x370;
   local_30 = *(undefined2 *)&(param_1->jdb_panel_context).field_0x372;
-  local_24 = param_1->field2804_0x10bc;
-  uStack_20 = param_1->field2805_0x10c0;
-  local_1c = param_1->field2806_0x10c4;
-  local_18 = param_1->field2801_0x10b0;
+  local_24 = param_1->field1253_0x10bc;
+  uStack_20 = param_1->field1254_0x10c0;
+  local_1c = param_1->field1255_0x10c4;
+  local_18 = param_1->field1250_0x10b0;
   local_14 = param_1->field_0x10c8;
   local_13 = param_1->field_0x10d0;
   flash_settings_write_and_verify(&DAT_00130000,&local_a8,0x98);

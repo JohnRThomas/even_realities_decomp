@@ -41,7 +41,7 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
   uVar4 = FUN_0004540c();
   if (DAT_20004dd0 == '\0') {
     if (param_3 == 1) {
-      if (pGVar3->field_0xf0 == '\0') {
+      if (pGVar3->field20_0xc8[0x28] == '\0') {
         return 0;
       }
       if (DAT_20004dd1 != '\0') {

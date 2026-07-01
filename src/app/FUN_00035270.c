@@ -24,7 +24,7 @@ void FUN_00035270(void)
   APP_WHITE_LIST_BUF = 10;
   DAT_2001aef9 = 0;
   pGVar2 = __get_dashboard_state();
-  pGVar2->field_0xdd = 0;
+  pGVar2->field20_0xc8[0x15] = 0;
   __normal_g_arrMsgContent();
   __push_g_arrMsgContent();
   DAT_20019a5c = 0;

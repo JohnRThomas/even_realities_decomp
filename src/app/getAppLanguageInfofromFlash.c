@@ -23,7 +23,7 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
     }
     else {
       ble_printk("%s(): read setting flash data to ram...\r\n\n","getAppLanguageInfofromFlash",
-                 param_3,BLE_DEBUG);
+                 param_3,BLE_DEBUG,param_1);
     }
   }
   bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
@@ -32,7 +32,7 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
     pGVar2 = __get_dashboard_state();
     pcVar4 = *(code **)&pGVar2->field_0x1044;
     pGVar2 = __get_dashboard_state();
-    iVar3 = (*pcVar4)(pGVar2,0x13e000,&local_14,3,param_1);
+    iVar3 = (*pcVar4)(pGVar2,0x13e000,&local_14,3);
     if (iVar3 == 0) {
       if ((char)local_14 == -0x56) {
         BYTE_20019131 = local_14._1_1_;
@@ -62,7 +62,7 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
       }
       else {
         ble_printk("%s():  [%s] device not ready.\n\n","getAppLanguageInfofromFlash","mx25r6435f@0",
-                   BLE_DEBUG);
+                   BLE_DEBUG,param_1);
       }
     }
     local_14._1_1_ = 0xff;

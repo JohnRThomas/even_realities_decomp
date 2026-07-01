@@ -11,31 +11,25 @@ int ancs_c_init(int param_1,undefined4 param_2,undefined4 param_3,undefined4 par
   int iVar1;
   undefined4 uVar2;
   
-  iVar1 = bt_ancs_client_init((bt_ancs_client *)&GLOBAL_STATE.field_0xec);
+  iVar1 = bt_ancs_client_init((bt_ancs_client *)&DAT_20006cc8);
   if (iVar1 == 0) {
     iVar1 = bt_ancs_register_attr
-                      ((bt_ancs_client *)&GLOBAL_STATE.field_0xec,0,(uint8_t *)(param_1 + 0x10),0x20
-                      );
+                      ((bt_ancs_client *)&DAT_20006cc8,0,(uint8_t *)(param_1 + 0x10),0x20);
     if (iVar1 == 0) {
       iVar1 = bt_ancs_register_app_attr
-                        ((bt_ancs_client *)&GLOBAL_STATE.field_0xec,0,(uint8_t *)(param_1 + 0x30),
-                         0x20);
+                        ((bt_ancs_client *)&DAT_20006cc8,0,(uint8_t *)(param_1 + 0x30),0x20);
       if (iVar1 == 0) {
         iVar1 = bt_ancs_register_attr
-                          ((bt_ancs_client *)&GLOBAL_STATE.field_0xec,1,(uint8_t *)(param_1 + 0x50),
-                           0x20);
+                          ((bt_ancs_client *)&DAT_20006cc8,1,(uint8_t *)(param_1 + 0x50),0x20);
         if (iVar1 == 0) {
           iVar1 = bt_ancs_register_attr
-                            ((bt_ancs_client *)&GLOBAL_STATE.field_0xec,2,
-                             (uint8_t *)(param_1 + 0x70),0x20);
+                            ((bt_ancs_client *)&DAT_20006cc8,2,(uint8_t *)(param_1 + 0x70),0x20);
           if (iVar1 == 0) {
             iVar1 = bt_ancs_register_attr
-                              ((bt_ancs_client *)&GLOBAL_STATE.field_0xec,3,
-                               (uint8_t *)(param_1 + 0x90),0x100);
+                              ((bt_ancs_client *)&DAT_20006cc8,3,(uint8_t *)(param_1 + 0x90),0x100);
             if (iVar1 == 0) {
               iVar1 = bt_ancs_register_attr
-                                ((bt_ancs_client *)&GLOBAL_STATE.field_0xec,5,
-                                 (uint8_t *)(param_1 + 400),0x20);
+                                ((bt_ancs_client *)&DAT_20006cc8,5,(uint8_t *)(param_1 + 400),0x20);
               if (iVar1 == 0) {
                 return 0;
               }

@@ -18,12 +18,12 @@ void FUN_000359fc(void)
      (-1 < (int)((uint)(byte)(&DAT_2000879b)[(uint)DAT_2001aef9 * 0x1b4] << 0x1f))) {
     pGVar2 = __get_dashboard_state();
     uVar3 = FUN_00035310();
-    pGVar2->field_0xdd = (char)uVar3;
+    pGVar2->field20_0xc8[0x15] = (char)uVar3;
     pGVar2 = __get_dashboard_state();
     uVar3 = 0;
-    if (pGVar2->field_0xdd != '\0') {
+    if (pGVar2->field20_0xc8[0x15] != '\0') {
       pGVar2 = __get_dashboard_state();
-      uVar3 = (byte)pGVar2->field_0xdd - 1 & 0xff;
+      uVar3 = (byte)pGVar2->field20_0xc8[0x15] - 1 & 0xff;
     }
     DAT_2001aef9 = (byte)uVar3;
     uVar4 = FUN_00080732();
@@ -33,7 +33,7 @@ void FUN_000359fc(void)
     (&DAT_2000879b)[uVar5 * 0x1b4] = bVar1 | 1;
     pGVar2 = __get_dashboard_state();
     uVar3 = FUN_00035310();
-    pGVar2->field_0xdd = (char)uVar3;
+    pGVar2->field20_0xc8[0x15] = (char)uVar3;
   }
   __normal_g_arrMsgContent();
   return;

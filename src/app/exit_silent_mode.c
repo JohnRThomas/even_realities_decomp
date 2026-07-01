@@ -23,9 +23,9 @@ void __exit_silent_mode(void)
   pGVar1 = __get_dashboard_state();
   *(undefined1 *)&pGVar1->imu_fusion_context = 2;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field_0xd5 = 3;
+  pGVar1->field20_0xc8[0xd] = 3;
   pGVar1 = __get_dashboard_state();
-  FUN_00080fca(pGVar1->field_0xd5,extraout_r1_00,extraout_r2_00);
+  FUN_00080fca(pGVar1->field20_0xc8[0xd],extraout_r1_00,extraout_r2_00);
   DAT_20019a59 = 1;
   return;
 }

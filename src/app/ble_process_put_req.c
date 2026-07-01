@@ -131,7 +131,9 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
   undefined1 uStack_12c;
   undefined1 uStack_12b;
   undefined2 local_12a;
-  uint local_128 [65];
+  uint local_128;
+  uint local_124;
+  uint local_120;
   undefined4 *puVar20;
   
   puVar31 = *(undefined4 **)(param_1 + 0x10);
@@ -164,10 +166,11 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       }
       else {
         ble_printk("%s(): msg_data:%02x, %02x, %02x, %02x\n","ble_process_put_req",
-                   (uint)*(byte *)(puVar31 + 1),(uint)*(byte *)((int)puVar31 + 5));
+                   (uint)*(byte *)(puVar31 + 1),(uint)*(byte *)((int)puVar31 + 5),
+                   (uint)*(byte *)((int)puVar31 + 6),(uint)*(byte *)((int)puVar31 + 7));
       }
     }
-    FUN_00019d14(param_1,(byte *)local_128,8);
+    FUN_00019d14(param_1,(byte *)&local_128,8);
     _local_13c = CONCAT11(0xc9,local_13c);
     (**(code **)(param_1 + 0xc))(&local_13c,0x14);
     break;
@@ -226,17 +229,18 @@ void ble_process_put_req(int param_1,byte *param_2,byte *param_3)
       iVar29 = *(int *)(param_1 + 0x874);
       *(undefined4 *)(iVar29 + 6) = uVar22;
       *(undefined4 *)(iVar29 + 10) = uVar18;
-      local_128[0] = 0;
-      local_128[1] = 0;
-      local_128[2] = 0;
-      __init_burial_point_date(pdVar23,(undefined2 *)local_128);
+      local_128 = 0;
+      local_124 = 0;
+      local_120 = 0;
+      __init_burial_point_date(pdVar23,(undefined2 *)&local_128);
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): date: %u: %04d/%02d/%02d-%02d:%02d:%02d\n");
         }
         else {
           ble_printk("%s(): date: %u: %04d/%02d/%02d-%02d:%02d:%02d\n","ble_process_put_req",pdVar23
-                     ,local_128[0] & 0xffff);
+                     ,local_128 & 0xffff,local_128 >> 0x10,local_124 & 0xffff,local_124 >> 0x10,
+                     local_120 & 0xffff,local_120 >> 0x10);
         }
       }
       FUN_0004d494(*(int **)(param_1 + 0x874),0,1);
@@ -3892,11 +3896,13 @@ LAB_0001e766:
         }
         else {
           ble_printk("%s(): msg_data: %02x,%02x,%02x,%02x,%02x\n","ble_process_put_req",
-                     (uint)*(byte *)(puVar31 + 1),(uint)*(byte *)((int)puVar31 + 5));
+                     (uint)*(byte *)(puVar31 + 1),(uint)*(byte *)((int)puVar31 + 5),
+                     (uint)*(byte *)((int)puVar31 + 6),(uint)*(byte *)((int)puVar31 + 7),
+                     (uint)*(byte *)(puVar31 + 2));
         }
       }
     }
-    FUN_00019d14(param_1,(byte *)local_128,8);
+    FUN_00019d14(param_1,(byte *)&local_128,8);
     _local_13c = CONCAT11(0xc9,local_13c);
     (**(code **)(param_1 + 0xc))(&local_13c,0x14);
     break;
@@ -4031,13 +4037,13 @@ LAB_0001e766:
           else {
             ble_printk("%s(): *******************------ received app send timestamp = %lld,current system timestamp = %lld\n"
                        ,"ble_process_put_req",*(undefined4 *)((int)puVar31 + 6),
-                       *(undefined4 *)((int)puVar31 + 10));
+                       *(undefined4 *)((int)puVar31 + 10),local_148,uStack_144);
           }
         }
         uVar3 = *(ushort *)(param_2 + 2);
         *(ushort *)((int)puVar31 + 2) = uVar3;
         *(uint *)(param_1 + 0x14) = uVar3 + 4;
-        FUN_00019d14(param_1,(byte *)local_128,8);
+        FUN_00019d14(param_1,(byte *)&local_128,8);
         uStack_133 = 0;
         uStack_132 = 0;
         uStack_131 = 0;
@@ -4185,10 +4191,10 @@ LAB_0001e766:
                (uint)param_3[uVar34 - 6] << 0x10 | (uint)param_3[uVar34 - 7] << 8 |
                (uint)param_3[uVar34 - 8] | (uint)param_3[uVar34 - 5] << 0x18;
           _DAT_20010f0c = *(undefined4 *)(param_3 + (uVar34 - 4));
-          local_128[0] = 0;
-          local_128[1] = 0;
+          local_128 = 0;
+          local_124 = 0;
           DAT_20010f1b = DAT_2000e0ee;
-          FUN_0004d4f8((longlong *)local_128);
+          FUN_0004d4f8((longlong *)&local_128);
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               printk(
@@ -4197,7 +4203,7 @@ LAB_0001e766:
             }
             else {
               ble_printk("%s(): *******************------ received app send timestamp = %lld,current system timestamp = %lld\n"
-                         ,"ble_process_put_req",_DAT_20010f08,_DAT_20010f0c);
+                         ,"ble_process_put_req",_DAT_20010f08,_DAT_20010f0c,local_128,local_124);
             }
           }
           DAT_2000e0f2 = DAT_2000e0f2 + 1;
@@ -4388,9 +4394,9 @@ LAB_0001e766:
              (uint)param_3[uVar34 - 6] << 0x10 | (uint)param_3[uVar34 - 7] << 8 |
              (uint)param_3[uVar34 - 8] | (uint)param_3[uVar34 - 5] << 0x18;
         *(undefined4 *)(iVar29 + 6) = uVar22;
-        local_128[0] = 0;
-        local_128[1] = 0;
-        FUN_0004d4f8((longlong *)local_128);
+        local_128 = 0;
+        local_124 = 0;
+        FUN_0004d4f8((longlong *)&local_128);
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk(
@@ -4400,7 +4406,7 @@ LAB_0001e766:
           else {
             ble_printk("%s(): *******************------ received app send timestamp = %lld,current system timestamp = %lld\n"
                        ,"ble_process_put_req",*(undefined4 *)(*(int *)(param_1 + 0x884) + 2),
-                       *(undefined4 *)(*(int *)(param_1 + 0x884) + 6));
+                       *(undefined4 *)(*(int *)(param_1 + 0x884) + 6),local_128,local_124);
           }
         }
         if (puVar24 == &DAT_00000007) {
@@ -4575,9 +4581,9 @@ LAB_0001e766:
                (uint)param_3[uVar34 - 6] << 0x10 | (uint)param_3[uVar34 - 7] << 8 |
                (uint)param_3[uVar34 - 8] | (uint)param_3[uVar34 - 5] << 0x18;
           *(undefined4 *)(iVar29 + 6) = uVar22;
-          local_128[0] = 0;
-          local_128[1] = 0;
-          FUN_0004d4f8((longlong *)local_128);
+          local_128 = 0;
+          local_124 = 0;
+          FUN_0004d4f8((longlong *)&local_128);
           uVar9 = extraout_r2;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
@@ -4589,7 +4595,7 @@ LAB_0001e766:
             else {
               ble_printk("%s(): *******************------ received app send timestamp = %lld,current system timestamp = %lld\n"
                          ,"ble_process_put_req",*(undefined4 *)(*(int *)(param_1 + 0x884) + 2),
-                         *(undefined4 *)(*(int *)(param_1 + 0x884) + 6));
+                         *(undefined4 *)(*(int *)(param_1 + 0x884) + 6),local_128,local_124);
               uVar9 = extraout_r2_00;
             }
           }
@@ -4702,7 +4708,7 @@ LAB_0001e766:
         FUN_0007f4a4(bVar2,0,0);
         memset(puVar19,0,0x217);
         *(uint *)(param_1 + 0x14) = *(ushort *)((int)puVar31 + 2) + 4;
-        FUN_00019d14(param_1,(byte *)local_128,8);
+        FUN_00019d14(param_1,(byte *)&local_128,8);
       }
       memset((void *)((int)&local_138 + 2),0,0xe);
       _local_13c = *(undefined4 *)param_3;
@@ -4783,7 +4789,7 @@ LAB_0001e766:
       pGVar14 = __get_dashboard_state();
       iVar29 = *(int *)&pGVar14->field_0x1004;
       pGVar14 = __get_dashboard_state();
-      pGVar14->field_0xcd = param_3[3];
+      pGVar14->field20_0xc8[5] = param_3[3];
       *(byte *)(iVar29 + 1) = param_3[5];
       uVar6 = DAT_2000e0e0;
       uVar3 = *(ushort *)(param_3 + 6);
@@ -4957,7 +4963,8 @@ LAB_00020e12:
         else {
           ble_printk("%s(): direction = %d,x = %d,y = %d,time_remaining = %s,remainning_kilometers = %s,road_name_info = %s,                            remaining_distance_info= %s,current speed = %s\n"
                      ,"ble_process_put_req",(uint)*(byte *)(iVar29 + 1),
-                     (uint)*(ushort *)(iVar29 + 8));
+                     (uint)*(ushort *)(iVar29 + 8),(uint)*(ushort *)(iVar29 + 10),pvVar13,buf,buf_00
+                     ,buf_02,buf_01);
         }
       }
       *(undefined1 *)(iVar29 + 6) = 1;
@@ -5575,7 +5582,7 @@ LAB_0001f2e6:
     *(ushort *)((int)puVar31 + 2) = uVar3;
     *(uint *)(param_1 + 0x14) = uVar3 + 4;
     if ((uint)param_3[3] == param_3[2] - 1) {
-      FUN_00019d14(param_1,(byte *)local_128,8);
+      FUN_00019d14(param_1,(byte *)&local_128,8);
     }
     _local_13c = CONCAT12(param_3[1],_local_13c);
     _local_13c = CONCAT13(param_3[2],_local_13c);
@@ -5611,7 +5618,7 @@ LAB_0001f2e6:
             (pGVar14 = __get_dashboard_state(), *(int *)pGVar14->___glasses_state == 0x13)))) ||
           ((pGVar14 = __get_dashboard_state(), *(int *)pGVar14->___glasses_state == 0x14 ||
            (pGVar14 = __get_dashboard_state(), *(int *)pGVar14->___glasses_state == 0xc)))) ||
-         ((pGVar14 = __get_dashboard_state(), pGVar14->field_0xd5 == '\0' &&
+         ((pGVar14 = __get_dashboard_state(), pGVar14->field20_0xc8[0xd] == '\0' &&
           (pGVar14 = __get_dashboard_state(), pGVar14->field_0xfea == '\0')))) {
         pGVar14 = __get_dashboard_state();
         uVar22 = extraout_r2_33;
@@ -5685,7 +5692,7 @@ LAB_00021e38:
     *(ushort *)((int)puVar31 + 2) = uVar3;
     *(uint *)(param_1 + 0x14) = uVar3 + 4;
     if ((uint)param_3[3] == param_3[2] - 1) {
-      FUN_00019d14(param_1,(byte *)local_128,8);
+      FUN_00019d14(param_1,(byte *)&local_128,8);
     }
     _local_13c = CONCAT12(param_3[1],_local_13c);
     _local_13c = CONCAT13(param_3[2],_local_13c);
@@ -5806,9 +5813,9 @@ LAB_00021e38:
     *(undefined8 *)(param_1 + 0x8fc) = uVar35;
     break;
   case 0x16:
-    local_128[0] = CONCAT31(CONCAT12(param_3[1],CONCAT11(param_3[2],param_3[3])),param_3[4]);
+    local_128 = CONCAT31(CONCAT12(param_3[1],CONCAT11(param_3[2],param_3[3])),param_3[4]);
     _local_13c = CONCAT11(param_3[1],bVar2);
-    if (local_128[0] == LAST_FILE_CRC) {
+    if (local_128 == LAST_FILE_CRC) {
       uVar9 = 0xc9;
     }
     else {
@@ -5834,14 +5841,14 @@ LAB_00021e38:
     _local_13c = CONCAT11(0xc9,bVar2);
     (**(code **)(param_1 + 0xc))(&local_13c,0x14);
     pGVar14 = __get_dashboard_state();
-    if ((pGVar14->field_0xd5 == 0xb) ||
-       (pGVar14 = __get_dashboard_state(), pGVar14->field_0xd5 == 0x10)) {
+    if ((pGVar14->field20_0xc8[0xd] == 0xb) ||
+       (pGVar14 = __get_dashboard_state(), pGVar14->field20_0xc8[0xd] == 0x10)) {
       FUN_000800ca(iVar29,0);
     }
     else {
       pGVar14 = __get_dashboard_state();
       if ((*(char *)pGVar14 == '\x02') &&
-         (pGVar14 = __get_dashboard_state(), pGVar14->field_0xd5 == '\x06')) {
+         (pGVar14 = __get_dashboard_state(), pGVar14->field20_0xc8[0xd] == '\x06')) {
         sleep(0x32);
       }
       FUN_0007ff66(iVar29,0);
@@ -5867,7 +5874,8 @@ LAB_00021e38:
       else {
         ble_printk("%s(): received start/Pause command,origin language type = %d,translate origin language type = %d,Suspend status = %d\n"
                    ,"ble_process_put_req",(uint)(*(byte **)(param_1 + 0x890))[1],
-                   (uint)**(byte **)(param_1 + 0x890));
+                   (uint)**(byte **)(param_1 + 0x890),(uint)*(byte *)(*(int *)(param_1 + 0x88c) + 2)
+                  );
       }
     }
     _local_13c = CONCAT11(0xc9,local_13c);
@@ -6737,7 +6745,7 @@ LAB_00021e38:
         if ((8 < param_3[6]) || (9 < param_3[7])) goto switchD_00022248_default;
         *(byte *)(param_1 + -0x6af) = param_3[3];
         memcpy(puVar19,param_3,(uint)*(ushort *)(param_2 + 2));
-        FUN_00019d14(param_1,(byte *)local_128,8);
+        FUN_00019d14(param_1,(byte *)&local_128,8);
         break;
       case 3:
         cVar10 = FUN_00033d5c();

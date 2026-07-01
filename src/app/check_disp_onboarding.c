@@ -30,7 +30,7 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
       (pGVar1 = __get_dashboard_state(), *(char *)(*(int *)&pGVar1->field_0x101c + 2) != '\0')))) {
     if ((((DAT_20019a61 != '\0') &&
          (pGVar1 = __get_dashboard_state(), *(int *)pGVar1->___glasses_state == 0)) &&
-        (pGVar1 = __get_dashboard_state(), pGVar1->field_0xd5 == '\0')) &&
+        (pGVar1 = __get_dashboard_state(), pGVar1->field20_0xc8[0xd] == '\0')) &&
        (pGVar1 = __get_dashboard_state(), *(char *)pGVar1 == '\x01')) {
       iVar2 = FUN_0007f3da(pGVar1,extraout_r1);
       puVar3 = (undefined1 *)0x0;
@@ -94,7 +94,7 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
         pGVar1 = __get_dashboard_state();
         iVar2 = *(int *)&pGVar1->field_0x101c;
         pGVar1 = __get_dashboard_state();
-        pGVar1->field_0xcd = *(undefined1 *)(iVar2 + 3);
+        pGVar1->field20_0xc8[5] = *(undefined1 *)(iVar2 + 3);
       }
     }
   }

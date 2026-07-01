@@ -8,22 +8,23 @@
 undefined4 local_esbm_ipc_service_recv(int param_1,byte *param_2,undefined4 *param_3)
 
 {
+  GlassesState *pGVar1;
   int *d;
-  void *pvVar1;
-  undefined4 *puVar2;
+  void *pvVar2;
+  undefined4 *puVar3;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
-  undefined4 uVar3;
-  char cVar4;
+  undefined4 uVar4;
+  char cVar5;
   undefined4 *extraout_r2;
-  char *pcVar5;
-  byte *pbVar6;
-  int iVar8;
-  undefined8 uVar9;
+  char *pcVar6;
   byte *pbVar7;
+  int iVar9;
+  undefined8 uVar10;
+  byte *pbVar8;
   
-  uVar9 = CONCAT44(param_2,param_1);
-  if (((*param_2 & 0x3f) != 0) && (uVar9 = CONCAT44(param_2,param_1), 1 < (*param_2 & 0x3f) - 0xc))
+  uVar10 = CONCAT44(param_2,param_1);
+  if (((*param_2 & 0x3f) != 0) && (uVar10 = CONCAT44(param_2,param_1), 1 < (*param_2 & 0x3f) - 0xc))
   {
     if (DAT_20010938 == param_2[0x15]) {
       return 0;
@@ -35,43 +36,43 @@ undefined4 local_esbm_ipc_service_recv(int param_1,byte *param_2,undefined4 *par
     *(undefined1 *)(param_1 + 0xfc5) = *(undefined1 *)(param_1 + 0x6d0);
     *(undefined4 *)(param_1 + 0xfe4) = *(undefined4 *)(param_1 + 0x6d8);
     *(undefined2 *)(param_1 + 0xfe8) = *(undefined2 *)(param_1 + 0x6dc);
-    puVar2 = (undefined4 *)(param_1 + 0x6cc);
-    pbVar7 = param_2;
+    puVar3 = (undefined4 *)(param_1 + 0x6cc);
+    pbVar8 = param_2;
     do {
-      pbVar6 = pbVar7 + 4;
-      uVar9 = CONCAT44(param_2 + 0x14,*(undefined4 *)pbVar7);
-      param_3 = puVar2 + 1;
-      *puVar2 = *(undefined4 *)pbVar7;
-      puVar2 = param_3;
-      pbVar7 = pbVar6;
-    } while (pbVar6 != param_2 + 0x14);
-    *(undefined2 *)param_3 = *(undefined2 *)pbVar6;
+      pbVar7 = pbVar8 + 4;
+      uVar10 = CONCAT44(param_2 + 0x14,*(undefined4 *)pbVar8);
+      param_3 = puVar3 + 1;
+      *puVar3 = *(undefined4 *)pbVar8;
+      puVar3 = param_3;
+      pbVar8 = pbVar7;
+    } while (pbVar7 != param_2 + 0x14);
+    *(undefined2 *)param_3 = *(undefined2 *)pbVar7;
     if ((int)((uint)param_2[0x12] << 0x1d) < 0) {
-      uVar9 = FUN_00035270();
+      uVar10 = FUN_00035270();
       *(byte *)(param_1 + 0x6de) = *(byte *)(param_1 + 0x6de) & 0xfb;
       param_3 = extraout_r2;
     }
   }
-  uVar3 = GLOBAL_STATE._0_4_;
-  iVar8 = (*param_2 & 0x3f) - 4;
-  switch(iVar8) {
+  pGVar1 = GLOBAL_STATE;
+  iVar9 = (*param_2 & 0x3f) - 4;
+  switch(iVar9) {
   case 0:
-    if (*(char *)(GLOBAL_STATE._0_4_ + 0xd5) == '\x04') {
+    if (GLOBAL_STATE->field20_0xc8[0xd] == '\x04') {
       FUN_00035a84();
-      iVar8 = 0;
-      if (*(char *)(GLOBAL_STATE._0_4_ + 0xdd) != '\0') {
-        iVar8 = 6;
+      iVar9 = 0;
+      if (GLOBAL_STATE->field20_0xc8[0x15] != '\0') {
+        iVar9 = 6;
       }
-      FUN_00035abc(iVar8);
+      FUN_00035abc(iVar9);
     }
     DAT_20008514 = DAT_20008514 | 2;
     FUN_0007ff66(param_1,1);
-    uVar3 = extraout_r1;
+    uVar4 = extraout_r1;
     if (*(char *)(param_1 + 0xee8) == '\x02') {
       FUN_000260dc();
-      uVar3 = extraout_r1_00;
+      uVar4 = extraout_r1_00;
     }
-    update_persist_task_status_to_idle(param_1,uVar3);
+    update_persist_task_status_to_idle(param_1,uVar4);
     break;
   case 1:
     FUN_0007ff66(param_1,1);
@@ -85,11 +86,11 @@ undefined4 local_esbm_ipc_service_recv(int param_1,byte *param_2,undefined4 *par
     if (*(char *)(param_1 + 0x6df) != '\0') {
       return 0;
     }
-    cVar4 = '\x02';
-    pcVar5 = *(char **)(param_1 + 0x1034);
+    cVar5 = '\x02';
+    pcVar6 = *(char **)(param_1 + 0x1034);
     goto LAB_00016dd2;
   case 3:
-    SlaveDoubleClickEventInject((int)uVar9,(int)((ulonglong)uVar9 >> 0x20),param_3,iVar8);
+    SlaveDoubleClickEventInject((int)uVar10,(int)((ulonglong)uVar10 >> 0x20),param_3,iVar9);
     break;
   case 4:
     FUN_0007ff66(param_1,1);
@@ -104,57 +105,57 @@ undefined4 local_esbm_ipc_service_recv(int param_1,byte *param_2,undefined4 *par
     FUN_0003f1bc();
     break;
   case 6:
-    pcVar5 = &DAT_2001093b;
+    pcVar6 = &DAT_2001093b;
     goto LAB_00016dde;
   case 8:
-    if ((((*(byte *)(GLOBAL_STATE._0_4_ + 0xe4) & 4) == 0 && DAT_20019a5c == '\0') &&
+    if ((((GLOBAL_STATE->field20_0xc8[0x1c] & 4) == 0 && DAT_20019a5c == '\0') &&
         (d = FUN_00035260((uint)param_2[0xd]), d != (int *)0x0)) &&
        ((*(char *)((int)d + 0xe) == '\0' &&
         (((*(int *)(param_2 + 9) != d[2] || (*(int *)(param_2 + 1) != *d)) ||
          (*(char *)((int)d + 0xd) != '\x01')))))) {
-      pvVar1 = memcpy(d,param_2 + 1,0xda);
-      *(undefined1 *)((int)pvVar1 + 0xd) = 1;
+      pvVar2 = memcpy(d,param_2 + 1,0xda);
+      *(undefined1 *)((int)pvVar2 + 0xd) = 1;
     }
     break;
   case 9:
-    if ((((*(byte *)(GLOBAL_STATE._0_4_ + 0xe4) & 4) == 0 && DAT_20019a5c == '\0') &&
-        (puVar2 = FUN_000351d8(), puVar2 != (undefined4 *)0x0)) &&
-       ((*(char *)((int)puVar2 + 0xe) == '\0' && (*(char *)((int)puVar2 + 0xd) != '\x03')))) {
-      memcpy((void *)((int)puVar2 + 0xda),param_2 + 1,0xda);
-      *(undefined1 *)((int)puVar2 + 0xd) = 3;
+    if ((((GLOBAL_STATE->field20_0xc8[0x1c] & 4) == 0 && DAT_20019a5c == '\0') &&
+        (puVar3 = FUN_000351d8(), puVar3 != (undefined4 *)0x0)) &&
+       ((*(char *)((int)puVar3 + 0xe) == '\0' && (*(char *)((int)puVar3 + 0xd) != '\x03')))) {
+      memcpy((void *)((int)puVar3 + 0xda),param_2 + 1,0xda);
+      *(undefined1 *)((int)puVar3 + 0xd) = 3;
     }
     break;
   case 10:
     if (*(char *)(param_1 + 0x6df) == '\x04') {
-      *(undefined1 *)(*(int *)(GLOBAL_STATE._0_4_ + 0x101c) + 2) = *(undefined1 *)(param_1 + 0x6e0);
+      *(undefined1 *)(*(int *)&GLOBAL_STATE->field_0x101c + 2) = *(undefined1 *)(param_1 + 0x6e0);
     }
     else if (*(char *)(param_1 + 0x6df) == '\x05') {
       FUN_00080852((uint)*(byte *)(param_1 + 0x6e0));
     }
     break;
   case 0xb:
-    if (**(char **)(GLOBAL_STATE._0_4_ + 0x1010) == '\x01') {
+    if (**(char **)&GLOBAL_STATE->field_0x1010 == '\x01') {
       return 0;
     }
     FUN_00080338(0);
-    pcVar5 = *(char **)(GLOBAL_STATE._0_4_ + 0x1010);
+    pcVar6 = *(char **)&GLOBAL_STATE->field_0x1010;
 LAB_00016dde:
-    cVar4 = '\x01';
+    cVar5 = '\x01';
     goto LAB_00016dd2;
   case 0xc:
-    pcVar5 = *(char **)(GLOBAL_STATE._0_4_ + 0x1010);
-    if (*pcVar5 != '\x04') {
+    pcVar6 = *(char **)&GLOBAL_STATE->field_0x1010;
+    if (*pcVar6 != '\x04') {
       return 0;
     }
-    cVar4 = '\x05';
+    cVar5 = '\x05';
 LAB_00016dd2:
-    *pcVar5 = cVar4;
+    *pcVar6 = cVar5;
     break;
   case 0xd:
     if (*(char *)(param_1 + 0x6df) == '\x06') {
-      if ((((**(int **)(GLOBAL_STATE._0_4_ + 0x1068) == 0x14) &&
-           (pcVar5 = *(char **)(GLOBAL_STATE._0_4_ + 0x1014), *pcVar5 == '\x01')) &&
-          (pcVar5[1] == '\x04')) && (pcVar5[3] == '\x13')) {
+      if ((((*(int *)GLOBAL_STATE->___glasses_state == 0x14) &&
+           (pcVar6 = *(char **)&GLOBAL_STATE->field_0x1014, *pcVar6 == '\x01')) &&
+          (pcVar6[1] == '\x04')) && (pcVar6[3] == '\x13')) {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
             printk("%s(): evenai_v2 need to show network_err tip\n");
@@ -166,8 +167,8 @@ LAB_00016dd2:
         }
       }
       else if (*(byte *)(param_1 + 0x6e0) < 3) {
-        *(undefined1 *)(*(int *)(GLOBAL_STATE._0_4_ + 0x1014) + 1) = 6;
-        *(undefined1 *)(*(int *)(uVar3 + 0x1014) + 3) = *(undefined1 *)(param_1 + 0x6e0);
+        *(undefined1 *)(*(int *)&GLOBAL_STATE->field_0x1014 + 1) = 6;
+        *(undefined1 *)(*(int *)&pGVar1->field_0x1014 + 3) = *(undefined1 *)(param_1 + 0x6e0);
       }
     }
   }

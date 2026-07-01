@@ -30,9 +30,10 @@ void exit_dashboard_burial_point(void)
                *(undefined4 *)&(pGVar2->__burial_point_ctx).field_0xc);
       }
       else {
-        __get_dashboard_state();
+        pGVar2 = __get_dashboard_state();
         ble_printk("%s(): [exit_dashboard_burial_point] sum_time is %d ms,dashboard_sum_time is %d s\n"
-                   ,"exit_dashboard_burial_point",uVar3,uVar4);
+                   ,"exit_dashboard_burial_point",uVar3,uVar4,
+                   *(undefined4 *)&(pGVar2->__burial_point_ctx).field_0xc);
       }
     }
   }

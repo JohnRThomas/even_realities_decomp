@@ -30,7 +30,8 @@ undefined4 load_burial_point(int param_1,undefined4 param_2,undefined4 param_3,u
         printk("%s(): burial_point read error!\n");
       }
       else {
-        ble_printk("%s(): burial_point read error!\n","load_burial_point",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): burial_point read error!\n","load_burial_point",extraout_r2,BLE_DEBUG,
+                   param_4);
       }
     }
     uVar3 = 0xffffffff;

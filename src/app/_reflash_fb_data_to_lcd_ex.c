@@ -73,8 +73,7 @@ _reflash_fb_data_to_lcd_ex
       timeout.ticks._4_4_ = 0xffffffff;
       timeout.ticks._0_4_ = uVar3;
       z_impl_k_mutex_lock(&lcd_mutex,timeout);
-      iVar4 = (**(code **)(pjVar2->field849_0x378 + 8))
-                        (pjVar2->field849_0x378,iVar7,iVar9,local_38,1);
+      iVar4 = (*(code *)pjVar2->spi_callbacks->rx_tx)(pjVar2->spi_callbacks,iVar7,iVar9,local_38,1);
       z_impl_k_mutex_unlock(&lcd_mutex);
       uVar3 = extraout_r1;
       if ((iVar4 != 0) && (0 < LOG_LEVEL)) {

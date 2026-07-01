@@ -119,7 +119,7 @@ LAB_000353ee:
 LAB_00035478:
     pGVar3 = __get_dashboard_state();
     uVar4 = FUN_00035310();
-    pGVar3->field_0xdd = (char)uVar4;
+    pGVar3->field20_0xc8[0x15] = (char)uVar4;
     DAT_20019a5c = 0;
     return;
   }

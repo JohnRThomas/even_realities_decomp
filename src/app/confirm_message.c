@@ -40,7 +40,7 @@ void confirm_message(int param_1)
     }
     DAT_20019a5c = 1;
     pGVar3 = __get_dashboard_state();
-    if (pGVar3->field_0xd5 != '\x04') {
+    if (pGVar3->field20_0xc8[0xd] != '\x04') {
       clear_timeout_message(0);
     }
     pGVar3 = __get_dashboard_state();
@@ -118,10 +118,10 @@ LAB_00035c9a:
     }
     memset(&DAT_2000878c + (uint)APP_WHITE_LIST_BUF * 0x6d,0,0x1b4);
     pGVar3 = __get_dashboard_state();
-    if (pGVar3->field_0xd5 == '\x04') {
+    if (pGVar3->field20_0xc8[0xd] == '\x04') {
       pGVar3 = __get_dashboard_state();
       uVar5 = FUN_00035310();
-      pGVar3->field_0xdd = (char)uVar5;
+      pGVar3->field20_0xc8[0x15] = (char)uVar5;
     }
     else {
       clear_timeout_message(0);
@@ -129,7 +129,7 @@ LAB_00035c9a:
     if (uVar11 == 0) {
       uVar11 = FUN_000352c4();
       pGVar3 = __get_dashboard_state();
-      if (pGVar3->field_0xd5 == '\x04') {
+      if (pGVar3->field20_0xc8[0xd] == '\x04') {
         if (uVar11 != 0xff) {
           FUN_0002dd98();
         }
@@ -137,9 +137,9 @@ LAB_00035c9a:
       else {
         bVar1 = is_in_box();
         if ((!bVar1) &&
-           (((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 == '\0' ||
+           (((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] == '\0' ||
              ((pGVar3 = __get_dashboard_state(), pGVar3->field_0x10d6 != '\0' &&
-              (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 == '\x06')))) &&
+              (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] == '\x06')))) &&
             (bVar2 = FUN_00035acc(), bVar2 != 1)))) {
           DAT_2001aef8 = 1;
         }

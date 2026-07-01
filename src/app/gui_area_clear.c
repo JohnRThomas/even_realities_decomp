@@ -13,13 +13,17 @@ undefined4 gui_area_clear(int param_1,int param_2,int param_3,int param_4)
   GlassesState *pGVar3;
   undefined4 extraout_r2;
   int iVar4;
+  int iVar5;
   
+  iVar4 = param_1;
+  iVar5 = param_2;
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
       printk("%s(): exec area clear command....\n");
     }
     else {
-      ble_printk("%s(): exec area clear command....\n","gui_area_clear",param_3,BLE_DEBUG);
+      ble_printk("%s(): exec area clear command....\n","gui_area_clear",param_3,BLE_DEBUG,param_1,
+                 param_2);
     }
   }
   pjVar1 = get_jdb_panel_context();
@@ -30,7 +34,7 @@ undefined4 gui_area_clear(int param_1,int param_2,int param_3,int param_4)
       }
       else {
         ble_printk("%s(): c->init_done = 0,init failed, can\'t write data!\n","gui_area_clear",
-                   extraout_r2,BLE_DEBUG);
+                   extraout_r2,BLE_DEBUG,iVar4,iVar5);
       }
     }
     uVar2 = 0xffffffff;

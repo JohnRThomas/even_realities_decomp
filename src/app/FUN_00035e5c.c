@@ -15,10 +15,10 @@ undefined4 FUN_00035e5c(void)
   
   pGVar1 = __get_dashboard_state();
   uVar3 = 0;
-  if ((&DAT_2000878c)[((byte)pGVar1->field_0xdd - 1) * 0x6d] != 0) {
+  if ((&DAT_2000878c)[((byte)pGVar1->field20_0xc8[0x15] - 1) * 0x6d] != 0) {
     uVar2 = FUN_00080732();
     pGVar1 = __get_dashboard_state();
-    iVar4 = (&DAT_2000878c)[((byte)pGVar1->field_0xdd - 1) * 0x6d];
+    iVar4 = (&DAT_2000878c)[((byte)pGVar1->field20_0xc8[0x15] - 1) * 0x6d];
     pGVar1 = __get_dashboard_state();
     if ((uint)(byte)pGVar1->field_0x10d7 + iVar4 < uVar2) {
       uVar3 = 2;

@@ -25,8 +25,8 @@ void FUN_0004af6c(int param_1,uint param_2,undefined4 param_3,uint param_4)
   *(char *)(iVar3 + -2) = (char)param_1;
   *(undefined1 *)(iVar3 + -1) = 0xff;
   __lock_lcd_mutex(-1);
-  (**(code **)(pjVar1->field849_0x378 + 8))
-            (pjVar1->field849_0x378,iVar3 + -5,param_4 + 6,&local_1c,1,uVar4,param_3);
+  (*(code *)pjVar1->spi_callbacks->rx_tx)
+            (pjVar1->spi_callbacks,iVar3 + -5,param_4 + 6,&local_1c,1,uVar4,param_3);
   __unlock_lcd_mutex();
   return;
 }

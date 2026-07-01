@@ -20,12 +20,12 @@ undefined4 set_imu_pitch_reflash(void)
   undefined4 extraout_r2;
   
   pGVar3 = __get_dashboard_state();
-  if ((byte)pGVar3->field_0xf0 < 2) {
-    if ((uint)DAT_2001dd03 != (uint)(byte)pGVar3->field_0xf0) {
+  if ((byte)pGVar3->field20_0xc8[0x28] < 2) {
+    if ((uint)DAT_2001dd03 != (uint)(byte)pGVar3->field20_0xc8[0x28]) {
       gui_screen_clear(pGVar3,extraout_r1,(uint)DAT_2001dd03);
-      DAT_2001dd03 = pGVar3->field_0xf0;
+      DAT_2001dd03 = pGVar3->field20_0xc8[0x28];
     }
-    if (pGVar3->field_0xf0 == '\x01') {
+    if (pGVar3->field20_0xc8[0x28] == '\x01') {
       iVar5 = FUN_000809e2();
       uVar1 = FUN_00080a3a();
       gui_bmp_bitmap_draw(0x87,iVar5 + 0x52,uVar1 + 0x65,0,0,0);

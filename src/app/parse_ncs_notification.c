@@ -23,7 +23,9 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
   undefined4 extraout_r2_00;
   undefined4 extraout_r2_01;
   undefined4 extraout_r3;
+  undefined4 *puVar11;
   
+  puVar11 = param_2;
   object = cJSON_Parse(param_1);
   if (object != (cJSON *)0x0) {
     pcVar1 = cJSON_GetObjectItem(object,"ncs_notification");
@@ -34,7 +36,7 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
         }
         else {
           ble_printk("%s(): NOT FOUND NCS JSON NODE!\n","parse_ncs_notification",extraout_r2_00,
-                     BLE_DEBUG);
+                     BLE_DEBUG,param_1,puVar11);
         }
       }
       cJSON_Delete(object);

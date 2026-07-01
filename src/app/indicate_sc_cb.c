@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void indicate_sc_cb(undefined4 *param_1,undefined4 param_2,int param_3)
 
 {
@@ -13,7 +15,7 @@ void indicate_sc_cb(undefined4 *param_1,undefined4 param_2,int param_3)
   }
   DAT_2001095e = DAT_2001095e + 1;
   if (DAT_2001095e < 5) {
-    GLOBAL_STATE.sem_8.count = GLOBAL_STATE.sem_8.count | 4;
+    _ancs_discovery_flags = _ancs_discovery_flags | 4;
     discover_ancs((bt_conn *)*param_1,1);
     return;
   }

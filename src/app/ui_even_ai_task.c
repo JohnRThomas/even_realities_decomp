@@ -43,7 +43,7 @@ int ui_even_ai_task(int param_1,undefined4 param_2,int param_3)
   undefined4 extraout_r2_06;
   uint uVar17;
   undefined4 *puVar18;
-  undefined1 *puVar19;
+  byte *pbVar19;
   int iVar20;
   char *pcVar21;
   int *piVar22;
@@ -55,7 +55,7 @@ int ui_even_ai_task(int param_1,undefined4 param_2,int param_3)
   
   pGVar5 = __get_dashboard_state();
   bVar2 = get_current_language();
-  puVar18 = (undefined4 *)(uint)(byte)pGVar5->field_0xef;
+  puVar18 = (undefined4 *)(uint)(byte)pGVar5->field20_0xc8[0x27];
   bVar24 = puVar18 != (undefined4 *)&DAT_00000007;
   uVar15 = extraout_r2;
   if (bVar24) {
@@ -104,7 +104,7 @@ int ui_even_ai_task(int param_1,undefined4 param_2,int param_3)
         }
       }
       uVar15 = FUN_000809d0();
-      if ((byte)pGVar5->field_0xef < 0xc) {
+      if ((byte)pGVar5->field20_0xc8[0x27] < 0xc) {
         gui_screen_clear(uVar15,extraout_r1,extraout_r2_03);
       }
       iVar10 = 0;
@@ -122,7 +122,7 @@ int ui_even_ai_task(int param_1,undefined4 param_2,int param_3)
       FUN_00045444();
       iVar7 = FUN_00045428();
       do {
-        uVar6 = (uint)(byte)pGVar5->field_0xef;
+        uVar6 = (uint)(byte)pGVar5->field20_0xc8[0x27];
         if (uVar6 == 0xb) {
           iVar7 = FUN_000809e2();
           uVar3 = FUN_00080a3a();
@@ -162,7 +162,8 @@ LAB_0003e42a:
           if (uVar6 != 0x10) {
             return iVar7;
           }
-          memcpy(&DAT_2001c4e9,&pGVar5->field_0xf6,(uint)*(ushort *)&pGVar5->field_0x2d6);
+          memcpy(&DAT_2001c4e9,pGVar5->field20_0xc8 + 0x2e,
+                 (uint)*(ushort *)(pGVar5->field20_0xc8 + 0x20e));
           iVar7 = FUN_000809e2();
           uVar3 = FUN_00080a3a();
           iVar11 = FUN_000809e2();
@@ -238,10 +239,10 @@ LAB_0003e5c8:
   if ((char)DAT_2001c6c9 != '\x01') {
     return 0;
   }
-  puVar19 = &pGVar5->field_0xef;
+  pbVar19 = pGVar5->field20_0xc8 + 0x27;
   if (param_3 != 1) {
     if (param_3 == 0) {
-      FUN_0003e10c(puVar19);
+      FUN_0003e10c(pbVar19);
       return 0;
     }
     if (param_3 != 2) {
@@ -263,29 +264,31 @@ LAB_0003e5c8:
   timeout.ticks._4_4_ = 0xffffffff;
   timeout.ticks._0_4_ = extraout_r1_02;
   z_impl_k_mutex_lock(&k_mutex_2000851c,timeout);
-  cVar1 = pGVar5->field_0xf0;
+  cVar1 = pGVar5->field20_0xc8[0x28];
   iVar7 = z_impl_k_mutex_unlock(&k_mutex_2000851c);
-  uVar6 = (uint)(byte)pGVar5->field_0xef;
+  uVar6 = (uint)(byte)pGVar5->field20_0xc8[0x27];
   if (uVar6 == 7) {
     if ((DAT_200024f0 == 0xffffffff) && (cVar1 == '\x03')) {
-      DAT_200024f0 = (uint)(byte)pGVar5->field_0xf5;
+      DAT_200024f0 = (uint)(byte)pGVar5->field20_0xc8[0x2d];
       iVar7 = 0;
       FUN_00045428();
       do {
-        memcpy(&DAT_2001c4e9,&pGVar5->field_0xf6,(uint)*(ushort *)&pGVar5->field_0x2d6);
+        memcpy(&DAT_2001c4e9,pGVar5->field20_0xc8 + 0x2e,
+               (uint)*(ushort *)(pGVar5->field20_0xc8 + 0x20e));
         iVar10 = FUN_000809e2();
         uVar3 = FUN_00080a3a();
         iVar11 = FUN_000809e2();
         uVar4 = FUN_00080a3a();
         gui_utf_draw(0,&DAT_2001c4e9,0,iVar10 + 0x58,(uint)uVar3,iVar11 + 0x230,uVar4 + 0x88,5,0,0,
                      (undefined *)0x0,0);
-        if (pGVar5->field_0xf4 != '\x01') {
+        if (pGVar5->field20_0xc8[0x2c] != '\x01') {
           iVar10 = FUN_000809e2();
           uVar3 = FUN_00080a3a();
           iVar11 = FUN_000809e2();
           uVar4 = FUN_00080a3a();
           gui_verticalLine_process_bar
-                    (iVar10 + 0x23c,(uint)uVar3,iVar11 + 0x23c,uVar4 + 0x88,1,pGVar5->field_0xf3);
+                    (iVar10 + 0x23c,(uint)uVar3,iVar11 + 0x23c,uVar4 + 0x88,1,
+                     pGVar5->field20_0xc8[0x2b]);
         }
         uVar6 = 0;
         do {
@@ -323,7 +326,7 @@ LAB_0003e5c8:
   else {
     if (cVar1 == '\x04') {
 LAB_0003e67a:
-      DAT_200024f0 = (uint)(byte)pGVar5->field_0xf5;
+      DAT_200024f0 = (uint)(byte)pGVar5->field20_0xc8[0x2d];
       iVar7 = 0x640;
       pGVar8 = __get_dashboard_state();
       piVar22 = &(pGVar8->jdb_panel_context).field9_0x24;
@@ -356,9 +359,9 @@ LAB_0003e67a:
         iVar7 = 0x500;
       }
       _clean_fb_data(piVar22,0,0,0x10,0x280,0xb8);
-      FUN_0003e10c(puVar19);
+      FUN_0003e10c(pbVar19);
       iVar7 = FUN_00045428();
-      uVar6 = (uint)(byte)pGVar5->field_0xef;
+      uVar6 = (uint)(byte)pGVar5->field20_0xc8[0x27];
       if (uVar6 < 6) {
         iVar7 = FUN_000809e2();
         uVar3 = FUN_00080a3a();
@@ -383,7 +386,8 @@ LAB_0003e67a:
             if (uVar6 != 0x10) {
               return iVar7;
             }
-            memcpy(&DAT_2001c4e9,&pGVar5->field_0xf6,(uint)*(ushort *)&pGVar5->field_0x2d6);
+            memcpy(&DAT_2001c4e9,pGVar5->field20_0xc8 + 0x2e,
+                   (uint)*(ushort *)(pGVar5->field20_0xc8 + 0x20e));
             iVar7 = FUN_000809e2();
             uVar3 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
@@ -392,21 +396,22 @@ LAB_0003e67a:
                          (undefined *)0x0,0);
           }
           else {
-            memcpy(&DAT_2001c4e9,&pGVar5->field_0xf6,(uint)*(ushort *)&pGVar5->field_0x2d6);
+            memcpy(&DAT_2001c4e9,pGVar5->field20_0xc8 + 0x2e,
+                   (uint)*(ushort *)(pGVar5->field20_0xc8 + 0x20e));
             iVar7 = FUN_000809e2();
             uVar3 = FUN_00080a3a();
             iVar10 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             gui_utf_draw(0,&DAT_2001c4e9,0,iVar7 + 0x58,(uint)uVar3,iVar10 + 0x230,uVar4 + 0x88,5,0,
                          0,(undefined *)0x0,0);
-            if (pGVar5->field_0xf4 != '\x01') {
+            if (pGVar5->field20_0xc8[0x2c] != '\x01') {
               iVar7 = FUN_000809e2();
               uVar3 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar4 = FUN_00080a3a();
               gui_verticalLine_process_bar
-                        (iVar7 + 0x23c,(uint)uVar3,iVar10 + 0x23c,uVar4 + 0x88,1,pGVar5->field_0xf3)
-              ;
+                        (iVar7 + 0x23c,(uint)uVar3,iVar10 + 0x23c,uVar4 + 0x88,1,
+                         pGVar5->field20_0xc8[0x2b]);
             }
           }
           goto LAB_0003e75a;
@@ -461,7 +466,7 @@ LAB_0003e75a:
                    iVar11 + 0x230,uVar3 + 0x88);
       } while (iVar7 != 8);
       FUN_0004540c();
-      FUN_0003e10c(puVar19);
+      FUN_0003e10c(pbVar19);
       DAT_2000a9b8 = 1;
       return 0;
     }
@@ -511,7 +516,8 @@ LAB_0003e94e:
       if (uVar6 != 0x10) {
         return iVar7;
       }
-      memcpy(&DAT_2001c4e9,&pGVar5->field_0xf6,(uint)*(ushort *)&pGVar5->field_0x2d6);
+      memcpy(&DAT_2001c4e9,pGVar5->field20_0xc8 + 0x2e,
+             (uint)*(ushort *)(pGVar5->field20_0xc8 + 0x20e));
       iVar7 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar10 = FUN_000809e2();
@@ -533,8 +539,8 @@ LAB_0003e94e:
     }
   }
   memset(&DAT_2001c4e9,0,0x1e0);
-  memcpy(&DAT_2001c4e9,&pGVar5->field_0xf6,(uint)*(ushort *)&pGVar5->field_0x2d6);
-  if ((1 < (byte)pGVar5->field_0xef - 8) && (DAT_2000a9b4 != 0)) {
+  memcpy(&DAT_2001c4e9,pGVar5->field20_0xc8 + 0x2e,(uint)*(ushort *)(pGVar5->field20_0xc8 + 0x20e));
+  if ((1 < (byte)pGVar5->field20_0xc8[0x27] - 8) && (DAT_2000a9b4 != 0)) {
     DAT_2001c4e8 = 1;
     iVar7 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
@@ -577,13 +583,13 @@ LAB_0003ed84:
     DAT_2000a9b4 = 1;
   }
 LAB_0003edd4:
-  if (pGVar5->field_0xf4 != '\x01') {
+  if (pGVar5->field20_0xc8[0x2c] != '\x01') {
     iVar7 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
     iVar10 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     gui_verticalLine_process_bar
-              (iVar7 + 0x23c,(uint)uVar3,iVar10 + 0x23c,uVar4 + 0x88,1,pGVar5->field_0xf3);
+              (iVar7 + 0x23c,(uint)uVar3,iVar10 + 0x23c,uVar4 + 0x88,1,pGVar5->field20_0xc8[0x2b]);
   }
   DAT_2000a9b8 = 1;
   return 0;

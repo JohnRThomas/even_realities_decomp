@@ -26,8 +26,8 @@ undefined4 register_ipc_service_recv_callback(byte *param_1)
       }
       else {
         ble_printk("%s(): ipc_service_register(%d,%s) %d,total must < %d\n",
-                   "register_ipc_service_recv_callback",(uint)*param_1,*(undefined4 *)(param_1 + 4))
-        ;
+                   "register_ipc_service_recv_callback",(uint)*param_1,*(undefined4 *)(param_1 + 4),
+                   iVar3,0x16);
       }
     }
     uVar2 = 0xffffffff;

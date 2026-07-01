@@ -25,7 +25,7 @@ undefined4 onboarding_ble_process(int param_1,int param_2,undefined2 *param_3,un
       }
       else {
         ble_printk("%s(): ble rcv unknown onboarding action:%d\n","onboarding_ble_process",
-                   (uint)*(byte *)((int)param_3 + 1),BLE_DEBUG);
+                   (uint)*(byte *)((int)param_3 + 1),BLE_DEBUG,param_4);
       }
     }
     uVar8 = 3;

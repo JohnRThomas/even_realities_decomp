@@ -8,7 +8,7 @@
 void FUN_00019384(void)
 
 {
-  FUN_0008307e(&GLOBAL_STATE.sem_8.poll_events);
+  FUN_0008307e(&DAT_20006c9c);
   return;
 }
 

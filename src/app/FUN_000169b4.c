@@ -8,7 +8,7 @@
 undefined1 FUN_000169b4(void)
 
 {
-  return *(undefined1 *)(GLOBAL_STATE._0_4_ + 1);
+  return GLOBAL_STATE->field_0x1;
 }
 
 

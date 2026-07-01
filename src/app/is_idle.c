@@ -14,7 +14,7 @@ bool __is_idle(void)
   pGVar1 = __get_dashboard_state();
   if (((*(int *)pGVar1->___glasses_state == 0) &&
       (pGVar1 = __get_dashboard_state(), *(char *)(pGVar1->___glasses_state + 4) == 0x1)) &&
-     (pGVar1 = __get_dashboard_state(), pGVar1->field_0xd5 == 0x0)) {
+     (pGVar1 = __get_dashboard_state(), pGVar1->field20_0xc8[0xd] == 0x0)) {
     pGVar1 = __get_dashboard_state();
     bVar2 = pGVar1->field_0xfea == '\x01';
   }

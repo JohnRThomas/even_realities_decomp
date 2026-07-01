@@ -35,16 +35,16 @@ void __get_msg_show_state(void)
     pGVar3 = __get_dashboard_state();
     iVar4 = FUN_0002df54((uint)bVar1,(uint)(byte)pGVar3->field_0x10d7);
     pGVar3 = __get_dashboard_state();
-    pGVar3->field_0xdb = (char)iVar4;
+    pGVar3->field20_0xc8[0x13] = (char)iVar4;
   }
   pGVar3 = __get_dashboard_state();
   uVar5 = FUN_00035310();
-  pGVar3->field_0xdd = (char)uVar5;
+  pGVar3->field20_0xc8[0x15] = (char)uVar5;
   pGVar3 = __get_dashboard_state();
-  if (pGVar3->field_0xdd == '\0') {
+  if (pGVar3->field20_0xc8[0x15] == '\0') {
     FUN_00035abc(0);
     pGVar3 = __get_dashboard_state();
-    if ((pGVar3->field_0xd5 != '\x01') &&
+    if ((pGVar3->field20_0xc8[0xd] != '\x01') &&
        (pGVar3 = __get_dashboard_state(), *(char *)&pGVar3->imu_fusion_context == '\x02')) {
       pGVar3 = __get_dashboard_state();
       trigger_screen_state_change("IMU:wakeup:dashboard",(int)pGVar3,1,extraout_r3_00);
@@ -52,7 +52,7 @@ void __get_msg_show_state(void)
     pGVar3 = __get_dashboard_state();
     if (*(char *)pGVar3 == '\x01') {
       pGVar3 = __get_dashboard_state();
-      pGVar3->field_0xdb = 0;
+      pGVar3->field20_0xc8[0x13] = 0;
     }
   }
   else {

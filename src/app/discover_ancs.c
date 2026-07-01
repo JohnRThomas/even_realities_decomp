@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void discover_ancs(bt_conn *param_1,int param_2)
 
 {
@@ -23,12 +25,12 @@ void discover_ancs(bt_conn *param_1,int param_2)
   
   pGVar2 = __get_dashboard_state();
   if (((*(char *)pGVar2 == '\x02') && (cVar1 = FUN_00033d5c(), cVar1 != '\x01')) &&
-     (uVar7 = GLOBAL_STATE.sem_8.count | 1, iVar5 = GLOBAL_STATE.sem_8.count << 0x1f,
-     GLOBAL_STATE.sem_8.count = uVar7, -1 < iVar5)) {
+     (uVar7 = _ancs_discovery_flags | 1, iVar5 = _ancs_discovery_flags << 0x1f,
+     _ancs_discovery_flags = uVar7, -1 < iVar5)) {
     if (((int)(uVar7 << 0x1e) < 0) ||
        ((param_2 != 0 &&
-        (aVar3 = atomic_and((atomic_t *)&GLOBAL_STATE.sem_8.count,-5), -1 < aVar3 << 0x1d)))) {
-      atomic_and((atomic_t *)&GLOBAL_STATE.sem_8.count,-2);
+        (aVar3 = atomic_and((atomic_t *)&ancs_discovery_flags,-5), -1 < aVar3 << 0x1d)))) {
+      atomic_and((atomic_t *)&ancs_discovery_flags,-2);
       return;
     }
     ppuVar8 = &PTR_DAT_0008bb38;
@@ -42,10 +44,10 @@ void discover_ancs(bt_conn *param_1,int param_2)
       pbVar9 = pbVar9 + 8;
     } while (ppuVar8 != (undefined **)&DAT_0008bb48);
     pbVar9->type = 'y';
-    iVar5 = bt_gatt_dm_start(param_1,local_2c,&discover_ancs_cb,&GLOBAL_STATE.field_0xec);
+    iVar5 = bt_gatt_dm_start(param_1,local_2c,&discover_ancs_cb,&DAT_20006cc8);
     if (iVar5 != 0) {
       printk("Failed to start discovery for ANCS (err %d)\n",iVar5);
-      atomic_and((atomic_t *)&GLOBAL_STATE.sem_8.count,-2);
+      atomic_and((atomic_t *)&ancs_discovery_flags,-2);
     }
   }
   return;

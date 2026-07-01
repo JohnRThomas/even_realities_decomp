@@ -30,11 +30,11 @@ undefined4 FUN_00038270(int param_1,undefined4 param_2,int param_3,int param_4)
   else if (DAT_2001c4e0 == '\0') {
     pGVar1 = __get_dashboard_state();
     pGVar2 = (GlassesState *)&pGVar1->field_0x1000;
-    uVar5 = (uint)(ushort)pGVar1->field2765_0x108a;
+    uVar5 = (uint)(ushort)pGVar1->field1214_0x108a;
     uVar3 = extraout_r1;
     if (uVar5 == DAT_200024e8) {
       pGVar2 = __get_dashboard_state();
-      uVar5 = (uint)(ushort)pGVar2->field2766_0x108c;
+      uVar5 = (uint)(ushort)pGVar2->field1215_0x108c;
       uVar3 = extraout_r1_00;
       if (uVar5 == DAT_200024e4) {
         return 0;
@@ -49,57 +49,57 @@ undefined4 FUN_00038270(int param_1,undefined4 param_2,int param_3,int param_4)
       switch(uVar5 & 0xff) {
       case 1:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 8;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 8;
         goto LAB_00038370;
       case 2:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 8;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 8;
         goto LAB_00038390;
       case 3:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 0x11e;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 0x11e;
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 8;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 8;
         goto LAB_000383c2;
       case 4:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 0x11e;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 0x11e;
 LAB_00038370:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 0x42;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 0x42;
 LAB_000383c2:
         puVar4 = &DAT_000dbb75;
         break;
       case 5:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 0x11e;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 0x11e;
 LAB_00038390:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 0x7b;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 0x7b;
         goto LAB_000383c2;
       case 6:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 0x232;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 0x232;
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 8;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 8;
         break;
       case 7:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 0x232;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 0x232;
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 0x42;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 0x42;
         break;
       case 8:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 0x232;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 0x232;
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 0x7b;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 0x7b;
         break;
       default:
         pGVar1 = __get_dashboard_state();
-        DAT_200024e8 = (ushort)pGVar1->field2765_0x108a + 8;
+        DAT_200024e8 = (ushort)pGVar1->field1214_0x108a + 8;
         pGVar1 = __get_dashboard_state();
-        DAT_200024e4 = (ushort)pGVar1->field2766_0x108c + 8;
+        DAT_200024e4 = (ushort)pGVar1->field1215_0x108c + 8;
         puVar4 = &DAT_000dbb75;
       }
       __copy_to_frame_buffer(param_1 + 0x24,puVar4,local_28 / 2,local_24,DAT_200024e8,DAT_200024e4);

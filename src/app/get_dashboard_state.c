@@ -8,7 +8,7 @@
 GlassesState * __get_dashboard_state(void)
 
 {
-  return (GlassesState *)GLOBAL_STATE._0_4_;
+  return GLOBAL_STATE;
 }
 
 

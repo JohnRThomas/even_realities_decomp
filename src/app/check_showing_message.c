@@ -35,7 +35,7 @@ void __check_showing_message(void)
     if ((int)uVar3 < 3000) {
       __g_arrMsgContent_count();
       pGVar4 = __get_dashboard_state();
-      if (pGVar4->field_0xdd == '\0') {
+      if (pGVar4->field20_0xc8[0x15] == '\0') {
         FUN_00035abc(0);
         return;
       }

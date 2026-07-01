@@ -24,7 +24,7 @@ int _clean_fb_data(int *buffer,int param_2,int x_start,int y_start,int x_end,int
       }
       else {
         ble_printk("%s(): clean frame buffer parameter error!!!\n","_clean_fb_data",x_start,
-                   BLE_DEBUG);
+                   BLE_DEBUG,y_start);
       }
     }
     iVar2 = -1;

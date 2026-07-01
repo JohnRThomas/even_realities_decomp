@@ -133,7 +133,7 @@ LAB_0003f2f8:
           pGVar9 = __get_dashboard_state();
           uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48);
           if ((*(char *)(*(int *)&pGVar9->field_0x1000 + 1) == '\x01') &&
-             (uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48), pGVar7->field_0xf0 == '\x01')) {
+             (uVar22 = CONCAT44(DAT_20004b4c,DAT_20004b48), pGVar7->field20_0xc8[0x28] == '\x01')) {
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
                 printk("%s(): setp1: received teleprompter command.\n");
@@ -178,7 +178,7 @@ LAB_0003f2f8:
             DAT_20004b50 = (int)uVar22;
             DAT_20004b58 = 0;
             DAT_20004b41 = '\n';
-            DAT_20004b65 = pGVar7->field_0xfb;
+            DAT_20004b65 = pGVar7->field20_0xc8[0x33];
             DAT_2000a9d0 = 0;
             DAT_2000a9cc = 0;
             DAT_2000a9c8 = 0;
@@ -189,14 +189,14 @@ LAB_0003f2f8:
             timeout.ticks._4_4_ = 0xffffffff;
             timeout.ticks._0_4_ = extraout_r1_05;
             z_impl_k_mutex_lock(&k_mutex_2000851c,timeout);
-            memcpy(&DAT_20004b70,&pGVar7->field_0x106,0x200);
-            bVar3 = pGVar7->field_0xfc;
-            uVar4 = *(ushort *)&pGVar7->field_0xfd;
-            DAT_20004b64 = pGVar7->field_0xef;
-            DAT_20004b65 = pGVar7->field_0xfb;
+            memcpy(&DAT_20004b70,pGVar7->field20_0xc8 + 0x3e,0x200);
+            bVar3 = pGVar7->field20_0xc8[0x34];
+            uVar4 = *(ushort *)(pGVar7->field20_0xc8 + 0x35);
+            DAT_20004b64 = pGVar7->field20_0xc8[0x27];
+            DAT_20004b65 = pGVar7->field20_0xc8[0x33];
             z_impl_k_mutex_unlock(&k_mutex_2000851c);
             uVar22 = FUN_00080894();
-            uVar10 = (char)pGVar7->field_0xfb * 1000;
+            uVar10 = (char)pGVar7->field20_0xc8[0x33] * 1000;
             uVar23 = uVar10 + (uint)uVar22;
             DAT_20004b68 = uVar23 - 0x15e;
             DAT_20004b6c = (int)((ulonglong)uVar22 >> 0x20) +
@@ -287,7 +287,7 @@ LAB_0003f2a0:
                      extraout_r2,BLE_DEBUG);
         }
       }
-      if ((byte)pGVar7->field_0xf9 - 2 < 2) {
+      if ((byte)pGVar7->field20_0xc8[0x31] - 2 < 2) {
         uVar22 = FUN_00080894();
         DAT_20004b4c = (int)((ulonglong)uVar22 >> 0x20);
         DAT_20004b48 = (uint)uVar22;
@@ -531,11 +531,11 @@ LAB_0003f7c6:
       timeout_00.ticks._4_4_ = 0xffffffff;
       timeout_00.ticks._0_4_ = extraout_r1_11;
       z_impl_k_mutex_lock(&k_mutex_2000851c,timeout_00);
-      memcpy(&DAT_20004b70,&pGVar7->field_0x106,0x200);
-      bVar3 = pGVar7->field_0xfc;
-      cVar1 = pGVar7->field_0xff;
-      uVar4 = *(ushort *)&pGVar7->field_0xfd;
-      iVar11 = *(int *)&pGVar7->field_0x100;
+      memcpy(&DAT_20004b70,pGVar7->field20_0xc8 + 0x3e,0x200);
+      bVar3 = pGVar7->field20_0xc8[0x34];
+      cVar1 = pGVar7->field20_0xc8[0x37];
+      uVar4 = *(ushort *)(pGVar7->field20_0xc8 + 0x35);
+      iVar11 = *(int *)(pGVar7->field20_0xc8 + 0x38);
       z_impl_k_mutex_unlock(&k_mutex_2000851c);
       if (DAT_20010f05 == '\x01') {
         DAT_20010f05 = '\0';

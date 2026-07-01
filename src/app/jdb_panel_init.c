@@ -14,8 +14,8 @@ int jdb_panel_init(jdb_panel_context *panel_context)
   undefined4 extraout_r2;
   undefined8 uVar3;
   
-  panel_context->field849_0x378 = &panel_context[-1].field_0x320;
-  FUN_00080e3a();
+  panel_context->spi_callbacks = (spi_interface_t *)&panel_context[-1].field_0x320;
+  panel_init();
   uVar3 = set_brightness_to_panel_reg((uint)panel_context->panel_brightness_level,extraout_r1);
   uVar1 = spi_read_id((int)uVar3,(int)((ulonglong)uVar3 >> 0x20),extraout_r2);
   JDB_PANEL_ID = (uint)uVar1;

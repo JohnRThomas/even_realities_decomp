@@ -19,7 +19,7 @@ undefined4 jbd_panel_resume(int param_1,undefined4 param_2,undefined4 param_3)
       ble_printk("%s(): release from deep power down\n","jbd_panel_resume",param_3,BLE_DEBUG);
     }
   }
-  FUN_00080e3a();
+  panel_init();
   set_brightness_to_panel_reg((uint)*(byte *)(param_1 + 0x369),extraout_r1);
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {

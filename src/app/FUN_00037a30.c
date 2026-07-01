@@ -35,9 +35,9 @@ cJSON_bool FUN_00037a30(cJSON *item,parse_buffer *input_buffer)
   }
   pGVar2 = __get_dashboard_state();
   iVar5 = 0;
-  local_2c = *(int *)&pGVar2->field_0xef;
-  input_buffer_00 = *(parse_buffer **)&pGVar2->field_0xf3;
-  local_24 = *(undefined4 *)&pGVar2->field_0xf7;
+  local_2c = *(int *)(pGVar2->field20_0xc8 + 0x27);
+  input_buffer_00 = *(parse_buffer **)(pGVar2->field20_0xc8 + 0x2b);
+  local_24 = *(undefined4 *)(pGVar2->field20_0xc8 + 0x2f);
   ppStack_28 = input_buffer_00;
   do {
     cVar3 = FUN_0004d328((cJSON *)&local_38,input_buffer_00);

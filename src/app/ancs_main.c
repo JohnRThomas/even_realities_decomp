@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 undefined4 ancs_main(void *param_1,undefined4 param_2,undefined4 param_3)
 
 {
@@ -18,7 +20,7 @@ undefined4 ancs_main(void *param_1,undefined4 param_2,undefined4 param_3)
   int iVar4;
   int iVar5;
   
-  GLOBAL_STATE.sem_8.limit = (uint)param_1;
+  _DAT_20006c98 = param_1;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
       printk("%s(): Starting Apple Notification Center Service client\n\n");

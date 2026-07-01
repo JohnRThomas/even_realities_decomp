@@ -19,7 +19,7 @@ void FUN_000344c8(void)
     return;
   }
   pGVar1 = __get_dashboard_state();
-  if (299 < (uint)pGVar1->field2801_0x10b0) {
+  if (299 < (uint)pGVar1->field1250_0x10b0) {
     return;
   }
   is_in_box = get_box_status_by_type(IN_BOX);

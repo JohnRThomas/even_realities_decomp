@@ -19,7 +19,7 @@ undefined4 prompt_info_reflash(void)
   undefined4 extraout_r2;
   
   pGVar4 = __get_dashboard_state();
-  bVar1 = pGVar4->field_0xf0;
+  bVar1 = pGVar4->field20_0xc8[0x28];
   if (2 < bVar1) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {

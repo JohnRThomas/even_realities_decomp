@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void ancs_connected(bt_conn *param_1,int param_2)
 
 {
@@ -29,7 +31,7 @@ void ancs_connected(bt_conn *param_1,int param_2)
     cVar3 = FUN_00033d5c();
     if ((cVar3 == '\0') && (pGVar4 = __get_dashboard_state(), pGVar4->field_0x1089 == '\0')) {
       pGVar4 = __get_dashboard_state();
-      iVar5 = memcmp(pGVar4->field2762_0x1080 + 1,addr,7);
+      iVar5 = memcmp(pGVar4->field1211_0x1080 + 1,addr,7);
       if (iVar5 != 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
@@ -52,9 +54,9 @@ void ancs_connected(bt_conn *param_1,int param_2)
     pGVar4 = __get_dashboard_state();
     uVar6 = FUN_0007f370();
     *(uint *)&pGVar4->field_0xae8 = uVar6;
-    uVar6 = GLOBAL_STATE.sem_8.limit;
-    *(undefined1 *)(GLOBAL_STATE.sem_8.limit + 0x365) = 1;
-    *(undefined1 *)(uVar6 + 0x367) = 1;
+    iVar5 = _DAT_20006c98;
+    *(undefined1 *)(_DAT_20006c98 + 0x365) = 1;
+    *(undefined1 *)(iVar5 + 0x367) = 1;
     DAT_20007ef4 = param_1;
   }
   else if (0 < LOG_LEVEL) {

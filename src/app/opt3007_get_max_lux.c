@@ -33,7 +33,8 @@ uint opt3007_get_max_lux(undefined4 param_1,undefined4 param_2,undefined4 param_
         else {
           pGVar3 = __get_dashboard_state();
           ble_printk("%s(): opt3007_get_max_lux %d %f luminance_curve_a0 %d\n","opt3007_get_max_lux"
-                     ,uVar2,*(undefined4 *)&pGVar3->field_0xfb4);
+                     ,uVar2,*(undefined4 *)&pGVar3->field_0xfb4,uVar4,
+                     *(undefined4 *)&pGVar3->field_0xfb4);
         }
       }
       uVar2 = _cast_double_to_int((uint)uVar4,(uint)(uVar4 >> 0x20));

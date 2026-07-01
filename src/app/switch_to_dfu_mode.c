@@ -17,7 +17,7 @@ void switch_to_dfu_mode(k_sem *param_1)
     k_sem_give(param_1);
     return;
   }
-  iVar2 = (**(code **)(GLOBAL_STATE._0_4_ + 0x1054))("runtime_mode",&DAT_2001095c,1);
+  iVar2 = (*(GLOBAL_STATE->settings_ctx).write_cb)("runtime_mode",&DAT_2001095c,1);
   if (iVar2 == 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
