@@ -19,7 +19,7 @@ void __normal_g_arrMsgContent(void)
     }
     else {
       ble_printk("normal g_arrMsgContent[%d].uidTail is %d %d recvTime %d\n",pcVar1,puVar2[2],
-                 puVar2[1]);
+                 puVar2[1],*puVar2);
     }
     pcVar1 = pcVar1 + 1;
     puVar2 = puVar2 + 0x6d;

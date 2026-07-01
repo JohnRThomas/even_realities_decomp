@@ -28,17 +28,17 @@ void bt_ancs_notification_source_handler(bt_ancs_client *client,int err,undefine
         z_impl_k_sleep((k_timeout_t)0x28000);
       }
       pGVar3 = __get_dashboard_state();
-      if (((((pGVar3->field_0xd5 != '\v') &&
-            (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\n')) &&
-           (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\t')) &&
-          (((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\f' &&
-            (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x10')) &&
-           ((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x14' &&
-            ((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x0e' &&
-             (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x0f')))))))) &&
-         ((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x11' &&
-          ((((pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x12' &&
-             (pGVar3 = __get_dashboard_state(), pGVar3->field_0xd5 != '\x13')) &&
+      if (((((pGVar3->field20_0xc8[0xd] != '\v') &&
+            (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\n')) &&
+           (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\t')) &&
+          (((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\f' &&
+            (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x10')) &&
+           ((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x14' &&
+            ((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x0e' &&
+             (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x0f')))))))) &&
+         ((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x11' &&
+          ((((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x12' &&
+             (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x13')) &&
             (*(byte *)(param_3 + 1) < 3)) &&
            (iVar4 = enqueue_uid_drop_package_(param_3,extraout_r1,extraout_r2), iVar4 == 0)))))) {
         if (0 < LOG_LEVEL) {
@@ -50,7 +50,7 @@ void bt_ancs_notification_source_handler(bt_ancs_client *client,int err,undefine
           else {
             ble_printk("%s(): ============================>bt_ancs_get_attr_req_sem %d count %d notif->evt_id %d\n"
                        ,"bt_ancs_notification_source_handler",*param_3,
-                       *(undefined4 *)(iVar1 + 0x208));
+                       *(undefined4 *)(iVar1 + 0x208),(uint)*(byte *)(param_3 + 1));
           }
         }
         memset((void *)(iVar1 + 0x34),0,0x1b4);

@@ -55,7 +55,7 @@ void check_disp_quicknote(undefined4 param_1,uint param_2)
     **(undefined1 **)&pGVar1->field_0x1034 = 0;
     pGVar1 = __get_dashboard_state();
     uVar3 = extraout_r2;
-    if (pGVar1->field_0xd5 != '\f') {
+    if (pGVar1->field20_0xc8[0xd] != '\f') {
       local_14 = CONCAT22(local_14._2_2_,0x101);
       pGVar1 = __get_dashboard_state();
       uVar2 = sync_to_slave((char *)pGVar1,6,&local_14,2);
@@ -63,7 +63,7 @@ void check_disp_quicknote(undefined4 param_1,uint param_2)
         pGVar1 = __get_dashboard_state();
         FUN_00080224((int)pGVar1,0);
         pGVar1 = __get_dashboard_state();
-        pGVar1->field_0xec = 0xc;
+        pGVar1->field20_0xc8[0x24] = 0xc;
         pGVar1 = __get_dashboard_state();
         *(undefined1 *)(*(int *)&pGVar1->field_0x1034 + 1) = 1;
         pGVar1 = __get_dashboard_state();
@@ -105,7 +105,7 @@ LAB_00029e06:
       **(undefined1 **)&pGVar1->field_0x1034 = 0;
       pGVar1 = __get_dashboard_state();
       uVar3 = extraout_r2_01;
-      if (pGVar1->field_0xd5 == '\f') goto LAB_00029e06;
+      if (pGVar1->field20_0xc8[0xd] == '\f') goto LAB_00029e06;
       local_14 = CONCAT22(local_14._2_2_,1);
       pGVar1 = __get_dashboard_state();
     }

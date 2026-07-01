@@ -22,7 +22,7 @@ void set_brightness_to_panel_reg(uint param_1,uint param_2)
     }
     else {
       ble_printk("%s(): set brightness level = %d\n","set_brightness_to_panel_reg",param_1,BLE_DEBUG
-                );
+                 ,param_1);
     }
   }
   __update_brightness_level_for_jdb_panel

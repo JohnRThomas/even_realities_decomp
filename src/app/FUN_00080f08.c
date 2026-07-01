@@ -17,12 +17,12 @@ void FUN_00080f08(int param_1,uint param_2)
   iVar2 = param_1 + (param_2 / 0xf000) * 0xf000;
   for (; param_1 != iVar2; param_1 = param_1 + 0xf000) {
     __lock_lcd_mutex(-1);
-    (**(code **)(pjVar1->field849_0x378 + 8))(pjVar1->field849_0x378,param_1,0xf000,local_24,1);
+    (*(code *)pjVar1->spi_callbacks->rx_tx)(pjVar1->spi_callbacks,param_1,0xf000,local_24,1);
     __unlock_lcd_mutex();
   }
   __lock_lcd_mutex(-1);
-  (**(code **)(pjVar1->field849_0x378 + 8))
-            (pjVar1->field849_0x378,param_1,param_2 % 0xf000,local_24,1);
+  (*(code *)pjVar1->spi_callbacks->rx_tx)(pjVar1->spi_callbacks,param_1,param_2 % 0xf000,local_24,1)
+  ;
   __unlock_lcd_mutex();
   return;
 }

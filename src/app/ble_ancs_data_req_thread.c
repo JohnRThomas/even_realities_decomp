@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
 
 {
@@ -72,7 +74,7 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
       timeout.ticks._4_4_ = 0xffffffff;
       timeout.ticks._0_4_ = uVar5;
       z_impl_k_sem_take((k_sem *)(param_1 + 0x200),timeout);
-      iVar2 = dequeue_uid((undefined4 *)&GLOBAL_STATE.sem_8,extraout_r1_01,extraout_r2_00);
+      iVar2 = dequeue_uid((undefined4 *)&DAT_20006c8c,extraout_r1_01,extraout_r2_00);
     } while (iVar2 != 0);
     sVar3 = 0;
     uVar4 = extraout_r1_02;
@@ -85,13 +87,12 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
       }
       else {
         ble_printk("%s(): !!!!!!!!!!!!!!get -> ancs_get_attr_req_sem %d evt_id %d\n",
-                   "ble_ancs_data_req_thread",GLOBAL_STATE.sem_8.wait_q.next,
-                   (uint)(byte)GLOBAL_STATE.sem_8.wait_q.prev);
+                   "ble_ancs_data_req_thread",_DAT_20006c8c,(uint)DAT_20006c90);
         sVar3 = extraout_r0;
         uVar4 = extraout_r1_03;
       }
     }
-    if ((byte)GLOBAL_STATE.sem_8.wait_q.prev < 2) {
+    if (DAT_20006c90 < 2) {
       request_ancs_attr_ext(sVar3,uVar4);
       uVar5 = extraout_r1_04;
       if (0 < LOG_LEVEL) {
@@ -113,7 +114,7 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
     }
     else {
       *(undefined4 *)(param_1 + 0x1e4) = 2;
-      *(void **)(param_1 + 0x3c) = GLOBAL_STATE.sem_8.wait_q.next;
+      *(undefined4 *)(param_1 + 0x3c) = _DAT_20006c8c;
       *(undefined1 *)(param_1 + 0x41) = 0;
       *(undefined1 *)(param_1 + 0x44) = 10;
       *(undefined1 *)(param_1 + 100) = 10;

@@ -11,9 +11,9 @@ void FUN_0007f41e(undefined1 param_1,undefined1 param_2)
   GlassesState *pGVar1;
   
   pGVar1 = __get_dashboard_state();
-  pGVar1->field_0xce = param_2;
+  pGVar1->field20_0xc8[6] = param_2;
   pGVar1 = __get_dashboard_state();
-  pGVar1->field_0xcc = param_1;
+  pGVar1->field20_0xc8[4] = param_1;
   return;
 }
 

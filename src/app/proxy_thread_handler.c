@@ -444,7 +444,7 @@ LAB_0004b8d8:
   case 7:
     pGVar5 = __get_dashboard_state();
     if (((pGVar5->field_0x1244 == '\x04') &&
-        (pGVar5 = __get_dashboard_state(), pGVar5->field_0xd5 == '\0')) &&
+        (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0xd] == '\0')) &&
        (pGVar5 = __get_dashboard_state(), *(char *)pGVar5 == '\x01')) {
       local_48._0_4_ = CONCAT22(local_48._2_2_,0x10a);
       iVar3 = 1;
@@ -472,7 +472,7 @@ LAB_0004b8d8:
       } while (iVar3 != 4);
     }
     pGVar5 = __get_dashboard_state();
-    if (((pGVar5->field_0xd5 == '\x06') &&
+    if (((pGVar5->field20_0xc8[0xd] == '\x06') &&
         ((pGVar5 = __get_dashboard_state(), pGVar5->field_0x1245 != '\0' ||
          (pGVar5 = __get_dashboard_state(), pGVar5->dashboard_ts->field_0x72 != '\0')))) &&
        (pGVar5 = __get_dashboard_state(), *(char *)pGVar5 == '\x01')) {

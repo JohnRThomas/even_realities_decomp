@@ -20,14 +20,14 @@ bool FUN_00028d2c(void)
     pGVar4 = __get_dashboard_state();
     if (*(char *)pGVar4 == '\x01') {
       if ((int)((uint)(byte)pGVar2->field_0x6de << 0x1f) < 0) {
-        pGVar1->field_0xe4 = pGVar1->field_0xe4 | 3;
+        pGVar1->field20_0xc8[0x1c] = pGVar1->field20_0xc8[0x1c] | 3;
       }
     }
     else {
       pGVar2->field_0x6de = pGVar2->field_0x6de | 1;
     }
   }
-  return (pGVar1->field_0xe4 & 3) == 3;
+  return (pGVar1->field20_0xc8[0x1c] & 3) == 3;
 }
 
 

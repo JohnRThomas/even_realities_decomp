@@ -20,7 +20,7 @@ undefined4 FUN_000496b0(int *param_1,int param_2)
   int iVar10;
   
   pGVar4 = __get_dashboard_state();
-  if (pGVar4->field_0xf1 == '\x01') {
+  if (pGVar4->field20_0xc8[0x29] == '\x01') {
     uVar5 = FUN_00080732();
     iVar6 = FUN_000809e2();
     uVar2 = FUN_00080a3a();
@@ -29,7 +29,7 @@ undefined4 FUN_000496b0(int *param_1,int param_2)
     pGVar8 = __get_dashboard_state();
     gui_clock_draw(uVar5,iVar6,uVar2 + 2,iVar7 + 0x50,uVar3 + 0x1d,3,
                    pGVar8->dashboard_ts->field_0x5e != '\x01');
-    bVar1 = pGVar4->field_0xf3;
+    bVar1 = pGVar4->field20_0xc8[0x2b];
     if ((bVar1 & 1) == 0) {
       FUN_00045444();
       iVar6 = FUN_000809e2();
@@ -59,8 +59,8 @@ undefined4 FUN_000496b0(int *param_1,int param_2)
     iVar7 = FUN_000809e2();
     uVar3 = FUN_00080a3a();
     gui_utf_draw_darkword_by_lines
-              (0,&pGVar4->field_0xf7,0,iVar6 + 0x58,(uint)uVar2,iVar7 + 0x240,uVar3 + 0x88,5,
-               pGVar4->field_0xf4,0,(undefined *)0x0,0);
+              (0,pGVar4->field20_0xc8 + 0x2f,0,iVar6 + 0x58,(uint)uVar2,iVar7 + 0x240,uVar3 + 0x88,5
+               ,pGVar4->field20_0xc8[0x2c],0,(undefined *)0x0,0);
   }
   return 0;
 }

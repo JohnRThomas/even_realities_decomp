@@ -69,7 +69,7 @@ void main(void)
   k_timeout_t timeout_00;
   undefined8 uVar17;
   undefined4 in_stack_ffffffcc;
-  undefined4 uVar8;
+  GlassesState *uVar8;
   undefined4 extraout_r2_02;
   
   FUN_0004d528();
@@ -121,7 +121,7 @@ void main(void)
   *(undefined4 *)&s->field_0xfe4 = 0xffffffff;
   *(undefined2 *)&s->field_0xfe8 = 0xffff;
   *(undefined1 *)s = 1;
-  GLOBAL_STATE._0_4_ = s;
+  GLOBAL_STATE = s;
   k_sem_init(&s->sem_0,1);
   k_sem_init((k_sem *)&s->sem_1,10);
   k_sem_init(&s->sem_2,1);
@@ -132,9 +132,9 @@ void main(void)
   k_sem_init(&s->sem_6,1);
   k_sem_init(&s->sem_7,1);
   k_sem_init(&s->sem_8,1);
-  uVar8 = GLOBAL_STATE._0_4_;
-  *(undefined1 *)(GLOBAL_STATE._0_4_ + 1) = 0xff;
-  *(undefined2 *)(uVar8 + 0x1070) = 0;
+  uVar8 = GLOBAL_STATE;
+  GLOBAL_STATE->field_0x1 = 0xff;
+  *(undefined2 *)&uVar8->field_0x1070 = 0;
   change_work_mode(0);
   buf = malloc(0x75);
   s->dashboard_ts = buf;
@@ -229,31 +229,31 @@ void main(void)
   if (buf_00 != (uint8_t *)0x0) {
     memset(buf_00,0,0x208);
   }
-  s->field2762_0x1080[1] = 0xff;
-  s->field2762_0x1080[2] = 0xff;
-  s->field2762_0x1080[3] = 0xff;
-  s->field2762_0x1080[4] = 0xff;
-  *(undefined4 *)(s->field2762_0x1080 + 4) = 0xffffffff;
-  *(undefined2 *)((int)&s->field2763_0x1087 + 1) = 0;
-  register_ipc_service_context(&s->ipc_service_context,s->field2762_0x1080 + 1,0x1081);
+  s->field1211_0x1080[1] = 0xff;
+  s->field1211_0x1080[2] = 0xff;
+  s->field1211_0x1080[3] = 0xff;
+  s->field1211_0x1080[4] = 0xff;
+  *(undefined4 *)(s->field1211_0x1080 + 4) = 0xffffffff;
+  *(undefined2 *)((int)&s->field1212_0x1087 + 1) = 0;
+  register_ipc_service_context(&s->ipc_service_context,s->field1211_0x1080 + 1,0x1081);
   s->field_0x6e4 = 1;
-  s->field1588_0x6e8 = "cpuapp-hw-id";
-  *(undefined4 *)&s->field_0x6ec = 0x1638d;
+  s->field53_0x6e8 = "cpuapp-hw-id";
+  *(undefined4 *)&s->local_ipc_recv_cb = 0x1638d;
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x6e4);
   s->field_0x6f0 = 6;
-  s->field1597_0x6f4 = "cpunet-esbm-cpu-sync";
-  *(undefined4 *)&s->field_0x6f8 = 0x16c6d;
+  s->field62_0x6f4 = "cpunet-esbm-cpu-sync";
+  *(undefined4 *)&s->esbm_recv_cb = 0x16c6d;
   s->field_0x6fc = 4;
-  s->field1606_0x700 = "cpunet-esbs";
-  *(undefined4 *)&s->field_0x704 = 0x158c5;
+  s->field71_0x700 = "cpunet-esbs";
+  *(undefined4 *)&s->esbs_recv_cb = 0x158c5;
   s->field_0x708 = 5;
-  s->field1615_0x70c = "cpunet-esbs-ctrl";
+  s->field80_0x70c = "cpunet-esbs-ctrl";
   *(undefined1 **)&s->field_0x710 = &LAB_0007f2b4_1;
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x6f0);
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x6fc);
   (*(code *)(s->ipc_service_context).ipc_service_recv_cb)(&s->field_0x708);
-  *(undefined4 *)&s->field_0xb24 = 0;
-  *(undefined4 *)&s->field_0xb28 = 0xa090804;
+  (s->spi_master_callbacks).is_initialized = 0;
+  (s->spi_master_callbacks).bus_id = 0xa090804;
   *(undefined2 *)&s->field_0xb2c = 0x200b;
   uVar17 = spi_master_register_context(&s->spi_master_callbacks);
   DEVICE_ROLE = button_init((int)uVar17,(int)((ulonglong)uVar17 >> 0x20),extraout_r2_00);
@@ -297,7 +297,7 @@ LAB_00017390:
   if (*(char *)s == '\x01') {
     *(undefined2 *)&s->field_0xfd0 = 0x601;
     s->field_0xfd2 = 3;
-    s->field_0xe4 = s->field_0xe4 | 4;
+    s->field20_0xc8[0x1c] = s->field20_0xc8[0x1c] | 4;
   }
   else if (*(char *)s == '\x02') {
     s->field_0xfd3 = 1;
@@ -320,7 +320,7 @@ LAB_00017458:
     }
   }
   else {
-    uVar17 = FUN_0001832c((undefined4 *)&s->field_0x77c);
+    uVar17 = FUN_0001832c((undefined4 *)&s->ble_context);
     if (*(char *)s == '\x01') {
       burial_point_record_info_init((int)uVar17,(int)((ulonglong)uVar17 >> 0x20),extraout_r2_03);
       duration_00.ticks._4_4_ = 0x1e0000;
@@ -362,7 +362,7 @@ LAB_00017458:
     }
   }
   get_settings_from_flash(s);
-  iVar13 = (**(code **)&s->field_0x77c)(&s->field_0x77c);
+  iVar13 = (**(code **)&s->ble_context)(&s->ble_context);
   if ((iVar13 != 0) && (1 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
       printk("%s(): [ble_context init] fail: 0x%x\n\n");

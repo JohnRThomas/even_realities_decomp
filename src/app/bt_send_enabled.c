@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void bt_send_enabled(int param_1)
 
 {
@@ -16,7 +18,7 @@ void bt_send_enabled(int param_1)
       ble_printk("%s(): status:%d\n\n","bt_send_enabled",param_1,BLE_DEBUG);
     }
   }
-  *(bool *)(GLOBAL_STATE._52_4_ + 0x366) = param_1 == 0;
+  *(bool *)(_DAT_20006c10 + 0x366) = param_1 == 0;
   return;
 }
 

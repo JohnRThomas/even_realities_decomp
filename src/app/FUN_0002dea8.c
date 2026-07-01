@@ -46,7 +46,7 @@ LAB_0002df12:
       DAT_20019a5b = 0;
       pGVar2 = __get_dashboard_state();
       uVar3 = FUN_00035310();
-      pGVar2->field_0xdd = (char)uVar3;
+      pGVar2->field20_0xc8[0x15] = (char)uVar3;
       DAT_20019a6d = 0;
       return 0;
     }

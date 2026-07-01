@@ -8,9 +8,9 @@
 void FUN_00018ba8(void)
 
 {
-  atomic_and((atomic_t *)&GLOBAL_STATE.sem_8.count,-2);
-  atomic_and((atomic_t *)&GLOBAL_STATE.sem_8.count,-3);
-  atomic_and((atomic_t *)&GLOBAL_STATE.sem_8.count,-5);
+  atomic_and((atomic_t *)&ancs_discovery_flags,-2);
+  atomic_and((atomic_t *)&ancs_discovery_flags,-3);
+  atomic_and((atomic_t *)&ancs_discovery_flags,-5);
   return;
 }
 

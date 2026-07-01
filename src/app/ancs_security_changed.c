@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
 
 {
@@ -35,21 +37,21 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
     }
     bVar1 = bt_conn_get_security(param_1);
     if (1 < bVar1) {
-      GLOBAL_STATE.sem_8.count = 0;
+      _ancs_discovery_flags = 0;
       pkVar3 = k_work_delayable_from_work((k_work *)param_1);
       cVar2 = FUN_00033d5c();
       if ((cVar2 == '\0') &&
-         (pGVar4 = __get_dashboard_state(), *(char *)((int)&pGVar4->field2763_0x1087 + 1) == '\x01')
+         (pGVar4 = __get_dashboard_state(), *(char *)((int)&pGVar4->field1212_0x1087 + 1) == '\x01')
          ) {
         pGVar4 = __get_dashboard_state();
-        iVar5 = memcmp(pGVar4->field2762_0x1080 + 1,pkVar3,7);
+        iVar5 = memcmp(pGVar4->field1211_0x1080 + 1,pkVar3,7);
         if (iVar5 == 0) {
           discover_gattp(param_1,extraout_r1,extraout_r2_00);
         }
       }
     }
-    *(undefined1 *)(GLOBAL_STATE.sem_8.limit + 0x367) = 0;
-    GLOBAL_STATE.sem_2.wait_q.next = (void *)0x0;
+    *(undefined1 *)(_DAT_20006c98 + 0x367) = 0;
+    _DAT_20006c14 = 0;
   }
   else {
     uVar6 = extraout_r2;
@@ -65,8 +67,8 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
         uVar6 = extraout_r2_01;
       }
     }
-    GLOBAL_STATE.sem_2.wait_q.next = (void *)((int)GLOBAL_STATE.sem_2.wait_q.next + 1);
-    if (9 < (int)GLOBAL_STATE.sem_2.wait_q.next) {
+    _DAT_20006c14 = _DAT_20006c14 + 1;
+    if (9 < _DAT_20006c14) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): reboot because Security failed exceed 10 times, so reboot\r\n\n");

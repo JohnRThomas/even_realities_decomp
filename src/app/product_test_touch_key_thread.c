@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void product_test_touch_key_thread(char *param_1,char *param_2)
 
 {
@@ -56,11 +58,11 @@ LAB_0002adaa:
     }
     param_2 = extraout_r1;
   } while (-1 < (int)((uint)*(ushort *)(param_1 + 0x1070) << 0x1f));
-  if (GLOBAL_STATE._4_4_ != 0) {
+  if (_DAT_20006be0 != 0) {
     p_irq_stat_data = (cap_event_status *)sys_clock_tick_get_32();
     aw9320x_get_irq_stat(p_irq_stat_data,irq_status);
     sys_clock_tick_get_32();
-    GLOBAL_STATE._4_4_ = 0;
+    _DAT_20006be0 = 0;
   }
   if (aw9320x_wearing == IN_EAR) {
     uVar5 = sys_clock_tick_get_32();

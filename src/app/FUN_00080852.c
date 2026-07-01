@@ -12,7 +12,7 @@ void FUN_00080852(uint param_1)
   
   if ((param_1 < 3) &&
      ((pGVar1 = __get_dashboard_state(), *(byte *)(*(int *)&pGVar1->field_0x1018 + 2) != param_1 ||
-      (pGVar1 = __get_dashboard_state(), pGVar1->field_0xd5 != '\a')))) {
+      (pGVar1 = __get_dashboard_state(), pGVar1->field20_0xc8[0xd] != '\a')))) {
     pGVar1 = __get_dashboard_state();
     *(char *)(*(int *)&pGVar1->field_0x1018 + 2) = (char)param_1;
     pGVar1 = __get_dashboard_state();

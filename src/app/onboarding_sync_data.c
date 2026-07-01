@@ -14,12 +14,14 @@ undefined4 onboarding_sync_data(undefined1 *param_1,uint param_2,undefined4 para
   undefined4 extraout_r2;
   undefined4 uVar3;
   undefined4 extraout_r2_00;
+  undefined1 *puVar4;
   undefined4 local_14;
   undefined4 uStack_10;
   
   if (param_1 == (undefined1 *)0x0) {
     return 0xffffffff;
   }
+  puVar4 = param_1;
   local_14 = param_2;
   uStack_10 = param_3;
   pGVar1 = __get_dashboard_state();
@@ -64,7 +66,7 @@ LAB_00044e0a:
     printk(fmt);
   }
   else {
-    ble_printk(fmt,"onboarding_sync_data",uVar3,BLE_DEBUG);
+    ble_printk(fmt,"onboarding_sync_data",uVar3,BLE_DEBUG,puVar4);
   }
   return 0xffffffff;
 }

@@ -100,7 +100,7 @@ undefined4 ui_navigation_task(int param_1,undefined4 param_2,uint param_3)
   undefined4 extraout_r2_36;
   undefined4 extraout_r2_37;
   int iVar14;
-  undefined1 *puVar15;
+  undefined *puVar15;
   bool bVar16;
   k_timeout_t timeout;
   undefined8 uVar17;
@@ -110,7 +110,7 @@ undefined4 ui_navigation_task(int param_1,undefined4 param_2,uint param_3)
   uint local_2c;
   
   pGVar6 = __get_dashboard_state();
-  puVar15 = &pGVar6->field_0xef;
+  puVar15 = pGVar6->field20_0xc8 + 0x27;
   FUN_000452f0(param_1 + 0x24);
   uVar7 = FUN_0004540c();
   uVar18 = CONCAT44(DAT_20004da4,DAT_20004da0);
@@ -348,8 +348,8 @@ joined_r0x00041a90:
         timeout.ticks._4_4_ = 0xffffffff;
         timeout.ticks._0_4_ = uVar7;
         z_impl_k_mutex_lock(&k_mutex_2000851c,timeout);
-        DAT_20004d84 = pGVar6->field_0x19d;
-        DAT_20004d98 = pGVar6->field_0xf6;
+        DAT_20004d84 = pGVar6->field20_0xc8[0xd5];
+        DAT_20004d98 = pGVar6->field20_0xc8[0x2e];
         iVar9 = z_impl_k_mutex_unlock(&k_mutex_2000851c);
         uVar7 = extraout_r1_12;
         if (2 < LOG_LEVEL) {
@@ -361,7 +361,8 @@ joined_r0x00041a90:
           }
           else {
             ble_printk("%s(): arrived status = %d,  nav->imu_action_status = %d\n",
-                       "ui_navigation_task",(uint)DAT_20004d84,(uint)(byte)pGVar6->field_0xf6);
+                       "ui_navigation_task",(uint)DAT_20004d84,
+                       (uint)(byte)pGVar6->field20_0xc8[0x2e]);
             iVar9 = extraout_r0_05;
             uVar7 = extraout_r1_13;
           }
@@ -396,7 +397,7 @@ joined_r0x00041a90:
           uVar4 = FUN_00080a3a();
           iVar10 = FUN_000809e2();
           uVar5 = FUN_00080a3a();
-          gui_utf_draw(0,&pGVar6->field_0x1a4,0,iVar14 + iVar9,uVar4 + 0x3c,iVar10 + 0x23f,
+          gui_utf_draw(0,pGVar6->field20_0xc8 + 0xdc,0,iVar14 + iVar9,uVar4 + 0x3c,iVar10 + 0x23f,
                        uVar5 + 0x57,2,0,0,(undefined *)0x0,0);
           pGVar6 = __get_dashboard_state();
           cVar1 = pGVar6->dashboard_ts->field_0x5e;
@@ -464,8 +465,8 @@ joined_r0x00041a90:
               uVar4 = FUN_00080a3a();
               iVar10 = FUN_000809e2();
               uVar5 = FUN_00080a3a();
-              gui_utf_draw(0,&pGVar6->field_0x1a4,0,iVar14 + iVar9,uVar4 + 0x3c,iVar10 + 0x1e4,
-                           uVar5 + 0x57,2,0,0,(undefined *)0x0,0);
+              gui_utf_draw(0,pGVar6->field20_0xc8 + 0xdc,0,iVar14 + iVar9,uVar4 + 0x3c,
+                           iVar10 + 0x1e4,uVar5 + 0x57,2,0,0,(undefined *)0x0,0);
               DAT_20004d74 = 0;
               DAT_20004d75 = 1;
               sVar2 = DAT_20004d7e;

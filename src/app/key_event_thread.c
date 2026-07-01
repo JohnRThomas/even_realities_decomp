@@ -176,7 +176,7 @@ LAB_0002b9a8:
                 FUN_00035a84();
                 pGVar4 = __get_dashboard_state();
                 iVar5 = 0;
-                if (pGVar4->field_0xdd != '\0') {
+                if (pGVar4->field20_0xc8[0x15] != '\0') {
                   iVar5 = 6;
                 }
                 FUN_00035abc(iVar5);
@@ -226,11 +226,11 @@ LAB_0002bf02:
               if (param_1[0xd5] == '\x06') {
                 FUN_000294d0((int)param_1,4,(void *)0x0,0);
                 pGVar4 = __get_dashboard_state();
-                if (pGVar4->field_0xd5 == '\x04') {
+                if (pGVar4->field20_0xc8[0xd] == '\x04') {
                   FUN_00035a84();
                   pGVar4 = __get_dashboard_state();
                   iVar5 = 0;
-                  if (pGVar4->field_0xdd != '\0') {
+                  if (pGVar4->field20_0xc8[0x15] != '\0') {
                     iVar5 = 6;
                   }
                   FUN_00035abc(iVar5);
@@ -241,11 +241,11 @@ LAB_0002bf02:
             else {
               FUN_000294d0((int)param_1,4,(void *)0x0,0);
               pGVar4 = __get_dashboard_state();
-              if (pGVar4->field_0xd5 == '\x04') {
+              if (pGVar4->field20_0xc8[0xd] == '\x04') {
                 FUN_00035a84();
                 pGVar4 = __get_dashboard_state();
                 iVar5 = 0;
-                if (pGVar4->field_0xdd != '\0') {
+                if (pGVar4->field20_0xc8[0x15] != '\0') {
                   iVar5 = 6;
                 }
                 FUN_00035abc(iVar5);
@@ -460,7 +460,7 @@ LAB_0002c160:
       else {
         bVar3 = __is_idle();
         ble_printk("%s(): longpress task cannot be started because screen_id %d, %d, %d\n",
-                   "key_event_thread",(uint)bVar2,(uint)bVar3);
+                   "key_event_thread",(uint)bVar2,(uint)bVar3,(uint)(byte)param_1[0xfee]);
       }
     }
     break;

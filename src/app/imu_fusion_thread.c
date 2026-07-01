@@ -345,7 +345,7 @@ LAB_000102aa:
                       else {
                         ble_printk("look up################################################,screen_id is %d, pitch_y is %d, pitch_threshold_bow_head is %d, pitch_threshold_level is %d\n"
                                    ,(char *)(uint)(byte)param_1[-0xe13],iVar6,
-                                   *(undefined4 *)(param_1 + 8));
+                                   *(undefined4 *)(param_1 + 8),(uint)(byte)param_1[0x10]);
                       }
                       iVar28 = 0x65;
                       while (((pGVar15 = __get_dashboard_state(), pGVar15->field_0x10d6 == '\0' &&

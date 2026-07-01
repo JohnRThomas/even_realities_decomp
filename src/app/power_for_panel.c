@@ -36,7 +36,7 @@ undefined4 power_for_panel(void)
     }
   }
   sleep(1);
-  if (*(char *)(GLOBAL_STATE._0_4_ + 0xed4) == '\x01') {
+  if ((GLOBAL_STATE->jdb_panel_context).field_0x368 == '\x01') {
     iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&Reset,10);
     if (iVar1 < 0) {
       if (LOG_LEVEL < 1) {

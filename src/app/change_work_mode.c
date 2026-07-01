@@ -18,12 +18,11 @@ void change_work_mode(uint param_1)
     sleep(1);
   }
   DAT_20010939 = 1;
-  if ((*(byte *)(GLOBAL_STATE._0_4_ + 1) == param_1) &&
-     (*(char *)(GLOBAL_STATE._0_4_ + 0xfea) != '\x05')) {
+  if (((byte)GLOBAL_STATE->field_0x1 == param_1) && (GLOBAL_STATE->field_0xfea != '\x05')) {
     DAT_20010939 = 0;
     return;
   }
-  *(char *)(GLOBAL_STATE._0_4_ + 1) = (char)param_1;
+  GLOBAL_STATE->field_0x1 = (char)param_1;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
       printk("%s(): change_work_mode to %d\n");
@@ -32,7 +31,7 @@ void change_work_mode(uint param_1)
       ble_printk("%s(): change_work_mode to %d\n","change_work_mode",param_1 & 0xff,BLE_DEBUG);
     }
   }
-  switch(*(undefined1 *)(GLOBAL_STATE._0_4_ + 1)) {
+  switch(GLOBAL_STATE->field_0x1) {
   case 0:
     update_imu_mode(1,0x10);
     update_imu_mode(1,0x100);
@@ -67,7 +66,7 @@ void change_work_mode(uint param_1)
     update_imu_mode(1,1);
     update_imu_mode(1,0x400);
     update_imu_mode(1,0x800);
-    memset((void *)(GLOBAL_STATE._0_4_ + 0xef),0,0x5dc);
+    memset(GLOBAL_STATE->field20_0xc8 + 0x27,0,0x5dc);
     break;
   case 3:
     update_imu_mode(0,0x100);

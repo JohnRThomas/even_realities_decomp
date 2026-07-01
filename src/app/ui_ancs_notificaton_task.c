@@ -37,7 +37,7 @@ undefined4 ui_ancs_notificaton_task(int param_1,char *param_2,int param_3,undefi
       uVar5 = extraout_r1_00;
     }
     else {
-      ble_printk("ui_ancs_notificaton_task exit !",param_2,2,BLE_DEBUG);
+      ble_printk("ui_ancs_notificaton_task exit !",param_2,2,BLE_DEBUG,param_1);
       uVar4 = extraout_r0;
       uVar5 = extraout_r1;
     }

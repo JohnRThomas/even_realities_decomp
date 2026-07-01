@@ -121,18 +121,18 @@ undefined4 ui_QuickNote_task(int param_1,undefined4 param_2,uint param_3)
             gui_screen_clear(puVar8,uVar12,uVar13);
             iVar15 = 0;
             DAT_20004b20 = '\x01';
-            DAT_20004b30 = pGVar6->field_0xf2;
+            DAT_20004b30 = pGVar6->field20_0xc8[0x2a];
             DAT_20004b31 = '\0';
             DAT_2001c4e7 = '\0';
             FUN_00045444();
             FUN_00045428();
             do {
-              if (pGVar6->field_0xf2 == '\n') {
+              if (pGVar6->field20_0xc8[0x2a] == '\n') {
                 DAT_2001c4e7 = '\x01';
                 uVar19 = FUN_0008078e();
                 DAT_20004b2c = (int)((ulonglong)uVar19 >> 0x20);
                 DAT_20004b28 = (uint)uVar19;
-                if (pGVar6->field_0xf3 == '\x02') {
+                if (pGVar6->field20_0xc8[0x2b] == '\x02') {
                   if (bVar2 == 6) {
                     iVar17 = 0xc6;
                   }
@@ -170,7 +170,7 @@ undefined4 ui_QuickNote_task(int param_1,undefined4 param_2,uint param_3)
                 gui_utf_draw_middle(0,pcVar10,0,iVar17,uVar4 + 0x36,iVar9 + 0x240,uVar5 + 0x51,1,0,0
                                     ,(undefined *)0x0,0);
                 uVar19 = CONCAT44(DAT_20004b2c,DAT_20004b28);
-                if (pGVar6->field_0xf1 == '\0') {
+                if (pGVar6->field20_0xc8[0x29] == '\0') {
                   pcVar10 = get_string(0x45);
                   iVar17 = FUN_000809e2();
                   uVar4 = FUN_00080a3a();
@@ -333,8 +333,8 @@ LAB_0003e0a4:
             iVar17 = FUN_000809e2();
             uVar5 = FUN_00080a3a();
             gui_utf_draw_darkword_by_lines
-                      (0,&pGVar6->field_0xf7,0,iVar15 + 100,(uint)uVar4,iVar17 + 0x1dc,uVar5 + 0x88,
-                       5,5,0,(undefined *)0x0,0);
+                      (0,pGVar6->field20_0xc8 + 0x2f,0,iVar15 + 100,(uint)uVar4,iVar17 + 0x1dc,
+                       uVar5 + 0x88,5,5,0,(undefined *)0x0,0);
             lVar20 = CONCAT44(DAT_20004b2c,DAT_20004b28);
           }
         }
@@ -401,7 +401,7 @@ LAB_0003e0a4:
   lVar20 = CONCAT44(DAT_20004b2c,DAT_20004b28);
   if (*(char *)(*(int *)&pGVar7->field_0x1034 + 1) == '\x01') {
     if (param_3 == 1) {
-      cVar3 = pGVar6->field_0xf2;
+      cVar3 = pGVar6->field20_0xc8[0x2a];
       if (cVar3 == '\b') {
         if (DAT_20004b30 != '\b') {
           DAT_20004b30 = cVar3;
@@ -412,9 +412,9 @@ LAB_0003e0a4:
           _clean_fb_data(buffer,0,iVar15 + 0x14,(uint)uVar4,iVar17 + 0x240,uVar5 + 0x88);
         }
         lVar20 = CONCAT44(DAT_20004b2c,DAT_20004b28);
-        if (pGVar6->field_0xf3 == '\0') {
-          pcVar10 = &pGVar6->field_0xf7;
-          if (pGVar6->field_0xf4 == '\x01') {
+        if (pGVar6->field20_0xc8[0x2b] == '\0') {
+          pcVar10 = pGVar6->field20_0xc8 + 0x2f;
+          if (pGVar6->field20_0xc8[0x2c] == '\x01') {
             iVar15 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
             iVar17 = FUN_000809e2();
@@ -447,7 +447,7 @@ LAB_0003dce8:
           lVar20 = FUN_0008078e();
           DAT_20004b2c = (int)((ulonglong)lVar20 >> 0x20);
           DAT_20004b28 = (uint)lVar20;
-          if (pGVar6->field_0xf3 == '\x01') {
+          if (pGVar6->field20_0xc8[0x2b] == '\x01') {
             pcVar10 = get_string(0x60);
             iVar15 = FUN_000809e2();
             uVar4 = FUN_00080a3a();
@@ -457,7 +457,7 @@ LAB_0003dce8:
                                 (undefined *)0x0,0);
             lVar20 = CONCAT44(DAT_20004b2c,DAT_20004b28);
           }
-          else if (pGVar6->field_0xf3 == '\x02') {
+          else if (pGVar6->field20_0xc8[0x2b] == '\x02') {
             if (bVar2 == 6) {
               iVar15 = 0xc6;
             }
@@ -493,7 +493,7 @@ LAB_0003dce8:
     else if (1 < param_3) goto LAB_0003de14;
     DAT_20004b2c = (int)((ulonglong)lVar20 >> 0x20);
     DAT_20004b28 = (uint)lVar20;
-    if (1 < (byte)pGVar6->field_0xf2 - 7) {
+    if (1 < (byte)pGVar6->field20_0xc8[0x2a] - 7) {
       if (DAT_2001c4e7 == '\0') goto LAB_0003da02;
 LAB_0003dc7e:
       DAT_20004b2c = (int)((ulonglong)lVar20 >> 0x20);

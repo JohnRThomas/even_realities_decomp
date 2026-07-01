@@ -15,7 +15,7 @@ void FUN_00029684(void)
   uint uVar5;
   
   pGVar3 = __get_dashboard_state();
-  if (-1 < (int)((uint)(byte)pGVar3->field_0xe4 << 0x1d)) {
+  if (-1 < (int)((uint)(byte)pGVar3->field20_0xc8[0x1c] << 0x1d)) {
     pGVar3 = __get_dashboard_state();
     bVar2 = pGVar3->field_0x6de;
     if (((bVar2 & 4) == 0) && (puVar4 = FUN_0003519c(), puVar4 != (undefined *)0x0)) {

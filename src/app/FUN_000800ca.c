@@ -28,9 +28,9 @@ void FUN_000800ca(int param_1,int param_2)
   }
   pGVar3 = __get_dashboard_state();
   uVar4 = extraout_r1;
-  if (pGVar3->field_0xdb != '\0') {
+  if (pGVar3->field20_0xc8[0x13] != '\0') {
     pGVar3 = __get_dashboard_state();
-    pGVar3->field_0xdb = 0;
+    pGVar3->field20_0xc8[0x13] = 0;
     uVar4 = extraout_r1_00;
   }
   if ((*(char *)(*(int *)(param_1 + 0x1008) + 6) != '\0') ||

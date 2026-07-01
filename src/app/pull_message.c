@@ -25,7 +25,7 @@ byte pull_message(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   }
   else {
     pGVar1 = __get_dashboard_state();
-    if ((byte)pGVar1->field_0xdd < 0xb) {
+    if ((byte)pGVar1->field20_0xc8[0x15] < 0xb) {
       pcVar2 = (char *)(uint)DAT_2001aef9;
       *param_1 = &DAT_2000878c + (int)pcVar2 * 0x6d;
       if (BLE_DEBUG != 0) {
@@ -38,12 +38,12 @@ byte pull_message(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
     if (BLE_DEBUG == 0) {
       pGVar1 = __get_dashboard_state();
       printk("exception handle, GLOBAL->master_sync_pkg.panel_data_pkg.unread_msg_num is %d \n",
-             (uint)(byte)pGVar1->field_0xdd);
+             (uint)(byte)pGVar1->field20_0xc8[0x15]);
     }
     else {
       pGVar1 = __get_dashboard_state();
       ble_printk("exception handle, GLOBAL->master_sync_pkg.panel_data_pkg.unread_msg_num is %d \n",
-                 (char *)(uint)(byte)pGVar1->field_0xdd,extraout_r2,extraout_r3);
+                 (char *)(uint)(byte)pGVar1->field20_0xc8[0x15],extraout_r2,extraout_r3);
     }
   }
   return 10;

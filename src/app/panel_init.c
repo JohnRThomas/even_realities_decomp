@@ -1,11 +1,11 @@
 /*
- * Function: FUN_00080e3a
+ * Function: panel_init
  * Entry:    00080e3a
- * Prototype: undefined __stdcall FUN_00080e3a(void)
+ * Prototype: undefined __stdcall panel_init(void)
  */
 
 
-void FUN_00080e3a(void)
+void panel_init(void)
 
 {
   undefined4 extraout_r1;

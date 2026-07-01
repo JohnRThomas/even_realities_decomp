@@ -59,7 +59,7 @@ gui_verticalLine_process_bar
       }
       else {
         ble_printk("%s(): input param error,please check postion content\n",
-                   "gui_verticalLine_process_bar",param_3,BLE_DEBUG);
+                   "gui_verticalLine_process_bar",param_3,BLE_DEBUG,param_1,param_2,param_3);
       }
     }
     uVar1 = 0xffffffff;

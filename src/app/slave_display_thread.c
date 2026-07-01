@@ -575,7 +575,7 @@ LAB_0002a13c:
       __g_arrMsgContent_count();
       pGVar4 = __get_dashboard_state();
       iVar12 = 0;
-      if (pGVar4->field_0xdd != '\0') {
+      if (pGVar4->field20_0xc8[0x15] != '\0') {
         iVar12 = 6;
       }
       FUN_00035abc(iVar12);
@@ -584,7 +584,7 @@ LAB_0002a13c:
       DAT_20019a5b = 1;
       pGVar4 = __get_dashboard_state();
       if (((pGVar4->field_0x10d6 != '\0') && (uVar8 = FUN_00035310(), uVar8 != 0)) &&
-         (pGVar4 = __get_dashboard_state(), pGVar4->field_0xd5 != '\x04')) {
+         (pGVar4 = __get_dashboard_state(), pGVar4->field20_0xc8[0xd] != '\x04')) {
         pGVar4 = __get_dashboard_state();
         update_temp_task_status((int)pGVar4,4,2);
         pGVar4 = __get_dashboard_state();

@@ -36,7 +36,7 @@ int send_dmic_msg(int param_1)
     iVar3 = (**(code **)(param_1 + 0xc))(&local_e4,0xca);
     if (iVar3 < 0) {
       pGVar4 = __get_dashboard_state();
-      if (pGVar4->field_0xd5 == '\x06') {
+      if (pGVar4->field20_0xc8[0xd] == '\x06') {
         if (DAT_20007f34 < 100) {
           DAT_20007f34 = DAT_20007f34 + 1;
         }
@@ -80,16 +80,20 @@ int send_dmic_msg(int param_1)
         if (BLE_DEBUG == 0) {
           pGVar4 = __get_dashboard_state();
           iVar5 = DAT_20007f34;
-          if (pGVar4->field_0xd5 != '\x06') {
+          if (pGVar4->field20_0xc8[0xd] != '\x06') {
             iVar5 = DAT_20007f38;
           }
           printk("%s(): time %d dmic_send_count %d send_fail_count %d\n","send_dmic_msg",uVar6,iVar3
                  ,iVar5);
         }
         else {
-          __get_dashboard_state();
+          pGVar4 = __get_dashboard_state();
+          iVar5 = DAT_20007f34;
+          if (pGVar4->field20_0xc8[0xd] != '\x06') {
+            iVar5 = DAT_20007f38;
+          }
           ble_printk("%s(): time %d dmic_send_count %d send_fail_count %d\n","send_dmic_msg",uVar6,
-                     iVar3);
+                     iVar3,iVar5);
         }
       }
     }

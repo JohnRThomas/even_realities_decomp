@@ -69,13 +69,13 @@ undefined4 ui_new_message_come_on_task(int param_1,undefined4 param_2,int param_
         pcVar7 = extraout_r1_03;
         uVar5 = extraout_r2_03;
       }
-      if ((byte)pGVar4->field_0xf6 < 2) {
+      if ((byte)pGVar4->field20_0xc8[0x2e] < 2) {
         DAT_2001c4e1 = '\0';
         gui_screen_clear(uVar6,pcVar7,uVar5);
       }
       else {
         pGVar4 = __get_dashboard_state();
-        pcVar7 = (char *)__parse_message_type((byte)pGVar4->field_0xdd - 1 & 0xff);
+        pcVar7 = (char *)__parse_message_type((byte)pGVar4->field20_0xc8[0x15] - 1 & 0xff);
         if (BLE_DEBUG == 0) {
           printk("new msgType is %d \n");
         }

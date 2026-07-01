@@ -89,7 +89,7 @@ LAB_0002ab02:
           pGVar2 = __get_dashboard_state();
           **(undefined1 **)&pGVar2->field_0x1010 = 0xb;
           pGVar2 = __get_dashboard_state();
-          pGVar2->field_0xdb = 8;
+          pGVar2->field20_0xc8[0x13] = 8;
         }
         break;
       case 0xd:
@@ -194,7 +194,7 @@ LAB_0002ab02:
       pGVar2 = __get_dashboard_state();
       if ((pGVar2->field_0x10d6 != '\0') &&
          ((uVar3 = FUN_00035310(), uVar3 != 0 &&
-          (pGVar2 = __get_dashboard_state(), pGVar2->field_0xd5 != '\x04')))) {
+          (pGVar2 = __get_dashboard_state(), pGVar2->field20_0xc8[0xd] != '\x04')))) {
         pGVar2 = __get_dashboard_state();
         update_temp_task_status((int)pGVar2,4,2);
         pGVar2 = __get_dashboard_state();

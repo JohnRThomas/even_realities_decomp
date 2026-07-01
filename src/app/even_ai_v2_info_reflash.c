@@ -39,9 +39,9 @@ undefined4 even_ai_v2_info_reflash(undefined4 param_1,int param_2)
   bVar1 = get_current_language();
   pGVar7 = __get_dashboard_state();
   if (*(char *)(pGVar7 + 1) == '\x01') {
-    uVar14 = (uint)(byte)pGVar6->field_0xf0;
+    uVar14 = (uint)(byte)pGVar6->field20_0xc8[0x28];
     if (uVar14 == 2) {
-      if (pGVar6->field_0xf2 != '\x01') goto LAB_00049ace;
+      if (pGVar6->field20_0xc8[0x2a] != '\x01') goto LAB_00049ace;
     }
     else if ((3 < uVar14 - 3) || (uVar14 == 5)) goto LAB_00049ace;
     pGVar7 = (GlassesState *)FUN_00030458();
@@ -65,14 +65,14 @@ LAB_00049ace:
       }
     }
   }
-  uVar14 = (uint)(byte)pGVar6->field_0xf0;
+  uVar14 = (uint)(byte)pGVar6->field20_0xc8[0x28];
   if (DAT_20004de0 == uVar14) {
     if (uVar14 != 3) {
-      if ((uint)DAT_20004de1 != (uint)(byte)pGVar6->field_0xf2) goto LAB_00049a82;
+      if ((uint)DAT_20004de1 != (uint)(byte)pGVar6->field20_0xc8[0x2a]) goto LAB_00049a82;
       goto LAB_00049aae;
     }
 switchD_00049ab8_caseD_3:
-    if (pGVar6->field_0xf2 == '\0') {
+    if (pGVar6->field20_0xc8[0x2a] == '\0') {
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar12 = uVar4 + 0x3a;
@@ -83,7 +83,7 @@ switchD_00049ab8_caseD_3:
       return 0;
     }
 switchD_00049b3e_caseD_3:
-    if (pGVar6->field_0xf2 != '\0') {
+    if (pGVar6->field20_0xc8[0x2a] != '\0') {
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar12 = FUN_000809e2();
@@ -93,9 +93,9 @@ switchD_00049b3e_caseD_3:
       uVar4 = FUN_00080a3a();
       iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
-      gui_utf_draw(0,&pGVar6->field_0xff,0,iVar9 + 0x58,(uint)uVar4,iVar12 + 0x230,uVar5 + 0x88,5,0,
-                   0,(undefined *)0x0,0);
-      if (100 < (byte)pGVar6->field_0xf4) {
+      gui_utf_draw(0,pGVar6->field20_0xc8 + 0x37,0,iVar9 + 0x58,(uint)uVar4,iVar12 + 0x230,
+                   uVar5 + 0x88,5,0,0,(undefined *)0x0,0);
+      if (100 < (byte)pGVar6->field20_0xc8[0x2c]) {
         return 0;
       }
       iVar9 = FUN_000809e2();
@@ -103,12 +103,13 @@ switchD_00049b3e_caseD_3:
       iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
       gui_verticalLine_process_bar
-                (iVar9 + 0x23c,(uint)uVar4,iVar12 + 0x23c,uVar5 + 0x88,1,pGVar6->field_0xf4);
+                (iVar9 + 0x23c,(uint)uVar4,iVar12 + 0x23c,uVar5 + 0x88,1,pGVar6->field20_0xc8[0x2c])
+      ;
       return 0;
     }
 LAB_00049cd0:
-    pcVar11 = &pGVar6->field_0xff;
-    if (pGVar6->field_0xf3 == '\x01') {
+    pcVar11 = pGVar6->field20_0xc8 + 0x37;
+    if (pGVar6->field20_0xc8[0x2b] == '\x01') {
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar12 = FUN_000809e2();
@@ -139,18 +140,18 @@ LAB_00049a82:
     }
     else {
       ble_printk("%s(): even_ai_v2 action change, id:%d,status:%d, clear screen\n",
-                 "even_ai_v2_info_reflash",uVar14,(uint)(byte)pGVar6->field_0xf2);
+                 "even_ai_v2_info_reflash",uVar14,(uint)(byte)pGVar6->field20_0xc8[0x2a]);
       pGVar7 = extraout_r0;
       iVar9 = extraout_r1;
       uVar14 = extraout_r2;
     }
   }
-  DAT_20004de0 = pGVar6->field_0xf0;
-  DAT_20004de1 = pGVar6->field_0xf2;
+  DAT_20004de0 = pGVar6->field20_0xc8[0x28];
+  DAT_20004de1 = pGVar6->field20_0xc8[0x2a];
   gui_screen_clear(pGVar7,iVar9,uVar14);
   FUN_00045444();
 LAB_00049aae:
-  switch(pGVar6->field_0xf0) {
+  switch(pGVar6->field20_0xc8[0x28]) {
   case 1:
 switchD_00049ab8_caseD_1:
     iVar9 = FUN_000809e2();
@@ -159,7 +160,7 @@ switchD_00049ab8_caseD_1:
     uVar14 = 1;
     break;
   case 2:
-    if (pGVar6->field_0xf2 == '\0') goto switchD_00049ab8_caseD_1;
+    if (pGVar6->field20_0xc8[0x2a] == '\0') goto switchD_00049ab8_caseD_1;
     iVar9 = FUN_000809e2();
     uVar4 = FUN_00080a3a();
     iVar12 = uVar4 + 0x3a;
@@ -170,7 +171,7 @@ switchD_00049ab8_caseD_1:
   default:
     goto switchD_00049ab8_caseD_4;
   case 7:
-    if (pGVar6->field_0xf2 == '\x02') goto switchD_00049ab8_caseD_1;
+    if (pGVar6->field20_0xc8[0x2a] == '\x02') goto switchD_00049ab8_caseD_1;
     if (param_2 != 1) {
       return 0;
     }
@@ -182,7 +183,7 @@ switchD_00049ab8_caseD_4:
   if (param_2 != 1) {
     return 0;
   }
-  switch(pGVar6->field_0xf0) {
+  switch(pGVar6->field20_0xc8[0x28]) {
   case 1:
     pcVar11 = get_string(0x56);
     iVar9 = FUN_000809e2();
@@ -191,8 +192,8 @@ switchD_00049ab8_caseD_4:
     uVar5 = FUN_00080a3a();
     gui_utf_draw_middle(0,pcVar11,0,iVar9,uVar4 + 0x36,iVar12 + 0x240,uVar5 + 0x88,1,0,0,
                         (undefined *)0x0,0);
-    if ((byte)pGVar6->field_0xf2 - 1 < 7) {
-      uVar14 = (byte)pGVar6->field_0xf2 + 0x57 & 0xff;
+    if ((byte)pGVar6->field20_0xc8[0x2a] - 1 < 7) {
+      uVar14 = (byte)pGVar6->field20_0xc8[0x2a] + 0x57 & 0xff;
     }
     else {
       uVar14 = 0x57;
@@ -208,14 +209,14 @@ switchD_00049ab8_caseD_4:
     uVar14 = 1;
     goto LAB_00049c26;
   case 2:
-    if (pGVar6->field_0xf2 != '\0') {
+    if (pGVar6->field20_0xc8[0x2a] != '\0') {
       iVar9 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
       iVar12 = FUN_000809e2();
       uVar5 = FUN_00080a3a();
       gui_utf_draw_darkword_by_lines
-                (0,&pGVar6->field_0xff,0,iVar9 + 0x58,(uint)uVar4,iVar12 + 0x230,uVar5 + 0x88,5,5,0,
-                 (undefined *)0x0,0);
+                (0,pGVar6->field20_0xc8 + 0x37,0,iVar9 + 0x58,(uint)uVar4,iVar12 + 0x230,
+                 uVar5 + 0x88,5,5,0,(undefined *)0x0,0);
       return 0;
     }
     goto LAB_00049cd0;
@@ -227,7 +228,7 @@ switchD_00049ab8_caseD_4:
     goto switchD_00049b3e_caseD_5;
   case 7:
 switchD_00049b3e_caseD_7:
-    if (pGVar6->field_0xf2 == '\x01') {
+    if (pGVar6->field20_0xc8[0x2a] == '\x01') {
       if ((byte)(bVar1 - 5) < 10) {
         uVar14 = (uint)(byte)(&DAT_000db382)[(byte)(bVar1 - 5)];
       }
@@ -249,7 +250,7 @@ switchD_00049b3e_caseD_7:
       iVar9 = iVar9 + uVar14 + 0x34;
       goto LAB_0004a3c6;
     }
-    if (pGVar6->field_0xf2 != '\x02') {
+    if (pGVar6->field20_0xc8[0x2a] != '\x02') {
       return 0;
     }
     pcVar11 = get_string(0x56);
@@ -270,7 +271,7 @@ switchD_00049b3e_caseD_7:
     uVar14 = 1;
     goto LAB_00049c26;
   }
-  switch(pGVar6->field_0xf2) {
+  switch(pGVar6->field20_0xc8[0x2a]) {
   case 1:
     if (bVar1 == 6) {
       uVar15 = 0x10;
@@ -344,7 +345,7 @@ LAB_00049e54:
     pGVar7 = __get_dashboard_state();
     gui_horizontal_percentage_bar
               (iVar9 + 0xbc,uVar4 + 0x42,iVar12 + 0x184,uVar5 + 0x46,1,0,
-               (byte)((uint)((short)(ushort)(byte)pGVar7->field_0xcb * 100) / 0x2a));
+               (byte)((uint)((short)(ushort)(byte)pGVar7->field20_0xc8[3] * 100) / 0x2a));
     iVar9 = 0x240;
     uVar15 = 0x90;
     goto LAB_0004a208;
@@ -548,8 +549,8 @@ LAB_0004a170:
     uVar4 = FUN_00080a3a();
     iVar12 = FUN_000809e2();
     uVar5 = FUN_00080a3a();
-    gui_utf_draw_middle(0,&pGVar6->field_0xff,0,iVar9,uVar4 + 0x36,iVar12 + 0x240,uVar5 + 0x88,3,0,0
-                        ,(undefined *)0x0,0);
+    gui_utf_draw_middle(0,pGVar6->field20_0xc8 + 0x37,0,iVar9,uVar4 + 0x36,iVar12 + 0x240,
+                        uVar5 + 0x88,3,0,0,(undefined *)0x0,0);
   default:
     iVar9 = 0x240;
     uVar15 = 0;
@@ -604,7 +605,7 @@ LAB_0004a148:
   gui_bmp_bitmap_draw(uVar14,iVar9,iVar12,0,0,0);
   iVar9 = 0x240;
 LAB_0004a208:
-  uVar14 = (uint)(byte)pGVar6->field_0xf2;
+  uVar14 = (uint)(byte)pGVar6->field20_0xc8[0x2a];
   if (0x14 < uVar14) {
     return 0;
   }
@@ -630,7 +631,7 @@ LAB_0004a2ea:
         iVar10 = iVar10 + 0x240;
         uVar20 = 1;
         iVar9 = iVar9 + uVar15 + 0x2c;
-        pcVar11 = &pGVar6->field_0xff;
+        pcVar11 = pGVar6->field20_0xc8 + 0x37;
 LAB_0004a3c6:
         gui_utf_draw(0,pcVar11,0,iVar9,uVar17,iVar10,iVar12,uVar20,0,0,(undefined *)0x0,0);
         return 0;
@@ -663,7 +664,7 @@ LAB_0004a2a4:
     iVar12 = iVar12 + uVar15 + 0x2c;
   }
   iVar10 = uVar4 + 0x88;
-  pcVar11 = &pGVar6->field_0xff;
+  pcVar11 = pGVar6->field20_0xc8 + 0x37;
 LAB_00049c26:
   gui_utf_draw_middle(0,pcVar11,0,iVar12,iVar16,iVar9,iVar10,uVar14,0,0,(undefined *)0x0,0);
 switchD_00049b3e_caseD_5:

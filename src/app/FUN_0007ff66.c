@@ -22,9 +22,9 @@ void FUN_0007ff66(int param_1,int param_2)
     return;
   }
   pGVar3 = __get_dashboard_state();
-  if (pGVar3->field_0xdb != '\0') {
+  if (pGVar3->field20_0xc8[0x13] != '\0') {
     pGVar3 = __get_dashboard_state();
-    pGVar3->field_0xdb = 0;
+    pGVar3->field20_0xc8[0x13] = 0;
   }
   if ((*(char *)(*(int *)(param_1 + 0x1008) + 6) != '\0') ||
      (bVar2 = false, *(char *)(*(int *)(param_1 + 0x100c) + 6) != '\0')) {
@@ -110,7 +110,7 @@ LAB_00080082:
   }
   update_persist_task_status_to_idle(param_1,uVar4);
   pGVar3 = __get_dashboard_state();
-  if (pGVar3->field_0xda == '\x06') {
+  if (pGVar3->field20_0xc8[0x12] == '\x06') {
     return;
   }
   memset((void *)(param_1 + 0xef),0,0x5dc);

@@ -19,8 +19,9 @@ undefined4 draw_template_translate_screen(int param_1)
   
   pGVar3 = __get_dashboard_state();
   FUN_000452f0(param_1 + 0x24);
-  uVar6 = (uint)(byte)pGVar3->field_0xf0;
-  if (((uVar6 < 9) && (uVar7 = (byte)pGVar3->field_0xef - 1, (uVar7 & 0xff) < 8)) && (uVar6 != 0)) {
+  uVar6 = (uint)(byte)pGVar3->field20_0xc8[0x28];
+  if (((uVar6 < 9) && (uVar7 = (byte)pGVar3->field20_0xc8[0x27] - 1, (uVar7 & 0xff) < 8)) &&
+     (uVar6 != 0)) {
     local_24[0] = '\0';
     local_24[1] = '\0';
     local_24[2] = '\0';
@@ -47,7 +48,7 @@ undefined4 draw_template_translate_screen(int param_1)
     }
     else {
       ble_printk("%s(): translate language type error! trans_info->original_type %d trans_info->translation_type %d\n"
-                 ,"draw_template_translate_screen",uVar6,(uint)(byte)pGVar3->field_0xef);
+                 ,"draw_template_translate_screen",uVar6,(uint)(byte)pGVar3->field20_0xc8[0x27]);
     }
   }
   uVar6 = FUN_00080732();
@@ -56,7 +57,7 @@ undefined4 draw_template_translate_screen(int param_1)
   iVar5 = FUN_000809e2();
   uVar2 = FUN_00080a3a();
   gui_clock_draw(uVar6,iVar4,uVar1 + 2,iVar5 + 0x50,uVar2 + 0x1d,3,'\x01');
-  if (pGVar3->field_0xf1 == '\x01') {
+  if (pGVar3->field20_0xc8[0x29] == '\x01') {
     iVar4 = FUN_000809e2();
     uVar1 = FUN_00080a3a();
     uVar6 = 0x1b;
@@ -71,8 +72,8 @@ undefined4 draw_template_translate_screen(int param_1)
   uVar1 = FUN_00080a3a();
   iVar5 = FUN_000809e2();
   uVar2 = FUN_00080a3a();
-  gui_utf_draw(0,&pGVar3->field_0xf5,0,iVar4 + 0x58,uVar1 + 1,iVar5 + 0x240,uVar2 + 0x88,5,0,0,
-               (undefined *)0x0,0);
+  gui_utf_draw(0,pGVar3->field20_0xc8 + 0x2d,0,iVar4 + 0x58,uVar1 + 1,iVar5 + 0x240,uVar2 + 0x88,5,0
+               ,0,(undefined *)0x0,0);
   return 0;
 }
 

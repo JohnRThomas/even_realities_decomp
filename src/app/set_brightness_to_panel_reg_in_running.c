@@ -20,7 +20,7 @@ void set_brightness_to_panel_reg_in_running(uint param_1,uint param_2)
     }
     else {
       ble_printk("%s(): set brightness level = %d\n","set_brightness_to_panel_reg_in_running",
-                 param_1,BLE_DEBUG);
+                 param_1,BLE_DEBUG,param_1);
     }
   }
   pGVar1 = __get_dashboard_state();

@@ -208,7 +208,7 @@ LAB_0002cdc6:
         else {
           bVar1 = FUN_00028d2c();
           ble_printk("%s(): Global Working Mode: %d get_glasses_ble_status %d ble_is_connected %d\n"
-                     ,"low_speed_peripheral_dispatch_thread",(uint)bVar7,(uint)bVar1);
+                     ,"low_speed_peripheral_dispatch_thread",(uint)bVar7,(uint)bVar1,uVar8);
         }
       }
       try_enter_low_power_mode();

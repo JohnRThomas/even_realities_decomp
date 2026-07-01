@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 int enqueue_uid_drop_package_(undefined4 *param_1,undefined4 param_2,undefined4 param_3)
 
 {
@@ -18,13 +20,13 @@ int enqueue_uid_drop_package_(undefined4 *param_1,undefined4 param_2,undefined4 
   
   local_18 = 0;
   uStack_14 = 0;
-  if (GLOBAL_STATE.sem_2.poll_events.prev == (void *)0x0) {
+  if (_DAT_20006c28 == 0) {
     iVar1 = 1;
   }
   else {
     uStack_10 = param_3;
-    if (GLOBAL_STATE.sem_3.poll_events.next == &DAT_0000000a) {
-      z_impl_k_msgq_get((k_msgq *)&GLOBAL_STATE.sem_2.wait_q.prev,&local_18,(k_timeout_t)0x0);
+    if (_DAT_20006c3c == 10) {
+      z_impl_k_msgq_get((k_msgq *)&DAT_20006c18,&local_18,(k_timeout_t)0x0);
       if (BLE_DEBUG == 0) {
         printk("enqueue uid drop package! \n");
       }
@@ -42,7 +44,7 @@ int enqueue_uid_drop_package_(undefined4 *param_1,undefined4 param_2,undefined4 
         ble_printk("%s(): local_data uid %d\n","enqueue_uid",local_18,BLE_DEBUG);
       }
     }
-    iVar1 = z_impl_k_msgq_put((k_msgq *)&GLOBAL_STATE.sem_2.wait_q.prev,&local_18,(k_timeout_t)0x0);
+    iVar1 = z_impl_k_msgq_put((k_msgq *)&DAT_20006c18,&local_18,(k_timeout_t)0x0);
     if ((iVar1 != 0) && (0 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
         printk("%s(): en uid F\n");

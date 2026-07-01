@@ -39,6 +39,8 @@
 00017918	FUN_00017918	FUN_00017918.c
 00017ae0	panel_gpio_disable	panel_gpio_disable.c
 00017aec	panel_gpio_enable	panel_gpio_enable.c
+00017b28	reset_pmic_on	reset_pmic_on.c
+00017b34	reset_pmic_off	reset_pmic_off.c
 00017b40	button_init	button_init.c
 00017f3c	bt_send_enabled	bt_send_enabled.c
 00017f84	ble_write_thread	ble_write_thread.c
@@ -680,7 +682,7 @@
 00077e64	remove_timeout	remove_timeout.c
 0007b838	FUN_0007b838	FUN_0007b838.c
 0007f2bc	FUN_0007f2bc	FUN_0007f2bc.c
-0007f300	FUN_0007f300	FUN_0007f300.c
+0007f300	?_set_band_for_ESB	set_band_for_ESB.c
 0007f328	FUN_0007f328	FUN_0007f328.c
 0007f32a	FUN_0007f32a	FUN_0007f32a.c
 0007f370	FUN_0007f370	FUN_0007f370.c
@@ -810,7 +812,7 @@
 00080dbc	FUN_00080dbc	FUN_00080dbc.c
 00080dd2	FUN_00080dd2	FUN_00080dd2.c
 00080e16	FUN_00080e16	FUN_00080e16.c
-00080e3a	FUN_00080e3a	FUN_00080e3a.c
+00080e3a	panel_init	panel_init.c
 00080ec4	busy_wait_seconds	busy_wait_seconds.c
 00080ece	FUN_00080ece	FUN_00080ece.c
 00080f08	FUN_00080f08	FUN_00080f08.c

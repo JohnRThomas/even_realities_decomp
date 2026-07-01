@@ -50,7 +50,7 @@ undefined4 com_android_phone_missed(int param_1)
     cVar4 = cVar4 + -1;
     if (cVar4 == '\0') {
       pGVar2 = __get_dashboard_state();
-      uVar3 = __send_notifi_app_white_list_app((int)&pGVar2->field_0x77c,s2,param_1 + 0x30);
+      uVar3 = __send_notifi_app_white_list_app((astruct_3 *)&pGVar2->ble_context,s2,param_1 + 0x30);
       return uVar3;
     }
   }

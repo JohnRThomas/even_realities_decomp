@@ -24,7 +24,7 @@ undefined4 panel_on(int param_1,undefined4 param_2,undefined4 param_3)
     }
     power_for_panel();
     (**(code **)(param_1 + -0x5c))(*(undefined4 *)(param_1 + 0x378));
-    FUN_00080e3a();
+    panel_init();
     *(undefined4 *)(param_1 + 0x35c) = 1;
     DVar1 = getDeviceRole();
     if (DVar1 == MASTER) {

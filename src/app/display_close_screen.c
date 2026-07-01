@@ -21,7 +21,8 @@ undefined4 display_close_screen(int param_1,undefined4 param_2)
         printk("%s(): display_close_screen %d\n");
       }
       else {
-        ble_printk("%s(): display_close_screen %d\n","display_close_screen",param_1,BLE_DEBUG);
+        ble_printk("%s(): display_close_screen %d\n","display_close_screen",param_1,BLE_DEBUG,
+                   param_1);
       }
     }
     if (param_1 == 4) {
@@ -31,7 +32,7 @@ undefined4 display_close_screen(int param_1,undefined4 param_2)
     display_close(&local_c,2);
     z_impl_k_yield();
     pGVar1 = __get_dashboard_state();
-    memset(&pGVar1->field_0xef,0,0x5dc);
+    memset(pGVar1->field20_0xc8 + 0x27,0,0x5dc);
   }
   return 0;
 }

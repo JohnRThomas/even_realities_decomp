@@ -1,11 +1,11 @@
 /*
  * Function: ble_printk
  * Entry:    00019e30
- * Prototype: void __stdcall ble_printk(char * param_1, char * param_2, undefined4 param_3, undefined4 param_4)
+ * Prototype: void __stdcall ble_printk(char * param_1, char * param_2, undefined4 param_3, undefined4 param_4, ...)
  */
 
 
-void ble_printk(char *param_1,char *param_2,undefined4 param_3,undefined4 param_4)
+void ble_printk(char *param_1,char *param_2,undefined4 param_3,undefined4 param_4,...)
 
 {
   int iVar1;

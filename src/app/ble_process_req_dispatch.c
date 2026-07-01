@@ -215,7 +215,7 @@ switchD_0002260e_caseD_49:
         pGVar6 = __get_dashboard_state();
         pvVar19 = *(void **)&pGVar6->field_0x1010;
         pGVar6 = __get_dashboard_state();
-        FUN_0007f472(pvVar19,0x1e9,pGVar6->field_0xcc,1);
+        FUN_0007f472(pvVar19,0x1e9,pGVar6->field20_0xc8[4],1);
         FUN_0007f41e(param_3[1],1);
         uVar10 = 0xcb;
       }
@@ -280,7 +280,7 @@ LAB_000228ce:
               pGVar6 = __get_dashboard_state();
               **(undefined1 **)&pGVar6->field_0x1010 = 8;
               pGVar6 = __get_dashboard_state();
-              pGVar6->field_0xdb = 8;
+              pGVar6->field20_0xc8[0x13] = 8;
             }
             else {
               pGVar6 = __get_dashboard_state();
@@ -301,7 +301,7 @@ LAB_000228ce:
           pGVar6 = __get_dashboard_state();
           uVar10 = 0x10;
         }
-        pGVar6->field_0xdb = uVar10;
+        pGVar6->field20_0xc8[0x13] = uVar10;
       }
     }
 LAB_00022826:
@@ -411,7 +411,7 @@ LAB_00022826:
         pGVar6 = __get_dashboard_state();
         *(longlong *)((int)&pGVar6->field_global_state_struct_1028->field0_0x0 + 2) = lVar27 + 5000;
         pGVar6 = __get_dashboard_state();
-        pGVar6->field_0xcd = param_3[3];
+        pGVar6->field20_0xc8[5] = param_3[3];
         pGVar6 = __get_dashboard_state();
         update_persist_task_status((int)pGVar6,0x12,2);
       }
@@ -667,7 +667,7 @@ LAB_00022b82:
         pGVar6->___multi_packet_data_buffer[4] = 0xff;
       }
       pGVar6 = __get_dashboard_state();
-      pGVar6->field_0xcd = param_3[3];
+      pGVar6->field20_0xc8[5] = param_3[3];
       pGVar6 = __get_dashboard_state();
       update_persist_task_status((int)pGVar6,0x13,2);
     }
@@ -854,7 +854,7 @@ LAB_00022e62:
                   pGVar6 = __get_dashboard_state();
                   if (*(int *)pGVar6->___glasses_state != 0x14) {
                     pGVar6 = __get_dashboard_state();
-                    if ((pGVar6->field_0xd5 == '\x06') &&
+                    if ((pGVar6->field20_0xc8[0xd] == '\x06') &&
                        (pGVar6 = __get_dashboard_state(), pGVar6->dashboard_ts->field_0x74 == '\0'))
                     {
                       pGVar6 = __get_dashboard_state();
@@ -932,7 +932,7 @@ LAB_00023674:
                 pGVar6 = __get_dashboard_state();
                 if (*(int *)pGVar6->___glasses_state != 0x14) {
                   pGVar6 = __get_dashboard_state();
-                  if ((pGVar6->field_0xd5 == '\x06') &&
+                  if ((pGVar6->field20_0xc8[0xd] == '\x06') &&
                      (pGVar6 = __get_dashboard_state(), pGVar6->dashboard_ts->field_0x74 == '\0')) {
                     pGVar6 = __get_dashboard_state();
                     pGVar6->dashboard_ts->field_0x74 = 1;

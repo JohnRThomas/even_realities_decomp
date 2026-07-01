@@ -376,8 +376,8 @@ LAB_0002b2c2:
         bVar4 = FUN_000359cc();
         pbVar14 = (byte *)FUN_00035260((uint)bVar4);
         iVar8 = FUN_0002ddb0();
-        if ((iVar8 == 0) && (pGVar5 = __get_dashboard_state(), pGVar5->field_0xdd == DAT_2001993c))
-        {
+        if ((iVar8 == 0) &&
+           (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0x15] == DAT_2001993c)) {
           if (uVar15 == 0) {
             unlock_mutext_2000851c();
             n = 0x1b4;
@@ -388,7 +388,7 @@ LAB_0002b2c2:
         }
         else {
           pGVar5 = __get_dashboard_state();
-          DAT_2001993c = pGVar5->field_0xdd;
+          DAT_2001993c = pGVar5->field20_0xc8[0x15];
         }
         n = 0x1b4;
         uVar15 = 1;
@@ -498,7 +498,7 @@ LAB_0002b5cc:
         }
         else {
           pGVar5 = __get_dashboard_state();
-          *(undefined1 *)(*(int *)(param_1 + 0x1010) + 6) = pGVar5->field_0xcc;
+          *(undefined *)(*(int *)(param_1 + 0x1010) + 6) = pGVar5->field20_0xc8[4];
         }
         if (**(char **)(param_1 + 0x1010) == '\a') {
           (*(char **)(param_1 + 0x1010))[1] = '\x03';

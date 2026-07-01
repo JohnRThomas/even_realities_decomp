@@ -21,7 +21,7 @@ void FUN_0003f1bc(void)
   pGVar3 = __get_dashboard_state();
   *(undefined1 *)(*(int *)&pGVar3->field_0x1018 + 2) = uVar2;
   pGVar3 = __get_dashboard_state();
-  pGVar3->field_0xcd = DAT_2001c6cc;
+  pGVar3->field20_0xc8[5] = DAT_2001c6cc;
   pGVar3 = __get_dashboard_state();
   **(undefined1 **)&pGVar3->field_0x1018 = 1;
   uVar7 = sys_clock_tick_get();

@@ -15,7 +15,7 @@ undefined1 __g_arrMsgContent_count(void)
   char *pcVar4;
   
   pGVar2 = __get_dashboard_state();
-  bVar1 = pGVar2->field_0xdd;
+  bVar1 = pGVar2->field20_0xc8[0x15];
   if ((bVar1 != 0) && (pcVar4 = (char *)(bVar1 - 1), (&DAT_20008790)[(int)pcVar4 * 0x6d] != 0)) {
     clear_timeout_message(1);
     if (pcVar4 == (char *)0x0) {
@@ -33,10 +33,10 @@ undefined1 __g_arrMsgContent_count(void)
     }
     pGVar2 = __get_dashboard_state();
     uVar3 = FUN_00035310();
-    pGVar2->field_0xdd = (char)uVar3;
+    pGVar2->field20_0xc8[0x15] = (char)uVar3;
   }
   pGVar2 = __get_dashboard_state();
-  return pGVar2->field_0xdd;
+  return pGVar2->field20_0xc8[0x15];
 }
 
 

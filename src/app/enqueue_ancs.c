@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 int enqueue_ancs(void *param_1)
 
 {
@@ -15,12 +17,12 @@ int enqueue_ancs(void *param_1)
   undefined1 auStack_1bc [436];
   
   memset(auStack_1bc,0,0x1b4);
-  if (GLOBAL_STATE.sem_6.wait_q.next == (void *)0x0) {
+  if (_DAT_20006c5c == 0) {
     iVar1 = 1;
   }
   else {
-    if (GLOBAL_STATE.sem_6.poll_events.prev == &DAT_0000000a) {
-      z_impl_k_msgq_get((k_msgq *)&GLOBAL_STATE.sem_4.count,auStack_1bc,(k_timeout_t)0x0);
+    if (_DAT_20006c70 == 10) {
+      z_impl_k_msgq_get((k_msgq *)&DAT_20006c4c,auStack_1bc,(k_timeout_t)0x0);
       if (BLE_DEBUG == 0) {
         printk("enqueue ancs drop package! \n");
       }
@@ -29,7 +31,7 @@ int enqueue_ancs(void *param_1)
       }
     }
     memcpy(auStack_1bc,param_1,0x1b4);
-    iVar1 = z_impl_k_msgq_put((k_msgq *)&GLOBAL_STATE.sem_4.count,auStack_1bc,(k_timeout_t)0x0);
+    iVar1 = z_impl_k_msgq_put((k_msgq *)&DAT_20006c4c,auStack_1bc,(k_timeout_t)0x0);
     if ((iVar1 != 0) && (0 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
         printk("%s(): en ancs F\n");

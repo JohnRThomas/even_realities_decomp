@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 void recv_ble_data(int param_1)
 
 {
@@ -16,7 +18,7 @@ void recv_ble_data(int param_1)
   undefined1 uVar2;
   byte local_1c8 [4];
   int local_1c4 [2];
-  void *local_1bc;
+  undefined4 local_1bc;
   char local_1b4 [384];
   undefined1 auStack_34 [32];
   uint local_14;
@@ -32,8 +34,8 @@ void recv_ble_data(int param_1)
     if (local_1c4[0] == 0) {
       local_1c4[0] = 1;
     }
-    local_1bc = GLOBAL_STATE.sem_8.wait_q.next;
-    dump_ancs("FROM:ancs",(int)local_1c4,extraout_r2,GLOBAL_STATE.sem_8.wait_q.next);
+    local_1bc = _DAT_20006c8c;
+    dump_ancs("FROM:ancs",(int)local_1c4,extraout_r2,_DAT_20006c8c);
     if ((local_14 < 2) &&
        (iVar1 = is_on_whitelist_by_identifier(local_1b4,extraout_r1,extraout_r2_00,local_14),
        iVar1 != 2)) {
@@ -56,7 +58,7 @@ void recv_ble_data(int param_1)
       uVar2 = 2;
     }
     local_1c8[1] = uVar2;
-    if (GLOBAL_STATE.sem_8.wait_q.prev._2_1_ == '\x02') {
+    if (DAT_20006c92 == '\x02') {
       strcpy(local_1b4,"com.apple.mobilephone_missed");
     }
     FUN_0007fdfa(auStack_34);

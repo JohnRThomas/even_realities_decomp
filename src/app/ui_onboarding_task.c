@@ -31,7 +31,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
   pGVar2 = __get_dashboard_state();
   FUN_000452f0(param_1 + 0x24);
   FUN_0004540c();
-  if ((param_3 == 2) || (0x17 < (byte)pGVar2->field_0xf1)) {
+  if ((param_3 == 2) || (0x17 < (byte)pGVar2->field20_0xc8[0x29])) {
     pGVar2 = __get_dashboard_state();
     **(undefined1 **)&pGVar2->field_0x101c = 0;
     pGVar2 = __get_dashboard_state();
@@ -147,7 +147,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
         pGVar2 = __get_dashboard_state();
         iVar4 = *(int *)&pGVar2->field_0x101c;
         pGVar2 = __get_dashboard_state();
-        pGVar2->field_0xcd = *(undefined1 *)(iVar4 + 3);
+        pGVar2->field20_0xc8[5] = *(undefined1 *)(iVar4 + 3);
       }
     }
   }

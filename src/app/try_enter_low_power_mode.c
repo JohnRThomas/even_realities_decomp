@@ -49,7 +49,8 @@ LAB_00028dc6:
         uVar4 = FUN_00027664();
         pGVar3 = __get_dashboard_state();
         ble_printk("%s(): try to sleep chargerGetVdcRect() %d GLOBAL->battery_info[0] %d can_enter_low_power %d\n"
-                   ,"try_enter_low_power_mode",uVar4,(uint)(byte)pGVar3->field_0xfc4);
+                   ,"try_enter_low_power_mode",uVar4,(uint)(byte)pGVar3->field_0xfc4,
+                   (uint)DAT_20019a62);
       }
     }
     uVar2 = 0;
@@ -110,7 +111,8 @@ LAB_00028dc6:
             uVar4 = FUN_00027664();
             pGVar3 = __get_dashboard_state();
             ble_printk("%s(): wakeup chargerGetVdcRect() %d GLOBAL->battery_info[0] %d can_enter_low_power %d\n"
-                       ,"try_enter_low_power_mode",uVar4,(uint)(byte)pGVar3->field_0xfc4);
+                       ,"try_enter_low_power_mode",uVar4,(uint)(byte)pGVar3->field_0xfc4,
+                       (uint)DAT_20019a62);
           }
         }
         cVar9 = '(';

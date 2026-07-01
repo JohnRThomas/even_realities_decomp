@@ -264,7 +264,7 @@ LAB_0000f2fc:
                 }
                 else {
                   ble_printk("%s(): cmd_type:%s, value=%s, tx_len=%d, jstr_len=%d, jsonstr=%s\n\n",
-                             "spec_ble_command_hook",local_5c4,&local_5a0);
+                             "spec_ble_command_hook",local_5c4,&local_5a0,0,sVar6,&local_420);
                 }
               }
               subcontracing_send_data_pkcs7((int)&local_420,sVar6,4,(undefined *)0x7f50d);
@@ -295,7 +295,7 @@ LAB_0000f39a:
                 }
                 else {
                   ble_printk("%s(): cmd_type:%s, value=%s, tx_len=%d, jstr_len=%d, jsonstr=%s\n\n",
-                             "spec_ble_command_hook",local_5c4,&local_5a0);
+                             "spec_ble_command_hook",local_5c4,&local_5a0,0);
                 }
               }
               uVar12 = 9;
@@ -327,7 +327,7 @@ LAB_0000f39a:
               }
               else {
                 ble_printk("%s(): cmd_type:%s, value=%s, tx_len=%d, jstr_len=%d, jsonstr=%s\n\n",
-                           "spec_ble_command_hook",local_5c4,&local_5a0);
+                           "spec_ble_command_hook",local_5c4,&local_5a0,0);
               }
             }
             uVar12 = 10;
@@ -380,7 +380,7 @@ LAB_0000f3f4:
               }
               else {
                 ble_printk("%s(): #cmd_type:%s, title=%s, msg=%s\n\n","spec_ble_command_hook",
-                           local_5c4,&local_5c0);
+                           local_5c4,&local_5c0,&local_420);
               }
             }
             piVar4 = &local_5c0;
