@@ -1,11 +1,11 @@
 /*
  * Function: err_code_print
  * Entry:    000183a0
- * Prototype: undefined __stdcall err_code_print(undefined4 param_1, int param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall err_code_print(undefined4 param_1, undefined4 param_2)
  */
 
 
-void err_code_print(undefined4 param_1,int param_2,undefined4 param_3)
+void err_code_print(undefined4 param_1,undefined4 param_2)
 
 {
   char *fmt;
@@ -30,7 +30,7 @@ void err_code_print(undefined4 param_1,int param_2,undefined4 param_3)
     printk(fmt);
     return;
   }
-  ble_printk(fmt,(char *)(param_2 + -0xa0),param_3,BLE_DEBUG);
+  ble_printk(fmt);
   return;
 }
 

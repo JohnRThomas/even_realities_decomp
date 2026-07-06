@@ -36,16 +36,10 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
   int extraout_r2_10;
   int extraout_r2_11;
   int extraout_r2_12;
-  undefined4 extraout_r2_13;
-  undefined4 extraout_r2_14;
-  undefined4 extraout_r2_15;
-  int extraout_r2_16;
-  int extraout_r2_17;
-  int extraout_r2_18;
-  undefined4 extraout_r2_19;
-  undefined4 extraout_r2_20;
-  undefined4 extraout_r2_21;
-  undefined4 extraout_r2_22;
+  int extraout_r2_13;
+  int extraout_r2_14;
+  int extraout_r2_15;
+  undefined4 extraout_r2_16;
   byte bVar13;
   code *pcVar14;
   char *pcVar15;
@@ -81,12 +75,11 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
     iVar1 = extraout_r2;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): test:BLE_REQ_POST_BT_UNPAIR\n\n");
+        printk("%s(): test:BLE_REQ_POST_BT_UNPAIR\n\n","spec_ble_command_hook");
         iVar1 = extraout_r2_01;
       }
       else {
-        ble_printk("%s(): test:BLE_REQ_POST_BT_UNPAIR\n\n","spec_ble_command_hook",extraout_r2,
-                   BLE_DEBUG);
+        ble_printk("%s(): test:BLE_REQ_POST_BT_UNPAIR\n\n");
         iVar1 = extraout_r2_00;
       }
     }
@@ -135,10 +128,10 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
           pcVar3 = (char *)&local_420;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): buf:%s\n\n");
+              printk("%s(): buf:%s\n\n","spec_ble_command_hook",&local_420);
             }
             else {
-              ble_printk("%s(): buf:%s\n\n","spec_ble_command_hook",&local_420,BLE_DEBUG);
+              ble_printk("%s(): buf:%s\n\n");
             }
           }
           do {
@@ -150,10 +143,10 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
           memcpy(&local_5c0,&local_420,(int)pcVar3 - (int)&local_420);
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): cmd:%s\n\n");
+              printk("%s(): cmd:%s\n\n","spec_ble_command_hook",&local_5c0);
             }
             else {
-              ble_printk("%s(): cmd:%s\n\n","spec_ble_command_hook",&local_5c0,BLE_DEBUG);
+              ble_printk("%s(): cmd:%s\n\n");
             }
           }
           pcVar3 = pcVar3 + 1;
@@ -166,10 +159,10 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
           memcpy(&local_5a0,pcVar3,(int)pcVar15 - (int)pcVar3);
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): en:%s\n\n");
+              printk("%s(): en:%s\n\n","spec_ble_command_hook",&local_5a0);
             }
             else {
-              ble_printk("%s(): en:%s\n\n","spec_ble_command_hook",&local_5a0,BLE_DEBUG);
+              ble_printk("%s(): en:%s\n\n");
             }
           }
           iVar1 = atoi((char *)&local_5c0);
@@ -219,36 +212,32 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
           } while (*pcVar15 != '@');
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): 11 len=%d\n");
+              printk("%s(): 11 len=%d\n","spec_ble_command_hook",(int)pcVar15 - (int)pcVar3);
             }
             else {
-              ble_printk("%s(): 11 len=%d\n","spec_ble_command_hook",(int)pcVar15 - (int)pcVar3,
-                         BLE_DEBUG);
+              ble_printk("%s(): 11 len=%d\n");
             }
           }
           memcpy(local_5c4,pcVar3,(int)pcVar15 - (int)pcVar3);
           iVar1 = atoi(local_5c4);
           if (LOG_LEVEL < 3) {
             if (iVar1 == 4) goto LAB_0000f2fc;
-            uVar11 = extraout_r2_13;
             if (iVar1 == 9) goto LAB_0000f39a;
           }
           else {
             if (BLE_DEBUG == 0) {
-              printk("%s(): cmd=%d\n");
-              uVar11 = extraout_r2_15;
+              printk("%s(): cmd=%d\n","spec_ble_command_hook",iVar1);
             }
             else {
-              ble_printk("%s(): cmd=%d\n","spec_ble_command_hook",iVar1,BLE_DEBUG);
-              uVar11 = extraout_r2_14;
+              ble_printk("%s(): cmd=%d\n");
             }
             if (iVar1 == 4) {
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk(&DAT_000a1d43);
+                  printk(&DAT_000a1d43,"spec_ble_command_hook");
                 }
                 else {
-                  ble_printk(&DAT_000a1d43,"spec_ble_command_hook",uVar11,BLE_DEBUG);
+                  ble_printk(&DAT_000a1d43);
                 }
               }
 LAB_0000f2fc:
@@ -273,11 +262,11 @@ LAB_0000f2fc:
             if (iVar1 == 9) {
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk("%s(): simulator->BLE_REQ_PUT_TELEPROMPTER_INFO.\n\n");
+                  printk("%s(): simulator->BLE_REQ_PUT_TELEPROMPTER_INFO.\n\n",
+                         "spec_ble_command_hook");
                 }
                 else {
-                  ble_printk("%s(): simulator->BLE_REQ_PUT_TELEPROMPTER_INFO.\n\n",
-                             "spec_ble_command_hook",uVar11,BLE_DEBUG);
+                  ble_printk("%s(): simulator->BLE_REQ_PUT_TELEPROMPTER_INFO.\n\n");
                 }
               }
 LAB_0000f39a:
@@ -305,11 +294,10 @@ LAB_0000f39a:
           if (iVar1 == 10) {
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): simulator->BLE_REQ_PUT_NAVIGATION_INFO.\n\n");
+                printk("%s(): simulator->BLE_REQ_PUT_NAVIGATION_INFO.\n\n","spec_ble_command_hook");
               }
               else {
-                ble_printk("%s(): simulator->BLE_REQ_PUT_NAVIGATION_INFO.\n\n",
-                           "spec_ble_command_hook",uVar11,BLE_DEBUG);
+                ble_printk("%s(): simulator->BLE_REQ_PUT_NAVIGATION_INFO.\n\n");
               }
             }
             pcVar7 = cJSON_CreateObject();
@@ -339,11 +327,10 @@ LAB_0000f3f4:
           if (iVar1 == 0x58) {
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(s__s____simulator_SCHEDULE___000a1f6b);
+                printk(s__s____simulator_SCHEDULE___000a1f6b,"spec_ble_command_hook");
               }
               else {
-                ble_printk(s__s____simulator_SCHEDULE___000a1f6b,"spec_ble_command_hook",uVar11,
-                           BLE_DEBUG);
+                ble_printk(s__s____simulator_SCHEDULE___000a1f6b);
               }
             }
             simulator_ancs_calendar_schedule_trigger();
@@ -358,11 +345,10 @@ LAB_0000f3f4:
             } while (*pcVar5 != '\0');
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): 22 len=%d\n");
+                printk("%s(): 22 len=%d\n","spec_ble_command_hook",(int)pcVar5 - (int)pcVar15);
               }
               else {
-                ble_printk("%s(): 22 len=%d\n","spec_ble_command_hook",(int)pcVar5 - (int)pcVar15,
-                           BLE_DEBUG);
+                ble_printk("%s(): 22 len=%d\n");
               }
             }
             memcpy(&local_5a0,pcVar15,(int)pcVar5 - (int)pcVar15);
@@ -391,17 +377,17 @@ LAB_0000effe:
           local_520 = (byte)iVar1;
           iVar1 = atoi((char *)&local_5a0);
           uStack_51f = (undefined1)iVar1;
-          iVar1 = extraout_r2_16;
+          iVar1 = extraout_r2_13;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               printk("%s(): **cmd_type:%s, value=%s, tx_len=%d\n\n","spec_ble_command_hook",
                      local_5c4,&local_5a0,2);
-              iVar1 = extraout_r2_18;
+              iVar1 = extraout_r2_15;
             }
             else {
               ble_printk("%s(): **cmd_type:%s, value=%s, tx_len=%d\n\n","spec_ble_command_hook",
-                         local_5c4,&local_5a0);
-              iVar1 = extraout_r2_17;
+                         local_5c4);
+              iVar1 = extraout_r2_14;
             }
           }
           uVar11 = 2;
@@ -446,7 +432,6 @@ LAB_0000effe:
                     pcVar3 = 
                     "%s(): unable to audio transfer, due to no connected or notification disabled\n"
                     ;
-                    uVar11 = extraout_r2_20;
                     goto LAB_0000f660;
                   }
                 }
@@ -467,13 +452,12 @@ LAB_0000effe:
           pcVar3 = 
           "%s(): unable to change MTU for audio transfer, due to no connected or notification disabled\n"
           ;
-          uVar11 = extraout_r2_19;
 LAB_0000f660:
           if (BLE_DEBUG != 0) {
-            ble_printk(pcVar3,"spec_ble_command_hook",uVar11,BLE_DEBUG);
+            ble_printk(pcVar3);
             return 0;
           }
-          printk(pcVar3);
+          printk(pcVar3,"spec_ble_command_hook");
           return 0;
         }
         iVar2 = strncmp((char *)&local_520,"#b",2);
@@ -518,11 +502,10 @@ LAB_0000f9f4:
                 if (iVar2 == 0) {
                   if (0 < LOG_LEVEL) {
                     if (BLE_DEBUG == 0) {
-                      printk("%s(): sys reboot because reboot cmd\n");
+                      printk("%s(): sys reboot because reboot cmd\n","spec_ble_command_hook");
                     }
                     else {
-                      ble_printk("%s(): sys reboot because reboot cmd\n","spec_ble_command_hook",
-                                 extraout_r2_21,BLE_DEBUG);
+                      ble_printk("%s(): sys reboot because reboot cmd\n");
                     }
                   }
                   sleep(500);
@@ -547,7 +530,7 @@ LAB_0000f9f4:
                 local_420 = strncmp((char *)&local_520,"#i",2);
                 if (local_420 == 0) {
                   pvVar9 = memset(&local_41c,0,0x10);
-                  uVar16 = opt3007_get_max_lux(pvVar9,extraout_r1,extraout_r2_22);
+                  uVar16 = opt3007_get_max_lux(pvVar9,extraout_r1,extraout_r2_16);
                   if (cStack_51e != '\0') {
                     uVar10 = atoi(&cStack_51e);
                     if (uVar10 < 2) {

@@ -12,7 +12,7 @@ undefined4 gui_bmp_dynamic_bitmap_draw(uint param_1,int param_2,int param_3)
   undefined4 uVar2;
   uint uVar3;
   GlassesState *pGVar4;
-  undefined4 extraout_r2;
+  uint32_t uVar5;
   byte in_stack_00000008;
   byte local_2d;
   uint local_2c;
@@ -26,11 +26,11 @@ undefined4 gui_bmp_dynamic_bitmap_draw(uint param_1,int param_2,int param_3)
   if (iVar1 < 0) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): can\'t find resource,please check resource name !\n");
+        printk("%s(): can\'t find resource,please check resource name !\n",
+               "gui_bmp_dynamic_bitmap_draw");
       }
       else {
-        ble_printk("%s(): can\'t find resource,please check resource name !\n",
-                   "gui_bmp_dynamic_bitmap_draw",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): can\'t find resource,please check resource name !\n");
       }
     }
     uVar2 = 0xffffffff;
@@ -48,11 +48,11 @@ undefined4 gui_bmp_dynamic_bitmap_draw(uint param_1,int param_2,int param_3)
     iVar1 = FUN_000452e4();
     if (iVar1 << 0x1e < 0) {
       pGVar4 = __get_dashboard_state();
-      iVar1 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
+      uVar5 = (pGVar4->jdb_panel_context).current_row;
       pGVar4 = __get_dashboard_state();
       _reflash_fb_data_to_lcd
-                (iVar1,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,param_2,param_3,
-                 local_2c + param_2,local_28 + param_3);
+                (uVar5,(pGVar4->jdb_panel_context).current_column,param_2,param_3,local_2c + param_2
+                 ,local_28 + param_3);
     }
     if ((((int)(uint)DAT_200100ee < (int)(DAT_200100f0 - 1)) || (in_stack_00000008 == 0)) ||
        ((int)(uint)DAT_200100ec < (int)(in_stack_00000008 - 1))) {

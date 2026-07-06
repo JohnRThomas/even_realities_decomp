@@ -1,11 +1,11 @@
 /*
  * Function: getStocksIndex
  * Entry:    00038b24
- * Prototype: byte __stdcall getStocksIndex(void)
+ * Prototype: undefined1 __stdcall getStocksIndex(void)
  */
 
 
-byte getStocksIndex(void)
+undefined1 getStocksIndex(void)
 
 {
   DAT_20004afb = DAT_2001c4e5;
@@ -14,7 +14,7 @@ byte getStocksIndex(void)
       printk("%s():  %s index = %d\n","getStocksIndex");
     }
     else {
-      ble_printk("%s():  %s index = %d\n","getStocksIndex","getStocksIndex",(uint)DAT_2001c4e5);
+      ble_printk("%s():  %s index = %d\n","getStocksIndex");
     }
   }
   return DAT_20004afb;

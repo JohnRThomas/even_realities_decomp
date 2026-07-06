@@ -16,16 +16,16 @@ gui_utf_draw_truncate
   int iVar3;
   GlassesState *pGVar4;
   undefined4 uVar5;
-  undefined4 extraout_r2;
   size_t sVar6;
   byte *pbVar7;
   uint uVar8;
-  uint uVar9;
+  uint32_t uVar9;
   uint uVar10;
-  size_t sVar11;
-  uint uVar12;
-  ushort *puVar13;
-  uint uVar14;
+  uint uVar11;
+  size_t sVar12;
+  uint uVar13;
+  ushort *puVar14;
+  uint uVar15;
   uint local_2fc;
   int local_2f8;
   uint local_2f0;
@@ -45,11 +45,10 @@ gui_utf_draw_truncate
 LAB_00046fda:
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): exex process effect callback function\n");
+          printk("%s(): exex process effect callback function\n","gui_utf_draw_truncate");
         }
         else {
-          ble_printk("%s(): exex process effect callback function\n","gui_utf_draw_truncate",
-                     extraout_r2,BLE_DEBUG);
+          ble_printk("%s(): exex process effect callback function\n");
         }
       }
       uVar5 = (*(code *)param_11)(0,param_2,param_3,param_4,param_5);
@@ -60,35 +59,34 @@ LAB_00046fda:
       if (iVar3 << 0x1e < 0) {
         _clean_fb_data(__frame_buffer,0,param_4,param_5,param_6,param_7);
       }
-      uVar14 = 0;
+      uVar15 = 0;
       uVar8 = 0;
-      uVar9 = 0;
+      uVar10 = 0;
       local_2fc = 0;
       local_2f0 = 0;
       do {
         if ((int)(uint)local_2da <= (int)local_2fc) goto LAB_00046eac;
-        uVar10 = (uint)*puVar2;
-        iVar3 = FUN_00080fb2(uVar10);
+        uVar11 = (uint)*puVar2;
+        iVar3 = FUN_00080fb2(uVar11);
         if (iVar3 == 0) {
-          iVar3 = resource_manger_get(param_3,uVar10,&local_2d4,&local_2d0,&local_2d8,
+          iVar3 = resource_manger_get(param_3,uVar11,&local_2d4,&local_2d0,&local_2d8,
                                       (undefined1 *)0x0);
           uVar1 = local_2d0;
-          uVar12 = local_2d4;
+          uVar13 = local_2d4;
           if (iVar3 < 0) {
 LAB_00046d06:
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): can not find 0x%x font resource\n");
+                printk("%s(): can not find 0x%x font resource\n","gui_utf_draw_truncate",uVar11);
               }
               else {
-                ble_printk("%s(): can not find 0x%x font resource\n","gui_utf_draw_truncate",uVar10,
-                           BLE_DEBUG);
+                ble_printk("%s(): can not find 0x%x font resource\n");
               }
             }
           }
           else {
-            sVar11 = (int)local_2d4 / 2;
-            sVar6 = local_2d0 * sVar11;
+            sVar12 = (int)local_2d4 / 2;
+            sVar6 = local_2d0 * sVar12;
             memcpy(local_2cc,local_2d8,sVar6);
             if (local_2fc < param_9) {
               pbVar7 = local_2cc;
@@ -98,54 +96,54 @@ LAB_00046d06:
               }
             }
             iVar3 = FUN_000462b0((uint)*puVar2,(uint)puVar2[1]);
-            local_2f0 = local_2f0 + uVar12 + iVar3;
+            local_2f0 = local_2f0 + uVar13 + iVar3;
             if ((uint)(param_6 - param_4) < local_2f0) {
-              uVar14 = uVar14 + 1;
-              uVar12 = local_2fc;
-              puVar13 = puVar2;
-              if ((param_8 <= uVar14) || ((uint)(param_7 - param_5) <= uVar8)) {
-                while (uVar12 != 0) {
-                  if (3 < (param_6 - param_4) - uVar9) goto LAB_00046e2a;
-                  uVar10 = (uint)puVar13[-1];
-                  iVar3 = resource_manger_get(param_3,uVar10,&local_2d4,&local_2d0,&local_2d8,
+              uVar15 = uVar15 + 1;
+              uVar13 = local_2fc;
+              puVar14 = puVar2;
+              if ((param_8 <= uVar15) || ((uint)(param_7 - param_5) <= uVar8)) {
+                while (uVar13 != 0) {
+                  if (3 < (param_6 - param_4) - uVar10) goto LAB_00046e2a;
+                  uVar11 = (uint)puVar14[-1];
+                  iVar3 = resource_manger_get(param_3,uVar11,&local_2d4,&local_2d0,&local_2d8,
                                               (undefined1 *)0x0);
-                  uVar12 = uVar12 - 1;
+                  uVar13 = uVar13 - 1;
                   if (iVar3 < 0) {
                     if (1 < LOG_LEVEL) {
                       if (BLE_DEBUG == 0) {
                         printk("%s(): truncate can not find [%d]0x%x font resource\n",
-                               "gui_utf_draw_truncate",uVar12,uVar10);
+                               "gui_utf_draw_truncate",uVar13,uVar11);
                       }
                       else {
                         ble_printk("%s(): truncate can not find [%d]0x%x font resource\n",
-                                   "gui_utf_draw_truncate",uVar12,uVar10);
+                                   "gui_utf_draw_truncate",uVar13,uVar11);
                       }
                     }
                   }
                   else {
-                    iVar3 = FUN_000462b0((uint)puVar13[-1],(uint)*puVar13);
-                    uVar9 = (uVar9 - local_2d4) - iVar3;
-                    _clean_fb_data(__frame_buffer,0,param_4 + uVar9,uVar8 + param_5,
-                                   local_2d4 + param_4 + uVar9,local_2d0 + uVar8 + param_5);
+                    iVar3 = FUN_000462b0((uint)puVar14[-1],(uint)*puVar14);
+                    uVar10 = (uVar10 - local_2d4) - iVar3;
+                    _clean_fb_data(__frame_buffer,0,param_4 + uVar10,uVar8 + param_5,
+                                   local_2d4 + param_4 + uVar10,local_2d0 + uVar8 + param_5);
                   }
-                  puVar13 = puVar13 + -1;
+                  puVar14 = puVar14 + -1;
                 }
-                uVar9 = 0;
+                uVar10 = 0;
 LAB_00046e2a:
                 if (1 < LOG_LEVEL) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): end line x0=%d\n");
+                    printk("%s(): end line x0=%d\n","gui_utf_draw_truncate",uVar10);
                   }
                   else {
-                    ble_printk("%s(): end line x0=%d\n","gui_utf_draw_truncate",uVar9,BLE_DEBUG);
+                    ble_printk("%s(): end line x0=%d\n");
                   }
                 }
                 iVar3 = resource_manger_get(param_3,0x2026,&local_2d4,&local_2d0,&local_2d8,
                                             (undefined1 *)0x0);
-                uVar12 = local_2d0;
+                uVar13 = local_2d0;
                 if (iVar3 < 0) goto LAB_00046d06;
-                sVar11 = (int)local_2d4 / 2;
-                sVar6 = local_2d0 * sVar11;
+                sVar12 = (int)local_2d4 / 2;
+                sVar6 = local_2d0 * sVar12;
                 memcpy(local_2cc,local_2d8,sVar6);
                 if (local_2fc < param_9) {
                   pbVar7 = local_2cc;
@@ -156,7 +154,7 @@ LAB_00046e2a:
                   }
                 }
                 __copy_to_frame_buffer
-                          ((int)__frame_buffer,local_2cc,sVar11,uVar12,uVar9 + param_4,
+                          ((int)__frame_buffer,local_2cc,sVar12,uVar13,uVar10 + param_4,
                            uVar8 + param_5);
 LAB_00046eac:
                 iVar3 = FUN_000452e4();
@@ -164,11 +162,11 @@ LAB_00046eac:
                   return 0;
                 }
                 pGVar4 = __get_dashboard_state();
-                iVar3 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
+                uVar9 = (pGVar4->jdb_panel_context).current_row;
                 pGVar4 = __get_dashboard_state();
                 _reflash_fb_data_to_lcd
-                          (iVar3,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,param_4,param_5,
-                           param_6,param_7);
+                          (uVar9,(pGVar4->jdb_panel_context).current_column,param_4,param_5,param_6,
+                           param_7);
                 return 0;
               }
               uVar8 = uVar8 + uVar1;
@@ -176,21 +174,21 @@ LAB_00046eac:
                 uVar8 = uVar8 + 1;
               }
               __copy_to_frame_buffer
-                        ((int)__frame_buffer,local_2cc,sVar11,uVar1,param_4,uVar8 + param_5);
+                        ((int)__frame_buffer,local_2cc,sVar12,uVar1,param_4,uVar8 + param_5);
               iVar3 = FUN_000462b0((uint)*puVar2,(uint)puVar2[1]);
-              uVar9 = local_2d4 + iVar3;
-              local_2f0 = uVar9;
+              uVar10 = local_2d4 + iVar3;
+              local_2f0 = uVar10;
             }
             else {
               __copy_to_frame_buffer
-                        ((int)__frame_buffer,local_2cc,sVar11,uVar1,uVar9 + param_4,uVar8 + param_5)
-              ;
+                        ((int)__frame_buffer,local_2cc,sVar12,uVar1,uVar10 + param_4,uVar8 + param_5
+                        );
               iVar3 = FUN_000462b0((uint)*puVar2,(uint)puVar2[1]);
-              uVar9 = uVar9 + iVar3 + local_2d4;
+              uVar10 = uVar10 + iVar3 + local_2d4;
             }
           }
         }
-        else if ((iVar3 == -1) && ((uVar10 == 0xd || (uVar10 == 10)))) {
+        else if ((iVar3 == -1) && ((uVar11 == 0xd || (uVar11 == 10)))) {
           if (local_2d0 == 0) {
             if (param_3 == 0) {
               uVar8 = uVar8 + 0x1b;
@@ -205,9 +203,9 @@ LAB_00046eac:
               uVar8 = uVar8 + 1;
             }
           }
-          uVar14 = uVar14 + 1;
-          if ((param_8 <= uVar14) || ((uint)(param_7 - param_5) <= uVar8)) goto LAB_00046eac;
-          uVar9 = 0;
+          uVar15 = uVar15 + 1;
+          if ((param_8 <= uVar15) || ((uint)(param_7 - param_5) <= uVar8)) goto LAB_00046eac;
+          uVar10 = 0;
           local_2f0 = 0;
         }
         puVar2 = puVar2 + 1;

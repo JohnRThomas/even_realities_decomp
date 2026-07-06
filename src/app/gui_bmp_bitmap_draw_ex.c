@@ -12,9 +12,9 @@ undefined4 gui_bmp_bitmap_draw_ex(uint param_1,int param_2,int param_3,void *par
   int iVar1;
   uint uVar2;
   GlassesState *pGVar3;
-  int extraout_r2;
   byte *pbVar4;
   size_t n;
+  uint32_t uVar5;
   uint local_24;
   uint local_20;
   void *local_1c;
@@ -47,10 +47,10 @@ undefined4 gui_bmp_bitmap_draw_ex(uint param_1,int param_2,int param_3,void *par
       iVar1 = FUN_000452e4();
       if (iVar1 << 0x1e < 0) {
         pGVar3 = __get_dashboard_state();
-        iVar1 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
+        uVar5 = (pGVar3->jdb_panel_context).current_row;
         pGVar3 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar1,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,param_2,param_3,
+                  (uVar5,(pGVar3->jdb_panel_context).current_column,param_2,param_3,
                    local_24 + 2 + param_2,local_20 + param_3);
       }
       return 0;
@@ -59,13 +59,12 @@ undefined4 gui_bmp_bitmap_draw_ex(uint param_1,int param_2,int param_3,void *par
       return 0xffffffff;
     }
     fmt = "%s(): can\'t find resource,please check resource name !\n";
-    param_3 = extraout_r2;
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"gui_bmp_bitmap_draw_ex");
   }
   else {
-    ble_printk(fmt,"gui_bmp_bitmap_draw_ex",param_3,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0xffffffff;
 }

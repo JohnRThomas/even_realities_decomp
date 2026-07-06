@@ -43,7 +43,7 @@ void aging_charge_test(uint param_1)
     if (DAT_2001abc1 == '\x01') {
       pGVar5 = __get_dashboard_state();
       if ((299 < (uint)pGVar5->field1250_0x10b0) &&
-         ((((pGVar5 = __get_dashboard_state(), (pGVar5->jdb_panel_context).__initialized == 1 ||
+         ((((pGVar5 = __get_dashboard_state(), (pGVar5->jdb_panel_context).init_done == 1 ||
             (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0xd] == '\x03')) ||
            (pGVar5 = __get_dashboard_state(), pGVar5->field_0xfea == '\0')) || (DAT_2000a9ac != 0)))
          ) {
@@ -71,7 +71,7 @@ void aging_charge_test(uint param_1)
     }
     else if (DAT_2001abc1 == '\x02') {
       pGVar5 = __get_dashboard_state();
-      if ((((pGVar5->jdb_panel_context).__initialized != 1) ||
+      if ((((pGVar5->jdb_panel_context).init_done != 1) ||
           (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0xd] != '\x03')) ||
          ((pGVar5 = __get_dashboard_state(), pGVar5->field_0xfea == '\x01' || (DAT_2000a9ac == 0))))
       {
@@ -99,11 +99,11 @@ void aging_charge_test(uint param_1)
             (SBORROW4(DAT_2000493c,iVar9) != SBORROW4(DAT_2000493c - iVar9,(uint)bVar10))) {
           if (0 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): Err:current time is smaller than the discharge test start time!\n");
+              printk("%s(): Err:current time is smaller than the discharge test start time!\n",
+                     "aging_charge_test");
             }
             else {
-              ble_printk("%s(): Err:current time is smaller than the discharge test start time!\n",
-                         "aging_charge_test",DAT_20004938,BLE_DEBUG);
+              ble_printk("%s(): Err:current time is smaller than the discharge test start time!\n");
             }
           }
         }
@@ -190,7 +190,7 @@ void aging_charge_test(uint param_1)
     }
     else {
       pGVar5 = __get_dashboard_state();
-      if (((((pGVar5->jdb_panel_context).__initialized != 1) ||
+      if (((((pGVar5->jdb_panel_context).init_done != 1) ||
            (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0xd] != '\x03')) ||
           (pGVar5 = __get_dashboard_state(), pGVar5->field_0xfea == '\x01')) || (DAT_2000a9ac == 0))
       {

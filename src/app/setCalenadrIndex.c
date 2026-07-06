@@ -16,8 +16,7 @@ undefined4 setCalenadrIndex(byte param_1,undefined4 param_2,undefined4 param_3,u
              param_4);
     }
     else {
-      ble_printk("%s(): calendar %s index = %d\n","setCalenadrIndex","setCalenadrIndex",
-                 (uint)param_1);
+      ble_printk("%s(): calendar %s index = %d\n","setCalenadrIndex");
     }
   }
   return 0;

@@ -16,7 +16,7 @@ undefined4 send_response_data_to_msgqueue(void *param_1,uint param_2)
   undefined1 auStack_24 [24];
   
   pGVar1 = __get_dashboard_state();
-  if (*(char *)pGVar1 == '\x02') {
+  if (pGVar1->is_master == true) {
 LAB_0004b3b6:
     uVar2 = 0;
   }
@@ -33,11 +33,11 @@ LAB_0004b3b6:
     }
     else if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): send data length more than %d,can\'t load it,exit ...\n");
+        printk("%s(): send data length more than %d,can\'t load it,exit ...\n",
+               "send_response_data_to_msgqueue",0x14);
       }
       else {
-        ble_printk("%s(): send data length more than %d,can\'t load it,exit ...\n",
-                   "send_response_data_to_msgqueue",0x14,BLE_DEBUG);
+        ble_printk("%s(): send data length more than %d,can\'t load it,exit ...\n");
       }
     }
     uVar2 = 0xffffffff;

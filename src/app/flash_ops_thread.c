@@ -1,11 +1,11 @@
 /*
  * Function: flash_ops_thread
  * Entry:    00025538
- * Prototype: undefined __stdcall flash_ops_thread(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall flash_ops_thread(undefined4 param_1, undefined4 param_2)
  */
 
 
-void flash_ops_thread(undefined4 param_1,undefined4 param_2,undefined4 param_3)
+void flash_ops_thread(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
@@ -19,11 +19,11 @@ void flash_ops_thread(undefined4 param_1,undefined4 param_2,undefined4 param_3)
   
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): flash op thread startup ...\n");
+      printk("%s(): flash op thread startup ...\n","flash_ops_thread");
       param_2 = extraout_r1_02;
     }
     else {
-      ble_printk("%s(): flash op thread startup ...\n","flash_ops_thread",param_3,BLE_DEBUG);
+      ble_printk("%s(): flash op thread startup ...\n");
       param_2 = extraout_r1;
     }
   }

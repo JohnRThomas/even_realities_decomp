@@ -12,7 +12,6 @@ undefined4 find_chinese_bitmap_by_unicode(int param_1,short param_2,short param_
   GlassesState *pGVar2;
   int iVar3;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   uint n;
   undefined *puVar4;
   undefined1 *buf;
@@ -40,11 +39,10 @@ undefined4 find_chinese_bitmap_by_unicode(int param_1,short param_2,short param_
       if (iVar3 != 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): read flash fail\n\n");
+            printk("%s(): read flash fail\n\n","find_chinese_bitmap_by_unicode");
           }
           else {
-            ble_printk("%s(): read flash fail\n\n","find_chinese_bitmap_by_unicode",extraout_r2,
-                       BLE_DEBUG);
+            ble_printk("%s(): read flash fail\n\n");
           }
         }
         return 0;
@@ -62,16 +60,15 @@ undefined4 find_chinese_bitmap_by_unicode(int param_1,short param_2,short param_
       iVar3 = (*pcVar5)(pGVar2,puVar4 + 0x200000,buf,uVar6);
       if ((iVar3 != 0) && (0 < LOG_LEVEL)) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): read flash fail: %d\n\n");
+          printk("%s(): read flash fail: %d\n\n","find_chinese_bitmap_by_unicode",iVar3);
         }
         else {
-          ble_printk("%s(): read flash fail: %d\n\n","find_chinese_bitmap_by_unicode",iVar3,
-                     BLE_DEBUG);
+          ble_printk("%s(): read flash fail: %d\n\n");
         }
       }
     }
     FUN_0004b194((int)buf,n,0x2001dd06);
-    uVar1 = extraout_r2_00;
+    uVar1 = extraout_r2;
   }
   return uVar1;
 }

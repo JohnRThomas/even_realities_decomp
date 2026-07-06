@@ -9,7 +9,6 @@ undefined4 sendAudioStram2Cache(void *param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined1 local_dc [2];
   undefined2 local_da;
   undefined1 auStack_d8 [200];
@@ -18,11 +17,10 @@ undefined4 sendAudioStram2Cache(void *param_1)
   if (DAT_20003a54 == 0x12) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): enqueue dmic stream num is full, drop it %d\r\n\n");
+        printk("%s(): enqueue dmic stream num is full, drop it %d\r\n\n","sendAudioStram2Cache");
       }
       else {
-        ble_printk("%s(): enqueue dmic stream num is full, drop it %d\r\n\n","sendAudioStram2Cache",
-                   0x12,BLE_DEBUG);
+        ble_printk("%s(): enqueue dmic stream num is full, drop it %d\r\n\n");
       }
     }
   }
@@ -37,10 +35,10 @@ undefined4 sendAudioStram2Cache(void *param_1)
     }
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): enqueue_dmic failed\r\n\n");
+        printk("%s(): enqueue_dmic failed\r\n\n","sendAudioStram2Cache");
       }
       else {
-        ble_printk("%s(): enqueue_dmic failed\r\n\n","sendAudioStram2Cache",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): enqueue_dmic failed\r\n\n");
       }
     }
   }

@@ -8,9 +8,9 @@
 void FUN_00080dbc(int param_1)
 
 {
-  FUN_00080d76(param_1);
-  FUN_00080ece(0x97);
-  busy_wait_seconds(1);
+  __clr_cache(param_1);
+  __send_cmd(SPI_SYNC);
+  delay_ms(1);
   return;
 }
 

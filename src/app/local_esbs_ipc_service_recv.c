@@ -20,18 +20,13 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
   undefined4 extraout_r1_00;
   undefined4 extraout_r1_01;
   undefined1 uVar7;
-  uint uVar8;
-  uint extraout_r2;
-  uint extraout_r2_00;
-  uint extraout_r2_01;
-  uint extraout_r2_02;
-  undefined4 *puVar9;
-  byte *pbVar10;
-  uint uVar11;
-  uint uVar12;
-  byte *pbVar13;
-  undefined1 *puVar14;
-  uint uVar15;
+  undefined4 *puVar8;
+  byte *pbVar9;
+  uint uVar10;
+  byte *pbVar11;
+  undefined1 *puVar12;
+  uint uVar13;
+  uint uVar14;
   undefined4 local_30;
   undefined4 uStack_2c;
   undefined4 local_28;
@@ -42,43 +37,39 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
   local_30 = 0;
   memset(&uStack_2c,0,0x12);
   puVar5 = &local_30;
-  pbVar10 = param_2 + 0xb;
+  pbVar9 = param_2 + 0xb;
   do {
-    pbVar13 = pbVar10;
-    puVar9 = puVar5;
-    uVar6 = *(undefined4 *)(pbVar13 + 4);
-    pbVar10 = pbVar13 + 8;
-    *puVar9 = *(undefined4 *)pbVar13;
-    puVar9[1] = uVar6;
-    puVar5 = puVar9 + 2;
-  } while (pbVar10 != param_2 + 0x1b);
-  puVar9[2] = *(undefined4 *)pbVar10;
-  *(byte *)(puVar9 + 3) = pbVar13[0xc];
-  uVar8 = (uint)uStack_2c._2_1_;
-  uVar11 = (uint)*(byte *)(param_1 + 0xda);
-  if (uVar8 == uVar11) {
+    pbVar11 = pbVar9;
+    puVar8 = puVar5;
+    uVar6 = *(undefined4 *)(pbVar11 + 4);
+    pbVar9 = pbVar11 + 8;
+    *puVar8 = *(undefined4 *)pbVar11;
+    puVar8[1] = uVar6;
+    puVar5 = puVar8 + 2;
+  } while (pbVar9 != param_2 + 0x1b);
+  puVar8[2] = *(undefined4 *)pbVar9;
+  *(byte *)(puVar8 + 3) = pbVar11[0xc];
+  if (uStack_2c._2_1_ == *(char *)(param_1 + 0xda)) {
     if (LOG_LEVEL < 1) {
       return 0;
     }
     fmt = "%s(): slave recv same package\n";
     goto LAB_00015918;
   }
-  if ((uVar8 != (uVar11 + 1 & 0xff)) && (0 < LOG_LEVEL)) {
+  if ((uStack_2c._2_1_ != (char)(*(char *)(param_1 + 0xda) + '\x01')) && (0 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
       printk("%s(): ###############loss package new_data_pkg->package_id %d data_pkg->package_id %d\n"
              ,"local_esbs_ipc_service_recv");
-      uVar8 = extraout_r2_00;
     }
     else {
       ble_printk("%s(): ###############loss package new_data_pkg->package_id %d data_pkg->package_id %d\n"
-                 ,"local_esbs_ipc_service_recv",uVar8,uVar11);
-      uVar8 = extraout_r2;
+                 ,"local_esbs_ipc_service_recv");
     }
   }
   uVar3 = local_30;
-  uVar11 = local_30 & 0x3f;
-  uVar15 = local_30 & 0x3f;
-  if (uVar15 == 1) {
+  uVar13 = local_30 & 0x3f;
+  uVar14 = local_30 & 0x3f;
+  if (uVar14 == 1) {
     if (*(char *)(param_1 + 0xfea) == '\x01') {
       *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
       if (LOG_LEVEL < 1) {
@@ -88,35 +79,29 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
       goto LAB_00015918;
     }
   }
-  else if (uVar15 == 2) {
+  else if (uVar14 == 2) {
     if ((*(char *)(param_1 + 0xfea) == '\0') &&
        (*(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01', 0 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): slave recv resume package\n");
-        uVar8 = extraout_r2_02;
+        printk("%s(): slave recv resume package\n","local_esbs_ipc_service_recv");
       }
       else {
-        ble_printk("%s(): slave recv resume package\n","local_esbs_ipc_service_recv",uVar8,BLE_DEBUG
-                  );
-        uVar8 = extraout_r2_01;
+        ble_printk("%s(): slave recv resume package\n");
       }
     }
   }
-  else {
-    uVar8 = (uint)*(byte *)(param_1 + 0xd5);
-    if ((uVar8 != (local_30 >> 8 & 0xff)) && (uVar15 == 8)) {
-      *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
-      if (LOG_LEVEL < 1) {
-        return 0;
-      }
-      fmt = "%s(): screen id is not same\n";
-      goto LAB_00015918;
+  else if ((*(char *)(param_1 + 0xd5) != local_30._1_1_) && (uVar14 == 8)) {
+    *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
+    if (LOG_LEVEL < 1) {
+      return 0;
     }
+    fmt = "%s(): screen id is not same\n";
+    goto LAB_00015918;
   }
   if (((*(char *)(param_1 + 0xd5) == '\t') || (*(char *)(param_1 + 0xd5) == '\v')) ||
      (*(char *)(param_1 + 0xd5) == '\n')) {
-    uVar12 = uVar3 & 0xc0;
-    if (uVar12 == 0x80) {
+    uVar10 = uVar3 & 0xc0;
+    if (uVar10 == 0x80) {
       if (*(char *)(param_1 + 0xce) != '\0') {
         *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
         if (LOG_LEVEL < 1) {
@@ -126,7 +111,7 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
         goto LAB_00015918;
       }
     }
-    else if ((uVar12 == 0x40) && (*(char *)(param_1 + 0xcf) != '\0')) {
+    else if ((uVar10 == 0x40) && (*(char *)(param_1 + 0xcf) != '\0')) {
       *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
       if (LOG_LEVEL < 1) {
         return 0;
@@ -138,11 +123,10 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
   else if ((*(char *)(param_1 + 0xd5) == '\x10') && (*(char *)(param_1 + 0xce) != '\0')) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): slave even ai recv down recving\n");
+        printk("%s(): slave even ai recv down recving\n","local_esbs_ipc_service_recv");
       }
       else {
-        ble_printk("%s(): slave even ai recv down recving\n","local_esbs_ipc_service_recv",uVar8,
-                   BLE_DEBUG);
+        ble_printk("%s(): slave even ai recv down recving\n");
       }
     }
     *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
@@ -152,11 +136,11 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
     *(byte *)(param_1 + 0xe9) = param_2[3];
     bVar1 = param_2[4];
     *(byte *)(param_1 + 0xea) = bVar1;
-    if (uVar11 == 0) {
+    if (uVar13 == 0) {
       if (((uVar3 & 0xc0) == 0x80) ||
          ((local_30._1_1_ == '\x10' && (**(byte **)&GLOBAL_STATE->field_0x1010 - 6 < 4)))) {
-        if (((uint)*(byte *)(param_1 + 0xcc) != (uint)param_2[3]) &&
-           (uVar8 = (uint)*(byte *)(*(int *)(param_1 + 0x1038) + 0x200), uVar8 != param_2[3])) {
+        if ((*(byte *)(param_1 + 0xcc) != param_2[3]) &&
+           (*(byte *)(*(int *)(param_1 + 0x1038) + 0x200) != param_2[3])) {
           *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
           if (LOG_LEVEL < 1) {
             return 0;
@@ -165,8 +149,8 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
           goto LAB_00015918;
         }
       }
-      else if (((uint)*(byte *)(param_1 + 0xcd) != (uint)bVar1) &&
-              (uVar8 = (uint)*(byte *)(*(int *)(param_1 + 0x103c) + 0x200), uVar8 != bVar1)) {
+      else if ((*(byte *)(param_1 + 0xcd) != bVar1) &&
+              (*(byte *)(*(int *)(param_1 + 0x103c) + 0x200) != bVar1)) {
         *(char *)(param_1 + 0xda) = *(char *)(param_1 + 0xda) + '\x01';
         if (LOG_LEVEL < 1) {
           return 0;
@@ -183,18 +167,18 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
   uVar7 = *(undefined1 *)(param_1 + 0xd5);
   local_30._0_2_ = CONCAT11(uVar7,(byte)local_30);
   puVar5 = (undefined4 *)(param_1 + 0xd4);
-  pbVar10 = (byte *)&local_30;
+  pbVar9 = (byte *)&local_30;
   do {
-    pbVar13 = pbVar10;
-    puVar9 = puVar5;
-    uVar6 = *(undefined4 *)(pbVar13 + 4);
-    pbVar10 = pbVar13 + 8;
-    *puVar9 = *(undefined4 *)pbVar13;
-    puVar9[1] = uVar6;
-    puVar5 = puVar9 + 2;
-  } while (pbVar10 != &local_20);
-  puVar9[2] = *(undefined4 *)pbVar10;
-  *(byte *)(puVar9 + 3) = pbVar13[0xc];
+    pbVar11 = pbVar9;
+    puVar8 = puVar5;
+    uVar6 = *(undefined4 *)(pbVar11 + 4);
+    pbVar9 = pbVar11 + 8;
+    *puVar8 = *(undefined4 *)pbVar11;
+    puVar8[1] = uVar6;
+    puVar5 = puVar8 + 2;
+  } while (pbVar9 != &local_20);
+  puVar8[2] = *(undefined4 *)pbVar9;
+  *(byte *)(puVar8 + 3) = pbVar11[0xc];
   *(byte *)(param_1 + 0xee8) = (byte)local_30 >> 6;
   **(undefined4 **)(param_1 + 0xff0) = *(undefined4 *)(param_2 + 7);
   if (*(int *)(*(int *)(param_1 + 0xff8) + 0x164) != 0) {
@@ -209,18 +193,17 @@ undefined4 local_esbs_ipc_service_recv(int param_1,byte *param_2)
   pGVar2 = GLOBAL_STATE;
   switch(local_30 & 0x3f) {
   case 8:
-    uVar8 = (uint)*(byte *)(param_1 + 0xd5);
-    if ((uVar8 != (local_30 >> 8 & 0xff)) && (uVar15 == 8)) {
+    if ((*(char *)(param_1 + 0xd5) != local_30._1_1_) && (uVar14 == 8)) {
       if (LOG_LEVEL < 1) {
         return 0;
       }
       fmt = "%s(): screen id is not same, exit\n";
 LAB_00015918:
       if (BLE_DEBUG != 0) {
-        ble_printk(fmt,"local_esbs_ipc_service_recv",uVar8,BLE_DEBUG);
+        ble_printk(fmt);
         return 0;
       }
-      printk(fmt);
+      printk(fmt,"local_esbs_ipc_service_recv");
       return 0;
     }
     FUN_000800ca((int)GLOBAL_STATE,0);
@@ -285,29 +268,29 @@ LAB_00015ca2:
     *(undefined1 *)((int)puVar5 + 0xd) = 4;
     confirm_message(local_1f);
     uVar7 = 0;
-    puVar14 = &DAT_20019a66;
+    puVar12 = &DAT_20019a66;
     break;
   case 0xc:
     if ((char)local_1f == '\v') {
       bVar1 = local_1f._1_1_;
-      uVar8 = (uint)local_1f._1_1_;
+      uVar13 = (uint)local_1f._1_1_;
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): slave rcv canvas_distance_gear:%d,raster_height_gear:%d\n",
-                 "local_esbs_ipc_service_recv",uVar8);
+                 "local_esbs_ipc_service_recv",uVar13,local_1f >> 0x10 & 0xff);
         }
         else {
           ble_printk("%s(): slave rcv canvas_distance_gear:%d,raster_height_gear:%d\n",
-                     "local_esbs_ipc_service_recv",uVar8,local_1f >> 0x10 & 0xff);
+                     "local_esbs_ipc_service_recv",uVar13);
         }
       }
       pGVar2 = GLOBAL_STATE;
-      if ((uVar8 < 10) && (local_1f._2_1_ < 9)) {
+      if ((uVar13 < 10) && (local_1f._2_1_ < 9)) {
         (GLOBAL_STATE->jdb_panel_context).field_0x355 = bVar1;
-        (pGVar2->jdb_panel_context).field_0x354 = local_1f._2_1_;
+        (pGVar2->jdb_panel_context).__raster_height_offset = local_1f._2_1_;
         cal_panel_canvas_coord
                   ((int *)&(pGVar2->jdb_panel_context).field_0x358,
-                   (int *)&(pGVar2->jdb_panel_context).field_0x34c);
+                   (int *)&(pGVar2->jdb_panel_context).current_column);
       }
       if (GLOBAL_STATE->dashboard_ts->field_0x74 != '\0') {
         GLOBAL_STATE->dashboard_ts->field_0x74 = 0;
@@ -324,11 +307,11 @@ LAB_00015ca2:
     goto LAB_00015ce6;
   case 0xe:
     uVar7 = 4;
-    puVar14 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
+    puVar12 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
     break;
   case 0xf:
     uVar7 = 6;
-    puVar14 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
+    puVar12 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
     break;
   case 0x10:
     **(undefined1 **)&GLOBAL_STATE->field_0x1010 = 0xb;
@@ -336,13 +319,13 @@ LAB_00015ca2:
     goto LAB_00015ce6;
   case 0x11:
     uVar7 = 0xe;
-    puVar14 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
+    puVar12 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
     break;
   case 0x12:
     uVar7 = 0x10;
-    puVar14 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
+    puVar12 = *(undefined1 **)&GLOBAL_STATE->field_0x1010;
   }
-  *puVar14 = uVar7;
+  *puVar12 = uVar7;
 LAB_00015ce6:
   if ((((*(byte *)(param_1 + 0xc9) & 0x3f) == 3) && ((*(byte *)(param_1 + 0xc9) & 0xc0) == 0x80)) &&
      (*(char *)(param_1 + 0xca) == '\x01')) {

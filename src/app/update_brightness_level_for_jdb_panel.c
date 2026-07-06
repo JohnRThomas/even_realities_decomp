@@ -1,56 +1,57 @@
 /*
  * Function: ?_update_brightness_level_for_jdb_panel
  * Entry:    00080ace
- * Prototype: undefined __stdcall ?_update_brightness_level_for_jdb_panel(uint param_1, ushort * param_2, char * param_3)
+ * Prototype: undefined __stdcall ?_update_brightness_level_for_jdb_panel(uint brightness_level, uint16_t * lum, uint8_t * cur_value)
  */
 
 
-void __update_brightness_level_for_jdb_panel(uint param_1,ushort *param_2,char *param_3)
+void __update_brightness_level_for_jdb_panel(uint brightness_level,uint16_t *lum,uint8_t *cur_value)
 
 {
-  byte bVar1;
-  ulonglong uVar2;
-  GlassesState *pGVar3;
-  ushort uVar4;
-  char cVar5;
-  int iVar6;
+  ushort uVar1;
+  byte bVar2;
+  ulonglong uVar3;
+  GlassesState *pGVar4;
+  uint16_t uVar5;
+  uint8_t uVar6;
+  int iVar7;
   
-  if (param_1 < 6) {
-    pGVar3 = __get_dashboard_state();
-    uVar2 = ((ulonglong)*(ushort *)&(pGVar3->jdb_panel_context).field_0x36c << 1) / 9;
-    iVar6 = (int)uVar2;
-    if ((iVar6 == 0) ||
-       (pGVar3 = __get_dashboard_state(), *(ushort *)&(pGVar3->jdb_panel_context).field_0x36c < 6))
-    {
-      pGVar3 = __get_dashboard_state();
-      uVar4 = ((short)((param_1 * 0x6f) / 6) + 1) *
-              (*(short *)&(pGVar3->jdb_panel_context).field_0x36c + 1);
+  if (brightness_level < 6) {
+    pGVar4 = __get_dashboard_state();
+    uVar3 = ((ulonglong)*(ushort *)&(pGVar4->jdb_panel_context).field831_0x36c << 1) / 9;
+    iVar7 = (int)uVar3;
+    if ((iVar7 == 0) ||
+       (pGVar4 = __get_dashboard_state(), *(ushort *)&(pGVar4->jdb_panel_context).field831_0x36c < 6
+       )) {
+      pGVar4 = __get_dashboard_state();
+      uVar5 = ((short)((brightness_level * 0x6f) / 6) + 1) *
+              (*(short *)&(pGVar4->jdb_panel_context).field831_0x36c + 1);
     }
     else {
-      pGVar3 = __get_dashboard_state();
-      uVar4 = ((short)((int)(param_1 *
-                            ((uint)*(ushort *)&(pGVar3->jdb_panel_context).field_0x36c - iVar6)) / 6
-                      ) + (short)uVar2) * 0x6f;
+      pGVar4 = __get_dashboard_state();
+      uVar5 = ((short)((int)(brightness_level *
+                            ((uint)*(ushort *)&(pGVar4->jdb_panel_context).field831_0x36c - iVar7))
+                      / 6) + (short)uVar3) * 0x6f;
     }
-    cVar5 = '\0';
+    uVar6 = '\0';
   }
   else {
-    pGVar3 = __get_dashboard_state();
-    cVar5 = (char)param_1 + -6;
-    uVar4 = (*(short *)&(pGVar3->jdb_panel_context).field_0x36c + 1) * 0x6f;
+    pGVar4 = __get_dashboard_state();
+    uVar6 = (char)brightness_level + 0xfa;
+    uVar5 = (*(short *)&(pGVar4->jdb_panel_context).field831_0x36c + 1) * 0x6f;
   }
-  *param_2 = uVar4;
-  *param_3 = cVar5;
-  pGVar3 = __get_dashboard_state();
-  bVar1 = (pGVar3->jdb_panel_context).field_0x374;
-  pGVar3 = __get_dashboard_state();
-  if (((byte)(pGVar3->jdb_panel_context).field_0x374 < 100) && (0x45 < bVar1)) {
-    uVar4 = *param_2;
-    pGVar3 = __get_dashboard_state();
-    *param_2 = (ushort)(((uint)uVar4 * (uint)(byte)(pGVar3->jdb_panel_context).field_0x374) / 100);
+  *lum = uVar5;
+  *cur_value = uVar6;
+  pGVar4 = __get_dashboard_state();
+  bVar2 = (pGVar4->jdb_panel_context).field_0x374;
+  pGVar4 = __get_dashboard_state();
+  if (((byte)(pGVar4->jdb_panel_context).field_0x374 < 100) && (0x45 < bVar2)) {
+    uVar1 = *lum;
+    pGVar4 = __get_dashboard_state();
+    *lum = (uint16_t)(((uint)uVar1 * (uint)(byte)(pGVar4->jdb_panel_context).field_0x374) / 100);
   }
-  if (*param_2 == 0) {
-    *param_2 = 1;
+  if (*lum == 0) {
+    *lum = 1;
   }
   return;
 }

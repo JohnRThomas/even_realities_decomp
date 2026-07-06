@@ -10,7 +10,6 @@ undefined4 load_burial_point(int param_1,undefined4 param_2,undefined4 param_3,u
 {
   int iVar1;
   uint32_t uVar2;
-  undefined4 extraout_r2;
   undefined4 uVar3;
   
   iVar1 = flash_settings_read(0x135000,(void *)(param_1 + 0x1128),0x11c,param_4);
@@ -27,11 +26,10 @@ undefined4 load_burial_point(int param_1,undefined4 param_2,undefined4 param_3,u
   else {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): burial_point read error!\n");
+        printk("%s(): burial_point read error!\n","load_burial_point");
       }
       else {
-        ble_printk("%s(): burial_point read error!\n","load_burial_point",extraout_r2,BLE_DEBUG,
-                   param_4);
+        ble_printk("%s(): burial_point read error!\n");
       }
     }
     uVar3 = 0xffffffff;

@@ -16,7 +16,6 @@ void msg_sync_thread(int param_1,uint param_2,undefined4 param_3)
   undefined1 uVar4;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
   undefined4 extraout_r3;
   undefined1 *puVar5;
   undefined8 uVar6;
@@ -31,12 +30,12 @@ void msg_sync_thread(int param_1,uint param_2,undefined4 param_3)
       z_impl_k_sleep((k_timeout_t)0x28000);
     }
     pGVar2 = __get_dashboard_state();
-    if (*(char *)pGVar2 == '\x01') {
+    if (pGVar2->is_master == true) {
       pGVar2 = __get_dashboard_state();
       switch(**(undefined1 **)&pGVar2->field_0x1010) {
       case 1:
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,0xd,(undefined4 *)0x0,0);
+        uVar3 = sync_to_slave(&pGVar2->is_master,0xd,(undefined4 *)0x0,0);
         if ((int)uVar3 < 500) {
           FUN_00080224(param_1,0);
           FUN_00080338(0);
@@ -61,7 +60,7 @@ void msg_sync_thread(int param_1,uint param_2,undefined4 param_3)
         break;
       case 3:
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,0xe,(undefined4 *)0x0,0);
+        uVar3 = sync_to_slave(&pGVar2->is_master,0xe,(undefined4 *)0x0,0);
         if ((int)uVar3 < 500) {
           pGVar2 = __get_dashboard_state();
           uVar4 = 4;
@@ -72,10 +71,10 @@ LAB_0002ab02:
         break;
       case 5:
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,0xf,(undefined4 *)0x0,0);
+        uVar3 = sync_to_slave(&pGVar2->is_master,0xf,(undefined4 *)0x0,0);
         if ((int)uVar3 < 500) {
           FUN_00030458();
-          FUN_00029774(0x18,extraout_r1_00,extraout_r2_01);
+          FUN_00029774(0x18,extraout_r1_00,extraout_r2_00);
           pGVar2 = __get_dashboard_state();
           uVar4 = 6;
           puVar5 = *(undefined1 **)&pGVar2->field_0x1010;
@@ -84,7 +83,7 @@ LAB_0002ab02:
         break;
       case 10:
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,0x10,(undefined4 *)0x0,0);
+        uVar3 = sync_to_slave(&pGVar2->is_master,0x10,(undefined4 *)0x0,0);
         if ((int)uVar3 < 500) {
           pGVar2 = __get_dashboard_state();
           **(undefined1 **)&pGVar2->field_0x1010 = 0xb;
@@ -94,7 +93,7 @@ LAB_0002ab02:
         break;
       case 0xd:
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,0x11,(undefined4 *)0x0,0);
+        uVar3 = sync_to_slave(&pGVar2->is_master,0x11,(undefined4 *)0x0,0);
         if ((int)uVar3 < 500) {
           pGVar2 = __get_dashboard_state();
           uVar4 = 0xe;
@@ -104,7 +103,7 @@ LAB_0002ab02:
         break;
       case 0xf:
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,0x12,(undefined4 *)0x0,0);
+        uVar3 = sync_to_slave(&pGVar2->is_master,0x12,(undefined4 *)0x0,0);
         if ((int)uVar3 < 500) {
           pGVar2 = __get_dashboard_state();
           uVar4 = 0x10;
@@ -123,7 +122,7 @@ LAB_0002ab02:
         local_1c = (uint)CONCAT12(*(undefined1 *)(*(int *)&pGVar2->field_0x1014 + 3),(short)local_1c
                                  );
         pGVar2 = __get_dashboard_state();
-        uVar3 = sync_to_slave((char *)pGVar2,6,&local_1c,4);
+        uVar3 = sync_to_slave(&pGVar2->is_master,6,&local_1c,4);
         if ((int)uVar3 < 500) {
           pGVar2 = __get_dashboard_state();
           FUN_00080224((int)pGVar2,0);
@@ -136,11 +135,10 @@ LAB_0002ab02:
              *(char *)(*(int *)&pGVar2->field_0x1014 + 3) == '\x13')) {
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): evenai_v2 need to show network_err tip\n");
+                printk("%s(): evenai_v2 need to show network_err tip\n","msg_sync_thread");
               }
               else {
-                ble_printk("%s(): evenai_v2 need to show network_err tip\n","msg_sync_thread",
-                           extraout_r2,BLE_DEBUG);
+                ble_printk("%s(): evenai_v2 need to show network_err tip\n");
               }
             }
             pGVar2 = __get_dashboard_state();
@@ -189,8 +187,8 @@ LAB_0002ab02:
     }
     FUN_00029684();
     pGVar2 = __get_dashboard_state();
-    if ((*(char *)pGVar2 == '\x01') && (DAT_2001093b != '\0')) {
-      sync_message_signal_to_slave(3,extraout_r1,extraout_r2_00);
+    if ((pGVar2->is_master == true) && (DAT_2001093b != '\0')) {
+      sync_message_signal_to_slave(3,extraout_r1,extraout_r2);
       pGVar2 = __get_dashboard_state();
       if ((pGVar2->field_0x10d6 != '\0') &&
          ((uVar3 = FUN_00035310(), uVar3 != 0 &&

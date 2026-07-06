@@ -25,10 +25,10 @@ undefined4 ncs_notification(char *param_1,char *param_2,undefined *param_3)
   s = cJSON_Print(object_00);
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): %s\n");
+      printk("%s(): %s\n","mobile_send_notification_to_ble_device_test",s);
     }
     else {
-      ble_printk("%s(): %s\n","mobile_send_notification_to_ble_device_test",s,BLE_DEBUG);
+      ble_printk("%s(): %s\n");
     }
   }
   sVar1 = strlen(s);

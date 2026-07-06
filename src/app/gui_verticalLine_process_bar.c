@@ -15,17 +15,18 @@ gui_verticalLine_process_bar
   GlassesState *pGVar3;
   int y_start;
   int iVar4;
-  int *piVar5;
+  byte *pbVar5;
   uint uVar6;
-  undefined1 uVar7;
+  uint32_t uVar7;
+  undefined1 uVar8;
   
   if ((param_1 == param_3) && (param_2 <= param_4)) {
     uVar6 = (uint)param_6;
     if ((param_1 & 1) == 0) {
-      uVar7 = 0xf0;
+      uVar8 = 0xf0;
     }
     else {
-      uVar7 = 0xf;
+      uVar8 = 0xf;
     }
     if (99 < uVar6) {
       uVar6 = 100;
@@ -34,19 +35,19 @@ gui_verticalLine_process_bar
     if ((uVar2 & 2) != 0) {
       _clean_fb_data(__frame_buffer,0,param_1 - 6,y_start,param_1 + 6,param_4);
     }
-    piVar5 = __frame_buffer + param_2;
+    pbVar5 = __frame_buffer + param_2 * 4;
     for (iVar4 = 0; iVar4 < param_4 - param_2; iVar4 = iVar4 + 1) {
-      *(undefined1 *)(*piVar5 + (int)param_1 / 2) = uVar7;
-      piVar5 = piVar5 + 1;
+      *(undefined1 *)(*(int *)pbVar5 + (int)param_1 / 2) = uVar8;
+      pbVar5 = pbVar5 + 4;
     }
     iVar4 = FUN_000452e4();
     if (iVar4 << 0x1e < 0) {
       pGVar3 = __get_dashboard_state();
-      iVar4 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
+      uVar7 = (pGVar3->jdb_panel_context).current_row;
       pGVar3 = __get_dashboard_state();
       _reflash_fb_data_to_lcd
-                (iVar4,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,param_1 - 6,param_2,
-                 param_3 + 6,param_4);
+                (uVar7,(pGVar3->jdb_panel_context).current_column,param_1 - 6,param_2,param_3 + 6,
+                 param_4);
     }
     uVar1 = 0;
     gui_bmp_bitmap_draw(0x17,param_1 - 4,(int)(uVar6 * ((param_4 - param_2) + -0xd)) / 100 + param_2
@@ -55,11 +56,11 @@ gui_verticalLine_process_bar
   else {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): input param error,please check postion content\n");
+        printk("%s(): input param error,please check postion content\n",
+               "gui_verticalLine_process_bar",param_3,0,param_1,param_2,param_3);
       }
       else {
-        ble_printk("%s(): input param error,please check postion content\n",
-                   "gui_verticalLine_process_bar",param_3,BLE_DEBUG,param_1,param_2,param_3);
+        ble_printk("%s(): input param error,please check postion content\n");
       }
     }
     uVar1 = 0xffffffff;

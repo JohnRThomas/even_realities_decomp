@@ -1,11 +1,11 @@
 /*
  * Function: getCalenadrIndex
  * Entry:    00038ce4
- * Prototype: byte __stdcall getCalenadrIndex(void)
+ * Prototype: undefined1 __stdcall getCalenadrIndex(void)
  */
 
 
-byte getCalenadrIndex(void)
+undefined1 getCalenadrIndex(void)
 
 {
   DAT_20004b00 = DAT_2001c4e3;
@@ -14,8 +14,7 @@ byte getCalenadrIndex(void)
       printk("%s():  calendar %s index = %d\n","getCalenadrIndex");
     }
     else {
-      ble_printk("%s():  calendar %s index = %d\n","getCalenadrIndex","getCalenadrIndex",
-                 (uint)DAT_2001c4e3);
+      ble_printk("%s():  calendar %s index = %d\n","getCalenadrIndex");
     }
   }
   return DAT_20004b00;

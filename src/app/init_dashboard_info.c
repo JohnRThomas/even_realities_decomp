@@ -13,8 +13,6 @@ void init_dashboard_info(void)
   char *fmt;
   undefined4 uVar4;
   undefined4 uVar5;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   dashboard_ts_context *iVar1;
   int iVar6;
   dashboard_ts_context *pdVar7;
@@ -24,11 +22,10 @@ void init_dashboard_info(void)
   if (iVar2 == 0) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): system startup ,NCS memory is vaild\n");
+        printk("%s(): system startup ,NCS memory is vaild\n","init_dashboard_info");
       }
       else {
-        ble_printk("%s(): system startup ,NCS memory is vaild\n","init_dashboard_info",extraout_r2,
-                   BLE_DEBUG);
+        ble_printk("%s(): system startup ,NCS memory is vaild\n");
       }
     }
     FUN_000166f8();
@@ -36,11 +33,10 @@ void init_dashboard_info(void)
   else {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): system startup ,NCS memory is invaild\n");
+        printk("%s(): system startup ,NCS memory is invaild\n","init_dashboard_info");
       }
       else {
-        ble_printk("%s(): system startup ,NCS memory is invaild\n","init_dashboard_info",extraout_r2
-                   ,BLE_DEBUG);
+        ble_printk("%s(): system startup ,NCS memory is invaild\n");
       }
     }
     pGVar3 = __get_dashboard_state();
@@ -87,10 +83,10 @@ void init_dashboard_info(void)
         fmt = "%s(): QuickNote %d is invaild,don\'t export\n";
 LAB_000389c8:
         if (BLE_DEBUG == 0) {
-          printk(fmt);
+          printk(fmt,"init_dashboard_info",uVar8);
         }
         else {
-          ble_printk(fmt,"init_dashboard_info",uVar8,BLE_DEBUG);
+          ble_printk(fmt);
         }
       }
     }
@@ -104,11 +100,11 @@ LAB_000389c8:
     }
     else if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): !!!! getQuickNoteDataFromFlash return unknown value.\n");
+        printk("%s(): !!!! getQuickNoteDataFromFlash return unknown value.\n","init_dashboard_info")
+        ;
       }
       else {
-        ble_printk("%s(): !!!! getQuickNoteDataFromFlash return unknown value.\n",
-                   "init_dashboard_info",extraout_r2_00,BLE_DEBUG);
+        ble_printk("%s(): !!!! getQuickNoteDataFromFlash return unknown value.\n");
       }
     }
     uVar8 = uVar8 + 1;

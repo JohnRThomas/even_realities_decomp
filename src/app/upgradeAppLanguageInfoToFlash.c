@@ -9,7 +9,6 @@ undefined4 upgradeAppLanguageInfoToFlash(undefined4 param_1,undefined4 param_2,u
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 uVar2;
   undefined4 local_18;
   uint local_14;
@@ -22,11 +21,11 @@ undefined4 upgradeAppLanguageInfoToFlash(undefined4 param_1,undefined4 param_2,u
   if (iVar1 == 0) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): send app language store Command, language = %d\n");
+        printk("%s(): send app language store Command, language = %d\n",
+               "upgradeAppLanguageInfoToFlash",param_1);
       }
       else {
-        ble_printk("%s(): send app language store Command, language = %d\n",
-                   "upgradeAppLanguageInfoToFlash",param_1,BLE_DEBUG);
+        ble_printk("%s(): send app language store Command, language = %d\n");
       }
     }
     k_sem_give((k_sem *)&DAT_200083c4);
@@ -35,11 +34,10 @@ undefined4 upgradeAppLanguageInfoToFlash(undefined4 param_1,undefined4 param_2,u
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): setting flash store queue fill failed\r\n\n");
+        printk("%s(): setting flash store queue fill failed\r\n\n","upgradeAppLanguageInfoToFlash");
       }
       else {
-        ble_printk("%s(): setting flash store queue fill failed\r\n\n",
-                   "upgradeAppLanguageInfoToFlash",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): setting flash store queue fill failed\r\n\n");
       }
     }
     uVar2 = 0xffffffff;

@@ -5,12 +5,10 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 undefined4 FUN_00018320(void)
 
 {
-  return _DAT_20006c10;
+  return DAT_20006c10;
 }
 
 

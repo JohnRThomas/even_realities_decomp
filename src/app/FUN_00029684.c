@@ -20,12 +20,12 @@ void FUN_00029684(void)
     bVar2 = pGVar3->field_0x6de;
     if (((bVar2 & 4) == 0) && (puVar4 = FUN_0003519c(), puVar4 != (undefined *)0x0)) {
       pGVar3 = __get_dashboard_state();
-      if (*(char *)pGVar3 == '\x01') {
+      if (pGVar3->is_master == true) {
         bVar1 = puVar4[0xd];
         if (bVar1 == 1) {
           DAT_20019a66 = bVar1;
           pGVar3 = __get_dashboard_state();
-          uVar5 = sync_to_slave((char *)pGVar3,10,(undefined4 *)(puVar4 + 8),4);
+          uVar5 = sync_to_slave(&pGVar3->is_master,10,(undefined4 *)(puVar4 + 8),4);
           if ((int)uVar5 < 3000) {
             FUN_00035204((uint)(byte)puVar4[0xc],2);
             return;
@@ -33,7 +33,7 @@ void FUN_00029684(void)
         }
         else if (bVar1 == 3) {
           pGVar3 = __get_dashboard_state();
-          uVar5 = sync_to_slave((char *)pGVar3,0xb,(undefined4 *)(puVar4 + 8),4);
+          uVar5 = sync_to_slave(&pGVar3->is_master,0xb,(undefined4 *)(puVar4 + 8),4);
           if ((int)uVar5 < 3000) {
             FUN_00035204((uint)(byte)puVar4[0xc],4);
             confirm_message(*(int *)(puVar4 + 8));

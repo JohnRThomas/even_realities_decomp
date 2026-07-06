@@ -33,10 +33,10 @@ undefined4 spi_master_deinit(int param_1)
           return 0;
         }
         if (BLE_DEBUG != 0) {
-          ble_printk("%s():  SPIM BUS ERR!\n","spi_master_deinit",uVar3,BLE_DEBUG);
+          ble_printk("%s():  SPIM BUS ERR!\n");
           return 0;
         }
-        printk("%s():  SPIM BUS ERR!\n");
+        printk("%s():  SPIM BUS ERR!\n","spi_master_deinit");
         return 0;
       }
       ppSVar4 = &local_28;
@@ -53,17 +53,17 @@ undefined4 spi_master_deinit(int param_1)
       }
       else {
         ble_printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_deinit"
-                   ,uVar3,(uint)*(byte *)(param_1 + 0x1d));
+                  );
       }
     }
     nrfx_spim_uninit((nrfx_spim_t *)(param_1 + 0xc));
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): spim(bus=%d): uninit finish\n");
+        printk("%s(): spim(bus=%d): uninit finish\n","spi_master_deinit",
+               (uint)*(byte *)(param_1 + 0x18));
       }
       else {
-        ble_printk("%s(): spim(bus=%d): uninit finish\n","spi_master_deinit",
-                   (uint)*(byte *)(param_1 + 0x18),BLE_DEBUG);
+        ble_printk("%s(): spim(bus=%d): uninit finish\n");
       }
     }
     *(undefined4 *)(param_1 + 0x14) = 0;

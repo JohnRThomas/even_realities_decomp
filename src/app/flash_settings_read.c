@@ -36,11 +36,10 @@ int flash_settings_read(undefined4 param_1,undefined4 param_2,undefined4 param_3
     iVar5 = iVar5 + 1;
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): flash read fail, retry again, retry time %d\n");
+        printk("%s(): flash read fail, retry again, retry time %d\n","flash_settings_read",iVar5);
       }
       else {
-        ble_printk("%s(): flash read fail, retry again, retry time %d\n","flash_settings_read",iVar5
-                   ,BLE_DEBUG);
+        ble_printk("%s(): flash read fail, retry again, retry time %d\n");
       }
     }
   }

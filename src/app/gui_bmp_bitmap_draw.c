@@ -13,9 +13,8 @@ gui_bmp_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5
   int iVar2;
   GlassesState *pGVar3;
   int x_start;
-  undefined4 extraout_r2;
   int iVar4;
-  int iVar5;
+  uint32_t uVar5;
   undefined *local_24;
   uint local_20;
   uint local_1c;
@@ -28,11 +27,11 @@ gui_bmp_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5
       if (iVar2 < 0) {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): can\'t find resource,please check resource name !\n");
+            printk("%s(): can\'t find resource,please check resource name !\n","gui_bmp_bitmap_draw"
+                  );
           }
           else {
-            ble_printk("%s(): can\'t find resource,please check resource name !\n",
-                       "gui_bmp_bitmap_draw",extraout_r2,BLE_DEBUG);
+            ble_printk("%s(): can\'t find resource,please check resource name !\n");
           }
         }
         return 0xffffffff;
@@ -48,7 +47,7 @@ gui_bmp_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5
         return 0;
       }
       pGVar3 = __get_dashboard_state();
-      iVar5 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
+      uVar5 = (pGVar3->jdb_panel_context).current_row;
       pGVar3 = __get_dashboard_state();
       iVar2 = local_1c + param_3;
       iVar4 = local_20 + 2 + param_2;
@@ -65,13 +64,13 @@ gui_bmp_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5
         return 0;
       }
       pGVar3 = __get_dashboard_state();
-      iVar5 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
+      uVar5 = (pGVar3->jdb_panel_context).current_row;
       pGVar3 = __get_dashboard_state();
       iVar2 = param_3 + 0x18;
       iVar4 = param_2 + 0x18;
     }
     _reflash_fb_data_to_lcd
-              (iVar5,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,param_2,param_3,iVar4,iVar2);
+              (uVar5,(pGVar3->jdb_panel_context).current_column,param_2,param_3,iVar4,iVar2);
   }
   return 0;
 }

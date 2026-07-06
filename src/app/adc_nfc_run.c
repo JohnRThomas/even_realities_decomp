@@ -9,7 +9,6 @@ uint adc_nfc_run(void)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   uint uVar2;
   ushort local_2a;
   int local_28;
@@ -27,10 +26,10 @@ uint adc_nfc_run(void)
   if (iVar1 < 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Could not read (%d)\n\n");
+        printk("%s(): Could not read (%d)\n\n","adc_nfc_run");
       }
       else {
-        ble_printk("%s(): Could not read (%d)\n\n","adc_nfc_run",iVar1,BLE_DEBUG);
+        ble_printk("%s(): Could not read (%d)\n\n");
       }
     }
   }
@@ -46,10 +45,10 @@ uint adc_nfc_run(void)
         return 0;
       }
       if (BLE_DEBUG != 0) {
-        ble_printk("%s():  (value in mV not available)\n\n","adc_nfc_run",extraout_r2,BLE_DEBUG);
+        ble_printk("%s():  (value in mV not available)\n\n");
         return 0;
       }
-      printk("%s():  (value in mV not available)\n\n");
+      printk("%s():  (value in mV not available)\n\n","adc_nfc_run");
       return 0;
     }
     if (uVar2 - 1 < 0x4af) {

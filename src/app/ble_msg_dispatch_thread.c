@@ -1,11 +1,11 @@
 /*
  * Function: ble_msg_dispatch_thread
  * Entry:    00028a0c
- * Prototype: undefined __stdcall ble_msg_dispatch_thread(byte * param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall ble_msg_dispatch_thread(byte * param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void ble_msg_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3)
+void ble_msg_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   int32_t ms;
@@ -14,10 +14,10 @@ void ble_msg_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): enter\n");
+      printk("%s(): enter\n","ble_msg_dispatch_thread",param_3,0,param_4);
     }
     else {
-      ble_printk("%s(): enter\n","ble_msg_dispatch_thread",param_3,BLE_DEBUG);
+      ble_printk("%s(): enter\n");
     }
   }
   puVar2 = *(undefined4 **)(param_1 + 0x1068);

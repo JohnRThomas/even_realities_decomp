@@ -9,10 +9,10 @@ int FUN_000346b4(int param_1)
 
 {
   if (param_1 != 0) {
-    if (DAT_20002424 != param_1) {
-      DAT_20002424 = param_1;
+    if (PTR_20002424 != (undefined *)param_1) {
+      PTR_20002424 = (undefined *)param_1;
     }
-    DAT_2000242c = 0;
+    __UART_DEV_STATE = 0;
     return 0;
   }
   return -1;

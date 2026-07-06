@@ -95,7 +95,7 @@ void get_demo_image_source(uint param_1)
           if (DAT_2000a9ac != (void *)0x0) {
             DAT_2000a9a8 = 0;
             pGVar1 = __get_dashboard_state();
-            memcpy((void *)(&(pGVar1->jdb_panel_context).field9_0x24)[uVar13],DAT_2000a9ac,0x140);
+            memcpy((&(pGVar1->jdb_panel_context).__panel_buffer)[uVar13],DAT_2000a9ac,0x140);
           }
           iVar10 = iVar10 + (iVar9 >> 5) * -4;
         }

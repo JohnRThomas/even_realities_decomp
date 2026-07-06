@@ -8,21 +8,21 @@
 void __push_g_arrMsgContent(void)
 
 {
-  char *pcVar1;
+  int iVar1;
   undefined4 *puVar2;
   
-  pcVar1 = &DAT_0000000a;
+  iVar1 = 10;
   puVar2 = &DAT_20009894;
   do {
     if (BLE_DEBUG == 0) {
-      printk("PUSH: g_arrMsgContent[%d].uidTail is %d push %d \n",pcVar1);
+      printk("PUSH: g_arrMsgContent[%d].uidTail is %d push %d \n",iVar1,puVar2[2],*puVar2);
     }
     else {
-      ble_printk("PUSH: g_arrMsgContent[%d].uidTail is %d push %d \n",pcVar1,puVar2[2],*puVar2);
+      ble_printk("PUSH: g_arrMsgContent[%d].uidTail is %d push %d \n",iVar1);
     }
-    pcVar1 = pcVar1 + 1;
+    iVar1 = iVar1 + 1;
     puVar2 = puVar2 + 0x6d;
-  } while (pcVar1 != &BusFault);
+  } while (iVar1 != 0x14);
   return;
 }
 

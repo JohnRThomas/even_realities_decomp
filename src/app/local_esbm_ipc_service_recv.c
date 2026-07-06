@@ -1,11 +1,12 @@
 /*
  * Function: local_esbm_ipc_service_recv
  * Entry:    00016c6c
- * Prototype: undefined4 __stdcall local_esbm_ipc_service_recv(int param_1, byte * param_2, undefined4 * param_3)
+ * Prototype: undefined4 __stdcall local_esbm_ipc_service_recv(int param_1, byte * param_2, undefined4 * param_3, undefined4 param_4)
  */
 
 
-undefined4 local_esbm_ipc_service_recv(int param_1,byte *param_2,undefined4 *param_3)
+undefined4
+local_esbm_ipc_service_recv(int param_1,byte *param_2,undefined4 *param_3,undefined4 param_4)
 
 {
   GlassesState *pGVar1;
@@ -158,11 +159,11 @@ LAB_00016dd2:
           (pcVar6[1] == '\x04')) && (pcVar6[3] == '\x13')) {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): evenai_v2 need to show network_err tip\n");
+            printk("%s(): evenai_v2 need to show network_err tip\n","local_esbm_ipc_service_recv",
+                   0x13,0,param_4);
           }
           else {
-            ble_printk("%s(): evenai_v2 need to show network_err tip\n",
-                       "local_esbm_ipc_service_recv",0x13,BLE_DEBUG);
+            ble_printk("%s(): evenai_v2 need to show network_err tip\n");
           }
         }
       }

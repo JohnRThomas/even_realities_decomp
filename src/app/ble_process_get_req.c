@@ -16,13 +16,12 @@ void ble_process_get_req(int param_1,byte *param_2,undefined4 *param_3)
   char *pcVar6;
   GlassesState *pGVar7;
   undefined4 uVar8;
-  uint uVar9;
-  byte *pbVar10;
-  undefined4 *puVar11;
-  undefined4 extraout_r2;
-  uint uVar12;
-  code *pcVar13;
-  byte *pbVar14;
+  byte *pbVar9;
+  undefined4 *puVar10;
+  uint uVar11;
+  code *pcVar12;
+  byte *pbVar13;
+  uint uVar14;
   byte local_288 [240];
   uint local_198;
   uint local_194;
@@ -64,11 +63,9 @@ void ble_process_get_req(int param_1,byte *param_2,undefined4 *param_3)
   **(undefined4 **)(param_1 + 0x10) = *(undefined4 *)param_2;
   *(uint *)(param_1 + 0x14) = (uint)*(ushort *)(param_2 + 2);
   local_15c = *param_2;
-  uVar9 = (uint)local_15c;
-  switch(uVar9) {
+  switch(local_15c) {
   case 0x29:
     FUN_00019d14(param_1,(byte *)&local_144,1);
-    uVar9 = 0x65;
     bStack_15b = 0x65;
     bStack_15a = (byte)local_144;
     bStack_159 = local_144._1_1_;
@@ -79,44 +76,42 @@ void ble_process_get_req(int param_1,byte *param_2,undefined4 *param_3)
 LAB_0001a336:
       local_198 = local_144 & 0xff;
       if (BLE_DEBUG == 0) {
-        printk(pcVar6);
+        printk(pcVar6,"ble_process_get_req",(uint)bVar2);
       }
       else {
-        ble_printk(pcVar6,"ble_process_get_req",(uint)bVar2,uVar9);
+        ble_printk(pcVar6);
       }
     }
     break;
   case 0x2a:
     FUN_00019d14(param_1,(byte *)&local_144,1);
-    uVar12 = 0x68;
     bStack_15b = 0x68;
     bStack_15a = (byte)local_144;
     if (2 < LOG_LEVEL) {
-      uVar9 = (uint)local_15c;
+      uVar14 = (uint)local_15c;
       if (BLE_DEBUG != 0) {
         pcVar6 = "%s(): BLE_REQ_GET_ANTI_SHAKE_ENABLE: 0x%02x,0x%02x,\n";
         goto LAB_0001a520;
       }
       pcVar6 = "%s(): BLE_REQ_GET_ANTI_SHAKE_ENABLE: 0x%02x,0x%02x,\n";
 LAB_0001a52a:
-      printk(pcVar6,"ble_process_get_req");
+      printk(pcVar6,"ble_process_get_req",uVar14);
     }
     break;
   case 0x2b:
     FUN_00019d14(param_1,(byte *)&local_144,1);
-    uVar12 = 0x69;
     bStack_15b = 0x69;
     bStack_15a = (byte)local_144;
     bStack_159 = (byte)(local_144 >> 8);
     if (2 < LOG_LEVEL) {
-      uVar9 = (uint)local_15c;
+      uVar14 = (uint)local_15c;
       if (BLE_DEBUG == 0) {
         pcVar6 = "%s(): BLE_REQ_GET_DISPLAY_MODE: 0x%02x,0x%02x,\n";
         goto LAB_0001a52a;
       }
       pcVar6 = "%s(): BLE_REQ_GET_DISPLAY_MODE: 0x%02x,0x%02x,\n";
 LAB_0001a520:
-      ble_printk(pcVar6,"ble_process_get_req",uVar9,uVar12);
+      ble_printk(pcVar6,"ble_process_get_req");
     }
     break;
   case 0x2c:
@@ -132,8 +127,8 @@ LAB_0001a520:
         if (*(char *)(param_1 + 0x904) == '\0') {
           pcVar6 = "Android";
         }
-        printk("%s(): %s mobile phone is connected,raw_data[1] = %d\n","ble_process_get_req",pcVar6)
-        ;
+        printk("%s(): %s mobile phone is connected,raw_data[1] = %d\n","ble_process_get_req",pcVar6,
+               (uint)*(byte *)((int)param_3 + 1));
       }
       else {
         pcVar6 = "IOS";
@@ -141,7 +136,7 @@ LAB_0001a520:
           pcVar6 = "Android";
         }
         ble_printk("%s(): %s mobile phone is connected,raw_data[1] = %d\n","ble_process_get_req",
-                   pcVar6,(uint)*(byte *)((int)param_3 + 1));
+                   pcVar6);
       }
     }
     FUN_00019d14(param_1,(byte *)&local_144,0x18);
@@ -157,8 +152,8 @@ LAB_0001a520:
     local_150 = local_13a;
     local_14e = local_138;
     local_14c = local_136;
-    uVar9 = local_13e >> 8 & 0xff;
-    uVar12 = local_13e >> 0x10 & 0xff;
+    uVar14 = local_13e >> 8 & 0xff;
+    uVar11 = local_13e >> 0x10 & 0xff;
     local_14a = local_134[0];
     if (2 < LOG_LEVEL) {
       local_198 = local_164;
@@ -166,20 +161,20 @@ LAB_0001a520:
       local_190 = (uint)(byte)local_140;
       local_18c = (uint)local_140._1_1_;
       local_188 = local_13e & 0xff;
-      local_184 = uVar9;
-      local_180 = uVar12;
+      local_184 = uVar14;
+      local_180 = uVar11;
       local_17c = local_13e >> 0x18;
       local_178 = local_168;
       local_174 = (uint)local_136._1_1_;
       uStack_170 = (uint)local_134[0];
       if (BLE_DEBUG == 0) {
-        printk(
-              "%s(): BLE_REQ_GET_DEVICE_INFO: CHG:0x%02x,0x%02x,0x%02x,0x%02x,0x%02x M_SW_VER:v%d.%d.%d S_SW_VER:v%d.%d.%d BLE_SW_VER:v%d.%d\n"
-              );
+        printk("%s(): BLE_REQ_GET_DEVICE_INFO: CHG:0x%02x,0x%02x,0x%02x,0x%02x,0x%02x M_SW_VER:v%d.%d.%d S_SW_VER:v%d.%d.%d BLE_SW_VER:v%d.%d\n"
+               ,"ble_process_get_req",local_144 & 0xff,(uint)bStack_159);
       }
       else {
-        ble_printk("%s(): BLE_REQ_GET_DEVICE_INFO: CHG:0x%02x,0x%02x,0x%02x,0x%02x,0x%02x M_SW_VER:v%d.%d.%d S_SW_VER:v%d.%d.%d BLE_SW_VER:v%d.%d\n"
-                   ,"ble_process_get_req",local_144 & 0xff,(uint)bStack_159);
+        ble_printk(
+                  "%s(): BLE_REQ_GET_DEVICE_INFO: CHG:0x%02x,0x%02x,0x%02x,0x%02x,0x%02x M_SW_VER:v%d.%d.%d S_SW_VER:v%d.%d.%d BLE_SW_VER:v%d.%d\n"
+                  );
       }
     }
     break;
@@ -211,13 +206,13 @@ LAB_0001a520:
       local_174 = local_13e >> 0x18;
       local_156._0_2_ = uVar3;
       if (BLE_DEBUG == 0) {
-        printk(
-              "%s(): BLE_REQ_GET_M_N_S_MAC: 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x\n"
-              );
+        printk("%s(): BLE_REQ_GET_M_N_S_MAC: 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x\n"
+               ,"ble_process_get_req",(uint)local_15c,local_164);
       }
       else {
-        ble_printk("%s(): BLE_REQ_GET_M_N_S_MAC: 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x\n"
-                   ,"ble_process_get_req",(uint)local_15c,local_164);
+        ble_printk(
+                  "%s(): BLE_REQ_GET_M_N_S_MAC: 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x, 0x%02x\n"
+                  );
       }
     }
     break;
@@ -227,24 +222,23 @@ LAB_0001a520:
   default:
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): #tx error get req_type: %d\n");
+        printk("%s(): #tx error get req_type: %d\n","ble_process_get_req");
       }
       else {
-        ble_printk("%s(): #tx error get req_type: %d\n","ble_process_get_req",uVar9,BLE_DEBUG);
+        ble_printk("%s(): #tx error get req_type: %d\n");
       }
     }
-    uVar9 = 0x14;
+    uVar14 = 0x14;
     bStack_15b = 0xca;
     bStack_15a = 0x14;
     strcpy((char *)&bStack_15a,"error get req.");
-    pcVar13 = *(code **)(param_1 + 0xc);
+    pcVar12 = *(code **)(param_1 + 0xc);
     goto LAB_0001a74a;
   case 0x32:
     FUN_00019d14(param_1,(byte *)&local_144,1);
     bStack_15a = (byte)local_144;
     bStack_15b = 0x6d;
     bStack_159 = local_144._1_1_;
-    uVar9 = (uint)local_144._1_1_;
     if (2 < LOG_LEVEL) {
       pcVar6 = "%s(): BLE_REQ_GET_WAKEUP_ANGLE: 0x%02x,0x%02x,0x%02x,0x%02x,\n";
       bVar2 = (byte)local_144;
@@ -255,52 +249,52 @@ LAB_0001a520:
     break;
   case 0x33:
     FUN_00019d14(param_1,(byte *)&local_144,1);
-    pbVar14 = (byte *)&local_144;
+    pbVar13 = (byte *)&local_144;
     bStack_15b = 0x33;
-    pbVar10 = &bStack_15a;
+    pbVar9 = &bStack_15a;
     do {
-      uVar5 = *(undefined4 *)pbVar14;
-      uVar8 = *(undefined4 *)(pbVar14 + 4);
-      pbVar14 = pbVar14 + 8;
-      *(undefined4 *)pbVar10 = uVar5;
-      *(undefined4 *)(pbVar10 + 4) = uVar8;
-      pbVar10 = pbVar10 + 8;
-    } while (pbVar14 != local_134);
+      uVar5 = *(undefined4 *)pbVar13;
+      uVar8 = *(undefined4 *)(pbVar13 + 4);
+      pbVar13 = pbVar13 + 8;
+      *(undefined4 *)pbVar9 = uVar5;
+      *(undefined4 *)(pbVar9 + 4) = uVar8;
+      pbVar9 = pbVar9 + 8;
+    } while (pbVar13 != local_134);
     if (2 < LOG_LEVEL) {
       pcVar6 = "%s(): BLE_REQ_GET_GLASSES_SN: %s\n";
-      puVar11 = &local_144;
+      puVar10 = &local_144;
 LAB_0001a5e8:
       if (BLE_DEBUG == 0) {
-        printk(pcVar6);
+        printk(pcVar6,"ble_process_get_req",puVar10);
       }
       else {
-        ble_printk(pcVar6,"ble_process_get_req",puVar11,BLE_DEBUG);
+        ble_printk(pcVar6);
       }
     }
     break;
   case 0x34:
     FUN_00019d14(param_1,(byte *)&local_144,1);
-    pbVar14 = (byte *)&local_144;
+    pbVar13 = (byte *)&local_144;
     bStack_15b = 0x34;
-    pbVar10 = &bStack_15a;
+    pbVar9 = &bStack_15a;
     do {
-      uVar5 = *(undefined4 *)pbVar14;
-      uVar8 = *(undefined4 *)(pbVar14 + 4);
-      pbVar14 = pbVar14 + 8;
-      *(undefined4 *)pbVar10 = uVar5;
-      *(undefined4 *)(pbVar10 + 4) = uVar8;
-      pbVar10 = pbVar10 + 8;
-    } while (pbVar14 != local_134);
+      uVar5 = *(undefined4 *)pbVar13;
+      uVar8 = *(undefined4 *)(pbVar13 + 4);
+      pbVar13 = pbVar13 + 8;
+      *(undefined4 *)pbVar9 = uVar5;
+      *(undefined4 *)(pbVar9 + 4) = uVar8;
+      pbVar9 = pbVar9 + 8;
+    } while (pbVar13 != local_134);
     if (2 < LOG_LEVEL) {
       pcVar6 = "%s(): BLE_REQ_GET_DEVICE_SN: %s\n";
-      puVar11 = &local_144;
+      puVar10 = &local_144;
       goto LAB_0001a5e8;
     }
     break;
   case 0x35:
     FUN_00019d14(param_1,(byte *)&local_144,1);
     bStack_15b = 0xc9;
-    puVar11 = (undefined4 *)(local_144 & 0xff);
+    puVar10 = (undefined4 *)(local_144 & 0xff);
     bStack_15a = (byte)local_144;
     if (2 < LOG_LEVEL) {
       pcVar6 = "%s(): BLE_REQ_GET_ESB_CHANNEL: %d\n";
@@ -322,14 +316,14 @@ LAB_0001a5e8:
   case 0x38:
     bStack_15b = 0xc9;
     bStack_15a = *(byte *)(param_1 + 0x90c);
-    puVar11 = (undefined4 *)(uint)bStack_15a;
+    puVar10 = (undefined4 *)(uint)bStack_15a;
     if (0 < LOG_LEVEL) {
       pcVar6 = "%s(): globle->enable_ancs %d\n";
       goto LAB_0001a5e8;
     }
     break;
   case 0x39:
-    if ((uint)*(ushort *)((int)param_3 + 1) == (uint)*(ushort *)(param_2 + 2)) {
+    if (*(short *)((int)param_3 + 1) == *(short *)(param_2 + 2)) {
       memset(&bStack_157,0,0x10);
       uVar5 = *param_3;
       local_158 = *(byte *)(param_3 + 1);
@@ -342,11 +336,12 @@ LAB_0001a5e8:
         bStack_157 = 0;
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): return system status to app,current running app is E_ID_SCREEN_IDLE\n");
+            printk("%s(): return system status to app,current running app is E_ID_SCREEN_IDLE\n",
+                   "ble_process_get_req");
           }
           else {
             ble_printk("%s(): return system status to app,current running app is E_ID_SCREEN_IDLE\n"
-                       ,"ble_process_get_req",extraout_r2,BLE_DEBUG);
+                      );
           }
         }
       }
@@ -362,7 +357,7 @@ LAB_0001a5e8:
           }
           else {
             ble_printk("%s(): return system status to app,current running app is %d\n",
-                       "ble_process_get_req",(uint)*(byte *)(param_1 + -0x6a7),param_1 + -0x77c);
+                       "ble_process_get_req",(uint)*(byte *)(param_1 + -0x6a7));
           }
         }
       }
@@ -375,8 +370,7 @@ LAB_0001a5e8:
         }
         else {
           ble_printk("%s(): get device  information packet length error,input data length = %d,packet data length = %d\n"
-                     ,"ble_process_get_req",(uint)*(ushort *)(param_2 + 2),
-                     (uint)*(ushort *)((int)param_3 + 1));
+                     ,"ble_process_get_req");
         }
       }
       memset(local_156,0,0xf);
@@ -388,13 +382,13 @@ LAB_0001a5e8:
       bStack_159 = (byte)((uint)uVar5 >> 0x18);
       bStack_157 = 0xff;
     }
-    uVar9 = 6;
-    pcVar13 = *(code **)(param_1 + 0xc);
+    uVar14 = 6;
+    pcVar12 = *(code **)(param_1 + 0xc);
     goto LAB_0001a74a;
   case 0x3a:
     bStack_15b = 0xc9;
     bStack_15a = *(byte *)(param_1 + 0x958);
-    puVar11 = (undefined4 *)(uint)bStack_15a;
+    puVar10 = (undefined4 *)(uint)bStack_15a;
     if (0 < LOG_LEVEL) {
       pcVar6 = "%s(): globle->check_mode %d\n";
       goto LAB_0001a5e8;
@@ -402,10 +396,9 @@ LAB_0001a5e8:
     break;
   case 0x3b:
     bStack_15a = *(byte *)(param_1 + 0x744);
-    uVar9 = (uint)bStack_15a;
+    uVar14 = (uint)bStack_15a;
     bStack_15b = 0xc9;
     bStack_159 = *(byte *)(param_1 + 0x745);
-    uVar12 = (uint)bStack_159;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         pcVar6 = "%s(): BLE_GET_RASTER_CONFIG:raster_height_gear:%d,canvas_distance_gear:%d\n";
@@ -417,10 +410,9 @@ LAB_0001a5e8:
     break;
   case 0x3c:
     bStack_15a = *(byte *)(param_1 + 0x95a);
-    uVar9 = (uint)bStack_15a;
+    uVar14 = (uint)bStack_15a;
     bStack_15b = 0xc9;
     bStack_159 = *(byte *)(param_1 + 0x95b);
-    uVar12 = (uint)bStack_159;
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         pcVar6 = "%s(): globle->message_mode %d globle->message_stay_time %d\n";
@@ -431,38 +423,38 @@ LAB_0001a5e8:
     }
     break;
   case 0x3d:
-    uVar9 = (uint)*(ushort *)((int)param_3 + 1);
-    uVar12 = (uint)*(ushort *)(param_2 + 2);
-    if (uVar9 != uVar12) {
+    uVar14 = (uint)*(ushort *)((int)param_3 + 1);
+    uVar11 = (uint)*(ushort *)(param_2 + 2);
+    if (uVar14 != uVar11) {
       if (LOG_LEVEL < 2) {
         return;
       }
       if (BLE_DEBUG != 0) {
         ble_printk("%s(): packet length error,input data length = %d,packet data length = %d\n",
-                   "ble_process_get_req",uVar12,uVar9);
+                   "ble_process_get_req",uVar11,uVar14);
         return;
       }
       printk("%s(): packet length error,input data length = %d,packet data length = %d\n",
-             "ble_process_get_req",uVar12,uVar9);
+             "ble_process_get_req",uVar11,uVar14);
       return;
     }
     uVar1 = *(undefined1 *)((int)param_3 + 5);
     memset(&local_15c,0,0x15);
-    memcpy(&local_15c,param_3,uVar9);
+    memcpy(&local_15c,param_3,uVar14);
     bVar4 = __is_master();
     CURRENT_LANGUAGE = uVar1;
     if (bVar4) {
       SendSystemLanguageInfoToSlave(uVar1);
     }
-    pcVar13 = *(code **)(param_1 + 0xc);
+    pcVar12 = *(code **)(param_1 + 0xc);
     goto LAB_0001a74a;
   case 0x3e:
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): BLE_GET_BURIAL_POINT_DATA\n\n");
+        printk("%s(): BLE_GET_BURIAL_POINT_DATA\n\n","ble_process_get_req");
       }
       else {
-        ble_printk("%s(): BLE_GET_BURIAL_POINT_DATA\n\n","ble_process_get_req",uVar9,BLE_DEBUG);
+        ble_printk("%s(): BLE_GET_BURIAL_POINT_DATA\n\n");
       }
     }
     pGVar7 = __get_dashboard_state();
@@ -492,10 +484,10 @@ LAB_0001a5e8:
       bStack_15a = 0xca;
     }
   }
-  uVar9 = 0x14;
-  pcVar13 = *(code **)(param_1 + 0xc);
+  uVar14 = 0x14;
+  pcVar12 = *(code **)(param_1 + 0xc);
 LAB_0001a74a:
-  (*pcVar13)(&local_15c,uVar9);
+  (*pcVar12)(&local_15c,uVar14);
   return;
 }
 

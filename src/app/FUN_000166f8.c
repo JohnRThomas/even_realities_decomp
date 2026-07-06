@@ -47,9 +47,9 @@ void FUN_000166f8(void)
   pdVar6->field12_0xc = uVar3;
   pdVar6->field13_0xd = uVar4;
   pGVar1->dashboard_ts->field_0x5d = DAT_2007fc5f;
-  pGVar1->dashboard_ts->field_0x5e = DAT_2007fc60;
+  *(undefined1 *)&pGVar1->dashboard_ts->time_disp_mode = DAT_2007fc60;
   pGVar1->dashboard_ts->field_0x62 = ERASE_DFU_ON_NEXT_PASS;
-  pGVar1->dashboard_ts->field_0x61 = DAT_2007fc61;
+  *(undefined1 *)((int)&pGVar1->dashboard_ts->time_disp_mode + 3) = DAT_2007fc61;
   pGVar1->dashboard_ts->field_0x64 = DAT_2007fc68;
   if (DAT_2007fc69 < 4) {
     DAT_2001c4e6 = DAT_2007fc69;

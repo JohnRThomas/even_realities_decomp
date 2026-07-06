@@ -9,9 +9,6 @@ byte pull_message(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
 
 {
   GlassesState *pGVar1;
-  char *pcVar2;
-  undefined4 extraout_r2;
-  undefined4 extraout_r3;
   
   if (param_1 == (undefined4 *)0x0) {
     if (0 < LOG_LEVEL) {
@@ -26,10 +23,9 @@ byte pull_message(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
   else {
     pGVar1 = __get_dashboard_state();
     if ((byte)pGVar1->field20_0xc8[0x15] < 0xb) {
-      pcVar2 = (char *)(uint)DAT_2001aef9;
-      *param_1 = &DAT_2000878c + (int)pcVar2 * 0x6d;
+      *param_1 = &DAT_2000878c + (uint)DAT_2001aef9 * 0x6d;
       if (BLE_DEBUG != 0) {
-        ble_printk("[csh_debug_msg]g_curShowMsgIdx is %d \n",pcVar2,&BLE_DEBUG,BLE_DEBUG);
+        ble_printk("[csh_debug_msg]g_curShowMsgIdx is %d \n");
         return DAT_2001aef9;
       }
       printk("[csh_debug_msg]g_curShowMsgIdx is %d \n");
@@ -43,7 +39,7 @@ byte pull_message(undefined4 *param_1,undefined4 param_2,undefined4 param_3,unde
     else {
       pGVar1 = __get_dashboard_state();
       ble_printk("exception handle, GLOBAL->master_sync_pkg.panel_data_pkg.unread_msg_num is %d \n",
-                 (char *)(uint)(byte)pGVar1->field20_0xc8[0x15],extraout_r2,extraout_r3);
+                 (uint)(byte)pGVar1->field20_0xc8[0x15]);
     }
   }
   return 10;

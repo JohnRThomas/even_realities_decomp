@@ -49,11 +49,10 @@ int send_dmic_msg(int param_1)
       if (9 < DAT_20007f38) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): BLE send failed for %d times\n");
+            printk("%s(): BLE send failed for %d times\n","send_dmic_msg");
           }
           else {
-            ble_printk("%s(): BLE send failed for %d times\n","send_dmic_msg",DAT_20007f38,BLE_DEBUG
-                      );
+            ble_printk("%s(): BLE send failed for %d times\n");
           }
         }
         DAT_20007f38 = 0;

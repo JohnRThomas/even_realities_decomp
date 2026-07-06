@@ -22,7 +22,7 @@ send_response_data_to_ble
   uStack_18 = param_3;
   uStack_14 = param_4;
   pGVar1 = __get_dashboard_state();
-  if (*(char *)pGVar1 != '\x02') {
+  if (pGVar1->is_master != true) {
     memset((void *)((int)&local_20 + 1),0,0x17);
     local_20 = CONCAT31(local_20._1_3_,1);
     iVar2 = z_impl_k_msgq_put((k_msgq *)&DAT_20003acc,&local_20,(k_timeout_t)0x0);

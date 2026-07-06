@@ -1,11 +1,12 @@
 /*
  * Function: ext_flash_api_init
  * Entry:    0002f970
- * Prototype: undefined4 __stdcall ext_flash_api_init(undefined4 * param_1, undefined4 * param_2, undefined4 * param_3)
+ * Prototype: undefined4 __stdcall ext_flash_api_init(undefined4 * param_1, undefined4 * param_2, undefined4 * param_3, undefined4 param_4)
  */
 
 
-undefined4 ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3)
+undefined4
+ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4 *param_3,undefined4 param_4)
 
 {
   bool bVar1;
@@ -16,10 +17,9 @@ undefined4 ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4
   flash_page_cb extraout_r1_00;
   flash_page_cb cb;
   flash_page_cb extraout_r1_01;
-  undefined4 extraout_r2;
   undefined4 *data;
+  undefined4 *extraout_r2;
   undefined4 *extraout_r2_00;
-  undefined4 *extraout_r2_01;
   
   z_impl_k_mutex_init((k_mutex *)&DAT_20008534);
   bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
@@ -32,14 +32,14 @@ undefined4 ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4
     cb = extraout_r1;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): flash init success!\n");
+        printk("%s(): flash init success!\n","ext_flash_api_init",&DAT_20008548,0,param_4);
         cb = extraout_r1_01;
-        data = extraout_r2_01;
+        data = extraout_r2_00;
       }
       else {
-        ble_printk("%s(): flash init success!\n","ext_flash_api_init",&DAT_20008548,BLE_DEBUG);
+        ble_printk("%s(): flash init success!\n");
         cb = extraout_r1_00;
-        data = extraout_r2_00;
+        data = extraout_r2;
       }
     }
     flash_page_foreach((device *)&PTR_s_mx25r6435f_0_0008b3a0,cb,data);
@@ -50,10 +50,10 @@ undefined4 ext_flash_api_init(undefined4 *param_1,undefined4 *param_2,undefined4
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): FAILURE!\n");
+        printk("%s(): FAILURE!\n","ext_flash_api_init");
       }
       else {
-        ble_printk("%s(): FAILURE!\n","ext_flash_api_init",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): FAILURE!\n");
       }
     }
     uVar3 = 0xffffffff;

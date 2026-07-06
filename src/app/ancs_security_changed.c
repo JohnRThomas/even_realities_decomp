@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
 
 {
@@ -18,10 +16,6 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
   ushort extraout_r1;
   size_t len;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
-  undefined4 uVar6;
-  undefined4 extraout_r2_02;
   char acStack_38 [32];
   
   pkVar3 = k_work_delayable_from_work((k_work *)param_1);
@@ -37,7 +31,7 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
     }
     bVar1 = bt_conn_get_security(param_1);
     if (1 < bVar1) {
-      _ancs_discovery_flags = 0;
+      ancs_discovery_flags = 0;
       pkVar3 = k_work_delayable_from_work((k_work *)param_1);
       cVar2 = FUN_00033d5c();
       if ((cVar2 == '\0') &&
@@ -46,36 +40,33 @@ void ancs_security_changed(bt_conn *param_1,undefined4 param_2,int param_3)
         pGVar4 = __get_dashboard_state();
         iVar5 = memcmp(pGVar4->field1211_0x1080 + 1,pkVar3,7);
         if (iVar5 == 0) {
-          discover_gattp(param_1,extraout_r1,extraout_r2_00);
+          discover_gattp(param_1,extraout_r1,extraout_r2);
         }
       }
     }
-    *(undefined1 *)(_DAT_20006c98 + 0x367) = 0;
-    _DAT_20006c14 = 0;
+    *(undefined1 *)(DAT_20006c98 + 0x367) = 0;
+    DAT_20006c14 = 0;
   }
   else {
-    uVar6 = extraout_r2;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         printk("%s(): Security failed: %s level %u err %d\n\n","ancs_security_changed",acStack_38,
                param_2,param_3);
-        uVar6 = extraout_r2_02;
       }
       else {
         ble_printk("%s(): Security failed: %s level %u err %d\n\n","ancs_security_changed",
                    acStack_38,param_2);
-        uVar6 = extraout_r2_01;
       }
     }
-    _DAT_20006c14 = _DAT_20006c14 + 1;
-    if (9 < _DAT_20006c14) {
+    DAT_20006c14 = DAT_20006c14 + 1;
+    if (9 < DAT_20006c14) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): reboot because Security failed exceed 10 times, so reboot\r\n\n");
+          printk("%s(): reboot because Security failed exceed 10 times, so reboot\r\n\n",
+                 "ancs_security_changed");
         }
         else {
-          ble_printk("%s(): reboot because Security failed exceed 10 times, so reboot\r\n\n",
-                     "ancs_security_changed",uVar6,BLE_DEBUG);
+          ble_printk("%s(): reboot because Security failed exceed 10 times, so reboot\r\n\n");
         }
       }
       sleep(500);

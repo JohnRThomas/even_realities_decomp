@@ -17,6 +17,7 @@ undefined4 set_mic_info(int param_1,undefined4 param_2,undefined4 *param_3,undef
   undefined1 *puVar6;
   int iVar7;
   uint uVar8;
+  undefined1 *puVar9;
   
   if ((param_3 == (undefined4 *)0x0) || (param_4 == (undefined1 *)0x0)) {
     printk("get_mic_info para is NULL\n");
@@ -29,6 +30,7 @@ undefined4 set_mic_info(int param_1,undefined4 param_2,undefined4 *param_3,undef
   else {
     DAT_200085cc = DAT_200085cc + 1;
   }
+  puVar9 = param_4;
   bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     pGVar2 = __get_dashboard_state();
@@ -95,10 +97,10 @@ undefined4 set_mic_info(int param_1,undefined4 param_2,undefined4 *param_3,undef
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s():  [%s] device not ready.\n");
+        printk("%s():  [%s] device not ready.\n","set_mic_info","mx25r6435f@0",0,puVar9);
       }
       else {
-        ble_printk("%s():  [%s] device not ready.\n","set_mic_info","mx25r6435f@0",BLE_DEBUG);
+        ble_printk("%s():  [%s] device not ready.\n");
       }
     }
     *puVar6 = 0x1b;

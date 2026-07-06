@@ -50,10 +50,10 @@ set_brightness_lum_base(int param_1,undefined4 param_2,undefined4 *param_3,undef
     }
     else if (cVar2 == '\0') {
       pGVar4 = __get_dashboard_state();
-      *(ushort *)&(pGVar4->jdb_panel_context).field_0x36e = uVar7;
+      *(ushort *)((int)&(pGVar4->jdb_panel_context).field831_0x36c + 2) = uVar7;
     }
     pGVar4 = __get_dashboard_state();
-    *(ushort *)&(pGVar4->jdb_panel_context).field_0x36c = uVar7;
+    *(ushort *)&(pGVar4->jdb_panel_context).field831_0x36c = uVar7;
     pGVar4 = __get_dashboard_state();
     __save_sys_settings(pGVar4);
     cVar9 = '\0';

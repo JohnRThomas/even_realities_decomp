@@ -14,10 +14,10 @@ register_ipc_service_context(ipc_service_context *param_1,undefined4 param_2,und
   GLOBAL_IPC_SERVICE_CONTEXT = param_1;
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): exit\n\n");
+      printk("%s(): exit\n\n","register_ipc_service_context");
     }
     else {
-      ble_printk("%s(): exit\n\n","register_ipc_service_context",param_3,BLE_DEBUG);
+      ble_printk("%s(): exit\n\n");
     }
   }
   return 0;

@@ -19,17 +19,16 @@ undefined4 adc_nfc_init(void)
         printk("%s(): Could not setup channel #%d (%d)\n\n","adc_nfc_init");
       }
       else {
-        ble_printk("%s(): Could not setup channel #%d (%d)\n\n","adc_nfc_init",0,iVar2);
+        ble_printk("%s(): Could not setup channel #%d (%d)\n\n","adc_nfc_init",0);
       }
     }
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): ADC controller device %s not ready\n\n");
+      printk("%s(): ADC controller device %s not ready\n\n","adc_nfc_init","adc@e000");
     }
     else {
-      ble_printk("%s(): ADC controller device %s not ready\n\n","adc_nfc_init","adc@e000",BLE_DEBUG)
-      ;
+      ble_printk("%s(): ADC controller device %s not ready\n\n");
     }
   }
   return 0;

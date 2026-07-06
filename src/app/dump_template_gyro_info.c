@@ -27,11 +27,11 @@ void dump_template_gyro_info(int param_1)
     uVar4 = __aeabi_f2d(*(uint *)(pGVar1->field20_0xc8 + 0x2f),(int)(uVar3 >> 0x20),extraout_r2_01,
                         extraout_r3);
     if (BLE_DEBUG == 0) {
-      printk("%s(): screen_id: %d, ypr: %.2f, %.2f, %.2f\n");
+      printk("%s(): screen_id: %d, ypr: %.2f, %.2f, %.2f\n","dump_template_gyro_info",
+             (uint)*(byte *)(param_1 + 1),0,uVar2,uVar3,uVar4);
     }
     else {
-      ble_printk("%s(): screen_id: %d, ypr: %.2f, %.2f, %.2f\n","dump_template_gyro_info",
-                 (uint)*(byte *)(param_1 + 1),BLE_DEBUG,uVar2,uVar3,uVar4);
+      ble_printk("%s(): screen_id: %d, ypr: %.2f, %.2f, %.2f\n");
     }
   }
   return;

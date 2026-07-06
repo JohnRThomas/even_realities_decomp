@@ -22,6 +22,7 @@ int master_process_put_req(char *param_1,byte *param_2,byte *param_3)
   undefined4 extraout_r2;
   byte bVar14;
   uint uVar15;
+  undefined4 extraout_r3;
   int iVar16;
   byte *pbVar17;
   code *pcVar18;
@@ -53,11 +54,10 @@ int master_process_put_req(char *param_1,byte *param_2,byte *param_3)
         sVar19 = ilen;
         if ((sVar4 != 0) && (sVar19 = sVar4, 0 < (int)LOG_LEVEL)) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): read flash fail: %d\n\n");
+            printk("%s(): read flash fail: %d\n\n","read_fw_pack_from_nor_flash_by_qspi",sVar4);
           }
           else {
-            ble_printk("%s(): read flash fail: %d\n\n","read_fw_pack_from_nor_flash_by_qspi",sVar4,
-                       BLE_DEBUG);
+            ble_printk("%s(): read flash fail: %d\n\n");
           }
         }
         if (ilen == sVar19) {
@@ -79,11 +79,10 @@ int master_process_put_req(char *param_1,byte *param_2,byte *param_3)
       if (0xf < uVar13 - 0x47) {
         if (0 < (int)LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): tx error req_type head->req_type %d.\n\n");
+            printk("%s(): tx error req_type head->req_type %d.\n\n","process_recv_ble_req");
           }
           else {
-            ble_printk("%s(): tx error req_type head->req_type %d.\n\n","process_recv_ble_req",
-                       uVar13,BLE_DEBUG);
+            ble_printk("%s(): tx error req_type head->req_type %d.\n\n");
           }
         }
         param_3[0] = 'e';
@@ -147,7 +146,7 @@ int master_process_put_req(char *param_1,byte *param_2,byte *param_3)
         pGVar3 = __get_dashboard_state();
         *(uint *)&pGVar3->field_0x1060 = (uint)bVar2;
         pGVar3 = __get_dashboard_state();
-        k_sem_give(&pGVar3->sem_6);
+        k_sem_give(&pGVar3->dashboard_position_sem);
         *param_3 = 0xc9;
         bVar2 = param_2[4];
         goto LAB_0002d522;
@@ -297,11 +296,12 @@ LAB_0002d594:
       bVar2 = param_1[2];
       goto LAB_0002d2c8;
     case 0xd:
-      iVar16 = get_notification_counts_cmd_response((int)param_1,param_3,uVar13);
+      iVar16 = get_notification_counts_cmd_response
+                         ((int)param_1,param_3,uVar13,&switchD_0002d4d8::switchdataD_0002d4dc);
       return iVar16;
     case 0xe:
       iVar16 = get_boot_seconds();
-      uint32_to_little_endian(param_3,iVar16,extraout_r2);
+      uint32_to_little_endian(param_3,iVar16,extraout_r2,extraout_r3);
       if (param_1[0xae3] == '\0') {
         bVar20 = *(int *)(param_1 + 0x9b4) != 0;
       }
@@ -464,11 +464,10 @@ LAB_0002d346:
     bVar2 = param_2[4];
     if (0 < (int)LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): BLE_REQ_PUT_NOTIFY_EN enable:%d\n");
+        printk("%s(): BLE_REQ_PUT_NOTIFY_EN enable:%d\n","master_process_put_req",(uint)bVar2);
       }
       else {
-        ble_printk("%s(): BLE_REQ_PUT_NOTIFY_EN enable:%d\n","master_process_put_req",(uint)bVar2,
-                   BLE_DEBUG);
+        ble_printk("%s(): BLE_REQ_PUT_NOTIFY_EN enable:%d\n");
       }
     }
     FUN_00019c80((uint)bVar2);
@@ -479,13 +478,13 @@ LAB_0002d346:
     }
     if (1 < (int)LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk(
-              "%s(): ble recv raster_config_info:enable is %d, raster_height_gear is %d, canvas_distance_gear is %d\n"
-              );
+        printk("%s(): ble recv raster_config_info:enable is %d, raster_height_gear is %d, canvas_distance_gear is %d\n"
+               ,"master_process_put_req",(uint)param_2[9],(uint)param_2[10],(uint)param_2[0xb]);
       }
       else {
-        ble_printk("%s(): ble recv raster_config_info:enable is %d, raster_height_gear is %d, canvas_distance_gear is %d\n"
-                   ,"master_process_put_req",(uint)param_2[9],(uint)param_2[10],(uint)param_2[0xb]);
+        ble_printk(
+                  "%s(): ble recv raster_config_info:enable is %d, raster_height_gear is %d, canvas_distance_gear is %d\n"
+                  );
       }
     }
     if (param_2[9] != 1) {

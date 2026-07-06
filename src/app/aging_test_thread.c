@@ -1,24 +1,22 @@
 /*
  * Function: aging_test_thread
  * Entry:    00034448
- * Prototype: undefined __stdcall aging_test_thread(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall aging_test_thread(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void aging_test_thread(undefined4 param_1,undefined4 param_2,undefined4 param_3)
+void aging_test_thread(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
-  undefined4 extraout_r2;
-  
   do {
     if (DAT_2001abc0 == '\x01') {
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): $$$$$$$$$$$$$$$$$$$$$enter agemode!$$$$$$$$$$$$$$$$$$$$$\n");
+          printk("%s(): $$$$$$$$$$$$$$$$$$$$$enter agemode!$$$$$$$$$$$$$$$$$$$$$\n",
+                 "aging_test_thread");
         }
         else {
-          ble_printk("%s(): $$$$$$$$$$$$$$$$$$$$$enter agemode!$$$$$$$$$$$$$$$$$$$$$\n",
-                     "aging_test_thread",param_3,BLE_DEBUG);
+          ble_printk("%s(): $$$$$$$$$$$$$$$$$$$$$enter agemode!$$$$$$$$$$$$$$$$$$$$$\n");
         }
       }
       FUN_00080638();
@@ -36,7 +34,6 @@ void aging_test_thread(undefined4 param_1,undefined4 param_2,undefined4 param_3)
     }
     check_sw0_status();
     sleep(100);
-    param_3 = extraout_r2;
   } while( true );
 }
 

@@ -8,119 +8,94 @@
 undefined4 ui_new_message_come_on_task(int param_1,undefined4 param_2,int param_3)
 
 {
-  char cVar1;
-  byte bVar2;
-  ushort uVar3;
-  GlassesState *pGVar4;
-  undefined4 extraout_r0;
-  undefined4 extraout_r0_00;
-  undefined4 uVar5;
-  uint uVar6;
-  char *pcVar7;
-  int iVar8;
-  char *extraout_r1;
-  undefined4 extraout_r1_00;
-  undefined4 uVar9;
-  undefined4 extraout_r1_01;
-  undefined4 extraout_r1_02;
-  char *extraout_r1_03;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 uVar10;
-  undefined4 extraout_r2_01;
-  undefined4 extraout_r2_02;
-  undefined4 extraout_r2_03;
-  undefined4 extraout_r2_04;
-  int iVar11;
-  int iVar12;
+  byte bVar1;
+  char cVar2;
+  char cVar3;
+  ushort uVar4;
+  GlassesState *pGVar5;
+  undefined4 uVar6;
+  int iVar7;
+  uint uVar8;
+  int iVar9;
+  int iVar10;
+  uint32_t uVar11;
   byte local_30 [12];
   
-  pGVar4 = __get_dashboard_state();
-  bVar2 = FUN_00035a78();
-  cVar1 = DAT_2001c4e2;
-  uVar6 = (uint)bVar2;
-  if (uVar6 != 4) {
+  pGVar5 = __get_dashboard_state();
+  cVar3 = FUN_00035a78();
+  cVar2 = DAT_2001c4e2;
+  if (cVar3 != '\x04') {
     if (param_3 == 2) {
       if (BLE_DEBUG == 0) {
         printk("ui_new_message_come_on_task exit !");
-        uVar5 = extraout_r0_00;
-        uVar9 = extraout_r1_01;
-        uVar10 = extraout_r2_01;
       }
       else {
-        ble_printk("ui_new_message_come_on_task exit !",extraout_r1,extraout_r2,BLE_DEBUG);
-        uVar5 = extraout_r0;
-        uVar9 = extraout_r1_00;
-        uVar10 = extraout_r2_00;
+        ble_printk("ui_new_message_come_on_task exit !");
       }
-      gui_screen_clear(uVar5,uVar9,uVar10);
+      gui_screen_clear();
       DAT_2001c4e2 = '\0';
       DAT_2001c4e1 = '\0';
     }
     else if (param_3 != 0) {
-      pcVar7 = extraout_r1;
-      uVar5 = extraout_r2;
       if (DAT_2001c4e2 == '\0') {
         DAT_2001c4e2 = '\x01';
-        FUN_000452f0(param_1 + 0x24);
-        uVar5 = FUN_0004540c();
-        uVar6 = gui_screen_clear(uVar5,extraout_r1_02,extraout_r2_02);
-        DAT_2001c4e1 = cVar1;
-        pcVar7 = extraout_r1_03;
-        uVar5 = extraout_r2_03;
+        __set_frame_buffer(param_1 + 0x24);
+        __set_showing_notification_on_gui();
+        gui_screen_clear();
+        DAT_2001c4e1 = cVar2;
       }
-      if ((byte)pGVar4->field20_0xc8[0x2e] < 2) {
+      if ((byte)pGVar5->field20_0xc8[0x2e] < 2) {
         DAT_2001c4e1 = '\0';
-        gui_screen_clear(uVar6,pcVar7,uVar5);
+        gui_screen_clear();
       }
       else {
-        pGVar4 = __get_dashboard_state();
-        pcVar7 = (char *)__parse_message_type((byte)pGVar4->field20_0xc8[0x15] - 1 & 0xff);
+        pGVar5 = __get_dashboard_state();
+        uVar6 = __parse_message_type((byte)pGVar5->field20_0xc8[0x15] - 1 & 0xff);
         if (BLE_DEBUG == 0) {
-          printk("new msgType is %d \n");
+          printk("new msgType is %d \n",uVar6);
         }
         else {
-          ble_printk("new msgType is %d \n",pcVar7,extraout_r2_04,BLE_DEBUG);
+          ble_printk("new msgType is %d \n");
         }
         if (DAT_2001c4e1 == '\0') {
-          FUN_00045428();
-          iVar12 = 0;
+          __clear_showing_notification_on_gui();
+          iVar10 = 0;
           do {
-            switch(pcVar7) {
-            case (char *)0x1:
-              iVar8 = FUN_000809e2();
-              uVar3 = FUN_00080a3a();
-              iVar11 = uVar3 + 0x3a;
-              uVar6 = 0x37;
+            switch(uVar6) {
+            case 1:
+              iVar7 = FUN_000809e2();
+              uVar4 = FUN_00080a3a();
+              iVar9 = uVar4 + 0x3a;
+              uVar8 = 0x37;
               break;
-            case (char *)0x2:
-              iVar8 = FUN_000809e2();
-              uVar3 = FUN_00080a3a();
-              iVar11 = uVar3 + 0x3a;
-              uVar6 = 0x36;
+            case 2:
+              iVar7 = FUN_000809e2();
+              uVar4 = FUN_00080a3a();
+              iVar9 = uVar4 + 0x3a;
+              uVar8 = 0x36;
               break;
-            case (char *)0x3:
-              iVar8 = FUN_000809e2();
-              uVar3 = FUN_00080a3a();
-              iVar11 = uVar3 + 0x3a;
-              uVar6 = 0x3a;
+            case 3:
+              iVar7 = FUN_000809e2();
+              uVar4 = FUN_00080a3a();
+              iVar9 = uVar4 + 0x3a;
+              uVar8 = 0x3a;
               break;
-            case (char *)0x4:
-              iVar8 = FUN_000809e2();
-              uVar3 = FUN_00080a3a();
-              iVar11 = uVar3 + 0x3a;
-              uVar6 = 0x39;
+            case 4:
+              iVar7 = FUN_000809e2();
+              uVar4 = FUN_00080a3a();
+              iVar9 = uVar4 + 0x3a;
+              uVar8 = 0x39;
               break;
             default:
-              iVar8 = FUN_000809e2();
-              uVar3 = FUN_00080a3a();
-              iVar11 = uVar3 + 0x3a;
-              uVar6 = 0x38;
+              iVar7 = FUN_000809e2();
+              uVar4 = FUN_00080a3a();
+              iVar9 = uVar4 + 0x3a;
+              uVar8 = 0x38;
             }
-            gui_bmp_bitmap_draw(uVar6,iVar8,iVar11,0,0,0);
-            uVar6 = 0;
+            gui_bmp_bitmap_draw(uVar8,iVar7,iVar9,0,0,0);
+            uVar8 = 0;
             do {
-              iVar8 = 0;
+              iVar7 = 0;
               do {
                 local_30[0] = 1;
                 local_30[1] = 2;
@@ -130,25 +105,25 @@ undefined4 ui_new_message_come_on_task(int param_1,undefined4 param_2,int param_
                 local_30[5] = 6;
                 local_30[6] = 7;
                 local_30[7] = 7;
-                iVar11 = *(int *)(param_1 + 0x24 + uVar6 * 4);
-                bVar2 = *(byte *)(iVar11 + iVar8);
-                if (bVar2 != 0) {
-                  *(byte *)(iVar11 + iVar8) =
-                       bVar2 & (&DAT_000accab)
-                               [iVar8 + (uint)local_30[iVar12] * 0x140 + (uVar6 % 0x1a) * 0xa00];
+                iVar9 = *(int *)(param_1 + 0x24 + uVar8 * 4);
+                bVar1 = *(byte *)(iVar9 + iVar7);
+                if (bVar1 != 0) {
+                  *(byte *)(iVar9 + iVar7) =
+                       bVar1 & (&DAT_000accab)
+                               [iVar7 + (uint)local_30[iVar10] * 0x140 + (uVar8 % 0x1a) * 0xa00];
                 }
-                iVar8 = iVar8 + 1;
-              } while (iVar8 != 0x140);
-              uVar6 = uVar6 + 1;
-            } while (uVar6 != 199);
-            pGVar4 = __get_dashboard_state();
-            iVar8 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
-            pGVar4 = __get_dashboard_state();
-            iVar12 = iVar12 + 1;
-            _reflash_fb_data_to_lcd
-                      (iVar8,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,0,0,0x280,199);
-          } while (iVar12 != 8);
-          FUN_0004540c();
+                iVar7 = iVar7 + 1;
+              } while (iVar7 != 0x140);
+              uVar8 = uVar8 + 1;
+            } while (uVar8 != 199);
+            pGVar5 = __get_dashboard_state();
+            uVar11 = (pGVar5->jdb_panel_context).current_row;
+            pGVar5 = __get_dashboard_state();
+            iVar10 = iVar10 + 1;
+            _reflash_fb_data_to_lcd(uVar11,(pGVar5->jdb_panel_context).current_column,0,0,0x280,199)
+            ;
+          } while (iVar10 != 8);
+          __set_showing_notification_on_gui();
           DAT_2001c4e1 = '\x01';
         }
       }

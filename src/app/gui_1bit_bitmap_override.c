@@ -10,17 +10,17 @@ gui_1bit_bitmap_override(uint param_1,int param_2,int param_3,int param_4,int pa
 
 {
   byte bVar1;
+  byte *pbVar2;
   char *fmt;
-  int iVar2;
-  GlassesState *pGVar3;
-  int iVar4;
+  int iVar3;
+  GlassesState *pGVar4;
   uint uVar5;
   int iVar6;
   uint uVar7;
   int iVar8;
-  int iVar9;
-  uint uVar10;
-  int iVar11;
+  uint uVar9;
+  int iVar10;
+  uint32_t uVar11;
   int iVar12;
   byte *pbVar13;
   byte bVar14;
@@ -28,6 +28,7 @@ gui_1bit_bitmap_override(uint param_1,int param_2,int param_3,int param_4,int pa
   byte *local_4c;
   byte local_2c [8];
   
+  pbVar2 = __frame_buffer;
   if (((param_3 < (int)param_1) || (param_4 < param_2)) || (0xf < param_6)) {
     if (LOG_LEVEL < 2) {
       return 0xffffffff;
@@ -37,10 +38,9 @@ gui_1bit_bitmap_override(uint param_1,int param_2,int param_3,int param_4,int pa
   else {
     if ((param_1 & 1) == 0) {
       uVar7 = (int)(param_3 - param_1) >> 3;
-      iVar8 = __frame_buffer + param_2 * 4;
       iVar12 = 0;
-      for (iVar9 = 0; iVar9 < param_4 - param_2; iVar9 = iVar9 + 1) {
-        iVar2 = (int)param_1 / 2;
+      for (iVar8 = 0; iVar8 < param_4 - param_2; iVar8 = iVar8 + 1) {
+        iVar3 = (int)param_1 / 2;
         local_4c = (byte *)(param_5 + iVar12);
         for (local_54 = 0; local_54 < (int)uVar7; local_54 = local_54 + 1) {
           bVar1 = *local_4c;
@@ -59,35 +59,35 @@ gui_1bit_bitmap_override(uint param_1,int param_2,int param_3,int param_4,int pa
                 bVar14 = param_6 << 4 | bVar14;
               }
             }
-            uVar10 = uVar5 + 1;
-            if ((uVar10 & 1) == 0) {
+            uVar9 = uVar5 + 1;
+            if ((uVar9 & 1) == 0) {
               local_2c[(int)uVar5 >> 1] = bVar14;
               bVar14 = 0;
             }
-            uVar5 = uVar10;
-          } while (uVar10 != 8);
+            uVar5 = uVar9;
+          } while (uVar9 != 8);
           iVar6 = 0;
           pbVar13 = local_2c;
           do {
-            iVar11 = iVar6 + iVar2;
-            iVar4 = *(int *)(iVar8 + iVar9 * 4);
+            iVar10 = iVar6 + iVar3;
             iVar6 = iVar6 + 1;
-            *(byte *)(iVar4 + iVar11) = *pbVar13 | *(byte *)(iVar4 + iVar11);
+            *(byte *)(*(int *)(pbVar2 + iVar8 * 4 + param_2 * 4) + iVar10) =
+                 *pbVar13 | *(byte *)(*(int *)(pbVar2 + iVar8 * 4 + param_2 * 4) + iVar10);
             pbVar13 = pbVar13 + 1;
           } while (iVar6 != 4);
-          iVar2 = iVar2 + 4;
+          iVar3 = iVar3 + 4;
           local_4c = local_4c + 1;
         }
         iVar12 = iVar12 + (uVar7 & ~((int)(param_3 - param_1) >> 0x1f));
       }
-      iVar9 = FUN_000452e4();
-      if (iVar9 << 0x1e < 0) {
-        pGVar3 = __get_dashboard_state();
-        iVar9 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
-        pGVar3 = __get_dashboard_state();
+      iVar8 = FUN_000452e4();
+      if (iVar8 << 0x1e < 0) {
+        pGVar4 = __get_dashboard_state();
+        uVar11 = (pGVar4->jdb_panel_context).current_row;
+        pGVar4 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar9,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,param_1 - 2,param_2,
-                   param_3 + 2,param_4);
+                  (uVar11,(pGVar4->jdb_panel_context).current_column,param_1 - 2,param_2,param_3 + 2
+                   ,param_4);
         return 0;
       }
       return 0;
@@ -100,10 +100,10 @@ gui_1bit_bitmap_override(uint param_1,int param_2,int param_3,int param_4,int pa
     ;
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"gui_1bit_bitmap_override");
   }
   else {
-    ble_printk(fmt,"gui_1bit_bitmap_override",param_3,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0xffffffff;
 }

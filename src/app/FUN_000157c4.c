@@ -25,7 +25,7 @@ void FUN_000157c4(void)
     if (9 < DAT_2001093a) {
       DAT_2001093a = 0;
       *(undefined4 *)&GLOBAL_STATE->field_0x1060 = 0x3e;
-      k_sem_give(&pGVar1->sem_6);
+      k_sem_give(&pGVar1->dashboard_position_sem);
       return;
     }
   }

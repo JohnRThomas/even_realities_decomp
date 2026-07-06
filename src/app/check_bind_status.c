@@ -17,10 +17,10 @@ void check_bind_status(int param_1,int param_2,int param_3)
         && (*(char *)(param_1 + 0x1089) == '\x01')) &&
        (*(undefined1 *)(param_1 + 0x1089) = 0, 0 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): disable allow bind mode\n");
+        printk("%s(): disable allow bind mode\n","check_bind_status");
         return;
       }
-      ble_printk("%s(): disable allow bind mode\n","check_bind_status",param_3,BLE_DEBUG);
+      ble_printk("%s(): disable allow bind mode\n");
       return;
     }
   }
@@ -29,10 +29,10 @@ void check_bind_status(int param_1,int param_2,int param_3)
       if ((*(char *)(param_1 + 0x1089) == '\0') &&
          (*(undefined1 *)(param_1 + 0x1089) = 1, 0 < LOG_LEVEL)) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): enable allow bind mode\n");
+          printk("%s(): enable allow bind mode\n","check_bind_status");
         }
         else {
-          ble_printk("%s(): enable allow bind mode\n","check_bind_status",0,BLE_DEBUG);
+          ble_printk("%s(): enable allow bind mode\n");
         }
       }
     }

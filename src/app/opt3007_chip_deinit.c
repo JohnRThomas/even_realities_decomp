@@ -1,11 +1,12 @@
 /*
  * Function: opt3007_chip_deinit
  * Entry:    0002fd3c
- * Prototype: undefined __stdcall opt3007_chip_deinit(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall opt3007_chip_deinit(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void opt3007_chip_deinit(undefined4 param_1,undefined4 param_2,undefined4 param_3)
+void opt3007_chip_deinit(undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4
+                        )
 
 {
   if (DAT_2000854c != 0) {
@@ -14,10 +15,10 @@ void opt3007_chip_deinit(undefined4 param_1,undefined4 param_2,undefined4 param_
   }
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): opt3007_chip_deinit done!\n");
+      printk("%s(): opt3007_chip_deinit done!\n","opt3007_chip_deinit",param_3,0,param_4);
     }
     else {
-      ble_printk("%s(): opt3007_chip_deinit done!\n","opt3007_chip_deinit",param_3,BLE_DEBUG);
+      ble_printk("%s(): opt3007_chip_deinit done!\n");
     }
   }
   DAT_20019a6f = 0;

@@ -1,11 +1,11 @@
 /*
  * Function: imu_fusion_init
  * Entry:    00028088
- * Prototype: undefined4 __stdcall imu_fusion_init(char * param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall imu_fusion_init(char * param_1)
  */
 
 
-undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
+undefined4 imu_fusion_init(char *param_1)
 
 {
   k_timeout_t delay;
@@ -13,8 +13,6 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar2;
   int iVar3;
   int iVar4;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   uint in_stack_ffffffdc;
   
   if (param_1[0x14] == '\0') {
@@ -22,11 +20,10 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
     *(undefined ***)(param_1 + 0x1c) = &PTR_s_lsm6dso_6b_0008b508;
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): imu_fusion: sensor device is ready:\n\n");
+        printk("%s(): imu_fusion: sensor device is ready:\n\n","imu_fusion_init");
       }
       else {
-        ble_printk("%s(): imu_fusion: sensor device is ready:\n\n","imu_fusion_init",extraout_r2,
-                   BLE_DEBUG);
+        ble_printk("%s(): imu_fusion: sensor device is ready:\n\n");
       }
     }
     bVar1 = __is_master();
@@ -45,12 +42,13 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
     if (iVar3 < 0) {
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): c->imu_fusion: Cannot set sampling frequency for accelerometer ret %d.\n\n")
-          ;
+          printk("%s(): c->imu_fusion: Cannot set sampling frequency for accelerometer ret %d.\n\n",
+                 "imu_fusion_init");
         }
         else {
-          ble_printk("%s(): c->imu_fusion: Cannot set sampling frequency for accelerometer ret %d.\n\n"
-                     ,"imu_fusion_init",iVar3,BLE_DEBUG);
+          ble_printk(
+                    "%s(): c->imu_fusion: Cannot set sampling frequency for accelerometer ret %d.\n\n"
+                    );
         }
       }
       uVar2 = 0xfffffffd;
@@ -70,11 +68,11 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
       if (iVar4 < 0) {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro.\n\n");
+            printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro.\n\n",
+                   "imu_fusion_init");
           }
           else {
-            ble_printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro.\n\n",
-                       "imu_fusion_init",extraout_r2_00,BLE_DEBUG);
+            ble_printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro.\n\n");
           }
         }
         uVar2 = 0xfffffffc;
@@ -86,10 +84,10 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
         param_1[0x1b] = '\0';
         if (1 < iVar3) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): sensor_fusion_init:\n\n");
+            printk("%s(): sensor_fusion_init:\n\n","imu_fusion_init");
           }
           else {
-            ble_printk("%s(): sensor_fusion_init:\n\n","imu_fusion_init",extraout_r2_00,BLE_DEBUG);
+            ble_printk("%s(): sensor_fusion_init:\n\n");
           }
         }
         FUN_00028694((undefined4 *)(param_1 + 0x28));
@@ -108,10 +106,10 @@ undefined4 imu_fusion_init(char *param_1,undefined4 param_2,undefined4 param_3)
   else {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): imu_fusion: algo is existed\n\n");
+        printk("%s(): imu_fusion: algo is existed\n\n","imu_fusion_init");
       }
       else {
-        ble_printk("%s(): imu_fusion: algo is existed\n\n","imu_fusion_init",param_3,BLE_DEBUG);
+        ble_printk("%s(): imu_fusion: algo is existed\n\n");
       }
     }
     uVar2 = 0xffffffff;

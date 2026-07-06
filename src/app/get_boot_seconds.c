@@ -16,10 +16,10 @@ int get_boot_seconds(void)
   iVar1 = (int)uVar2 - DAT_2000aa90;
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): [csh_debug] bootSeconds is %d\n");
+      printk("%s(): [csh_debug] bootSeconds is %d\n","get_boot_seconds",iVar1);
     }
     else {
-      ble_printk("%s(): [csh_debug] bootSeconds is %d\n","get_boot_seconds",iVar1,BLE_DEBUG);
+      ble_printk("%s(): [csh_debug] bootSeconds is %d\n");
     }
   }
   return iVar1;

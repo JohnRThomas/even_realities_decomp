@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void discover_ancs_completed_cb(bt_gatt_dm *param_1,bt_ancs_client *param_2)
 
 {
@@ -18,7 +16,7 @@ void discover_ancs_completed_cb(bt_gatt_dm *param_1,bt_ancs_client *param_2)
   printk("The discovery procedure for ANCS succeeded\n");
   iVar2 = bt_ancs_handles_assign(param_1,param_2);
   if (iVar2 == 0) {
-    _ancs_discovery_flags = _ancs_discovery_flags | 2;
+    ancs_discovery_flags = ancs_discovery_flags | 2;
     iVar2 = bt_ancs_subscribe_notification_source(param_2,(bt_ancs_ns_notif_cb)0x19049);
     if (iVar2 != 0) {
       printk("Failed to enable Notification Source notification (err %d)\n",iVar2);

@@ -10,7 +10,7 @@ gui_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,byt
 
 {
   byte bVar1;
-  int *piVar2;
+  byte *pbVar2;
   char *fmt;
   uint uVar3;
   GlassesState *pGVar4;
@@ -20,9 +20,10 @@ gui_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,byt
   int iVar6;
   uint uVar7;
   int iVar8;
-  byte *pbVar9;
-  uint uVar10;
-  int iVar11;
+  uint32_t uVar9;
+  byte *pbVar10;
+  uint uVar11;
+  int iVar12;
   undefined4 local_2c [2];
   
   if (((param_3 < (int)param_1) || (param_4 < param_2)) || (0xf < param_6)) {
@@ -37,13 +38,13 @@ gui_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,byt
       if ((uVar3 & 2) != 0) {
         _clean_fb_data(__frame_buffer,0,param_1 - 2,y_start,extraout_r2 + 2,param_4);
       }
-      piVar2 = __frame_buffer;
+      pbVar2 = __frame_buffer;
       uVar3 = (int)(param_3 - param_1) >> 3;
-      iVar11 = 0;
+      iVar12 = 0;
       for (iVar8 = 0; iVar8 < param_4 - param_2; iVar8 = iVar8 + 1) {
-        pbVar9 = (byte *)(param_5 + iVar11);
+        pbVar10 = (byte *)(param_5 + iVar12);
         for (iVar6 = 0; iVar6 < (int)uVar3; iVar6 = iVar6 + 1) {
-          bVar1 = *pbVar9;
+          bVar1 = *pbVar10;
           bVar5 = 0;
           local_2c[0] = 0;
           uVar7 = 0;
@@ -56,26 +57,27 @@ gui_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,byt
                 bVar5 = bVar5 | param_6 << 4;
               }
             }
-            uVar10 = uVar7 + 1;
-            if ((uVar10 & 1) == 0) {
+            uVar11 = uVar7 + 1;
+            if ((uVar11 & 1) == 0) {
               *(byte *)((int)local_2c + ((int)uVar7 >> 1)) = bVar5;
               bVar5 = 0;
             }
-            uVar7 = uVar10;
-          } while (uVar10 != 8);
-          *(undefined4 *)(piVar2[param_2 + iVar8] + iVar6 * 4 + (int)param_1 / 2) = local_2c[0];
-          pbVar9 = pbVar9 + 1;
+            uVar7 = uVar11;
+          } while (uVar11 != 8);
+          *(undefined4 *)(*(int *)(pbVar2 + iVar8 * 4 + param_2 * 4) + iVar6 * 4 + (int)param_1 / 2)
+               = local_2c[0];
+          pbVar10 = pbVar10 + 1;
         }
-        iVar11 = iVar11 + (uVar3 & ~((int)(param_3 - param_1) >> 0x1f));
+        iVar12 = iVar12 + (uVar3 & ~((int)(param_3 - param_1) >> 0x1f));
       }
       iVar8 = FUN_000452e4();
       if (iVar8 << 0x1e < 0) {
         pGVar4 = __get_dashboard_state();
-        iVar8 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
+        uVar9 = (pGVar4->jdb_panel_context).current_row;
         pGVar4 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar8,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,param_1 - 2,param_2,
-                   param_3 + 2,param_4);
+                  (uVar9,(pGVar4->jdb_panel_context).current_column,param_1 - 2,param_2,param_3 + 2,
+                   param_4);
         return 0;
       }
       return 0;
@@ -88,10 +90,10 @@ gui_bitmap_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,byt
     ;
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"gui_bitmap_draw");
   }
   else {
-    ble_printk(fmt,"gui_bitmap_draw",param_3,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0xffffffff;
 }

@@ -19,11 +19,11 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
   uStack_10 = param_3;
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): read setting flash data to ram...\r\n\n");
+      printk("%s(): read setting flash data to ram...\r\n\n","getAppLanguageInfofromFlash",param_3,0
+             ,param_1);
     }
     else {
-      ble_printk("%s(): read setting flash data to ram...\r\n\n","getAppLanguageInfofromFlash",
-                 param_3,BLE_DEBUG,param_1);
+      ble_printk("%s(): read setting flash data to ram...\r\n\n");
     }
   }
   bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
@@ -45,11 +45,11 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
     else {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s():  form address [%d] read data failed.\n\n");
+          printk("%s():  form address [%d] read data failed.\n\n","getAppLanguageInfofromFlash",
+                 0x13e000);
         }
         else {
-          ble_printk("%s():  form address [%d] read data failed.\n\n","getAppLanguageInfofromFlash",
-                     0x13e000,BLE_DEBUG);
+          ble_printk("%s():  form address [%d] read data failed.\n\n");
         }
       }
       local_14._1_1_ = 0;
@@ -58,11 +58,11 @@ byte getAppLanguageInfofromFlash(undefined4 param_1,uint param_2,undefined4 para
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s():  [%s] device not ready.\n\n");
+        printk("%s():  [%s] device not ready.\n\n","getAppLanguageInfofromFlash","mx25r6435f@0",0,
+               param_1);
       }
       else {
-        ble_printk("%s():  [%s] device not ready.\n\n","getAppLanguageInfofromFlash","mx25r6435f@0",
-                   BLE_DEBUG,param_1);
+        ble_printk("%s():  [%s] device not ready.\n\n");
       }
     }
     local_14._1_1_ = 0xff;

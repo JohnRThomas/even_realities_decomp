@@ -11,7 +11,6 @@ undefined4 deal_event_to_phone(int param_1,undefined2 *param_2)
   undefined1 uVar1;
   undefined1 uVar2;
   byte bVar3;
-  undefined4 extraout_r2;
   undefined1 uVar4;
   undefined4 local_28;
   undefined1 local_24 [20];
@@ -38,11 +37,10 @@ LAB_000224b2:
         if (bVar3 == 0x1e) {
           if (1 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): send dashboard start...\n");
+              printk("%s(): send dashboard start...\n","deal_event_to_phone");
             }
             else {
-              ble_printk("%s(): send dashboard start...\n","deal_event_to_phone",extraout_r2,
-                         BLE_DEBUG);
+              ble_printk("%s(): send dashboard start...\n");
             }
           }
         }

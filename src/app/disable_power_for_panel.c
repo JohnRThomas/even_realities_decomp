@@ -12,6 +12,7 @@ undefined4 __disable_power_for_panel(void)
   undefined4 extraout_r0;
   undefined4 extraout_r1;
   undefined4 extraout_r2;
+  undefined4 extraout_r3;
   
   iVar1 = i2c_write_dt((i2c_dt_spec *)&PTR_s_pmic_6b_0008b430,&NMI,1);
   if (iVar1 < 0) {
@@ -19,7 +20,7 @@ undefined4 __disable_power_for_panel(void)
   }
   else {
     printk("disable ldsw1 1.8v for panel\n");
-    opt3007_chip_deinit(extraout_r0,extraout_r1,extraout_r2);
+    opt3007_chip_deinit(extraout_r0,extraout_r1,extraout_r2,extraout_r3);
   }
   return 0;
 }

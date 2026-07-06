@@ -10,14 +10,13 @@ undefined4 jbd_panel_suspend(undefined4 param_1,undefined4 param_2,undefined4 pa
 {
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): SPI_DEEP_POWER_DOWN\n");
+      printk("%s(): SPI_DEEP_POWER_DOWN\n","jbd_panel_suspend",param_3,0,param_1,param_2);
     }
     else {
-      ble_printk("%s(): SPI_DEEP_POWER_DOWN\n","jbd_panel_suspend",param_3,BLE_DEBUG,param_1,param_2
-                );
+      ble_printk("%s(): SPI_DEEP_POWER_DOWN\n");
     }
   }
-  FUN_00080f80(0xb9,&stack0xfffffff7,1);
+  spi_tx_frame(SPI_DEEP_POWER_DOWN,&stack0xfffffff7,1);
   return 0;
 }
 

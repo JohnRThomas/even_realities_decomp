@@ -16,13 +16,11 @@ undefined4 set_imu_pitch_reflash(void)
   char *pcVar6;
   int iVar7;
   uint string_id;
-  undefined4 extraout_r1;
-  undefined4 extraout_r2;
   
   pGVar3 = __get_dashboard_state();
   if ((byte)pGVar3->field20_0xc8[0x28] < 2) {
-    if ((uint)DAT_2001dd03 != (uint)(byte)pGVar3->field20_0xc8[0x28]) {
-      gui_screen_clear(pGVar3,extraout_r1,(uint)DAT_2001dd03);
+    if (DAT_2001dd03 != pGVar3->field20_0xc8[0x28]) {
+      gui_screen_clear();
       DAT_2001dd03 = pGVar3->field20_0xc8[0x28];
     }
     if (pGVar3->field20_0xc8[0x28] == '\x01') {
@@ -63,11 +61,11 @@ undefined4 set_imu_pitch_reflash(void)
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): set_imu_pitch:horiz_step over E_IMU_PITCH_STEP_MAX\n");
+        printk("%s(): set_imu_pitch:horiz_step over E_IMU_PITCH_STEP_MAX\n","set_imu_pitch_reflash")
+        ;
       }
       else {
-        ble_printk("%s(): set_imu_pitch:horiz_step over E_IMU_PITCH_STEP_MAX\n",
-                   "set_imu_pitch_reflash",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): set_imu_pitch:horiz_step over E_IMU_PITCH_STEP_MAX\n");
       }
     }
     uVar4 = 0xffffffff;

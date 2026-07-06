@@ -9,7 +9,6 @@ undefined4 stopAudioStreamRecord(void)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 uVar2;
   undefined1 local_d4;
   undefined1 auStack_d3 [203];
@@ -24,10 +23,10 @@ undefined4 stopAudioStreamRecord(void)
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): enqueue_dmic failed\r\n\n");
+        printk("%s(): enqueue_dmic failed\r\n\n","stopAudioStreamRecord");
       }
       else {
-        ble_printk("%s(): enqueue_dmic failed\r\n\n","stopAudioStreamRecord",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): enqueue_dmic failed\r\n\n");
       }
     }
     uVar2 = 0xffffffff;

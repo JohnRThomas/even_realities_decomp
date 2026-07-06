@@ -9,13 +9,11 @@ int store_whitelist(void)
 
 {
   int iVar1;
-  char *extraout_r1;
-  undefined4 extraout_r2;
   char cVar2;
   
   cVar2 = '\x03';
   do {
-    iVar1 = write_whitelist_to_flash(0x131000,0x2001aefb,(char *)0x15e2);
+    iVar1 = write_whitelist_to_flash(0x131000,0x2001aefb,0x15e2);
     if (iVar1 == 0) {
       dump_whitelist();
       break;
@@ -25,7 +23,7 @@ int store_whitelist(void)
       printk("write to flash failed, should retry ! \n");
     }
     else {
-      ble_printk("write to flash failed, should retry ! \n",extraout_r1,extraout_r2,BLE_DEBUG);
+      ble_printk("write to flash failed, should retry ! \n");
     }
     cVar2 = cVar2 + -1;
   } while (cVar2 != '\0');

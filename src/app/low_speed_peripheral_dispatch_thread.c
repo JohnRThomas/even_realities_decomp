@@ -20,11 +20,10 @@ void low_speed_peripheral_dispatch_thread(char *param_1)
   int iVar5;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
   undefined4 uVar6;
+  undefined4 extraout_r2_01;
   undefined4 extraout_r2_02;
   undefined4 extraout_r2_03;
-  undefined4 extraout_r2_04;
   byte bVar7;
   uint uVar8;
   uint uVar9;
@@ -37,10 +36,10 @@ void low_speed_peripheral_dispatch_thread(char *param_1)
   update_persist_task_status_to_idle((int)param_1,extraout_r1);
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): #enter\n");
+      printk("%s(): #enter\n","low_speed_peripheral_dispatch_thread");
     }
     else {
-      ble_printk("%s(): #enter\n","low_speed_peripheral_dispatch_thread",extraout_r2,BLE_DEBUG);
+      ble_printk("%s(): #enter\n");
     }
   }
   param_1[0xfc8] = '\0';
@@ -102,13 +101,13 @@ LAB_0002cd92:
         }
 LAB_0002cc0a:
         uVar3 = sync_to_slave(param_1,0xc,(undefined4 *)0x0,0);
-        uVar6 = extraout_r2_00;
+        uVar6 = extraout_r2;
         uVar12 = CONCAT44(extraout_r1_00,uVar3);
         if (((int)uVar3 < 500) &&
            (uVar12 = CONCAT44((uint)(byte)param_1[0xe4] << 0x1d,uVar3),
            (int)((uint)(byte)param_1[0xe4] << 0x1d) < 0)) {
           uVar12 = FUN_00035270();
-          uVar6 = extraout_r2_01;
+          uVar6 = extraout_r2_00;
 LAB_0002cc28:
           param_1[0xe4] = param_1[0xe4] & 0xfb;
         }
@@ -132,7 +131,7 @@ LAB_0002cdc6:
           param_1[0x6df] = param_1[0x6df] + '\x01';
         }
         uVar3 = FUN_000294d0((int)param_1,1,(void *)0x0,0);
-        uVar6 = extraout_r2_03;
+        uVar6 = extraout_r2_02;
         uVar8 = uVar10;
         uVar12 = CONCAT44(extraout_r1_02,uVar3);
         if ((uVar3 < 500) &&
@@ -140,7 +139,7 @@ LAB_0002cdc6:
         {
           uVar12 = FUN_00035270();
           param_1[0x6de] = param_1[0x6de] & 0xfb;
-          uVar6 = extraout_r2_04;
+          uVar6 = extraout_r2_03;
           goto LAB_0002cc28;
         }
       }
@@ -157,12 +156,11 @@ LAB_0002cdc6:
         {
           if (0 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): reboot because dfu exceed time\n");
+              printk("%s(): reboot because dfu exceed time\n","low_speed_peripheral_dispatch_thread"
+                    );
             }
             else {
-              ble_printk("%s(): reboot because dfu exceed time\n",
-                         "low_speed_peripheral_dispatch_thread",*(undefined4 *)(param_1 + 0x107c),
-                         BLE_DEBUG);
+              ble_printk("%s(): reboot because dfu exceed time\n");
             }
           }
           k_msleep(500);
@@ -171,12 +169,11 @@ LAB_0002cdc6:
         }
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): ********************DFU MODE********************\n");
+            printk("%s(): ********************DFU MODE********************\n",
+                   "low_speed_peripheral_dispatch_thread");
           }
           else {
-            ble_printk("%s(): ********************DFU MODE********************\n",
-                       "low_speed_peripheral_dispatch_thread",*(undefined4 *)(param_1 + 0x107c),
-                       BLE_DEBUG);
+            ble_printk("%s(): ********************DFU MODE********************\n");
           }
         }
         check_work_mode(uVar9,uVar2,uVar10);
@@ -213,7 +210,7 @@ LAB_0002cdc6:
       }
       try_enter_low_power_mode();
       check_work_mode(uVar9,uVar2,uVar10);
-      check_disp_onboarding(uVar9,extraout_r1_01,extraout_r2_02);
+      check_disp_onboarding(uVar9,extraout_r1_01,extraout_r2_01);
       if ((((conn != (bt_conn *)0x0) && (param_1[0x1080] == '\0')) &&
           (uVar12 = FUN_0007fea6(), 30000 < (uint)((int)uVar12 - *(int *)(param_1 + 0xae4)))) &&
          (param_1[1] != '\x01')) {

@@ -10,7 +10,6 @@ upgradeDashboardStartupModeInfoToFlash(undefined4 param_1,undefined4 param_2,und
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 uVar2;
   undefined4 local_18;
   uint local_14;
@@ -23,11 +22,11 @@ upgradeDashboardStartupModeInfoToFlash(undefined4 param_1,undefined4 param_2,und
   if (iVar1 == 0) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): send startup mode store Command, mode = %d\n");
+        printk("%s(): send startup mode store Command, mode = %d\n",
+               "upgradeDashboardStartupModeInfoToFlash",param_1);
       }
       else {
-        ble_printk("%s(): send startup mode store Command, mode = %d\n",
-                   "upgradeDashboardStartupModeInfoToFlash",param_1,BLE_DEBUG);
+        ble_printk("%s(): send startup mode store Command, mode = %d\n");
       }
     }
     k_sem_give((k_sem *)&DAT_200083c4);
@@ -36,11 +35,11 @@ upgradeDashboardStartupModeInfoToFlash(undefined4 param_1,undefined4 param_2,und
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): setting flash store queue fill failed\r\n\n");
+        printk("%s(): setting flash store queue fill failed\r\n\n",
+               "upgradeDashboardStartupModeInfoToFlash");
       }
       else {
-        ble_printk("%s(): setting flash store queue fill failed\r\n\n",
-                   "upgradeDashboardStartupModeInfoToFlash",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): setting flash store queue fill failed\r\n\n");
       }
     }
     uVar2 = 0xffffffff;

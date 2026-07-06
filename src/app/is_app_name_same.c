@@ -1,11 +1,11 @@
 /*
  * Function: ?_is_app_name_same
  * Entry:    0003668c
- * Prototype: undefined4 __stdcall ?_is_app_name_same(char * param_1, char * param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall ?_is_app_name_same(char * param_1, char * param_2)
  */
 
 
-undefined4 __is_app_name_same(char *param_1,char *param_2,undefined4 param_3)
+undefined4 __is_app_name_same(char *param_1,char *param_2)
 
 {
   int iVar1;
@@ -17,7 +17,7 @@ undefined4 __is_app_name_same(char *param_1,char *param_2,undefined4 param_3)
       printk("invalid param ! \n");
     }
     else {
-      ble_printk("invalid param ! \n",param_2,param_3,BLE_DEBUG);
+      ble_printk("invalid param ! \n");
     }
   }
   else {

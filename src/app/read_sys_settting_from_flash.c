@@ -9,7 +9,6 @@ undefined4 read_sys_settting_from_flash(undefined4 *param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 *puVar2;
   undefined4 extraout_r3;
   char *pcVar3;
@@ -49,11 +48,10 @@ undefined4 read_sys_settting_from_flash(undefined4 *param_1)
   if (iVar1 == 0) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): read sys settings success!\n");
+        printk("%s(): read sys settings success!\n","read_sys_settting_from_flash");
       }
       else {
-        ble_printk("%s(): read sys settings success!\n","read_sys_settting_from_flash",extraout_r2,
-                   BLE_DEBUG);
+        ble_printk("%s(): read sys settings success!\n");
       }
     }
     *param_1 = local_a8;
@@ -105,11 +103,10 @@ undefined4 read_sys_settting_from_flash(undefined4 *param_1)
   else {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): sys_flash_settings_read error!\n");
+        printk("%s(): sys_flash_settings_read error!\n","read_sys_settting_from_flash");
       }
       else {
-        ble_printk("%s(): sys_flash_settings_read error!\n","read_sys_settting_from_flash",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): sys_flash_settings_read error!\n");
       }
     }
     uVar5 = 0xffffffff;

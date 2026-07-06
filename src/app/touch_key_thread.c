@@ -1,11 +1,9 @@
 /*
  * Function: touch_key_thread
  * Entry:    0002c290
- * Prototype: undefined __stdcall touch_key_thread(char * param_1, undefined4 param_2)
+ * Prototype: undefined __stdcall touch_key_thread(char * param_1, uint32_t * param_2)
  */
 
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
 
 void touch_key_thread(char *param_1,uint32_t *param_2)
 
@@ -19,7 +17,7 @@ void touch_key_thread(char *param_1,uint32_t *param_2)
   uint32_t *irq_status;
   uint32_t *extraout_r1_00;
   uint32_t *extraout_r1_01;
-  undefined4 extraout_r1_02;
+  uint32_t *extraout_r1_02;
   uint32_t *extraout_r1_03;
   uint32_t *extraout_r1_04;
   uint32_t *extraout_r1_05;
@@ -30,12 +28,7 @@ void touch_key_thread(char *param_1,uint32_t *param_2)
   uint32_t *extraout_r1_10;
   uint32_t *extraout_r1_11;
   uint32_t *extraout_r1_12;
-  uint32_t *extraout_r1_13;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   undefined4 uVar4;
-  undefined4 extraout_r2_01;
-  undefined4 extraout_r2_02;
   int iVar5;
   int iVar6;
   char cVar7;
@@ -62,15 +55,15 @@ LAB_0002c2a0:
       param_2 = extraout_r1;
     }
     param_2 = irq_status;
-    if (_DAT_20006be0 != 0) {
+    if (DAT_20006be0 != 0) {
       aw9320x_get_irq_stat((cap_event_status *)p_irq_stat_data,irq_status);
-      _DAT_20006be0 = 0;
+      DAT_20006be0 = 0;
       param_2 = extraout_r1_00;
     }
   } while (-1 < (int)((uint)*(ushort *)(param_1 + 0x1070) << 0x1f));
   if (aw9320x_wearing == IN_EAR) {
     uVar3 = sys_clock_tick_get_32();
-    aw9320x_diff_get((uint *)(param_1 + 0x1090),extraout_r1_02,extraout_r2_00);
+    aw9320x_diff_get((uint32_t *)(param_1 + 0x1090));
     if (10000 < (int)(uVar3 - uVar10)) {
       uVar9 = 0;
       uVar2 = uVar9;
@@ -108,19 +101,19 @@ LAB_0002c3f0:
       if (iVar6 * 30000 < iVar5) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): #############################Long press timeout %d################################\n\n"
-                  );
+            printk("%s(): #############################Long press timeout %d################################\n\n"
+                   ,"touch_key_thread",uVar11);
           }
           else {
-            ble_printk("%s(): #############################Long press timeout %d################################\n\n"
-                       ,"touch_key_thread",uVar11,BLE_DEBUG);
+            ble_printk(
+                      "%s(): #############################Long press timeout %d################################\n\n"
+                      );
           }
         }
         uVar8 = 0;
         DAT_200084f8 = 6;
         FUN_0002c278();
-        param_2 = extraout_r1_06;
+        param_2 = extraout_r1_05;
         uVar2 = 0;
         uVar11 = uVar8;
         goto LAB_0002c2a0;
@@ -144,8 +137,8 @@ LAB_0002c41c:
     goto LAB_0002c2a0;
   }
   if (uVar9 == 0) {
-    aw9320x_diff_get((uint *)(param_1 + 0x1090),extraout_r1_01,extraout_r2);
-    param_2 = extraout_r1_03;
+    aw9320x_diff_get((uint32_t *)(param_1 + 0x1090));
+    param_2 = extraout_r1_02;
     if (((int)(undefined *)0xffffb1e0 < *(int *)(param_1 + 0x1090)) &&
        (*(int *)(param_1 + 0x1090) < 20000)) {
       uVar2 = 0;
@@ -155,16 +148,17 @@ LAB_0002c41c:
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): ########################turn on the mic and start to speak! holdtime %d\n\n"
-                );
+                 ,"touch_key_thread",iVar5);
         }
         else {
-          ble_printk("%s(): ########################turn on the mic and start to speak! holdtime %d\n\n"
-                     ,"touch_key_thread",iVar5,BLE_DEBUG);
+          ble_printk(
+                    "%s(): ########################turn on the mic and start to speak! holdtime %d\n\n"
+                    );
         }
       }
       DAT_200084f8 = 4;
       FUN_0002c278();
-      param_2 = extraout_r1_04;
+      param_2 = extraout_r1_03;
       goto LAB_0002c3f0;
     }
     if (-1 < (int)uVar3) {
@@ -178,13 +172,13 @@ LAB_0002c41c:
 LAB_0002c32e:
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk(
-              "%s(): #############################single click %d################################\n\n"
-              );
+        printk("%s(): #############################single click %d################################\n\n"
+               ,"touch_key_thread",*(undefined4 *)(param_1 + 0x1090));
       }
       else {
-        ble_printk("%s(): #############################single click %d################################\n\n"
-                   ,"touch_key_thread",*(undefined4 *)(param_1 + 0x1090),BLE_DEBUG);
+        ble_printk(
+                  "%s(): #############################single click %d################################\n\n"
+                  );
       }
     }
     cVar7 = '\x04';
@@ -202,15 +196,15 @@ LAB_0002c42e:
     if (iVar13 < 0x8ca1) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk(
-                "%s(): #############################Short press end################################\n\n"
-                );
-          param_2 = extraout_r1_08;
+          printk("%s(): #############################Short press end################################\n\n"
+                 ,"touch_key_thread");
+          param_2 = extraout_r1_07;
         }
         else {
-          ble_printk("%s(): #############################Short press end################################\n\n"
-                     ,"touch_key_thread",36000,BLE_DEBUG);
-          param_2 = extraout_r1_07;
+          ble_printk(
+                    "%s(): #############################Short press end################################\n\n"
+                    );
+          param_2 = extraout_r1_06;
         }
       }
       uVar9 = 0;
@@ -220,13 +214,13 @@ LAB_0002c42e:
     }
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk(
-              "%s(): #############################Long press end################################\n\n"
-              );
+        printk("%s(): #############################Long press end################################\n\n"
+               ,"touch_key_thread");
       }
       else {
-        ble_printk("%s(): #############################Long press end################################\n\n"
-                   ,"touch_key_thread",36000,BLE_DEBUG);
+        ble_printk(
+                  "%s(): #############################Long press end################################\n\n"
+                  );
       }
     }
     DAT_200084f8 = 5;
@@ -237,11 +231,12 @@ LAB_0002c42e:
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         printk("%s(): #############################double click################################\n\n"
-              );
+               ,"touch_key_thread");
       }
       else {
-        ble_printk("%s(): #############################double click################################\n\n"
-                   ,"touch_key_thread",extraout_r2,BLE_DEBUG);
+        ble_printk(
+                  "%s(): #############################double click################################\n\n"
+                  );
       }
     }
     DAT_200084f8 = 2;
@@ -250,11 +245,12 @@ LAB_0002c42e:
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         printk("%s(): #############################triple click################################\n\n"
-              );
+               ,"touch_key_thread");
       }
       else {
-        ble_printk("%s(): #############################triple click################################\n\n"
-                   ,"touch_key_thread",extraout_r2,BLE_DEBUG);
+        ble_printk(
+                  "%s(): #############################triple click################################\n\n"
+                  );
       }
     }
     DAT_200084f8 = 3;
@@ -265,36 +261,36 @@ LAB_0002c42e:
     if (**(char **)(param_1 + 0x101c) == '\0') {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): %d click, reboot now\n\n");
+          printk("%s(): %d click, reboot now\n\n","touch_key_thread",5);
         }
         else {
-          ble_printk("%s(): %d click, reboot now\n\n","touch_key_thread",5,BLE_DEBUG);
+          ble_printk("%s(): %d click, reboot now\n\n");
         }
       }
       reset_pmic_on();
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): reset_pmic_on\n\n");
+          printk("%s(): reset_pmic_on\n\n","touch_key_thread");
         }
         else {
-          ble_printk("%s(): reset_pmic_on\n\n","touch_key_thread",extraout_r2_01,BLE_DEBUG);
+          ble_printk("%s(): reset_pmic_on\n\n");
         }
       }
       reset_pmic_off();
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): reset_pmic_off\n\n");
+          printk("%s(): reset_pmic_off\n\n","touch_key_thread");
         }
         else {
-          ble_printk("%s(): reset_pmic_off\n\n","touch_key_thread",extraout_r2_02,BLE_DEBUG);
+          ble_printk("%s(): reset_pmic_off\n\n");
         }
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): sys reboot because touch event, %d click, reboot now\n\n");
+            printk("%s(): sys reboot because touch event, %d click, reboot now\n\n",
+                   "touch_key_thread",5);
           }
           else {
-            ble_printk("%s(): sys reboot because touch event, %d click, reboot now\n\n",
-                       "touch_key_thread",5,BLE_DEBUG);
+            ble_printk("%s(): sys reboot because touch event, %d click, reboot now\n\n");
           }
         }
       }
@@ -306,7 +302,7 @@ LAB_0002c42e:
   case 6:
     bt_unpair('\0',(bt_addr_le_t *)0x0);
     param_1[0x1089] = '\x02';
-    param_2 = extraout_r1_09;
+    param_2 = extraout_r1_08;
     if (LOG_LEVEL < 1) goto switchD_0002c4b6_caseD_4;
     uVar4 = 6;
     fmt = "%s(): #############################%d click force bind#############################\n\n";
@@ -318,28 +314,28 @@ LAB_0002c42e:
     iVar12 = 0;
 LAB_0002c69c:
     reset_all_usr_data(param_1,iVar12);
-    param_2 = extraout_r1_13;
+    param_2 = extraout_r1_12;
     goto switchD_0002c4b6_caseD_4;
   case 0xf:
     __set_band_for_ESB(10);
-    param_2 = extraout_r1_11;
+    param_2 = extraout_r1_10;
     if (LOG_LEVEL < 1) goto switchD_0002c4b6_caseD_4;
     uVar4 = 0xf;
     fmt = "%s(): %d click, use high band for ESB\n\n";
 LAB_0002c5e6:
     if (BLE_DEBUG == 0) {
-      printk(fmt);
-      param_2 = extraout_r1_12;
+      printk(fmt,"touch_key_thread",uVar4);
+      param_2 = extraout_r1_11;
     }
     else {
-      ble_printk(fmt,"touch_key_thread",uVar4,BLE_DEBUG);
-      param_2 = extraout_r1_10;
+      ble_printk(fmt);
+      param_2 = extraout_r1_09;
     }
     goto switchD_0002c4b6_caseD_4;
   }
 LAB_0002c452:
   FUN_0002c278();
-  param_2 = extraout_r1_05;
+  param_2 = extraout_r1_04;
 switchD_0002c4b6_caseD_4:
   uVar8 = 0;
   uVar2 = uVar8;

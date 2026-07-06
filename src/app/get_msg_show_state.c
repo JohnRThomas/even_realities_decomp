@@ -13,9 +13,8 @@ void __get_msg_show_state(void)
   GlassesState *pGVar3;
   int iVar4;
   uint uVar5;
-  undefined4 extraout_r2;
   undefined4 extraout_r3;
-  undefined4 extraout_r3_00;
+  undefined8 uVar6;
   
   k_uptime_get();
   if (BLE_DEBUG == 0) {
@@ -24,8 +23,7 @@ void __get_msg_show_state(void)
   }
   else {
     bVar1 = FUN_00035a78();
-    ble_printk("[csh_debug_msg] set touch key flag get_msg_show_state() %d\n",(char *)(uint)bVar1,
-               extraout_r2,extraout_r3);
+    ble_printk("[csh_debug_msg] set touch key flag get_msg_show_state() %d\n",(uint)bVar1);
   }
   cVar2 = FUN_00035a78();
   if ((cVar2 == '\x02') || (cVar2 = FUN_00035a78(), cVar2 == '\x04')) {
@@ -47,17 +45,17 @@ void __get_msg_show_state(void)
     if ((pGVar3->field20_0xc8[0xd] != '\x01') &&
        (pGVar3 = __get_dashboard_state(), *(char *)&pGVar3->imu_fusion_context == '\x02')) {
       pGVar3 = __get_dashboard_state();
-      trigger_screen_state_change("IMU:wakeup:dashboard",(int)pGVar3,1,extraout_r3_00);
+      trigger_screen_state_change("IMU:wakeup:dashboard",(int)pGVar3,1,extraout_r3);
     }
     pGVar3 = __get_dashboard_state();
-    if (*(char *)pGVar3 == '\x01') {
+    if (pGVar3->is_master == true) {
       pGVar3 = __get_dashboard_state();
       pGVar3->field20_0xc8[0x13] = 0;
     }
   }
   else {
-    clear_timeout_message(1);
-    FUN_000359fc();
+    uVar6 = clear_timeout_message(1);
+    FUN_000359fc((uint)uVar6,(int)((ulonglong)uVar6 >> 0x20));
     DAT_20019a6c = 1;
   }
   return;

@@ -22,7 +22,7 @@ int FUN_00080806(void)
     pGVar1 = __get_dashboard_state();
     *(undefined1 *)(*(int *)&pGVar1->field_0x1018 + 1) = 0;
     pGVar1 = __get_dashboard_state();
-    if (*(char *)pGVar1 == '\x01') {
+    if (pGVar1->is_master == true) {
       FUN_0003f1bc();
     }
   }

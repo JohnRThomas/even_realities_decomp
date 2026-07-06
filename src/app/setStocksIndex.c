@@ -15,7 +15,7 @@ undefined4 setStocksIndex(byte param_1,undefined4 param_2,undefined4 param_3,und
       printk("%s():  %s index = %d\n","setStocksIndex","setStocksIndex",(uint)param_1,param_4);
     }
     else {
-      ble_printk("%s():  %s index = %d\n","setStocksIndex","setStocksIndex",(uint)param_1);
+      ble_printk("%s():  %s index = %d\n","setStocksIndex");
     }
   }
   return 0;

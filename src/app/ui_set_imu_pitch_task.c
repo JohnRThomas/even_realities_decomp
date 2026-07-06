@@ -10,53 +10,41 @@ undefined4 ui_set_imu_pitch_task(int param_1,undefined4 param_2,int param_3)
 {
   byte bVar1;
   char cVar2;
-  undefined4 uVar3;
-  GlassesState *pGVar4;
-  undefined4 extraout_r0;
-  undefined4 extraout_r0_00;
-  undefined4 extraout_r1;
-  undefined4 extraout_r1_00;
-  undefined4 extraout_r1_01;
-  undefined4 uVar5;
-  undefined4 extraout_r1_02;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
-  undefined4 uVar6;
-  undefined4 extraout_r2_02;
-  int iVar7;
+  GlassesState *pGVar3;
+  int iVar4;
+  int iVar5;
+  uint uVar6;
+  uint32_t uVar7;
   int iVar8;
-  uint uVar9;
-  int iVar10;
   byte local_30 [12];
   
   __get_dashboard_state();
-  FUN_000452f0(param_1 + 0x24);
-  uVar3 = FUN_0004540c();
+  __set_frame_buffer(param_1 + 0x24);
+  __set_showing_notification_on_gui();
   if ((char)DAT_2001dd01 == '\0') {
     if (param_3 == 1) {
       cVar2 = DAT_2001dd01._1_1_;
       if (DAT_2001dd01._1_1_ != '\0') {
         return 0;
       }
-      uVar3 = FUN_000809d0();
-      gui_screen_clear(uVar3,extraout_r1_00,extraout_r2_00);
+      FUN_000809d0();
+      gui_screen_clear();
       FUN_00045834();
       DAT_2001dd03 = cVar2;
       DAT_2001dd01._0_1_ = cVar2;
       DAT_2001dd01._1_1_ = 1;
       FUN_00045444();
       DAT_2001dd01 = CONCAT11(DAT_2001dd01._1_1_,1);
-      FUN_00045428();
-      iVar8 = 0;
+      __clear_showing_notification_on_gui();
+      iVar5 = 0;
       do {
         set_imu_pitch_reflash();
-        uVar9 = 0;
+        uVar6 = 0;
         do {
-          iVar7 = 0;
+          iVar4 = 0;
           do {
-            iVar10 = *(int *)(param_1 + 0x24 + uVar9 * 4);
-            bVar1 = *(byte *)(iVar10 + iVar7);
+            iVar8 = *(int *)(param_1 + 0x24 + uVar6 * 4);
+            bVar1 = *(byte *)(iVar8 + iVar4);
             local_30[0] = 1;
             local_30[1] = 2;
             local_30[2] = 3;
@@ -66,45 +54,35 @@ undefined4 ui_set_imu_pitch_task(int param_1,undefined4 param_2,int param_3)
             local_30[6] = 7;
             local_30[7] = 7;
             if (bVar1 != 0) {
-              *(byte *)(iVar10 + iVar7) =
+              *(byte *)(iVar8 + iVar4) =
                    bVar1 & (&DAT_000accab)
-                           [iVar7 + (uint)local_30[iVar8] * 0x140 + (uVar9 % 0x1a) * 0xa00];
+                           [iVar4 + (uint)local_30[iVar5] * 0x140 + (uVar6 % 0x1a) * 0xa00];
             }
-            iVar7 = iVar7 + 1;
-          } while (iVar7 != 0x140);
-          uVar9 = uVar9 + 1;
-        } while (uVar9 != 199);
-        pGVar4 = __get_dashboard_state();
-        iVar7 = *(int *)&(pGVar4->jdb_panel_context).field_0x348;
-        pGVar4 = __get_dashboard_state();
-        iVar8 = iVar8 + 1;
-        _reflash_fb_data_to_lcd
-                  (iVar7,*(int *)&(pGVar4->jdb_panel_context).field_0x34c,0,0,0x280,199);
-      } while (iVar8 != 8);
-      FUN_0004540c();
+            iVar4 = iVar4 + 1;
+          } while (iVar4 != 0x140);
+          uVar6 = uVar6 + 1;
+        } while (uVar6 != 199);
+        pGVar3 = __get_dashboard_state();
+        uVar7 = (pGVar3->jdb_panel_context).current_row;
+        pGVar3 = __get_dashboard_state();
+        iVar5 = iVar5 + 1;
+        _reflash_fb_data_to_lcd(uVar7,(pGVar3->jdb_panel_context).current_column,0,0,0x280,199);
+      } while (iVar5 != 8);
+      __set_showing_notification_on_gui();
       return 0;
     }
     if (param_3 != 2) {
       return 0;
     }
-    uVar5 = extraout_r1;
-    uVar6 = extraout_r2;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): set_imu_pitch process received exit packet ...\n");
-        uVar3 = extraout_r0_00;
-        uVar5 = extraout_r1_02;
-        uVar6 = extraout_r2_02;
+        printk("%s(): set_imu_pitch process received exit packet ...\n","ui_set_imu_pitch_task");
       }
       else {
-        ble_printk("%s(): set_imu_pitch process received exit packet ...\n","ui_set_imu_pitch_task",
-                   extraout_r2,BLE_DEBUG);
-        uVar3 = extraout_r0;
-        uVar5 = extraout_r1_01;
-        uVar6 = extraout_r2_01;
+        ble_printk("%s(): set_imu_pitch process received exit packet ...\n");
       }
     }
-    gui_screen_clear(uVar3,uVar5,uVar6);
+    gui_screen_clear();
   }
   else {
     if ((char)DAT_2001dd01 != '\x01') {
@@ -119,11 +97,10 @@ undefined4 ui_set_imu_pitch_task(int param_1,undefined4 param_2,int param_3)
     }
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): set_imu_pitch process received exit packet ...\n");
+        printk("%s(): set_imu_pitch process received exit packet ...\n","ui_set_imu_pitch_task");
       }
       else {
-        ble_printk("%s(): set_imu_pitch process received exit packet ...\n","ui_set_imu_pitch_task",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): set_imu_pitch process received exit packet ...\n");
       }
     }
     FUN_00045968();

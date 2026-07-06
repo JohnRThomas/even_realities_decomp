@@ -10,7 +10,6 @@ void auth_cancel(bt_conn *param_1)
 {
   k_work_delayable *addr;
   size_t len;
-  undefined4 extraout_r2;
   char acStack_28 [32];
   
   addr = k_work_delayable_from_work((k_work *)param_1);
@@ -18,11 +17,10 @@ void auth_cancel(bt_conn *param_1)
   printk("Pairing cancelled: %s\n",acStack_28);
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): bt_conn_disconnect because Pairing cancelled\n");
+      printk("%s(): bt_conn_disconnect because Pairing cancelled\n","auth_cancel");
     }
     else {
-      ble_printk("%s(): bt_conn_disconnect because Pairing cancelled\n","auth_cancel",extraout_r2,
-                 BLE_DEBUG);
+      ble_printk("%s(): bt_conn_disconnect because Pairing cancelled\n");
     }
   }
   bt_conn_disconnect(param_1,'\x13');

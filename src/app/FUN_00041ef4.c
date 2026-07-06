@@ -14,15 +14,12 @@ void FUN_00041ef4(int param_1)
   int iVar4;
   char *pcVar5;
   int iVar6;
-  undefined4 extraout_r1;
-  undefined4 extraout_r2;
   uint uVar7;
   
   bVar1 = get_current_language();
-  uVar7 = (uint)bVar1;
-  gui_screen_clear(uVar7,extraout_r1,extraout_r2);
+  gui_screen_clear();
   if (param_1 == 0) {
-    uVar7 = uVar7 - 5 & 0xff;
+    uVar7 = bVar1 - 5 & 0xff;
     if (uVar7 < 10) {
       uVar7 = (uint)(byte)(&DAT_000ac3c8)[uVar7];
     }
@@ -43,7 +40,7 @@ void FUN_00041ef4(int param_1)
     if (param_1 != 1) {
       return;
     }
-    uVar7 = uVar7 - 5 & 0xff;
+    uVar7 = bVar1 - 5 & 0xff;
     if (uVar7 < 10) {
       uVar7 = (uint)(byte)(&DAT_000ac3be)[uVar7];
     }

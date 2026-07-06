@@ -1,11 +1,11 @@
 /*
  * Function: convert_app_whitelist_to_json
  * Entry:    00036984
- * Prototype: uint __stdcall convert_app_whitelist_to_json(char * param_1)
+ * Prototype: uint __stdcall convert_app_whitelist_to_json(char * param_1, undefined4 param_2, undefined4 param_3)
  */
 
 
-uint convert_app_whitelist_to_json(char *param_1)
+uint convert_app_whitelist_to_json(char *param_1,undefined4 param_2,undefined4 param_3)
 
 {
   char *fmt;
@@ -17,9 +17,7 @@ uint convert_app_whitelist_to_json(char *param_1)
   size_t sVar2;
   undefined4 uVar3;
   uint uVar4;
-  undefined4 extraout_r2;
-  int iVar5;
-  uint uVar6;
+  uint uVar5;
   
   pcVar1 = param_1;
   if (param_1 == (char *)0x0) {
@@ -46,18 +44,18 @@ uint convert_app_whitelist_to_json(char *param_1)
           pcVar1 = "[%s-%d]appListInfoJson is null \n";
         }
         else {
-          uVar6 = 0;
+          uVar5 = 0;
           while( true ) {
-            uVar4 = uVar6 & 0xff;
+            uVar4 = uVar5 & 0xff;
             if (DAT_2001aefc <= uVar4) {
               cJSON_AddItemToObject(object_00,"list",array);
               cJSON_AddItemToObject(object,s_M_s_fuentes_en_la_app_000be53f + 0x13,object_00);
               pcVar1 = cJSON_PrintUnformatted(object);
               if (BLE_DEBUG == 0) {
-                printk("cJsonStr is %s \n");
+                printk("cJsonStr is %s \n",pcVar1);
               }
               else {
-                ble_printk("cJsonStr is %s \n",pcVar1,extraout_r2,BLE_DEBUG);
+                ble_printk("cJsonStr is %s \n");
               }
               strcpy(param_1,pcVar1);
               sVar2 = strlen(pcVar1);
@@ -66,11 +64,10 @@ uint convert_app_whitelist_to_json(char *param_1)
               return sVar2 & 0xffff;
             }
             object_01 = cJSON_CreateObject();
-            uVar6 = uVar6 + 1;
+            uVar5 = uVar5 + 1;
             if (object_01 == (cJSON *)0x0) break;
-            iVar5 = uVar4 * 0x38;
-            cJSON_AddStringToObject(object_01,"id",&DAT_2001aefd + iVar5);
-            cJSON_AddStringToObject(object_01,"name",&DAT_2001af25 + iVar5);
+            cJSON_AddStringToObject(object_01,"id",&DAT_2001aefd + uVar4 * 0x38);
+            cJSON_AddStringToObject(object_01,"name",&DAT_2001af25 + uVar4 * 0x38);
             add_item_to_array(array,object_01);
           }
           uVar3 = 0x219;
@@ -78,10 +75,10 @@ uint convert_app_whitelist_to_json(char *param_1)
         }
       }
       if (BLE_DEBUG == 0) {
-        printk(pcVar1);
+        printk(pcVar1,"convert_app_whitelist_to_json",uVar3);
       }
       else {
-        ble_printk(pcVar1,"convert_app_whitelist_to_json",uVar3,BLE_DEBUG);
+        ble_printk(pcVar1);
       }
       cJSON_Delete(object);
       return 0;
@@ -90,10 +87,10 @@ uint convert_app_whitelist_to_json(char *param_1)
     fmt = "[%s-%d]jsonRoot is null \n";
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"convert_app_whitelist_to_json",uVar3,0,pcVar1,param_2,param_3);
   }
   else {
-    ble_printk(fmt,"convert_app_whitelist_to_json",uVar3,BLE_DEBUG,pcVar1);
+    ble_printk(fmt);
   }
   return 0;
 }

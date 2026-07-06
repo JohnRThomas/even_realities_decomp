@@ -13,7 +13,7 @@ gui_bitmps_merge_draw
 {
   byte bVar1;
   byte bVar2;
-  int *piVar3;
+  byte *pbVar3;
   byte bVar4;
   char *fmt;
   int iVar5;
@@ -23,9 +23,10 @@ gui_bitmps_merge_draw
   uint uVar7;
   int iVar8;
   uint uVar9;
-  byte *pbVar10;
-  int iVar11;
-  uint uVar12;
+  uint32_t uVar10;
+  byte *pbVar11;
+  int iVar12;
+  uint uVar13;
   byte *local_5c;
   undefined4 local_2c [2];
   
@@ -41,15 +42,15 @@ gui_bitmps_merge_draw
       if (iVar5 << 0x1e < 0) {
         _clean_fb_data(__frame_buffer,0,param_1,y_start,x_end,param_4);
       }
-      piVar3 = __frame_buffer;
-      iVar11 = 0;
+      pbVar3 = __frame_buffer;
+      iVar12 = 0;
       uVar7 = (int)(param_3 - param_1) >> 3;
       for (iVar5 = 0; iVar5 < param_4 - param_2; iVar5 = iVar5 + 1) {
-        pbVar10 = (byte *)(param_6 + iVar11);
-        local_5c = (byte *)(param_5 + iVar11);
+        pbVar11 = (byte *)(param_6 + iVar12);
+        local_5c = (byte *)(param_5 + iVar12);
         for (iVar8 = 0; iVar8 < (int)uVar7; iVar8 = iVar8 + 1) {
           bVar1 = *local_5c;
-          bVar2 = *pbVar10;
+          bVar2 = *pbVar11;
           bVar4 = 0;
           local_2c[0] = 0;
           uVar9 = 0;
@@ -70,27 +71,28 @@ gui_bitmps_merge_draw
                 bVar4 = bVar4 | param_8 << 4;
               }
             }
-            uVar12 = uVar9 + 1;
-            if ((uVar12 & 1) == 0) {
+            uVar13 = uVar9 + 1;
+            if ((uVar13 & 1) == 0) {
               *(byte *)((int)local_2c + ((int)uVar9 >> 1)) = bVar4;
               bVar4 = 0;
             }
-            uVar9 = uVar12;
-          } while (uVar12 != 8);
-          *(undefined4 *)(piVar3[param_2 + iVar5] + iVar8 * 4 + (int)param_1 / 2) = local_2c[0];
-          pbVar10 = pbVar10 + 1;
+            uVar9 = uVar13;
+          } while (uVar13 != 8);
+          *(undefined4 *)(*(int *)(pbVar3 + iVar5 * 4 + param_2 * 4) + iVar8 * 4 + (int)param_1 / 2)
+               = local_2c[0];
+          pbVar11 = pbVar11 + 1;
           local_5c = local_5c + 1;
         }
-        iVar11 = iVar11 + (uVar7 & ~((int)(param_3 - param_1) >> 0x1f));
+        iVar12 = iVar12 + (uVar7 & ~((int)(param_3 - param_1) >> 0x1f));
       }
       iVar5 = FUN_000452e4();
       if (iVar5 << 0x1e < 0) {
         pGVar6 = __get_dashboard_state();
-        iVar5 = *(int *)&(pGVar6->jdb_panel_context).field_0x348;
+        uVar10 = (pGVar6->jdb_panel_context).current_row;
         pGVar6 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar5,*(int *)&(pGVar6->jdb_panel_context).field_0x34c,param_1,param_2,param_3,
-                   param_4);
+                  (uVar10,(pGVar6->jdb_panel_context).current_column,param_1,param_2,param_3,param_4
+                  );
         return 0;
       }
       return 0;
@@ -103,10 +105,10 @@ gui_bitmps_merge_draw
     ;
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"gui_bitmps_merge_draw");
   }
   else {
-    ble_printk(fmt,"gui_bitmps_merge_draw",param_3,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0xffffffff;
 }

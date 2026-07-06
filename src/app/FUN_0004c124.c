@@ -5,6 +5,8 @@
  */
 
 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
 undefined4 FUN_0004c124(int param_1)
 
 {
@@ -14,7 +16,7 @@ undefined4 FUN_0004c124(int param_1)
   if (param_1 < 0x21) {
     param_1 = 0x21;
   }
-  DAT_20002564 = param_1;
+  _DAT_20002564 = param_1;
   return 0;
 }
 

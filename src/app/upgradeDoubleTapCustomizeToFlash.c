@@ -1,11 +1,11 @@
 /*
  * Function: upgradeDoubleTapCustomizeToFlash
  * Entry:    00025e10
- * Prototype: undefined4 __stdcall upgradeDoubleTapCustomizeToFlash(uint param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall upgradeDoubleTapCustomizeToFlash(uint param_1)
  */
 
 
-undefined4 upgradeDoubleTapCustomizeToFlash(uint param_1,undefined4 param_2,undefined4 param_3)
+undefined4 upgradeDoubleTapCustomizeToFlash(uint param_1)
 
 {
   undefined4 uVar1;
@@ -37,11 +37,11 @@ undefined4 upgradeDoubleTapCustomizeToFlash(uint param_1,undefined4 param_2,unde
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Err:double_tap_customize is out of range!\n");
+        printk("%s(): Err:double_tap_customize is out of range!\n",
+               "upgradeDoubleTapCustomizeToFlash");
       }
       else {
-        ble_printk("%s(): Err:double_tap_customize is out of range!\n",
-                   "upgradeDoubleTapCustomizeToFlash",param_3,BLE_DEBUG);
+        ble_printk("%s(): Err:double_tap_customize is out of range!\n");
       }
     }
     uVar1 = 0xffffffff;

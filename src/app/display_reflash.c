@@ -33,11 +33,10 @@ undefined4 display_reflash(void *param_1,uint param_2)
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): send data length more than %d,can\'t load it,exit ...\n");
+      printk("%s(): send data length more than %d,can\'t load it,exit ...\n","display_reflash",10);
     }
     else {
-      ble_printk("%s(): send data length more than %d,can\'t load it,exit ...\n","display_reflash",
-                 10,BLE_DEBUG);
+      ble_printk("%s(): send data length more than %d,can\'t load it,exit ...\n");
     }
   }
   return 0xffffffff;

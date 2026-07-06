@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
 
 {
@@ -43,11 +41,9 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   gpio_flags_t flags_06;
   gpio_flags_t flags_07;
   gpio_flags_t flags_08;
-  gpio_flags_t gVar12;
   gpio_flags_t flags_09;
-  gpio_flags_t extraout_r2;
   gpio_flags_t flags_10;
-  uint uVar13;
+  uint uVar12;
   device *local_70;
   undefined *puStack_6c;
   undefined1 auStack_68 [12];
@@ -97,13 +93,12 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   if (bVar1) {
     iVar3 = z_impl_gpio_pin_configure((device *)&button_irq_gpio_spec,0,flags_07);
     if (-1 < iVar3) {
-      _DAT_20006bf4 = 0x17a3d;
-      _DAT_20006bf8 = 0x200;
+      DAT_20006bf4 = 0x17a3d;
+      DAT_20006bf8 = 0x200;
       iVar3 = gpio_manage_callback((sys_slist_t *)&gpio1_dev,(gpio_callback *)&button1_irq_cb,true);
       if (iVar3 < 0) {
         if (1 < LOG_LEVEL) {
           pcVar2 = "%s(): Unable to configure SW0 GPIO pin!\n\n";
-          gVar12 = flags_09;
           goto LAB_00017c48;
         }
       }
@@ -111,10 +106,10 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
         z_impl_gpio_pin_interrupt_configure((device *)&button_irq_gpio_spec,0,flags_09);
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): done, pin= %d\n\n");
+            printk("%s(): done, pin= %d\n\n","button_init",9);
           }
           else {
-            ble_printk("%s(): done, pin= %d\n\n","button_init",9,BLE_DEBUG);
+            ble_printk("%s(): done, pin= %d\n\n");
           }
         }
       }
@@ -122,13 +117,12 @@ uint button_init(undefined4 param_1,undefined4 param_2,gpio_flags_t param_3)
   }
   else if (1 < LOG_LEVEL) {
     pcVar2 = "%s(): SW0 GPIO port device not ready\n\n";
-    gVar12 = flags_07;
 LAB_00017c48:
     if (BLE_DEBUG == 0) {
-      printk(pcVar2);
+      printk(pcVar2,"button_init");
     }
     else {
-      ble_printk(pcVar2,"button_init",gVar12,BLE_DEBUG);
+      ble_printk(pcVar2);
     }
   }
   bVar1 = z_device_is_ready(&gpio1_dev);
@@ -136,8 +130,8 @@ LAB_00017c48:
     iVar3 = z_impl_gpio_pin_configure((device *)&button_irq2_gpio_spec,0,flags_08);
     pin = extraout_r1_01;
     if (iVar3 < 0) goto LAB_00017d40;
-    _DAT_20006be8 = 0x17919;
-    _DAT_20006bec = 0x400;
+    DAT_20006be8 = 0x17919;
+    DAT_20006bec = 0x400;
     iVar3 = gpio_manage_callback((sys_slist_t *)&gpio1_dev,(gpio_callback *)&button2_irq_cb,true);
     if (-1 < iVar3) {
       FUN_000274a0();
@@ -145,11 +139,11 @@ LAB_00017c48:
       pin = extraout_r1_03;
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): done, pin= %d\n\n");
+          printk("%s(): done, pin= %d\n\n","nfc_gpo_init",10);
           pin = extraout_r1_06;
         }
         else {
-          ble_printk("%s(): done, pin= %d\n\n","nfc_gpo_init",10,BLE_DEBUG);
+          ble_printk("%s(): done, pin= %d\n\n");
           pin = extraout_r1_04;
         }
       }
@@ -158,20 +152,18 @@ LAB_00017c48:
     pin = extraout_r1_02;
     if (LOG_LEVEL < 2) goto LAB_00017d40;
     pcVar2 = "%s(): Unable to configure SW0 GPIO pin!\n\n";
-    gVar12 = extraout_r2;
   }
   else {
     pin = extraout_r1;
     if (LOG_LEVEL < 2) goto LAB_00017d40;
     pcVar2 = "%s(): SW0 GPIO port device not ready\n\n";
-    gVar12 = flags_08;
   }
   if (BLE_DEBUG == 0) {
-    printk(pcVar2);
+    printk(pcVar2,"nfc_gpo_init");
     pin = extraout_r1_05;
   }
   else {
-    ble_printk(pcVar2,"nfc_gpo_init",gVar12,BLE_DEBUG);
+    ble_printk(pcVar2);
     pin = extraout_r1_00;
   }
 LAB_00017d40:
@@ -184,12 +176,12 @@ LAB_00017d40:
   uVar10 = gpio_pin_get_raw(&gpio0_dev,0x15);
   uVar11 = gpio_pin_get_raw(&gpio0_dev,0x1e);
   if (1 < LOG_LEVEL) {
-    uVar13 = uVar4 & 0xff;
+    uVar12 = uVar4 & 0xff;
     if (BLE_DEBUG == 0) {
-      printk("%s(): DEVICE_ID1_PIN: %d, device1_status: %d\n","get_device_hw_id",26,uVar13);
+      printk("%s(): DEVICE_ID1_PIN: %d, device1_status: %d\n","get_device_hw_id",26,uVar12);
     }
     else {
-      ble_printk("%s(): DEVICE_ID1_PIN: %d, device1_status: %d\n","get_device_hw_id",26,uVar13);
+      ble_printk("%s(): DEVICE_ID1_PIN: %d, device1_status: %d\n","get_device_hw_id",26,uVar12);
     }
     if (1 < LOG_LEVEL) {
       uVar5 = uVar5 & 0xff;
@@ -219,21 +211,20 @@ LAB_00017d40:
           }
           if (1 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): device_compat_val: %d %d %d %d\n","get_device_hw_id",uVar13,uVar5,uVar6,
+              printk("%s(): device_compat_val: %d %d %d %d\n","get_device_hw_id",uVar12,uVar5,uVar6,
                      uVar7);
             }
             else {
-              ble_printk("%s(): device_compat_val: %d %d %d %d\n","get_device_hw_id",uVar13,uVar5);
+              ble_printk("%s(): device_compat_val: %d %d %d %d\n","get_device_hw_id",uVar12,uVar5);
             }
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): panel_power_status %d tmr_status %d nfc_lpd_status %d touch_power_status %d\n"
-                      );
+                printk("%s(): panel_power_status %d tmr_status %d nfc_lpd_status %d touch_power_status %d\n"
+                       ,"get_device_hw_id",uVar8 & 0xff,uVar9 & 0xff,uVar10 & 0xff,uVar11 & 0xff);
               }
               else {
-                ble_printk("%s(): panel_power_status %d tmr_status %d nfc_lpd_status %d touch_power_status %d\n"
-                           ,"get_device_hw_id",uVar8 & 0xff,uVar9 & 0xff,uVar10 & 0xff,uVar11 & 0xff
+                ble_printk(
+                          "%s(): panel_power_status %d tmr_status %d nfc_lpd_status %d touch_power_status %d\n"
                           );
               }
             }

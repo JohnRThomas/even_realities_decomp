@@ -13,7 +13,7 @@ undefined4 __init_serial_comm(void)
   
   iVar1 = __init_serial_port();
   if (iVar1 == 0) {
-    iVar1 = FUN_00034694(&uart_dev);
+    iVar1 = setUARTDevice(&uart_dev);
     if (iVar1 == 0) {
       iVar1 = process_pt_data(0);
       uVar2 = 0;

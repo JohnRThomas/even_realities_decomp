@@ -9,7 +9,6 @@ undefined4 cleanDashBoardStartUpModeInfo(undefined4 param_1,undefined4 param_2)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 uVar2;
   undefined4 local_10;
   undefined1 uStack_c;
@@ -24,11 +23,10 @@ undefined4 cleanDashBoardStartUpModeInfo(undefined4 param_1,undefined4 param_2)
   if (iVar1 == 0) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): SEND APP Language Command...\n");
+        printk("%s(): SEND APP Language Command...\n","cleanDashBoardStartUpModeInfo");
       }
       else {
-        ble_printk("%s(): SEND APP Language Command...\n","cleanDashBoardStartUpModeInfo",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): SEND APP Language Command...\n");
       }
     }
     k_sem_give((k_sem *)&DAT_200083c4);
@@ -37,11 +35,10 @@ undefined4 cleanDashBoardStartUpModeInfo(undefined4 param_1,undefined4 param_2)
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): setting flash store queue fill failed\r\n\n");
+        printk("%s(): setting flash store queue fill failed\r\n\n","cleanDashBoardStartUpModeInfo");
       }
       else {
-        ble_printk("%s(): setting flash store queue fill failed\r\n\n",
-                   "cleanDashBoardStartUpModeInfo",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): setting flash store queue fill failed\r\n\n");
       }
     }
     uVar2 = 0xffffffff;

@@ -13,32 +13,20 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
   byte bVar1;
   longlong lVar2;
   GlassesState *pGVar3;
-  undefined4 uVar4;
-  undefined4 extraout_r0;
-  undefined4 extraout_r0_00;
-  undefined4 extraout_r1;
-  undefined4 extraout_r1_00;
-  undefined4 extraout_r1_01;
-  undefined4 uVar5;
-  undefined4 extraout_r1_02;
-  uint uVar6;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
-  undefined4 uVar7;
-  undefined4 extraout_r2_02;
-  int iVar8;
+  uint uVar4;
+  int iVar5;
+  int iVar6;
+  int iVar7;
+  uint32_t uVar8;
   int iVar9;
-  int iVar10;
-  int iVar11;
-  ulonglong uVar12;
-  undefined8 uVar13;
+  ulonglong uVar10;
+  undefined8 uVar11;
   byte local_30 [12];
   
   pGVar3 = __get_dashboard_state();
-  iVar9 = param_1 + 0x24;
-  FUN_000452f0(iVar9);
-  uVar4 = FUN_0004540c();
+  iVar6 = param_1 + 0x24;
+  __set_frame_buffer(iVar6);
+  __set_showing_notification_on_gui();
   if (DAT_20004dd0 == '\0') {
     if (param_3 == 1) {
       if (pGVar3->field20_0xc8[0x28] == '\0') {
@@ -47,20 +35,20 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
       if (DAT_20004dd1 != '\0') {
         return 0;
       }
-      uVar4 = FUN_000809d0();
-      gui_screen_clear(uVar4,extraout_r1_00,extraout_r2_00);
+      FUN_000809d0();
+      gui_screen_clear();
       FUN_00045834();
       memset(&DAT_20004dd0,0,0x18);
       FUN_00045444();
-      FUN_00045428();
-      iVar10 = 0;
+      __clear_showing_notification_on_gui();
+      iVar7 = 0;
       do {
-        even_ai_v2_info_reflash(iVar9,1);
-        uVar6 = 0;
+        even_ai_v2_info_reflash(iVar6,1);
+        uVar4 = 0;
         do {
-          iVar8 = 0;
+          iVar5 = 0;
           do {
-            iVar11 = *(int *)(iVar9 + uVar6 * 4);
+            iVar9 = *(int *)(iVar6 + uVar4 * 4);
             local_30[0] = 1;
             local_30[1] = 2;
             local_30[2] = 3;
@@ -69,53 +57,43 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
             local_30[5] = 6;
             local_30[6] = 7;
             local_30[7] = 7;
-            bVar1 = *(byte *)(iVar11 + iVar8);
+            bVar1 = *(byte *)(iVar9 + iVar5);
             if (bVar1 != 0) {
-              *(byte *)(iVar11 + iVar8) =
+              *(byte *)(iVar9 + iVar5) =
                    bVar1 & (&DAT_000accab)
-                           [iVar8 + (uint)local_30[iVar10] * 0x140 + (uVar6 % 0x1a) * 0xa00];
+                           [iVar5 + (uint)local_30[iVar7] * 0x140 + (uVar4 % 0x1a) * 0xa00];
             }
-            iVar8 = iVar8 + 1;
-          } while (iVar8 != 0x140);
-          uVar6 = uVar6 + 1;
-        } while (uVar6 != 199);
+            iVar5 = iVar5 + 1;
+          } while (iVar5 != 0x140);
+          uVar4 = uVar4 + 1;
+        } while (uVar4 != 199);
         pGVar3 = __get_dashboard_state();
-        iVar8 = *(int *)&(pGVar3->jdb_panel_context).field_0x348;
+        uVar8 = (pGVar3->jdb_panel_context).current_row;
         pGVar3 = __get_dashboard_state();
-        iVar10 = iVar10 + 1;
-        _reflash_fb_data_to_lcd
-                  (iVar8,*(int *)&(pGVar3->jdb_panel_context).field_0x34c,0,0,0x280,199);
-      } while (iVar10 != 8);
-      FUN_0004540c();
+        iVar7 = iVar7 + 1;
+        _reflash_fb_data_to_lcd(uVar8,(pGVar3->jdb_panel_context).current_column,0,0,0x280,199);
+      } while (iVar7 != 8);
+      __set_showing_notification_on_gui();
       _DAT_20004dd0 = 0x101;
-      uVar12 = sys_clock_tick_get();
-      lVar2 = (uVar12 & 0xffffffff) * 1000;
-      uVar6 = (int)(uVar12 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20);
-      DAT_20004dd8 = (uint)lVar2 >> 0xf | uVar6 * 0x20000;
-      DAT_20004ddc = uVar6 >> 0xf;
+      uVar10 = sys_clock_tick_get();
+      lVar2 = (uVar10 & 0xffffffff) * 1000;
+      uVar4 = (int)(uVar10 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20);
+      DAT_20004dd8 = (uint)lVar2 >> 0xf | uVar4 * 0x20000;
+      DAT_20004ddc = uVar4 >> 0xf;
       return 0;
     }
     if (param_3 != 2) {
       return 0;
     }
-    uVar5 = extraout_r1;
-    uVar7 = extraout_r2;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): set_imu_pitch process received exit packet ...\n");
-        uVar4 = extraout_r0_00;
-        uVar5 = extraout_r1_02;
-        uVar7 = extraout_r2_02;
+        printk("%s(): set_imu_pitch process received exit packet ...\n","ui_even_ai_v2_info_task");
       }
       else {
-        ble_printk("%s(): set_imu_pitch process received exit packet ...\n",
-                   "ui_even_ai_v2_info_task",extraout_r2,BLE_DEBUG);
-        uVar4 = extraout_r0;
-        uVar5 = extraout_r1_01;
-        uVar7 = extraout_r2_01;
+        ble_printk("%s(): set_imu_pitch process received exit packet ...\n");
       }
     }
-    gui_screen_clear(uVar4,uVar5,uVar7);
+    gui_screen_clear();
     FUN_000809d0();
     memset(&DAT_20004dd0,0,0x18);
   }
@@ -124,16 +102,16 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
       return 0;
     }
     if ((param_3 == 1) || (param_3 == 0)) {
-      even_ai_v2_info_reflash(iVar9,param_3);
+      even_ai_v2_info_reflash(iVar6,param_3);
     }
     else if (param_3 == 2) {
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): set_imu_pitch process received exit packet ...\n");
+          printk("%s(): set_imu_pitch process received exit packet ...\n","ui_even_ai_v2_info_task")
+          ;
         }
         else {
-          ble_printk("%s(): set_imu_pitch process received exit packet ...\n",
-                     "ui_even_ai_v2_info_task",extraout_r2,BLE_DEBUG);
+          ble_printk("%s(): set_imu_pitch process received exit packet ...\n");
         }
       }
       FUN_00045968();
@@ -142,23 +120,23 @@ undefined4 ui_even_ai_v2_info_task(int param_1,undefined4 param_2,int param_3)
       FUN_00030458();
     }
     pGVar3 = __get_dashboard_state();
-    if (*(char *)pGVar3 != '\x01') {
+    if (pGVar3->is_master != true) {
       return 0;
     }
-    uVar12 = sys_clock_tick_get();
-    lVar2 = (uVar12 & 0xffffffff) * 1000;
-    uVar6 = (int)(uVar12 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20);
-    uVar13 = FUN_000809b6((uint)lVar2 >> 0xf | uVar6 * 0x20000,uVar6 >> 0xf,DAT_20004dd8,
+    uVar10 = sys_clock_tick_get();
+    lVar2 = (uVar10 & 0xffffffff) * 1000;
+    uVar4 = (int)(uVar10 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20);
+    uVar11 = FUN_000809b6((uint)lVar2 >> 0xf | uVar4 * 0x20000,uVar4 >> 0xf,DAT_20004dd8,
                           DAT_20004ddc);
-    if ((int)((ulonglong)uVar13 >> 0x20) < (int)(uint)((uint)uVar13 < 0x3e9)) {
+    if ((int)((ulonglong)uVar11 >> 0x20) < (int)(uint)((uint)uVar11 < 0x3e9)) {
       return 0;
     }
     DAT_20004dd2 = DAT_20004dd2 + 1;
-    uVar12 = sys_clock_tick_get();
-    lVar2 = (uVar12 & 0xffffffff) * 1000;
-    uVar6 = (int)(uVar12 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20);
-    DAT_20004dd8 = (uint)lVar2 >> 0xf | uVar6 * 0x20000;
-    DAT_20004ddc = uVar6 >> 0xf;
+    uVar10 = sys_clock_tick_get();
+    lVar2 = (uVar10 & 0xffffffff) * 1000;
+    uVar4 = (int)(uVar10 >> 0x20) * 1000 + (int)((ulonglong)lVar2 >> 0x20);
+    DAT_20004dd8 = (uint)lVar2 >> 0xf | uVar4 * 0x20000;
+    DAT_20004ddc = uVar4 >> 0xf;
     if (DAT_20004dd2 < 0x14) {
       return 0;
     }

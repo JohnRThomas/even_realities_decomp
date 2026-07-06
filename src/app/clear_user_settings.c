@@ -21,7 +21,7 @@ undefined4 __clear_user_settings(int param_1)
   *(undefined2 *)(param_1 + 0xef8) = 0x114;
   *(undefined1 *)(param_1 + 0x10d6) = 0;
   *(undefined2 *)(param_1 + 0x10d8) = 0;
-  __set_test_mode((char *)0x0,param_1 + 0x1081,0x1081);
+  __set_test_mode(0);
   *(undefined1 *)(param_1 + 0xec1) = 3;
   *(undefined4 *)(param_1 + 0xf6c) = 0;
   *(undefined1 *)(param_1 + 0x10d7) = 0xf;

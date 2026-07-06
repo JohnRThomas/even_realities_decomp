@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void indicate_sc_cb(undefined4 *param_1,undefined4 param_2,int param_3)
 
 {
@@ -15,17 +13,17 @@ void indicate_sc_cb(undefined4 *param_1,undefined4 param_2,int param_3)
   }
   DAT_2001095e = DAT_2001095e + 1;
   if (DAT_2001095e < 5) {
-    _ancs_discovery_flags = _ancs_discovery_flags | 4;
+    ancs_discovery_flags = ancs_discovery_flags | 4;
     discover_ancs((bt_conn *)*param_1,1);
     return;
   }
   DAT_2001095e = 0;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): disconnect because can not discover ancs.\n");
+      printk("%s(): disconnect because can not discover ancs.\n","indicate_sc_cb");
     }
     else {
-      ble_printk("%s(): disconnect because can not discover ancs.\n","indicate_sc_cb",0,BLE_DEBUG);
+      ble_printk("%s(): disconnect because can not discover ancs.\n");
     }
   }
   bt_conn_disconnect((bt_conn *)*param_1,'\x13');

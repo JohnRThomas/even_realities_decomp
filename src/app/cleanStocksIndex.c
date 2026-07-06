@@ -14,7 +14,7 @@ void cleanStocksIndex(void)
     return;
   }
   if (BLE_DEBUG != 0) {
-    ble_printk("%s():  %s index = %d\n","cleanStocksIndex","cleanStocksIndex",0);
+    ble_printk("%s():  %s index = %d\n","cleanStocksIndex");
     return;
   }
   printk("%s():  %s index = %d\n","cleanStocksIndex","cleanStocksIndex",0);

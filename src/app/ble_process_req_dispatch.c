@@ -18,8 +18,6 @@ undefined4 ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3)
   char *pcVar7;
   undefined2 uVar8;
   byte bVar9;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   undefined1 uVar10;
   char cVar11;
   byte bVar12;
@@ -63,10 +61,10 @@ undefined4 ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3)
     if (5 < (uVar18 + 0xf & 0xff)) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): tx error req_type. %d\n");
+          printk("%s(): tx error req_type. %d\n","ble_process_req_dispatch",uVar18);
         }
         else {
-          ble_printk("%s(): tx error req_type. %d\n","ble_process_req_dispatch",uVar18,BLE_DEBUG);
+          ble_printk("%s(): tx error req_type. %d\n");
         }
       }
       pcVar14 = *(code **)(param_1 + 0xc);
@@ -99,11 +97,10 @@ undefined4 ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3)
         uVar18 = 0xf1;
 LAB_0002395e:
         if (BLE_DEBUG == 0) {
-          printk("%s(): @tx error post req_type: %d\n");
+          printk("%s(): @tx error post req_type: %d\n","ble_process_report_response",uVar18);
         }
         else {
-          ble_printk("%s(): @tx error post req_type: %d\n","ble_process_report_response",uVar18,
-                     BLE_DEBUG);
+          ble_printk("%s(): @tx error post req_type: %d\n");
         }
       }
     }
@@ -125,17 +122,15 @@ LAB_0002395e:
   *puVar22 = *(undefined4 *)param_2;
   *(uint *)(param_1 + 0x14) = *(ushort *)(param_2 + 2) + 4;
   bVar16 = *param_2;
-  uVar18 = (uint)bVar16;
   _local_bc = CONCAT31(_uStack_bb,bVar16);
-  switch(uVar18) {
+  switch(bVar16) {
   case 0x47:
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): *****will unbond current bt connection*****\n\n");
+        printk("%s(): *****will unbond current bt connection*****\n\n","ble_process_post_req");
       }
       else {
-        ble_printk("%s(): *****will unbond current bt connection*****\n\n","ble_process_post_req",
-                   uVar18,BLE_DEBUG);
+        ble_printk("%s(): *****will unbond current bt connection*****\n\n");
       }
     }
     _local_bc = CONCAT11(0xc9,local_bc);
@@ -143,10 +138,10 @@ LAB_0002395e:
     iVar20 = bt_unpair('\0',(bt_addr_le_t *)0x0);
     if ((iVar20 != 0) && (1 < LOG_LEVEL)) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): bt_unpair fail: %d\n\n");
+        printk("%s(): bt_unpair fail: %d\n\n","ble_process_post_req",iVar20);
       }
       else {
-        ble_printk("%s(): bt_unpair fail: %d\n\n","ble_process_post_req",iVar20,BLE_DEBUG);
+        ble_printk("%s(): bt_unpair fail: %d\n\n");
       }
     }
     conn = (bt_conn *)FUN_00019cec();
@@ -155,11 +150,10 @@ LAB_0002395e:
     }
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): bt_conn_disconnect because recv unpair\n");
+        printk("%s(): bt_conn_disconnect because recv unpair\n","ble_process_post_req");
       }
       else {
-        ble_printk("%s(): bt_conn_disconnect because recv unpair\n","ble_process_post_req",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): bt_conn_disconnect because recv unpair\n");
       }
     }
     bt_conn_disconnect(conn,'\x13');
@@ -167,10 +161,10 @@ LAB_0002395e:
   default:
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): @tx error post req_type: %d\n");
+        printk("%s(): @tx error post req_type: %d\n","ble_process_post_req");
       }
       else {
-        ble_printk("%s(): @tx error post req_type: %d\n","ble_process_post_req",uVar18,BLE_DEBUG);
+        ble_printk("%s(): @tx error post req_type: %d\n");
       }
     }
     uVar4 = _local_bc;
@@ -193,11 +187,11 @@ LAB_0002395e:
   case 0x4c:
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): ble_process_post_req BLE_REQ_POST_DELETE_NOTIFICATION_MSG\n");
+        printk("%s(): ble_process_post_req BLE_REQ_POST_DELETE_NOTIFICATION_MSG\n",
+               "ble_process_post_req");
       }
       else {
-        ble_printk("%s(): ble_process_post_req BLE_REQ_POST_DELETE_NOTIFICATION_MSG\n",
-                   "ble_process_post_req",uVar18,BLE_DEBUG);
+        ble_printk("%s(): ble_process_post_req BLE_REQ_POST_DELETE_NOTIFICATION_MSG\n");
       }
     }
     memcpy(d,param_3 + 1,*(ushort *)(param_2 + 2) - 1);
@@ -333,31 +327,28 @@ LAB_00022826:
     _local_bc = CONCAT13(local_a8[2],_local_bc);
     break;
   case 0x50:
-    uVar18 = (uint)*(ushort *)(param_2 + 2);
-    if (*(ushort *)(param_3 + 1) == uVar18) {
+    if (*(short *)(param_3 + 1) == *(short *)(param_2 + 2)) {
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): received Dashboard lock command.\n");
+          printk("%s(): received Dashboard lock command.\n","ble_process_post_req");
         }
         else {
-          ble_printk("%s(): received Dashboard lock command.\n","ble_process_post_req",uVar18,
-                     BLE_DEBUG);
+          ble_printk("%s(): received Dashboard lock command.\n");
         }
       }
       bVar16 = param_3[4];
       pGVar6 = __get_dashboard_state();
-      if (*(char *)pGVar6 == '\x01') {
+      if (pGVar6->is_master == true) {
         if (bVar16 == 1) {
           if ((int)(DAT_20007f50 << 0x1e) < 0) {
             return 0;
           }
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): master exec dashboard lock process.\n");
+              printk("%s(): master exec dashboard lock process.\n","ble_process_post_req");
             }
             else {
-              ble_printk("%s(): master exec dashboard lock process.\n","ble_process_post_req",
-                         extraout_r2_00,BLE_DEBUG);
+              ble_printk("%s(): master exec dashboard lock process.\n");
             }
           }
           DAT_20007f50 = DAT_20007f50 | 2;
@@ -379,10 +370,10 @@ LAB_00022826:
         pcVar7 = "%s(): slave received error dashboard lock command! can\'t exec\n";
       }
       if (BLE_DEBUG != 0) {
-        ble_printk(pcVar7,"ble_process_post_req",extraout_r2_00,BLE_DEBUG);
+        ble_printk(pcVar7);
         return 0;
       }
-      printk(pcVar7);
+      printk(pcVar7,"ble_process_post_req");
       return 0;
     }
     if (LOG_LEVEL < 2) {
@@ -390,7 +381,7 @@ LAB_00022826:
     }
     if (BLE_DEBUG != 0) {
       ble_printk("%s(): packet length error,input data length = %d,packet data length = %d\n",
-                 "ble_process_post_req",uVar18,(uint)*(ushort *)(param_3 + 1));
+                 "ble_process_post_req");
       return 0;
     }
     printk("%s(): packet length error,input data length = %d,packet data length = %d\n",
@@ -454,11 +445,10 @@ LAB_000237cc:
       if (uVar25 == 1) {
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): received transcribe packet,total packet = 1\n");
+            printk("%s(): received transcribe packet,total packet = 1\n","ble_process_post_req");
           }
           else {
-            ble_printk("%s(): received transcribe packet,total packet = 1\n","ble_process_post_req",
-                       (uint)local_b4,BLE_DEBUG);
+            ble_printk("%s(): received transcribe packet,total packet = 1\n");
           }
         }
         pGVar6 = __get_dashboard_state();
@@ -496,13 +486,13 @@ LAB_000231de:
       else if (uVar26 == 1) {
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): Received transcribe multiple packets, currently the first packet of data\n"
-                  );
+            printk("%s(): Received transcribe multiple packets, currently the first packet of data\n"
+                   ,"ble_process_post_req");
           }
           else {
-            ble_printk("%s(): Received transcribe multiple packets, currently the first packet of data\n"
-                       ,"ble_process_post_req",(uint)local_b4,BLE_DEBUG);
+            ble_printk(
+                      "%s(): Received transcribe multiple packets, currently the first packet of data\n"
+                      );
           }
         }
         DAT_2000e0f2 = 1;
@@ -537,18 +527,18 @@ LAB_00022e1c:
 joined_r0x00022f36:
           if (0 < LOG_LEVEL) {
             if (BLE_DEBUG != 0) {
-              iVar17 = uVar18 - 0xc;
               pcVar7 = 
               "%s(): transcribe data is too long, the current data length %d,wait write data length = %d\n"
               ;
               goto LAB_00022e62;
             }
+            iVar17 = uVar18 - 0xc;
             pcVar7 = 
             "%s(): transcribe data is too long, the current data length %d,wait write data length = %d\n"
             ;
 LAB_00022e70:
             local_b3 = 0xc9;
-            printk(pcVar7,"ble_process_post_req",(uint)DAT_2000e0f4);
+            printk(pcVar7,"ble_process_post_req",(uint)DAT_2000e0f4,iVar17);
           }
           goto LAB_000232c2;
         }
@@ -557,11 +547,12 @@ LAB_00022e70:
         if (2 < iVar20) {
           if (BLE_DEBUG == 0) {
             printk("%s(): Successfully received the subpackage content, the packet sequence is %d\n"
-                  );
+                   ,"ble_process_post_req",uVar26);
           }
           else {
-            ble_printk("%s(): Successfully received the subpackage content, the packet sequence is %d\n"
-                       ,"ble_process_post_req",uVar26,BLE_DEBUG);
+            ble_printk(
+                      "%s(): Successfully received the subpackage content, the packet sequence is %d\n"
+                      );
           }
         }
         DAT_2000e0f2 = DAT_2000e0f2 + 1;
@@ -588,13 +579,13 @@ LAB_00022f0c:
         if (0x20c < uVar24 + DAT_2000e0f4) goto joined_r0x00022f36;
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
-                  );
+            printk("%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
+                   ,"ble_process_post_req");
           }
           else {
-            ble_printk("%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
-                       ,"ble_process_post_req",uVar24 + DAT_2000e0f4,BLE_DEBUG);
+            ble_printk(
+                      "%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
+                      );
           }
         }
         pGVar6 = __get_dashboard_state();
@@ -745,13 +736,13 @@ LAB_000237da:
           if (uVar24 == 1) {
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): Received evenai_v2 multiple packets, currently the first packet of data\n"
-                      );
+                printk("%s(): Received evenai_v2 multiple packets, currently the first packet of data\n"
+                       ,"ble_process_post_req");
               }
               else {
-                ble_printk("%s(): Received evenai_v2 multiple packets, currently the first packet of data\n"
-                           ,"ble_process_post_req",(uint)local_b4,BLE_DEBUG);
+                ble_printk(
+                          "%s(): Received evenai_v2 multiple packets, currently the first packet of data\n"
+                          );
               }
             }
             DAT_2000e0f2 = 1;
@@ -781,31 +772,31 @@ LAB_000237da:
 joined_r0x00023614:
               if (LOG_LEVEL < 1) goto LAB_000232c2;
               if (BLE_DEBUG == 0) {
+                iVar17 = uVar18 - iVar17;
                 pcVar7 = 
                 "%s(): evenai_v2 data is too long, the current data length %d,wait write data length = %d\n"
                 ;
                 goto LAB_00022e70;
               }
-              iVar17 = uVar18 - iVar17;
               pcVar7 = 
               "%s(): evenai_v2 data is too long, the current data length %d,wait write data length = %d\n"
               ;
 LAB_00022e62:
               local_b3 = 0xc9;
-              ble_printk(pcVar7,"ble_process_post_req",(uint)DAT_2000e0f4,iVar17);
+              ble_printk(pcVar7,"ble_process_post_req",(uint)DAT_2000e0f4);
               goto LAB_000232c2;
             }
             memcpy(&DAT_20010995 + DAT_2000e0f4,param_3 + iVar17,uVar18 - iVar17);
             DAT_2000e0f4 = (uVar2 + DAT_2000e0f4) - (short)iVar17;
             if (2 < iVar20) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): Successfully received the subpackage content, the packet sequence is %d\n"
-                      );
+                printk("%s(): Successfully received the subpackage content, the packet sequence is %d\n"
+                       ,"ble_process_post_req",uVar24);
               }
               else {
-                ble_printk("%s(): Successfully received the subpackage content, the packet sequence is %d\n"
-                           ,"ble_process_post_req",uVar24,BLE_DEBUG);
+                ble_printk(
+                          "%s(): Successfully received the subpackage content, the packet sequence is %d\n"
+                          );
               }
             }
             DAT_2000e0f2 = DAT_2000e0f2 + 1;
@@ -829,13 +820,13 @@ LAB_00022e62:
             if (0x200 < (int)((uVar18 + DAT_2000e0f4) - iVar17)) goto joined_r0x00023614;
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
-                      );
+                printk("%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
+                       ,"ble_process_post_req");
               }
               else {
-                ble_printk("%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
-                           ,"ble_process_post_req",LOG_LEVEL,BLE_DEBUG);
+                ble_printk(
+                          "%s(): Successfully assembled multiple packages of data, and updated the complete content to the UI thread for data update.\n"
+                          );
               }
             }
             pGVar6 = __get_dashboard_state();
@@ -906,11 +897,10 @@ LAB_00023674:
         }
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): received evenai_v2 packet,total packet = 1\n");
+            printk("%s(): received evenai_v2 packet,total packet = 1\n","ble_process_post_req");
           }
           else {
-            ble_printk("%s(): received evenai_v2 packet,total packet = 1\n","ble_process_post_req",
-                       (uint)local_b4,BLE_DEBUG);
+            ble_printk("%s(): received evenai_v2 packet,total packet = 1\n");
           }
         }
         iVar20 = uVar18 - iVar17;
@@ -978,13 +968,13 @@ LAB_00023674:
         }
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): evenai_v2 data is too long, the current data length 0,wait write data length = %d\n"
-                  );
+            printk("%s(): evenai_v2 data is too long, the current data length 0,wait write data length = %d\n"
+                   ,"ble_process_post_req",iVar20);
           }
           else {
-            ble_printk("%s(): evenai_v2 data is too long, the current data length 0,wait write data length = %d\n"
-                       ,"ble_process_post_req",iVar20,BLE_DEBUG);
+            ble_printk(
+                      "%s(): evenai_v2 data is too long, the current data length 0,wait write data length = %d\n"
+                      );
           }
         }
 LAB_000232c2:

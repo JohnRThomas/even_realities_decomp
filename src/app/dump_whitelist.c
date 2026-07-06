@@ -9,19 +9,21 @@ void dump_whitelist(void)
 
 {
   char *buf;
+  undefined4 extraout_r1;
+  undefined4 extraout_r2;
   
   buf = malloc(0x1800);
   if (buf != (char *)0x0) {
     memset(buf,0,0x15e3);
-    convert_app_whitelist_to_json(buf);
+    convert_app_whitelist_to_json(buf,extraout_r1,extraout_r2);
     free(buf);
     return;
   }
   if (BLE_DEBUG != 0) {
-    ble_printk("[%s-%d] malloc failed !!\n","dump_whitelist",0x277,BLE_DEBUG);
+    ble_printk("[%s-%d] malloc failed !!\n");
     return;
   }
-  printk("[%s-%d] malloc failed !!\n");
+  printk("[%s-%d] malloc failed !!\n","dump_whitelist",0x277);
   return;
 }
 

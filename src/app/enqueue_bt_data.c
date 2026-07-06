@@ -9,10 +9,6 @@ int enqueue_bt_data(void *param_1,undefined1 param_2)
 
 {
   int iVar1;
-  char *extraout_r1;
-  char *extraout_r1_00;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   undefined1 local_114;
   undefined1 auStack_113 [263];
   
@@ -23,7 +19,7 @@ int enqueue_bt_data(void *param_1,undefined1 param_2)
       printk("enqueue_bt_data drop package! \n");
     }
     else {
-      ble_printk("enqueue_bt_data drop package! \n",extraout_r1,extraout_r2,BLE_DEBUG);
+      ble_printk("enqueue_bt_data drop package! \n");
     }
   }
   local_114 = param_2;
@@ -34,7 +30,7 @@ int enqueue_bt_data(void *param_1,undefined1 param_2)
       printk("enqueue_bt_data failed !\n");
     }
     else {
-      ble_printk("enqueue_bt_data failed !\n",extraout_r1_00,extraout_r2_00,BLE_DEBUG);
+      ble_printk("enqueue_bt_data failed !\n");
     }
   }
   return iVar1;

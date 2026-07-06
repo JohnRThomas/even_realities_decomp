@@ -5,17 +5,14 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 int dequeue_ancs(void *param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined1 auStack_1c4 [440];
   
   memset(auStack_1c4,0,0x1b4);
-  if (_DAT_20006c5c == 0) {
+  if (DAT_20006c5c == 0) {
     iVar1 = 1;
   }
   else {
@@ -25,10 +22,10 @@ int dequeue_ancs(void *param_1)
     }
     else if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): D ancs F\n");
+        printk("%s(): D ancs F\n","dequeue_ancs");
       }
       else {
-        ble_printk("%s(): D ancs F\n","dequeue_ancs",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): D ancs F\n");
       }
     }
   }

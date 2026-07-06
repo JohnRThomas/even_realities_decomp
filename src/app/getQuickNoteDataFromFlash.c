@@ -14,19 +14,16 @@ getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_
   GlassesState *pGVar3;
   int iVar4;
   char *pcVar5;
-  size_t extraout_r2;
   size_t n;
-  undefined4 extraout_r2_00;
   code *pcVar6;
   
   if (param_1 < 4) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): read quicknote flash data to ram...\r\n\n");
+        printk("%s(): read quicknote flash data to ram...\r\n\n","getQuickNoteDataFromFlash");
       }
       else {
-        ble_printk("%s(): read quicknote flash data to ram...\r\n\n","getQuickNoteDataFromFlash",
-                   param_3,BLE_DEBUG);
+        ble_printk("%s(): read quicknote flash data to ram...\r\n\n");
       }
     }
     bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
@@ -50,11 +47,10 @@ getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_
           memcpy(param_4,(void *)(iVar4 + 0x2001915d),n);
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): export flash data to global ram...\n");
+              printk("%s(): export flash data to global ram...\n","getQuickNoteDataFromFlash");
               return 0;
             }
-            ble_printk("%s(): export flash data to global ram...\n","getQuickNoteDataFromFlash",
-                       extraout_r2_00,BLE_DEBUG);
+            ble_printk("%s(): export flash data to global ram...\n");
             return 0;
           }
           return 0;
@@ -63,7 +59,6 @@ getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_
           return 0xffffffff;
         }
         pcVar2 = "%s(): quicknote data is invaild,don\'t export to global ram..\n";
-        param_3 = extraout_r2;
         goto LAB_00026770;
       }
       if (LOG_LEVEL < 1) {
@@ -80,10 +75,10 @@ getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_
       pcVar2 = "%s():  [%s] device not ready.\n\n";
     }
     if (BLE_DEBUG == 0) {
-      printk(pcVar2);
+      printk(pcVar2,"getQuickNoteDataFromFlash",pcVar5);
     }
     else {
-      ble_printk(pcVar2,"getQuickNoteDataFromFlash",pcVar5,BLE_DEBUG);
+      ble_printk(pcVar2);
     }
   }
   else {
@@ -93,10 +88,10 @@ getQuickNoteDataFromFlash(uint param_1,void *param_2,size_t param_3,void *param_
     pcVar2 = "%s(): quicknote upgrade index out of range\n";
 LAB_00026770:
     if (BLE_DEBUG == 0) {
-      printk(pcVar2);
+      printk(pcVar2,"getQuickNoteDataFromFlash");
     }
     else {
-      ble_printk(pcVar2,"getQuickNoteDataFromFlash",param_3,BLE_DEBUG);
+      ble_printk(pcVar2);
     }
   }
   return 0xffffffff;

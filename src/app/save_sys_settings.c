@@ -40,7 +40,7 @@ undefined4 __save_sys_settings(GlassesState *param_1)
   undefined4 local_1c;
   undefined4 local_18;
   undefined1 local_14;
-  undefined1 local_13;
+  byte local_13;
   char *pcVar3;
   undefined4 *puVar5;
   
@@ -80,7 +80,7 @@ undefined4 __save_sys_settings(GlassesState *param_1)
   local_38 = *(undefined4 *)&param_1->field_0xfb0;
   local_2c = *(undefined4 *)&param_1->field_0xfb4;
   local_28 = *(undefined4 *)&param_1->field_0xfb8;
-  local_34 = *(undefined2 *)&(param_1->jdb_panel_context).field_0x36e;
+  local_34 = *(undefined2 *)((int)&(param_1->jdb_panel_context).field831_0x36c + 2);
   local_32 = *(undefined2 *)&(param_1->jdb_panel_context).field_0x370;
   local_30 = *(undefined2 *)&(param_1->jdb_panel_context).field_0x372;
   local_24 = param_1->field1253_0x10bc;
@@ -89,7 +89,7 @@ undefined4 __save_sys_settings(GlassesState *param_1)
   local_18 = param_1->field1250_0x10b0;
   local_14 = param_1->field_0x10c8;
   local_13 = param_1->field_0x10d0;
-  flash_settings_write_and_verify(&DAT_00130000,&local_a8,0x98);
+  flash_settings_write_and_verify(&DAT_00130000,&local_a8,0x98,(uint)local_13);
   return 0;
 }
 

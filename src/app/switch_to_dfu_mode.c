@@ -21,11 +21,11 @@ void switch_to_dfu_mode(k_sem *param_1)
   if (iVar2 == 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): sys reboot because system reset %d, %d\n","switch_to_dfu_mode",0);
+        printk("%s(): sys reboot because system reset %d, %d\n","switch_to_dfu_mode",0,
+               (uint)DAT_2001095c);
       }
       else {
-        ble_printk("%s(): sys reboot because system reset %d, %d\n","switch_to_dfu_mode",0,
-                   (uint)DAT_2001095c);
+        ble_printk("%s(): sys reboot because system reset %d, %d\n","switch_to_dfu_mode",0);
       }
     }
     sleep(500);
@@ -36,10 +36,10 @@ void switch_to_dfu_mode(k_sem *param_1)
     return;
   }
   if (BLE_DEBUG != 0) {
-    ble_printk("%s(): failed to switch to ble mode [%d]\n","switch_to_dfu_mode",iVar2,BLE_DEBUG);
+    ble_printk("%s(): failed to switch to ble mode [%d]\n","switch_to_dfu_mode",iVar2);
     return;
   }
-  printk("%s(): failed to switch to ble mode [%d]\n");
+  printk("%s(): failed to switch to ble mode [%d]\n","switch_to_dfu_mode");
   return;
 }
 

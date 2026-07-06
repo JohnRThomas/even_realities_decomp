@@ -71,11 +71,10 @@ uint sync_to_slave(char *param_1,uint param_2,undefined4 *param_3,uint param_4)
       if (param_2 == 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): ESB send data after suspend cmd, ignore it.\n");
+            printk("%s(): ESB send data after suspend cmd, ignore it.\n","sync_to_slave");
           }
           else {
-            ble_printk("%s(): ESB send data after suspend cmd, ignore it.\n","sync_to_slave",
-                       &DAT_20019a5d,BLE_DEBUG);
+            ble_printk("%s(): ESB send data after suspend cmd, ignore it.\n");
           }
         }
       }
@@ -161,11 +160,10 @@ LAB_0002940a:
           uVar13 = uVar14;
           if (0 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): sync to slave failed!!!!!! wait_count %d\n");
+              printk("%s(): sync to slave failed!!!!!! wait_count %d\n","sync_to_slave",uVar14);
             }
             else {
-              ble_printk("%s(): sync to slave failed!!!!!! wait_count %d\n","sync_to_slave",uVar14,
-                         BLE_DEBUG);
+              ble_printk("%s(): sync to slave failed!!!!!! wait_count %d\n");
             }
             if (param_1[0x106e] == '\x02') break;
           }
@@ -181,11 +179,11 @@ LAB_00029428:
       }
       goto LAB_000290a4;
     }
-    uVar13 = (uint)(byte)param_1[0xee8];
-    if ((byte)param_1[0xeb] == uVar13) {
+    cVar1 = param_1[0xee8];
+    if (param_1[0xeb] == cVar1) {
       if (param_1[0xd5] == '\x10') {
         if ((param_1[0xe9] == param_1[0xcc]) && (param_1[0xce] == '\0')) {
-          if (uVar13 != 2) goto LAB_0002939c;
+          if (cVar1 != '\x02') goto LAB_0002939c;
           goto LAB_00029480;
         }
         param_1[0xda] = cVar5;
@@ -194,11 +192,9 @@ LAB_00029428:
           goto LAB_00029300;
         }
       }
-      else if ((byte)param_1[0xeb] == 2) {
-        uVar13 = (uint)(byte)param_1[0xcc];
-        if ((byte)param_1[0xe9] == uVar13) {
-          uVar13 = (uint)(byte)param_1[0xce];
-          if (uVar13 == 0) goto LAB_00029480;
+      else if (param_1[0xeb] == '\x02') {
+        if (param_1[0xe9] == param_1[0xcc]) {
+          if (param_1[0xce] == '\0') goto LAB_00029480;
           param_1[0xda] = cVar5;
           if (0 < LOG_LEVEL) {
             pcVar7 = "%s(): ESB send up package is receiving, ignore it.\n";
@@ -215,11 +211,9 @@ LAB_00029428:
       }
       else {
 LAB_0002939c:
-        if (uVar13 == 1) {
-          uVar13 = (uint)(byte)param_1[0xcd];
-          if ((byte)param_1[0xea] == uVar13) {
-            uVar13 = (uint)(byte)param_1[0xcf];
-            if (uVar13 == 0) goto LAB_00029480;
+        if (cVar1 == '\x01') {
+          if (param_1[0xea] == param_1[0xcd]) {
+            if (param_1[0xcf] == '\0') goto LAB_00029480;
             param_1[0xda] = cVar5;
             if (0 < LOG_LEVEL) {
               pcVar7 = "%s(): ESB send down package is receiving, ignore it.\n";
@@ -236,17 +230,17 @@ LAB_0002939c:
         }
         else {
 LAB_00029480:
-          if (((bVar2 == param_1[0xd5]) || (uVar13 = (uint)(byte)param_1[0xd5], uVar13 < 7)) ||
-             (bVar2 < 7)) goto LAB_0002940a;
+          if (((bVar2 == param_1[0xd5]) || ((byte)param_1[0xd5] < 7)) || (bVar2 < 7))
+          goto LAB_0002940a;
           param_1[0xda] = cVar5;
           if (0 < LOG_LEVEL) {
             pcVar7 = "%s(): ESB send package id is changed, ignore it.\n";
 LAB_00029300:
             if (BLE_DEBUG == 0) {
-              printk(pcVar7);
+              printk(pcVar7,"sync_to_slave");
             }
             else {
-              ble_printk(pcVar7,"sync_to_slave",uVar13,BLE_DEBUG);
+              ble_printk(pcVar7);
             }
           }
         }
@@ -270,10 +264,10 @@ LAB_00029186:
       pcVar7 = "%s(): ESB send same type cmd %d, exit\n";
 LAB_0002914a:
       if (BLE_DEBUG == 0) {
-        printk(pcVar7);
+        printk(pcVar7,"sync_to_slave",param_2);
       }
       else {
-        ble_printk(pcVar7,"sync_to_slave",param_2,BLE_DEBUG);
+        ble_printk(pcVar7);
       }
     }
 LAB_00029164:

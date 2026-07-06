@@ -184,10 +184,10 @@ LAB_00019594:
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): Failed to set device name (err %d)\n\n");
+      printk("%s(): Failed to set device name (err %d)\n\n","bt_start",iVar12);
     }
     else {
-      ble_printk("%s(): Failed to set device name (err %d)\n\n","bt_start",iVar12,BLE_DEBUG);
+      ble_printk("%s(): Failed to set device name (err %d)\n\n");
     }
   }
   DAT_20010960 = 0;

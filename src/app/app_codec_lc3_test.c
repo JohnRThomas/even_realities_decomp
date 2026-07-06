@@ -17,7 +17,6 @@ void app_codec_lc3_test(void *param_1,int param_2)
   void *src;
   char *fmt;
   lc3_encoder_t encoder;
-  undefined4 extraout_r2;
   char *pcVar4;
   size_t size_00;
   size_t size_01;
@@ -35,10 +34,10 @@ void app_codec_lc3_test(void *param_1,int param_2)
   if (mem == (void *)0x0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): malloc error\r\n\n");
+        printk("%s(): malloc error\r\n\n","app_codec_lc3_test");
       }
       else {
-        ble_printk("%s(): malloc error\r\n\n","app_codec_lc3_test",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): malloc error\r\n\n");
       }
     }
 LAB_00030290:
@@ -67,11 +66,11 @@ LAB_00030290:
                   if (2 < LOG_LEVEL) {
                     if (BLE_DEBUG == 0) {
                       printk("%s(): send audio stream data to storage thread,timestemp = %lld\n",
-                             "app_codec_lc3_test");
+                             "app_codec_lc3_test",local_30,uStack_2c);
                     }
                     else {
                       ble_printk("%s(): send audio stream data to storage thread,timestemp = %lld\n"
-                                 ,"app_codec_lc3_test",local_30,uStack_2c);
+                                 ,"app_codec_lc3_test");
                     }
                   }
                   sendAudioStram2Cache(src);
@@ -88,11 +87,10 @@ LAB_00030290:
               }
               if (0 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk("%s(): Flash write to addr 0x%x\n\n");
+                  printk("%s(): Flash write to addr 0x%x\n\n","app_codec_lc3_test",DAT_20002404);
                 }
                 else {
-                  ble_printk("%s(): Flash write to addr 0x%x\n\n","app_codec_lc3_test",DAT_20002404,
-                             BLE_DEBUG);
+                  ble_printk("%s(): Flash write to addr 0x%x\n\n");
                 }
               }
               DAT_20002404 = DAT_20002404 + size_00;
@@ -112,10 +110,10 @@ LAB_00030290:
           fmt = "%s():  [%s] device not ready.\n\n";
 LAB_000302f2:
           if (BLE_DEBUG == 0) {
-            printk(fmt);
+            printk(fmt,"app_codec_lc3_test",pcVar4);
           }
           else {
-            ble_printk(fmt,"app_codec_lc3_test",pcVar4,BLE_DEBUG);
+            ble_printk(fmt);
           }
         }
 LAB_0003034e:
@@ -130,10 +128,10 @@ LAB_0003034e:
       }
 LAB_000302ae:
       if (BLE_DEBUG == 0) {
-        printk("%s(): malloc error\r\n\n");
+        printk("%s(): malloc error\r\n\n","app_codec_lc3_test");
       }
       else {
-        ble_printk("%s(): malloc error\r\n\n","app_codec_lc3_test",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): malloc error\r\n\n");
       }
       free(mem);
       goto LAB_00030290;

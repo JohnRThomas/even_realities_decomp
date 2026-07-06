@@ -16,8 +16,8 @@ void FUN_000386c0(void)
   int iVar6;
   int iVar7;
   char *pcVar8;
-  int iVar9;
-  int iVar10;
+  uint32_t uVar9;
+  uint32_t uVar10;
   
   bVar1 = FUN_00028d2c();
   bVar2 = get_current_language();
@@ -29,17 +29,17 @@ void FUN_000386c0(void)
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _clean_fb_data(&(pGVar5->jdb_panel_context).field9_0x24,0,iVar6 + 0x10a,uVar3 + 0x1c,
-                     iVar7 + 0x234,uVar4 + 0x88);
+      _clean_fb_data((byte *)&(pGVar5->jdb_panel_context).__panel_buffer,0,iVar6 + 0x10a,
+                     uVar3 + 0x1c,iVar7 + 0x234,uVar4 + 0x88);
       pGVar5 = __get_dashboard_state();
-      iVar9 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
+      uVar9 = (pGVar5->jdb_panel_context).current_row;
       pGVar5 = __get_dashboard_state();
-      iVar10 = *(int *)&(pGVar5->jdb_panel_context).field_0x34c;
+      uVar10 = (pGVar5->jdb_panel_context).current_column;
       iVar6 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _reflash_fb_data_to_lcd(iVar9,iVar10,iVar6 + 0x10a,uVar3 + 0x1c,iVar7 + 0x234,uVar4 + 0x88);
+      _reflash_fb_data_to_lcd(uVar9,uVar10,iVar6 + 0x10a,uVar3 + 0x1c,iVar7 + 0x234,uVar4 + 0x88);
     }
     pcVar8 = get_string(0x53);
     iVar6 = FUN_000809e2();
@@ -57,17 +57,17 @@ void FUN_000386c0(void)
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _clean_fb_data(&(pGVar5->jdb_panel_context).field9_0x24,0,iVar6 + 0x10a,uVar3 + 0x1c,
-                     iVar7 + 0x234,uVar4 + 0x88);
+      _clean_fb_data((byte *)&(pGVar5->jdb_panel_context).__panel_buffer,0,iVar6 + 0x10a,
+                     uVar3 + 0x1c,iVar7 + 0x234,uVar4 + 0x88);
       pGVar5 = __get_dashboard_state();
-      iVar9 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
+      uVar9 = (pGVar5->jdb_panel_context).current_row;
       pGVar5 = __get_dashboard_state();
-      iVar10 = *(int *)&(pGVar5->jdb_panel_context).field_0x34c;
+      uVar10 = (pGVar5->jdb_panel_context).current_column;
       iVar6 = FUN_000809e2();
       uVar3 = FUN_00080a3a();
       iVar7 = FUN_000809e2();
       uVar4 = FUN_00080a3a();
-      _reflash_fb_data_to_lcd(iVar9,iVar10,iVar6 + 0x10a,uVar3 + 0x1c,iVar7 + 0x234,uVar4 + 0x88);
+      _reflash_fb_data_to_lcd(uVar9,uVar10,iVar6 + 0x10a,uVar3 + 0x1c,iVar7 + 0x234,uVar4 + 0x88);
     }
     pcVar8 = get_string(0x53);
     iVar6 = FUN_000809e2();

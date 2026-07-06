@@ -1,11 +1,11 @@
 /*
  * Function: getNewsIndex
  * Entry:    00038c04
- * Prototype: byte __stdcall getNewsIndex(void)
+ * Prototype: undefined1 __stdcall getNewsIndex(void)
  */
 
 
-byte getNewsIndex(void)
+undefined1 getNewsIndex(void)
 
 {
   DAT_20004afd = DAT_2001c4e4;
@@ -14,7 +14,7 @@ byte getNewsIndex(void)
       printk("%s():  %s index = %d\n","getNewsIndex");
     }
     else {
-      ble_printk("%s():  %s index = %d\n","getNewsIndex","getNewsIndex",(uint)DAT_2001c4e4);
+      ble_printk("%s():  %s index = %d\n","getNewsIndex");
     }
   }
   return DAT_20004afd;

@@ -15,10 +15,10 @@ register_imu_funsion_context(imu_fusion_context *param_1,undefined4 param_2,unde
   param_1->field143_0x98 = 0x7fdb7;
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): exit\n\n");
+      printk("%s(): exit\n\n","register_imu_funsion_context");
     }
     else {
-      ble_printk("%s(): exit\n\n","register_imu_funsion_context",param_3,BLE_DEBUG);
+      ble_printk("%s(): exit\n\n");
     }
   }
   return 0;

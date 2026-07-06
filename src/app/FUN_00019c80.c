@@ -36,7 +36,7 @@ undefined4 FUN_00019c80(int param_1)
   pGVar1 = __get_dashboard_state();
   *(undefined4 *)&pGVar1->field_0x1060 = 0;
   pGVar1 = __get_dashboard_state();
-  k_sem_give(&pGVar1->sem_6);
+  k_sem_give(&pGVar1->dashboard_position_sem);
   return 0;
 }
 

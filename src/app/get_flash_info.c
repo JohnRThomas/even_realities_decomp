@@ -13,6 +13,7 @@ undefined4 get_flash_info(int param_1,undefined4 param_2,undefined4 *param_3,und
   int iVar3;
   undefined1 uVar4;
   undefined1 *puVar5;
+  undefined1 *puVar6;
   
   if ((param_3 == (undefined4 *)0x0) || (param_4 == (undefined1 *)0x0)) {
     printk("get_flash_info para is NULL\n");
@@ -24,6 +25,7 @@ undefined4 get_flash_info(int param_1,undefined4 param_2,undefined4 *param_3,und
   puVar5[2] = 3;
   puVar5[1] = uVar4;
   puVar5[3] = 4;
+  puVar6 = param_4;
   bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
   if (bVar1) {
     pGVar2 = __get_dashboard_state();
@@ -47,10 +49,10 @@ undefined4 get_flash_info(int param_1,undefined4 param_2,undefined4 *param_3,und
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s():  [%s] device not ready.\n");
+        printk("%s():  [%s] device not ready.\n","get_flash_info","mx25r6435f@0",0,puVar6);
       }
       else {
-        ble_printk("%s():  [%s] device not ready.\n","get_flash_info","mx25r6435f@0",BLE_DEBUG);
+        ble_printk("%s():  [%s] device not ready.\n");
       }
     }
     *puVar5 = 0x1e;

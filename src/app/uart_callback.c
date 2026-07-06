@@ -28,11 +28,10 @@ void uart_callback(undefined4 param_1,undefined1 *param_2,uint param_3)
   case 0:
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Tx sent %d bytes\n");
+        printk("%s(): Tx sent %d bytes\n","uart_callback",*(undefined4 *)(param_2 + 8),0,param_1);
       }
       else {
-        ble_printk("%s(): Tx sent %d bytes\n","uart_callback",*(undefined4 *)(param_2 + 8),BLE_DEBUG
-                  );
+        ble_printk("%s(): Tx sent %d bytes\n");
       }
     }
     for (uVar3 = 0; uVar3 < *(uint *)(param_2 + 8); uVar3 = uVar3 + 1) {
@@ -44,10 +43,10 @@ void uart_callback(undefined4 param_1,undefined1 *param_2,uint param_3)
       return;
     }
     if (BLE_DEBUG != 0) {
-      ble_printk("%s(): Tx aborted\n","uart_callback",param_3,BLE_DEBUG);
+      ble_printk("%s(): Tx aborted\n");
       return;
     }
-    printk("%s(): Tx aborted\n");
+    printk("%s(): Tx aborted\n","uart_callback");
     return;
   case 2:
     uVar3 = *(uint *)(param_2 + 8);

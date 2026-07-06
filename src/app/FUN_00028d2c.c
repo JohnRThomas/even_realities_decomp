@@ -18,7 +18,7 @@ bool FUN_00028d2c(void)
   uVar3 = FUN_00019cec();
   if ((DAT_20019a5f == '\x0f') && ((uVar3 & 0xff) != 0)) {
     pGVar4 = __get_dashboard_state();
-    if (*(char *)pGVar4 == '\x01') {
+    if (pGVar4->is_master == true) {
       if ((int)((uint)(byte)pGVar2->field_0x6de << 0x1f) < 0) {
         pGVar1->field20_0xc8[0x1c] = pGVar1->field20_0xc8[0x1c] | 3;
       }

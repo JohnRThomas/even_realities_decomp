@@ -10,7 +10,6 @@ undefined4 update_imu_mode(int param_1,uint param_2,undefined4 param_3,undefined
 {
   bool bVar1;
   int iVar2;
-  undefined4 extraout_r2;
   undefined4 extraout_r3;
   undefined4 uVar3;
   int iVar4;
@@ -22,10 +21,10 @@ undefined4 update_imu_mode(int param_1,uint param_2,undefined4 param_3,undefined
   if (*(char *)(param_1 + 0x14) != '\0') {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): imu_fusion: algo is existed\n\n");
+        printk("%s(): imu_fusion: algo is existed\n\n","update_imu_mode");
       }
       else {
-        ble_printk("%s(): imu_fusion: algo is existed\n\n","update_imu_mode",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): imu_fusion: algo is existed\n\n");
       }
     }
     return 0xffffffff;
@@ -66,22 +65,21 @@ LAB_00028232:
         if (-1 < iVar2) {
           if (1 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): imu sensor update to mode %d\n");
+              printk("%s(): imu sensor update to mode %d\n","update_imu_mode",param_2);
             }
             else {
-              ble_printk("%s(): imu sensor update to mode %d\n","update_imu_mode",param_2,BLE_DEBUG)
-              ;
+              ble_printk("%s(): imu sensor update to mode %d\n");
             }
           }
           return 0;
         }
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro %d.\n\n");
+            printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro %d.\n\n",
+                   "update_imu_mode",iVar4);
           }
           else {
-            ble_printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro %d.\n\n",
-                       "update_imu_mode",iVar4,BLE_DEBUG);
+            ble_printk("%s(): c->imu_fusion: Cannot set sampling frequency for gyro %d.\n\n");
           }
         }
         iVar4 = iVar4 + 1;

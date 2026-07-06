@@ -20,23 +20,18 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
   int iVar9;
   undefined4 uVar10;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
   undefined4 extraout_r3;
-  undefined4 *puVar11;
   
-  puVar11 = param_2;
   object = cJSON_Parse(param_1);
   if (object != (cJSON *)0x0) {
     pcVar1 = cJSON_GetObjectItem(object,"ncs_notification");
     if (pcVar1 == (cJSON *)0x0) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): NOT FOUND NCS JSON NODE!\n");
+          printk("%s(): NOT FOUND NCS JSON NODE!\n","parse_ncs_notification");
         }
         else {
-          ble_printk("%s(): NOT FOUND NCS JSON NODE!\n","parse_ncs_notification",extraout_r2_00,
-                     BLE_DEBUG,param_1,puVar11);
+          ble_printk("%s(): NOT FOUND NCS JSON NODE!\n");
         }
       }
       cJSON_Delete(object);
@@ -83,15 +78,15 @@ void parse_ncs_notification(char *param_1,undefined4 *param_2)
     uVar10 = FUN_00080732();
     *param_2 = uVar10;
     cJSON_Delete(object);
-    dump_ancs("#device-receiver",(int)param_2,extraout_r2_01,extraout_r3);
+    dump_ancs("#device-receiver",(int)param_2,extraout_r2,extraout_r3);
     return;
   }
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG != 0) {
-      ble_printk("%s(): error root JSON NODE!\n","parse_ncs_notification",extraout_r2,BLE_DEBUG);
+      ble_printk("%s(): error root JSON NODE!\n");
       return;
     }
-    printk("%s(): error root JSON NODE!\n");
+    printk("%s(): error root JSON NODE!\n","parse_ncs_notification");
     return;
   }
   return;

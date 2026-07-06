@@ -65,10 +65,10 @@ undefined4 spi_master_init(spi_interface_t *param_1)
       return 0;
     }
     if (BLE_DEBUG != 0) {
-      ble_printk("%s():  SPIM BUS ERR!\n","spi_master_init",uVar4,BLE_DEBUG);
+      ble_printk("%s():  SPIM BUS ERR!\n");
       return 0;
     }
-    printk("%s():  SPIM BUS ERR!\n");
+    printk("%s():  SPIM BUS ERR!\n","spi_master_init");
     return 0;
   }
   pSVar3 = ppSVar6[1];
@@ -80,8 +80,7 @@ undefined4 spi_master_init(spi_interface_t *param_1)
              uVar5,abVar7,local_44,local_40,local_3c);
     }
     else {
-      ble_printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_init",
-                 uVar4,uVar5);
+      ble_printk("%s(): *SPIM(%d)speed=%dM, sck=%d, mosi=%d, miso=%d, ss=%d\n","spi_master_init");
     }
   }
   if (*(char *)&param_1->bus_id == '\x03') {
@@ -112,11 +111,10 @@ undefined4 spi_master_init(spi_interface_t *param_1)
 LAB_00028600:
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): spim(bus=%d): init finish\n");
+      printk("%s(): spim(bus=%d): init finish\n","spi_master_init",(uint)*(byte *)&param_1->bus_id);
     }
     else {
-      ble_printk("%s(): spim(bus=%d): init finish\n","spi_master_init",
-                 (uint)*(byte *)&param_1->bus_id,BLE_DEBUG);
+      ble_printk("%s(): spim(bus=%d): init finish\n");
     }
   }
   param_1->is_initialized = 1;

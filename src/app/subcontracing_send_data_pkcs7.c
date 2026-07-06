@@ -100,10 +100,10 @@ LAB_00023b1a:
   __dump_hex("tail",(int)local_3c,0x14);
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): total-size:%d\n");
+      printk("%s(): total-size:%d\n","subcontracing_send_data_pkcs7",param_2);
     }
     else {
-      ble_printk("%s(): total-size:%d\n","subcontracing_send_data_pkcs7",param_2,BLE_DEBUG);
+      ble_printk("%s(): total-size:%d\n");
     }
   }
   (*(code *)param_4)(local_3c);

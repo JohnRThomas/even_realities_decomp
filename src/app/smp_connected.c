@@ -12,19 +12,19 @@ void smp_connected(undefined4 param_1,int param_2)
     DAT_20007f78 = 1;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG != 0) {
-        ble_printk("%s(): ok\n","smp_connected",&DAT_20007f78,BLE_DEBUG);
+        ble_printk("%s(): ok\n");
         return;
       }
-      printk("%s(): ok\n");
+      printk("%s(): ok\n","smp_connected");
       return;
     }
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG != 0) {
-      ble_printk("%s(): failed (err 0x%02x)\n","smp_connected",param_2,BLE_DEBUG);
+      ble_printk("%s(): failed (err 0x%02x)\n");
       return;
     }
-    printk("%s(): failed (err 0x%02x)\n");
+    printk("%s(): failed (err 0x%02x)\n","smp_connected",param_2);
     return;
   }
   return;

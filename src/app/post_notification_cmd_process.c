@@ -10,7 +10,6 @@ void post_notification_cmd_process(int param_1,undefined1 *param_2,byte *param_3
 {
   undefined4 uVar1;
   int iVar2;
-  undefined4 extraout_r2;
   undefined1 *puVar3;
   uint uVar4;
   undefined4 local_b4;
@@ -20,11 +19,10 @@ void post_notification_cmd_process(int param_1,undefined1 *param_2,byte *param_3
   if (((param_1 == 0) || (param_2 == (undefined1 *)0x0)) || (param_3 == (byte *)0x0)) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG != 0) {
-        ble_printk("%s(): input param invalid !\n","post_notification_cmd_process",param_3,BLE_DEBUG
-                  );
+        ble_printk("%s(): input param invalid !\n");
         return;
       }
-      printk("%s(): input param invalid !\n");
+      printk("%s(): input param invalid !\n","post_notification_cmd_process");
       return;
     }
   }
@@ -42,11 +40,10 @@ void post_notification_cmd_process(int param_1,undefined1 *param_2,byte *param_3
       memcpy(puVar3 + 4,param_3,0x1b4);
       if (2 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk(s__s____ANCS_____master__source__d_000a9b92);
+          printk(s__s____ANCS_____master__source__d_000a9b92,"post_notification_cmd_process",uVar4);
         }
         else {
-          ble_printk(s__s____ANCS_____master__source__d_000a9b92,"post_notification_cmd_process",
-                     uVar4,BLE_DEBUG);
+          ble_printk(s__s____ANCS_____master__source__d_000a9b92);
         }
       }
       FUN_00019d14(param_1,abStack_a0,8);
@@ -56,11 +53,10 @@ void post_notification_cmd_process(int param_1,undefined1 *param_2,byte *param_3
         DAT_20008788 = malloc(0x800);
         if (DAT_20008788 == (char *)0x0) {
           if (BLE_DEBUG == 0) {
-            printk("[%s-%d] malloc failed !!\n");
+            printk("[%s-%d] malloc failed !!\n","post_notification_cmd_process",0x19f);
           }
           else {
-            ble_printk("[%s-%d] malloc failed !!\n","post_notification_cmd_process",0x19f,BLE_DEBUG)
-            ;
+            ble_printk("[%s-%d] malloc failed !!\n");
           }
         }
         else {
@@ -68,7 +64,7 @@ void post_notification_cmd_process(int param_1,undefined1 *param_2,byte *param_3
         }
       }
       if (DAT_20008788 != (char *)0x0) {
-        iVar2 = parse_receiver_msg_pack_pkcs7(DAT_20008788,param_3,(uint)(byte)puVar3[2]);
+        iVar2 = parse_receiver_msg_pack_pkcs7((int)DAT_20008788,param_3,(uint)(byte)puVar3[2]);
         uVar1 = local_b4;
         local_b4._0_2_ = CONCAT11((char)iVar2,(undefined1)local_b4);
         local_b4._3_1_ = SUB41(uVar1,3);
@@ -77,11 +73,10 @@ void post_notification_cmd_process(int param_1,undefined1 *param_2,byte *param_3
           parse_ncs_notification(DAT_20008788,(undefined4 *)(puVar3 + 4));
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): ncs data receive okay !\n\n");
+              printk("%s(): ncs data receive okay !\n\n","post_notification_cmd_process");
             }
             else {
-              ble_printk("%s(): ncs data receive okay !\n\n","post_notification_cmd_process",
-                         extraout_r2,BLE_DEBUG);
+              ble_printk("%s(): ncs data receive okay !\n\n");
             }
           }
           *(undefined2 *)(puVar3 + 2) = 0x1b4;

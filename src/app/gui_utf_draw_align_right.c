@@ -17,15 +17,15 @@ gui_utf_draw_align_right
   int iVar4;
   GlassesState *pGVar5;
   undefined4 uVar6;
-  undefined4 extraout_r2;
   size_t n;
   byte *pbVar7;
   uint uVar8;
-  uint uVar9;
+  uint32_t uVar9;
   uint uVar10;
-  ushort *puVar11;
-  uint uVar12;
+  uint uVar11;
+  ushort *puVar12;
   uint uVar13;
+  uint uVar14;
   uint local_2f8;
   uint local_2f4;
   uint local_2ec;
@@ -46,11 +46,10 @@ gui_utf_draw_align_right
 LAB_00047862:
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): exex process effect callback function\n");
+          printk("%s(): exex process effect callback function\n","gui_utf_draw_align_right");
         }
         else {
-          ble_printk("%s(): exex process effect callback function\n","gui_utf_draw_align_right",
-                     extraout_r2,BLE_DEBUG);
+          ble_printk("%s(): exex process effect callback function\n");
         }
       }
       uVar6 = (*(code *)param_11)(0,param_2,param_3,param_4,param_5);
@@ -61,7 +60,7 @@ LAB_00047862:
       if (iVar4 << 0x1e < 0) {
         _clean_fb_data(__frame_buffer,0,param_4,param_5,param_6,param_7);
       }
-      uVar9 = 0;
+      uVar10 = 0;
       bVar2 = true;
       uVar8 = 0;
       local_2f4 = 0;
@@ -69,56 +68,55 @@ LAB_00047862:
       local_2e8 = param_4;
       for (local_2ec = 0; (int)local_2ec < (int)(uint)local_2da; local_2ec = local_2ec + 1) {
         if (bVar2) {
-          uVar10 = 0;
-          uVar12 = local_2ec;
-          for (puVar11 = puVar3;
-              (((int)uVar12 < (int)(uint)local_2da && (uVar13 = (uint)*puVar11, uVar13 != 0xd)) &&
-              (uVar13 != 10)); puVar11 = puVar11 + 1) {
-            iVar4 = FUN_00080fb2(uVar13);
+          uVar11 = 0;
+          uVar13 = local_2ec;
+          for (puVar12 = puVar3;
+              (((int)uVar13 < (int)(uint)local_2da && (uVar14 = (uint)*puVar12, uVar14 != 0xd)) &&
+              (uVar14 != 10)); puVar12 = puVar12 + 1) {
+            iVar4 = FUN_00080fb2(uVar14);
             if (iVar4 == 0) {
-              iVar4 = resource_manger_get(param_3,uVar13,&local_2d4,&local_2d0,&local_2d8,
+              iVar4 = resource_manger_get(param_3,uVar14,&local_2d4,&local_2d0,&local_2d8,
                                           (undefined1 *)0x0);
               if (iVar4 < 0) {
                 if (1 < LOG_LEVEL) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): can not find 0x%x font resource\n");
+                    printk("%s(): can not find 0x%x font resource\n","gui_utf_draw_align_right",
+                           uVar14);
                   }
                   else {
-                    ble_printk("%s(): can not find 0x%x font resource\n","gui_utf_draw_align_right",
-                               uVar13,BLE_DEBUG);
+                    ble_printk("%s(): can not find 0x%x font resource\n");
                   }
                 }
               }
               else {
-                uVar10 = uVar10 + local_2d4;
-                iVar4 = FUN_000462b0((uint)*puVar11,(uint)puVar11[1]);
-                uVar10 = (uVar10 & 0xffff) + iVar4 & 0xffff;
+                uVar11 = uVar11 + local_2d4;
+                iVar4 = FUN_000462b0((uint)*puVar12,(uint)puVar12[1]);
+                uVar11 = (uVar11 & 0xffff) + iVar4 & 0xffff;
               }
             }
-            uVar12 = uVar12 + 1;
+            uVar13 = uVar13 + 1;
           }
           local_2e8 = param_4;
-          if (uVar10 <= param_6 - param_4) {
-            local_2e8 = param_6 - uVar10;
+          if (uVar11 <= param_6 - param_4) {
+            local_2e8 = param_6 - uVar11;
           }
           local_2e8 = local_2e8 & 0xfffffffe;
         }
-        puVar11 = puVar3 + 1;
-        uVar12 = (uint)*puVar3;
-        iVar4 = FUN_00080fb2(uVar12);
+        puVar12 = puVar3 + 1;
+        uVar13 = (uint)*puVar3;
+        iVar4 = FUN_00080fb2(uVar13);
         if (iVar4 == 0) {
-          iVar4 = resource_manger_get(param_3,uVar12,&local_2d4,&local_2d0,&local_2d8,
+          iVar4 = resource_manger_get(param_3,uVar13,&local_2d4,&local_2d0,&local_2d8,
                                       (undefined1 *)0x0);
-          uVar13 = local_2d0;
-          uVar10 = local_2d4;
+          uVar14 = local_2d0;
+          uVar11 = local_2d4;
           if (iVar4 < 0) {
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): can not find 0x%x font resource\n");
+                printk("%s(): can not find 0x%x font resource\n","gui_utf_draw_align_right",uVar13);
               }
               else {
-                ble_printk("%s(): can not find 0x%x font resource\n","gui_utf_draw_align_right",
-                           uVar12,BLE_DEBUG);
+                ble_printk("%s(): can not find 0x%x font resource\n");
               }
             }
           }
@@ -133,26 +131,26 @@ LAB_00047862:
                 pbVar7 = pbVar7 + 1;
               }
             }
-            iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar11);
-            local_2f4 = local_2f4 + iVar4 + uVar10;
+            iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar12);
+            local_2f4 = local_2f4 + iVar4 + uVar11;
             if (param_6 - param_4 < local_2f4) {
-              uVar8 = uVar8 + uVar13;
+              uVar8 = uVar8 + uVar14;
               if (param_3 == 0) {
                 uVar8 = uVar8 + 1;
               }
-              uVar9 = uVar9 + 1;
-              if ((param_8 <= uVar9) || ((uint)(param_7 - param_5) <= uVar8)) break;
+              uVar10 = uVar10 + 1;
+              if ((param_8 <= uVar10) || ((uint)(param_7 - param_5) <= uVar8)) break;
               __copy_to_frame_buffer
-                        ((int)__frame_buffer,local_2cc,sVar1,uVar13,local_2e8,uVar8 + param_5);
-              iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar11);
+                        ((int)__frame_buffer,local_2cc,sVar1,uVar14,local_2e8,uVar8 + param_5);
+              iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar12);
               local_2f8 = iVar4 + local_2d4;
               local_2f4 = local_2f8;
             }
             else {
               __copy_to_frame_buffer
-                        ((int)__frame_buffer,local_2cc,sVar1,uVar13,local_2e8 + local_2f8,
+                        ((int)__frame_buffer,local_2cc,sVar1,uVar14,local_2e8 + local_2f8,
                          uVar8 + param_5);
-              iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar11);
+              iVar4 = FUN_000462b0((uint)*puVar3,(uint)*puVar12);
               local_2f8 = local_2f8 + iVar4 + local_2d4;
             }
           }
@@ -160,7 +158,7 @@ LAB_000476ec:
           bVar2 = false;
         }
         else {
-          if ((iVar4 != -1) || ((uVar12 != 0xd && (uVar12 != 10)))) goto LAB_000476ec;
+          if ((iVar4 != -1) || ((uVar13 != 0xd && (uVar13 != 10)))) goto LAB_000476ec;
           if (local_2d0 == 0) {
             if (param_3 == 0) {
               uVar8 = uVar8 + 0x1b;
@@ -175,22 +173,22 @@ LAB_000476ec:
               uVar8 = uVar8 + 1;
             }
           }
-          uVar9 = uVar9 + 1;
-          if ((param_8 <= uVar9) || ((uint)(param_7 - param_5) <= uVar8)) break;
+          uVar10 = uVar10 + 1;
+          if ((param_8 <= uVar10) || ((uint)(param_7 - param_5) <= uVar8)) break;
           bVar2 = true;
           local_2f8 = 0;
           local_2f4 = 0;
         }
-        puVar3 = puVar11;
+        puVar3 = puVar12;
       }
       iVar4 = FUN_000452e4();
       if (iVar4 << 0x1e < 0) {
         pGVar5 = __get_dashboard_state();
-        iVar4 = *(int *)&(pGVar5->jdb_panel_context).field_0x348;
+        uVar9 = (pGVar5->jdb_panel_context).current_row;
         pGVar5 = __get_dashboard_state();
         _reflash_fb_data_to_lcd
-                  (iVar4,*(int *)&(pGVar5->jdb_panel_context).field_0x34c,param_4,param_5,param_6,
-                   param_7);
+                  (uVar9,(pGVar5->jdb_panel_context).current_column,param_4,param_5,param_6,param_7)
+        ;
       }
     }
   }

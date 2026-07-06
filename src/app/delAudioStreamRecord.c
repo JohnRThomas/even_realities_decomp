@@ -1,15 +1,14 @@
 /*
  * Function: delAudioStreamRecord
  * Entry:    00030d18
- * Prototype: undefined4 __stdcall delAudioStreamRecord(undefined1 param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall delAudioStreamRecord(undefined1 param_1)
  */
 
 
-undefined4 delAudioStreamRecord(undefined1 param_1,undefined4 param_2,undefined4 param_3)
+undefined4 delAudioStreamRecord(undefined1 param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 uVar2;
   undefined1 local_dc;
   undefined1 uStack_db;
@@ -18,10 +17,10 @@ undefined4 delAudioStreamRecord(undefined1 param_1,undefined4 param_2,undefined4
   
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): received audio delete command\n");
+      printk("%s(): received audio delete command\n","delAudioStreamRecord");
     }
     else {
-      ble_printk("%s(): received audio delete command\n","delAudioStreamRecord",param_3,BLE_DEBUG);
+      ble_printk("%s(): received audio delete command\n");
     }
   }
   memset(&uStack_db,0,0xcb);
@@ -36,10 +35,10 @@ undefined4 delAudioStreamRecord(undefined1 param_1,undefined4 param_2,undefined4
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): enqueue_dmic failed\r\n\n");
+        printk("%s(): enqueue_dmic failed\r\n\n","delAudioStreamRecord");
       }
       else {
-        ble_printk("%s(): enqueue_dmic failed\r\n\n","delAudioStreamRecord",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): enqueue_dmic failed\r\n\n");
       }
     }
     uVar2 = 0xffffffff;

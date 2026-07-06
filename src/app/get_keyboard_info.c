@@ -11,8 +11,6 @@ get_keyboard_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,unde
 {
   undefined4 uVar1;
   GlassesState *pGVar2;
-  undefined4 extraout_r1;
-  undefined4 extraout_r2;
   undefined1 uVar3;
   undefined1 *puVar4;
   
@@ -38,7 +36,7 @@ get_keyboard_info(undefined4 param_1,undefined4 param_2,undefined4 *param_3,unde
     pGVar2 = __get_dashboard_state();
     printk("before aw9320x_diff_get: %d\n",*(undefined4 *)&pGVar2->field_0x1090);
     pGVar2 = __get_dashboard_state();
-    aw9320x_diff_get((uint *)&pGVar2->field_0x1090,extraout_r1,extraout_r2);
+    aw9320x_diff_get((uint32_t *)&pGVar2->field_0x1090);
     pGVar2 = __get_dashboard_state();
     printk("after aw9320x_diff_get: %d\n",*(undefined4 *)&pGVar2->field_0x1090);
     uVar1 = 0;

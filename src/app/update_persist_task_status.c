@@ -46,10 +46,10 @@ LAB_0002db0a:
         fmt = "%s(): persist task [stop]: %d\n";
       }
       if (BLE_DEBUG == 0) {
-        printk(fmt);
+        printk(fmt,"update_persist_task_status",param_2);
       }
       else {
-        ble_printk(fmt,"update_persist_task_status",param_2,BLE_DEBUG);
+        ble_printk(fmt);
       }
       goto LAB_0002dae2;
     }
@@ -75,11 +75,10 @@ LAB_0002db0a:
   }
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): persist task [running]: %d\n");
+      printk("%s(): persist task [running]: %d\n","update_persist_task_status",param_2);
     }
     else {
-      ble_printk("%s(): persist task [running]: %d\n","update_persist_task_status",param_2,BLE_DEBUG
-                );
+      ble_printk("%s(): persist task [running]: %d\n");
     }
   }
   if ((param_2 == 0x10) && (DAT_20019a6b = *(char *)(param_1 + 0xf9c), DAT_20019a6b == '\x01')) {

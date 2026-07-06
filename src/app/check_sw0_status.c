@@ -9,33 +9,25 @@ void check_sw0_status(void)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 uVar2;
-  undefined4 extraout_r2_01;
   
   iVar1 = gpio_pin_get_config();
   if (iVar1 == 0) {
-    uVar2 = extraout_r2;
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): interrupt line low!!!\n");
-        uVar2 = extraout_r2_01;
+        printk("%s(): interrupt line low!!!\n","check_sw0_status");
       }
       else {
-        ble_printk("%s(): interrupt line low!!!\n","check_sw0_status",extraout_r2,BLE_DEBUG);
-        uVar2 = extraout_r2_00;
+        ble_printk("%s(): interrupt line low!!!\n");
       }
     }
     DAT_200084d0 = DAT_200084d0 + 1;
     if (3 < DAT_200084d0) {
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): interrupt line abnormal, now reset\n");
+          printk("%s(): interrupt line abnormal, now reset\n","check_sw0_status");
         }
         else {
-          ble_printk("%s(): interrupt line abnormal, now reset\n","check_sw0_status",uVar2,BLE_DEBUG
-                    );
+          ble_printk("%s(): interrupt line abnormal, now reset\n");
         }
       }
       aw93203_init();

@@ -9,7 +9,6 @@ undefined4 upgradeQuickNoteDataToFlash(undefined4 param_1,undefined4 param_2,und
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 uVar2;
   undefined4 local_18;
   uint local_14;
@@ -22,11 +21,11 @@ undefined4 upgradeQuickNoteDataToFlash(undefined4 param_1,undefined4 param_2,und
   if (iVar1 == 0) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): SEND QUICKNOTE TEXT Store(%d) Command...\n");
+        printk("%s(): SEND QUICKNOTE TEXT Store(%d) Command...\n","upgradeQuickNoteDataToFlash",
+               param_1);
       }
       else {
-        ble_printk("%s(): SEND QUICKNOTE TEXT Store(%d) Command...\n","upgradeQuickNoteDataToFlash",
-                   param_1,BLE_DEBUG);
+        ble_printk("%s(): SEND QUICKNOTE TEXT Store(%d) Command...\n");
       }
     }
     k_sem_give((k_sem *)&DAT_200083c4);
@@ -35,11 +34,10 @@ undefined4 upgradeQuickNoteDataToFlash(undefined4 param_1,undefined4 param_2,und
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): quicknote flash store queue fill failed\r\n\n");
+        printk("%s(): quicknote flash store queue fill failed\r\n\n","upgradeQuickNoteDataToFlash");
       }
       else {
-        ble_printk("%s(): quicknote flash store queue fill failed\r\n\n",
-                   "upgradeQuickNoteDataToFlash",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): quicknote flash store queue fill failed\r\n\n");
       }
     }
     uVar2 = 0xffffffff;

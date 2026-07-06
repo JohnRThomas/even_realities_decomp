@@ -11,15 +11,12 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
   byte bVar1;
   GlassesState *pGVar2;
   undefined4 extraout_r1;
-  undefined4 extraout_r1_00;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
   undefined4 extraout_r2_01;
   undefined4 extraout_r2_02;
-  undefined4 extraout_r2_03;
-  undefined4 extraout_r2_04;
   undefined4 uVar3;
-  undefined4 extraout_r2_05;
+  undefined4 extraout_r2_03;
   int iVar4;
   undefined8 uVar5;
   undefined8 uVar6;
@@ -29,8 +26,8 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
   
   _local_14 = param_2;
   pGVar2 = __get_dashboard_state();
-  FUN_000452f0(param_1 + 0x24);
-  FUN_0004540c();
+  __set_frame_buffer(param_1 + 0x24);
+  __set_showing_notification_on_gui();
   if ((param_3 == 2) || (0x17 < (byte)pGVar2->field20_0xc8[0x29])) {
     pGVar2 = __get_dashboard_state();
     **(undefined1 **)&pGVar2->field_0x101c = 0;
@@ -38,15 +35,15 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
     iVar4 = *(int *)&pGVar2->field_0x101c;
     pGVar2 = __get_dashboard_state();
     (pGVar2->jdb_panel_context).panel_brightness_level = *(byte *)(iVar4 + 0x20);
-    gui_screen_clear(pGVar2,extraout_r1,extraout_r2);
+    gui_screen_clear();
   }
   else {
-    if ((param_3 == 1) && (pGVar2 = __get_dashboard_state(), *(char *)pGVar2 == '\x01')) {
-      send_response_data_to_ble(pGVar2,extraout_r1_00,extraout_r2_00,1);
+    if ((param_3 == 1) && (pGVar2 = __get_dashboard_state(), pGVar2->is_master == true)) {
+      send_response_data_to_ble(pGVar2,extraout_r1,extraout_r2,1);
     }
     pGVar2 = __get_dashboard_state();
     uVar5 = CONCAT44(DAT_20004db4,DAT_20004db0);
-    if (*(char *)pGVar2 == '\x01') {
+    if (pGVar2->is_master == true) {
       pGVar2 = __get_dashboard_state();
       uVar5 = CONCAT44(DAT_20004db4,DAT_20004db0);
       if (*(char *)(*(int *)&pGVar2->field_0x101c + 2) != '\0') {
@@ -61,14 +58,14 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
           if (0x13 < DAT_20004da8) {
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): onboarding: disconnection between the AR Glasses and the Bluetooth application!\n"
-                      );
+                printk("%s(): onboarding: disconnection between the AR Glasses and the Bluetooth application!\n"
+                       ,"ui_onboarding_task");
                 uVar5 = CONCAT44(DAT_20004db4,DAT_20004db0);
               }
               else {
-                ble_printk("%s(): onboarding: disconnection between the AR Glasses and the Bluetooth application!\n"
-                           ,"ui_onboarding_task",extraout_r2_01,BLE_DEBUG);
+                ble_printk(
+                          "%s(): onboarding: disconnection between the AR Glasses and the Bluetooth application!\n"
+                          );
                 uVar5 = CONCAT44(DAT_20004db4,DAT_20004db0);
               }
             }
@@ -79,7 +76,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
             *(undefined1 *)(*(int *)&pGVar2->field_0x101c + 2) = 0xb;
             pGVar2 = __get_dashboard_state();
             _local_14 = (uint3)*(byte *)(*(int *)&pGVar2->field_0x101c + 2);
-            iVar4 = onboarding_sync_data(local_14,3,extraout_r2_02);
+            iVar4 = onboarding_sync_data(local_14,3,extraout_r2_00);
             if (iVar4 != 0) {
               return 0;
             }
@@ -103,7 +100,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
     }
     else {
       pGVar2 = __get_dashboard_state();
-      if (*(char *)pGVar2 == '\x01') {
+      if (pGVar2->is_master == true) {
         FUN_00044b24();
         pGVar2 = __get_dashboard_state();
         DAT_2001db40 = *(char *)(*(int *)&pGVar2->field_0x101c + 3);
@@ -116,7 +113,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
         if ((*(char *)(*(int *)&pGVar2->field_0x101c + 2) != '\n') &&
            (pGVar2 = __get_dashboard_state(), *(char *)(*(int *)&pGVar2->field_0x101c + 2) != '\v'))
         {
-          uVar3 = extraout_r2_03;
+          uVar3 = extraout_r2_01;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
               pGVar2 = __get_dashboard_state();
@@ -125,7 +122,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
               printk("%s(): SYNC onboarding action_cmd %d and sub_step %d to slave\n",
                      "ui_onboarding_task",(uint)bVar1,
                      (uint)*(byte *)(*(int *)&pGVar2->field_0x101c + 3));
-              uVar3 = extraout_r2_05;
+              uVar3 = extraout_r2_03;
             }
             else {
               pGVar2 = __get_dashboard_state();
@@ -134,7 +131,7 @@ undefined4 ui_onboarding_task(int param_1,undefined4 param_2,int param_3)
               ble_printk("%s(): SYNC onboarding action_cmd %d and sub_step %d to slave\n",
                          "ui_onboarding_task",(uint)bVar1,
                          (uint)*(byte *)(*(int *)&pGVar2->field_0x101c + 3));
-              uVar3 = extraout_r2_04;
+              uVar3 = extraout_r2_02;
             }
           }
           onboarding_sync_data(local_14,3,uVar3);

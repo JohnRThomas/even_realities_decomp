@@ -15,19 +15,19 @@ int erase_audio_buffer(void)
     DAT_20002404 = 0x400000;
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Flash erase ok \n\n");
+        printk("%s(): Flash erase ok \n\n","erase_audio_buffer");
       }
       else {
-        ble_printk("%s(): Flash erase ok \n\n","erase_audio_buffer",&DAT_20002404,BLE_DEBUG);
+        ble_printk("%s(): Flash erase ok \n\n");
       }
     }
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): Flash erase failed! %d\n\n");
+      printk("%s(): Flash erase failed! %d\n\n","erase_audio_buffer",iVar1);
     }
     else {
-      ble_printk("%s(): Flash erase failed! %d\n\n","erase_audio_buffer",iVar1,BLE_DEBUG);
+      ble_printk("%s(): Flash erase failed! %d\n\n");
     }
   }
   return iVar1;

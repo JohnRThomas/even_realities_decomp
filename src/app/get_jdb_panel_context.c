@@ -1,11 +1,11 @@
 /*
  * Function: get_jdb_panel_context
  * Entry:    00080bb4
- * Prototype: jdb_panel_context * __stdcall get_jdb_panel_context(void)
+ * Prototype: jbd_panel_context * __stdcall get_jdb_panel_context(void)
  */
 
 
-jdb_panel_context * get_jdb_panel_context(void)
+jbd_panel_context * get_jdb_panel_context(void)
 
 {
   GlassesState *pGVar1;

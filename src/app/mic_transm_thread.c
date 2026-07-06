@@ -65,11 +65,10 @@ void mic_transm_thread(void)
             if (9 < uVar7) {
               if (0 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk("%s(): BLE send failed for %d times\n");
+                  printk("%s(): BLE send failed for %d times\n","mic_transm_thread",uVar7);
                 }
                 else {
-                  ble_printk("%s(): BLE send failed for %d times\n","mic_transm_thread",uVar7,
-                             BLE_DEBUG);
+                  ble_printk("%s(): BLE send failed for %d times\n");
                 }
               }
               uVar7 = 0;
@@ -89,11 +88,10 @@ void mic_transm_thread(void)
     else {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s():  [%s] device not ready.\n");
+          printk("%s():  [%s] device not ready.\n","mic_transm_thread","mx25r6435f@0");
         }
         else {
-          ble_printk("%s():  [%s] device not ready.\n","mic_transm_thread","mx25r6435f@0",BLE_DEBUG)
-          ;
+          ble_printk("%s():  [%s] device not ready.\n");
         }
       }
       local_f4 = 0xca00;

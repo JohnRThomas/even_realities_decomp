@@ -1,15 +1,15 @@
 /*
  * Function: gui_clock_draw
  * Entry:    00046728
- * Prototype: undefined4 __stdcall gui_clock_draw(uint param_1, int param_2, int param_3, int param_4, int param_5, undefined4 param_6, char param_7)
+ * Prototype: undefined4 __stdcall gui_clock_draw(dashboard_ts_context * param_1, int param_2, int param_3, int param_4, int param_5, undefined4 param_6, char param_7)
  */
 
 
 /* WARNING: Type propagation algorithm not settling */
 
 undefined4
-gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,undefined4 param_6,
-              char param_7)
+gui_clock_draw(dashboard_ts_context *param_1,int param_2,int param_3,int param_4,int param_5,
+              undefined4 param_6,char param_7)
 
 {
   size_t sVar1;
@@ -18,8 +18,9 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
   int iVar4;
   uint uVar5;
   ushort uVar6;
-  byte *pbVar7;
-  size_t sVar8;
+  uint32_t uVar7;
+  byte *pbVar8;
+  size_t sVar9;
   void *local_50;
   uint local_4c;
   uint local_48 [2];
@@ -32,7 +33,7 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
   uStack_40 = 0;
   local_3e = 0;
   local_3c = 0;
-  __init_burial_point_date((dashboard_ts_context *)param_1,(undefined2 *)(local_48 + 1));
+  __init_burial_point_date(param_1,(undefined2 *)(local_48 + 1));
   local_38[0] = 0;
   local_38[1] = 0;
   local_38[2] = 0;
@@ -78,11 +79,11 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
     if (iVar3 << 0x1e < 0) {
       _clean_fb_data(__frame_buffer,0,param_2,param_3,param_4,param_5);
     }
-    pbVar7 = local_38;
+    pbVar8 = local_38;
     iVar3 = param_2;
-    for (sVar8 = 0; sVar1 != sVar8; sVar8 = sVar8 + 1) {
+    for (sVar9 = 0; sVar1 != sVar9; sVar9 = sVar9 + 1) {
       local_50 = (void *)0x0;
-      iVar4 = resource_manger_get(1,(uint)*pbVar7,&local_4c,local_48,&local_50,(undefined1 *)0x0);
+      iVar4 = resource_manger_get(1,(uint)*pbVar8,&local_4c,local_48,&local_50,(undefined1 *)0x0);
       if ((iVar4 == 0) && (local_50 != (void *)0x0)) {
         __copy_to_frame_buffer
                   ((int)__frame_buffer,local_50,(int)local_4c / 2,local_48[0],iVar3,param_3);
@@ -91,14 +92,14 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
       else if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): The content cannot be found in the current font library,unicode content = %2d,font libray is %s\n"
-                 ,"gui_clock_draw",(uint)*pbVar7,"EVEN_DASHBOARD_CLOCK_32x_TTF");
+                 ,"gui_clock_draw",(uint)*pbVar8,"EVEN_DASHBOARD_CLOCK_32x_TTF");
         }
         else {
           ble_printk("%s(): The content cannot be found in the current font library,unicode content = %2d,font libray is %s\n"
-                     ,"gui_clock_draw",(uint)*pbVar7,"EVEN_DASHBOARD_CLOCK_32x_TTF");
+                     ,"gui_clock_draw",(uint)*pbVar8,"EVEN_DASHBOARD_CLOCK_32x_TTF");
         }
       }
-      pbVar7 = pbVar7 + 1;
+      pbVar8 = pbVar8 + 1;
     }
     goto LAB_00046850;
   case 2:
@@ -106,38 +107,38 @@ gui_clock_draw(uint param_1,int param_2,int param_3,int param_4,int param_5,unde
     if (iVar3 << 0x1e < 0) {
       _clean_fb_data(__frame_buffer,0,param_2,param_3,param_4,param_5);
     }
-    sVar8 = 0;
-    pbVar7 = local_38;
+    sVar9 = 0;
+    pbVar8 = local_38;
     iVar3 = param_2;
-    while (sVar1 != sVar8) {
+    while (sVar1 != sVar9) {
       local_50 = (void *)0x0;
-      iVar4 = resource_manger_get(2,(uint)*pbVar7,&local_4c,local_48,&local_50,(undefined1 *)0x0);
-      sVar8 = sVar8 + 1;
+      iVar4 = resource_manger_get(2,(uint)*pbVar8,&local_4c,local_48,&local_50,(undefined1 *)0x0);
+      sVar9 = sVar9 + 1;
       if ((iVar4 == 0) && (local_50 != (void *)0x0)) {
         __copy_to_frame_buffer
                   ((int)__frame_buffer,local_50,(int)local_4c / 2,local_48[0],iVar3,param_3);
-        if (pbVar7[1] == 0x3a) {
+        if (pbVar8[1] == 0x3a) {
           iVar4 = local_4c + 7;
         }
         else {
           iVar4 = local_4c + 2;
         }
         iVar3 = iVar3 + iVar4;
-        if (*pbVar7 == 0x3a) {
+        if (*pbVar8 == 0x3a) {
           iVar3 = iVar3 + 7;
         }
       }
       else if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): The content cannot be found in the current font library,unicode content = %2d,font libray is %s\n"
-                 ,"gui_clock_draw",(uint)*pbVar7,"EVEN_DASHBOARD_CLOCK_32x_TTF");
+                 ,"gui_clock_draw",(uint)*pbVar8,"EVEN_DASHBOARD_CLOCK_32x_TTF");
         }
         else {
           ble_printk("%s(): The content cannot be found in the current font library,unicode content = %2d,font libray is %s\n"
-                     ,"gui_clock_draw",(uint)*pbVar7,"EVEN_DASHBOARD_CLOCK_32x_TTF");
+                     ,"gui_clock_draw",(uint)*pbVar8,"EVEN_DASHBOARD_CLOCK_32x_TTF");
         }
       }
-      pbVar7 = pbVar7 + 1;
+      pbVar8 = pbVar8 + 1;
     }
 LAB_00046850:
     iVar3 = FUN_000452e4();
@@ -145,11 +146,10 @@ LAB_00046850:
       return 0;
     }
     pGVar2 = __get_dashboard_state();
-    iVar3 = *(int *)&(pGVar2->jdb_panel_context).field_0x348;
+    uVar7 = (pGVar2->jdb_panel_context).current_row;
     pGVar2 = __get_dashboard_state();
     _reflash_fb_data_to_lcd
-              (iVar3,*(int *)&(pGVar2->jdb_panel_context).field_0x34c,param_2,param_3,param_4,
-               param_5);
+              (uVar7,(pGVar2->jdb_panel_context).current_column,param_2,param_3,param_4,param_5);
     return 0;
   case 3:
     uVar5 = 3;

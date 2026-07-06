@@ -25,9 +25,10 @@ get_brightness_lum_info
     puVar3[2] = 3;
     puVar3[3] = 8;
     pGVar2 = __get_dashboard_state();
-    *(undefined2 *)(puVar3 + 4) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x36c;
+    *(undefined2 *)(puVar3 + 4) = *(undefined2 *)&(pGVar2->jdb_panel_context).field831_0x36c;
     pGVar2 = __get_dashboard_state();
-    *(undefined2 *)(puVar3 + 6) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x36e;
+    *(undefined2 *)(puVar3 + 6) =
+         *(undefined2 *)((int)&(pGVar2->jdb_panel_context).field831_0x36c + 2);
     pGVar2 = __get_dashboard_state();
     *(undefined2 *)(puVar3 + 8) = *(undefined2 *)&(pGVar2->jdb_panel_context).field_0x370;
     pGVar2 = __get_dashboard_state();

@@ -20,23 +20,13 @@ void proxy_thread_handler(int param_1)
   char *pcVar7;
   undefined4 extraout_r1;
   undefined4 extraout_r1_00;
-  undefined4 extraout_r1_01;
-  undefined4 extraout_r1_02;
-  int extraout_r2;
-  int extraout_r2_00;
-  int extraout_r2_01;
-  int extraout_r2_02;
-  int extraout_r2_03;
   undefined1 *puVar8;
   undefined1 *puVar9;
-  undefined4 extraout_r2_04;
-  undefined4 extraout_r2_05;
-  undefined4 extraout_r2_06;
-  undefined4 extraout_r2_07;
-  dashboard_ts_context *pdVar10;
-  int iVar11;
-  code *pcVar12;
-  size_t sVar13;
+  undefined4 extraout_r2;
+  undefined4 extraout_r2_00;
+  int iVar10;
+  code *pcVar11;
+  size_t sVar12;
   k_timeout_t timeout;
   undefined8 local_48;
   undefined1 local_40 [2];
@@ -65,12 +55,12 @@ LAB_0004b4f4:
   switch(local_40[0]) {
   case 0:
     memset(&DAT_2001e1a6,0,0x14);
-    sVar13 = (size_t)local_3e;
-    if (0x13 < sVar13) {
-      sVar13 = 0x14;
+    sVar12 = (size_t)local_3e;
+    if (0x13 < sVar12) {
+      sVar12 = 0x14;
     }
-    memcpy(&DAT_2001e1a6,&local_3c,sVar13);
-    DAT_200108f2 = (undefined2)sVar13;
+    memcpy(&DAT_2001e1a6,&local_3c,sVar12);
+    DAT_200108f2 = (undefined2)sVar12;
     DAT_2001e1a5 = '\x01';
     goto LAB_0004b4e6;
   case 1:
@@ -78,11 +68,11 @@ LAB_0004b4f4:
       iVar3 = (**(code **)(param_1 + 0x788))(&DAT_2001e1a6,DAT_200108f2);
       if ((iVar3 < 0) && (1 < LOG_LEVEL)) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): Failed to send data over BLE connection: ret = %d \n");
+          printk("%s(): Failed to send data over BLE connection: ret = %d \n","proxy_thread_handler"
+                );
         }
         else {
-          ble_printk("%s(): Failed to send data over BLE connection: ret = %d \n",
-                     "proxy_thread_handler",iVar3,BLE_DEBUG);
+          ble_printk("%s(): Failed to send data over BLE connection: ret = %d \n");
         }
       }
       local_48._0_4_ = 0;
@@ -99,9 +89,9 @@ LAB_0004b4f4:
       if (!bVar1) goto LAB_0004b5e6;
       memset(&DAT_2001e0bf,0,0xe6);
       pGVar5 = __get_dashboard_state();
-      pcVar12 = *(code **)&pGVar5->field_0x1044;
+      pcVar11 = *(code **)&pGVar5->field_0x1044;
       pGVar5 = __get_dashboard_state();
-      iVar3 = (*pcVar12)(pGVar5,0x400000,&DAT_2001e0bf,0xe6);
+      iVar3 = (*pcVar11)(pGVar5,0x400000,&DAT_2001e0bf,0xe6);
       if (iVar3 == 0) {
         if ((DAT_2001e0bf == 0x5aa5aa5a) && ((&DAT_2001e0c7)[(uint)DAT_2001e0be * 5] == 2)) {
           DAT_2000aa6c = *(int *)(&DAT_2001e0cb + (uint)DAT_2001e0be * 0x14);
@@ -109,9 +99,9 @@ LAB_0004b4f4:
         }
         memset(&DAT_2001e0bf,0,0xe6);
         pGVar5 = __get_dashboard_state();
-        pcVar12 = *(code **)&pGVar5->field_0x1044;
+        pcVar11 = *(code **)&pGVar5->field_0x1044;
         pGVar5 = __get_dashboard_state();
-        iVar3 = (*pcVar12)(pGVar5,DAT_2000aa6c,&DAT_2001e0bf,0xbe);
+        iVar3 = (*pcVar11)(pGVar5,DAT_2000aa6c,&DAT_2001e0bf,0xbe);
         if (iVar3 == 0) {
           DAT_2000aa64 = (DAT_2000aa68 - DAT_2000aa6c) / 0xbe;
           if (DAT_2000aa68 - DAT_2000aa6c != ((DAT_2000aa68 - DAT_2000aa6c) / 0xbe) * 0xbe) {
@@ -131,31 +121,29 @@ LAB_0004b4f4:
           DAT_2001dfde = (undefined1)((uint)DAT_2000aa64 >> 8);
           DAT_2000aa5c = DAT_2000aa5c + 1;
           DAT_2001dfdf = (undefined1)DAT_2000aa5c;
-          iVar11 = 3;
+          iVar3 = 3;
           DAT_2001dfe0 = (undefined1)((uint)DAT_2000aa5c >> 8);
           DAT_2001dfe1 = DAT_2001e0be + 1;
           if (DAT_2000aa60 - DAT_2000aa58 < 0xbe) {
-            sVar13 = DAT_2000aa60 - DAT_2000aa58;
+            sVar12 = DAT_2000aa60 - DAT_2000aa58;
           }
           else {
-            sVar13 = 0xbe;
+            sVar12 = 0xbe;
           }
-          memcpy(&DAT_2001dfe2,&DAT_2001e0bf,sVar13);
-          DAT_2001dfd9 = (char)sVar13 + 10;
-          while (iVar3 = (**(code **)(param_1 + 0x788))(&DAT_2001dfd8,DAT_2001dfd9), iVar3 < 0) {
+          memcpy(&DAT_2001dfe2,&DAT_2001e0bf,sVar12);
+          DAT_2001dfd9 = (char)sVar12 + 10;
+          while (iVar10 = (**(code **)(param_1 + 0x788))(&DAT_2001dfd8,DAT_2001dfd9), iVar10 < 0) {
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): Failed to send data over BLE connection: ret = %d \n");
-                iVar3 = extraout_r2_01;
+                printk("%s(): Failed to send data over BLE connection: ret = %d \n",
+                       "proxy_thread_handler");
               }
               else {
-                ble_printk("%s(): Failed to send data over BLE connection: ret = %d \n",
-                           "proxy_thread_handler",iVar3,BLE_DEBUG);
-                iVar3 = extraout_r2_00;
+                ble_printk("%s(): Failed to send data over BLE connection: ret = %d \n");
               }
             }
-            iVar11 = iVar11 + -1;
-            if (iVar11 == 0) {
+            iVar3 = iVar3 + -1;
+            if (iVar3 == 0) {
               if (LOG_LEVEL < 2) goto LAB_0004b4e6;
               pcVar7 = 
               "%s(): send audio stream more than retry count,break audio send process....\n";
@@ -163,16 +151,15 @@ LAB_0004b4f4:
             }
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): retry send audio data first packet\n");
+                printk("%s(): retry send audio data first packet\n","proxy_thread_handler");
               }
               else {
-                ble_printk("%s(): retry send audio data first packet\n","proxy_thread_handler",iVar3
-                           ,BLE_DEBUG);
+                ble_printk("%s(): retry send audio data first packet\n");
               }
             }
           }
           DAT_2001dfd6 = '\x01';
-          DAT_2000aa58 = DAT_2000aa58 + sVar13;
+          DAT_2000aa58 = DAT_2000aa58 + sVar12;
           FUN_00030db0((uint)DAT_2001e0be);
           goto LAB_0004b854;
         }
@@ -194,16 +181,16 @@ LAB_0004b86e:
     if (DAT_2000aa58 < DAT_2000aa60) {
       memset(&DAT_2001dfd8,0,0xe6);
       if (DAT_2000aa60 - DAT_2000aa58 < 0xbe) {
-        sVar13 = 0;
+        sVar12 = 0;
         if (DAT_2000aa60 - DAT_2000aa58 < 0xbe) {
-          sVar13 = DAT_2000aa60 - DAT_2000aa58;
+          sVar12 = DAT_2000aa60 - DAT_2000aa58;
         }
       }
       else {
-        sVar13 = 0xbe;
+        sVar12 = 0xbe;
       }
       DAT_2001dfd8 = 0x1e;
-      DAT_2001dfd9 = (char)sVar13 + 10;
+      DAT_2001dfd9 = (char)sVar12 + 10;
       DAT_2001dfda = 0;
       DAT_2001dfdb = DAT_2001dfd7;
       DAT_2001dfd7 = DAT_2001dfd7 + '\x01';
@@ -216,61 +203,60 @@ LAB_0004b86e:
       DAT_2001dfe1 = DAT_2001e0be + 1;
       memset(&DAT_2001e0bf,0,0xe6);
       pGVar5 = __get_dashboard_state();
-      pcVar12 = *(code **)&pGVar5->field_0x1044;
+      pcVar11 = *(code **)&pGVar5->field_0x1044;
       pGVar5 = __get_dashboard_state();
-      iVar3 = (*pcVar12)(pGVar5,DAT_2000aa58 + DAT_2000aa6c,&DAT_2001e0bf,sVar13);
+      iVar3 = (*pcVar11)(pGVar5,DAT_2000aa58 + DAT_2000aa6c,&DAT_2001e0bf,sVar12);
       if (iVar3 != 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s():  form address [%d] read data failed.\n\n");
+            printk("%s():  form address [%d] read data failed.\n\n","proxy_thread_handler",0x400000)
+            ;
           }
           else {
-            ble_printk("%s():  form address [%d] read data failed.\n\n","proxy_thread_handler",
-                       0x400000,BLE_DEBUG);
+            ble_printk("%s():  form address [%d] read data failed.\n\n");
           }
         }
 LAB_0004b9a6:
         DAT_2001dfd6 = '\0';
         goto LAB_0004b86e;
       }
-      memcpy(&DAT_2001dfe2,&DAT_2001e0bf,sVar13);
+      memcpy(&DAT_2001dfe2,&DAT_2001e0bf,sVar12);
       iVar3 = 3;
-      while (iVar11 = (**(code **)(param_1 + 0x788))(&DAT_2001dfd8,DAT_2001dfd9), iVar11 < 0) {
+      while (iVar10 = (**(code **)(param_1 + 0x788))(&DAT_2001dfd8,DAT_2001dfd9), iVar10 < 0) {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): Failed to send data over BLE connection: ret = %d \n");
-            iVar11 = extraout_r2_03;
+            printk("%s(): Failed to send data over BLE connection: ret = %d \n",
+                   "proxy_thread_handler");
           }
           else {
-            ble_printk("%s(): Failed to send data over BLE connection: ret = %d \n",
-                       "proxy_thread_handler",iVar11,BLE_DEBUG);
-            iVar11 = extraout_r2_02;
+            ble_printk("%s(): Failed to send data over BLE connection: ret = %d \n");
           }
         }
         iVar3 = iVar3 + -1;
         if (iVar3 == 0) {
           if (1 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): send audio stream more than retry count,break audio send process....\n")
-              ;
+              printk("%s(): send audio stream more than retry count,break audio send process....\n",
+                     "proxy_thread_handler");
             }
             else {
-              ble_printk("%s(): send audio stream more than retry count,break audio send process....\n"
-                         ,"proxy_thread_handler",iVar11,BLE_DEBUG);
+              ble_printk(
+                        "%s(): send audio stream more than retry count,break audio send process....\n"
+                        );
             }
           }
           goto LAB_0004b9a6;
         }
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): retry send audio data\n");
+            printk("%s(): retry send audio data\n","proxy_thread_handler");
           }
           else {
-            ble_printk("%s(): retry send audio data\n","proxy_thread_handler",iVar11,BLE_DEBUG);
+            ble_printk("%s(): retry send audio data\n");
           }
         }
       }
-      DAT_2000aa58 = sVar13 + DAT_2000aa58;
+      DAT_2000aa58 = sVar12 + DAT_2000aa58;
 LAB_0004b854:
       sendAudioStreamFileToApp(1,0);
       goto LAB_0004b4e6;
@@ -292,8 +278,7 @@ LAB_0004b854:
       goto LAB_0004b8d8;
     }
     pGVar5 = __get_dashboard_state();
-    pdVar10 = pGVar5->dashboard_ts;
-    pcVar7 = *(char **)pdVar10;
+    pcVar7 = *(char **)pGVar5->dashboard_ts;
     fmt = "%s(): app request over size data ,break,last packet timestamp = %d\n";
     break;
   case 3:
@@ -301,9 +286,9 @@ LAB_0004b854:
     if (bVar1) {
       memset(&DAT_2001e0bf,0,0xe6);
       pGVar5 = __get_dashboard_state();
-      pcVar12 = *(code **)&pGVar5->field_0x1044;
+      pcVar11 = *(code **)&pGVar5->field_0x1044;
       pGVar5 = __get_dashboard_state();
-      iVar3 = (*pcVar12)(pGVar5,0x400000,&DAT_2001e0bf,0xe6);
+      iVar3 = (*pcVar11)(pGVar5,0x400000,&DAT_2001e0bf,0xe6);
       if (iVar3 != 0) goto LAB_0004b622;
       memset(&DAT_2001dfd8,0,0xe6);
       if (local_3c == 0) {
@@ -320,10 +305,10 @@ LAB_0004b854:
       puVar8 = &DAT_2001dfde;
       iVar3 = 0;
       do {
-        iVar11 = iVar3 + 1;
+        iVar10 = iVar3 + 1;
         puVar9 = puVar8;
         if ((&DAT_2001e0c7)[iVar3 * 5] == 2) {
-          *puVar8 = (char)iVar11;
+          *puVar8 = (char)iVar10;
           uVar4 = (&DAT_2001e0d3)[iVar3 * 5];
           DAT_2001dfdd = DAT_2001dfdd + '\x01';
           puVar8[1] = (char)uVar4;
@@ -338,8 +323,8 @@ LAB_0004b854:
           puVar8[8] = (char)((uint)uVar4 >> 0x18);
         }
         puVar8 = puVar9;
-        iVar3 = iVar11;
-      } while (iVar11 != 4);
+        iVar3 = iVar10;
+      } while (iVar10 != 4);
       DAT_2001dfd9 = DAT_2001dfdd * '\t' + 6;
       for (iVar3 = 0; iVar3 < (int)(uint)DAT_2001dfd9; iVar3 = iVar3 + 1) {
         if (3 < LOG_LEVEL) {
@@ -364,7 +349,6 @@ LAB_0004b5e6:
       fmt = "%s():  [%s] device not ready.\n\n";
     }
 LAB_0004b638:
-    pdVar10 = (dashboard_ts_context *)BLE_DEBUG;
     if (BLE_DEBUG == 0) {
 LAB_0004b8d8:
       printk(fmt,"proxy_thread_handler",pcVar7);
@@ -377,7 +361,7 @@ LAB_0004b8d8:
     local_48._0_2_ = CONCAT11(local_3c,7);
     do {
       pGVar5 = __get_dashboard_state();
-      uVar6 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+      uVar6 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
       if ((int)uVar6 < 5000) {
         display_powerEvent(uVar2);
         z_impl_k_yield();
@@ -385,11 +369,12 @@ LAB_0004b8d8:
       }
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n");
+          printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n",
+                 "proxy_thread_handler",iVar3);
         }
         else {
-          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n",
-                     "proxy_thread_handler",iVar3,BLE_DEBUG);
+          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n")
+          ;
         }
       }
       iVar3 = iVar3 + 1;
@@ -401,18 +386,19 @@ LAB_0004b8d8:
     local_48._0_2_ = CONCAT11(local_3c,8);
     do {
       pGVar5 = __get_dashboard_state();
-      uVar6 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+      uVar6 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
       if ((int)uVar6 < 5000) {
-        upgradeAppLanguageInfoToFlash(uVar2,extraout_r1,extraout_r2_04);
+        upgradeAppLanguageInfoToFlash(uVar2,extraout_r1,extraout_r2);
         break;
       }
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n");
+          printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n",
+                 "proxy_thread_handler",iVar3);
         }
         else {
-          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n",
-                     "proxy_thread_handler",iVar3,BLE_DEBUG);
+          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n")
+          ;
         }
       }
       iVar3 = iVar3 + 1;
@@ -424,18 +410,19 @@ LAB_0004b8d8:
     local_48._0_2_ = CONCAT11(local_3c,9);
     do {
       pGVar5 = __get_dashboard_state();
-      uVar6 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+      uVar6 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
       if ((int)uVar6 < 5000) {
-        upgradeDashboardStartupModeInfoToFlash(uVar2,extraout_r1_00,extraout_r2_05);
+        upgradeDashboardStartupModeInfoToFlash(uVar2,extraout_r1_00,extraout_r2_00);
         break;
       }
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n");
+          printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n",
+                 "proxy_thread_handler",iVar3);
         }
         else {
-          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n",
-                     "proxy_thread_handler",iVar3,BLE_DEBUG);
+          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec quick note start function.\n")
+          ;
         }
       }
       iVar3 = iVar3 + 1;
@@ -445,12 +432,12 @@ LAB_0004b8d8:
     pGVar5 = __get_dashboard_state();
     if (((pGVar5->field_0x1244 == '\x04') &&
         (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0xd] == '\0')) &&
-       (pGVar5 = __get_dashboard_state(), *(char *)pGVar5 == '\x01')) {
+       (pGVar5 = __get_dashboard_state(), pGVar5->is_master == true)) {
       local_48._0_4_ = CONCAT22(local_48._2_2_,0x10a);
       iVar3 = 1;
       do {
         pGVar5 = __get_dashboard_state();
-        uVar2 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+        uVar2 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
         if ((int)uVar2 < 5000) {
           DAT_20008518 = DAT_20008518 | 2;
           pGVar5 = __get_dashboard_state();
@@ -459,13 +446,13 @@ LAB_0004b8d8:
         }
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
-                  );
+            printk("%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
+                   ,"proxy_thread_handler",iVar3);
           }
           else {
-            ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
-                       ,"proxy_thread_handler",iVar3,BLE_DEBUG);
+            ble_printk(
+                      "%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
+                      );
           }
         }
         iVar3 = iVar3 + 1;
@@ -475,12 +462,12 @@ LAB_0004b8d8:
     if (((pGVar5->field20_0xc8[0xd] == '\x06') &&
         ((pGVar5 = __get_dashboard_state(), pGVar5->field_0x1245 != '\0' ||
          (pGVar5 = __get_dashboard_state(), pGVar5->dashboard_ts->field_0x72 != '\0')))) &&
-       (pGVar5 = __get_dashboard_state(), *(char *)pGVar5 == '\x01')) {
+       (pGVar5 = __get_dashboard_state(), pGVar5->is_master == true)) {
       local_48._0_4_ = CONCAT22(local_48._2_2_,0x20a);
       iVar3 = 1;
       do {
         pGVar5 = __get_dashboard_state();
-        uVar2 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+        uVar2 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
         if ((int)uVar2 < 5000) {
           DAT_20008518 = DAT_20008518 | 2;
           pGVar5 = __get_dashboard_state();
@@ -491,13 +478,13 @@ LAB_0004b8d8:
         }
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
-                  );
+            printk("%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
+                   ,"proxy_thread_handler",iVar3);
           }
           else {
-            ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
-                       ,"proxy_thread_handler",iVar3,BLE_DEBUG);
+            ble_printk(
+                      "%s(): SYNC TO Slave failed %d times,don\'t exec double click startup dashboard function.\n"
+                      );
           }
         }
         iVar3 = iVar3 + 1;
@@ -510,18 +497,18 @@ LAB_0004b8d8:
     local_48._0_2_ = CONCAT11(local_3c,0xc);
     do {
       pGVar5 = __get_dashboard_state();
-      uVar6 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+      uVar6 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
       if ((int)uVar6 < 5000) {
-        upgradeDoubleTapCustomizeToFlash(uVar2,extraout_r1_01,extraout_r2_06);
+        upgradeDoubleTapCustomizeToFlash(uVar2);
         break;
       }
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): SYNC TO Slave failed %d times,don\'t exec double_tap_customize\n");
+          printk("%s(): SYNC TO Slave failed %d times,don\'t exec double_tap_customize\n",
+                 "proxy_thread_handler",iVar3);
         }
         else {
-          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec double_tap_customize\n",
-                     "proxy_thread_handler",iVar3,BLE_DEBUG);
+          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec double_tap_customize\n");
         }
       }
       iVar3 = iVar3 + 1;
@@ -533,18 +520,18 @@ LAB_0004b8d8:
     local_48._0_2_ = CONCAT11(local_3c,0xd);
     do {
       pGVar5 = __get_dashboard_state();
-      uVar6 = sync_to_slave((char *)pGVar5,6,(undefined4 *)&local_48,2);
+      uVar6 = sync_to_slave(&pGVar5->is_master,6,(undefined4 *)&local_48,2);
       if ((int)uVar6 < 5000) {
-        upgradeLongpressTapCustomizeToFlash(uVar2,extraout_r1_02,extraout_r2_07);
+        upgradeLongpressTapCustomizeToFlash(uVar2);
         break;
       }
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): SYNC TO Slave failed %d times,don\'t exec longpress_tap_customize\n");
+          printk("%s(): SYNC TO Slave failed %d times,don\'t exec longpress_tap_customize\n",
+                 "proxy_thread_handler",iVar3);
         }
         else {
-          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec longpress_tap_customize\n",
-                     "proxy_thread_handler",iVar3,BLE_DEBUG);
+          ble_printk("%s(): SYNC TO Slave failed %d times,don\'t exec longpress_tap_customize\n");
         }
       }
       iVar3 = iVar3 + 1;
@@ -553,18 +540,17 @@ LAB_0004b8d8:
   default:
     if (0 < LOG_LEVEL) {
       pcVar7 = "%s(): received unkonwn command,drop it\n";
-      iVar3 = extraout_r2;
 LAB_0004b832:
       if (BLE_DEBUG == 0) {
-        printk(pcVar7);
+        printk(pcVar7,"proxy_thread_handler");
       }
       else {
-        ble_printk(pcVar7,"proxy_thread_handler",iVar3,BLE_DEBUG);
+        ble_printk(pcVar7);
       }
     }
     goto LAB_0004b4e6;
   }
-  ble_printk(fmt,"proxy_thread_handler",pcVar7,pdVar10);
+  ble_printk(fmt,"proxy_thread_handler",pcVar7);
   goto LAB_0004b4e6;
 }
 

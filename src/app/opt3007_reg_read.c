@@ -10,7 +10,6 @@ undefined4 opt3007_reg_read(undefined1 param_1,ushort *param_2)
 {
   bool bVar1;
   int iVar2;
-  undefined4 extraout_r2;
   undefined4 uVar3;
   undefined1 local_38 [4];
   ushort local_34 [2];
@@ -36,10 +35,10 @@ undefined4 opt3007_reg_read(undefined1 param_1,ushort *param_2)
     if (iVar2 < 0) {
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): ERR: opt3007 i2c read addr=0x%x,\n");
+          printk("%s(): ERR: opt3007 i2c read addr=0x%x,\n","opt3001_reg_read",0x45);
         }
         else {
-          ble_printk("%s(): ERR: opt3007 i2c read addr=0x%x,\n","opt3001_reg_read",0x45,BLE_DEBUG);
+          ble_printk("%s(): ERR: opt3007 i2c read addr=0x%x,\n");
         }
       }
       uVar3 = 0xfffffffe;
@@ -51,10 +50,10 @@ undefined4 opt3007_reg_read(undefined1 param_1,ushort *param_2)
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Bus device is not ready\n");
+        printk("%s(): Bus device is not ready\n","opt3001_reg_read");
       }
       else {
-        ble_printk("%s(): Bus device is not ready\n","opt3001_reg_read",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): Bus device is not ready\n");
       }
     }
     uVar3 = 0xffffffed;

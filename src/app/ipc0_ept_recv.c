@@ -22,15 +22,15 @@ void ipc0_ept_recv(byte *param_1,int param_2)
     if (iVar2 <= iVar4) {
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk(
-                "%s(): NOT MATCH(cmd=%x)! ipc_receiver_index: %d, len:%d, received_data: %02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n"
-                );
+          printk("%s(): NOT MATCH(cmd=%x)! ipc_receiver_index: %d, len:%d, received_data: %02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n"
+                 ,"ipc0_ept_recv",uVar1,iVar2,param_2,uVar1,(uint)param_1[1],(uint)param_1[2],
+                 (uint)param_1[3],(uint)param_1[4],(uint)param_1[5],(uint)param_1[6],
+                 (uint)param_1[7]);
         }
         else {
-          ble_printk("%s(): NOT MATCH(cmd=%x)! ipc_receiver_index: %d, len:%d, received_data: %02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n"
-                     ,"ipc0_ept_recv",uVar1,iVar2,param_2,uVar1,(uint)param_1[1],(uint)param_1[2],
-                     (uint)param_1[3],(uint)param_1[4],(uint)param_1[5],(uint)param_1[6],
-                     (uint)param_1[7]);
+          ble_printk(
+                    "%s(): NOT MATCH(cmd=%x)! ipc_receiver_index: %d, len:%d, received_data: %02x,%02x,%02x,%02x,%02x,%02x,%02x,%02x\n"
+                    );
         }
       }
       return;

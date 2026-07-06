@@ -11,9 +11,6 @@ undefined4 serialization_init(void)
   int iVar1;
   char *fmt;
   undefined4 extraout_r1;
-  undefined4 extraout_r2;
-  undefined4 uVar2;
-  undefined4 extraout_r2_00;
   k_timeout_t timeout;
   
   iVar1 = ipc_service_open_instance((device *)&PTR_s_ipc0_0008b3b8);
@@ -22,7 +19,6 @@ undefined4 serialization_init(void)
       return 0xffffffff;
     }
     fmt = "%s(): ipc_service_open_instance() failure\n";
-    uVar2 = extraout_r2;
   }
   else {
     iVar1 = ipc_service_register_endpoint
@@ -35,10 +31,10 @@ undefined4 serialization_init(void)
       DAT_20008460 = 1;
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): ipc_service[HOST] has ready!\n\n");
+          printk("%s(): ipc_service[HOST] has ready!\n\n","serialization_init");
         }
         else {
-          ble_printk("%s(): ipc_service[HOST] has ready!\n\n","serialization_init",1,BLE_DEBUG);
+          ble_printk("%s(): ipc_service[HOST] has ready!\n\n");
         }
       }
       return 0;
@@ -47,13 +43,12 @@ undefined4 serialization_init(void)
       return 0xffffffff;
     }
     fmt = "%s(): ipc_service_register_endpoint() failure\n";
-    uVar2 = extraout_r2_00;
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"serialization_init");
   }
   else {
-    ble_printk(fmt,"serialization_init",uVar2,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0xffffffff;
 }

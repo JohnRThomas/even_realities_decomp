@@ -38,10 +38,10 @@ void try_to_save_file(GlassesState *gs_state)
         return;
       }
       if (BLE_DEBUG == 0) {
-        printk("%s(): crc cal end crc32_value %08X\n");
+        printk("%s(): crc cal end crc32_value %08X\n","try_to_save_file",LAST_FILE_CRC);
         return;
       }
-      ble_printk("%s(): crc cal end crc32_value %08X\n","try_to_save_file",LAST_FILE_CRC,BLE_DEBUG);
+      ble_printk("%s(): crc cal end crc32_value %08X\n");
       return;
     }
   }
@@ -84,10 +84,10 @@ void try_to_save_file(GlassesState *gs_state)
   LAST_FILE_CRC = crc32(LAST_FILE_CRC,&DAT_20017d30,0x1000);
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): crc32_value %08X\n");
+      printk("%s(): crc32_value %08X\n","try_to_save_file",LAST_FILE_CRC);
     }
     else {
-      ble_printk("%s(): crc32_value %08X\n","try_to_save_file",LAST_FILE_CRC,BLE_DEBUG);
+      ble_printk("%s(): crc32_value %08X\n");
     }
   }
   DAT_200083bc = DAT_200083bc + 0x1000;

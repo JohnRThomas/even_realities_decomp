@@ -1,11 +1,11 @@
 /*
  * Function: slave_display_thread
  * Entry:    00029fbc
- * Prototype: undefined __stdcall slave_display_thread(int param_1, uint param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall slave_display_thread(int param_1, uint param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void slave_display_thread(int param_1,uint param_2,undefined4 param_3)
+void slave_display_thread(int param_1,uint param_2,undefined4 param_3,undefined4 param_4)
 
 {
   byte bVar1;
@@ -51,12 +51,9 @@ void slave_display_thread(int param_1,uint param_2,undefined4 param_3)
   uint uVar8;
   uint extraout_r2;
   uint extraout_r2_00;
-  uint *extraout_r2_01;
   uint *puVar9;
+  uint *extraout_r2_01;
   uint *extraout_r2_02;
-  uint *extraout_r2_03;
-  undefined4 extraout_r2_04;
-  undefined4 extraout_r2_05;
   undefined1 uVar10;
   undefined1 *puVar11;
   int iVar12;
@@ -76,11 +73,11 @@ void slave_display_thread(int param_1,uint param_2,undefined4 param_3)
   *(undefined1 *)(param_1 + 0xd5) = 0;
   if (1 < (int)LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): enter\n");
+      printk("%s(): enter\n","slave_display_thread",param_3,0,param_4);
       param_2 = extraout_r1_03;
     }
     else {
-      ble_printk("%s(): enter\n","slave_display_thread",param_3,BLE_DEBUG);
+      ble_printk("%s(): enter\n");
       param_2 = extraout_r1;
     }
   }
@@ -143,7 +140,6 @@ LAB_0002a090:
         param_2 = extraout_r1_04;
         if ((int)LOG_LEVEL < 1) break;
         pcVar5 = "%s(): Ignore data...\n";
-        puVar9 = extraout_r2_01;
         goto LAB_0002a0da;
       }
       change_work_mode(2);
@@ -175,24 +171,24 @@ LAB_0002a090:
       if (1 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
           printk("%s(): slave rcv canvas_distance_gear:%d,raster_height_gear:%d\n",
-                 "slave_display_thread");
+                 "slave_display_thread",(uint)*(byte *)(param_1 + 0xe6),
+                 (uint)*(byte *)(param_1 + 0xe7));
         }
         else {
           ble_printk("%s(): slave rcv canvas_distance_gear:%d,raster_height_gear:%d\n",
-                     "slave_display_thread",(uint)*(byte *)(param_1 + 0xe6),
-                     (uint)*(byte *)(param_1 + 0xe7));
+                     "slave_display_thread");
         }
       }
       if ((*(byte *)(param_1 + 0xe6) < 10) && (*(byte *)(param_1 + 0xe7) < 9)) {
         pGVar4 = __get_dashboard_state();
         (pGVar4->jdb_panel_context).field_0x355 = *(undefined1 *)(param_1 + 0xe6);
         pGVar4 = __get_dashboard_state();
-        (pGVar4->jdb_panel_context).field_0x354 = *(undefined1 *)(param_1 + 0xe7);
+        (pGVar4->jdb_panel_context).__raster_height_offset = *(undefined1 *)(param_1 + 0xe7);
         pGVar4 = __get_dashboard_state();
         pGVar6 = __get_dashboard_state();
         cal_panel_canvas_coord
                   ((int *)&(pGVar4->jdb_panel_context).field_0x358,
-                   (int *)&(pGVar6->jdb_panel_context).field_0x34c);
+                   (int *)&(pGVar6->jdb_panel_context).current_column);
       }
     }
     DAT_20019a64 = 1;
@@ -341,12 +337,12 @@ LAB_0002a4b8:
             }
             else if (1 < (int)LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): received key press event ,slave screen id = %d,drop it ...\n");
+                printk("%s(): received key press event ,slave screen id = %d,drop it ...\n",
+                       "slave_display_thread",(uint)*(byte *)(param_1 + 0xd5));
                 param_2 = extraout_r1_21;
               }
               else {
-                ble_printk("%s(): received key press event ,slave screen id = %d,drop it ...\n",
-                           "slave_display_thread",(uint)*(byte *)(param_1 + 0xd5),BLE_DEBUG);
+                ble_printk("%s(): received key press event ,slave screen id = %d,drop it ...\n");
                 param_2 = extraout_r1_20;
               }
             }
@@ -414,12 +410,11 @@ LAB_0002a4f2:
         puVar11 = extraout_r3;
         if ((iVar12 == 0) && (puVar11 = LOG_LEVEL, 1 < (int)LOG_LEVEL)) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): ble device unbound,prepare to show binding tip\n");
+            printk("%s(): ble device unbound,prepare to show binding tip\n","slave_display_thread");
             puVar11 = extraout_r3_01;
           }
           else {
-            ble_printk("%s(): ble device unbound,prepare to show binding tip\n",
-                       "slave_display_thread",extraout_r2_04,BLE_DEBUG);
+            ble_printk("%s(): ble device unbound,prepare to show binding tip\n");
             puVar11 = extraout_r3_00;
           }
         }
@@ -458,11 +453,11 @@ LAB_0002a4f2:
       ;
 LAB_0002a0da:
       if (BLE_DEBUG == 0) {
-        printk(pcVar5);
+        printk(pcVar5,"slave_display_thread");
         param_2 = extraout_r1_22;
       }
       else {
-        ble_printk(pcVar5,"slave_display_thread",puVar9,BLE_DEBUG);
+        ble_printk(pcVar5);
         param_2 = extraout_r1_05;
       }
       break;
@@ -470,15 +465,15 @@ LAB_0002a0da:
       bVar1 = *(byte *)(param_1 + 0xe6);
       if (((uint)CURRENT_LANGUAGE != (uint)bVar1) && (1 < (int)LOG_LEVEL)) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): The information sent by the host is different from that of the APP\n");
+          printk("%s(): The information sent by the host is different from that of the APP\n",
+                 "slave_display_thread");
           param_2 = extraout_r1_25;
-          puVar9 = extraout_r2_03;
+          puVar9 = extraout_r2_02;
         }
         else {
-          ble_printk("%s(): The information sent by the host is different from that of the APP\n",
-                     "slave_display_thread",&switchD_0002a2c6::switchdataD_0002a2cc,BLE_DEBUG);
+          ble_printk("%s(): The information sent by the host is different from that of the APP\n");
           param_2 = extraout_r1_23;
-          puVar9 = extraout_r2_02;
+          puVar9 = extraout_r2_01;
         }
       }
       upgradeAppLanguageInfoToFlash((uint)bVar1,param_2,puVar9);
@@ -500,13 +495,11 @@ LAB_0002a0da:
       }
       break;
     case 0xb:
-      upgradeDoubleTapCustomizeToFlash
-                ((uint)*(byte *)(param_1 + 0xe6),param_2,&switchD_0002a2c6::switchdataD_0002a2cc);
+      upgradeDoubleTapCustomizeToFlash((uint)*(byte *)(param_1 + 0xe6));
       param_2 = extraout_r1_27;
       break;
     case 0xc:
-      upgradeLongpressTapCustomizeToFlash
-                ((uint)*(byte *)(param_1 + 0xe6),param_2,&switchD_0002a2c6::switchdataD_0002a2cc);
+      upgradeLongpressTapCustomizeToFlash((uint)*(byte *)(param_1 + 0xe6));
       param_2 = extraout_r1_28;
       break;
     case 0xd:
@@ -522,11 +515,10 @@ LAB_0002a0da:
             *(char *)(*(int *)&pGVar4->field_0x1014 + 3) == '\x13')))) {
           if (1 < (int)LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): evenai_v2 need to show network_err tip\n");
+              printk("%s(): evenai_v2 need to show network_err tip\n","slave_display_thread");
             }
             else {
-              ble_printk("%s(): evenai_v2 need to show network_err tip\n","slave_display_thread",
-                         extraout_r2_05,BLE_DEBUG);
+              ble_printk("%s(): evenai_v2 need to show network_err tip\n");
             }
           }
           pGVar4 = __get_dashboard_state();
@@ -562,8 +554,8 @@ LAB_0002a0da:
     case 1:
       DAT_20019a6d = 1;
       clear_timeout_message(0);
-      FUN_0002dd98();
-      FUN_000359fc();
+      uVar14 = FUN_0002dd98();
+      FUN_000359fc((uint)uVar14,(int)((ulonglong)uVar14 >> 0x20));
       update_temp_task_status(param_1,4,2);
       uVar8 = 1;
       pcVar5 = "IMU:wakeup:uncomplete msg";

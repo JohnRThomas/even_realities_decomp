@@ -11,10 +11,10 @@ uint panel_set_brightness_level(int param_1,uint param_2)
   if ((*(byte *)(param_1 + 0x369) != param_2) &&
      (*(char *)(param_1 + 0x369) = (char)param_2, 2 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): new: %d\n");
+      printk("%s(): new: %d\n","panel_set_brightness_level",param_2);
     }
     else {
-      ble_printk("%s(): new: %d\n","panel_set_brightness_level",param_2,BLE_DEBUG);
+      ble_printk("%s(): new: %d\n");
     }
   }
   return param_2;

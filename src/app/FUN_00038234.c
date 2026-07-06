@@ -12,7 +12,7 @@ void FUN_00038234(uint param_1)
     param_1 = 0;
   }
   DAT_2001c4e0 = 1;
-  DAT_2001c4df = (char)param_1;
+  CHAR____2001c4df = (char)param_1;
   return;
 }
 

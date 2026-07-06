@@ -10,9 +10,6 @@ int ext_flash_read(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
 {
   int iVar1;
   int extraout_r1;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 uVar2;
   k_timeout_t timeout;
   
   iVar1 = (uint)*(ushort *)(param_1 + 0x1070) << 0x1b;
@@ -31,20 +28,18 @@ int ext_flash_read(int param_1,undefined4 param_2,undefined4 param_3,undefined4 
     z_impl_k_mutex_lock((k_mutex *)&DAT_20008534,timeout);
     iVar1 = (*(code *)**(undefined4 **)(DAT_20008548 + 8))(DAT_20008548,param_2,param_3,param_4);
     z_impl_k_mutex_unlock((k_mutex *)&DAT_20008534);
-    uVar2 = extraout_r2;
     if (-1 < (int)((uint)*(ushort *)(param_1 + 0x1070) << 0x1b)) {
       FUN_0007f32a();
-      uVar2 = extraout_r2_00;
     }
     if (iVar1 != 0) {
       if (LOG_LEVEL < 1) {
         return iVar1;
       }
       if (BLE_DEBUG != 0) {
-        ble_printk("%s(): flash read fail!\n","ext_flash_read",uVar2,BLE_DEBUG);
+        ble_printk("%s(): flash read fail!\n");
         return iVar1;
       }
-      printk("%s(): flash read fail!\n");
+      printk("%s(): flash read fail!\n","ext_flash_read");
       return iVar1;
     }
   }

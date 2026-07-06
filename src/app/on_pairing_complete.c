@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void __on_pairing_complete(k_work *param_1,undefined4 param_2)
 
 {
@@ -36,7 +34,7 @@ void __on_pairing_complete(k_work *param_1,undefined4 param_2)
       pGVar2 = __get_dashboard_state();
       *(undefined4 *)&pGVar2->field_0x1060 = 0;
       pGVar2 = __get_dashboard_state();
-      k_sem_give(&pGVar2->sem_6);
+      k_sem_give(&pGVar2->dashboard_position_sem);
     }
   }
   pGVar2 = __get_dashboard_state();
@@ -44,7 +42,7 @@ void __on_pairing_complete(k_work *param_1,undefined4 param_2)
   *(undefined2 *)(pGVar2->field1211_0x1080 + 5) = *(undefined2 *)&(addr->work).handler;
   *(undefined1 *)&pGVar2->field1212_0x1087 = *(undefined1 *)((int)&(addr->work).handler + 2);
   printk("Pairing completed: %s, bonded: %d\n",acStack_38,param_2);
-  *(undefined1 *)(_DAT_20006c98 + 0x367) = 0;
+  *(undefined1 *)(DAT_20006c98 + 0x367) = 0;
   return;
 }
 

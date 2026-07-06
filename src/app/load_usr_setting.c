@@ -10,18 +10,9 @@ undefined4 load_usr_setting(int param_1)
 {
   char cVar1;
   int iVar2;
-  undefined4 extraout_r1;
-  undefined4 extraout_r1_00;
-  undefined4 extraout_r1_01;
-  undefined4 extraout_r1_02;
-  undefined4 extraout_r1_03;
-  undefined4 extraout_r2;
-  uint uVar3;
-  uint extraout_r2_00;
-  uint extraout_r2_01;
   undefined4 extraout_r3;
-  undefined4 uVar4;
-  char *pcVar5;
+  undefined4 uVar3;
+  uint uVar4;
   undefined1 local_44;
   undefined1 local_43;
   undefined1 local_42;
@@ -43,22 +34,19 @@ undefined4 load_usr_setting(int param_1)
   char local_2b;
   undefined1 local_2a;
   undefined4 local_28;
-  byte local_24;
+  undefined1 local_24;
   undefined1 local_22;
   undefined2 local_20;
   
   memset(&local_44,0,0x2c);
   iVar2 = flash_settings_read(0x134000,&local_44,0x2c,extraout_r3);
   if (iVar2 == 0) {
-    uVar4 = extraout_r1;
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): read user settings success!\n");
-        uVar4 = extraout_r1_03;
+        printk("%s(): read user settings success!\n","load_usr_setting");
       }
       else {
-        ble_printk("%s(): read user settings success!\n","load_usr_setting",extraout_r2,BLE_DEBUG);
-        uVar4 = extraout_r1_00;
+        ble_printk("%s(): read user settings success!\n");
       }
     }
     *(undefined1 *)(param_1 + 0xfee) = local_44;
@@ -86,19 +74,16 @@ undefined4 load_usr_setting(int param_1)
     }
     *(char *)(param_1 + 0x10d7) = local_2b;
     *(undefined1 *)(param_1 + 0x10d8) = local_2f;
-    uVar3 = (uint)local_24;
     *(undefined1 *)(param_1 + 0x10d9) = local_2e;
-    pcVar5 = (char *)(uint)local_2d;
+    uVar4 = (uint)local_2d;
     *(undefined1 *)(param_1 + 0xec1) = local_2c;
     *(undefined4 *)(param_1 + 0xf6c) = local_28;
     *(undefined1 *)(param_1 + 0x1244) = local_2a;
-    *(byte *)(*(int *)(param_1 + 0xff0) + 0x5f) = local_24;
+    *(undefined1 *)(*(int *)(param_1 + 0xff0) + 0x5f) = local_24;
     *(undefined1 *)(param_1 + 0xee0) = local_22;
     *(undefined2 *)(param_1 + 0x1246) = local_20;
     if ((*(char *)(param_1 + 0xfee) == -1) && (*(char *)(param_1 + 0xf64) == -1)) {
       __clear_user_settings(param_1);
-      uVar4 = extraout_r1_01;
-      uVar3 = extraout_r2_00;
     }
     if (8 < *(byte *)(param_1 + 0xec0)) {
       *(undefined1 *)(param_1 + 0xec0) = 3;
@@ -109,13 +94,11 @@ undefined4 load_usr_setting(int param_1)
     if (*(char *)(param_1 + 0xfee) == '\v') {
       *(undefined1 *)(param_1 + 0xfee) = 10;
       FUN_0007f556(param_1);
-      uVar4 = extraout_r1_02;
-      uVar3 = extraout_r2_01;
     }
-    if (&DAT_00000002 <= pcVar5) {
-      pcVar5 = (char *)0x0;
+    if (1 < uVar4) {
+      uVar4 = 0;
     }
-    __set_test_mode(pcVar5,uVar4,uVar3);
+    __set_test_mode(uVar4);
     cVar1 = FUN_00033d5c();
     if (cVar1 == '\x01') {
       *(undefined1 *)(param_1 + 0xf9c) = 0;
@@ -141,7 +124,7 @@ undefined4 load_usr_setting(int param_1)
     if (1 < *(byte *)(param_1 + 0x1246)) {
       *(undefined1 *)(param_1 + 0x1246) = 0;
     }
-    uVar4 = 0;
+    uVar3 = 0;
     if (1 < *(byte *)(param_1 + 0x1247)) {
       *(undefined1 *)(param_1 + 0x1247) = 0;
     }
@@ -149,16 +132,15 @@ undefined4 load_usr_setting(int param_1)
   else {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): usr_flash_settings_read error!\n");
+        printk("%s(): usr_flash_settings_read error!\n","load_usr_setting");
       }
       else {
-        ble_printk("%s(): usr_flash_settings_read error!\n","load_usr_setting",extraout_r2,BLE_DEBUG
-                  );
+        ble_printk("%s(): usr_flash_settings_read error!\n");
       }
     }
-    uVar4 = 0xffffffff;
+    uVar3 = 0xffffffff;
   }
-  return uVar4;
+  return uVar3;
 }
 
 

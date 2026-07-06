@@ -9,15 +9,14 @@ int clean_dmic_msgq(void)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   
   iVar1 = k_msgq_cleanup(&dmic_msgq);
   if ((iVar1 != 0) && (0 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): dmic cleanup failed\n");
+      printk("%s(): dmic cleanup failed\n","clean_dmic_msgq");
     }
     else {
-      ble_printk("%s(): dmic cleanup failed\n","clean_dmic_msgq",extraout_r2,BLE_DEBUG);
+      ble_printk("%s(): dmic cleanup failed\n");
     }
   }
   return iVar1;

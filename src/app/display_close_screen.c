@@ -18,11 +18,10 @@ undefined4 display_close_screen(int param_1,undefined4 param_2)
   if (param_1 != 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): display_close_screen %d\n");
+        printk("%s(): display_close_screen %d\n","display_close_screen",param_1,0,param_1);
       }
       else {
-        ble_printk("%s(): display_close_screen %d\n","display_close_screen",param_1,BLE_DEBUG,
-                   param_1);
+        ble_printk("%s(): display_close_screen %d\n");
       }
     }
     if (param_1 == 4) {

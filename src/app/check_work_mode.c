@@ -47,34 +47,29 @@ void check_work_mode(int param_1,int param_2,int param_3)
   undefined4 uVar8;
   undefined4 extraout_r2_01;
   undefined4 extraout_r2_02;
-  undefined4 extraout_r2_03;
   byte *pbVar9;
-  undefined4 extraout_r2_04;
-  undefined4 extraout_r2_05;
-  undefined4 extraout_r2_07;
-  undefined4 extraout_r2_08;
-  undefined4 extraout_r2_09;
+  undefined4 extraout_r2_03;
+  undefined1 *extraout_r2_05;
+  undefined1 *extraout_r2_06;
+  undefined1 *extraout_r2_07;
+  undefined1 *extraout_r2_08;
+  undefined1 *extraout_r2_09;
+  undefined1 *puVar10;
   undefined1 *extraout_r2_10;
   undefined1 *extraout_r2_11;
   undefined1 *extraout_r2_12;
-  undefined1 *extraout_r2_13;
+  undefined4 extraout_r2_13;
   undefined1 *extraout_r2_14;
-  undefined1 *puVar10;
-  undefined1 *extraout_r2_15;
+  undefined4 extraout_r2_15;
   undefined1 *extraout_r2_16;
   undefined1 *extraout_r2_17;
-  undefined4 extraout_r2_18;
-  undefined1 *extraout_r2_19;
-  undefined4 extraout_r2_20;
-  undefined1 *extraout_r2_21;
-  undefined1 *extraout_r2_22;
-  undefined1 *extraout_r2_23;
+  undefined1 *extraout_r2_18;
   uint uVar11;
   k_timeout_t timeout;
   k_timeout_t timeout_00;
   undefined8 uVar12;
   undefined4 extraout_r2_00;
-  undefined4 extraout_r2_06;
+  undefined4 extraout_r2_04;
   
   bVar1 = FUN_000169b4();
   uVar11 = (uint)bVar1;
@@ -109,9 +104,9 @@ void check_work_mode(int param_1,int param_2,int param_3)
       (pGVar2 = __get_dashboard_state(), '\0' < (char)pGVar2->field_0xfcc)) &&
      ((pGVar2 = __get_dashboard_state(), (byte)pGVar2->field_0xfc4 < 2 && (param_1 == 0)))) {
     pGVar2 = __get_dashboard_state();
-    if (*(char *)pGVar2 == '\x01') {
+    if (pGVar2->is_master == true) {
       pGVar2 = __get_dashboard_state();
-      sync_to_slave((char *)pGVar2,3,(undefined4 *)0x0,0);
+      sync_to_slave(&pGVar2->is_master,3,(undefined4 *)0x0,0);
     }
     else {
       pGVar2 = __get_dashboard_state();
@@ -156,7 +151,6 @@ void check_work_mode(int param_1,int param_2,int param_3)
             change_work_mode(4);
             if (0 < (int)LOG_LEVEL) {
               pcVar3 = "%s(): MODE_NORMAL_LOW_POWER_ID\n";
-              uVar7 = extraout_r2_09;
               goto LAB_00029a46;
             }
           }
@@ -167,7 +161,6 @@ void check_work_mode(int param_1,int param_2,int param_3)
           change_work_mode(5);
           if (0 < (int)LOG_LEVEL) {
             pcVar3 = "%s(): MODE_CHARGING_RUN_ID\n";
-            uVar7 = extraout_r2_08;
             goto LAB_00029a46;
           }
         }
@@ -177,13 +170,12 @@ void check_work_mode(int param_1,int param_2,int param_3)
           change_work_mode(6);
           if (0 < (int)LOG_LEVEL) {
             pcVar3 = "%s(): MODE_CHARGING_LOW_POWER_ID\n";
-            uVar7 = extraout_r2_07;
 LAB_00029a46:
             if (BLE_DEBUG == 0) {
-              printk(pcVar3);
+              printk(pcVar3,"check_work_mode");
             }
             else {
-              ble_printk(pcVar3,"check_work_mode",uVar7,BLE_DEBUG);
+              ble_printk(pcVar3);
             }
           }
         }
@@ -200,7 +192,6 @@ LAB_000299ec:
       is_box_charging = FUN_0002da10((int)pGVar2);
       if ((is_box_charging) && (change_work_mode(2), 0 < (int)LOG_LEVEL)) {
         pcVar3 = "%s(): MODE_NORMAL_RUN_ID\n";
-        uVar7 = extraout_r2_04;
         goto LAB_00029910;
       }
     }
@@ -210,13 +201,12 @@ LAB_000299ec:
       change_work_mode(3);
       if (0 < (int)LOG_LEVEL) {
         pcVar3 = "%s(): MODE_NORMAL_STANBY_ID\n";
-        uVar7 = extraout_r2_03;
 LAB_00029910:
         if (BLE_DEBUG == 0) {
-          printk(pcVar3);
+          printk(pcVar3,"check_work_mode");
         }
         else {
-          ble_printk(pcVar3,"check_work_mode",uVar7,BLE_DEBUG);
+          ble_printk(pcVar3);
         }
       }
     }
@@ -260,24 +250,24 @@ LAB_00029938:
      (pGVar2 = __get_dashboard_state(), (pGVar2->__work_mode_sem).count == 2)) {
     pGVar2 = __get_dashboard_state();
     uVar7 = extraout_r1_04;
-    uVar8 = extraout_r2_05;
+    uVar8 = extraout_r2_03;
     if ((pGVar2->__work_mode_sem).count == 2) {
       pGVar2 = __get_dashboard_state();
       timeout_00.ticks._4_4_ = 0xffffffff;
       timeout_00.ticks._0_4_ = extraout_r1_05;
       z_impl_k_sem_take(&pGVar2->__work_mode_sem,timeout_00);
       uVar7 = extraout_r1_06;
-      uVar8 = extraout_r2_06;
+      uVar8 = extraout_r2_04;
     }
 LAB_00029828:
     if (0 < (int)LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): EVENT_GLASS_HAS_FINISH_BIND\n");
+        printk("%s(): EVENT_GLASS_HAS_FINISH_BIND\n","check_work_mode");
         uVar7 = extraout_r1_03;
         uVar8 = extraout_r2_02;
       }
       else {
-        ble_printk("%s(): EVENT_GLASS_HAS_FINISH_BIND\n","check_work_mode",uVar8,BLE_DEBUG);
+        ble_printk("%s(): EVENT_GLASS_HAS_FINISH_BIND\n");
         uVar7 = extraout_r1_02;
         uVar8 = extraout_r2_01;
       }
@@ -291,11 +281,11 @@ LAB_00029828:
     if (is_box_charging) {
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): EVENT_ENTER_WARED\n");
+          printk("%s(): EVENT_ENTER_WARED\n","check_work_mode");
           uVar7 = extraout_r1_13;
         }
         else {
-          ble_printk("%s(): EVENT_ENTER_WARED\n","check_work_mode",extraout_r2_10,BLE_DEBUG);
+          ble_printk("%s(): EVENT_ENTER_WARED\n");
           uVar7 = extraout_r1_12;
         }
       }
@@ -304,11 +294,11 @@ LAB_00029828:
     else {
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): EVENT_UNWARED_OUTBOX\n");
+          printk("%s(): EVENT_UNWARED_OUTBOX\n","check_work_mode");
           uVar7 = extraout_r1_15;
         }
         else {
-          ble_printk("%s(): EVENT_UNWARED_OUTBOX\n","check_work_mode",extraout_r2_10,BLE_DEBUG);
+          ble_printk("%s(): EVENT_UNWARED_OUTBOX\n");
           uVar7 = extraout_r1_14;
         }
       }
@@ -321,19 +311,18 @@ LAB_00029828:
     DAT_20019a52 = '\x04';
   }
   else {
-    puVar6 = extraout_r2_10;
+    puVar6 = extraout_r2_05;
     if (param_2 == 0) {
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): EVENT_PUT_IN_GLASS_BOX_OPEN\n");
+          printk("%s(): EVENT_PUT_IN_GLASS_BOX_OPEN\n","check_work_mode");
           uVar7 = extraout_r1_11;
-          puVar6 = extraout_r2_14;
+          puVar6 = extraout_r2_09;
         }
         else {
-          ble_printk("%s(): EVENT_PUT_IN_GLASS_BOX_OPEN\n","check_work_mode",extraout_r2_10,
-                     BLE_DEBUG);
+          ble_printk("%s(): EVENT_PUT_IN_GLASS_BOX_OPEN\n");
           uVar7 = extraout_r1_10;
-          puVar6 = extraout_r2_13;
+          puVar6 = extraout_r2_08;
         }
       }
       uVar11 = 8;
@@ -341,15 +330,14 @@ LAB_00029828:
     else {
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): EVENT_PUT_IN_GLASS_BOX_CLOSE\n");
+          printk("%s(): EVENT_PUT_IN_GLASS_BOX_CLOSE\n","check_work_mode");
           uVar7 = extraout_r1_09;
-          puVar6 = extraout_r2_12;
+          puVar6 = extraout_r2_07;
         }
         else {
-          ble_printk("%s(): EVENT_PUT_IN_GLASS_BOX_CLOSE\n","check_work_mode",extraout_r2_10,
-                     BLE_DEBUG);
+          ble_printk("%s(): EVENT_PUT_IN_GLASS_BOX_CLOSE\n");
           uVar7 = extraout_r1_08;
-          puVar6 = extraout_r2_11;
+          puVar6 = extraout_r2_06;
         }
       }
       uVar11 = 0xb;
@@ -368,14 +356,14 @@ LAB_00029828:
     DAT_2000304a = bVar1;
     if (0 < (int)LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): EVENT_STATE_BATTERY_PERCENT %d\n");
+        printk("%s(): EVENT_STATE_BATTERY_PERCENT %d\n","check_work_mode");
         puVar6 = extraout_r1_17;
-        puVar10 = extraout_r2_16;
+        puVar10 = extraout_r2_11;
       }
       else {
-        ble_printk("%s(): EVENT_STATE_BATTERY_PERCENT %d\n","check_work_mode",puVar10,BLE_DEBUG);
+        ble_printk("%s(): EVENT_STATE_BATTERY_PERCENT %d\n");
         puVar6 = extraout_r1_16;
-        puVar10 = extraout_r2_15;
+        puVar10 = extraout_r2_10;
       }
     }
     iVar5 = 10;
@@ -394,15 +382,15 @@ LAB_00029c2c:
       pGVar2 = __get_dashboard_state();
       DAT_20003049 = (byte)uVar11;
       pGVar2->field_0x794 = DAT_20003049;
-      FUN_00029774(9,extraout_r1_22,extraout_r2_20);
+      FUN_00029774(9,extraout_r1_22,extraout_r2_15);
       if ((int)LOG_LEVEL < 1) {
         return;
       }
       if (BLE_DEBUG == 0) {
-        printk("%s(): EVENT_STATE_CHARGING %d\n");
+        printk("%s(): EVENT_STATE_CHARGING %d\n","check_work_mode",uVar11);
         return;
       }
-      ble_printk("%s(): EVENT_STATE_CHARGING %d\n","check_work_mode",uVar11,BLE_DEBUG);
+      ble_printk("%s(): EVENT_STATE_CHARGING %d\n");
       return;
     }
     DAT_20019a52 = '\0';
@@ -429,14 +417,14 @@ LAB_00029c2c:
         DAT_2000304b = bVar1;
         if (0 < (int)LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): EVENT_GLASS_BOX_STATUS %d\n");
+            printk("%s(): EVENT_GLASS_BOX_STATUS %d\n","check_work_mode",uVar11);
             uVar7 = extraout_r1_24;
-            puVar6 = extraout_r2_22;
+            puVar6 = extraout_r2_17;
           }
           else {
-            ble_printk("%s(): EVENT_GLASS_BOX_STATUS %d\n","check_work_mode",uVar11,BLE_DEBUG);
+            ble_printk("%s(): EVENT_GLASS_BOX_STATUS %d\n");
             uVar7 = extraout_r1_23;
-            puVar6 = extraout_r2_21;
+            puVar6 = extraout_r2_16;
           }
         }
         FUN_00029774(0xe,uVar7,puVar6);
@@ -462,14 +450,14 @@ LAB_00029c2c:
       DAT_2000304c = bVar1;
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): EVENT_GLASS_BOX_SOC %d\n","check_work_mode",uVar11);
+          printk("%s(): EVENT_GLASS_BOX_SOC %d\n","check_work_mode",uVar11,uVar11);
           puVar6 = extraout_r1_25;
-          puVar10 = extraout_r2_23;
+          puVar10 = extraout_r2_18;
         }
         else {
-          ble_printk("%s(): EVENT_GLASS_BOX_SOC %d\n","check_work_mode",uVar11,uVar11);
+          ble_printk("%s(): EVENT_GLASS_BOX_SOC %d\n","check_work_mode",uVar11);
           puVar6 = extraout_r1_19;
-          puVar10 = extraout_r2_17;
+          puVar10 = extraout_r2_12;
         }
       }
       iVar5 = 0xf;
@@ -477,16 +465,16 @@ LAB_00029c2c:
     }
     if (0 < (int)LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): last_box_soc is %d, box_soc is %d\n","check_work_mode");
+        printk("%s(): last_box_soc is %d, box_soc is %d\n","check_work_mode",(uint)DAT_2000304c,
+               uVar11);
       }
       else {
-        ble_printk("%s(): last_box_soc is %d, box_soc is %d\n","check_work_mode",(uint)DAT_2000304c,
-                   uVar11);
+        ble_printk("%s(): last_box_soc is %d, box_soc is %d\n","check_work_mode");
       }
     }
   }
   pGVar2 = __get_dashboard_state();
-  if (*(char *)pGVar2 != '\x01') {
+  if (pGVar2->is_master != true) {
     return;
   }
   pGVar2 = __get_dashboard_state();
@@ -494,7 +482,7 @@ LAB_00029c2c:
     return;
   }
   pGVar2 = __get_dashboard_state();
-  bVar1 = FUN_00010848(&pGVar2->opt3007_context,extraout_r1_20,extraout_r2_18);
+  bVar1 = FUN_00010848(&pGVar2->opt3007_context,extraout_r1_20,extraout_r2_13);
   if (bVar1 == 0xff) {
     return;
   }
@@ -506,7 +494,7 @@ LAB_00029c2c:
   DAT_20003048 = (pGVar2->jdb_panel_context).panel_brightness_level;
   iVar5 = 0x12;
   puVar6 = extraout_r1_21;
-  puVar10 = extraout_r2_19;
+  puVar10 = extraout_r2_14;
 LAB_00029bb2:
   FUN_00029774(iVar5,puVar6,puVar10);
   return;

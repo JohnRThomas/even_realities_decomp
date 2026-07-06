@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void discover_ancs(bt_conn *param_1,int param_2)
 
 {
@@ -24,9 +22,9 @@ void discover_ancs(bt_conn *param_1,int param_2)
   uint8_t local_24 [16];
   
   pGVar2 = __get_dashboard_state();
-  if (((*(char *)pGVar2 == '\x02') && (cVar1 = FUN_00033d5c(), cVar1 != '\x01')) &&
-     (uVar7 = _ancs_discovery_flags | 1, iVar5 = _ancs_discovery_flags << 0x1f,
-     _ancs_discovery_flags = uVar7, -1 < iVar5)) {
+  if (((pGVar2->is_master == true) && (cVar1 = FUN_00033d5c(), cVar1 != '\x01')) &&
+     (uVar7 = ancs_discovery_flags | 1, iVar5 = ancs_discovery_flags << 0x1f,
+     ancs_discovery_flags = uVar7, -1 < iVar5)) {
     if (((int)(uVar7 << 0x1e) < 0) ||
        ((param_2 != 0 &&
         (aVar3 = atomic_and((atomic_t *)&ancs_discovery_flags,-5), -1 < aVar3 << 0x1d)))) {

@@ -5,16 +5,11 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void recv_ble_data(int param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r1;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
   undefined1 uVar2;
   byte local_1c8 [4];
   int local_1c4 [2];
@@ -34,20 +29,18 @@ void recv_ble_data(int param_1)
     if (local_1c4[0] == 0) {
       local_1c4[0] = 1;
     }
-    local_1bc = _DAT_20006c8c;
-    dump_ancs("FROM:ancs",(int)local_1c4,extraout_r2,_DAT_20006c8c);
-    if ((local_14 < 2) &&
-       (iVar1 = is_on_whitelist_by_identifier(local_1b4,extraout_r1,extraout_r2_00,local_14),
-       iVar1 != 2)) {
+    local_1bc = DAT_20006c8c;
+    dump_ancs("FROM:ancs",(int)local_1c4,extraout_r2,DAT_20006c8c);
+    if ((local_14 < 2) && (iVar1 = is_on_whitelist_by_identifier(local_1b4), iVar1 != 2)) {
       if (iVar1 != 3) {
         if (iVar1 != 1) {
           return;
         }
         if (BLE_DEBUG == 0) {
-          printk("blocked! app(%s) not in whitelist \n");
+          printk("blocked! app(%s) not in whitelist \n",local_1b4);
         }
         else {
-          ble_printk("blocked! app(%s) not in whitelist \n",local_1b4,extraout_r2_01,BLE_DEBUG);
+          ble_printk("blocked! app(%s) not in whitelist \n");
         }
         com_android_phone_missed((int)local_1c4);
         return;

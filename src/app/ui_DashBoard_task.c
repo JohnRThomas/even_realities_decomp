@@ -48,10 +48,10 @@ LAB_0003d54a:
       fmt = "%s(): current quicknote index = %d\n";
 LAB_0003d55a:
       if (BLE_DEBUG == 0) {
-        printk(fmt);
+        printk(fmt,"ui_DashBoard_task",uVar9);
       }
       else {
-        ble_printk(fmt,"ui_DashBoard_task",uVar9,BLE_DEBUG);
+        ble_printk(fmt);
       }
     }
   }
@@ -62,11 +62,10 @@ LAB_0003d55a:
       if (unaff_r9 == 6) {
         if (2 < *unaff_r6) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): received system low power event.\n");
+            printk("%s(): received system low power event.\n","ui_DashBoard_task",param_2);
           }
           else {
-            ble_printk("%s(): received system low power event.\n","ui_DashBoard_task",param_2,
-                       BLE_DEBUG);
+            ble_printk("%s(): received system low power event.\n");
           }
         }
         pGVar6 = __get_dashboard_state();
@@ -78,11 +77,10 @@ LAB_0003d55a:
         if (unaff_r9 != 7) goto LAB_0003d43e;
         if (2 < *unaff_r6) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): received system  power resume event.\n");
+            printk("%s(): received system  power resume event.\n","ui_DashBoard_task",param_2);
           }
           else {
-            ble_printk("%s(): received system  power resume event.\n","ui_DashBoard_task",param_2,
-                       BLE_DEBUG);
+            ble_printk("%s(): received system  power resume event.\n");
           }
         }
         pGVar6 = __get_dashboard_state();
@@ -90,26 +88,26 @@ LAB_0003d55a:
         pdVar10 = pGVar6->dashboard_ts;
         uVar7 = extraout_r1_00;
       }
-      pdVar10->field_0x60 = (char)uVar8;
+      *(char *)((int)&pdVar10->time_disp_mode + 2) = (char)uVar8;
       __send_message_count_to_app(pGVar6,uVar7,uVar8,pdVar10);
       goto LAB_0003d43e;
     }
     if (0 < *unaff_r6) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): received key press event,_dashboard_prv_data.display_mode = %d\n");
+        printk("%s(): received key press event,_dashboard_prv_data.display_mode = %d\n",
+               "ui_DashBoard_task",(uint)*(byte *)(uVar11 + 0x19));
       }
       else {
-        ble_printk("%s(): received key press event,_dashboard_prv_data.display_mode = %d\n",
-                   "ui_DashBoard_task",(uint)*(byte *)(uVar11 + 0x19),BLE_DEBUG);
+        ble_printk("%s(): received key press event,_dashboard_prv_data.display_mode = %d\n");
       }
     }
     uVar9 = (uint)*(byte *)(uVar11 + 0x1a);
     if (0 < *unaff_r6) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): _CurrentCustomAreaType = %d\n");
+        printk("%s(): _CurrentCustomAreaType = %d\n",_dmic_record_start,uVar9);
       }
       else {
-        ble_printk("%s(): _CurrentCustomAreaType = %d\n",_dmic_record_start,uVar9,BLE_DEBUG);
+        ble_printk("%s(): _CurrentCustomAreaType = %d\n");
       }
     }
     if (uVar9 != 0) {
@@ -172,7 +170,7 @@ LAB_0003d562:
             ((int)uVar14,(int)((ulonglong)uVar14 >> 0x20),extraout_r2,extraout_r3);
 LAB_0003d43e:
   pGVar6 = __get_dashboard_state();
-  if (*(char *)pGVar6 == '\x01') {
+  if (pGVar6->is_master == true) {
     iVar5 = FUN_00080756();
     uVar13 = sys_clock_tick_get();
     lVar1 = (uVar13 & 0xffffffff) * 1000;
@@ -181,7 +179,7 @@ LAB_0003d43e:
     uVar12 = uVar12 >> 0xf;
     if (iVar5 == 0) {
       pGVar6 = __get_dashboard_state();
-      if (pGVar6->dashboard_ts->field_0x60 != '\0') {
+      if (*(char *)((int)&pGVar6->dashboard_ts->time_disp_mode + 2) != '\0') {
         if (*(char *)(uVar11 + 0xe) != '\0') {
           return 0;
         }
@@ -194,7 +192,7 @@ LAB_0003d43e:
     }
     else {
       pGVar6 = __get_dashboard_state();
-      if (pGVar6->dashboard_ts->field_0x60 != '\x01') {
+      if (*(char *)((int)&pGVar6->dashboard_ts->time_disp_mode + 2) != '\x01') {
         if (*(char *)(uVar11 + 0xe) != '\0') {
           return 0;
         }

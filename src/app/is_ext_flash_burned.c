@@ -105,11 +105,10 @@ LAB_00033b92:
   uVar2 = uVar2 + 1 & 0xff;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): flash read fail, retry again, retry time %d\n");
+      printk("%s(): flash read fail, retry again, retry time %d\n","is_ext_flash_burned",uVar2);
     }
     else {
-      ble_printk("%s(): flash read fail, retry again, retry time %d\n","is_ext_flash_burned",uVar2,
-                 BLE_DEBUG);
+      ble_printk("%s(): flash read fail, retry again, retry time %d\n");
     }
   }
   goto LAB_00033b48;

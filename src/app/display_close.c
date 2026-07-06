@@ -9,7 +9,6 @@ undefined4 display_close(void *param_1,uint param_2)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined1 local_28 [2];
   undefined2 local_26;
   undefined1 auStack_24 [24];
@@ -27,22 +26,20 @@ undefined4 display_close(void *param_1,uint param_2)
         return 0;
       }
       if (BLE_DEBUG != 0) {
-        ble_printk("%s(): send display close command.......\n","display_close",extraout_r2,BLE_DEBUG
-                  );
+        ble_printk("%s(): send display close command.......\n");
         return 0;
       }
-      printk("%s(): send display close command.......\n");
+      printk("%s(): send display close command.......\n","display_close");
       return 0;
     }
     printk("message queue send failed %s\r\n","display_close");
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): send data length more than %d,can\'t load it,exit ...\n");
+      printk("%s(): send data length more than %d,can\'t load it,exit ...\n","display_close",10);
     }
     else {
-      ble_printk("%s(): send data length more than %d,can\'t load it,exit ...\n","display_close",10,
-                 BLE_DEBUG);
+      ble_printk("%s(): send data length more than %d,can\'t load it,exit ...\n");
     }
   }
   return 0xffffffff;

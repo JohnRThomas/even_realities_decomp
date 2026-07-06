@@ -1,11 +1,12 @@
 /*
  * Function: low_speed_peripheral_dispatch_thread_for_test
  * Entry:    00028938
- * Prototype: undefined __stdcall low_speed_peripheral_dispatch_thread_for_test(size_t param_1, uint param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall low_speed_peripheral_dispatch_thread_for_test(size_t param_1, uint param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void low_speed_peripheral_dispatch_thread_for_test(size_t param_1,uint param_2,undefined4 param_3)
+void low_speed_peripheral_dispatch_thread_for_test
+               (size_t param_1,uint param_2,undefined4 param_3,undefined4 param_4)
 
 {
   size_t extraout_r0;
@@ -17,7 +18,6 @@ void low_speed_peripheral_dispatch_thread_for_test(size_t param_1,uint param_2,u
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
   undefined4 extraout_r2_01;
-  undefined4 extraout_r2_02;
   int iVar3;
   k_timeout_t timeout;
   uint extraout_r1_01;
@@ -25,14 +25,13 @@ void low_speed_peripheral_dispatch_thread_for_test(size_t param_1,uint param_2,u
   sVar2 = param_1;
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): #enter\n");
+      printk("%s(): #enter\n","low_speed_peripheral_dispatch_thread_for_test",param_3,0,param_4);
       sVar2 = extraout_r0_00;
       param_2 = extraout_r1_00;
       param_3 = extraout_r2_00;
     }
     else {
-      ble_printk("%s(): #enter\n","low_speed_peripheral_dispatch_thread_for_test",param_3,BLE_DEBUG)
-      ;
+      ble_printk("%s(): #enter\n");
       sVar2 = extraout_r0;
       param_2 = extraout_r1;
       param_3 = extraout_r2;
@@ -49,11 +48,11 @@ void low_speed_peripheral_dispatch_thread_for_test(size_t param_1,uint param_2,u
       if (0x22 < iVar3) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): reboot because dfu exceed time\r\n\n");
+            printk("%s(): reboot because dfu exceed time\r\n\n",
+                   "low_speed_peripheral_dispatch_thread_for_test");
           }
           else {
-            ble_printk("%s(): reboot because dfu exceed time\r\n\n",
-                       "low_speed_peripheral_dispatch_thread_for_test",extraout_r2_01,BLE_DEBUG);
+            ble_printk("%s(): reboot because dfu exceed time\r\n\n");
           }
         }
         k_msleep(500);
@@ -79,7 +78,7 @@ void low_speed_peripheral_dispatch_thread_for_test(size_t param_1,uint param_2,u
     timeout.ticks._0_4_ = uVar1;
     sVar2 = z_impl_k_sleep(timeout);
     param_2 = extraout_r1_01;
-    param_3 = extraout_r2_02;
+    param_3 = extraout_r2_01;
   } while( true );
 }
 

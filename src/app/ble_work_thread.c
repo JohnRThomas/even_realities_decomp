@@ -17,31 +17,36 @@ void ble_work_thread(void *param_1,undefined4 param_2,undefined4 param_3)
   undefined4 extraout_r1_01;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
+  int extraout_r3;
+  int extraout_r3_00;
   uint uVar5;
   k_timeout_t timeout;
   byte local_124;
   undefined1 auStack_123 [259];
   
+  iVar2 = LOG_LEVEL;
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): start\n\n");
+      printk("%s(): start\n\n","ble_work_thread");
       param_2 = extraout_r1_00;
       param_3 = extraout_r2_00;
+      iVar2 = extraout_r3_00;
     }
     else {
-      ble_printk("%s(): start\n\n","ble_work_thread",param_3,BLE_DEBUG);
+      ble_printk("%s(): start\n\n");
       param_2 = extraout_r1;
       param_3 = extraout_r2;
+      iVar2 = extraout_r3;
     }
   }
-  iVar2 = ancs_main(param_1,param_2,param_3);
+  iVar2 = ancs_main(param_1,param_2,param_3,iVar2);
   __debug_init();
   if ((iVar2 != 0) && (2 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): err:%d\n\n");
+      printk("%s(): err:%d\n\n","ble_work_thread",iVar2);
     }
     else {
-      ble_printk("%s(): err:%d\n\n","ble_work_thread",iVar2,BLE_DEBUG);
+      ble_printk("%s(): err:%d\n\n");
     }
   }
   pvVar3 = malloc(0x2b8);
@@ -49,10 +54,10 @@ void ble_work_thread(void *param_1,undefined4 param_2,undefined4 param_3)
   *(void **)((int)param_1 + 0x10) = pvVar3;
   if (2 < iVar2) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): tx_size:%d\n\n");
+      printk("%s(): tx_size:%d\n\n","ble_work_thread",0x2b8);
     }
     else {
-      ble_printk("%s(): tx_size:%d\n\n","ble_work_thread",0x2b8,BLE_DEBUG);
+      ble_printk("%s(): tx_size:%d\n\n");
     }
   }
   while( true ) {
@@ -118,11 +123,10 @@ LAB_00023e28:
         if (iVar2 == 0) {
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): charge plug off, call bt_start. \n\n");
+              printk("%s(): charge plug off, call bt_start. \n\n","ble_work_thread",0);
             }
             else {
-              ble_printk("%s(): charge plug off, call bt_start. \n\n","ble_work_thread",0,BLE_DEBUG)
-              ;
+              ble_printk("%s(): charge plug off, call bt_start. \n\n");
             }
           }
           iVar2 = bt_start();
@@ -132,11 +136,10 @@ LAB_00023e28:
         }
         else if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): bt_le_adv_stop failed!!! err=%d\n\n");
+            printk("%s(): bt_le_adv_stop failed!!! err=%d\n\n","ble_work_thread",iVar2);
           }
           else {
-            ble_printk("%s(): bt_le_adv_stop failed!!! err=%d\n\n","ble_work_thread",iVar2,BLE_DEBUG
-                      );
+            ble_printk("%s(): bt_le_adv_stop failed!!! err=%d\n\n");
           }
         }
         *(undefined1 *)((int)param_1 + 0x364) = 0;

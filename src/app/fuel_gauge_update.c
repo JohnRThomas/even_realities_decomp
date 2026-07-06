@@ -28,7 +28,6 @@ int fuel_gauge_update(device *param_1)
   undefined4 extraout_r2_04;
   undefined4 extraout_r2_05;
   undefined4 extraout_r2_06;
-  undefined4 extraout_r2_07;
   undefined1 uVar8;
   uint extraout_r3;
   uint extraout_r3_00;
@@ -184,9 +183,9 @@ LAB_00010eda:
     if (pGVar4->display_mode != '\f') {
       FUN_00029774(4,extraout_r1_02,extraout_r2_06);
       pGVar4 = __get_dashboard_state();
-      if (*(char *)pGVar4 == '\x01') {
+      if (pGVar4->is_master == true) {
         pGVar4 = __get_dashboard_state();
-        sync_to_slave((char *)pGVar4,4,(undefined4 *)0x0,0);
+        sync_to_slave(&pGVar4->is_master,4,(undefined4 *)0x0,0);
         pGVar4 = __get_dashboard_state();
         FUN_0007ff66((int)pGVar4,0);
       }
@@ -200,13 +199,13 @@ LAB_00010eda:
       FUN_0007ff66((int)pGVar4,1);
       if (0 < (int)LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk(
-                "%s(): #############################Abnormal temperature################################\n\n"
-                );
+          printk("%s(): #############################Abnormal temperature################################\n\n"
+                 ,"fuel_gauge_update");
         }
         else {
-          ble_printk("%s(): #############################Abnormal temperature################################\n\n"
-                     ,"fuel_gauge_update",extraout_r2_07,BLE_DEBUG);
+          ble_printk(
+                    "%s(): #############################Abnormal temperature################################\n\n"
+                    );
         }
       }
     }

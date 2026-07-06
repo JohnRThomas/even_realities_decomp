@@ -22,12 +22,12 @@ undefined4 register_ipc_service_recv_callback(byte *param_1)
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): ipc_service_register(%d,%s) %d,total must < %d\n");
+        printk("%s(): ipc_service_register(%d,%s) %d,total must < %d\n",
+               "register_ipc_service_recv_callback",(uint)*param_1,*(undefined4 *)(param_1 + 4),
+               iVar3,0x16);
       }
       else {
-        ble_printk("%s(): ipc_service_register(%d,%s) %d,total must < %d\n",
-                   "register_ipc_service_recv_callback",(uint)*param_1,*(undefined4 *)(param_1 + 4),
-                   iVar3,0x16);
+        ble_printk("%s(): ipc_service_register(%d,%s) %d,total must < %d\n");
       }
     }
     uVar2 = 0xffffffff;

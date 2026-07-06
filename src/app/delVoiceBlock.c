@@ -16,16 +16,15 @@ void delVoiceBlock(uint param_1,undefined4 param_2,undefined4 param_3,undefined4
   int iVar5;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
   code *pcVar6;
   
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): received audio delete command\n");
+      printk("%s(): received audio delete command\n","delVoiceBlock");
       param_3 = extraout_r2_00;
     }
     else {
-      ble_printk("%s(): received audio delete command\n","delVoiceBlock",param_3,BLE_DEBUG);
+      ble_printk("%s(): received audio delete command\n");
       param_3 = extraout_r2;
     }
   }
@@ -37,7 +36,7 @@ LAB_0003097a:
         ble_printk(pcVar3,"delVoiceBlock",param_3,param_4);
         return;
       }
-      printk(pcVar3,"delVoiceBlock",param_3,param_4);
+      printk(pcVar3,"delVoiceBlock");
       return;
     }
   }
@@ -76,11 +75,10 @@ LAB_0003097a:
             (&DAT_20019a8f)[iVar1] = 0;
             if (2 < iVar5) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): success delete voice block num.(%d)\n");
+                printk("%s(): success delete voice block num.(%d)\n","delVoiceBlock",param_1);
               }
               else {
-                ble_printk("%s(): success delete voice block num.(%d)\n","delVoiceBlock",param_1,
-                           BLE_DEBUG);
+                ble_printk("%s(): success delete voice block num.(%d)\n");
               }
             }
           }
@@ -88,11 +86,10 @@ LAB_0003097a:
             memcpy(&DAT_20019a78,&INT_0008d800,0x58);
             if (2 < iVar5) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): success delete all voice block \n");
+                printk("%s(): success delete all voice block \n","delVoiceBlock");
               }
               else {
-                ble_printk("%s(): success delete all voice block \n","delVoiceBlock",extraout_r2_01,
-                           BLE_DEBUG);
+                ble_printk("%s(): success delete all voice block \n");
               }
             }
           }

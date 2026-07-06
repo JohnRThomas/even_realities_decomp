@@ -16,7 +16,7 @@ void FUN_00025b28(undefined4 param_1,uint param_2)
     DAT_20017d2f = (byte)param_2;
   }
   pGVar1 = __get_dashboard_state();
-  k_sem_give(&pGVar1->sem_6);
+  k_sem_give(&pGVar1->dashboard_position_sem);
   return;
 }
 

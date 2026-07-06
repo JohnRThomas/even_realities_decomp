@@ -1,26 +1,18 @@
 /*
  * Function: opt3007_chip_init
  * Entry:    0002fb04
- * Prototype: undefined4 __stdcall opt3007_chip_init(opt3007_context * param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall opt3007_chip_init(opt3007_context * param_1)
  */
 
 
-undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefined4 param_3)
+undefined4 opt3007_chip_init(opt3007_context *param_1)
 
 {
   bool bVar1;
   GlassesState *pGVar2;
   int iVar3;
   char *pcVar4;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
-  undefined4 extraout_r2_02;
-  undefined4 uVar5;
-  undefined4 extraout_r2_03;
-  undefined4 extraout_r2_04;
-  undefined4 extraout_r2_05;
-  uint uVar6;
+  uint uVar5;
   ushort local_2c;
   ushort local_2a;
   undefined1 local_28;
@@ -34,29 +26,28 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
   if (param_1 == (opt3007_context *)0x0) {
     pGVar2 = __get_dashboard_state();
     param_1 = &pGVar2->opt3007_context;
-    param_3 = extraout_r2;
   }
   DAT_2000854c = param_1;
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): opt3007 init start:\n");
+      printk("%s(): opt3007 init start:\n","opt3007_chip_init");
     }
     else {
-      ble_printk("%s(): opt3007 init start:\n","opt3007_chip_init",param_3,BLE_DEBUG);
+      ble_printk("%s(): opt3007 init start:\n");
     }
   }
   iVar3 = opt3007_reg_read(0x7e,&local_2c);
   if (iVar3 == 0) {
-    uVar6 = (uint)local_2c;
+    uVar5 = (uint)local_2c;
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): mfg_id=0x%x,\n");
+        printk("%s(): mfg_id=0x%x,\n","opt3007_chip_init",uVar5);
       }
       else {
-        ble_printk("%s(): mfg_id=0x%x,\n","opt3007_chip_init",uVar6,BLE_DEBUG);
+        ble_printk("%s(): mfg_id=0x%x,\n");
       }
     }
-    if (uVar6 == 0x5449) {
+    if (uVar5 == 0x5449) {
       iVar3 = opt3007_reg_read(0x7f,&local_2c);
       if (iVar3 != 0) {
         if (LOG_LEVEL < 1) {
@@ -65,18 +56,17 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
         pcVar4 = "%s(): opt3007 dev id=0x%x err!\n";
         goto LAB_0002fb50;
       }
-      uVar6 = (uint)local_2c;
+      uVar5 = (uint)local_2c;
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): dev_id=0x%x,\n");
+          printk("%s(): dev_id=0x%x,\n","opt3007_chip_init",uVar5);
         }
         else {
-          ble_printk("%s(): dev_id=0x%x,\n","opt3007_chip_init",uVar6,BLE_DEBUG);
+          ble_printk("%s(): dev_id=0x%x,\n");
         }
       }
-      if (uVar6 == 0x3001) {
+      if (uVar5 == 0x3001) {
         iVar3 = opt3007_reg_read(1,&local_2a);
-        uVar5 = extraout_r2_00;
         if (iVar3 == 0) {
           local_27 = (byte)((local_2a & 63999) >> 8) | 6;
           local_28 = 1;
@@ -93,10 +83,10 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
               }
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk("%s(): opt3007 init done!\n");
+                  printk("%s(): opt3007 init done!\n","opt3007_chip_init");
                 }
                 else {
-                  ble_printk("%s(): opt3007 init done!\n","opt3007_chip_init",iVar3,BLE_DEBUG);
+                  ble_printk("%s(): opt3007 init done!\n");
                 }
               }
               DAT_20019a6f = 1;
@@ -106,12 +96,10 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
               return 0xfffffffb;
             }
             if (BLE_DEBUG == 0) {
-              printk("%s(): opt3007 i2c write err=%d,\n");
-              uVar5 = extraout_r2_05;
+              printk("%s(): opt3007 i2c write err=%d,\n","opt3001_reg_write");
             }
             else {
-              ble_printk("%s(): opt3007 i2c write err=%d,\n","opt3001_reg_write",iVar3,BLE_DEBUG);
-              uVar5 = extraout_r2_04;
+              ble_printk("%s(): opt3007 i2c write err=%d,\n");
             }
           }
           else {
@@ -119,13 +107,10 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
               return 0xfffffffb;
             }
             if (BLE_DEBUG == 0) {
-              printk("%s(): Bus device is not ready\n");
-              uVar5 = extraout_r2_03;
+              printk("%s(): Bus device is not ready\n","opt3001_reg_write");
             }
             else {
-              ble_printk("%s(): Bus device is not ready\n","opt3001_reg_write",extraout_r2_01,
-                         BLE_DEBUG);
-              uVar5 = extraout_r2_02;
+              ble_printk("%s(): Bus device is not ready\n");
             }
           }
         }
@@ -133,11 +118,10 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
           return 0xfffffffb;
         }
         if (BLE_DEBUG != 0) {
-          ble_printk("%s(): opt3007 Failed to set mode to continuous conversion\n",
-                     "opt3007_chip_init",uVar5,BLE_DEBUG);
+          ble_printk("%s(): opt3007 Failed to set mode to continuous conversion\n");
           return 0xfffffffb;
         }
-        printk("%s(): opt3007 Failed to set mode to continuous conversion\n");
+        printk("%s(): opt3007 Failed to set mode to continuous conversion\n","opt3007_chip_init");
         return 0xfffffffb;
       }
       if (LOG_LEVEL < 1) {
@@ -152,10 +136,10 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
       pcVar4 = "%s(): opt3007 Bad manufacturer id 0x%x\n";
     }
     if (BLE_DEBUG == 0) {
-      printk(pcVar4);
+      printk(pcVar4,"opt3007_chip_init",uVar5);
     }
     else {
-      ble_printk(pcVar4,"opt3007_chip_init",uVar6,BLE_DEBUG);
+      ble_printk(pcVar4);
     }
     return 0xffffff7a;
   }
@@ -165,10 +149,10 @@ undefined4 opt3007_chip_init(opt3007_context *param_1,undefined4 param_2,undefin
   pcVar4 = "%s(): opt3007 mfg id=0x%x, err\n";
 LAB_0002fb50:
   if (BLE_DEBUG == 0) {
-    printk(pcVar4);
+    printk(pcVar4,"opt3007_chip_init",(uint)local_2c);
   }
   else {
-    ble_printk(pcVar4,"opt3007_chip_init",(uint)local_2c,BLE_DEBUG);
+    ble_printk(pcVar4);
   }
   return 0xfffffffb;
 }

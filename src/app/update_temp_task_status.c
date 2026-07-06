@@ -62,10 +62,10 @@ LAB_0002dc1a:
     }
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"update_temp_task_status",param_2);
   }
   else {
-    ble_printk(fmt,"update_temp_task_status",param_2,BLE_DEBUG);
+    ble_printk(fmt);
   }
 LAB_0002dbe6:
   *(char *)(param_1 + 0xd5) = (char)param_2;

@@ -10,7 +10,6 @@ void pairing_failed(bt_conn *param_1,undefined4 param_2)
 {
   k_work_delayable *addr;
   size_t len;
-  undefined4 extraout_r2;
   char acStack_30 [36];
   
   addr = k_work_delayable_from_work((k_work *)param_1);
@@ -18,11 +17,10 @@ void pairing_failed(bt_conn *param_1,undefined4 param_2)
   printk("Pairing failed conn: %s, reason %d\n",acStack_30,param_2);
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): bt_conn_disconnect because Pairing failed\n");
+      printk("%s(): bt_conn_disconnect because Pairing failed\n","pairing_failed");
     }
     else {
-      ble_printk("%s(): bt_conn_disconnect because Pairing failed\n","pairing_failed",extraout_r2,
-                 BLE_DEBUG);
+      ble_printk("%s(): bt_conn_disconnect because Pairing failed\n");
     }
   }
   bt_conn_disconnect(param_1,'\x13');

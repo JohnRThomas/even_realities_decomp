@@ -9,7 +9,6 @@ undefined4 read_usr_settting_from_flash(int param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined4 extraout_r3;
   undefined4 uVar2;
   undefined1 auStack_3c [21];
@@ -21,11 +20,10 @@ undefined4 read_usr_settting_from_flash(int param_1)
   if (iVar1 == 0) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): read usr settings success!\n");
+        printk("%s(): read usr settings success!\n","read_usr_settting_from_flash");
       }
       else {
-        ble_printk("%s(): read usr settings success!\n","read_usr_settting_from_flash",extraout_r2,
-                   BLE_DEBUG);
+        ble_printk("%s(): read usr settings success!\n");
       }
     }
     *(undefined1 *)(param_1 + 0x15) = local_27;
@@ -35,11 +33,10 @@ undefined4 read_usr_settting_from_flash(int param_1)
   else {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): usr_flash_settings_read error!\n");
+        printk("%s(): usr_flash_settings_read error!\n","read_usr_settting_from_flash");
       }
       else {
-        ble_printk("%s(): usr_flash_settings_read error!\n","read_usr_settting_from_flash",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): usr_flash_settings_read error!\n");
       }
     }
     uVar2 = 0xffffffff;

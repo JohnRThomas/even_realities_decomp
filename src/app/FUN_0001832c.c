@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void FUN_0001832c(undefined4 *param_1)
 
 {
@@ -22,7 +20,7 @@ void FUN_0001832c(undefined4 *param_1)
   *(undefined1 *)((int)param_1 + 0x365) = 0;
   *(undefined1 *)((int)param_1 + 0x366) = 0;
   *(undefined1 *)(param_1 + 0xd9) = 0;
-  _DAT_20006c10 = param_1;
+  DAT_20006c10 = param_1;
   buf = malloc(0x15);
   param_1[0x95] = buf;
   memset(buf,0,0x15);

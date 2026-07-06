@@ -1,11 +1,11 @@
 /*
  * Function: display_dispatch_thread
  * Entry:    0002afb8
- * Prototype: undefined __stdcall display_dispatch_thread(byte * param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall display_dispatch_thread(byte * param_1)
  */
 
 
-void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3)
+void display_dispatch_thread(byte *param_1)
 
 {
   byte bVar1;
@@ -57,15 +57,20 @@ void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   uint extraout_r1_33;
   uint extraout_r1_34;
   uint extraout_r1_35;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
-  undefined4 extraout_r2_04;
-  undefined4 extraout_r2_06;
   uint uVar12;
+  uint extraout_r2;
+  uint extraout_r2_00;
+  uint extraout_r2_01;
+  uint extraout_r2_02;
+  uint extraout_r2_03;
+  uint extraout_r2_04;
+  uint extraout_r2_05;
+  uint extraout_r2_06;
   uint extraout_r2_07;
   uint extraout_r2_08;
-  undefined4 extraout_r2_11;
+  uint extraout_r2_09;
+  uint extraout_r2_10;
+  uint extraout_r2_11;
   uint extraout_r2_12;
   uint extraout_r2_13;
   uint extraout_r2_14;
@@ -76,17 +81,6 @@ void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   uint extraout_r2_19;
   uint extraout_r2_20;
   uint extraout_r2_21;
-  uint extraout_r2_22;
-  uint extraout_r2_23;
-  uint extraout_r2_24;
-  uint extraout_r2_25;
-  uint extraout_r2_26;
-  uint extraout_r2_27;
-  uint extraout_r2_28;
-  uint extraout_r2_29;
-  uint extraout_r2_30;
-  uint extraout_r2_31;
-  uint extraout_r2_32;
   uint uVar13;
   byte *pbVar14;
   size_t n;
@@ -107,18 +101,13 @@ void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   k_timeout_t timeout_06;
   undefined8 uVar22;
   uint local_34;
-  undefined4 extraout_r2_02;
-  undefined4 extraout_r2_03;
-  undefined4 extraout_r2_05;
-  undefined4 extraout_r2_09;
-  undefined4 extraout_r2_10;
   
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): enter\n");
+      printk("%s(): enter\n","display_dispatch_thread");
     }
     else {
-      ble_printk("%s(): enter\n","display_dispatch_thread",param_3,BLE_DEBUG);
+      ble_printk("%s(): enter\n");
     }
   }
   param_1[0xecc] = 0x12;
@@ -128,11 +117,12 @@ void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   param_1[0xfec] = 0;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): raster_height_gear:%d, canvas_distance_gear:%d\n","display_dispatch_thread");
+      printk("%s(): raster_height_gear:%d, canvas_distance_gear:%d\n","display_dispatch_thread",
+             (uint)param_1[0xec0],(uint)param_1[0xec1]);
     }
     else {
-      ble_printk("%s(): raster_height_gear:%d, canvas_distance_gear:%d\n","display_dispatch_thread",
-                 (uint)param_1[0xec0],(uint)param_1[0xec1]);
+      ble_printk("%s(): raster_height_gear:%d, canvas_distance_gear:%d\n","display_dispatch_thread")
+      ;
     }
   }
   param_1[0xeb4] = 0;
@@ -143,7 +133,7 @@ void display_dispatch_thread(byte *param_1,undefined4 param_2,undefined4 param_3
   pGVar6 = __get_dashboard_state();
   cal_panel_canvas_coord
             ((int *)&(pGVar5->jdb_panel_context).field_0x358,
-             (int *)&(pGVar6->jdb_panel_context).field_0x34c);
+             (int *)&(pGVar6->jdb_panel_context).current_column);
   *(short *)(param_1 + 0xd6) =
        (short)*(undefined4 *)(param_1 + 0xeb4) + *(short *)(param_1 + 0x108a);
   param_1[0xeec] = 0;
@@ -178,22 +168,19 @@ LAB_0002b07a:
        (bVar3 = FUN_0002da10((int)param_1), uVar11 = extraout_r1_00, !bVar3)) {
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): master sync display suspend.\n");
+          printk("%s(): master sync display suspend.\n","display_dispatch_thread");
         }
         else {
-          ble_printk("%s(): master sync display suspend.\n","display_dispatch_thread",extraout_r2,
-                     BLE_DEBUG);
+          ble_printk("%s(): master sync display suspend.\n");
         }
       }
       param_1[0xcb] = param_1[0xed5];
       cVar2 = FUN_000169b4();
       uVar7 = extraout_r1_01;
-      uVar10 = extraout_r2_00;
       if (cVar2 != '\x03') {
         sync_to_slave((char *)param_1,1,(undefined4 *)0x0,0);
         change_work_mode(3);
         uVar7 = extraout_r1_02;
-        uVar10 = extraout_r2_01;
       }
       if (*param_1 == 2) {
         while (*(int *)(param_1 + 0x40) != 0) {
@@ -201,36 +188,31 @@ LAB_0002b07a:
           timeout.ticks._0_4_ = uVar7;
           z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout);
           uVar7 = extraout_r1_03;
-          uVar10 = extraout_r2_02;
         }
         while (*(int *)(param_1 + 0x58) != 0) {
           timeout_00.ticks._4_4_ = 0xffffffff;
           timeout_00.ticks._0_4_ = uVar7;
           z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_00);
           uVar7 = extraout_r1_04;
-          uVar10 = extraout_r2_03;
         }
       }
       if ((param_1[0xfec] != 0) ||
-         (bVar3 = FUN_0002da10((int)param_1), uVar7 = extraout_r1_05, uVar10 = extraout_r2_04, bVar3
-         )) {
+         (bVar3 = FUN_0002da10((int)param_1), uVar7 = extraout_r1_05, bVar3)) {
         while (*(int *)(param_1 + 0x58) != 0) {
           timeout_03.ticks._4_4_ = 0xffffffff;
           timeout_03.ticks._0_4_ = uVar7;
           z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_03);
           uVar7 = extraout_r1_14;
-          uVar10 = extraout_r2_10;
         }
       }
       else {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): thread goto sleep.\n");
+            printk("%s(): thread goto sleep.\n","display_dispatch_thread");
             uVar7 = extraout_r1_12;
           }
           else {
-            ble_printk("%s(): thread goto sleep.\n","display_dispatch_thread",extraout_r2_04,
-                       BLE_DEBUG);
+            ble_printk("%s(): thread goto sleep.\n");
             uVar7 = extraout_r1_06;
           }
         }
@@ -238,7 +220,6 @@ LAB_0002b07a:
         timeout_01.ticks._4_4_ = 0xffffffff;
         timeout_01.ticks._0_4_ = uVar7;
         z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_01);
-        uVar10 = extraout_r2_05;
         if (*param_1 == 2) {
           uVar7 = extraout_r1_07;
           while (*(int *)(param_1 + 0x40) != 0) {
@@ -246,26 +227,23 @@ LAB_0002b07a:
             timeout_02.ticks._0_4_ = uVar7;
             z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout_02);
             uVar7 = extraout_r1_13;
-            uVar10 = extraout_r2_09;
           }
         }
         iVar19 = 4;
       }
       if (1 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): thread wakeup!.\n");
-          uVar7 = extraout_r2_11;
+          printk("%s(): thread wakeup!.\n","display_dispatch_thread");
         }
         else {
-          ble_printk("%s(): thread wakeup!.\n","display_dispatch_thread",uVar10,BLE_DEBUG);
-          uVar7 = extraout_r2_06;
+          ble_printk("%s(): thread wakeup!.\n");
         }
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): sync display resume.\n");
+            printk("%s(): sync display resume.\n","display_dispatch_thread");
           }
           else {
-            ble_printk("%s(): sync display resume.\n","display_dispatch_thread",uVar7,BLE_DEBUG);
+            ble_printk("%s(): sync display resume.\n");
           }
         }
       }
@@ -329,18 +307,17 @@ LAB_0002b2c2:
       if (!bVar3) {
         uVar17 = 0;
         uVar11 = extraout_r1_10;
-        uVar12 = extraout_r2_07;
+        uVar12 = extraout_r2;
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG != 0) {
-            ble_printk("%s(): no running task, goto next trun\n","display_dispatch_thread",
-                       extraout_r2_07,BLE_DEBUG);
+            ble_printk("%s(): no running task, goto next trun\n");
             uVar11 = extraout_r1_11;
-            uVar12 = extraout_r2_08;
+            uVar12 = extraout_r2_00;
             goto LAB_0002b38e;
           }
-          printk("%s(): no running task, goto next trun\n");
+          printk("%s(): no running task, goto next trun\n","display_dispatch_thread");
           uVar11 = extraout_r1_15;
-          uVar12 = extraout_r2_13;
+          uVar12 = extraout_r2_02;
         }
         goto LAB_0002b398;
       }
@@ -382,7 +359,7 @@ LAB_0002b2c2:
             unlock_mutext_2000851c();
             n = 0x1b4;
             uVar11 = extraout_r1_20;
-            uVar12 = extraout_r2_17;
+            uVar12 = extraout_r2_06;
             goto LAB_0002b38e;
           }
         }
@@ -488,7 +465,7 @@ LAB_0002b5cc:
         if ((0xb < *pbVar18) && ((*pbVar18 & 0xfd) == 0xd)) {
           unlock_mutext_2000851c();
           uVar11 = extraout_r1_22;
-          uVar12 = extraout_r2_19;
+          uVar12 = extraout_r2_08;
           goto LAB_0002b38e;
         }
         if (((*param_1 == 2) && (bVar4 = param_1[0xe9], param_1[0xcc] != bVar4)) &&
@@ -535,7 +512,7 @@ LAB_0002b5d0:
         unlock_mutext_2000851c();
         uVar17 = 0;
         uVar11 = extraout_r1_21;
-        uVar12 = extraout_r2_18;
+        uVar12 = extraout_r2_07;
         goto LAB_0002b398;
       }
 LAB_0002b4a6:
@@ -543,7 +520,7 @@ LAB_0002b4a6:
       *(short *)(param_1 + 0xed) = (short)n;
       unlock_mutext_2000851c();
       if ((param_1[0xfea] == 0) ||
-         (uVar11 = extraout_r1_17, uVar12 = extraout_r2_14, uVar15 = uVar16, param_1[0xfea] == 5)) {
+         (uVar11 = extraout_r1_17, uVar12 = extraout_r2_03, uVar15 = uVar16, param_1[0xfea] == 5)) {
         pbVar18 = pbVar14;
         if (*param_1 == 1) {
           if ((uint)param_1[0xcb] != (uint)param_1[0xed5]) {
@@ -553,19 +530,19 @@ LAB_0002b4a6:
           uVar17 = sync_to_slave((char *)param_1,0,(undefined4 *)0x0,0);
           uVar15 = 1;
           uVar11 = extraout_r1_18;
-          uVar12 = extraout_r2_15;
+          uVar12 = extraout_r2_04;
           if (4999 < (int)uVar17) {
             if (0 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): sync to slave exceed MAX_WAIT_COUNT, wait_time %d\n");
+                printk("%s(): sync to slave exceed MAX_WAIT_COUNT, wait_time %d\n",
+                       "display_dispatch_thread",uVar17);
                 uVar11 = extraout_r1_23;
-                uVar12 = extraout_r2_20;
+                uVar12 = extraout_r2_09;
               }
               else {
-                ble_printk("%s(): sync to slave exceed MAX_WAIT_COUNT, wait_time %d\n",
-                           "display_dispatch_thread",uVar17,BLE_DEBUG);
+                ble_printk("%s(): sync to slave exceed MAX_WAIT_COUNT, wait_time %d\n");
                 uVar11 = extraout_r1_19;
-                uVar12 = extraout_r2_16;
+                uVar12 = extraout_r2_05;
               }
             }
             goto LAB_0002b38e;
@@ -580,13 +557,13 @@ LAB_0002b4a6:
                   printk("%s(): screen id was changed, g->master_sync_pkg.new_screen_id %d pkg->screen_id %d\n"
                          ,"display_dispatch_thread",uVar12,(uint)param_1[0xd5]);
                   uVar11 = extraout_r1_27;
-                  uVar12 = extraout_r2_24;
+                  uVar12 = extraout_r2_13;
                 }
                 else {
                   ble_printk("%s(): screen id was changed, g->master_sync_pkg.new_screen_id %d pkg->screen_id %d\n"
                              ,"display_dispatch_thread",uVar12,(uint)param_1[0xd5]);
                   uVar11 = extraout_r1_26;
-                  uVar12 = extraout_r2_23;
+                  uVar12 = extraout_r2_12;
                 }
               }
               uVar17 = 0x46;
@@ -600,14 +577,14 @@ LAB_0002b4a6:
             pcVar9 = "%s(): sync to slave exceed CMD_WAIT_COUNT, wait_time %d\n";
 LAB_0002b7ca:
             if (BLE_DEBUG == 0) {
-              printk(pcVar9);
+              printk(pcVar9,"display_dispatch_thread",uVar17);
               uVar11 = extraout_r1_25;
-              uVar12 = extraout_r2_22;
+              uVar12 = extraout_r2_11;
             }
             else {
-              ble_printk(pcVar9,"display_dispatch_thread",uVar17,BLE_DEBUG);
+              ble_printk(pcVar9);
               uVar11 = extraout_r1_24;
-              uVar12 = extraout_r2_21;
+              uVar12 = extraout_r2_10;
             }
           }
         }
@@ -629,32 +606,31 @@ LAB_0002b840:
                     (uVar11 = uVar16, uVar12 = uVar13, uVar16 != 1)) &&
                    (uVar12 = local_34, 1 < LOG_LEVEL)) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): imu->attitude changed ....\n");
+                    printk("%s(): imu->attitude changed ....\n","display_dispatch_thread");
                     uVar15 = extraout_r1_34;
-                    uVar11 = extraout_r2_31;
+                    uVar11 = extraout_r2_20;
                   }
                   else {
-                    ble_printk("%s(): imu->attitude changed ....\n","display_dispatch_thread",uVar16
-                               ,BLE_DEBUG);
+                    ble_printk("%s(): imu->attitude changed ....\n");
                     uVar15 = extraout_r1_31;
-                    uVar11 = extraout_r2_28;
+                    uVar11 = extraout_r2_17;
                   }
                 }
                 local_34 = uVar12;
                 FUN_00080fca(param_1[0xd5],uVar15,uVar11);
                 uVar11 = extraout_r1_32;
-                uVar12 = extraout_r2_29;
+                uVar12 = extraout_r2_18;
                 if (0 < LOG_LEVEL) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): display_reflash_screen %d done\n");
+                    printk("%s(): display_reflash_screen %d done\n","display_dispatch_thread",
+                           (uint)param_1[0xd5]);
                     uVar11 = extraout_r1_35;
-                    uVar12 = extraout_r2_32;
+                    uVar12 = extraout_r2_21;
                   }
                   else {
-                    ble_printk("%s(): display_reflash_screen %d done\n","display_dispatch_thread",
-                               (uint)param_1[0xd5],BLE_DEBUG);
+                    ble_printk("%s(): display_reflash_screen %d done\n");
                     uVar11 = extraout_r1_33;
-                    uVar12 = extraout_r2_30;
+                    uVar12 = extraout_r2_19;
                   }
                 }
                 if ((param_1[0xec] == 6) || (uVar15 = 0, param_1[0xec] != 0)) {
@@ -673,20 +649,19 @@ LAB_0002b840:
             }
           }
           else {
-            uVar12 = extraout_r2_25;
+            uVar12 = extraout_r2_14;
             if (0 < LOG_LEVEL) {
               pcVar9 = "%s(): task was closed!!!\n";
-              uVar13 = extraout_r2_25;
 LAB_0002b858:
               if (BLE_DEBUG == 0) {
-                printk(pcVar9);
+                printk(pcVar9,"display_dispatch_thread");
                 uVar11 = extraout_r1_30;
-                uVar12 = extraout_r2_27;
+                uVar12 = extraout_r2_16;
               }
               else {
-                ble_printk(pcVar9,"display_dispatch_thread",uVar13,BLE_DEBUG);
+                ble_printk(pcVar9);
                 uVar11 = extraout_r1_29;
-                uVar12 = extraout_r2_26;
+                uVar12 = extraout_r2_15;
               }
             }
           }
@@ -746,7 +721,7 @@ LAB_0002b10e:
       iVar8 = (int)((ulonglong)(lVar21 - lVar20) >> 0x20);
       bVar3 = (uint)(lVar21 - lVar20) < 500;
       uVar11 = iVar8 - (uint)bVar3;
-      uVar12 = extraout_r2_12;
+      uVar12 = extraout_r2_01;
       if ((int)(uint)bVar3 <= iVar8) goto LAB_0002b38e;
       goto LAB_0002b2c2;
     }

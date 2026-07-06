@@ -13,13 +13,14 @@ void __exit_silent_mode(void)
   undefined4 extraout_r1_00;
   undefined4 extraout_r2;
   undefined4 extraout_r2_00;
+  undefined4 extraout_r3;
   
   if (DAT_2001c4e0 != '\0') {
     DAT_2001c4e0 = '\0';
   }
   change_work_mode(2);
   pGVar1 = __get_dashboard_state();
-  global_system_resume((int)pGVar1,extraout_r1,extraout_r2);
+  global_system_resume((int)pGVar1,extraout_r1,extraout_r2,extraout_r3);
   pGVar1 = __get_dashboard_state();
   *(undefined1 *)&pGVar1->imu_fusion_context = 2;
   pGVar1 = __get_dashboard_state();

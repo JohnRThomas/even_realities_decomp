@@ -25,17 +25,9 @@ undefined4 audioStreamFileManagerHandler(void)
   int extraout_r2_01;
   undefined4 extraout_r2_02;
   undefined4 extraout_r2_03;
-  undefined4 extraout_r2_04;
-  undefined4 extraout_r2_05;
-  undefined4 extraout_r2_06;
-  undefined4 extraout_r2_07;
-  undefined4 extraout_r2_08;
   undefined4 uVar6;
-  undefined4 extraout_r2_09;
   uint uVar7;
-  undefined4 extraout_r2_10;
-  undefined4 extraout_r2_11;
-  undefined4 extraout_r2_12;
+  undefined4 extraout_r2_04;
   int extraout_r3;
   int iVar8;
   int extraout_r3_00;
@@ -53,7 +45,6 @@ undefined4 audioStreamFileManagerHandler(void)
       return 0;
     }
     iVar10 = getAudioMessageQueueCacheData(local_f4);
-    uVar5 = extraout_r2;
     if (iVar10 != 0) goto LAB_00030e16;
     if (local_f4[0] != '\x01') {
       if (local_f4[0] != '\x03') {
@@ -70,11 +61,10 @@ undefined4 audioStreamFileManagerHandler(void)
     }
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): start audio stream record!\r\n\n");
+        printk("%s(): start audio stream record!\r\n\n","audioStreamFileManagerHandler");
       }
       else {
-        ble_printk("%s(): start audio stream record!\r\n\n","audioStreamFileManagerHandler",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): start audio stream record!\r\n\n");
       }
     }
     bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
@@ -94,11 +84,11 @@ LAB_00030f62:
             if (*(int *)(&DAT_20019a80 + uVar9 * 0x14) == 0) {
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk("%s(): find a free voice block(%d)!\r\n\n");
+                  printk("%s(): find a free voice block(%d)!\r\n\n","audioStreamFileManagerHandler",
+                         uVar9);
                 }
                 else {
-                  ble_printk("%s(): find a free voice block(%d)!\r\n\n",
-                             "audioStreamFileManagerHandler",uVar9,BLE_DEBUG);
+                  ble_printk("%s(): find a free voice block(%d)!\r\n\n");
                 }
               }
               uVar7 = uVar9 & 0xff;
@@ -126,24 +116,24 @@ LAB_00030f62:
           } while (uVar9 != 4);
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): no free voice block,try to use the oldest voice block(%d)!\n");
+              printk("%s(): no free voice block,try to use the oldest voice block(%d)!\n",
+                     "audioStreamFileManagerHandler",uVar7);
             }
             else {
-              ble_printk("%s(): no free voice block,try to use the oldest voice block(%d)!\n",
-                         "audioStreamFileManagerHandler",uVar7,BLE_DEBUG);
+              ble_printk("%s(): no free voice block,try to use the oldest voice block(%d)!\n");
             }
           }
 LAB_00030ff4:
           DAT_2001aa78 = (byte)uVar7;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk(
-                    "%s(): audio manager start check success,will fill up audio stream to Num%d block\n"
-                    );
+              printk("%s(): audio manager start check success,will fill up audio stream to Num%d block\n"
+                     ,"audioStreamFileManagerHandler",uVar7);
             }
             else {
-              ble_printk("%s(): audio manager start check success,will fill up audio stream to Num%d block\n"
-                         ,"audioStreamFileManagerHandler",uVar7,BLE_DEBUG);
+              ble_printk(
+                        "%s(): audio manager start check success,will fill up audio stream to Num%d block\n"
+                        );
             }
           }
           DAT_20008598 = (char *)0x0;
@@ -155,11 +145,11 @@ LAB_00030ff4:
         }
         if (2 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): filesystem need format,try to format,please wait..\n");
+            printk("%s(): filesystem need format,try to format,please wait..\n",
+                   "audioStreamFileManagerHandler");
           }
           else {
-            ble_printk("%s(): filesystem need format,try to format,please wait..\n",
-                       "audioStreamFileManagerHandler",0x5aa5aa5a,BLE_DEBUG);
+            ble_printk("%s(): filesystem need format,try to format,please wait..\n");
           }
         }
         memset(&DAT_20019a78,0,0x1000);
@@ -176,11 +166,10 @@ LAB_00030ff4:
           if (pcVar3 == (char *)0x0) {
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): filesystem format sucess\n");
+                printk("%s(): filesystem format sucess\n","audioStreamFileManagerHandler",0);
               }
               else {
-                ble_printk("%s(): filesystem format sucess\n","audioStreamFileManagerHandler",0,
-                           BLE_DEBUG);
+                ble_printk("%s(): filesystem format sucess\n");
               }
             }
             goto LAB_00030f62;
@@ -206,10 +195,10 @@ LAB_00030e5e:
     }
 LAB_0003113e:
     if (BLE_DEBUG == 0) {
-      printk(fmt);
+      printk(fmt,"audioStreamFileManagerHandler",pcVar3);
     }
     else {
-      ble_printk(fmt,"audioStreamFileManagerHandler",pcVar3,BLE_DEBUG);
+      ble_printk(fmt);
     }
   }
   else {
@@ -221,7 +210,6 @@ LAB_0003113e:
     }
     iVar2 = getAudioMessageQueueCacheData(local_f4);
     iVar10 = LOG_LEVEL;
-    uVar5 = extraout_r2_02;
     if (iVar2 == 0) {
       if (local_f4[0] != '\x01') {
         if (local_f4[0] == '\x02') {
@@ -230,11 +218,11 @@ LAB_0003113e:
             memcpy(DAT_20008598 + 0x20019a78,local_f0,0x1000 - (int)DAT_20008598);
             if (2 < iVar10) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): To complete a sector of data, perform flash write operations\n");
+                printk("%s(): To complete a sector of data, perform flash write operations\n",
+                       "audioStreamFileManagerHandler");
               }
               else {
-                ble_printk("%s(): To complete a sector of data, perform flash write operations\n",
-                           "audioStreamFileManagerHandler",extraout_r2_03,BLE_DEBUG);
+                ble_printk("%s(): To complete a sector of data, perform flash write operations\n");
               }
             }
             bVar1 = z_device_is_ready((device *)&PTR_s_mx25r6435f_0_0008b3a0);
@@ -243,11 +231,10 @@ LAB_0003113e:
             if (iVar10 <= (int)((uint)DAT_2001aa78 * 0x20000 + 0x431000)) {
               if (2 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk("%s(): wirte addr = 0x%08x\n");
+                  printk("%s(): wirte addr = 0x%08x\n","audioStreamFileManagerHandler",iVar10);
                 }
                 else {
-                  ble_printk("%s(): wirte addr = 0x%08x\n","audioStreamFileManagerHandler",iVar10,
-                             BLE_DEBUG);
+                  ble_printk("%s(): wirte addr = 0x%08x\n");
                 }
               }
               pGVar4 = __get_dashboard_state();
@@ -264,11 +251,11 @@ LAB_0003113e:
                 DAT_20008594 = DAT_20008594 + 1;
                 if (2 < LOG_LEVEL) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): wirte 4k voice data to flash,write address = 0x%08x\n");
+                    printk("%s(): wirte 4k voice data to flash,write address = 0x%08x\n",
+                           "audioStreamFileManagerHandler",iVar10);
                   }
                   else {
-                    ble_printk("%s(): wirte 4k voice data to flash,write address = 0x%08x\n",
-                               "audioStreamFileManagerHandler",iVar10,BLE_DEBUG);
+                    ble_printk("%s(): wirte 4k voice data to flash,write address = 0x%08x\n");
                   }
                 }
                 pcVar3 = DAT_20008598;
@@ -277,11 +264,11 @@ LAB_0003113e:
                 iVar10 = -(int)pcVar3 + 0x1000;
                 if (2 < LOG_LEVEL) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): Copy remain %d byte data into cache memory\n");
+                    printk("%s(): Copy remain %d byte data into cache memory\n",
+                           "audioStreamFileManagerHandler",local_f2 - iVar10);
                   }
                   else {
-                    ble_printk("%s(): Copy remain %d byte data into cache memory\n",
-                               "audioStreamFileManagerHandler",local_f2 - iVar10,BLE_DEBUG);
+                    ble_printk("%s(): Copy remain %d byte data into cache memory\n");
                   }
                 }
                 n = local_f2 - iVar10;
@@ -294,33 +281,30 @@ LAB_0003113e:
             }
             if (0 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): the number of recording files exceeds the upper limit, system automatically stops\n"
-                      );
-                uVar5 = extraout_r2_07;
+                printk("%s(): the number of recording files exceeds the upper limit, system automatically stops\n"
+                       ,"audioStreamFileManagerHandler");
               }
               else {
-                ble_printk("%s(): the number of recording files exceeds the upper limit, system automatically stops\n"
-                           ,"audioStreamFileManagerHandler",LOG_LEVEL,BLE_DEBUG);
-                uVar5 = extraout_r2_04;
+                ble_printk(
+                          "%s(): the number of recording files exceeds the upper limit, system automatically stops\n"
+                          );
               }
               if (0 < LOG_LEVEL) {
                 if (BLE_DEBUG == 0) {
-                  printk(
-                        "%s(): Catch touch release is not recognized, start QuickNote exception recovery mechanism\n"
-                        );
+                  printk("%s(): Catch touch release is not recognized, start QuickNote exception recovery mechanism\n"
+                         ,"audioStreamFileManagerHandler");
                 }
                 else {
-                  ble_printk("%s(): Catch touch release is not recognized, start QuickNote exception recovery mechanism\n"
-                             ,"audioStreamFileManagerHandler",uVar5,BLE_DEBUG);
+                  ble_printk(
+                            "%s(): Catch touch release is not recognized, start QuickNote exception recovery mechanism\n"
+                            );
                 }
               }
             }
             local_f8[0] = 1;
             pGVar4 = __get_dashboard_state();
-            sync_to_slave((char *)pGVar4,6,(undefined4 *)local_f8,2);
+            sync_to_slave(&pGVar4->is_master,6,(undefined4 *)local_f8,2);
             display_DelayClose(10000);
-            uVar5 = extraout_r2_05;
             goto LAB_000311ea;
           }
           memcpy(DAT_20008598 + 0x20019a78,local_f0,(int)local_f2);
@@ -340,18 +324,18 @@ LAB_0003113e:
             uVar6 = extraout_r2_02;
             if (1 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk(
-                      "%s(): A delete command occurred during the recording process. The recording was stopped and the deletion action was performed,Delete num = %d\n"
-                      );
+                printk("%s(): A delete command occurred during the recording process. The recording was stopped and the deletion action was performed,Delete num = %d\n"
+                       ,"audioStreamFileManagerHandler",(uint)local_f0[0]);
                 uVar5 = extraout_r1_02;
-                uVar6 = extraout_r2_12;
+                uVar6 = extraout_r2_04;
                 iVar10 = extraout_r3_00;
               }
               else {
-                ble_printk("%s(): A delete command occurred during the recording process. The recording was stopped and the deletion action was performed,Delete num = %d\n"
-                           ,"audioStreamFileManagerHandler",(uint)local_f0[0],BLE_DEBUG);
+                ble_printk(
+                          "%s(): A delete command occurred during the recording process. The recording was stopped and the deletion action was performed,Delete num = %d\n"
+                          );
                 uVar5 = extraout_r1_01;
-                uVar6 = extraout_r2_08;
+                uVar6 = extraout_r2_03;
                 iVar10 = extraout_r3;
               }
             }
@@ -362,21 +346,19 @@ LAB_0003113e:
 LAB_000311ea:
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): received audio stop command,stop audio write process\n");
-              uVar5 = extraout_r2_09;
+              printk("%s(): received audio stop command,stop audio write process\n",
+                     "audioStreamFileManagerHandler");
             }
             else {
-              ble_printk("%s(): received audio stop command,stop audio write process\n",
-                         "audioStreamFileManagerHandler",uVar5,BLE_DEBUG);
-              uVar5 = extraout_r2_06;
+              ble_printk("%s(): received audio stop command,stop audio write process\n");
             }
             if (2 < LOG_LEVEL) {
               if (BLE_DEBUG == 0) {
-                printk("%s(): To complete a sector of data, perform flash write operations\n");
+                printk("%s(): To complete a sector of data, perform flash write operations\n",
+                       "audioStreamFileManagerHandler");
               }
               else {
-                ble_printk("%s(): To complete a sector of data, perform flash write operations\n",
-                           "audioStreamFileManagerHandler",uVar5,BLE_DEBUG);
+                ble_printk("%s(): To complete a sector of data, perform flash write operations\n");
               }
             }
           }
@@ -385,11 +367,10 @@ LAB_000311ea:
           iVar10 = (uint)DAT_2001aa78 * 0x20000 + 0x421000 + DAT_20008594 * 0x1000;
           if (2 < LOG_LEVEL) {
             if (BLE_DEBUG == 0) {
-              printk("%s(): wirte addr = 0x%08x\n");
+              printk("%s(): wirte addr = 0x%08x\n","audioStreamFileManagerHandler",iVar10);
             }
             else {
-              ble_printk("%s(): wirte addr = 0x%08x\n","audioStreamFileManagerHandler",iVar10,
-                         BLE_DEBUG);
+              ble_printk("%s(): wirte addr = 0x%08x\n");
             }
           }
           pGVar4 = __get_dashboard_state();
@@ -436,32 +417,30 @@ joined_r0x000312a2:
               (&DAT_20019a82)[iVar2] = 0;
               (&DAT_20019a83)[iVar2] = 0;
               uVar5 = FUN_00080732();
-              iVar2 = LOG_LEVEL;
+              iVar10 = LOG_LEVEL;
               uVar7 = (uint)DAT_2001aa78;
-              iVar10 = uVar7 * 0x14;
-              *(undefined4 *)(&DAT_20019a8c + iVar10) = uVar5;
-              *(uint *)(&DAT_20019a90 + iVar10) = DAT_2000859c;
-              if (2 < iVar2) {
+              *(undefined4 *)(&DAT_20019a8c + uVar7 * 0x14) = uVar5;
+              *(uint *)(&DAT_20019a90 + uVar7 * 0x14) = DAT_2000859c;
+              if (2 < iVar10) {
                 if (BLE_DEBUG == 0) {
-                  printk(
-                        "%s(): upgrade Num.%d voice manager block,total write sector num = %d, total write byte = %d ,crc32 = %d\n"
-                        );
+                  printk("%s(): upgrade Num.%d voice manager block,total write sector num = %d, total write byte = %d ,crc32 = %d\n"
+                         ,"audioStreamFileManagerHandler");
                 }
                 else {
-                  ble_printk("%s(): upgrade Num.%d voice manager block,total write sector num = %d, total write byte = %d ,crc32 = %d\n"
-                             ,"audioStreamFileManagerHandler",uVar7,DAT_20008594);
+                  ble_printk(
+                            "%s(): upgrade Num.%d voice manager block,total write sector num = %d, total write byte = %d ,crc32 = %d\n"
+                            );
                 }
               }
               if (*(int *)(&DAT_20019a84 + (uint)DAT_2001aa78 * 0x14) ==
                   *(int *)(&DAT_20019a88 + (uint)DAT_2001aa78 * 0x14)) {
                 if (2 < LOG_LEVEL) {
                   if (BLE_DEBUG == 0) {
-                    printk("%s(): voice block start addr = voice block end addr\n");
+                    printk("%s(): voice block start addr = voice block end addr\n",
+                           "audioStreamFileManagerHandler");
                   }
                   else {
-                    ble_printk("%s(): voice block start addr = voice block end addr\n",
-                               "audioStreamFileManagerHandler",
-                               *(int *)(&DAT_20019a84 + (uint)DAT_2001aa78 * 0x14),BLE_DEBUG);
+                    ble_printk("%s(): voice block start addr = voice block end addr\n");
                   }
                 }
                 DAT_2001aa79 = '\0';
@@ -475,7 +454,6 @@ joined_r0x000312a2:
                 pcVar3 = 
                 "%s(): The dmic may have a problem. When the size of the recording file is 0, data block 0 is terminated\n"
                 ;
-                uVar5 = extraout_r2_10;
               }
               else {
                 pGVar4 = __get_dashboard_state();
@@ -493,7 +471,6 @@ joined_r0x000312a2:
                   return 0;
                 }
                 pcVar3 = "%s(): audio manager block upgrade success\n";
-                uVar5 = extraout_r2_11;
               }
               goto LAB_00030e26;
             }
@@ -522,10 +499,10 @@ LAB_00030e16:
     }
 LAB_00030e26:
     if (BLE_DEBUG == 0) {
-      printk(pcVar3);
+      printk(pcVar3,"audioStreamFileManagerHandler");
     }
     else {
-      ble_printk(pcVar3,"audioStreamFileManagerHandler",uVar5,BLE_DEBUG);
+      ble_printk(pcVar3);
     }
   }
   return 0;

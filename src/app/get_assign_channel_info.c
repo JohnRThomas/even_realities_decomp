@@ -22,11 +22,10 @@ get_assign_channel_info(int param_1,undefined4 param_2,undefined4 *param_3,undef
   if ((param_3 == (undefined4 *)0x0) || (param_4 == (undefined1 *)0x0)) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): get_assign_channel_info para is NULL\n");
+        printk("%s(): get_assign_channel_info para is NULL\n","get_assign_channel_info");
       }
       else {
-        ble_printk("%s(): get_assign_channel_info para is NULL\n","get_assign_channel_info",param_3,
-                   BLE_DEBUG);
+        ble_printk("%s(): get_assign_channel_info para is NULL\n");
       }
     }
     uVar1 = 0xffffffff;

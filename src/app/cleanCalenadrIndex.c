@@ -14,7 +14,7 @@ void cleanCalenadrIndex(void)
     return;
   }
   if (BLE_DEBUG != 0) {
-    ble_printk("%s():  %s index = %d\n","cleanCalenadrIndex","cleanCalenadrIndex",0);
+    ble_printk("%s():  %s index = %d\n","cleanCalenadrIndex");
     return;
   }
   printk("%s():  %s index = %d\n","cleanCalenadrIndex","cleanCalenadrIndex",0);

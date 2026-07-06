@@ -8,7 +8,7 @@
 bool __is_master(void)
 
 {
-  return (bool)*(undefined1 *)GLOBAL_STATE;
+  return GLOBAL_STATE->is_master;
 }
 
 

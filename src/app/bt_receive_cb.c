@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void bt_receive_cb(k_work *param_1,byte *packet_data,uint packet_size)
 
 {
@@ -21,7 +19,6 @@ void bt_receive_cb(k_work *param_1,byte *packet_data,uint packet_size)
   uint uVar9;
   uint uVar10;
   undefined4 uVar11;
-  undefined4 extraout_r2;
   char *pcVar12;
   ulonglong uVar13;
   char local_158 [20];
@@ -72,27 +69,27 @@ LAB_000180b8:
     uVar6 = (uint)packet_data[4];
     pcVar12 = (char *)(uint)packet_data[5];
     if (BLE_DEBUG == 0) {
-      printk(
-            "%s(): **Received data from: %s, len=%d,cmd 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x,receiver_thd_is_running is %d\n"
-            );
+      printk("%s(): **Received data from: %s, len=%d,cmd 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x,receiver_thd_is_running is %d\n"
+             ,"bt_receive_cb",local_144,packet_size,uVar10,uVar9,uVar8,uVar7,uVar6,pcVar12,
+             (uint)*(byte *)(DAT_20006c10 + 0x248));
     }
     else {
-      ble_printk("%s(): **Received data from: %s, len=%d,cmd 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x,receiver_thd_is_running is %d\n"
-                 ,"bt_receive_cb",local_144,packet_size,uVar10,uVar9,uVar8,uVar7,uVar6,pcVar12,
-                 (uint)*(byte *)(_DAT_20006c10 + 0x248));
+      ble_printk(
+                "%s(): **Received data from: %s, len=%d,cmd 0x%x 0x%x 0x%x 0x%x 0x%x 0x%x,receiver_thd_is_running is %d\n"
+                );
     }
   }
-  iVar2 = _DAT_20006c10;
+  iVar2 = DAT_20006c10;
   uVar13 = sys_clock_tick_get();
-  iVar3 = _DAT_20006c10;
+  iVar3 = DAT_20006c10;
   lVar1 = (uVar13 & 0xffffffff) * 1000;
   *(uint *)(iVar2 + 0x368) =
        (uint)lVar1 >> 0xf |
        ((int)(uVar13 >> 0x20) * 1000 + (int)((ulonglong)lVar1 >> 0x20)) * 0x20000;
-  iVar2 = _DAT_20006c10;
+  iVar2 = DAT_20006c10;
   if ((*(char *)(iVar3 + 0x248) == '\0') && (*(int *)(iVar3 + 0x220) == 0)) {
     if (packet_size < 0x15) {
-      memcpy(*(void **)(_DAT_20006c10 + 0x254),packet_data,packet_size);
+      memcpy(*(void **)(DAT_20006c10 + 0x254),packet_data,packet_size);
       memset((void *)(*(int *)(iVar2 + 0x254) + packet_size),0,0x14 - packet_size);
       *(undefined4 *)(iVar2 + 0x358) = 0;
       *(uint *)(iVar2 + 0x360) = packet_size;
@@ -106,7 +103,7 @@ LAB_000180b8:
         uVar11 = 0x6f;
         goto LAB_000181f8;
       }
-      memcpy((void *)(_DAT_20006c10 + 600),packet_data,packet_size);
+      memcpy((void *)(DAT_20006c10 + 600),packet_data,packet_size);
       *(uint *)(iVar2 + 0x358) = packet_size;
     }
     *(undefined4 *)(iVar2 + 0x35c) = 1;
@@ -120,9 +117,9 @@ LAB_000180b8:
     memset(local_158 + 4,0,0x10);
     if (*packet_data == 0x18) {
       local_158[1] = 0xc9;
-      (**(code **)(_DAT_20006c10 + 0xc))(local_158,0x14);
+      (**(code **)(DAT_20006c10 + 0xc))(local_158,0x14);
       pGVar5 = __get_dashboard_state();
-      if ((*(char *)pGVar5 == '\x02') &&
+      if ((pGVar5->is_master == true) &&
          (pGVar5 = __get_dashboard_state(), pGVar5->field20_0xc8[0xd] == '\x06')) {
         z_impl_k_sleep((k_timeout_t)0x667);
       }
@@ -139,22 +136,22 @@ LAB_000180b8:
         return;
       }
       if (BLE_DEBUG != 0) {
-        ble_printk("%s(): enqueue because busy\n","bt_receive_cb",extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): enqueue because busy\n");
         return;
       }
-      printk("%s(): enqueue because busy\n");
+      printk("%s(): enqueue because busy\n","bt_receive_cb");
       return;
     }
     if (BLE_DEBUG == 0) {
       uVar11 = 0x5e;
 LAB_00018206:
-      printk("[%s-%d]len is %d, too large ! \n","bt_receive_cb",uVar11,packet_size);
+      printk("[%s-%d]len is %d, too large ! \n","bt_receive_cb",uVar11,packet_size,uVar10,uVar9,
+             uVar8,uVar7,uVar6,pcVar12);
       return;
     }
     uVar11 = 0x5e;
 LAB_000181f8:
-    ble_printk("[%s-%d]len is %d, too large ! \n","bt_receive_cb",uVar11,packet_size,uVar10,uVar9,
-               uVar8,uVar7,uVar6,pcVar12);
+    ble_printk("[%s-%d]len is %d, too large ! \n","bt_receive_cb",uVar11,packet_size);
   }
   return;
 }

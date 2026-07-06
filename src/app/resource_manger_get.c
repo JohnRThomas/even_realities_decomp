@@ -16,20 +16,8 @@ resource_manger_get(uint param_1,uint param_2,uint *param_3,uint *param_4,undefi
   uint uVar4;
   undefined *puVar5;
   char *pcVar6;
-  uint *extraout_r2;
-  uint *puVar7;
-  uint *extraout_r2_00;
-  uint *extraout_r2_01;
-  uint *extraout_r2_02;
-  uint *extraout_r2_03;
-  uint *extraout_r2_04;
-  uint *extraout_r2_05;
-  uint *extraout_r2_06;
-  uint *extraout_r2_07;
-  uint *extraout_r2_08;
-  uint *extraout_r2_09;
-  int iVar8;
-  code *pcVar9;
+  int iVar7;
+  code *pcVar8;
   undefined4 local_28;
   undefined4 local_24;
   
@@ -48,11 +36,10 @@ resource_manger_get(uint param_1,uint param_2,uint *param_3,uint *param_4,undefi
     }
     if (0xff41 < param_2 - 0xa4) goto LAB_0004836a;
     pGVar3 = __get_dashboard_state();
-    pcVar9 = *(code **)&pGVar3->field_0x1044;
+    pcVar8 = *(code **)&pGVar3->field_0x1044;
     pGVar3 = __get_dashboard_state();
-    iVar8 = (param_2 - 0xa4) * 4;
-    uVar4 = (*pcVar9)(pGVar3,&DAT_00140000 + iVar8,&local_24);
-    puVar7 = extraout_r2;
+    iVar7 = (param_2 - 0xa4) * 4;
+    uVar4 = (*pcVar8)(pGVar3,&DAT_00140000 + iVar7,&local_24);
     if (uVar4 == 0) {
       uVar2 = local_24 >> 0x10;
       if (uVar2 == 0xffff) {
@@ -60,19 +47,18 @@ resource_manger_get(uint param_1,uint param_2,uint *param_3,uint *param_4,undefi
           local_28 = uVar4;
           local_24 = uVar4;
           pGVar3 = __get_dashboard_state();
-          pcVar9 = *(code **)&pGVar3->field_0x1044;
+          pcVar8 = *(code **)&pGVar3->field_0x1044;
           pGVar3 = __get_dashboard_state();
-          iVar8 = (*pcVar9)(pGVar3,iVar8 + 0xa1be90,&local_24);
-          puVar7 = extraout_r2_00;
-          if (iVar8 != 0) goto LAB_00047fc2;
+          iVar7 = (*pcVar8)(pGVar3,iVar7 + 0xa1be90,&local_24);
+          if (iVar7 != 0) goto LAB_00047fc2;
           uVar1 = local_24._2_2_ << 8 | local_24._2_2_ >> 8;
           local_28 = CONCAT22(uVar1,(ushort)local_24 << 8 | (ushort)local_24 >> 8);
           if (local_24._2_2_ != 0xffff) {
             memset(&DAT_2001dbc9,0,0x138);
             pGVar3 = __get_dashboard_state();
-            pcVar9 = *(code **)&pGVar3->field_0x1044;
+            pcVar8 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 + (uint)uVar1 * 0x138,&DAT_2001dbc9,0x138);
+            param_2 = (*pcVar8)(pGVar3,&DAT_00a40000 + (uint)uVar1 * 0x138,&DAT_2001dbc9,0x138);
 LAB_000480bc:
             if (param_2 == 0) {
               uVar4 = 0x18;
@@ -86,10 +72,9 @@ LAB_00048378:
             pGVar3 = __get_dashboard_state();
             if (*(int *)&pGVar3->field_0x1044 != 0) {
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = (*pcVar9)(pGVar3,&DAT_00500000 + (param_2 - 0x2010) * 4,&local_24);
-              puVar7 = extraout_r2_08;
+              iVar7 = (*pcVar8)(pGVar3,&DAT_00500000 + (param_2 - 0x2010) * 4,&local_24);
               goto LAB_000484ba;
             }
             goto LAB_00048508;
@@ -97,19 +82,18 @@ LAB_00048378:
           pGVar3 = __get_dashboard_state();
           if (*(int *)&pGVar3->field_0x1044 != 0) {
             pGVar3 = __get_dashboard_state();
-            pcVar9 = *(code **)&pGVar3->field_0x1044;
+            pcVar8 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            iVar8 = (*pcVar9)(pGVar3,param_2 * 4 + 0x9eba14,&local_24);
-            puVar7 = extraout_r2_06;
-            if (iVar8 != 0) goto LAB_00047fc2;
+            iVar7 = (*pcVar8)(pGVar3,param_2 * 4 + 0x9eba14,&local_24);
+            if (iVar7 != 0) goto LAB_00047fc2;
             uVar1 = local_24._2_2_;
             uVar4 = (uint)local_24._2_2_;
             if (uVar4 != 0xffff) {
               memset(&DAT_2001dbc9,0,0x138);
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 +
+              param_2 = (*pcVar8)(pGVar3,&DAT_00a40000 +
                                          ((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0x138,
                                   &DAT_2001dbc9,0x138);
               goto LAB_000480bc;
@@ -121,19 +105,18 @@ LAB_0004850e:
           pGVar3 = __get_dashboard_state();
           if (*(int *)&pGVar3->field_0x1044 != 0) {
             pGVar3 = __get_dashboard_state();
-            pcVar9 = *(code **)&pGVar3->field_0x1044;
+            pcVar8 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            iVar8 = (*pcVar9)(pGVar3,param_2 * 4 + 0x4d58f8,&local_24);
-            puVar7 = extraout_r2_09;
-            if (iVar8 != 0) goto LAB_00047fc2;
+            iVar7 = (*pcVar8)(pGVar3,param_2 * 4 + 0x4d58f8,&local_24);
+            if (iVar7 != 0) goto LAB_00047fc2;
             uVar4 = (local_24._2_2_ & 0xff) << 8 | (uint)(local_24._2_2_ >> 8);
             if (local_24._2_2_ != 0xffff) {
               memset(&DAT_2001dbc9,0,0x138);
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
 LAB_00048474:
-              param_2 = (*pcVar9)(pGVar3,&DAT_00520000 + uVar4 * 0xd0,&DAT_2001dbc9);
+              param_2 = (*pcVar8)(pGVar3,&DAT_00520000 + uVar4 * 0xd0,&DAT_2001dbc9);
               goto LAB_000484fc;
             }
           }
@@ -143,11 +126,10 @@ LAB_00048474:
             pGVar3 = __get_dashboard_state();
             if (*(int *)&pGVar3->field_0x1044 != 0) {
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = (*pcVar9)(pGVar3,iVar8 + 0xa145c0,&local_24);
-              puVar7 = extraout_r2_02;
-              if (iVar8 != 0) goto LAB_00047fc2;
+              iVar7 = (*pcVar8)(pGVar3,iVar7 + 0xa145c0,&local_24);
+              if (iVar7 != 0) goto LAB_00047fc2;
               uVar4 = local_24 >> 0x10;
               if (uVar4 != 0xffff) goto LAB_0004814a;
 LAB_0004820e:
@@ -156,20 +138,19 @@ LAB_0004820e:
             pGVar3 = __get_dashboard_state();
             if (*(int *)&pGVar3->field_0x1044 == 0) goto LAB_00048508;
             pGVar3 = __get_dashboard_state();
-            pcVar9 = *(code **)&pGVar3->field_0x1044;
+            pcVar8 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            iVar8 = (*pcVar9)(pGVar3,param_2 * 4 + 0x4f40b8,&local_24);
-            puVar7 = extraout_r2_01;
+            iVar7 = (*pcVar8)(pGVar3,param_2 * 4 + 0x4f40b8,&local_24);
 LAB_000484ba:
-            if (iVar8 != 0) goto LAB_00047fc2;
+            if (iVar7 != 0) goto LAB_00047fc2;
             uVar1 = local_24._2_2_;
             uVar4 = (uint)local_24._2_2_;
             if (uVar4 == 0xffff) goto LAB_00048508;
             memset(&DAT_2001dbc9,0,0x138);
             pGVar3 = __get_dashboard_state();
-            pcVar9 = *(code **)&pGVar3->field_0x1044;
+            pcVar8 = *(code **)&pGVar3->field_0x1044;
             pGVar3 = __get_dashboard_state();
-            param_2 = (*pcVar9)(pGVar3,&DAT_00520000 +
+            param_2 = (*pcVar8)(pGVar3,&DAT_00520000 +
                                        ((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0xd0,
                                 &DAT_2001dbc9);
 LAB_000484fc:
@@ -187,19 +168,18 @@ LAB_0004803a:
             pGVar3 = __get_dashboard_state();
             if (*(int *)&pGVar3->field_0x1044 != 0) {
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = (*pcVar9)(pGVar3,iVar8 + 0xa141bc,&local_24);
-              puVar7 = extraout_r2_03;
-              if (iVar8 == 0) {
+              iVar7 = (*pcVar8)(pGVar3,iVar7 + 0xa141bc,&local_24);
+              if (iVar7 == 0) {
                 uVar1 = local_24._2_2_;
                 uVar4 = (uint)local_24._2_2_;
                 if (uVar4 == 0xffff) goto LAB_0004820e;
                 memset(&DAT_2001dbc9,0,0x138);
                 pGVar3 = __get_dashboard_state();
-                pcVar9 = *(code **)&pGVar3->field_0x1044;
+                pcVar8 = *(code **)&pGVar3->field_0x1044;
                 pGVar3 = __get_dashboard_state();
-                param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 +
+                param_2 = (*pcVar8)(pGVar3,&DAT_00a40000 +
                                            ((uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8)) * 0x138,
                                     &DAT_2001dbc9,0x138);
                 if (param_2 == 0) {
@@ -218,9 +198,9 @@ LAB_0004840a:
               pGVar3 = __get_dashboard_state();
               if (*(int *)&pGVar3->field_0x1044 == 0) goto LAB_00048508;
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = 0x4f3bf0;
+              iVar7 = 0x4f3bf0;
             }
             else {
 LAB_000482e6:
@@ -228,20 +208,19 @@ LAB_000482e6:
               pGVar3 = __get_dashboard_state();
               if (*(int *)&pGVar3->field_0x1044 == 0) goto LAB_00048508;
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = 0x4ed328;
+              iVar7 = 0x4ed328;
             }
 LAB_00048434:
-            iVar8 = (*pcVar9)(pGVar3,iVar8 + param_2 * 4,&local_24);
-            puVar7 = extraout_r2_07;
-            if (iVar8 != 0) goto LAB_00047fc2;
+            iVar7 = (*pcVar8)(pGVar3,iVar7 + param_2 * 4,&local_24);
+            if (iVar7 != 0) goto LAB_00047fc2;
             uVar1 = local_24._2_2_;
             uVar4 = (uint)local_24._2_2_;
             if (uVar4 != 0xffff) {
               memset(&DAT_2001dbc9,0,0x138);
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
               uVar4 = (uVar4 & 0xff) << 8 | (uint)(uVar1 >> 8);
               goto LAB_00048474;
@@ -252,19 +231,18 @@ LAB_00048434:
               pGVar3 = __get_dashboard_state();
               if (*(int *)&pGVar3->field_0x1044 != 0) {
                 pGVar3 = __get_dashboard_state();
-                pcVar9 = *(code **)&pGVar3->field_0x1044;
+                pcVar8 = *(code **)&pGVar3->field_0x1044;
                 pGVar3 = __get_dashboard_state();
-                iVar8 = (*pcVar9)(pGVar3,iVar8 + 0xa13ff8,&local_24);
-                puVar7 = extraout_r2_04;
-                if (iVar8 != 0) goto LAB_00047fc2;
+                iVar7 = (*pcVar8)(pGVar3,iVar7 + 0xa13ff8,&local_24);
+                if (iVar7 != 0) goto LAB_00047fc2;
                 uVar4 = local_24 >> 0x10;
                 if (uVar4 != 0xffff) {
 LAB_0004814a:
                   memset(&DAT_2001dbc9,0,0x138);
                   pGVar3 = __get_dashboard_state();
-                  pcVar9 = *(code **)&pGVar3->field_0x1044;
+                  pcVar8 = *(code **)&pGVar3->field_0x1044;
                   pGVar3 = __get_dashboard_state();
-                  param_2 = (*pcVar9)(pGVar3,&DAT_00a40000 +
+                  param_2 = (*pcVar8)(pGVar3,&DAT_00a40000 +
                                              ((uVar4 & 0xff) << 8 | uVar4 >> 8) * 0x138,
                                       &DAT_2001dbc9,0x138);
                   goto LAB_000480bc;
@@ -276,11 +254,10 @@ LAB_0004814a:
             pGVar3 = __get_dashboard_state();
             if (*(int *)&pGVar3->field_0x1044 != 0) {
               pGVar3 = __get_dashboard_state();
-              pcVar9 = *(code **)&pGVar3->field_0x1044;
+              pcVar8 = *(code **)&pGVar3->field_0x1044;
               pGVar3 = __get_dashboard_state();
-              iVar8 = (*pcVar9)(pGVar3,iVar8 + 0x9f59f8,&local_24);
-              puVar7 = extraout_r2_05;
-              if (iVar8 != 0) goto LAB_00047fc2;
+              iVar7 = (*pcVar8)(pGVar3,iVar7 + 0x9f59f8,&local_24);
+              if (iVar7 != 0) goto LAB_00047fc2;
               uVar4 = local_24 >> 0x10;
               if (uVar4 != 0xffff) goto LAB_0004814a;
               goto LAB_000482e6;
@@ -290,9 +267,9 @@ LAB_00048328:
               pGVar3 = __get_dashboard_state();
               if (*(int *)&pGVar3->field_0x1044 != 0) {
                 pGVar3 = __get_dashboard_state();
-                pcVar9 = *(code **)&pGVar3->field_0x1044;
+                pcVar8 = *(code **)&pGVar3->field_0x1044;
                 pGVar3 = __get_dashboard_state();
-                iVar8 = 0x4dd104;
+                iVar7 = 0x4dd104;
                 goto LAB_00048434;
               }
             }
@@ -310,9 +287,9 @@ LAB_00048508:
       else {
         memset(&DAT_2001dbc9,0,0x138);
         pGVar3 = __get_dashboard_state();
-        pcVar9 = *(code **)&pGVar3->field_0x1044;
+        pcVar8 = *(code **)&pGVar3->field_0x1044;
         pGVar3 = __get_dashboard_state();
-        param_2 = (*pcVar9)(pGVar3,uVar2 * 0xea + 0x200000,&DAT_2001dbc9);
+        param_2 = (*pcVar8)(pGVar3,uVar2 * 0xea + 0x200000,&DAT_2001dbc9);
         if (param_2 == 0) {
           uVar4 = 0x12;
           goto LAB_0004803a;
@@ -324,10 +301,10 @@ LAB_00048018:
         pcVar6 = "%s(): read flash fail: %d\n\n";
       }
       if (BLE_DEBUG == 0) {
-        printk(pcVar6);
+        printk(pcVar6,"resource_manger_get",param_2);
         return 0xffffffff;
       }
-      ble_printk(pcVar6,"resource_manger_get",param_2,BLE_DEBUG);
+      ble_printk(pcVar6);
       return 0xffffffff;
     }
 LAB_00047fc2:
@@ -916,13 +893,12 @@ LAB_00047fc2:
       return 0xffffffff;
     }
     pcVar6 = "%s(): can\'t find resource ,exit .....\n";
-    puVar7 = param_3;
 LAB_00047fd2:
     if (BLE_DEBUG == 0) {
-      printk(pcVar6);
+      printk(pcVar6,"resource_manger_get");
     }
     else {
-      ble_printk(pcVar6,"resource_manger_get",puVar7,BLE_DEBUG);
+      ble_printk(pcVar6);
     }
     break;
   case 5:

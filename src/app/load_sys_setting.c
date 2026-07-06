@@ -11,7 +11,6 @@ undefined4 load_sys_setting(GlassesState *param_1)
   int iVar1;
   char *pcVar2;
   undefined4 *puVar3;
-  undefined4 extraout_r2;
   undefined2 uVar4;
   undefined4 extraout_r3;
   char *pcVar5;
@@ -54,21 +53,20 @@ undefined4 load_sys_setting(GlassesState *param_1)
   if (iVar1 != 0) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): sys_flash_settings_read error!\n");
+        printk("%s(): sys_flash_settings_read error!\n","load_sys_setting");
       }
       else {
-        ble_printk("%s(): sys_flash_settings_read error!\n","load_sys_setting",extraout_r2,BLE_DEBUG
-                  );
+        ble_printk("%s(): sys_flash_settings_read error!\n");
       }
     }
     return 0xffffffff;
   }
   if (1 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): read sys settings success!\n");
+      printk("%s(): read sys settings success!\n","load_sys_setting");
     }
     else {
-      ble_printk("%s(): read sys settings success!\n","load_sys_setting",extraout_r2,BLE_DEBUG);
+      ble_printk("%s(): read sys settings success!\n");
     }
   }
   param_1->field1252_0x10b8 = local_ac;
@@ -110,7 +108,7 @@ undefined4 load_sys_setting(GlassesState *param_1)
   *(undefined4 *)&param_1->field_0xfb0 = local_40;
   *(undefined4 *)&param_1->field_0xfb4 = local_34;
   *(undefined4 *)&param_1->field_0xfb8 = local_30;
-  *(undefined2 *)&(param_1->jdb_panel_context).field_0x36e = local_3c;
+  *(undefined2 *)((int)&(param_1->jdb_panel_context).field831_0x36c + 2) = local_3c;
   *(undefined2 *)&(param_1->jdb_panel_context).field_0x370 = local_3a;
   *(undefined2 *)&(param_1->jdb_panel_context).field_0x372 = local_38;
   param_1->field1253_0x10bc = local_2c;
@@ -122,11 +120,10 @@ undefined4 load_sys_setting(GlassesState *param_1)
   if (local_b0 != 1) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): FIRST BOOT, full default sys value!\n");
+        printk("%s(): FIRST BOOT, full default sys value!\n","load_sys_setting");
       }
       else {
-        ble_printk("%s(): FIRST BOOT, full default sys value!\n","load_sys_setting",local_b0,
-                   BLE_DEBUG);
+        ble_printk("%s(): FIRST BOOT, full default sys value!\n");
       }
     }
     param_1->esb_channel = 0xff;
@@ -139,7 +136,7 @@ undefined4 load_sys_setting(GlassesState *param_1)
     *(undefined2 *)&param_1->field_0x10a8 = 0;
     param_1->field1251_0x10b4 = 0;
     *(undefined4 *)&param_1->field_0xfb4 = 0x1f400;
-    *(undefined2 *)&(param_1->jdb_panel_context).field_0x36e = 0x3f;
+    *(undefined2 *)((int)&(param_1->jdb_panel_context).field831_0x36c + 2) = 0x3f;
     *(undefined4 *)&(param_1->jdb_panel_context).field_0x370 = 0x3f003f;
     *(undefined4 *)&param_1->field_0xfa4 = 0;
     *(undefined4 *)&param_1->field_0xfa8 = 0;

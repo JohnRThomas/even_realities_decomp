@@ -1,11 +1,11 @@
 /*
  * Function: jdb_panel_init
  * Entry:    0004a978
- * Prototype: int __stdcall jdb_panel_init(jdb_panel_context * panel_context)
+ * Prototype: int __stdcall jdb_panel_init(jbd_panel_context * panel_context)
  */
 
 
-int jdb_panel_init(jdb_panel_context *panel_context)
+int jdb_panel_init(jbd_panel_context *panel_context)
 
 {
   ushort uVar1;
@@ -22,23 +22,22 @@ int jdb_panel_init(jdb_panel_context *panel_context)
   if (JDB_PANEL_ID == 0x4010) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): JBD PANEL init ok!, device id: 0x%x\n");
+        printk("%s(): JBD PANEL init ok!, device id: 0x%x\n","jdb_panel_init",0x4010);
       }
       else {
-        ble_printk("%s(): JBD PANEL init ok!, device id: 0x%x\n","jdb_panel_init",0x4010,BLE_DEBUG);
+        ble_printk("%s(): JBD PANEL init ok!, device id: 0x%x\n");
       }
     }
     iVar2 = 0;
-    panel_context->__initialized = 1;
+    panel_context->init_done = 1;
   }
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): JBD PANEL init failure!, device id: 0x%x\n");
+        printk("%s(): JBD PANEL init failure!, device id: 0x%x\n","jdb_panel_init",JDB_PANEL_ID);
       }
       else {
-        ble_printk("%s(): JBD PANEL init failure!, device id: 0x%x\n","jdb_panel_init",JDB_PANEL_ID,
-                   BLE_DEBUG);
+        ble_printk("%s(): JBD PANEL init failure!, device id: 0x%x\n");
       }
     }
     iVar2 = -1;

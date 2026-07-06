@@ -15,7 +15,7 @@ undefined4 setNewsIndex(byte param_1,undefined4 param_2,undefined4 param_3,undef
       printk("%s():  %s index = %d\n","setNewsIndex","setNewsIndex",(uint)param_1,param_4);
     }
     else {
-      ble_printk("%s():  %s index = %d\n","setNewsIndex","setNewsIndex",(uint)param_1);
+      ble_printk("%s():  %s index = %d\n","setNewsIndex");
     }
   }
   return 0;

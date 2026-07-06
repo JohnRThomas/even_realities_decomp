@@ -9,15 +9,14 @@ int init_msgq_ancs(void)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   
   iVar1 = z_impl_k_msgq_alloc_init((k_msgq *)&DAT_20006c4c,0x1b4,10);
   if ((iVar1 != 0) && (0 < LOG_LEVEL)) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): k_msgq alloc failed\n");
+      printk("%s(): k_msgq alloc failed\n","init_msgq_ancs");
     }
     else {
-      ble_printk("%s(): k_msgq alloc failed\n","init_msgq_ancs",extraout_r2,BLE_DEBUG);
+      ble_printk("%s(): k_msgq alloc failed\n");
     }
   }
   return iVar1;

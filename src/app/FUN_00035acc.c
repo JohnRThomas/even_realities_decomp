@@ -16,7 +16,7 @@ byte FUN_00035acc(void)
   
   pGVar2 = __get_dashboard_state();
   if ((pGVar2->field_0x10d6 != '\0') &&
-     (pGVar2 = __get_dashboard_state(), *(char *)pGVar2 == '\x01')) {
+     (pGVar2 = __get_dashboard_state(), pGVar2->is_master == true)) {
     pGVar2 = __get_dashboard_state();
     __set_date(*(undefined4 *)pGVar2->dashboard_ts);
   }

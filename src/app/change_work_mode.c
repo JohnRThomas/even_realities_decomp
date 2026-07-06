@@ -8,7 +8,6 @@
 void change_work_mode(uint param_1)
 
 {
-  undefined4 extraout_r2;
   int iVar1;
   undefined4 local_50;
   undefined1 auStack_4c [60];
@@ -25,10 +24,10 @@ void change_work_mode(uint param_1)
   GLOBAL_STATE->field_0x1 = (char)param_1;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): change_work_mode to %d\n");
+      printk("%s(): change_work_mode to %d\n","change_work_mode",param_1 & 0xff);
     }
     else {
-      ble_printk("%s(): change_work_mode to %d\n","change_work_mode",param_1 & 0xff,BLE_DEBUG);
+      ble_printk("%s(): change_work_mode to %d\n");
     }
   }
   switch(GLOBAL_STATE->field_0x1) {
@@ -53,7 +52,7 @@ void change_work_mode(uint param_1)
     local_50 = 0;
     memset(auStack_4c,0,0x3c);
     local_50 = CONCAT22(local_50._2_2_,0x801);
-    global_ipc_service_send(&local_50,4,extraout_r2);
+    global_ipc_service_send(&local_50,4);
     break;
   case 2:
     update_imu_mode(1,0x10);

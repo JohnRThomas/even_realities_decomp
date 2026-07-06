@@ -1,13 +1,11 @@
 /*
  * Function: bt_ancs_data_source_handler
  * Entry:    00018d40
- * Prototype: undefined __stdcall bt_ancs_data_source_handler(undefined4 param_1, byte * param_2)
+ * Prototype: undefined __stdcall bt_ancs_data_source_handler(undefined4 param_1, byte * param_2, undefined4 param_3)
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2)
+void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2,undefined4 param_3)
 
 {
   int iVar1;
@@ -19,22 +17,22 @@ void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2)
   iVar1 = FUN_00018320();
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): bt_ancs_data_source_handler response->command_id %d\n");
+      printk("%s(): bt_ancs_data_source_handler response->command_id %d\n",
+             "bt_ancs_data_source_handler",(uint)*param_2,0,param_1,pbVar4,param_3);
     }
     else {
-      ble_printk("%s(): bt_ancs_data_source_handler response->command_id %d\n",
-                 "bt_ancs_data_source_handler",(uint)*param_2,BLE_DEBUG,param_1,pbVar4);
+      ble_printk("%s(): bt_ancs_data_source_handler response->command_id %d\n");
     }
   }
   if (*param_2 == 0) {
     if (*(int *)(param_2 + 8) == 0) {
-      _DAT_20006c80 = *(undefined4 *)(param_2 + 4);
-      _DAT_20006c84 = *(undefined4 *)(param_2 + 8);
-      _DAT_20006c88 = *(undefined4 *)(param_2 + 0xc);
+      DAT_20006c80 = *(undefined4 *)(param_2 + 4);
+      DAT_20006c84 = *(undefined4 *)(param_2 + 8);
+      DAT_20006c88 = *(undefined4 *)(param_2 + 0xc);
       DAT_2001095f = '\x01';
     }
   }
-  else if (((*param_2 == 1) && (DAT_2001095f != '\0')) && (_DAT_20006c8c != DAT_2000231c)) {
+  else if (((*param_2 == 1) && (DAT_2001095f != '\0')) && (DAT_20006c8c != DAT_2000231c)) {
     uVar2 = FUN_0007f370();
     pGVar3 = __get_dashboard_state();
     if (9999 < uVar2 - *(int *)&pGVar3->field_0xae8) {
@@ -54,19 +52,19 @@ void bt_ancs_data_source_handler(undefined4 param_1,byte *param_2)
           (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x11')) &&
          ((pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x12' &&
           (pGVar3 = __get_dashboard_state(), pGVar3->field20_0xc8[0xd] != '\x13')))) {
-        DAT_2000231c = _DAT_20006c8c;
+        DAT_2000231c = DAT_20006c8c;
         *(uint *)(iVar1 + 0x1e4) = (uint)DAT_20006c90;
         enqueue_ancs((void *)(iVar1 + 0x34));
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk(
-                  "%s(): =========================>bt_ancs_get_attr_data_sem %d evt_id %d action %d\n"
-                  );
+            printk("%s(): =========================>bt_ancs_get_attr_data_sem %d evt_id %d action %d\n"
+                   ,"bt_ancs_data_source_handler",DAT_20006c8c,(uint)DAT_20006c90,
+                   *(undefined4 *)(iVar1 + 0x1e4));
           }
           else {
-            ble_printk("%s(): =========================>bt_ancs_get_attr_data_sem %d evt_id %d action %d\n"
-                       ,"bt_ancs_data_source_handler",_DAT_20006c8c,(uint)DAT_20006c90,
-                       *(undefined4 *)(iVar1 + 0x1e4));
+            ble_printk(
+                      "%s(): =========================>bt_ancs_get_attr_data_sem %d evt_id %d action %d\n"
+                      );
           }
         }
         memset((void *)(iVar1 + 0x34),0,0x1b4);

@@ -17,8 +17,6 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 uVar5;
   undefined4 extraout_r1_01;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 extraout_r2_01;
   undefined8 uVar6;
   undefined4 local_14;
   undefined4 uStack_10;
@@ -31,7 +29,7 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
     if ((((DAT_20019a61 != '\0') &&
          (pGVar1 = __get_dashboard_state(), *(int *)pGVar1->___glasses_state == 0)) &&
         (pGVar1 = __get_dashboard_state(), pGVar1->field20_0xc8[0xd] == '\0')) &&
-       (pGVar1 = __get_dashboard_state(), *(char *)pGVar1 == '\x01')) {
+       (pGVar1 = __get_dashboard_state(), pGVar1->is_master == true)) {
       iVar2 = FUN_0007f3da(pGVar1,extraout_r1);
       puVar3 = (undefined1 *)0x0;
       uVar5 = extraout_r1_00;
@@ -47,11 +45,11 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
       if (iVar2 == 0) {
         if (1 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): ble device unbound,prepare to show binding tip\n");
+            printk("%s(): ble device unbound,prepare to show binding tip\n","check_disp_onboarding")
+            ;
           }
           else {
-            ble_printk("%s(): ble device unbound,prepare to show binding tip\n",
-                       "check_disp_onboarding",extraout_r2,BLE_DEBUG);
+            ble_printk("%s(): ble device unbound,prepare to show binding tip\n");
           }
         }
         pGVar1 = __get_dashboard_state();
@@ -66,15 +64,14 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
       local_14._3_1_ = SUB41(uVar5,3);
       local_14._0_3_ =
            CONCAT12(1,CONCAT11(DAT_2001db40,*(undefined1 *)(*(int *)&pGVar1->field_0x101c + 2)));
-      iVar2 = onboarding_sync_data((undefined1 *)&local_14,3,extraout_r2_00);
+      iVar2 = onboarding_sync_data((undefined1 *)&local_14,3,extraout_r2);
       if (iVar2 == 0) {
         if (0 < LOG_LEVEL) {
           if (BLE_DEBUG == 0) {
-            printk("%s(): ready to show onboarding...\n");
+            printk("%s(): ready to show onboarding...\n","check_disp_onboarding");
           }
           else {
-            ble_printk("%s(): ready to show onboarding...\n","check_disp_onboarding",extraout_r2_01,
-                       BLE_DEBUG);
+            ble_printk("%s(): ready to show onboarding...\n");
           }
         }
         FUN_00042830();
@@ -100,7 +97,7 @@ void check_disp_onboarding(int param_1,undefined4 param_2,undefined4 param_3)
   }
   else {
     pGVar1 = __get_dashboard_state();
-    if (*(char *)pGVar1 == '\x01') {
+    if (pGVar1->is_master == true) {
       FUN_00080992();
       return;
     }

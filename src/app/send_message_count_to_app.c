@@ -9,7 +9,7 @@ void __send_message_count_to_app
                (undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
-  byte bVar1;
+  char cVar1;
   GlassesState *pGVar2;
   uint uVar3;
   undefined4 uVar4;
@@ -26,7 +26,7 @@ void __send_message_count_to_app
   local_10 = param_3;
   uStack_c = param_4;
   pGVar2 = __get_dashboard_state();
-  if (*(char *)pGVar2 == '\x02') {
+  if (pGVar2->is_master == true) {
     return;
   }
   local_18 = 0xa22;
@@ -36,25 +36,27 @@ void __send_message_count_to_app
   uVar3 = FUN_00035310();
   local_14._0_2_ = CONCAT11((char)uVar3,(undefined1)local_14);
   pGVar2 = __get_dashboard_state();
-  local_14._0_3_ = CONCAT12(pGVar2->dashboard_ts->field_0x60,(undefined2)local_14);
+  local_14._0_3_ =
+       CONCAT12(*(undefined1 *)((int)&pGVar2->dashboard_ts->time_disp_mode + 2),(undefined2)local_14
+               );
   pGVar2 = __get_dashboard_state();
   local_14 = CONCAT13(pGVar2->dashboard_ts->field_0x65,(undefined3)local_14);
   pGVar2 = __get_dashboard_state();
   local_10 = CONCAT31(local_10._1_3_,pGVar2->dashboard_ts->field_0x66);
   if (PANE_MODE == '\0') {
-    bVar1 = __getNotesIndex();
+    cVar1 = __getNotesIndex();
   }
   else if (PANE_MODE == '\x01') {
-    bVar1 = getStocksIndex();
+    cVar1 = getStocksIndex();
   }
   else if (PANE_MODE == '\x02') {
-    bVar1 = getNewsIndex();
+    cVar1 = getNewsIndex();
   }
   else {
     if (PANE_MODE != '\x03') goto LAB_0003ccd0;
-    bVar1 = getCalenadrIndex();
+    cVar1 = getCalenadrIndex();
   }
-  local_10._0_2_ = CONCAT11(bVar1 + 1,(undefined1)local_10);
+  local_10._0_2_ = CONCAT11(cVar1 + '\x01',(undefined1)local_10);
 LAB_0003ccd0:
   uVar4 = send_response_data_to_msgqueue(&local_18,10);
   send_response_data_to_ble(uVar4,extraout_r1,extraout_r2,extraout_r3);

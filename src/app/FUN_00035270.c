@@ -10,6 +10,8 @@ void FUN_00035270(void)
 {
   void *pvVar1;
   GlassesState *pGVar2;
+  undefined4 extraout_r1;
+  undefined4 extraout_r2;
   undefined4 *buf;
   int iVar3;
   
@@ -25,7 +27,7 @@ void FUN_00035270(void)
   DAT_2001aef9 = 0;
   pGVar2 = __get_dashboard_state();
   pGVar2->field20_0xc8[0x15] = 0;
-  __normal_g_arrMsgContent();
+  __normal_g_arrMsgContent(pGVar2,extraout_r1,extraout_r2);
   __push_g_arrMsgContent();
   DAT_20019a5c = 0;
   return;

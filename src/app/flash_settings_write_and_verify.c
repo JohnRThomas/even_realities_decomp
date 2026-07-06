@@ -1,11 +1,12 @@
 /*
  * Function: flash_settings_write_and_verify
  * Entry:    00024614
- * Prototype: int __stdcall flash_settings_write_and_verify(undefined4 param_1, void * param_2, size_t param_3)
+ * Prototype: int __stdcall flash_settings_write_and_verify(undefined4 param_1, void * param_2, size_t param_3, undefined4 param_4)
  */
 
 
-int flash_settings_write_and_verify(undefined4 param_1,void *param_2,size_t param_3)
+int flash_settings_write_and_verify
+              (undefined4 param_1,void *param_2,size_t param_3,undefined4 param_4)
 
 {
   bool bVar1;
@@ -19,11 +20,10 @@ int flash_settings_write_and_verify(undefined4 param_1,void *param_2,size_t para
   buf = malloc(0x1000);
   if (buf == (void *)0x0) {
     if (BLE_DEBUG == 0) {
-      printk("[%s-%d]error, have no memory ! \n");
+      printk("[%s-%d]error, have no memory ! \n","flash_settings_write_and_verify",0xd2,0,param_4);
     }
     else {
-      ble_printk("[%s-%d]error, have no memory ! \n","flash_settings_write_and_verify",0xd2,
-                 BLE_DEBUG);
+      ble_printk("[%s-%d]error, have no memory ! \n");
     }
     return -1;
   }

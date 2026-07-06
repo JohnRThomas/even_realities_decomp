@@ -1,13 +1,11 @@
 /*
  * Function: ble_ancs_data_req_thread
  * Entry:    000198d8
- * Prototype: undefined __stdcall ble_ancs_data_req_thread(int param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall ble_ancs_data_req_thread(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
+void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   GlassesState *pGVar1;
@@ -27,20 +25,19 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
   undefined4 extraout_r1_06;
   uint extraout_r1_07;
   undefined4 extraout_r1_08;
-  undefined4 extraout_r2;
+  undefined4 extraout_r2_00;
   undefined4 extraout_r2_01;
   undefined4 extraout_r2_02;
-  undefined4 extraout_r2_03;
   k_timeout_t timeout;
   k_timeout_t timeout_00;
-  undefined4 extraout_r2_00;
+  undefined4 extraout_r2;
   
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): enter\n");
+      printk("%s(): enter\n","ble_ancs_data_req_thread",param_3,0,param_4);
     }
     else {
-      ble_printk("%s(): enter\n","ble_ancs_data_req_thread",param_3,BLE_DEBUG);
+      ble_printk("%s(): enter\n");
     }
   }
   z_impl_k_sem_init((k_sem *)(param_1 + 0x200),0,10);
@@ -62,49 +59,51 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
       uVar5 = extraout_r1;
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): !!!!!!!!!wait -> ancs_get_attr_req_sem\n");
+          printk("%s(): !!!!!!!!!wait -> ancs_get_attr_req_sem\n","ble_ancs_data_req_thread");
           uVar5 = extraout_r1_06;
         }
         else {
-          ble_printk("%s(): !!!!!!!!!wait -> ancs_get_attr_req_sem\n","ble_ancs_data_req_thread",
-                     extraout_r2,BLE_DEBUG);
+          ble_printk("%s(): !!!!!!!!!wait -> ancs_get_attr_req_sem\n");
           uVar5 = extraout_r1_00;
         }
       }
       timeout.ticks._4_4_ = 0xffffffff;
       timeout.ticks._0_4_ = uVar5;
       z_impl_k_sem_take((k_sem *)(param_1 + 0x200),timeout);
-      iVar2 = dequeue_uid((undefined4 *)&DAT_20006c8c,extraout_r1_01,extraout_r2_00);
+      iVar2 = dequeue_uid(&DAT_20006c8c,extraout_r1_01,extraout_r2);
     } while (iVar2 != 0);
     sVar3 = 0;
     uVar4 = extraout_r1_02;
+    uVar5 = extraout_r2_00;
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
         printk("%s(): !!!!!!!!!!!!!!get -> ancs_get_attr_req_sem %d evt_id %d\n",
-               "ble_ancs_data_req_thread");
+               "ble_ancs_data_req_thread",DAT_20006c8c,(uint)DAT_20006c90);
         sVar3 = extraout_r0_00;
         uVar4 = extraout_r1_07;
+        uVar5 = extraout_r2_02;
       }
       else {
         ble_printk("%s(): !!!!!!!!!!!!!!get -> ancs_get_attr_req_sem %d evt_id %d\n",
-                   "ble_ancs_data_req_thread",_DAT_20006c8c,(uint)DAT_20006c90);
+                   "ble_ancs_data_req_thread");
         sVar3 = extraout_r0;
         uVar4 = extraout_r1_03;
+        uVar5 = extraout_r2_01;
       }
     }
     if (DAT_20006c90 < 2) {
-      request_ancs_attr_ext(sVar3,uVar4);
+      request_ancs_attr_ext(sVar3,uVar4,uVar5);
       uVar5 = extraout_r1_04;
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk(
-                "%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem add done, and wait -> ancs_get_attr_data_sem\n"
-                );
+          printk("%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem add done, and wait -> ancs_get_attr_data_sem\n"
+                 ,"ble_ancs_data_req_thread");
           uVar5 = extraout_r1_08;
         }
         else {
-          ble_printk("%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem add done, and wait -> ancs_get_attr_data_sem\n"
-                     ,"ble_ancs_data_req_thread",extraout_r2_01,BLE_DEBUG);
+          ble_printk(
+                    "%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem add done, and wait -> ancs_get_attr_data_sem\n"
+                    );
           uVar5 = extraout_r1_05;
         }
       }
@@ -114,7 +113,7 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
     }
     else {
       *(undefined4 *)(param_1 + 0x1e4) = 2;
-      *(undefined4 *)(param_1 + 0x3c) = _DAT_20006c8c;
+      *(undefined4 *)(param_1 + 0x3c) = DAT_20006c8c;
       *(undefined1 *)(param_1 + 0x41) = 0;
       *(undefined1 *)(param_1 + 0x44) = 10;
       *(undefined1 *)(param_1 + 100) = 10;
@@ -123,24 +122,24 @@ void ble_ancs_data_req_thread(int param_1,undefined4 param_2,undefined4 param_3)
       memset((void *)(param_1 + 0x34),0,0x1b4);
       if (0 < LOG_LEVEL) {
         if (BLE_DEBUG == 0) {
-          printk(
-                "%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem remove done, and wait -> ancs_get_attr_data_sem\n"
-                );
+          printk("%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem remove done, and wait -> ancs_get_attr_data_sem\n"
+                 ,"ble_ancs_data_req_thread");
         }
         else {
-          ble_printk("%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem remove done, and wait -> ancs_get_attr_data_sem\n"
-                     ,"ble_ancs_data_req_thread",extraout_r2_03,BLE_DEBUG);
+          ble_printk(
+                    "%s(): !!!!!!!!!!!!wait -> ancs_get_attr_req_sem remove done, and wait -> ancs_get_attr_data_sem\n"
+                    );
         }
       }
     }
     recv_ble_data(param_1);
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): !!!!!!!!!!!!!!!!wait -> ancs_get_attr_data_sem done\n");
+        printk("%s(): !!!!!!!!!!!!!!!!wait -> ancs_get_attr_data_sem done\n",
+               "ble_ancs_data_req_thread");
       }
       else {
-        ble_printk("%s(): !!!!!!!!!!!!!!!!wait -> ancs_get_attr_data_sem done\n",
-                   "ble_ancs_data_req_thread",extraout_r2_02,BLE_DEBUG);
+        ble_printk("%s(): !!!!!!!!!!!!!!!!wait -> ancs_get_attr_data_sem done\n");
       }
     }
   } while( true );

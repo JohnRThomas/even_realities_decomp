@@ -12,7 +12,6 @@ int update_burial_point_day_index(void)
   dashboard_ts_context *dashboard_ts_ctx;
   GlassesState *pGVar2;
   GlassesState *pGVar3;
-  undefined4 extraout_r2;
   uint uVar4;
   int iVar5;
   undefined4 burial_point_year;
@@ -28,11 +27,10 @@ int update_burial_point_day_index(void)
      (((burial_point_year & 0xffff) == 2024 && (burial_point_year._2_2_ < 8)))) {
     if (1 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): burial point date was not init!\n");
+        printk("%s(): burial point date was not init!\n","update_burial_point_day_index");
       }
       else {
-        ble_printk("%s(): burial point date was not init!\n","update_burial_point_day_index",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): burial point date was not init!\n");
       }
     }
     return -1;

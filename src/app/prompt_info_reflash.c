@@ -16,18 +16,16 @@ undefined4 prompt_info_reflash(void)
   int iVar6;
   int iVar7;
   uint string_id;
-  undefined4 extraout_r2;
   
   pGVar4 = __get_dashboard_state();
   bVar1 = pGVar4->field20_0xc8[0x28];
   if (2 < bVar1) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): prompt_info->action_cmd over E_PROMPT_ACTION_MAX\n");
+        printk("%s(): prompt_info->action_cmd over E_PROMPT_ACTION_MAX\n","prompt_info_reflash");
       }
       else {
-        ble_printk("%s(): prompt_info->action_cmd over E_PROMPT_ACTION_MAX\n","prompt_info_reflash",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): prompt_info->action_cmd over E_PROMPT_ACTION_MAX\n");
       }
     }
     return 0xffffffff;

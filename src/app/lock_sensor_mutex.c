@@ -8,8 +8,8 @@
 undefined4 __lock_sensor_mutex(undefined4 param_1,undefined4 param_2)
 
 {
-  if (DAT_20002424 != 0) {
-    FUN_0007fc18(DAT_20002424,param_2);
+  if (PTR_20002424 != (undefined *)0x0) {
+    FUN_0007fc18((int)PTR_20002424,param_2);
   }
   return 0;
 }

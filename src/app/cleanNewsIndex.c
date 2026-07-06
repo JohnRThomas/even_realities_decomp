@@ -14,7 +14,7 @@ void cleanNewsIndex(void)
     return;
   }
   if (BLE_DEBUG != 0) {
-    ble_printk("%s():  %s index = %d\n","cleanNewsIndex","cleanNewsIndex",0);
+    ble_printk("%s():  %s index = %d\n","cleanNewsIndex");
     return;
   }
   printk("%s():  %s index = %d\n","cleanNewsIndex","cleanNewsIndex",0);

@@ -28,8 +28,7 @@ void update_persist_task_status_to_idle(int param_1,undefined4 param_2)
         printk("%s(): persist task [stop]: %d\n","update_persist_task_status_to_idle");
       }
       else {
-        ble_printk("%s(): persist task [stop]: %d\n","update_persist_task_status_to_idle",0,
-                   &BLE_DEBUG);
+        ble_printk("%s(): persist task [stop]: %d\n","update_persist_task_status_to_idle",0);
       }
     }
     *(undefined1 *)(param_1 + 0xd5) = 0;

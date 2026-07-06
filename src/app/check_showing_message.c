@@ -12,24 +12,22 @@ void __check_showing_message(void)
   byte bVar2;
   uint uVar3;
   GlassesState *pGVar4;
-  char *extraout_r1;
+  uint extraout_r1;
   uint extraout_r1_00;
-  uint extraout_r1_01;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   undefined4 uVar5;
-  undefined4 extraout_r2_01;
+  undefined4 extraout_r2_00;
   
   while ((cVar1 = FUN_00035a78(), cVar1 == '\x05' && (bVar2 = FUN_00035acc(), bVar2 == 2))) {
     if (BLE_DEBUG == 0) {
       printk("[csh_debug_msg] check showing msg timeout \n");
-      uVar3 = extraout_r1_01;
-      uVar5 = extraout_r2_01;
-    }
-    else {
-      ble_printk("[csh_debug_msg] check showing msg timeout \n",extraout_r1,extraout_r2,BLE_DEBUG);
       uVar3 = extraout_r1_00;
       uVar5 = extraout_r2_00;
+    }
+    else {
+      ble_printk("[csh_debug_msg] check showing msg timeout \n");
+      uVar3 = extraout_r1;
+      uVar5 = extraout_r2;
     }
     uVar3 = sync_message_signal_to_slave(2,uVar3,uVar5);
     if ((int)uVar3 < 3000) {

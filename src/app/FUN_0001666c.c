@@ -28,9 +28,9 @@ void FUN_0001666c(void)
   DAT_2007fc0c._2_1_ = pdVar4->field12_0xc;
   DAT_2007fc0c._3_1_ = pdVar4->field13_0xd;
   DAT_2007fc5f = pdVar4->field_0x5d;
-  DAT_2007fc60 = pdVar4->field_0x5e;
+  DAT_2007fc60 = (undefined1)pdVar4->time_disp_mode;
   ERASE_DFU_ON_NEXT_PASS = pdVar4->field_0x62;
-  DAT_2007fc61 = pdVar4->field_0x61;
+  DAT_2007fc61 = *(undefined1 *)((int)&pdVar4->time_disp_mode + 3);
   puVar2 = &DAT_2007fc10;
   puVar5 = (undefined4 *)&pdVar4->field_0xe;
   do {

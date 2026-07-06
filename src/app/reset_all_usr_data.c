@@ -18,7 +18,6 @@ void reset_all_usr_data(char *param_1,int param_2)
   undefined4 extraout_r2_00;
   undefined4 uVar3;
   undefined4 extraout_r2_01;
-  undefined4 extraout_r2_02;
   int iVar4;
   
   FUN_00038b00();
@@ -28,7 +27,7 @@ void reset_all_usr_data(char *param_1,int param_2)
   uVar2 = extraout_r1;
   uVar3 = extraout_r2;
   if (*param_1 == '\x01') {
-    delAudioStreamRecord(0xff,extraout_r1,extraout_r2);
+    delAudioStreamRecord(0xff);
     sleep(1000);
     uVar2 = extraout_r1_00;
     uVar3 = extraout_r2_00;
@@ -54,11 +53,10 @@ void reset_all_usr_data(char *param_1,int param_2)
   if (param_2 != 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): sys reboot because enter ship mode failed\n");
+        printk("%s(): sys reboot because enter ship mode failed\n","reset_all_usr_data");
       }
       else {
-        ble_printk("%s(): sys reboot because enter ship mode failed\n","reset_all_usr_data",
-                   extraout_r2_02,BLE_DEBUG);
+        ble_printk("%s(): sys reboot because enter ship mode failed\n");
       }
     }
     sleep(500);

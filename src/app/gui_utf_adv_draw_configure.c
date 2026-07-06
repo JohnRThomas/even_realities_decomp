@@ -33,11 +33,10 @@ undefined4 gui_utf_adv_draw_configure(undefined4 param_1,undefined4 param_2,unde
       return 0xffffffff;
     }
     if (BLE_DEBUG != 0) {
-      ble_printk("%s(): unkonown adv command\n","gui_utf_adv_draw_configure",param_3,BLE_DEBUG,
-                 param_1,param_1);
+      ble_printk("%s(): unkonown adv command\n");
       return 0xffffffff;
     }
-    printk("%s(): unkonown adv command\n");
+    printk("%s(): unkonown adv command\n","gui_utf_adv_draw_configure",param_3,0,param_1,param_1);
     return 0xffffffff;
   case 8:
     DAT_2000a9d8 = 0;

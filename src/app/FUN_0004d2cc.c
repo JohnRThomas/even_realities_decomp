@@ -1,11 +1,11 @@
 /*
  * Function: FUN_0004d2cc
  * Entry:    0004d2cc
- * Prototype: undefined __stdcall FUN_0004d2cc(uint param_1)
+ * Prototype: undefined __stdcall FUN_0004d2cc(dashboard_ts_context * param_1)
  */
 
 
-void FUN_0004d2cc(uint param_1)
+void FUN_0004d2cc(dashboard_ts_context *param_1)
 
 {
   uint uVar1;
@@ -19,7 +19,7 @@ void FUN_0004d2cc(uint param_1)
   local_24 = 0;
   local_20 = 0;
   local_1c = 0;
-  __init_burial_point_date((dashboard_ts_context *)param_1,(undefined2 *)&local_24);
+  __init_burial_point_date(param_1,(undefined2 *)&local_24);
   uVar3 = local_24 & 0xffff;
   uVar1 = local_24 >> 0x10;
   uVar4 = local_20 & 0xffff;

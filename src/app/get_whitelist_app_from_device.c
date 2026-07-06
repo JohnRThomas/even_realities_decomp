@@ -11,9 +11,11 @@ void get_whitelist_app_from_device(int param_1,int param_2)
   char cVar1;
   char *buf;
   uint uVar2;
+  undefined4 extraout_r1;
   char *s;
   int iVar3;
   char *pcVar4;
+  undefined4 extraout_r2;
   code *pcVar6;
   char *pcVar7;
   char *pcVar8;
@@ -26,15 +28,15 @@ void get_whitelist_app_from_device(int param_1,int param_2)
   buf = malloc(0x15e3);
   if (buf == (char *)0x0) {
     if (BLE_DEBUG != 0) {
-      ble_printk("[%s-%d] buf is NULL \n","get_whitelist_app_from_device",0x237,BLE_DEBUG);
+      ble_printk("[%s-%d] buf is NULL \n");
       return;
     }
-    printk("[%s-%d] buf is NULL \n");
+    printk("[%s-%d] buf is NULL \n","get_whitelist_app_from_device",0x237);
     return;
   }
   *(undefined1 *)(param_2 + 1) = 0x6a;
   memset(buf,0,0x15e3);
-  uVar2 = convert_app_whitelist_to_json(buf);
+  uVar2 = convert_app_whitelist_to_json(buf,extraout_r1,extraout_r2);
   if (uVar2 != 0) {
     uVar9 = 0;
     n = uVar2 % 0x11;

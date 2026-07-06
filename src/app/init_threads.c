@@ -1,11 +1,11 @@
 /*
  * Function: init_threads
  * Entry:    0002c8b8
- * Prototype: undefined __stdcall init_threads(char * param_1)
+ * Prototype: undefined __stdcall init_threads(GlassesState * param_1)
  */
 
 
-void init_threads(char *param_1)
+void init_threads(GlassesState *param_1)
 
 {
   k_timeout_t delay;
@@ -55,7 +55,7 @@ void init_threads(char *param_1)
   k_thread_create((k_thread *)&DAT_20004270,(k_thread_stack_t *)&DAT_200249e0,0xc00,
                   (k_thread_entry_t *)0x2c711,(void *)0x0,(void *)0xfffffff7,(void *)0x0,0,
                   in_stack_ffffffe8,delay_01);
-  if (*param_1 == '\x01') {
+  if (param_1->is_master == true) {
     delay_02.ticks._4_4_ = unaff_r5;
     delay_02.ticks._0_4_ = unaff_r4;
     k_thread_create((k_thread *)&DAT_20004780,(k_thread_stack_t *)&DAT_20026fe0,0x800,
@@ -69,7 +69,7 @@ void init_threads(char *param_1)
     start_proxy_thread_handler(param_1);
   }
   else {
-    if (*param_1 != '\x02') goto LAB_0002c970;
+    if (param_1->is_master != true) goto LAB_0002c970;
     delay_07.ticks._4_4_ = unaff_r5;
     delay_07.ticks._0_4_ = unaff_r4;
     k_thread_create((k_thread *)&DAT_20004780,(k_thread_stack_t *)&DAT_20026fe0,0x800,

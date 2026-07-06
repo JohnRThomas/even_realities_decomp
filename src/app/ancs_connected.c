@@ -5,8 +5,6 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void ancs_connected(bt_conn *param_1,int param_2)
 
 {
@@ -16,8 +14,8 @@ void ancs_connected(bt_conn *param_1,int param_2)
   k_work_delayable *addr;
   GlassesState *pGVar4;
   int iVar5;
-  uint uVar6;
   size_t len;
+  uint uVar6;
   char acStack_38 [32];
   
   addr = k_work_delayable_from_work((k_work *)param_1);
@@ -25,8 +23,8 @@ void ancs_connected(bt_conn *param_1,int param_2)
   bVar1 = param_1->type;
   bVar2 = param_1->role;
   pGVar4 = __get_dashboard_state();
-  printk("%s -- type: 0x%x, role:0x%x force_bind %d",acStack_38,(uint)bVar1,(uint)bVar2,
-         (uint)(byte)pGVar4->field_0x1089);
+  uVar6 = (uint)(byte)pGVar4->field_0x1089;
+  printk("%s -- type: 0x%x, role:0x%x force_bind %d",acStack_38,(uint)bVar1,(uint)bVar2,uVar6);
   if (param_2 == 0) {
     cVar3 = FUN_00033d5c();
     if ((cVar3 == '\0') && (pGVar4 = __get_dashboard_state(), pGVar4->field_0x1089 == '\0')) {
@@ -40,7 +38,7 @@ void ancs_connected(bt_conn *param_1,int param_2)
           }
           else {
             ble_printk("%s(): disconnect because invalid mac %s -- type: 0x%x, role:0x%x \n\n",
-                       "ancs_connected",acStack_38,(uint)param_1->type);
+                       "ancs_connected");
           }
         }
         bt_conn_disconnect(param_1,'\x05');
@@ -54,17 +52,17 @@ void ancs_connected(bt_conn *param_1,int param_2)
     pGVar4 = __get_dashboard_state();
     uVar6 = FUN_0007f370();
     *(uint *)&pGVar4->field_0xae8 = uVar6;
-    iVar5 = _DAT_20006c98;
-    *(undefined1 *)(_DAT_20006c98 + 0x365) = 1;
+    iVar5 = DAT_20006c98;
+    *(undefined1 *)(DAT_20006c98 + 0x365) = 1;
     *(undefined1 *)(iVar5 + 0x367) = 1;
     DAT_20007ef4 = param_1;
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): failed (err 0x%02x)\n\n");
+      printk("%s(): failed (err 0x%02x)\n\n","ancs_connected",param_2,0,uVar6);
     }
     else {
-      ble_printk("%s(): failed (err 0x%02x)\n\n","ancs_connected",param_2,BLE_DEBUG);
+      ble_printk("%s(): failed (err 0x%02x)\n\n");
     }
   }
   return;

@@ -9,15 +9,14 @@ bool is_in_box(void)
 
 {
   bool bVar1;
-  undefined4 in_r2;
   
   bVar1 = nfc_box_status[0];
-  if ((char *)(uint)BOOL_ARRAY_20019a71[2] != (char *)(uint)nfc_box_status[0]) {
+  if ((uint)BOOL_ARRAY_20019a71[2] != (uint)nfc_box_status[0]) {
     if (BLE_DEBUG == 0) {
-      printk("[csh_debug_box]isInbox is %d \n");
+      printk("[csh_debug_box]isInbox is %d \n",(uint)nfc_box_status[0]);
     }
     else {
-      ble_printk("[csh_debug_box]isInbox is %d \n",(char *)(uint)nfc_box_status[0],in_r2,BLE_DEBUG);
+      ble_printk("[csh_debug_box]isInbox is %d \n");
     }
   }
   BOOL_ARRAY_20019a71[2] = bVar1;

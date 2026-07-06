@@ -1,11 +1,12 @@
 /*
  * Function: update_persist_task_status_to_wait_blow_head
  * Entry:    0002dd04
- * Prototype: undefined __stdcall update_persist_task_status_to_wait_blow_head(int param_1, undefined4 param_2)
+ * Prototype: undefined __stdcall update_persist_task_status_to_wait_blow_head(int param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void update_persist_task_status_to_wait_blow_head(int param_1,undefined4 param_2)
+void update_persist_task_status_to_wait_blow_head
+               (int param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   undefined4 extraout_r1;
@@ -21,11 +22,11 @@ void update_persist_task_status_to_wait_blow_head(int param_1,undefined4 param_2
   }
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): persist task [stop]: %d\n");
+      printk("%s(): persist task [stop]: %d\n","update_persist_task_status_to_wait_blow_head",1,0,
+             param_4);
     }
     else {
-      ble_printk("%s(): persist task [stop]: %d\n","update_persist_task_status_to_wait_blow_head",1,
-                 BLE_DEBUG);
+      ble_printk("%s(): persist task [stop]: %d\n");
     }
   }
   *(undefined1 *)(param_1 + 0xd5) = 1;

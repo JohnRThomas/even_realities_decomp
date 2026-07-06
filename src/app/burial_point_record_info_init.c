@@ -1,22 +1,23 @@
 /*
  * Function: burial_point_record_info_init
  * Entry:    0004ddcc
- * Prototype: undefined __stdcall burial_point_record_info_init(undefined4 param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall burial_point_record_info_init(undefined4 param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-void burial_point_record_info_init(undefined4 param_1,undefined4 param_2,undefined4 param_3)
+void burial_point_record_info_init
+               (undefined4 param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   GlassesState *pGVar1;
   
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): burial_point_record_info_init\n");
+      printk("%s(): burial_point_record_info_init\n","burial_point_record_info_init",param_3,0,
+             param_4);
     }
     else {
-      ble_printk("%s(): burial_point_record_info_init\n","burial_point_record_info_init",param_3,
-                 BLE_DEBUG);
+      ble_printk("%s(): burial_point_record_info_init\n");
     }
   }
   pGVar1 = __get_dashboard_state();

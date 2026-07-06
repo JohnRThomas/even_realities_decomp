@@ -9,7 +9,6 @@ int dequeue_dmic(void *param_1)
 
 {
   int iVar1;
-  undefined4 extraout_r2;
   undefined1 auStack_d8 [204];
   
   memcpy(auStack_d8,&PTR_0008bd7c,200);
@@ -19,10 +18,10 @@ int dequeue_dmic(void *param_1)
   }
   else if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): dequeue_dmic failed\r\n\n");
+      printk("%s(): dequeue_dmic failed\r\n\n","dequeue_dmic");
     }
     else {
-      ble_printk("%s(): dequeue_dmic failed\r\n\n","dequeue_dmic",extraout_r2,BLE_DEBUG);
+      ble_printk("%s(): dequeue_dmic failed\r\n\n");
     }
   }
   return iVar1;

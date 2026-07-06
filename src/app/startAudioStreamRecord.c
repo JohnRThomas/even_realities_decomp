@@ -10,8 +10,6 @@ undefined4 startAudioStreamRecord(void)
 {
   int iVar1;
   GlassesState *pGVar2;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   undefined4 uVar3;
   undefined2 local_d8 [2];
   undefined1 local_d4;
@@ -27,24 +25,23 @@ undefined4 startAudioStreamRecord(void)
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): start up audio record failed\r\n\n");
+        printk("%s(): start up audio record failed\r\n\n","startAudioStreamRecord");
       }
       else {
-        ble_printk("%s(): start up audio record failed\r\n\n","startAudioStreamRecord",extraout_r2,
-                   BLE_DEBUG);
+        ble_printk("%s(): start up audio record failed\r\n\n");
       }
     }
     local_d8[0] = 1;
     pGVar2 = __get_dashboard_state();
-    sync_to_slave((char *)pGVar2,6,(undefined4 *)local_d8,2);
+    sync_to_slave(&pGVar2->is_master,6,(undefined4 *)local_d8,2);
     display_DelayClose(10000);
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): because startup auido record failed,exit quicknote ....\n");
+        printk("%s(): because startup auido record failed,exit quicknote ....\n",
+               "startAudioStreamRecord");
       }
       else {
-        ble_printk("%s(): because startup auido record failed,exit quicknote ....\n",
-                   "startAudioStreamRecord",extraout_r2_00,BLE_DEBUG);
+        ble_printk("%s(): because startup auido record failed,exit quicknote ....\n");
       }
     }
     uVar3 = 0xffffffff;

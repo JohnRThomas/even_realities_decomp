@@ -31,7 +31,7 @@ undefined4 FUN_0007f556(int param_1)
   undefined4 local_20;
   undefined1 local_1c;
   ushort local_1a;
-  undefined2 local_18;
+  ushort local_18;
   
   memset(&local_25,0,0x15);
   local_3c = *(undefined1 *)(param_1 + 0xfee);
@@ -57,8 +57,8 @@ undefined4 FUN_0007f556(int param_1)
   local_22 = *(undefined1 *)(param_1 + 0x1244);
   local_1c = *(undefined1 *)(*(int *)(param_1 + 0xff0) + 0x5f);
   local_1a = (ushort)*(byte *)(param_1 + 0xee0);
-  local_18 = *(undefined2 *)(param_1 + 0x1246);
-  flash_settings_write_and_verify(0x134000,&local_3c,0x2c);
+  local_18 = *(ushort *)(param_1 + 0x1246);
+  flash_settings_write_and_verify(0x134000,&local_3c,0x2c,(uint)local_18);
   return 0;
 }
 

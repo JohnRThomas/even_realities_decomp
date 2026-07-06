@@ -1,11 +1,11 @@
 /*
  * Function: navigation_direction_img_display
  * Entry:    00040308
- * Prototype: undefined __stdcall navigation_direction_img_display(int param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined __stdcall navigation_direction_img_display(int param_1)
  */
 
 
-void navigation_direction_img_display(int param_1,undefined4 param_2,undefined4 param_3)
+void navigation_direction_img_display(int param_1)
 
 {
   ushort uVar1;
@@ -18,11 +18,10 @@ void navigation_direction_img_display(int param_1,undefined4 param_2,undefined4 
   }
   else if (1 < LOG_LEVEL) {
     if (BLE_DEBUG != 0) {
-      ble_printk("%s(): navigation direction parampter error\n","navigation_direction_img_display",
-                 param_3,BLE_DEBUG);
+      ble_printk("%s(): navigation direction parampter error\n");
       return;
     }
-    printk("%s(): navigation direction parampter error\n");
+    printk("%s(): navigation direction parampter error\n","navigation_direction_img_display");
     return;
   }
   return;

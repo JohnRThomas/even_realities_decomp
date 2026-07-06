@@ -23,10 +23,10 @@ int spi_master_trans_data_tx_rx
   if (spi->is_initialized == 0) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): wait init_done.\n");
+        printk("%s(): wait init_done.\n","spi_master_trans_data_tx_rx");
       }
       else {
-        ble_printk("%s(): wait init_done.\n","spi_master_trans_data_tx_rx",param_3,BLE_DEBUG);
+        ble_printk("%s(): wait init_done.\n");
       }
     }
   }
@@ -37,11 +37,11 @@ int spi_master_trans_data_tx_rx
     }
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): sipm(bus=%d)-sync fail: status: %d -- %d\n");
+        printk("%s(): sipm(bus=%d)-sync fail: status: %d -- %d\n","spi_master_trans_data_tx_rx",
+               (uint)*(byte *)&spi->bus_id,(undefined1 *)(uint)nVar1,&DAT_0bad0000);
       }
       else {
-        ble_printk("%s(): sipm(bus=%d)-sync fail: status: %d -- %d\n","spi_master_trans_data_tx_rx",
-                   (uint)*(byte *)&spi->bus_id,(undefined1 *)(uint)nVar1,&DAT_0bad0000);
+        ble_printk("%s(): sipm(bus=%d)-sync fail: status: %d -- %d\n");
       }
     }
   }

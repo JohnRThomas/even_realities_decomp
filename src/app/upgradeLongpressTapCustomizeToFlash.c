@@ -1,11 +1,11 @@
 /*
  * Function: upgradeLongpressTapCustomizeToFlash
  * Entry:    00025eb4
- * Prototype: undefined4 __stdcall upgradeLongpressTapCustomizeToFlash(uint param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall upgradeLongpressTapCustomizeToFlash(uint param_1)
  */
 
 
-undefined4 upgradeLongpressTapCustomizeToFlash(uint param_1,undefined4 param_2,undefined4 param_3)
+undefined4 upgradeLongpressTapCustomizeToFlash(uint param_1)
 
 {
   undefined4 uVar1;
@@ -23,11 +23,11 @@ undefined4 upgradeLongpressTapCustomizeToFlash(uint param_1,undefined4 param_2,u
   else {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Err:longpress_tap_customize is out of range!\n");
+        printk("%s(): Err:longpress_tap_customize is out of range!\n",
+               "upgradeLongpressTapCustomizeToFlash");
       }
       else {
-        ble_printk("%s(): Err:longpress_tap_customize is out of range!\n",
-                   "upgradeLongpressTapCustomizeToFlash",param_3,BLE_DEBUG);
+        ble_printk("%s(): Err:longpress_tap_customize is out of range!\n");
       }
     }
     uVar1 = 0xffffffff;

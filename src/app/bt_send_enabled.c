@@ -5,20 +5,18 @@
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
 void bt_send_enabled(int param_1)
 
 {
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): status:%d\n\n");
+      printk("%s(): status:%d\n\n","bt_send_enabled",param_1);
     }
     else {
-      ble_printk("%s(): status:%d\n\n","bt_send_enabled",param_1,BLE_DEBUG);
+      ble_printk("%s(): status:%d\n\n");
     }
   }
-  *(bool *)(_DAT_20006c10 + 0x366) = param_1 == 0;
+  *(bool *)(DAT_20006c10 + 0x366) = param_1 == 0;
   return;
 }
 

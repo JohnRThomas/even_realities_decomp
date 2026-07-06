@@ -1,11 +1,11 @@
 /*
  * Function: parse_receiver_msg_pack_pkcs7
  * Entry:    00019f64
- * Prototype: undefined4 __stdcall parse_receiver_msg_pack_pkcs7(char * param_1, byte * param_2, uint param_3)
+ * Prototype: undefined4 __stdcall parse_receiver_msg_pack_pkcs7(int param_1, byte * param_2, uint param_3)
  */
 
 
-undefined4 parse_receiver_msg_pack_pkcs7(char *param_1,byte *param_2,uint param_3)
+undefined4 parse_receiver_msg_pack_pkcs7(int param_1,byte *param_2,uint param_3)
 
 {
   byte bVar1;
@@ -15,7 +15,6 @@ undefined4 parse_receiver_msg_pack_pkcs7(char *param_1,byte *param_2,uint param_
   uint uVar5;
   undefined4 uVar6;
   uint uVar7;
-  undefined4 extraout_r2;
   uint uVar8;
   
   if (param_2 == (byte *)0x0) {
@@ -23,7 +22,7 @@ undefined4 parse_receiver_msg_pack_pkcs7(char *param_1,byte *param_2,uint param_
     pcVar4 = "[%s-%d]error, req is NULL ! \n";
   }
   else {
-    if (param_1 != (char *)0x0) {
+    if (param_1 != 0) {
       if (param_3 < 4) {
         if (BLE_DEBUG != 0) {
           ble_printk("[%s-%d]error, req_len is %d, too short ! \n","parse_receiver_msg_pack_pkcs7",
@@ -48,16 +47,16 @@ undefined4 parse_receiver_msg_pack_pkcs7(char *param_1,byte *param_2,uint param_
         uVar5 = (uint)DAT_2000e0d8;
         if (uVar8 == uVar5) {
           sVar3 = DAT_2000e0da - 4;
-          memcpy(param_1 + DAT_2000e0da,param_2 + 4,param_3 - 4);
+          memcpy((void *)(param_1 + (uint)DAT_2000e0da),param_2 + 4,param_3 - 4);
           DAT_2000e0da = (short)param_3 + sVar3;
           if ((uint)bVar2 != bVar1 - 1) {
             return 0xcb;
           }
           if (BLE_DEBUG == 0) {
-            printk("origin_data is %s \n");
+            printk("origin_data is %s \n",param_1);
           }
           else {
-            ble_printk("origin_data is %s \n",param_1,extraout_r2,BLE_DEBUG);
+            ble_printk("origin_data is %s \n");
           }
           return 0xc9;
         }
@@ -87,10 +86,10 @@ LAB_0001a006:
     pcVar4 = "[%s-%d]error, origin_data is NULL ! \n";
   }
   if (BLE_DEBUG == 0) {
-    printk(pcVar4);
+    printk(pcVar4,"parse_receiver_msg_pack_pkcs7",uVar6,0,param_1,param_2,param_3);
   }
   else {
-    ble_printk(pcVar4,"parse_receiver_msg_pack_pkcs7",uVar6,BLE_DEBUG);
+    ble_printk(pcVar4);
   }
   return 0xca;
 }

@@ -1,16 +1,16 @@
 /*
  * Function: register_jdb_panel_context
  * Entry:    0004aab8
- * Prototype: undefined __stdcall register_jdb_panel_context(jdb_panel_context * panel_context)
+ * Prototype: undefined __stdcall register_jdb_panel_context(jbd_panel_context * panel_context)
  */
 
 
-void register_jdb_panel_context(jdb_panel_context *panel_context)
+void register_jdb_panel_context(jbd_panel_context *panel_context)
 
 {
-  void *pvVar1;
-  int *piVar2;
-  int iVar3;
+  jbd_buffer *buffer_holder;
+  byte **buf_ptr;
+  byte (*pabVar1) [320];
   
   z_impl_k_mutex_init(&lcd_mutex);
   panel_context->init_cb = 0x4a979;
@@ -19,19 +19,19 @@ void register_jdb_panel_context(jdb_panel_context *panel_context)
   panel_context->off_cb = 0x4a721;
   panel_context->on_cb = 0x4a7cd;
   panel_context->a_unknown_panel_cb = 0x36e11;
-  panel_context->b_unknown_panel_cb = 0x80b9f;
+  panel_context->draw_image_cb = 0x80b9f;
   panel_context->clear_cb = 0x80b93;
   panel_context->set_brightness_cb = 0x4a6dd;
-  pvVar1 = malloc(64008);
-  iVar3 = (int)pvVar1 + 5;
-  panel_context->__frame_buffers = iVar3;
-  piVar2 = &panel_context->set_brightness_cb;
+  buffer_holder = malloc(64008);
+  pabVar1 = buffer_holder->buffer;
+  panel_context->current_buffer = *pabVar1;
+  buf_ptr = (byte **)&panel_context->set_brightness_cb;
   do {
-    piVar2 = piVar2 + 1;
-    *piVar2 = iVar3;
-    iVar3 = iVar3 + 320;
-  } while (iVar3 != (int)pvVar1 + 64005);
-  panel_context->__buffer_size = 64000;
+    buf_ptr = buf_ptr + 1;
+    *buf_ptr = *pabVar1;
+    pabVar1 = pabVar1 + 1;
+  } while (pabVar1 != (byte (*) [320])&buffer_holder->end);
+  panel_context->current_buffer_size = 64000;
   return;
 }
 

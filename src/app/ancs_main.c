@@ -1,13 +1,11 @@
 /*
  * Function: ancs_main
  * Entry:    00019b10
- * Prototype: undefined4 __stdcall ancs_main(void * param_1, undefined4 param_2, undefined4 param_3)
+ * Prototype: undefined4 __stdcall ancs_main(void * param_1, undefined4 param_2, undefined4 param_3, undefined4 param_4)
  */
 
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
-
-undefined4 ancs_main(void *param_1,undefined4 param_2,undefined4 param_3)
+undefined4 ancs_main(void *param_1,undefined4 param_2,undefined4 param_3,undefined4 param_4)
 
 {
   GlassesState *pGVar1;
@@ -15,19 +13,18 @@ undefined4 ancs_main(void *param_1,undefined4 param_2,undefined4 param_3)
   char *pcVar3;
   undefined4 extraout_r1;
   undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
   undefined4 extraout_r3;
   int iVar4;
   int iVar5;
   
-  _DAT_20006c98 = param_1;
+  DAT_20006c98 = param_1;
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): Starting Apple Notification Center Service client\n\n");
+      printk("%s(): Starting Apple Notification Center Service client\n\n","ancs_main",param_3,0,
+             param_4);
     }
     else {
-      ble_printk("%s(): Starting Apple Notification Center Service client\n\n","ancs_main",param_3,
-                 BLE_DEBUG);
+      ble_printk("%s(): Starting Apple Notification Center Service client\n\n");
     }
   }
   iVar5 = 50;
@@ -88,11 +85,10 @@ LAB_00019ba6:
   sleep(1000);
   if (0 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): reboot because ancs start failed\r\n\n");
+      printk("%s(): reboot because ancs start failed\r\n\n","ancs_main");
     }
     else {
-      ble_printk("%s(): reboot because ancs start failed\r\n\n","ancs_main",extraout_r2_00,BLE_DEBUG
-                );
+      ble_printk("%s(): reboot because ancs start failed\r\n\n");
     }
   }
   sleep(500);

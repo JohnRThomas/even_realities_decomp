@@ -14,10 +14,6 @@ undefined4 init_watchdog(void)
   char *fmt;
   int iVar2;
   int iVar3;
-  undefined4 extraout_r2;
-  undefined4 extraout_r2_00;
-  undefined4 uVar4;
-  undefined4 extraout_r2_01;
   wdt_timeout_cfg wStack_28;
   
   bVar1 = z_device_is_ready(&wdt_device);
@@ -26,30 +22,27 @@ undefined4 init_watchdog(void)
       return 0;
     }
     if (BLE_DEBUG != 0) {
-      ble_printk("%s(): %s: device not ready.\n","init_watchdog","watchdog",BLE_DEBUG);
+      ble_printk("%s(): %s: device not ready.\n");
       return 0;
     }
-    printk("%s(): %s: device not ready.\n");
+    printk("%s(): %s: device not ready.\n","init_watchdog","watchdog");
     return 0;
   }
   memset(&wStack_28,0,0x10);
   wStack_28.window.max = 30000;
   wStack_28.flags = '\x02';
   wdt_0_channel_id = wdt_npm1300_install_timeout(&wdt_device,&wStack_28);
-  uVar4 = extraout_r2;
   if (wdt_0_channel_id == -0x86) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): Callback support rejected, continuing anyway\n");
+        printk("%s(): Callback support rejected, continuing anyway\n","init_watchdog");
       }
       else {
-        ble_printk("%s(): Callback support rejected, continuing anyway\n","init_watchdog",
-                   extraout_r2,BLE_DEBUG);
+        ble_printk("%s(): Callback support rejected, continuing anyway\n");
       }
     }
     wStack_28.callback = (wdt_callback_t *)0x0;
     wdt_0_channel_id = wdt_npm1300_install_timeout(&wdt_device,&wStack_28);
-    uVar4 = extraout_r2_00;
   }
   if (wdt_0_channel_id < 0) {
     if (LOG_LEVEL < 1) {
@@ -75,13 +68,12 @@ undefined4 init_watchdog(void)
       return 0;
     }
     fmt = "%s(): Watchdog setup error\n";
-    uVar4 = extraout_r2_01;
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"init_watchdog");
   }
   else {
-    ble_printk(fmt,"init_watchdog",uVar4,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0;
 }

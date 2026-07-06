@@ -21,11 +21,11 @@ undefined4 onboarding_ble_process(int param_1,int param_2,undefined2 *param_3,un
   if (0x17 < *(byte *)((int)param_3 + 1)) {
     if (0 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): ble rcv unknown onboarding action:%d\n");
+        printk("%s(): ble rcv unknown onboarding action:%d\n","onboarding_ble_process",
+               (uint)*(byte *)((int)param_3 + 1),0,param_4);
       }
       else {
-        ble_printk("%s(): ble rcv unknown onboarding action:%d\n","onboarding_ble_process",
-                   (uint)*(byte *)((int)param_3 + 1),BLE_DEBUG,param_4);
+        ble_printk("%s(): ble rcv unknown onboarding action:%d\n");
       }
     }
     uVar8 = 3;
@@ -46,11 +46,11 @@ undefined4 onboarding_ble_process(int param_1,int param_2,undefined2 *param_3,un
   *(undefined1 *)(*(int *)(param_1 + 0x101c) + 2) = *(undefined1 *)((int)param_3 + 1);
   if (2 < LOG_LEVEL) {
     if (BLE_DEBUG == 0) {
-      printk("%s(): ble rcv onboarding action:%d\n");
+      printk("%s(): ble rcv onboarding action:%d\n","onboarding_ble_process",
+             (uint)*(byte *)(*(int *)(param_1 + 0x101c) + 2));
     }
     else {
-      ble_printk("%s(): ble rcv onboarding action:%d\n","onboarding_ble_process",
-                 (uint)*(byte *)(*(int *)(param_1 + 0x101c) + 2),BLE_DEBUG);
+      ble_printk("%s(): ble rcv onboarding action:%d\n");
     }
   }
   puVar6 = *(undefined1 **)(param_1 + 0x101c);

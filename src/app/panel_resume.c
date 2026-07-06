@@ -19,37 +19,38 @@ undefined4 panel_resume(int param_1,undefined4 param_2)
   int extraout_r2;
   int extraout_r2_00;
   undefined4 extraout_r2_01;
-  undefined4 extraout_r2_02;
+  int iVar4;
   
   iVar3 = (uint)*(ushort *)(param_1 + 0x504) << 0x17;
   *(int *)(param_1 + 0x378) = param_1 + -0x5c;
   if (iVar3 < 0) {
     if (2 < LOG_LEVEL) {
       if (BLE_DEBUG == 0) {
-        printk("%s(): panel_resume enter!\n");
+        printk("%s(): panel_resume enter!\n","panel_resume");
         param_2 = extraout_r1_00;
         iVar3 = extraout_r2_00;
       }
       else {
-        ble_printk("%s(): panel_resume enter!\n","panel_resume",iVar3,BLE_DEBUG);
+        ble_printk("%s(): panel_resume enter!\n");
         param_2 = extraout_r1;
         iVar3 = extraout_r2;
       }
     }
     if (*(int *)(param_1 + 0x35c) == 0) {
-      if (*(int *)(*(int *)(param_1 + 0x378) + 0x14) == 0) {
-        panel_on(param_1,param_2,iVar3);
+      iVar4 = *(int *)(*(int *)(param_1 + 0x378) + 0x14);
+      if (iVar4 == 0) {
+        panel_on(param_1);
         set_brightness_to_panel_reg((uint)*(byte *)(param_1 + 0x369),extraout_r1_02);
         return 0;
       }
-      uVar2 = jbd_panel_resume(param_1,param_2,iVar3);
+      uVar2 = jbd_panel_resume(param_1,param_2,iVar3,iVar4);
       uVar1 = spi_read_id(uVar2,extraout_r1_01,extraout_r2_01);
       if ((uVar1 != 0x4010) && (0 < LOG_LEVEL)) {
         if (BLE_DEBUG == 0) {
-          printk("%s(): JBD PANEL init failure!\n");
+          printk("%s(): JBD PANEL init failure!\n","panel_resume");
         }
         else {
-          ble_printk("%s(): JBD PANEL init failure!\n","panel_resume",extraout_r2_02,BLE_DEBUG);
+          ble_printk("%s(): JBD PANEL init failure!\n");
         }
       }
       *(undefined4 *)(param_1 + 0x35c) = 1;
@@ -67,10 +68,10 @@ undefined4 panel_resume(int param_1,undefined4 param_2)
     fmt = "%s(): panel_resume exit due to LP_JBD_BIT\n";
   }
   if (BLE_DEBUG == 0) {
-    printk(fmt);
+    printk(fmt,"panel_resume");
   }
   else {
-    ble_printk(fmt,"panel_resume",iVar3,BLE_DEBUG);
+    ble_printk(fmt);
   }
   return 0xffffffff;
 }
