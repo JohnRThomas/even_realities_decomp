@@ -1,11 +1,13 @@
 /*
- * Function: lpuart_async_b
+ * Function: %_lpuart_async_b
  * Entry:    00034c60
- * Prototype: undefined4 __stdcall lpuart_async_b(int param_1, undefined1 * param_2, int param_3)
+ * Prototype: undefined4 __stdcall %_lpuart_async_b(int param_1, undefined1 * param_2, int param_3)
  */
 
 
-undefined4 lpuart_async_b(int param_1,undefined1 *param_2,int param_3)
+/* Sample Code: v2.5.1/nrf/samples/peripheral/lpuart/src/main.c */
+
+undefined4 __lpuart_async_b(int param_1,undefined1 *param_2,int param_3)
 
 {
   int iVar1;

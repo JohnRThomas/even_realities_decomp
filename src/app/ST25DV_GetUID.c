@@ -1,11 +1,11 @@
 /*
- * Function: FUN_0007fc9a
+ * Function: ST25DV_GetUID
  * Entry:    0007fc9a
- * Prototype: int __stdcall FUN_0007fc9a(st25dv_context * param_1, int param_2)
+ * Prototype: int __stdcall ST25DV_GetUID(st25dv_context * param_1, int param_2)
  */
 
 
-int FUN_0007fc9a(st25dv_context *param_1,int param_2)
+int ST25DV_GetUID(st25dv_context *param_1,int param_2)
 
 {
   int iVar1;

@@ -1,11 +1,11 @@
 /*
  * Function: process_pt_data
  * Entry:    000346f8
- * Prototype: undefined4 __stdcall process_pt_data(undefined4 param_1)
+ * Prototype: int __stdcall process_pt_data(undefined4 param_1)
  */
 
 
-undefined4 process_pt_data(undefined4 param_1)
+int process_pt_data(undefined4 param_1)
 
 {
   int iVar1;
@@ -22,7 +22,7 @@ undefined4 process_pt_data(undefined4 param_1)
      (((psVar2 = DAT_20002424, DAT_2000242c == 0 || (psVar2 = DAT_20002428, DAT_2000242c == 1)) &&
       (psVar2 == (st25dv_context *)0x0)))) {
     printk("comm para is error\n");
-    return 0xffffffff;
+    return -1;
   }
   local_28 = 0;
   local_24 = 0;
@@ -36,14 +36,14 @@ undefined4 process_pt_data(undefined4 param_1)
   iVar1 = FUN_000805f2((uint)DAT_2000242c,psVar2,&local_20,&local_24);
   if (iVar1 != 0) {
     FUN_00032164();
-    return 0xfffffffe;
+    return -2;
   }
   iVar1 = process_pt_protocol((uint)DAT_2000242c,&DAT_2001acc4,local_24 & 0xff,(int *)local_1c,
                               (byte *)&local_28,param_1);
   if (iVar1 != 0) {
     printk("process_pt_protocol is failed\n");
     FUN_00032164();
-    return 0xfffffffd;
+    return -3;
   }
   psVar2 = DAT_20002424;
   if (DAT_2000242c != 0) {
@@ -53,7 +53,7 @@ undefined4 process_pt_data(undefined4 param_1)
   if (iVar1 != 0) {
     printk("comm_write is failed\n");
     FUN_00032164();
-    return 0xfffffffc;
+    return -4;
   }
   FUN_00032164();
   if (local_1c[0][9] == 0x80) {
@@ -83,7 +83,7 @@ undefined4 process_pt_data(undefined4 param_1)
     if (iVar1 == 0) {
       return 0;
     }
-    return 0xfffffffb;
+    return -5;
   }
   if (uVar3 == 6) {
     if (pbVar4[2] == 2) {

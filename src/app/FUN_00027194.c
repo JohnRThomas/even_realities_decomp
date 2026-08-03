@@ -15,10 +15,10 @@ int FUN_00027194(void)
   ushort local_12;
   
   local_18 = DAT_200083f4;
-  DAT_20008400 = 4;
+  DAT_20008400 = ST25DV_RFA1SS_REG;
   if (DAT_200083f4._2_1_ == '\0') {
     local_12 = DAT_200083fa << 8 | DAT_200083fa >> 8;
-    DAT_20008400 = 8;
+    DAT_20008400 = ST25DV_RFA3SS_REG;
   }
   iVar1 = FUN_00027124(&local_18);
   iVar1 = (int)(short)iVar1;
@@ -27,7 +27,9 @@ int FUN_00027194(void)
     uVar2 = __eeprom_st25dv_write((int)global_st25dv_context_ptr,DAT_20008400,&local_19,1);
     if (uVar2 == 0) {
       local_19 = 0;
-      uVar2 = __eeprom_st25dv_write((int)global_st25dv_context_ptr,DAT_20008400 + 1,&local_19,1);
+      uVar2 = __eeprom_st25dv_write
+                        ((int)global_st25dv_context_ptr,DAT_20008400 + ST25DV_ITTIME_REG,&local_19,1
+                        );
       iVar1 = -(uint)(uVar2 != 0);
     }
     else {

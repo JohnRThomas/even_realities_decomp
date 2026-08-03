@@ -1,11 +1,11 @@
 /*
  * Function: ?_st25dv_read
  * Entry:    0002794c
- * Prototype: uint __stdcall ?_st25dv_read(device * param_1, undefined4 param_2, uint param_3, undefined4 param_4, undefined4 param_5)
+ * Prototype: uint __stdcall ?_st25dv_read(device * param_1, undefined4 param_2, st25dv_register param_3, undefined4 param_4, undefined4 param_5)
  */
 
 
-uint __st25dv_read(device *param_1,undefined4 param_2,uint param_3,undefined4 param_4,
+uint __st25dv_read(device *param_1,undefined4 param_2,st25dv_register param_3,undefined4 param_4,
                   undefined4 param_5)
 
 {

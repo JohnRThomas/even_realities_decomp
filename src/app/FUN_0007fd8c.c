@@ -13,7 +13,7 @@ void FUN_0007fd8c(st25dv_context *param_1,undefined1 *param_2)
   
   *param_2 = 0;
   uStack_c = param_2;
-  uVar1 = __eeprom_st25dv_read(param_1,0x2004,(int)&uStack_c + 3,1);
+  uVar1 = __eeprom_st25dv_read(param_1,ST25DV_I2C_SSO_DYN_REG,(int)&uStack_c + 3,1);
   if (uVar1 == 0) {
     if (uStack_c._3_1_ == '\0') {
       *param_2 = 0;
