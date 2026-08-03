@@ -50,11 +50,11 @@ void main(void)
   undefined4 extraout_r2_06;
   uint uVar13;
   k_sem *sem;
+  undefined8 uVar14;
   k_timeout_t duration;
   k_timeout_t timeout;
   k_timeout_t duration_00;
   k_timeout_t timeout_00;
-  undefined8 uVar14;
   undefined4 in_stack_ffffffcc;
   GlassesState *uVar8;
   

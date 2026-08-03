@@ -65,8 +65,8 @@ void slave_display_thread(int param_1,uint param_2,undefined4 param_3,undefined4
   undefined1 *extraout_r3_04;
   undefined4 extraout_r3_05;
   byte bVar13;
-  k_timeout_t timeout;
   undefined8 uVar14;
+  k_timeout_t timeout;
   k_timeout_t timeout_00;
   
   *(undefined1 *)(param_1 + 0xfeb) = 1;
@@ -99,9 +99,9 @@ LAB_00029ff6:
     *(undefined1 *)(param_1 + 0xd5) = uVar10;
     goto LAB_0002a090;
   }
-  timeout.ticks._4_4_ = 0xffffffff;
-  timeout.ticks._0_4_ = param_2;
-  z_impl_k_sem_take((k_sem *)(param_1 + 0x20),timeout);
+  timeout_00.ticks._4_4_ = 0xffffffff;
+  timeout_00.ticks._0_4_ = param_2;
+  z_impl_k_sem_take((k_sem *)(param_1 + 0x20),timeout_00);
   do {
     if (*(char *)(param_1 + 1) != '\x01') {
       pGVar4 = __get_dashboard_state();
@@ -110,9 +110,9 @@ LAB_00029ff6:
     }
     uVar8 = 0x28000;
 LAB_0002a090:
-    timeout_00.ticks._4_4_ = 0;
-    timeout_00.ticks._0_4_ = uVar8;
-    z_impl_k_sleep(timeout_00);
+    timeout.ticks._4_4_ = 0;
+    timeout.ticks._0_4_ = uVar8;
+    z_impl_k_sleep(timeout);
   } while( true );
   if (((uint)*(byte *)(param_1 + 0xed7) != (uint)*(byte *)(param_1 + 0xcb)) ||
      (uVar8 = (uint)*(byte *)(param_1 + 0xed5), uVar8 != *(byte *)(param_1 + 0xed7))) {

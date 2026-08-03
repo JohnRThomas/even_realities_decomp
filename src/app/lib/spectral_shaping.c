@@ -1,0 +1,338 @@
+/*
+ * Function: spectral_shaping
+ * Entry:    0006f270
+ * Prototype: void __stdcall spectral_shaping(lc3_dt dt, lc3_srate sr, float * scf_q, bool inv, float * x, float * y)
+ */
+
+
+/* exclude_from_export_ai */
+
+void spectral_shaping(lc3_dt dt,lc3_srate sr,float *scf_q,bool inv,float *x,float *y)
+
+{
+  float *pfVar1;
+  int iVar2;
+  float *pfVar3;
+  float *pfVar4;
+  int iVar5;
+  float *pfVar6;
+  int iVar7;
+  int *piVar8;
+  float fVar9;
+  float fVar10;
+  float fVar11;
+  float fVar12;
+  float fVar13;
+  float fVar14;
+  float fVar15;
+  float fVar16;
+  float fVar17;
+  float fVar18;
+  float fVar19;
+  float fVar20;
+  float local_138 [5];
+  float local_124;
+  float local_120;
+  float local_11c;
+  float local_118;
+  float local_114;
+  float local_110;
+  float local_10c;
+  float local_108;
+  float local_104;
+  float local_100;
+  float local_fc;
+  float local_f8;
+  float local_f4;
+  float local_f0;
+  float local_ec;
+  float local_e8;
+  float local_e4;
+  float local_e0;
+  float local_dc;
+  float local_d8;
+  float local_d4;
+  float local_d0;
+  float local_cc;
+  float local_c8;
+  float local_c4;
+  float local_c0;
+  float local_bc;
+  float local_b8;
+  float local_b4;
+  float local_b0;
+  float local_ac;
+  float local_a8;
+  float local_a4;
+  float local_a0;
+  float local_9c;
+  float local_98;
+  float local_94;
+  float local_90;
+  float local_8c;
+  float local_88;
+  float local_84;
+  float local_80;
+  float local_7c;
+  float local_78;
+  float local_74;
+  float local_70;
+  float local_6c;
+  float local_68;
+  float local_64;
+  float local_60;
+  float local_5c;
+  float local_58;
+  float local_54;
+  float local_50;
+  float local_4c;
+  float local_48;
+  float local_44;
+  float local_40;
+  float local_3c;
+  
+  local_138[1] = *scf_q;
+  if (inv) {
+    fVar12 = scf_q[1];
+    local_138[0] = -local_138[1];
+    fVar17 = local_138[1] - fVar12;
+    fVar14 = scf_q[2];
+    local_138[1] = local_138[0];
+    local_138[3] = local_138[0] + fVar17 * 0.375;
+    fVar10 = fVar12 - fVar14;
+    local_124 = local_138[0] + fVar17 * 0.875;
+    fVar15 = scf_q[3];
+    fVar13 = fVar14 - fVar15;
+    local_11c = -fVar12 + fVar10 * 0.375;
+    local_120 = -fVar12 + fVar10 * 0.125;
+    fVar11 = scf_q[5];
+    fVar16 = scf_q[4];
+    fVar18 = fVar15 - fVar16;
+    fVar9 = fVar16 - fVar11;
+    local_118 = -fVar12 + fVar10 * 0.625;
+    local_114 = -fVar12 + fVar10 * 0.875;
+    local_110 = -fVar14 + fVar13 * 0.125;
+    fVar12 = scf_q[6];
+    local_138[2] = local_138[0] + fVar17 * 0.125;
+    local_138[4] = local_138[0] + fVar17 * 0.625;
+    fVar10 = fVar11 - fVar12;
+    local_10c = -fVar14 + fVar13 * 0.375;
+    local_ec = -fVar16 + fVar9 * 0.375;
+    local_108 = -fVar14 + fVar13 * 0.625;
+    local_104 = -fVar14 + fVar13 * 0.875;
+    local_100 = -fVar15 + fVar18 * 0.125;
+    local_fc = -fVar15 + fVar18 * 0.375;
+    local_f8 = -fVar15 + fVar18 * 0.625;
+    local_f4 = -fVar15 + fVar18 * 0.875;
+    local_f0 = -fVar16 + fVar9 * 0.125;
+    local_e4 = -fVar16 + fVar9 * 0.875;
+    local_e0 = -fVar11 + fVar10 * 0.125;
+    local_dc = -fVar11 + fVar10 * 0.375;
+    local_d8 = -fVar11 + fVar10 * 0.625;
+    local_d4 = -fVar11 + fVar10 * 0.875;
+    local_e8 = -fVar16 + fVar9 * 0.625;
+    fVar13 = scf_q[7];
+    fVar10 = fVar12 - fVar13;
+    local_d0 = -fVar12 + fVar10 * 0.125;
+    fVar14 = scf_q[8];
+    local_cc = -fVar12 + fVar10 * 0.375;
+    fVar9 = fVar13 - fVar14;
+    local_c4 = -fVar12 + fVar10 * 0.875;
+    local_c0 = -fVar13 + fVar9 * 0.125;
+    local_bc = -fVar13 + fVar9 * 0.375;
+    fVar15 = scf_q[9];
+    fVar11 = fVar14 - fVar15;
+    local_b8 = -fVar13 + fVar9 * 0.625;
+    local_b4 = -fVar13 + fVar9 * 0.875;
+    fVar16 = scf_q[10];
+    fVar20 = fVar15 - fVar16;
+    local_ac = -fVar14 + fVar11 * 0.375;
+    local_b0 = -fVar14 + fVar11 * 0.125;
+    fVar17 = scf_q[0xb];
+    fVar13 = scf_q[0xc];
+    fVar19 = fVar16 - fVar17;
+    fVar18 = fVar17 - fVar13;
+    local_a8 = -fVar14 + fVar11 * 0.625;
+    local_a4 = -fVar14 + fVar11 * 0.875;
+    local_a0 = -fVar15 + fVar20 * 0.125;
+    fVar11 = scf_q[0xd];
+    fVar9 = fVar13 - fVar11;
+    local_9c = -fVar15 + fVar20 * 0.375;
+    local_7c = -fVar17 + fVar18 * 0.375;
+    local_98 = -fVar15 + fVar20 * 0.625;
+    local_90 = -fVar16 + fVar19 * 0.125;
+    local_94 = -fVar15 + fVar20 * 0.875;
+    local_84 = -fVar16 + fVar19 * 0.875;
+    local_78 = -fVar17 + fVar18 * 0.625;
+    local_74 = -fVar17 + fVar18 * 0.875;
+    local_70 = -fVar13 + fVar9 * 0.125;
+    local_c8 = -fVar12 + fVar10 * 0.625;
+    local_8c = -fVar16 + fVar19 * 0.375;
+    local_88 = -fVar16 + fVar19 * 0.625;
+    local_80 = -fVar17 + fVar18 * 0.125;
+    local_6c = -fVar13 + fVar9 * 0.375;
+    local_4c = scf_q[0xe];
+    local_68 = -fVar13 + fVar9 * 0.625;
+    fVar10 = fVar11 - local_4c;
+    local_64 = -fVar13 + fVar9 * 0.875;
+    fVar9 = local_4c - scf_q[0xf];
+    fVar13 = fVar9 * 0.125;
+    fVar12 = fVar9 * 0.375;
+    local_48 = -local_4c + fVar9 * 0.625;
+    local_44 = -local_4c + fVar9 * 0.875;
+    fVar9 = -scf_q[0xf];
+    local_50 = fVar13 - local_4c;
+    local_60 = -fVar11 + fVar10 * 0.125;
+    local_4c = fVar12 - local_4c;
+    local_5c = -fVar11 + fVar10 * 0.375;
+    local_58 = -fVar11 + fVar10 * 0.625;
+    local_54 = -fVar11 + fVar10 * 0.875;
+  }
+  else {
+    fVar13 = scf_q[1];
+    fVar18 = fVar13 - local_138[1];
+    local_138[2] = local_138[1] + fVar18 * 0.125;
+    fVar14 = scf_q[2];
+    local_138[0] = local_138[1];
+    local_138[3] = local_138[1] + fVar18 * 0.375;
+    fVar9 = fVar14 - fVar13;
+    local_124 = local_138[1] + fVar18 * 0.875;
+    fVar15 = scf_q[3];
+    local_120 = fVar13 + fVar9 * 0.125;
+    fVar10 = fVar15 - fVar14;
+    local_11c = fVar13 + fVar9 * 0.375;
+    fVar16 = scf_q[4];
+    fVar17 = scf_q[5];
+    fVar11 = fVar16 - fVar15;
+    local_10c = fVar14 + fVar10 * 0.375;
+    local_118 = fVar13 + fVar9 * 0.625;
+    local_110 = fVar14 + fVar10 * 0.125;
+    fVar12 = fVar17 - fVar16;
+    local_114 = fVar13 + fVar9 * 0.875;
+    fVar13 = scf_q[6];
+    fVar9 = fVar13 - fVar17;
+    local_ec = fVar16 + fVar12 * 0.375;
+    local_108 = fVar14 + fVar10 * 0.625;
+    local_104 = fVar14 + fVar10 * 0.875;
+    local_100 = fVar15 + fVar11 * 0.125;
+    local_138[4] = local_138[1] + fVar18 * 0.625;
+    local_fc = fVar15 + fVar11 * 0.375;
+    local_f8 = fVar15 + fVar11 * 0.625;
+    local_f4 = fVar15 + fVar11 * 0.875;
+    local_f0 = fVar16 + fVar12 * 0.125;
+    local_e8 = fVar16 + fVar12 * 0.625;
+    local_e4 = fVar16 + fVar12 * 0.875;
+    local_e0 = fVar17 + fVar9 * 0.125;
+    local_dc = fVar17 + fVar9 * 0.375;
+    local_d8 = fVar17 + fVar9 * 0.625;
+    local_d4 = fVar17 + fVar9 * 0.875;
+    fVar9 = scf_q[7];
+    fVar18 = fVar9 - fVar13;
+    local_d0 = fVar13 + fVar18 * 0.125;
+    fVar11 = scf_q[8];
+    local_cc = fVar13 + fVar18 * 0.375;
+    fVar10 = fVar11 - fVar9;
+    local_c4 = fVar13 + fVar18 * 0.875;
+    local_c0 = fVar9 + fVar10 * 0.125;
+    fVar14 = scf_q[9];
+    local_bc = fVar9 + fVar10 * 0.375;
+    fVar12 = fVar14 - fVar11;
+    local_b4 = fVar9 + fVar10 * 0.875;
+    local_b8 = fVar9 + fVar10 * 0.625;
+    fVar15 = scf_q[10];
+    local_b0 = fVar11 + fVar12 * 0.125;
+    fVar16 = scf_q[0xb];
+    fVar9 = fVar15 - fVar14;
+    local_ac = fVar11 + fVar12 * 0.375;
+    fVar17 = scf_q[0xc];
+    fVar10 = fVar16 - fVar15;
+    local_a8 = fVar11 + fVar12 * 0.625;
+    local_a4 = fVar11 + fVar12 * 0.875;
+    fVar19 = scf_q[0xd];
+    fVar11 = fVar17 - fVar16;
+    local_9c = fVar14 + fVar9 * 0.375;
+    local_a0 = fVar14 + fVar9 * 0.125;
+    fVar12 = fVar19 - fVar17;
+    local_98 = fVar14 + fVar9 * 0.625;
+    local_94 = fVar14 + fVar9 * 0.875;
+    local_90 = fVar15 + fVar10 * 0.125;
+    local_80 = fVar16 + fVar11 * 0.125;
+    local_88 = fVar15 + fVar10 * 0.625;
+    local_84 = fVar15 + fVar10 * 0.875;
+    local_78 = fVar16 + fVar11 * 0.625;
+    local_74 = fVar16 + fVar11 * 0.875;
+    local_70 = fVar17 + fVar12 * 0.125;
+    local_c8 = fVar13 + fVar18 * 0.625;
+    local_7c = fVar16 + fVar11 * 0.375;
+    local_8c = fVar15 + fVar10 * 0.375;
+    local_6c = fVar17 + fVar12 * 0.375;
+    local_4c = scf_q[0xe];
+    fVar9 = scf_q[0xf];
+    fVar10 = local_4c - fVar19;
+    local_68 = fVar17 + fVar12 * 0.625;
+    local_64 = fVar17 + fVar12 * 0.875;
+    fVar11 = fVar9 - local_4c;
+    fVar13 = fVar11 * 0.125;
+    fVar12 = fVar11 * 0.375;
+    local_48 = local_4c + fVar11 * 0.625;
+    local_60 = fVar19 + fVar10 * 0.125;
+    local_44 = local_4c + fVar11 * 0.875;
+    local_5c = fVar19 + fVar10 * 0.375;
+    local_50 = fVar13 + local_4c;
+    local_58 = fVar19 + fVar10 * 0.625;
+    local_4c = fVar12 + local_4c;
+    local_54 = fVar19 + fVar10 * 0.875;
+  }
+  pfVar6 = local_138;
+  iVar7 = *(int *)(&DAT_000948e0 + dt * 0x514 + sr * 0x104);
+  iVar5 = iVar7;
+  if (0x3f < iVar7) {
+    iVar5 = 0x40;
+  }
+  iVar2 = 0x40 - iVar5;
+  local_40 = fVar13 + fVar9;
+  local_3c = fVar9 + fVar12;
+  if (iVar2 != 0) {
+    pfVar3 = pfVar6;
+    pfVar4 = pfVar6;
+    local_138[0] = local_138[1];
+    do {
+      fVar9 = *pfVar3;
+      pfVar1 = pfVar3 + 1;
+      pfVar3 = pfVar3 + 2;
+      *pfVar4 = (fVar9 + *pfVar1) * 0.5;
+      pfVar4 = pfVar4 + 1;
+    } while (pfVar3 != pfVar6 + iVar2 * 2);
+    memmove(pfVar6 + iVar2,pfVar6 + iVar2 * 2,(iVar5 - iVar2) * 4);
+  }
+  piVar8 = (int *)(&DAT_000947e0 + dt * 0x514 + sr * 0x104);
+  if (0 < iVar7) {
+    iVar2 = 0;
+    iVar7 = 0;
+    do {
+      fVar9 = *pfVar6;
+      pfVar6 = pfVar6 + 1;
+      fVar9 = -fVar9 * (-fVar9 * (-fVar9 * (-fVar9 * (-fVar9 * 1.2719128e-09 + 1.4741522e-07) +
+                                           1.3551031e-05) + 0.00093837583) + 0.043321695) + 1.0;
+      fVar9 = fVar9 * fVar9;
+      fVar9 = fVar9 * fVar9;
+      fVar9 = fVar9 * fVar9;
+      piVar8 = piVar8 + 1;
+      if (iVar7 < *piVar8) {
+        pfVar3 = x + iVar7;
+        pfVar4 = y + iVar7;
+        do {
+          fVar10 = *pfVar3;
+          pfVar3 = pfVar3 + 1;
+          *pfVar4 = fVar10 * fVar9 * fVar9;
+          pfVar4 = pfVar4 + 1;
+          iVar7 = iVar7 + 1;
+        } while (iVar7 < *piVar8);
+      }
+      iVar2 = iVar2 + 1;
+    } while (iVar2 < iVar5);
+  }
+  return;
+}
+
+

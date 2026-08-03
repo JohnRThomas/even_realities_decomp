@@ -45,11 +45,11 @@ undefined4 ui_teleprompter_task(int param_1,undefined4 param_2,int param_3)
   int iVar18;
   uint32_t uVar19;
   bool bVar20;
-  k_timeout_t timeout;
-  k_timeout_t timeout_00;
   longlong lVar21;
   undefined8 uVar22;
   undefined8 uVar23;
+  k_timeout_t timeout;
+  k_timeout_t timeout_00;
   uint uVar24;
   undefined2 local_6c [2];
   undefined4 local_68;

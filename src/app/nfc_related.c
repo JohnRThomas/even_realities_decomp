@@ -19,9 +19,9 @@ void __nfc_related(undefined4 param_1,uint param_2,undefined4 param_3)
   undefined4 extraout_r2;
   undefined4 uVar7;
   k_timeout_t timeout;
-  k_timeout_t timeout_00;
   undefined8 uVar8;
   longlong lVar9;
+  k_timeout_t timeout_00;
   undefined4 uStack_2c;
   undefined4 uStack_28;
   
@@ -54,9 +54,9 @@ LAB_0002c732:
         uVar7 = extraout_r1;
         if (cVar2 != '\x01') {
           do {
-            timeout.ticks._4_4_ = 0x18000;
-            timeout.ticks._0_4_ = uVar7;
-            iVar6 = z_impl_k_sem_take(&nfc_msg_sem,timeout);
+            timeout_00.ticks._4_4_ = 0x18000;
+            timeout_00.ticks._0_4_ = uVar7;
+            iVar6 = z_impl_k_sem_take(&nfc_msg_sem,timeout_00);
             cVar2 = DAT_20019a62;
             if (iVar6 != 0) {
               DAT_20019a62 = cVar2;
@@ -119,9 +119,9 @@ LAB_0002c732:
         uVar5 = 0x1334;
       }
     }
-    timeout_00.ticks._4_4_ = 0;
-    timeout_00.ticks._0_4_ = uVar5;
-    z_impl_k_sleep(timeout_00);
+    timeout.ticks._4_4_ = 0;
+    timeout.ticks._0_4_ = uVar5;
+    z_impl_k_sleep(timeout);
   } while( true );
 }
 

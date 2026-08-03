@@ -31,10 +31,10 @@ void storage_commit_thread(GlassesState *gs_state)
   uint uVar12;
   local_store_write_cb *plVar13;
   undefined1 *puVar14;
-  k_timeout_t timeout;
-  k_timeout_t timeout_00;
   ulonglong uVar15;
   ulonglong uVar16;
+  k_timeout_t timeout;
+  k_timeout_t timeout_00;
   
   __file_init();
   FUN_00025694();

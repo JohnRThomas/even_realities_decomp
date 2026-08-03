@@ -44,9 +44,9 @@ undefined4 spec_ble_command_hook(void *param_1,size_t param_2)
   code *pcVar14;
   char *pcVar15;
   uint uVar16;
-  k_timeout_t timeout;
   undefined8 uVar17;
   undefined8 uVar18;
+  k_timeout_t timeout;
   char local_5c4 [4];
   int local_5c0;
   undefined1 auStack_5bc [28];

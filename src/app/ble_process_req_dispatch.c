@@ -37,9 +37,9 @@ undefined4 ble_process_req_dispatch(int param_1,byte *param_2,byte *param_3)
   uint uVar24;
   uint uVar25;
   uint uVar26;
-  k_timeout_t duration;
   longlong lVar27;
   undefined8 uVar28;
+  k_timeout_t duration;
   undefined1 local_bc;
   undefined2 uStack_bb;
   byte bStack_b9;

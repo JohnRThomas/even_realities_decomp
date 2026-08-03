@@ -31,9 +31,9 @@ undefined4 ui_navigation_task(int param_1,undefined4 param_2,uint param_3)
   undefined *puVar12;
   int iVar13;
   bool bVar14;
-  k_timeout_t timeout;
   undefined8 uVar15;
   undefined8 uVar16;
+  k_timeout_t timeout;
   uint local_34;
   undefined4 uStack_30;
   uint local_2c;

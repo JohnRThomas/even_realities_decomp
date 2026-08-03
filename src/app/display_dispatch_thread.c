@@ -89,17 +89,17 @@ void display_dispatch_thread(byte *param_1)
   uint uVar17;
   byte *pbVar18;
   int iVar19;
+  longlong lVar20;
+  longlong lVar21;
   k_timeout_t timeout;
+  undefined8 uVar22;
   k_timeout_t timeout_00;
   k_timeout_t timeout_01;
   k_timeout_t timeout_02;
   k_timeout_t timeout_03;
   k_timeout_t timeout_04;
   k_timeout_t timeout_05;
-  longlong lVar20;
-  longlong lVar21;
   k_timeout_t timeout_06;
-  undefined8 uVar22;
   uint local_34;
   
   if (1 < LOG_LEVEL) {
@@ -184,24 +184,24 @@ LAB_0002b07a:
       }
       if (*param_1 == 2) {
         while (*(int *)(param_1 + 0x40) != 0) {
-          timeout.ticks._4_4_ = 0xffffffff;
-          timeout.ticks._0_4_ = uVar7;
-          z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout);
+          timeout_00.ticks._4_4_ = 0xffffffff;
+          timeout_00.ticks._0_4_ = uVar7;
+          z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout_00);
           uVar7 = extraout_r1_03;
         }
         while (*(int *)(param_1 + 0x58) != 0) {
-          timeout_00.ticks._4_4_ = 0xffffffff;
-          timeout_00.ticks._0_4_ = uVar7;
-          z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_00);
+          timeout_01.ticks._4_4_ = 0xffffffff;
+          timeout_01.ticks._0_4_ = uVar7;
+          z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_01);
           uVar7 = extraout_r1_04;
         }
       }
       if ((param_1[0xfec] != 0) ||
          (bVar3 = FUN_0002da10((int)param_1), uVar7 = extraout_r1_05, bVar3)) {
         while (*(int *)(param_1 + 0x58) != 0) {
-          timeout_03.ticks._4_4_ = 0xffffffff;
-          timeout_03.ticks._0_4_ = uVar7;
-          z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_03);
+          timeout_04.ticks._4_4_ = 0xffffffff;
+          timeout_04.ticks._0_4_ = uVar7;
+          z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_04);
           uVar7 = extraout_r1_14;
         }
       }
@@ -217,15 +217,15 @@ LAB_0002b07a:
           }
         }
         DAT_20019a64 = 0;
-        timeout_01.ticks._4_4_ = 0xffffffff;
-        timeout_01.ticks._0_4_ = uVar7;
-        z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_01);
+        timeout_02.ticks._4_4_ = 0xffffffff;
+        timeout_02.ticks._0_4_ = uVar7;
+        z_impl_k_sem_take((k_sem *)(param_1 + 0x50),timeout_02);
         if (*param_1 == 2) {
           uVar7 = extraout_r1_07;
           while (*(int *)(param_1 + 0x40) != 0) {
-            timeout_02.ticks._4_4_ = 0xffffffff;
-            timeout_02.ticks._0_4_ = uVar7;
-            z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout_02);
+            timeout_03.ticks._4_4_ = 0xffffffff;
+            timeout_03.ticks._0_4_ = uVar7;
+            z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout_03);
             uVar7 = extraout_r1_13;
           }
         }
@@ -321,9 +321,9 @@ LAB_0002b2c2:
         }
         goto LAB_0002b398;
       }
-      timeout_05.ticks._4_4_ = 0xffffffff;
-      timeout_05.ticks._0_4_ = extraout_r1_10;
-      z_impl_k_mutex_lock(&k_mutex_2000851c,timeout_05);
+      timeout_06.ticks._4_4_ = 0xffffffff;
+      timeout_06.ticks._0_4_ = extraout_r1_10;
+      z_impl_k_mutex_lock(&k_mutex_2000851c,timeout_06);
       uVar13 = (uint)param_1[0xd5];
       switch(param_1[0xd5]) {
       case 2:
@@ -706,17 +706,17 @@ LAB_0002b92a:
 LAB_0002b10e:
         uVar10 = 0;
       }
-      timeout_06.ticks._4_4_ = uVar10;
-      timeout_06.ticks._0_4_ = uVar7;
-      z_impl_k_sleep(timeout_06);
+      timeout.ticks._4_4_ = uVar10;
+      timeout.ticks._0_4_ = uVar7;
+      z_impl_k_sleep(timeout);
       pbVar14 = pbVar18;
       goto LAB_0002b07a;
     }
     if ((1 < param_1[0xfea] - 1) && (param_1[0xfea] != 4)) {
       lVar20 = FUN_0007fea6();
-      timeout_04.ticks._0_4_ = (undefined4)((ulonglong)lVar20 >> 0x20);
-      timeout_04.ticks._4_4_ = 0x4000;
-      z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout_04);
+      timeout_05.ticks._0_4_ = (undefined4)((ulonglong)lVar20 >> 0x20);
+      timeout_05.ticks._4_4_ = 0x4000;
+      z_impl_k_sem_take((k_sem *)(param_1 + 0x38),timeout_05);
       lVar21 = FUN_0007fea6();
       iVar8 = (int)((ulonglong)(lVar21 - lVar20) >> 0x20);
       bVar3 = (uint)(lVar21 - lVar20) < 500;

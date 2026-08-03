@@ -65,9 +65,9 @@ void check_work_mode(int param_1,int param_2,int param_3)
   undefined1 *extraout_r2_17;
   undefined1 *extraout_r2_18;
   uint uVar11;
+  undefined8 uVar12;
   k_timeout_t timeout;
   k_timeout_t timeout_00;
-  undefined8 uVar12;
   undefined4 extraout_r2_00;
   undefined4 extraout_r2_04;
   
