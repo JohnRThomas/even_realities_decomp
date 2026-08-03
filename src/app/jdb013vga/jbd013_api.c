@@ -4,7 +4,7 @@
 #include "jbd013_api.h"
 #include "string.h"
 
-// 发送JBD013VGA面板的SPI指令给面板
+// Send the JBD013 VGA panel's SPI commands to the panel.
 void send_cmd(uint8_t cmd) {
     uint8_t pBuf[1];
 
@@ -12,23 +12,24 @@ void send_cmd(uint8_t cmd) {
     spi_tx_frame(pBuf);
 }
 
-// 读取面板ID，返回面板ID
+// Read the panel ID and return the panel ID.
 void read_id(void) {
     uint8_t pBuf[3];
 
-    printf("读取面板ID:\n");
+    printf("Readout panel ID:\n");
     spi_rx_frame(SPI_RD_ID, pBuf, 3);
 }
 
-// 读面板唯一ID，存储在pBuf指针指向的内存空间中，指针对应的缓存空间应大于等于15字节
+// Read the unique panel ID and store it in the memory space pointed to by `pBuf`,
+// the buffer space corresponding to the pointer must be at least 15 bytes in size.
 void read_uid(void) {
     uint8_t pBuf[15];
 
-    printf("读面板唯一ID:\n");
+    printf("Read panel unique ID:\n");
     spi_rx_frame(SPI_RD_UID, pBuf, 15);
 }
 
-// 写状态寄存器，寄存器地址regAddr，写入数据data
+// Write to the status register: register address `regAddr`, data to be written `data`.
 void wr_status_reg(uint8_t regAddr, uint8_t data) {
     uint8_t pBuf[2];
 
@@ -38,15 +39,15 @@ void wr_status_reg(uint8_t regAddr, uint8_t data) {
     spi_tx_frame(pBuf);
 }
 
-// 读状态寄存器，寄存器地址regAddr，返回寄存器数据
+// Read the status register at address `regAddr` and return the register data.
 void rd_status_reg(uint8_t regAddr) {
     uint8_t pBuf[1];
 
-    printf("读状态寄存器: 0x%02X\n", regAddr);
+    printf("Read Status Register: 0x%02X\n", regAddr);
     spi_rx_frame(regAddr, pBuf, 1);
 }
 
-// 写偏移寄存器，行偏移地址row（0~31），列偏移地址col（0~31）
+// Write to the offset register: row offset address (0–31) and column offset address (0–31).
 void wr_offset_reg(uint8_t row, uint8_t col) {
     uint8_t pBuf[3];
 
@@ -55,15 +56,15 @@ void wr_offset_reg(uint8_t row, uint8_t col) {
     pBuf[2] = col;
 
     spi_tx_frame(pBuf);
-    send_cmd(SPI_SYNC); //发送命令，数据同步
-    usleep(1 * 1000);   //1ms (8MHz) 或 0.5ms (16MHz)
+    send_cmd(SPI_SYNC); //Send command, synchronize data
+    usleep(1 * 1000);   //1ms (8MHz) or 0.5ms (16MHz)
 }
 
-// 读偏移寄存器，返回寄存器数据
+// Read the offset register and return the register data.
 void rd_offset_reg(void) {
     uint8_t pBuf[2];
 
-    printf("读偏移寄存器: \n");
+    printf("Read offset register: \n");
     spi_rx_frame(SPI_RD_OFFSET_REG, pBuf, 2);
 }
 
@@ -145,12 +146,12 @@ void display_image(uint16_t row, uint16_t col, uint8_t *pBuf, uint32_t len) {
 }
 
 /**
- * @brief 显示图像数据（优化版）
- * @param row 起始行
- * @param col 起始列
- * @param pBuf 图像数据缓冲区
- * @param len 数据长度
- * @param sync 是否立即同步
+* @brief Display image data (optimized version)
+* @param row Starting row
+* @param col Starting column
+* @param pBuf Image data buffer
+* @param len Data length
+* @param sync Whether to synchronize immediately
  */
 void display_image_sync(uint16_t row, uint16_t col, uint8_t *pBuf, uint32_t len, uint8_t sync) {
     spi_wr_buffer(col, row, pBuf, len);
@@ -169,22 +170,22 @@ void panel_rst(void) {
 
 // 初始化面板
 void panel_init(void) {
-    panel_rst();                            //复位面板
-    send_cmd(SPI_WR_ENABLE);                //写入使能
-    wr_cur_reg(30);                          //设置电流寄存器
-    wr_status_reg(SPI_WR_STATUS_REG1, 0x10);//写状态寄存器1，关闭demura
-    wr_lum_reg(1000);                       //写亮度寄存器
-    wr_status_reg(SPI_WR_STATUS_REG2, 0x05);//写状态寄存器2
-    clr_cache();                            //清除缓存
-    wr_offset_reg(0, 0);                    //设置左上角偏移量
-    wr_offset_reg(0, 20);                   //设置右上角的偏移量
-    wr_offset_reg(24, 0);                   //设置左下角的偏移量
-    wr_offset_reg(24, 20);                  //设置右下角的偏移量
-    wr_offset_reg(12, 10);                  //设置实际偏移量，屏幕居中
-    wr_lum_reg(1000);                       //写亮度寄存器
-    wr_cur_reg(30);                          //设置电流寄存器
-    set_mirror_mode(1);                     //默认镜像模式
-    send_cmd(SPI_DISPLAY_ENABLE);           //设置显示启用
-    send_cmd(SPI_SYNC);                     //同步设置
+    panel_rst();                                // Reset panel
+    send_cmd(SPI_WR_ENABLE);                // Enable writing
+    wr_cur_reg(30);                       // Set current register
+    wr_status_reg(SPI_WR_STATUS_REG1, 0x10); // Write status register 1, disable demura
+    wr_lum_reg(1000);                       // Write brightness register
+    wr_status_reg(SPI_WR_STATUS_REG2, 0x05);// Write status register 2
+    clr_cache();                            // Clear cache
+    wr_offset_reg(0, 0);                    // Set top-left offset
+    wr_offset_reg(0, 20);                   // Set top-right offset
+    wr_offset_reg(24, 0);                   // Set bottom-left offset
+    wr_offset_reg(24, 20);                  // Set bottom-right offset
+    wr_offset_reg(12, 10);                  // Set actual offset to center the screen
+    wr_lum_reg(1000);                       // Write brightness register
+    wr_cur_reg(30);                          // Set current register
+    set_mirror_mode(1);                     // Default mirror mode
+    send_cmd(SPI_DISPLAY_ENABLE);           // Enable display
+    send_cmd(SPI_SYNC);                     // Synchronize
     usleep(1 * 1000);
 }
