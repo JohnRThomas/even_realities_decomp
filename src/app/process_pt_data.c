@@ -1,11 +1,11 @@
 /*
  * Function: process_pt_data
  * Entry:    000346f8
- * Prototype: undefined4 __stdcall process_pt_data(undefined4 param_1)
+ * Prototype: int __stdcall process_pt_data(undefined4 param_1)
  */
 
 
-undefined4 process_pt_data(undefined4 param_1)
+int process_pt_data(undefined4 param_1)
 
 {
   char cVar1;
@@ -21,7 +21,7 @@ undefined4 process_pt_data(undefined4 param_1)
      (((pdVar3 = (device *)PTR_20002424, __UART_DEV_STATE == 0 ||
        (pdVar3 = UART_DEV_PTR, __UART_DEV_STATE == 1)) && (pdVar3 == (device *)0x0)))) {
     printk("comm para is error\n");
-    return 0xffffffff;
+    return -1;
   }
   local_28 = 0;
   local_24 = 0;
@@ -35,14 +35,14 @@ undefined4 process_pt_data(undefined4 param_1)
   iVar2 = FUN_000805f2((uint)__UART_DEV_STATE,(st25dv_context *)pdVar3,&local_20,&local_24);
   if (iVar2 != 0) {
     FUN_00032164();
-    return 0xfffffffe;
+    return -2;
   }
   iVar2 = process_pt_protocol((uint)__UART_DEV_STATE,&DAT_2001acc4,local_24 & 0xff,(int *)local_1c,
                               (byte *)&local_28,param_1);
   if (iVar2 != 0) {
     printk("process_pt_protocol is failed\n");
     FUN_00032164();
-    return 0xfffffffd;
+    return -3;
   }
   pdVar3 = (device *)PTR_20002424;
   if (__UART_DEV_STATE != 0) {
@@ -52,7 +52,7 @@ undefined4 process_pt_data(undefined4 param_1)
   if (iVar2 != 0) {
     printk("comm_write is failed\n");
     FUN_00032164();
-    return 0xfffffffc;
+    return -4;
   }
   FUN_00032164();
   if (local_1c[0][9] == -0x80) {
@@ -82,7 +82,7 @@ undefined4 process_pt_data(undefined4 param_1)
     if (iVar2 == 0) {
       return 0;
     }
-    return 0xfffffffb;
+    return -5;
   }
   if (cVar1 == '\x06') {
     if (pcVar4[2] == '\x02') {

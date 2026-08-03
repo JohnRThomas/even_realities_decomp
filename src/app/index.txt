@@ -201,6 +201,8 @@
 00027994	?_eeprom_st25dv_read	eeprom_st25dv_read.c
 000279f8	?_eeprom_st25dv_read_sys	eeprom_st25dv_read_sys.c
 00027a5c	?_eeprom_st25dv_write_sys	eeprom_st25dv_write_sys.c
+00027ac0	FUN_00027ac0	FUN_00027ac0.c
+00027b5c	eeprom_st25dv_write_i2c_mb_mailbox_ram	eeprom_st25dv_write_i2c_mb_mailbox_ram.c
 00027be0	?_eeprom_st25dv_init	eeprom_st25dv_init.c
 00027c54	ipc0_ept_recv	ipc0_ept_recv.c
 00027cf4	register_ipc_service_recv_callback	register_ipc_service_recv_callback.c
@@ -409,7 +411,7 @@
 000348f0	?_init_serial_port	init_serial_port.c
 00034954	?_init_serial_comm	init_serial_comm.c
 00034998	uart_callback	uart_callback.c
-00034c60	lpuart_async_b	lpuart_async_b.c
+00034c60	%_lpuart_async_b	__lpuart_async_b.c
 00034cb4	lpuart_async_a	lpuart_async_a.c
 00034d2c	FUN_00034d2c	FUN_00034d2c.c
 00034d44	?_send_notifi_app_white_list_app	send_notifi_app_white_list_app.c
@@ -735,7 +737,7 @@
 0007fc38	FUN_0007fc38	FUN_0007fc38.c
 0007fc50	FUN_0007fc50	FUN_0007fc50.c
 0007fc62	FUN_0007fc62	FUN_0007fc62.c
-0007fc9a	FUN_0007fc9a	FUN_0007fc9a.c
+0007fc9a	ST25DV_GetUID	ST25DV_GetUID.c
 0007fcac	FUN_0007fcac	FUN_0007fcac.c
 0007fcbe	FUN_0007fcbe	FUN_0007fcbe.c
 0007fcd0	FUN_0007fcd0	FUN_0007fcd0.c

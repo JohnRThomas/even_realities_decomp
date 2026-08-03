@@ -23,7 +23,7 @@ undefined4 nfc_init(void)
      (global_st25dv_context_ptr->callbacks != (st25dv_callbacks *)0x0)) {
     z_impl_k_sleep((k_timeout_t)0x290);
     (*(code *)global_st25dv_context_ptr->callbacks->field2_0x8)();
-    FUN_0007fc9a(global_st25dv_context_ptr,(int)&local_10);
+    ST25DV_GetUID(global_st25dv_context_ptr,(int)&local_10);
     printk("UUID = %02X %02X %02X %02X %02X %02X %02X %02X.\n",local_10 & 0xff,local_10 >> 8 & 0xff,
            local_10 >> 0x10 & 0xff,local_10 >> 0x18,local_c & 0xff,local_c >> 8 & 0xff,
            local_c >> 0x10 & 0xff,local_c >> 0x18);
