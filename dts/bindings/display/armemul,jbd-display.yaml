@@ -1,0 +1,12 @@
+# ARMemul JBD 640x200 4-bpp microdisplay controller on SPI (mode 3).
+#
+# Protocol implemented by models/JBD_Display.cs in the ARMemul repository:
+#   0x9F -> ID 0x4010; 0x02 + 3-byte little-endian coordinate word
+#   ((x & 0x3FF) | ((y << 10) & 0x7FC00)) + 0xFF marker + packed 4-bpp
+#   pixels (high nibble = left pixel) + one trailing dummy byte.
+
+description: ARMemul JBD 640x200 4-bpp microdisplay (SPI mode 3)
+
+compatible: "armemul,jbd-display"
+
+include: spi-device.yaml

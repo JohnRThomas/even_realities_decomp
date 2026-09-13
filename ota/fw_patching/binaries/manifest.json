@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "variant": "ephemeral-slot (STAGE 0x30 / VERIFY 0x31 / RUN 0x3f)",
+  "source_image": "/Users/freedomcoder/Projects/G1disasm2/app_update.bin",
+  "source_sha256": "e0614feb3609fc2f251a00c16ca66f01c9fb8153de81ca1818cab5f79b42fd3b",
+  "output_image": "/Users/freedomcoder/Projects/ARMemul/companion/g1_glasses_ota/build_payload/app_update_payload.pss.bin",
+  "output_sha256": "fe58b000aaad9594fe216ed77407c4ce1cdfbfa4b69b448c7d3c8d64a83dc0f8",
+  "signature_scheme": "RSA-2048 PSS (MGF1-SHA256, salt_len=32), Prehashed SHA256",
+  "signature_self_verify": "OK",
+  "signing_key": "/Users/freedomcoder/ncs251/bootloader/mcuboot/root-rsa-2048.pem",
+  "public_key_sha256": "fc5701dc6135e1323847bdc40f04d2e5bee5833b23c29f93593d00018cfa9994",
+  "body_digest_sha256": "03e161ecc88ea03c1ea9c079287ef0b84f06c8096cdb1d4f041b6bc67374138d",
+  "old_img_size": 976957,
+  "new_img_size": 978608,
+  "reference_pss_tlv_layout_match": true,
+  "tlv_layout": [
+    [
+      "0x10",
+      32
+    ],
+    [
+      "0x1",
+      32
+    ],
+    [
+      "0x20",
+      256
+    ]
+  ],
+  "handler": {
+    "address": "0x000faa40",
+    "file_offset": "0xeea40",
+    "size": 1648,
+    "sha256": "0c53d8f7bc05f634e3f2cf27af453d3117206fbefcaf7104c78e41a5a1bda35d",
+    "bytes": "2f 2a 00 f0 2f 82 2e 2a 00 f0 88 82 40 2a 00 f0 c8 82 30 2a 09 d0 31 2a 65 d0 3f 2a 00 f0 c9 80 df f8 d4 35 1b 68 1f f7 55 be 0d f5 88 78 30 23 88 f8 00 30 ca 23 88 f8 01 30 01 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 30 73 88 0a 2b 44 d3 b5 f8 01 00 98 42 40 d1 28 79 d5 f8 05 60 6f 7a c8 f8 04 60 17 f1 0a 01 8b 42 36 d3 04 2f 34 d3 b0 2f 32 d8 17 f0 03 0f 2f d1 16 f0 03 0f 2c d1 4f f0 00 03 9e 42 28 d3 4f f4 40 23 9e 42 24 d2 9b 1b 9f 42 21 d8 10 f0 01 0f 09 d0 df f8 5c 05 31 0b 09 03 4f f4 80 52 00 23 66 f7 71 f9 88 b9 df f8 48 05 31 46 05 f1 0a 02 3b 46 66 f7 10 fa 40 b9 c9 23 88 f8 01 30 00 23 88 f8 02 30 88 f8 03 70 02 e0 02 23 88 f8 02 30 08 21 e3 68 40 46 98 47 1f f7 d5 ba 0d f5 88 78 31 23 88 f8 00 30 ca 23 88 f8 01 30 01 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 30 73 88 0d 2b 4c d3 b5 f8 01 00 98 42 48 d1 d5 f8 05 60 d5 f8 09 70 00 2f 00 f0 42 80 4f f0 00 03 9e 42 3d d3 4f f4 40 23 9e 42 39 d2 9b 1b 9f 42 36 d8 6f f0 00 09 80 22 97 42 38 bf 3a 46 30 46 08 f1 08 01 27 f7 13 fd 38 bb 80 21 8f 42 38 bf 39 46 08 f1 08 00 0a 46 df f8 a0 c4 10 f8 01 3b 89 ea 03 09 08 23 5f ea 59 09 28 bf 89 ea 0c 09 01 3b f8 d1 01 3a f1 d1 0e 44 7f 1a db d1 6f ea 09 09 c9 23 88 f8 01 30 00 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 90 02 e0 02 23 88 f8 02 30 08 21 e3 68 40 46 98 47 1f f7 6f ba 0d f5 88 78 3f 23 88 f8 00 30 ca 23 88 f8 01 30 01 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 30 73 88 19 2b 63 d3 b5 f8 01 00 98 42 5f d1 d5 f8 05 60 d5 f8 09 70 d5 f8 0d a0 d5 f8 11 b0 d5 f8 15 90 4f f4 00 53 99 45 51 d3 4f f4 80 13 99 45 4d d8 00 2f 00 f0 4b 80 4f f0 00 03 9e 42 46 d3 4f f4 40 23 9e 42 42 d2 9b 1b 9f 42 3f d8 4f f0 20 23 9b 45 3b d3 1b eb 07 00 38 d2 f5 4b 98 42 35 d8 69 46 59 45 02 d3 81 42 00 d2 2f e0 6f f0 00 09 80 22 97 42 38 bf 3a 46 30 46 08 f1 08 01 27 f7 8f fc e8 b9 80 21 8f 42 38 bf 39 46 08 f1 08 00 0a 46 df f8 98 c3 10 f8 01 3b 89 ea 03 09 08 23 5f ea 59 09 28 bf 89 ea 0c 09 01 3b f8 d1 01 3a f1 d1 0e 44 7f 1a db d1 6f ea 09 09 d1 45 0b d0 ca 23 88 f8 01 30 03 23 88 f8 02 30 08 21 e3 68 40 46 98 47 1f f7 f2 b9 3f 23 88 f8 00 30 c9 23 88 f8 01 30 00 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 b0 08 21 e3 68 40 46 98 47 cd 48 0c 30 40 f2 15 11 3c 22 40 f8 04 1b 01 3a fb d1 ca 48 d0 f8 00 14 11 f0 01 0f 08 d1 d5 f8 15 10 c0 f8 04 15 01 21 c0 f8 08 15 01 21 01 60 c3 48 00 f0 69 f9 c3 48 00 f0 66 f9 c2 48 00 f0 63 f9 c2 48 00 f0 60 f9 c1 48 00 f0 67 f9 c1 48 00 f0 64 f9 c0 48 00 f0 61 f9 c0 48 00 f0 5e f9 bf 48 00 f0 5b f9 bf 48 00 f0 58 f9 be 48 00 f0 55 f9 be 48 00 f0 52 f9 bd 48 00 f0 4f f9 bd 48 00 f0 4c f9 b8 48 01 21 41 60 c1 60 00 21 c0 f8 00 15 b9 48 00 f0 42 f9 01 21 41 60 00 21 c0 f8 00 15 b6 48 00 f0 3a f9 01 21 81 60 00 21 c0 f8 00 15 b3 48 6f f0 00 01 c0 f8 08 15 72 b6 b1 48 6f f0 00 01 08 22 40 f8 04 1b 01 3a fb d1 ae 48 08 22 40 f8 04 1b 01 3a fb d1 d5 f8 05 60 d5 f8 09 70 da 46 a3 48 00 21 c0 f8 00 11 01 21 c0 f8 00 15 bf f3 4f 8f 01 21 01 60 bf f3 4f 8f 4f f4 80 02 d0 f8 00 11 00 29 02 d1 01 3a f9 d1 22 e0 00 2f 21 d0 4f f4 80 32 97 42 38 bf 3a 46 00 21 c0 f8 00 11 c0 f8 04 65 c0 f8 08 a5 c0 f8 0c 25 bf f3 4f 8f 01 21 41 60 bf f3 4f 8f 4f f4 80 03 d0 f8 00 11 00 29 02 d1 01 3b f9 d1 03 e0 16 44 92 44 bf 1a dc e7 fe e7 00 20 80 f3 14 88 bf f3 6f 8f 8a 48 00 21 01 60 bf f3 4f 8f bf f3 6f 8f 87 48 c0 f8 00 b0 bf f3 4f 8f bf f3 6f 8f db f8 00 00 db f8 04 10 80 f3 08 88 bf f3 4f 8f bf f3 6f 8f 08 47 0d f5 88 78 2f 23 88 f8 00 30 ca 23 88 f8 01 30 01 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 30 73 88 0e 2b 42 d3 b5 f8 01 00 98 42 3e d1 d5 f8 05 60 d5 f8 09 00 6f 7b 36 18 c8 f8 04 60 01 2f 34 d3 b4 2f 32 d8 4f f4 80 13 9e 42 03 d2 9b 1b 9f 42 2b d8 15 e0 4f f0 00 53 9e 42 26 d3 68 4b 9e 42 03 d2 9b 1b 9f 42 20 d8 0a e0 4f f0 80 43 9e 42 1b d3 4f f0 a2 43 9e 42 17 d2 9b 1b 9f 42 14 d8 08 f1 08 01 30 46 3a 46 10 f8 01 3b 01 f8 01 3b 01 3a f9 d1 c9 23 88 f8 01 30 00 23 88 f8 02 30 88 f8 03 70 17 f1 08 01 00 e0 08 21 e3 68 40 46 98 47 1f f7 ba b8 0d f5 88 78 2e 23 88 f8 00 30 ca 23 88 f8 01 30 01 23 88 f8 02 30 00 23 88 f8 03 30 c8 f8 04 30 73 88 0a 2b 29 d3 b5 f8 01 00 98 42 25 d1 d5 f8 05 60 6f 7a c8 f8 04 60 01 2f 1e d3 b0 2f 1c d8 4f f0 00 73 9e 42 18 d2 9b 1b 9f 42 15 d8 30 46 08 f1 08 01 3a 46 27 f7 ff fa 18 b1 02 23 88 f8 02 30 0a e0 c9 23 88 f8 01 30 00 23 88 f8 02 30 88 f8 03 70 17 f1 08 01 00 e0 08 21 e3 68 40 46 98 47 1f f7 77 b8 0d f5 88 78 40 23 88 f8 00 30 c9 23 88 f8 01 30 00 23 88 f8 02 30 88 f8 03 30 c8 f8 04 30 08 21 e3 68 40 46 98 47 bf f3 4f 8f 26 48 27 49 01 60 bf f3 4f 8f fe e7 01 21 41 61 6f f0 00 01 c0 f8 08 13 00 21 c0 f8 00 15 70 47 6f f0 00 01 c0 f8 08 13 70 47 00 00 0c 23 00 20 f0 7b 08 00 20 83 b8 ed 00 00 07 20 00 36 00 50 00 80 01 50 00 a0 00 50 00 c0 00 50 00 90 00 50 00 b0 00 50 00 a0 02 50 00 40 01 50 00 50 01 50 00 f0 00 50 00 00 01 50 00 10 01 50 00 80 00 50 00 d0 00 50 00 b0 01 50 00 b0 02 50 00 60 02 50 00 e0 00 50 00 70 01 50 80 e1 00 e0 80 e2 00 e0 94 ed 00 e0 08 ed 00 e0 00 00 08 20 0c ed 00 e0 04 00 fa 05"
+  },
+  "in_place_patch": {
+    "address": "0x0001a710",
+    "file_offset": "0xe710",
+    "before": "0d 4b 1b 68",
+    "after": "e0 f0 96 b9",
+    "meaning": "b.w 0x000faa40"
+  },
+  "firmware_calls": {
+    "flash_settings_read": "0x000225b4",
+    "qspi_nor_write": "0x00060f20",
+    "qspi_nor_erase": "0x00060dd0",
+    "qspi_device": "0x00087bf0"
+  },
+  "qspi_scratch": {
+    "base": "0x00000000",
+    "limit": "0x000c0000",
+    "note": "NOT proven free; best static candidate above the highest mapped burned-asset region (ends 0x00dbedcf). Validate against a live partition map before trust."
+  },
+  "ram_load_window": {
+    "base": "0x20002000",
+    "limit": "0x20070000",
+    "excluded": "pcd_sram [0x20000000,0x20002000) SPU-locked; net-core IPC [0x20070000,0x20080000)"
+  },
+  "protocol": {
+    "STAGE": {
+      "command": "0x30",
+      "request": "[4]=flags(bit0 erase-sector), [5:9]=qspi_addr LE (4-byte aligned, in scratch), [9]=count(4..176 mult4), [10:10+count]=data",
+      "reply": "[0]=0x30,[1]=0xc9/0xca,[2]=status(0 ok/1 invalid/2 io),[3]=count,[4:8]=qspi_addr"
+    },
+    "VERIFY": {
+      "command": "0x31",
+      "request": "[5:9]=base LE, [9:13]=length LE",
+      "reply": "[0]=0x31,[1]=0xc9/0xca,[2]=status,[3]=0,[4:8]=CRC32 LE",
+      "hash": "CRC-32 IEEE poly 0xEDB88320 (NOT cryptographic)"
+    },
+    "RUN": {
+      "command": "0x3f",
+      "request": "[5:9]=qspi_src LE, [9:13]=length LE, [13:17]=expected_crc32 LE, [17:21]=load_addr LE",
+      "reply": "accepted [0]=0x3f,[1]=0xc9,[2]=0,[3]=0,[4:8]=load_addr (sent BEFORE entry); refuse [1]=0xca,[2]=1 bounds/3 crc"
+    }
+  },
+  "no_persistent_arming": "true -- trigger is the live RUN command only; staged bytes are inert; disarms on reboot structurally",
+  "slot_end_file_offset": "0xf0000",
+  "remaining_slot_bytes_after_signed_image": 3584,
+  "flash_note": "DO NOT FLASH from this script. Overwrite-only swap is a reviewed, separate step. RUN enters an image WITHOUT MCUboot signature check."
+}

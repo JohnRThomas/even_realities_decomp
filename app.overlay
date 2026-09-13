@@ -1,6 +1,147 @@
-/ {
-	chosen {
-		nordic,pm-ext-flash = &mx25r64;
+/*
+ * ARMemul demo overlay — matches docs/board-map.md exactly.
+ *
+ *   i2c1 (TWIM1 @ 0x9000): OPT3001 @0x45, nPM1300 @0x6B
+ *   i2c2 (TWIM2 @ 0xb000): LSM6DSO @0x6B (SDA P1.02, SCL P1.03)
+ *   spi4 (SPIM4 @ 0xa000, platform "spim_a"): JBD display, SPI mode 3
+ *   adc  (SAADC @ 0xe000): AIN3 configured at runtime (single-ended,
+ *         gain 1/6, internal ref, 12-bit — see src/main.c)
+ *   qspi (@ 0x2b000): Macronix MX25U25645G-family 32 MiB quad NOR
+ *         (JEDEC C2 25 39, 24-bit addressing, quad read/program)
+ *   buttons: sw0 P1.09, sw1 P1.10, active low
+ *   console: UARTE0 (board default)
+ *   pdm0: CLK P1.13, DIN P1.14
+ */
+
+#include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
+
+&pinctrl {
+	i2c2_default_alt: i2c2_default_alt {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 1, 2)>,
+				<NRF_PSEL(TWIM_SCL, 1, 3)>;
+		};
+	};
+
+	i2c2_sleep_alt: i2c2_sleep_alt {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 1, 2)>,
+				<NRF_PSEL(TWIM_SCL, 1, 3)>;
+			low-power-enable;
+		};
+	};
+
+	pdm0_default_alt: pdm0_default_alt {
+		group1 {
+			psels = <NRF_PSEL(PDM_CLK, 1, 13)>,
+				<NRF_PSEL(PDM_DIN, 1, 14)>;
+		};
 	};
 };
 
+/* Board map: active-low buttons on P1.09 (sw0) and P1.10 (sw1). */
+&button0 {
+	gpios = <&gpio1 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+};
+
+&button1 {
+	gpios = <&gpio1 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+};
+
+/* Light + PMIC bus (TWIM1, 400 kHz). */
+&i2c1 {
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	opt3001: opt3001@45 {
+		compatible = "ti,opt3001";
+		reg = <0x45>;
+	};
+
+	npm1300: pmic@6b {
+		compatible = "nordic,npm1300";
+		reg = <0x6b>;
+
+		npm1300_charger: charger {
+			compatible = "nordic,npm1300-charger";
+			/* board map: 4.4 V term, 4.1 V warm, 40 mA charge,
+			 * 1 A discharge, 500 mA VBUS, 100 kOhm/B4250 NTC
+			 */
+			term-microvolt = <4400000>;
+			term-warm-microvolt = <4100000>;
+			current-microamp = <40000>;
+			dischg-limit-microamp = <1000000>;
+			vbus-limit-microamp = <500000>;
+			thermistor-ohms = <100000>;
+			thermistor-beta = <4250>;
+			charging-enable;
+		};
+
+		npm1300_regulators: regulators {
+			compatible = "nordic,npm1300-regulator";
+
+			npm1300_buck1: BUCK1 {
+			};
+
+			npm1300_buck2: BUCK2 {
+				regulator-init-microvolt = <3000000>;
+				regulator-boot-on;
+			};
+		};
+	};
+};
+
+/* IMU bus (TWIM2, 400 kHz, SDA P1.02, SCL P1.03). */
+&i2c2 {
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	pinctrl-0 = <&i2c2_default_alt>;
+	pinctrl-1 = <&i2c2_sleep_alt>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	lsm6dso: lsm6dso@6b {
+		compatible = "st,lsm6dso";
+		reg = <0x6b>;
+		accel-odr = <1>;	/* 12.5 Hz (board map: off/12.5/26) */
+		gyro-odr = <1>;		/* 12.5 Hz */
+		accel-range = <0>;	/* +/-2 g, 61 ug/LSB */
+		gyro-range = <0>;	/* 250 dps, 8.75 mdps/LSB */
+	};
+};
+
+/* JBD display on the dedicated SPIM4 box (platform instance "spim_a").
+ * SPI mode 3 is requested from the driver code (SPI_MODE_CPOL|SPI_MODE_CPHA).
+ */
+&spi4 {
+	status = "okay";
+
+	jbd0: jbd@0 {
+		compatible = "armemul,jbd-display";
+		reg = <0>;
+		spi-max-frequency = <8000000>;
+	};
+};
+
+/* Macronix MX25U25645G-family 32 MiB quad NOR (board map: JEDEC C2 25 39,
+ * 24-bit addressing preserved, quad read/program, mode 0, 96 MHz).
+ * The board's mx25r6435f node is repurposed in place (same nodelabel).
+ */
+&mx25r64 {
+	/delete-property/ sfdp-bfp;
+	jedec-id = [c2 25 39];
+	size = <268435456>;		/* 256 Mbit = 32 MiB */
+	sck-frequency = <96000000>;
+	readoc = "read4io";		/* 4READ EB */
+	writeoc = "pp4io";		/* 4PP 38 */
+	quad-enable-requirements = "S1B6";
+	t-enter-dpd = <10000>;
+	t-exit-dpd = <35000>;
+};
+
+/* PDM microphone (board map: CLK P1.13, DIN P1.14). */
+dmic_dev: &pdm0 {
+	status = "okay";
+	pinctrl-0 = <&pdm0_default_alt>;
+	pinctrl-names = "default";
+};
