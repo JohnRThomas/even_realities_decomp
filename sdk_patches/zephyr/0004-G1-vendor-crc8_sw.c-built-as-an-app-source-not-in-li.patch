@@ -1,0 +1,29 @@
+From c9fb0234dc16b702160b25262fd9b0f3756efa31 Mon Sep 17 00:00:00 2001
+From: G1 repro <repro@localhost>
+Date: Mon, 19 Oct 2026 07:08:29 -0700
+Subject: [PATCH] G1 vendor: crc8_sw.c built as an app source, not in libzephyr
+
+---
+ lib/crc/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/crc/CMakeLists.txt b/lib/crc/CMakeLists.txt
+index bf652ba4fcf..c3894401d9b 100644
+--- a/lib/crc/CMakeLists.txt
++++ b/lib/crc/CMakeLists.txt
+@@ -1,10 +1,11 @@
+ # SPDX-License-Identifier: Apache-2.0
+ 
++# G1 vendor: crc8_sw.c is compiled as an application source (crc8_ccitt sits at
++# the end of the vendor app code, 0x4de34), not in libzephyr.
+ zephyr_sources_ifdef(CONFIG_CRC
+   crc32c_sw.c
+   crc32_sw.c
+   crc16_sw.c
+-  crc8_sw.c
+   crc7_sw.c
+   )
+ zephyr_sources_ifdef(CONFIG_CRC_SHELL crc_shell.c)
+-- 
+2.56.0
+

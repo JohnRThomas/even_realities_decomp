@@ -1,0 +1,28 @@
+From 560ec48f9295452506572ce12a9db0879bf9f1e0 Mon Sep 17 00:00:00 2001
+From: G1 repro <johnrthomas27@gmail.com>
+Date: Sun, 18 Oct 2026 19:53:51 -0700
+Subject: [PATCH 2/2] G1 vendor: ESB event IRQ on SWI3
+
+---
+ subsys/esb/esb_peripherals.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/subsys/esb/esb_peripherals.h b/subsys/esb/esb_peripherals.h
+index c7c8669fb9..a8592461c5 100644
+--- a/subsys/esb/esb_peripherals.h
++++ b/subsys/esb/esb_peripherals.h
+@@ -17,9 +17,9 @@ extern "C" {
+ #include <hal/nrf_egu.h>
+ 
+ /** The ESB event IRQ number when running on an nRF5 device. */
+-#define ESB_EVT_IRQ        SWI0_IRQn
++#define ESB_EVT_IRQ        SWI3_IRQn
+ /** The handler for @ref ESB_EVT_IRQ when running on an nRF5 device. */
+-#define ESB_EVT_IRQHandler SWI0_IRQHandler
++#define ESB_EVT_IRQHandler SWI3_IRQHandler
+ 
+ /** ESB timer instance number. */
+ #define ESB_TIMER_INSTANCE_NO CONFIG_ESB_SYS_TIMER_INSTANCE
+-- 
+2.56.0
+

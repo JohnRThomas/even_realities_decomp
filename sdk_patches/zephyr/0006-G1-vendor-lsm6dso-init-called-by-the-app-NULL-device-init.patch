@@ -1,0 +1,60 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: G1 repro <repro@localhost>
+Date: Mon, 19 Oct 2026 12:00:00 -0700
+Subject: [PATCH] G1 vendor: lsm6dso_init exported and called by the app, NULL device init, LOG_LEVEL_DBG
+
+---
+diff --git a/drivers/sensor/lsm6dso/lsm6dso.c b/drivers/sensor/lsm6dso/lsm6dso.c
+index d70d9b8779a..a6f69af90d0 100644
+--- a/drivers/sensor/lsm6dso/lsm6dso.c
++++ b/drivers/sensor/lsm6dso/lsm6dso.c
+@@ -21,7 +21,7 @@
+ 
+ #include "lsm6dso.h"
+ 
+-LOG_MODULE_REGISTER(LSM6DSO, CONFIG_SENSOR_LOG_LEVEL);
++LOG_MODULE_REGISTER(LSM6DSO, LOG_LEVEL_DBG); /* G1 vendor: log_const_LSM6DSO level 4 */
+ 
+ static const uint16_t lsm6dso_odr_map[] = {0, 12, 26, 52, 104, 208, 416, 833,
+ 					1660, 3330, 6660};
+@@ -707,7 +707,7 @@ static const struct sensor_driver_api lsm6dso_driver_api = {
+ 	.channel_get = lsm6dso_channel_get,
+ };
+ 
+-int lsm6dso_init_chip(const struct device *dev)
++static int lsm6dso_init_chip(const struct device *dev)
+ {
+ 	const struct lsm6dso_config *cfg = dev->config;
+ 	stmdev_ctx_t *ctx = (stmdev_ctx_t *)&cfg->ctx;
+@@ -836,19 +836,19 @@ int lsm6dso_init_chip(const struct device *dev)
+ 	return 0;
+ }
+ 
+-static int lsm6dso_init(const struct device *dev)
++int lsm6dso_init(const struct device *dev)
+ {
+ #ifdef CONFIG_LSM6DSO_TRIGGER
+ 	const struct lsm6dso_config *cfg = dev->config;
+ #endif
+ 	struct lsm6dso_data *data = dev->data;
+ 
+-	printk("Initialize device %s\r\n", dev->name);
++	/* G1 vendor: no "Initialize device" message */
+ 	data->dev = dev;
+ 
+ 	if (lsm6dso_init_chip(dev) < 0) {
+ 		printk("failed to initialize chip\r\n");
+-		return -EIO;
++		return 0;
+ 	}
+ 
+ #ifdef CONFIG_LSM6DSO_TRIGGER
+@@ -882,7 +882,7 @@ static int lsm6dso_init(const struct device *dev)
+ 
+ #define LSM6DSO_DEVICE_INIT(inst)					\
+ 	SENSOR_DEVICE_DT_INST_DEFINE(inst,				\
+-			    lsm6dso_init,				\
++			    NULL,				\
+ 			    NULL,					\
+ 			    &lsm6dso_data_##inst,			\
+ 			    &lsm6dso_config_##inst,			\

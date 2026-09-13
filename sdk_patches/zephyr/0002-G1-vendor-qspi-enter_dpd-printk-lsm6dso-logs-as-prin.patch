@@ -1,0 +1,358 @@
+From fc59b390d25fe56387f4de918a78996d509be6f8 Mon Sep 17 00:00:00 2001
+From: G1 repro <johnrthomas27@gmail.com>
+Date: Sun, 18 Oct 2026 15:46:23 -0700
+Subject: [PATCH 2/3] G1 vendor: qspi enter_dpd printk, lsm6dso logs as printk
+
+---
+ drivers/flash/nrf_qspi_nor.c     |  1 +
+ drivers/sensor/lsm6dso/lsm6dso.c | 86 ++++++++++++++++----------------
+ 2 files changed, 44 insertions(+), 43 deletions(-)
+
+diff --git a/drivers/flash/nrf_qspi_nor.c b/drivers/flash/nrf_qspi_nor.c
+index c373a2c8ab7..add6b02815c 100644
+--- a/drivers/flash/nrf_qspi_nor.c
++++ b/drivers/flash/nrf_qspi_nor.c
+@@ -1319,6 +1319,7 @@ static int enter_dpd(const struct device *const dev)
+ 		uint32_t t_enter_dpd = DT_INST_PROP_OR(0, t_enter_dpd, 0);
+ 		int ret;
+ 
++		printk("#############################enter_dpd\r\n");
+ 		ret = qspi_send_cmd(dev, &cmd, false);
+ 		if (ret < 0) {
+ 			return ret;
+diff --git a/drivers/sensor/lsm6dso/lsm6dso.c b/drivers/sensor/lsm6dso/lsm6dso.c
+index 2344d2c02ee..1f5dae80532 100644
+--- a/drivers/sensor/lsm6dso/lsm6dso.c
++++ b/drivers/sensor/lsm6dso/lsm6dso.c
+@@ -168,7 +168,7 @@ static int lsm6dso_accel_odr_set(const struct device *dev, uint16_t freq)
+ 	}
+ 
+ 	if (lsm6dso_accel_set_odr_raw(dev, odr) < 0) {
+-		LOG_DBG("failed to set accelerometer sampling rate");
++		printk("failed to set accelerometer sampling rate\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -188,7 +188,7 @@ static int lsm6dso_accel_range_set(const struct device *dev, int32_t range)
+ 	}
+ 
+ 	if (lsm6dso_accel_set_fs_raw(dev, fs) < 0) {
+-		LOG_DBG("failed to set accelerometer full-scale");
++		printk("failed to set accelerometer full-scale\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -207,7 +207,7 @@ static int lsm6dso_accel_config(const struct device *dev,
+ 	case SENSOR_ATTR_SAMPLING_FREQUENCY:
+ 		return lsm6dso_accel_odr_set(dev, val->val1);
+ 	default:
+-		LOG_DBG("Accel attribute not supported.");
++		printk("Accel attribute not supported.\r\n");
+ 		return -ENOTSUP;
+ 	}
+ 
+@@ -224,7 +224,7 @@ static int lsm6dso_gyro_odr_set(const struct device *dev, uint16_t freq)
+ 	}
+ 
+ 	if (lsm6dso_gyro_set_odr_raw(dev, odr) < 0) {
+-		LOG_DBG("failed to set gyroscope sampling rate");
++		printk("failed to set gyroscope sampling rate\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -242,7 +242,7 @@ static int lsm6dso_gyro_range_set(const struct device *dev, int32_t range)
+ 	}
+ 
+ 	if (lsm6dso_gyro_set_fs_raw(dev, fs) < 0) {
+-		LOG_DBG("failed to set gyroscope full-scale");
++		printk("failed to set gyroscope full-scale\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -261,7 +261,7 @@ static int lsm6dso_gyro_config(const struct device *dev,
+ 	case SENSOR_ATTR_SAMPLING_FREQUENCY:
+ 		return lsm6dso_gyro_odr_set(dev, val->val1);
+ 	default:
+-		LOG_DBG("Gyro attribute not supported.");
++		printk("Gyro attribute not supported.\r\n");
+ 		return -ENOTSUP;
+ 	}
+ 
+@@ -287,14 +287,14 @@ static int lsm6dso_attr_set(const struct device *dev,
+ 	case SENSOR_CHAN_PRESS:
+ 	case SENSOR_CHAN_HUMIDITY:
+ 		if (!data->shub_inited) {
+-			LOG_ERR("shub not inited.");
++			printk("shub not inited.\r\n");
+ 			return -ENOTSUP;
+ 		}
+ 
+ 		return lsm6dso_shub_config(dev, chan, attr, val);
+ #endif /* CONFIG_LSM6DSO_SENSORHUB */
+ 	default:
+-		LOG_WRN("attr_set() not supported on this channel.");
++		printk("attr_set() not supported on this channel.\r\n");
+ 		return -ENOTSUP;
+ 	}
+ 
+@@ -308,7 +308,7 @@ static int lsm6dso_sample_fetch_accel(const struct device *dev)
+ 	struct lsm6dso_data *data = dev->data;
+ 
+ 	if (lsm6dso_acceleration_raw_get(ctx, data->acc) < 0) {
+-		LOG_DBG("Failed to read sample");
++		printk("Failed to read sample\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -322,7 +322,7 @@ static int lsm6dso_sample_fetch_gyro(const struct device *dev)
+ 	struct lsm6dso_data *data = dev->data;
+ 
+ 	if (lsm6dso_angular_rate_raw_get(ctx, data->gyro) < 0) {
+-		LOG_DBG("Failed to read sample");
++		printk("Failed to read sample\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -337,7 +337,7 @@ static int lsm6dso_sample_fetch_temp(const struct device *dev)
+ 	struct lsm6dso_data *data = dev->data;
+ 
+ 	if (lsm6dso_temperature_raw_get(ctx, &data->temp_sample) < 0) {
+-		LOG_DBG("Failed to read sample");
++		printk("Failed to read sample\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -349,7 +349,7 @@ static int lsm6dso_sample_fetch_temp(const struct device *dev)
+ static int lsm6dso_sample_fetch_shub(const struct device *dev)
+ {
+ 	if (lsm6dso_shub_fetch_external_devs(dev) < 0) {
+-		LOG_DBG("failed to read ext shub devices");
++		printk("failed to read ext shub devices\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -523,7 +523,7 @@ static inline int lsm6dso_magn_get_channel(enum sensor_channel chan,
+ 
+ 	idx = lsm6dso_shub_get_idx(data->dev, SENSOR_CHAN_MAGN_XYZ);
+ 	if (idx < 0) {
+-		LOG_DBG("external magn not supported");
++		printk("external magn not supported\r\n");
+ 		return -ENOTSUP;
+ 	}
+ 
+@@ -567,7 +567,7 @@ static inline void lsm6dso_hum_convert(struct sensor_value *val,
+ 
+ 	idx = lsm6dso_shub_get_idx(data->dev, SENSOR_CHAN_HUMIDITY);
+ 	if (idx < 0) {
+-		LOG_DBG("external press/temp not supported");
++		printk("external press/temp not supported\r\n");
+ 		return;
+ 	}
+ 
+@@ -591,7 +591,7 @@ static inline void lsm6dso_press_convert(struct sensor_value *val,
+ 
+ 	idx = lsm6dso_shub_get_idx(data->dev, SENSOR_CHAN_PRESS);
+ 	if (idx < 0) {
+-		LOG_DBG("external press/temp not supported");
++		printk("external press/temp not supported\r\n");
+ 		return;
+ 	}
+ 
+@@ -614,7 +614,7 @@ static inline void lsm6dso_temp_convert(struct sensor_value *val,
+ 
+ 	idx = lsm6dso_shub_get_idx(data->dev, SENSOR_CHAN_PRESS);
+ 	if (idx < 0) {
+-		LOG_DBG("external press/temp not supported");
++		printk("external press/temp not supported\r\n");
+ 		return;
+ 	}
+ 
+@@ -657,7 +657,7 @@ static int lsm6dso_channel_get(const struct device *dev,
+ 	case SENSOR_CHAN_MAGN_Z:
+ 	case SENSOR_CHAN_MAGN_XYZ:
+ 		if (!data->shub_inited) {
+-			LOG_ERR("attr_set() shub not inited.");
++			printk("attr_set() shub not inited.\r\n");
+ 			return -ENOTSUP;
+ 		}
+ 
+@@ -666,7 +666,7 @@ static int lsm6dso_channel_get(const struct device *dev,
+ 
+ 	case SENSOR_CHAN_HUMIDITY:
+ 		if (!data->shub_inited) {
+-			LOG_ERR("attr_set() shub not inited.");
++			printk("attr_set() shub not inited.\r\n");
+ 			return -ENOTSUP;
+ 		}
+ 
+@@ -675,7 +675,7 @@ static int lsm6dso_channel_get(const struct device *dev,
+ 
+ 	case SENSOR_CHAN_PRESS:
+ 		if (!data->shub_inited) {
+-			LOG_ERR("attr_set() shub not inited.");
++			printk("attr_set() shub not inited.\r\n");
+ 			return -ENOTSUP;
+ 		}
+ 
+@@ -684,7 +684,7 @@ static int lsm6dso_channel_get(const struct device *dev,
+ 
+ 	case SENSOR_CHAN_AMBIENT_TEMP:
+ 		if (!data->shub_inited) {
+-			LOG_ERR("attr_set() shub not inited.");
++			printk("attr_set() shub not inited.\r\n");
+ 			return -ENOTSUP;
+ 		}
+ 
+@@ -721,25 +721,25 @@ static int lsm6dso_init_chip(const struct device *dev)
+ 	 * set the bank now.
+ 	 */
+ 	if (lsm6dso_mem_bank_set(ctx, LSM6DSO_USER_BANK) < 0) {
+-		LOG_DBG("Failed to set user bank");
++		printk("Failed to set user bank\r\n");
+ 		return -EIO;
+ 	}
+ 
+ 	if (lsm6dso_device_id_get(ctx, &chip_id) < 0) {
+-		LOG_DBG("Failed reading chip id");
++		printk("Failed reading chip id\r\n");
+ 		return -EIO;
+ 	}
+ 
+-	LOG_INF("chip id 0x%x", chip_id);
++	printk("lsm6dso_init_chip chip id 0x%x\r\n", chip_id);
+ 
+ 	if (chip_id != LSM6DSO_ID) {
+-		LOG_DBG("Invalid chip id 0x%x", chip_id);
++		printk("Invalid chip id 0x%x\r\n", chip_id);
+ 		return -EIO;
+ 	}
+ 
+ 	/* I3C disable stay preserved after s/w reset */
+ 	if (lsm6dso_i3c_disable_set(ctx, LSM6DSO_I3C_DISABLE) < 0) {
+-		LOG_DBG("Failed to disable I3C");
++		printk("Failed to disable I3C\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -747,11 +747,11 @@ static int lsm6dso_init_chip(const struct device *dev)
+ 	 * must be disabled, followed by a 300 μs wait."
+ 	 */
+ 	if (lsm6dso_sh_master_get(ctx, &master_on) < 0) {
+-		LOG_DBG("Failed to get I2C_MASTER status");
++		printk("Failed to get I2C_MASTER status\r\n");
+ 		return -EIO;
+ 	}
+ 	if (master_on) {
+-		LOG_DBG("Disable shub before reset");
++		printk("Disable shub before reset\r\n");
+ 		lsm6dso_sh_master_set(ctx, 0);
+ 		k_busy_wait(300);
+ 	}
+@@ -764,7 +764,7 @@ static int lsm6dso_init_chip(const struct device *dev)
+ 	k_busy_wait(100);
+ 
+ 	/* set accel power mode */
+-	LOG_DBG("accel pm is %d", cfg->accel_pm);
++	printk("accel pm is %d\r\n", cfg->accel_pm);
+ 	switch (cfg->accel_pm) {
+ 	default:
+ 	case 0:
+@@ -779,23 +779,23 @@ static int lsm6dso_init_chip(const struct device *dev)
+ 	}
+ 
+ 	fs = cfg->accel_range & ACCEL_RANGE_MASK;
+-	LOG_DBG("accel range is %d", fs);
++	printk("accel range is %d\r\n", fs);
+ 	if (lsm6dso_accel_set_fs_raw(dev, fs) < 0) {
+-		LOG_ERR("failed to set accelerometer range %d", fs);
++		printk("failed to set accelerometer range %d\r\n", fs);
+ 		return -EIO;
+ 	}
+ 	lsm6dso->acc_gain = lsm6dso_accel_fs_val_to_gain(fs, cfg->accel_range & ACCEL_RANGE_DOUBLE);
+ 
+ 	odr = cfg->accel_odr;
+-	LOG_DBG("accel odr is %d", odr);
++	printk("accel odr is %d\r\n", odr);
+ 	lsm6dso->accel_freq = lsm6dso_odr_to_freq_val(odr);
+ 	if (lsm6dso_accel_set_odr_raw(dev, odr) < 0) {
+-		LOG_ERR("failed to set accelerometer odr %d", odr);
++		printk("failed to set accelerometer odr %d\r\n", odr);
+ 		return -EIO;
+ 	}
+ 
+ 	/* set gyro power mode */
+-	LOG_DBG("gyro pm is %d", cfg->gyro_pm);
++	printk("gyro pm is %d\r\n", cfg->gyro_pm);
+ 	switch (cfg->gyro_pm) {
+ 	default:
+ 	case 0:
+@@ -807,29 +807,29 @@ static int lsm6dso_init_chip(const struct device *dev)
+ 	}
+ 
+ 	fs = cfg->gyro_range;
+-	LOG_DBG("gyro range is %d", fs);
++	printk("gyro range is %d\r\n", fs);
+ 	if (lsm6dso_gyro_set_fs_raw(dev, fs) < 0) {
+-		LOG_ERR("failed to set gyroscope range %d", fs);
++		printk("failed to set gyroscope range %d\r\n", fs);
+ 		return -EIO;
+ 	}
+ 	lsm6dso->gyro_gain = (lsm6dso_gyro_fs_sens[fs] * GAIN_UNIT_G);
+ 
+ 	odr = cfg->gyro_odr;
+-	LOG_DBG("gyro odr is %d", odr);
++	printk("gyro odr is %d\r\n", odr);
+ 	lsm6dso->gyro_freq = lsm6dso_odr_to_freq_val(odr);
+ 	if (lsm6dso_gyro_set_odr_raw(dev, odr) < 0) {
+-		LOG_ERR("failed to set gyroscope odr %d", odr);
++		printk("failed to set gyroscope odr %d\r\n", odr);
+ 		return -EIO;
+ 	}
+ 
+ 	/* Set FIFO bypass mode */
+ 	if (lsm6dso_fifo_mode_set(ctx, LSM6DSO_BYPASS_MODE) < 0) {
+-		LOG_DBG("failed to set FIFO mode");
++		printk("failed to set FIFO mode\r\n");
+ 		return -EIO;
+ 	}
+ 
+ 	if (lsm6dso_block_data_update_set(ctx, 1) < 0) {
+-		LOG_DBG("failed to set BDU mode");
++		printk("failed to set BDU mode\r\n");
+ 		return -EIO;
+ 	}
+ 
+@@ -843,18 +843,18 @@ static int lsm6dso_init(const struct device *dev)
+ #endif
+ 	struct lsm6dso_data *data = dev->data;
+ 
+-	LOG_INF("Initialize device %s", dev->name);
++	printk("Initialize device %s\r\n", dev->name);
+ 	data->dev = dev;
+ 
+ 	if (lsm6dso_init_chip(dev) < 0) {
+-		LOG_DBG("failed to initialize chip");
++		printk("failed to initialize chip\r\n");
+ 		return -EIO;
+ 	}
+ 
+ #ifdef CONFIG_LSM6DSO_TRIGGER
+ 	if (cfg->trig_enabled) {
+ 		if (lsm6dso_init_interrupt(dev) < 0) {
+-			LOG_ERR("Failed to initialize interrupt.");
++			printk("Failed to initialize interrupt.\r\n");
+ 			return -EIO;
+ 		}
+ 	}
+@@ -863,7 +863,7 @@ static int lsm6dso_init(const struct device *dev)
+ #ifdef CONFIG_LSM6DSO_SENSORHUB
+ 	data->shub_inited = true;
+ 	if (lsm6dso_shub_init(dev) < 0) {
+-		LOG_INF("shub: no external chips found");
++		printk("shub: no external chips found\r\n");
+ 		data->shub_inited = false;
+ 	}
+ #endif
+-- 
+2.56.0
+

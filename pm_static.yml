@@ -1,0 +1,176 @@
+# Partition layout of the shipped v1.63 image (r2_kcfg).  Internal partitions = the NCS defaults;
+# the external-flash partitions are recovered from the shipped flash map (default_flash_map,
+# 0x8e940: ids 11..22, then external_flash id 23 with size 0).  Names are not in the image
+# (the application addresses the external flash by raw offsets); the IDs follow from the
+# address order.
+EMPTY_0:
+  address: 0xfe000
+  end_address: 0x100000
+  placement:
+    after:
+    - settings_storage
+  region: flash_primary
+  size: 0x2000
+app:
+  address: 0xc200
+  end_address: 0xfc000
+  region: flash_primary
+  size: 0xefe00
+mcuboot:
+  address: 0x0
+  end_address: 0xc000
+  placement:
+    before:
+    - mcuboot_primary
+  region: flash_primary
+  size: 0xc000
+mcuboot_pad:
+  address: 0xc000
+  end_address: 0xc200
+  placement:
+    align:
+      start: 0x4000
+    before:
+    - mcuboot_primary_app
+  region: flash_primary
+  size: 0x200
+mcuboot_primary:
+  address: 0xc000
+  end_address: 0xfc000
+  orig_span: &id001
+  - mcuboot_pad
+  - app
+  region: flash_primary
+  size: 0xf0000
+  span: *id001
+mcuboot_primary_1:
+  address: 0x0
+  device: nordic_ram_flash_controller
+  end_address: 0x40000
+  region: ram_flash
+  size: 0x40000
+mcuboot_primary_app:
+  address: 0xc200
+  end_address: 0xfc000
+  orig_span: &id002
+  - app
+  region: flash_primary
+  size: 0xefe00
+  span: *id002
+mcuboot_secondary:
+  address: 0x0
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0xf0000
+  placement:
+    align:
+      start: 0x4
+  region: external_flash
+  share_size:
+  - mcuboot_primary
+  size: 0xf0000
+mcuboot_secondary_1:
+  address: 0xf0000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x130000
+  region: external_flash
+  size: 0x40000
+otp:
+  address: 0xff8100
+  end_address: 0xff83fc
+  region: otp
+  size: 0x2fc
+pcd_sram:
+  address: 0x20000000
+  end_address: 0x20002000
+  placement:
+    after:
+    - start
+  region: sram_primary
+  size: 0x2000
+ram_flash:
+  address: 0x40000
+  end_address: 0x40000
+  region: ram_flash
+  size: 0x0
+settings_storage:
+  address: 0xfc000
+  end_address: 0xfe000
+  placement:
+    align:
+      start: 0x4000
+    before:
+    - end
+  region: flash_primary
+  size: 0x2000
+sys_settings:
+  address: 0x130000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x140000
+  region: external_flash
+  size: 0x10000
+ext_res_0:
+  address: 0x140000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x180000
+  region: external_flash
+  size: 0x40000
+ext_res_1:
+  address: 0x180000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x1c0000
+  region: external_flash
+  size: 0x40000
+ext_res_2:
+  address: 0x1c0000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x200000
+  region: external_flash
+  size: 0x40000
+ext_res_3:
+  address: 0x200000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x400000
+  region: external_flash
+  size: 0x200000
+ext_res_4:
+  address: 0x400000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x500000
+  region: external_flash
+  size: 0x100000
+ext_res_5:
+  address: 0x500000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x520000
+  region: external_flash
+  size: 0x20000
+ext_res_6:
+  address: 0x520000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0xa20000
+  region: external_flash
+  size: 0x500000
+ext_res_7:
+  address: 0xa20000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0xa40000
+  region: external_flash
+  size: 0x20000
+ext_res_8:
+  address: 0xa40000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0xf40000
+  region: external_flash
+  size: 0x500000
+ext_res_9:
+  address: 0xf40000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x1000000
+  region: external_flash
+  size: 0xc0000
+ext_res_10:
+  address: 0x1000000
+  device: DT_CHOSEN(nordic_pm_ext_flash)
+  end_address: 0x2000000
+  region: external_flash
+  size: 0x1000000

@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: G1 repro <repro@localhost>
+Date: Mon, 19 Oct 2026 12:00:00 -0700
+Subject: [PATCH] G1 vendor: conn.c send_frag without the no-controller-bufs LOG_DBG
+
+---
+diff --git a/subsys/bluetooth/host/conn.c b/subsys/bluetooth/host/conn.c
+index ca542a2ba29..5ba4fcdaf0d 100644
+--- a/subsys/bluetooth/host/conn.c
++++ b/subsys/bluetooth/host/conn.c
+@@ -661,7 +661,7 @@ static int send_frag(struct bt_conn *conn,
+ {
+ 	/* Check if the controller can accept ACL packets */
+ 	if (k_sem_take(bt_conn_get_pkts(conn), K_NO_WAIT)) {
+-		LOG_DBG("no controller bufs");
++		/* G1 vendor: LOG_DBG("no controller bufs") removed */
+ 		return -ENOBUFS;
+ 	}
+ 
+-- 
+2.56.0

@@ -604,17 +604,27 @@ enum aw9320x_irq_porx_position {
 	TRIGGER_TH1 = 0x03,
 };
 
+/* G1: wear state reported by the AW93203 interrupt status */
+typedef enum aw9320x_WEARING {
+	UNKNOWN = 0,
+	IN_EAR = 1,
+	OUT_EAR = 2,
+} aw9320x_WEARING;
+
+extern aw9320x_WEARING aw9320x_wearing;
+
 int32_t aw9320x_init(struct aw9320x_func *hw_fun);
 void aw9320x_mode_operation_set(enum AW9320X_OPERAION_MODE mode);
 enum AW9320X_OPERAION_MODE aw9320x_mode_operation_get(void);
-void aw9320x_aot_set(uint8_t cali_flag);
 void aw9320x_diff_get(int32_t *p_diff);
+int32_t aw9320x_read_chipid(void);
+int32_t aw9320x_flash_update(struct aw_update_common *update_info);
+int32_t aw9320x_update_fw_to_flash(void);
 int32_t aw9320x_fw_update(uint8_t load_fw_mode);
-#ifndef AW_MUL_CAP_FLAG
-void aw9320x_self_cap_parasitic_data_get(uint32_t *reg_data_cfg);
-#else
-void aw9320x_mul_cap_parasitic_data_get(uint32_t *parasitic_data);
-#endif
+void aw9320x_get_irq_stat(struct cap_event_status *p_irq_stat_data, uint32_t *irq_status);
+
+/* aw93203_port.c */
+void aw93203_init(void);
 #ifdef __cplusplus
 }
 #endif

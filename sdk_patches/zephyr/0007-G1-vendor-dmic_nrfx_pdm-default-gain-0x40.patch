@@ -1,0 +1,21 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: G1 repro <repro@localhost>
+Date: Mon, 19 Oct 2026 12:00:00 -0700
+Subject: [PATCH] G1 vendor: dmic_nrfx_pdm default gain 0x40, GPIO config not skipped
+
+---
+diff --git a/drivers/audio/dmic_nrfx_pdm.c b/drivers/audio/dmic_nrfx_pdm.c
+index 15711073d77..cd2c7b2a2fe 100644
+--- a/drivers/audio/dmic_nrfx_pdm.c
++++ b/drivers/audio/dmic_nrfx_pdm.c
+@@ -565,7 +565,7 @@ static const struct _dmic_ops dmic_ops = {
+ 	static const struct dmic_nrfx_pdm_drv_cfg dmic_nrfx_pdm_cfg##idx = { \
+ 		.event_handler = event_handler##idx,			     \
+ 		.nrfx_def_cfg =	NRFX_PDM_DEFAULT_CONFIG(0, 0),		     \
+-		.nrfx_def_cfg.skip_gpio_cfg = true,			     \
++		.nrfx_def_cfg.gain_l = 0x40, .nrfx_def_cfg.gain_r = 0x40,    \
+ 		.nrfx_def_cfg.skip_psel_cfg = true,			     \
+ 		.pcfg = PINCTRL_DT_DEV_CONFIG_GET(PDM(idx)),		     \
+ 		.clk_src = PDM_CLK_SRC(idx),				     \
+-- 
+2.56.0

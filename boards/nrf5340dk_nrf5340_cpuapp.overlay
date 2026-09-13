@@ -1,0 +1,352 @@
+#include <dt-bindings/regulator/npm1300.h>
+#include <zephyr/dt-bindings/adc/adc.h>
+#include <zephyr/dt-bindings/adc/nrf-adc.h>
+
+/ {
+	chosen {
+		nordic,pm-ext-flash = &extflash;
+	};
+};
+
+/*
+ * G1 app-core board overlay (draft) — nrf5340dk_nrf5340_cpuapp
+ *
+ * Reconstructed from app_update.bin device objects + pinctrl state tables.
+ * Bus/pin mapping and provenance: recon/board/pins_buses.md
+ *
+ * nRF5340 SERIAL mapping in this firmware:
+ *   UARTE0=uart@8000  TWIM1=i2c@9000  SPIM3/SPIM4=projector(runtime pins)
+ *   TWIM2=i2c@b000    PDM0=pdm@26000  QSPI=mx25r6435f
+ * No PWM node exists in the firmware (brightness is set over projector SPI).
+ */
+
+&pinctrl {
+	/* ---- QSPI (external NOR flash) ---- */
+	qspi_default: qspi_default {
+		group1 {
+			psels = <NRF_PSEL(QSPI_SCK, 0, 17)>,
+				<NRF_PSEL(QSPI_IO0, 0, 13)>,
+				<NRF_PSEL(QSPI_IO1, 0, 14)>,
+				<NRF_PSEL(QSPI_IO2, 0, 15)>,
+				<NRF_PSEL(QSPI_IO3, 0, 16)>,
+				<NRF_PSEL(QSPI_CSN, 0, 18)>;
+			nordic,drive-mode = <NRF_DRIVE_H0H1>;
+		};
+	};
+	/* qspi_sleep: the DK default (CSN in its own pull-up group2) - the shipped
+	 * __pinctrl_state_pins_1 of the QSPI device has 6 pins ending with CSN | pull-up. */
+
+	/* ---- I2C1 (i2c@9000): OPT3007 ALS + PMIC ---- */
+	i2c1_default: i2c1_default {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 0, 5)>,
+				<NRF_PSEL(TWIM_SCL, 0, 4)>;
+		};
+	};
+	i2c1_sleep: i2c1_sleep {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 0, 5)>,
+				<NRF_PSEL(TWIM_SCL, 0, 4)>;
+			low-power-enable;
+		};
+	};
+
+	/* ---- I2C3 (i2c@b000): LSM6DSO IMU ---- */
+	i2c2_default: i2c2_default {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 1, 2)>,
+				<NRF_PSEL(TWIM_SCL, 1, 3)>;
+		};
+	};
+	i2c2_sleep: i2c2_sleep {
+		group1 {
+			psels = <NRF_PSEL(TWIM_SDA, 1, 2)>,
+				<NRF_PSEL(TWIM_SCL, 1, 3)>;
+			low-power-enable;
+		};
+	};
+
+	/* ---- UARTE0 (uart@8000): console/debug ---- */
+	/* shipped default state has 4 pins: TX P0.20, RTS disconnected, RX P0.22 + CTS
+	 * disconnected (pull-up); sleep state 2 pins (TX, RX). */
+	uart0_default: uart0_default {
+		group1 {
+			psels = <NRF_PSEL(UART_TX, 0, 20)>,
+				<NRF_PSEL_DISCONNECTED(UART_RTS)>;
+		};
+		group2 {
+			psels = <NRF_PSEL(UART_RX, 0, 22)>,
+				<NRF_PSEL_DISCONNECTED(UART_CTS)>;
+			bias-pull-up;
+		};
+	};
+	uart0_sleep: uart0_sleep {
+		group1 {
+			psels = <NRF_PSEL(UART_TX, 0, 20)>,
+				<NRF_PSEL(UART_RX, 0, 22)>;
+			low-power-enable;
+		};
+	};
+
+	/* ---- PDM0 (pdm@26000): microphone ---- */
+	pdm0_default: pdm0_default {
+		group1 {
+			psels = <NRF_PSEL(PDM_CLK, 1, 13)>,
+				<NRF_PSEL(PDM_DIN, 1, 14)>;
+		};
+	};
+
+};
+
+/* ================= peripheral nodes ================= */
+
+&qspi {
+	status = "okay";
+	pinctrl-0 = <&qspi_default>;
+	pinctrl-1 = <&qspi_sleep>;
+	pinctrl-names = "default", "sleep";
+
+	/*
+	 * External serial NOR — the PART IS A MACRONIX MX25U256-family
+	 * (256 Mbit / 32 MiB) device, NOT an MX25R6435F.
+	 *
+	 * The DT node NAME must stay "mx25r6435f@0": that literal string is the
+	 * Zephyr device name in the shipped image (app_update.bin device object
+	 * 0x87bf0 -> name pointer 0xf5d6b -> "mx25r6435f@0"), and every
+	 * device_get_binding()/z_device_is_ready() consumer in the recovered code
+	 * references it. Only the DT *label* is corrected here (mx25r64 ->
+	 * extflash) so the source no longer claims the wrong part.
+	 *
+	 * Every property below was checked byte-for-byte against the shipped
+	 * `struct qspi_nor_config` at VA 0x8b66c (file offset 0x7f66c); see
+	 * recon/emulator/reports/our_boot_bringup.md, Iteration 6 §1.
+	 */
+	extflash: mx25r6435f@0 {
+		compatible = "nordic,qspi-nor";
+		reg = <0>;
+		writeoc = "pp4io";		/* cfg+0x1d = 03 = NRF_QSPI_WRITEOC_PP4IO  */
+		readoc = "read4io";		/* cfg+0x1c = 04 = NRF_QSPI_READOC_READ4IO */
+		/*
+		 * cfg+0x23 (phy_if.sck_freq) = 0 = NRF_QSPI_FREQ_DIV1 AND the
+		 * inlined qspi_nrfx_configure at 0x60c26/0x60c2e writes
+		 * HFCLK192MCTRL(0x50005000+0x5b8) = 0 = NRF_CLOCK_HFCLK_DIV_1.
+		 * Only the ">= NRF_QSPI_BASE_CLOCK_FREQ (96 MHz)" branch of the
+		 * driver's ladder yields that pair (the >=48 MHz branch would
+		 * write DIV_2=1; the >=32 MHz branch would give sck_freq=3).
+		 */
+		sck-frequency = <96000000>;
+		jedec-id = [c2 25 39];		/* cfg+0x30 = c2 25 39 (MX25U256)   */
+		size = <268435456>;		/* cfg+0x2c = 0x02000000 B = 32 MiB  */
+		has-dpd;			/* exit_dpd@0x8397e emits 0xAB       */
+		/* no t-enter-dpd / t-exit-dpd: exit_dpd@0x8710c and enter_dpd
+		 * (inlined in qspi_nor_pm_action@0x63dec) issue no k_busy_wait. */
+		/delete-property/ t-enter-dpd;
+		/delete-property/ t-exit-dpd;
+	};
+};
+
+&i2c1 { /* i2c@9000 */
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	pinctrl-0 = <&i2c1_default>;
+	pinctrl-1 = <&i2c1_sleep>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	opt3007: opt3001@45 {
+		compatible = "ti,opt3001";
+		reg = <0x45>;
+	};
+
+	pmic: pmic@6b {
+		compatible = "nordic,npm1300";
+		reg = <0x6b>;
+
+		pmic_gpio: gpio-controller {
+			compatible = "nordic,npm1300-gpio";
+			gpio-controller;
+			#gpio-cells = <2>;
+			/* gpio_npm1300_config0.port_pin_mask = 0x07 in the shipped image */
+			ngpios = <3>;
+		};
+
+		pmic_regulators: regulators {
+			compatible = "nordic,npm1300-regulator";
+
+			/* Values decoded from the four stock config objects at
+			 * 0x8b878..0x8b977, not copied from the evaluation shield. */
+			pmic_buck1: BUCK1 {
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <3300000>;
+			};
+			pmic_buck2: BUCK2 {
+				regulator-min-microvolt = <1000000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-init-microvolt = <1200000>;
+			};
+			pmic_ldo1: LDO1 {
+				regulator-min-microvolt = <1000000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-initial-mode = <NPM1300_LDSW_MODE_LDSW>;
+			};
+			pmic_ldo2: LDO2 {
+				regulator-min-microvolt = <1000000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-initial-mode = <NPM1300_LDSW_MODE_LDSW>;
+			};
+		};
+
+		pmic_wdt: watchdog {
+			compatible = "nordic,npm1300-wdt";
+			/*
+			 * Decoded from the shipped `struct wdt_npm1300_config`.
+			 * The "watchdog" struct device at 0x87cc8 (name pointer
+			 * 0xf66c4 -> "watchdog") has config = 0x8bb50:
+			 *   0x8bb50 mfd   = 0x87c80 -> name 0xf6132 "pmic@6b"
+			 *   0x8bb54 port  = 0x87c98 -> name 0xf5ebd "gpio-controller"
+			 *   0x8bb58 pin   = 2
+			 *   0x8bb5a flags = 0x0001 = GPIO_ACTIVE_LOW
+			 * Without it `config->reset_gpios.port` is NULL, so
+			 * wdt_npm1300_init() skips gpio_pin_configure_dt(...,
+			 * NPM1300_GPIO_WDT_RESET_ON) and the six GPIO-bank writes
+			 * `060206 061600 060C00 061100 060700 061B00` that the
+			 * shipped firmware issues at the head of nPM1300 boot are
+			 * absent (measured: our `p1_boot` twim1 @0x6B stream was
+			 * 279 transactions against the oracle's 285, and those six
+			 * were exactly the missing ones).
+			 */
+			reset-gpios = <&pmic_gpio 2 GPIO_ACTIVE_LOW>;
+		};
+
+		/* Exact config object at 0x8ba14: 4.4/4.1 V termination,
+		 * 40 mA charge, 1 A discharge, 500 mA VBUS, 100 kOhm/4250 K
+		 * thermistor, default trickle/termination selectors, charging on. */
+		pmic_charger: charger {
+			compatible = "nordic,npm1300-charger";
+			term-microvolt = <4400000>;
+			term-warm-microvolt = <4100000>;
+			current-microamp = <40000>;
+			dischg-limit-microamp = <1000000>;
+			vbus-limit-microamp = <500000>;
+			thermistor-ohms = <100000>;
+			thermistor-beta = <4250>;
+			charging-enable;
+		};
+	};
+};
+
+&i2c2 { /* i2c@b000 */
+	compatible = "nordic,nrf-twim";
+	status = "okay";
+	pinctrl-0 = <&i2c2_default>;
+	pinctrl-1 = <&i2c2_sleep>;
+	pinctrl-names = "default", "sleep";
+	clock-frequency = <I2C_BITRATE_FAST>;
+
+	lsm6dso: lsm6dso@6b {
+		compatible = "st,lsm6dso";
+		reg = <0x6b>;
+		/* Exact packed config bytes at original 0x0008b9f0: both sensors
+		 * use the driver's low/normal-power mode; ODR/range stay at their
+		 * zero-valued power-up defaults. */
+		accel-pm = <1>;
+		gyro-pm = <1>;
+		/* The custom owner emits the original NULL init entry; the stock
+		 * CONFIG_LSM6DSO owner remains disabled in Kconfig. */
+		status = "okay";
+	};
+};
+
+&uart0 { /* uart@8000 */
+	status = "okay";
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-1 = <&uart0_sleep>;
+	pinctrl-names = "default", "sleep";
+	/* hw-flow-control omitted: RTS/CTS not routed */
+};
+
+&pdm0 { /* pdm@26000 */
+	status = "okay";
+	pinctrl-0 = <&pdm0_default>;
+	pinctrl-names = "default";
+};
+
+/* Projector buses are configured at runtime through nrfx.  The firmware has
+ * SPIM3/SPIM4 IRQ veneers but no Zephyr SPI device descriptor. */
+&spi4 { status = "disabled"; };
+&spi3 { status = "disabled"; };
+
+/* ================= GPIO control lines / buttons ================= */
+/ {
+	gpio_keys {
+		compatible = "gpio-keys";
+		sw0: sw0 {
+			gpios = <&gpio1 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+			label = "SW0";
+		};
+		sw1: sw1 {
+			gpios = <&gpio1 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+			label = "SW1";
+		};
+	};
+
+	panel_ctrl {
+		compatible = "gpio-leds";
+		panel_pwr: panel_pwr {
+			gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
+			label = "panel-power-enable";
+		};
+		/* additional projector/panel control outputs observed at boot:
+		 * P0.19, P0.21, P0.23, P0.30 (+ P0.25/26/27/28) */
+	};
+};
+
+/* clk_init writes HFCLKAUDIO.FREQUENCY = 0x9ba5 => 12.288 MHz */
+&clock {
+	hfclkaudio-frequency = <12288000>;
+};
+
+/* pdm_nrfx_init0: k_msgq_init(..., sizeof(void *), 10) */
+&pdm0 {
+	queue-size = <10>;
+	/* dmic_nrfx_pdm_cfg0.clk_src = 0 (PCLK32M) in the shipped image */
+	clock-source = "PCLK32M";
+};
+
+/* NFC field voltage (nfc_wlc.c adc_channels = ADC_DT_SPEC_GET_BY_IDX(zephyr,user, 0);
+ * const data at 0x8c1d4: channel 3, gain 1/6, internal reference, AIN3, 12 bit) */
+/ {
+	zephyr,user {
+		io-channels = <&adc 3>;
+	};
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	channel@3 {
+		reg = <3>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,input-positive = <NRF_SAADC_AIN3>;
+		zephyr,resolution = <12>;
+	};
+};
+
+/* nordicsemi_nrf53_init (0x4f3e4) hands only P1.01 and P1.00 to the network core
+ * (soc_secure_gpio_pin_mcu_select(0x21/0x20)); the DK default also forwards P0.11/P0.10. */
+&gpio_fwd {
+	uart {
+		gpios = <&gpio1 1 0>, <&gpio1 0 0>;
+	};
+};
+
+/* CONFIG_NRFX_SPIS2 needs an SPIS-compatible node (stays disabled; see prj.conf) */
+&spi2 {
+	compatible = "nordic,nrf-spis";
+	status = "disabled";
+};
