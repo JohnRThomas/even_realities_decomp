@@ -1,4 +1,6 @@
+build*/
 .cache/
 .vscode/
-build/
 **/__pycache__/
+
+toolchain_libs/

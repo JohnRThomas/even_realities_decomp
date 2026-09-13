@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: Apache-2.0
+
+# The network core image is net_core/ (cmake/modules/mcuboot/CMakeLists.txt).  With
+# network core DFU on and no NCS RPMsg sample selected, NCS adds its empty_net_core
+# sample to the same domain instead; the option has no prompt there, so it gets one
+# here and prj.conf turns it off.
+config NCS_SAMPLE_EMPTY_NET_CORE_CHILD_IMAGE
+	bool "Add the NCS empty_net_core sample as the network core child image"
+	depends on SOC_NRF5340_CPUAPP && BOARD_ENABLE_CPUNET
+
+source "Kconfig.zephyr"
